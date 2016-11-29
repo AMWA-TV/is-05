@@ -1,6 +1,6 @@
 # **[Work In Progress]** AMWA Device Connection Management Specification
 
-This repository contains details of this AMWA Specification for managing connections between NMOS Devices, including control of NMOS Senders and Receivers.
+This repository contains details of this AMWA Specification for controlling aspects of NMOS Devices to effect connection management between Senders and Receivers.
 
 ## Getting started
 
