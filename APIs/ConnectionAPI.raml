@@ -1,0 +1,141 @@
+#%RAML 0.8
+
+# AMWA NMOS Discovery and Registration Specification: Connection API
+# (c) AMWA 2016
+
+title: Connection
+baseUri: http://example.api.com/x-nmos/{version}/connection
+version: v1.0
+mediaType: application/json
+
+documentation:
+  - title: Overview
+    content: |
+      The Connection API is exposed by NMOS Devices as a standard control interface for management of inter-device connnections.
+  - title: Endpoint Discovery
+    content: |
+      The Connection API URL for an NMOS Device is advertised in the list of controls for that device in the Node API, and this information is populated into the NMOS registry via the standard registration mechanism, so it is discoverable through the Query API (see NMOS discovery & registration specification).
+  - title: API Structure
+    content: |
+      This API presents a control interface to a running device instance. Each entity controlled through the API presents four subresources, which are used in the following way:
+      * **schema** contains the schema for the entire control parameter set: parameter types, ranges etc.  This is encoded in json-schema v4 format.
+      * **staged** provides a path to write new values for the parameters defined by the schema. These parameters can also be read back using HTTP GET.
+      * **active** contains the active values of the parameters (read only).
+      * **activate** is a resource that loads the staged parameter values into the running device, making them active.
+
+/:
+  displayName: Base
+  get:
+    description: List of paths available from this API
+    responses:
+      200:
+        body:
+          example: !include ../examples/v1.0-base-get-200.json
+/senders:
+  displayName: Senders
+  get:
+    description: List Senders
+    responses:
+      200:
+        body:
+          example: !include ../examples/v1.0-resourcelist-get-200.json
+  /{senderId}:
+    get:
+      description: Get a single Sender
+      responses:
+        200:
+          body:
+            example: !include ../examples/v1.0-resource-get-200.json
+        404:
+          description: Returned when the requested Sender ID does not exist
+    /schema:
+      get:
+        description: Get schema for sender parameters
+        responses:
+          200:
+            body:
+              example: !include ../examples/v1.0-TBD.json
+          404:
+            description: Returned when the requested resource does not exist
+    /staged:
+      get:
+        description: Get schema for sender parameters
+        responses:
+          200:
+            body:
+              example: !include ../examples/v1.0-TBD.json
+          404:
+            description: Returned when the requested resource does not exist
+    /active:
+      get:
+        description: Get schema for sender parameters
+        responses:
+          200:
+            body:
+              example: !include ../examples/v1.0-TBD.json
+          404:
+            description: Returned when the requested resource does not exist
+    /activate:
+      post:
+        description: activate staged parameters
+        responses:
+          200:
+            body:
+              example: !include ../examples/v1.0-TBD.json
+          202:
+          404:
+            description: Returned when the requested resource does not exist
+/receivers:
+  displayName: Receivers
+  get:
+    description: List Receivers
+    responses:
+      200:
+        body:
+          example: !include ../examples/v1.0-resourcelist-get-200.json
+  /{receiverId}:
+    get:
+      description: Get a single Receiver
+      responses:
+        200:
+          body:
+            example: !include ../examples/v1.0-resource-get-200.json
+        404:
+          description: Returned when the requested resource does not exist
+    /schema:
+      get:
+        description: Get schema for receiver parameters
+        responses:
+          200:
+            body:
+              example: !include ../examples/v1.0-TBD.json
+          404:
+            description: Returned when the requested resource does not exist
+    /staged:
+      get:
+        description: Get schema for receiver parameters
+        responses:
+          200:
+            body:
+              example: !include ../examples/v1.0-TBD.json
+          404:
+            description: Returned when the requested resource does not exist
+    /active:
+      get:
+        description: Get schema for receiver parameters
+        responses:
+          200:
+            body:
+              example: !include ../examples/v1.0-TBD.json
+          404:
+            description: Returned when the requested resource does not exist
+    /activate:
+      post:
+        description: activate staged parameters
+        responses:
+          200:
+            body:
+              example: !include ../examples/v1.0-TBD.json
+          202:
+          404:
+            description: Returned when the requested resource does not exist
