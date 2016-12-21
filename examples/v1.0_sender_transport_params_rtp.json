@@ -10,7 +10,7 @@
     "properties" : {
       "src_ip": {
         "type":"string",
-        "description": "IP address from which RTP packets will be sent (IP address of interface bound to this input)",
+        "description": "IP address from which RTP packets will be sent (IP address of interface bound to this output)",
         "readOnly": true,
         "anyOf": [
           {"format": "ipv4"},
@@ -67,10 +67,12 @@
         "maximum": 200
       },
       "fec_dest_port": {
-        "type": "integer",
+        "type": ["integer", "string"],
         "description": "destination port for RTP FEC packets",
         "minimum": 5000,
-        "maximum": 49151
+        "maximum": 49151,
+        "pattern": "^auto$",
+        "default": "auto"
       },
       "fec_src_port": {
         "type": "integer",
@@ -87,10 +89,12 @@
         ]
       },
       "rtcp_dest_port": {
-        "type": "integer",
+        "type": ["integer", "string"],
         "description": "destination port for RTCP packets",
         "minimum": 5000,
-        "maximum": 49151
+        "maximum": 49151,
+        "pattern": "^auto$",
+        "default": "auto"
       },
       "rtcp_src_port": {
         "type": "integer",

@@ -25,12 +25,6 @@
           {"format": "ipv6"}
         ]
       },
-  	  "src_port": {
-        "type": "integer",
-        "description": "source port for RTP packets",
-        "minimum": 5000,
-        "maximum": 49151
-      },
       "dest_port": {
         "type": "integer",
         "description": "destination port for RTP packets",
@@ -55,10 +49,12 @@
         ]
       },
       "fec_dest_port": {
-        "type": "integer",
+        "type": ["integer", "string"],
         "description": "destination port for RTP FEC packets",
         "minimum": 5000,
-        "maximum": 49151
+        "maximum": 49151,
+        "pattern": "^auto$",
+        "default": "auto"
       },
       "rtcp_mode": {
         "type": "string",
@@ -69,10 +65,12 @@
         ]
       },
       "rtcp_dest_port": {
-        "type": "integer",
+        "type": ["integer", "string"],
         "description": "destination port for RTCP packets",
         "minimum": 5000,
-        "maximum": 49151
+        "maximum": 49151,
+        "pattern": "^auto$",
+        "default": "auto"
       },
     }
   },
