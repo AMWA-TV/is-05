@@ -66,9 +66,17 @@
         "minimum": 4,
         "maximum": 200
       },
-      "fec_dest_port": {
+      "fec1D_dest_port": {
         "type": ["integer", "string"],
-        "description": "destination port for RTP FEC packets",
+        "description": "destination port for RTP Column FEC packets (auto = RTP dest_port+2)",
+        "minimum": 5000,
+        "maximum": 49151,
+        "pattern": "^auto$",
+        "default": "auto"
+      },
+      "fec2D_dest_port": {
+        "type": ["integer", "string"],
+        "description": "destination port for RTP Row FEC packets (auto = RTP dest_port+4)",
         "minimum": 5000,
         "maximum": 49151,
         "pattern": "^auto$",
@@ -87,6 +95,16 @@
           "Disabled",
           "Enabled"
         ]
+      },
+      "rtcp_dest_ip": {
+        "type":"string",
+        "description": "IP address to which RTCP packets will be sent (auto = same as RTP dest_ip)",
+        "anyOf": [
+          {"format": "ipv4"},
+          {"format": "ipv6"},
+          {"pattern": "^auto$"}
+        ],
+        "default":"auto"
       },
       "rtcp_dest_port": {
         "type": ["integer", "string"],
