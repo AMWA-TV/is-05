@@ -76,13 +76,32 @@ documentation:
           404:
             description: Returned when the requested resource does not exist
     /activate:
-      post:
-        description: activate staged parameters
+      get:
+        description: Get details of most recent activation request
         responses:
           200:
             body:
-              example: !include ../examples/v1.0-TBD.json
+              schema: !include schemas/v1.0-activate-confirm-schema.json
+              example: !include ../examples/v1.0-activate-fail.json
           202:
+          404:
+            description: Returned when the requested resource does not exist
+      post:
+        description: Post activation object to trigger activation of staged parameters
+        body:
+          schema: !include schemas/v1.0-activate-schema.json
+          example: !include ../examples/v1.0-activate-post.json
+        responses:
+          200:
+            body:
+              schema: !include schemas/v1.0-activate-confirm-schema.json
+              example: !include ../examples/v1.0-activate-success.json
+          202:
+            body:
+              schema: !include schemas/v1.0-activate-confirm-schema.json
+              example: !include ../examples/v1.0-activate-waiting.json
+          400:
+            description: Returned when validation of the payload fails
           404:
             description: Returned when the requested resource does not exist
 /receivers:
@@ -130,12 +149,30 @@ documentation:
           404:
             description: Returned when the requested resource does not exist
     /activate:
-      post:
-        description: activate staged parameters
+      get:
+        description: Get details of most recent activation request
         responses:
           200:
             body:
-              example: !include ../examples/v1.0-TBD.json
+              schema: !include schemas/v1.0-activate-confirm-schema.json
+              example: !include ../examples/v1.0-activate-waiting.json
+          404:
+            description: Returned when the requested resource does not exist
+      post:
+        description: Post activation object to trigger activation of staged parameters
+        body:
+          schema: !include schemas/v1.0-activate-schema.json
+          example: !include ../examples/v1.0-activate-post.json
+        responses:
+          200:
+            body:
+              schema: !include schemas/v1.0-activate-confirm-schema.json
+              example: !include ../examples/v1.0-activate-success.json
           202:
+            body:
+              schema: !include schemas/v1.0-activate-confirm-schema.json
+              example: !include ../examples/v1.0-activate-waiting.json
+          400:
+            description: Returned when validation of the payload fails
           404:
             description: Returned when the requested resource does not exist

@@ -7,6 +7,11 @@
   "items": {
     "type": "object",
     "title": "Receiver Input",
+    "required": [
+      "src_ip",
+      "dest_ip",
+      "dest_port",
+    ],
     "properties" : {
       "src_ip": {
         "type":"string",

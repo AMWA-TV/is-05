@@ -7,6 +7,12 @@
   "items": {
     "type": "object",
     "title": "Sender Output",
+    "required": [
+      "src_ip",
+      "dest_ip",
+      "src_port",
+      "dest_port"
+    ],
     "properties" : {
       "src_ip": {
         "type":"string",

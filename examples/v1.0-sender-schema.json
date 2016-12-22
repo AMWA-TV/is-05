@@ -4,6 +4,10 @@
   "description": "Describes a sender",
   "title": "Sender resource",
   "type": "object",
+  "required": [
+    "receiver_id",
+    "transport_params"
+  ],
   "properties": {
       "receiver_id": {
         "description": "ID of the target Receiver of this Sender (relevant for unicast only)",

@@ -4,6 +4,10 @@
   "description": "Describes a receiver",
   "title": "Receiver resource",
   "type": "object",
+  "required": [
+    "sender_id",
+    "transport_params"
+  ],
   "properties": {
     "sender_id": {
       "description": "ID of the Sender subscribed to by this Receiver",
