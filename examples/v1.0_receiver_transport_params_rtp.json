@@ -1,6 +1,5 @@
 {
   "$schema": "http://json-schema.org/draft-04/schema#",
-  "type": "object",
   "description": "Describes RTP Receiver transport parameters",
   "title": "RTP Receiver Transport Parameters",
   "type": "array",
@@ -10,13 +9,12 @@
     "required": [
       "src_ip",
       "dest_ip",
-      "dest_port",
+      "dest_port"
     ],
     "properties" : {
       "src_ip": {
         "type":"string",
         "description": "Source IP address of RTP packets (relevant for source-specific multicast)",
-        "readOnly": true,
         "anyOf": [
           {"format": "ipv4"},
           {"format": "ipv6"}
@@ -94,8 +92,8 @@
         "maximum": 49151,
         "pattern": "^auto$",
         "default": "auto"
-      },
+      }
     }
   },
-"maxItems" : 2,
+  "maxItems" : 2
 }
