@@ -3,7 +3,6 @@
   "type": "object",
   "description": "Describes RTP Sender transport parameters",
   "title": "RTP Sender Transport Parameters",
-  "type": "array",
   "items": {
     "type": "object",
     "title": "Sender Output",
@@ -128,5 +127,5 @@
       }
     }
   },
-"maxItems" : 2,
+"maxItems" : 2
 }
