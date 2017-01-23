@@ -66,6 +66,20 @@ documentation:
               example: !include ../examples/v1.0-sender-get-200.json
           404:
             description: Returned when the requested resource does not exist
+      put:
+        description: Update staged parameters for the sender
+	body:
+	  schema: !include schemas/v1.0-sender-schema.json
+	  example: ../examples/v1.0-stage-put.json
+	responses:
+	  200:
+	    schema: !include schemas/v1.0-stage-confirm-schema.json
+	    example: !include ../examples/v1.0-stage-success.json
+	  400:
+	    schema: !include schemas/v1.0-stage-confirm-schema.json
+	    example !include ../examples/v1.0-stage-fail.json
+	  404:
+	    description: Returned when the requested resource does not exist
     /active:
       get:
         description: Get schema for sender parameters
