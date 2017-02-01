@@ -34,10 +34,6 @@
 		    "fec1D_dest_port",
 		    "fec2D_dest_port",
 		    "fec_src_port",
-		    "rtcp_mode",
-		    "rtcp_dest_ip",
-		    "rtcp_dest_port",
-		    "rtcp_src_port"
 		],
 		"properties" : {
 		    "src_ip": {
@@ -120,38 +116,6 @@
 			"minimum": 5000,
 			"maximum": 49151
 		    },
-		    "rtcp_mode": {
-			"type": "string",
-			"description": "rtcp on/off",
-			"enum": [
-			    "Disabled",
-			    "Enabled"
-			]
-		    },
-		    "rtcp_dest_ip": {
-			"type":"string",
-			"description": "IP address to which RTCP packets will be sent (auto = same as RTP dest_ip)",
-			"anyOf": [
-			    {"format": "ipv4"},
-			    {"format": "ipv6"},
-			    {"pattern": "^auto$"}
-			],
-			"default":"auto"
-		    },
-		    "rtcp_dest_port": {
-			"type": ["integer", "string"],
-			"description": "destination port for RTCP packets",
-			"minimum": 5000,
-			"maximum": 49151,
-			"pattern": "^auto$",
-			"default": "auto"
-		    },
-		    "rtcp_src_port": {
-			"type": "integer",
-			"description": "source port for RTCP packets",
-			"minimum": 5000,
-			"maximum": 49151
-		    }
 		}
 	    },
 	    "maxItems" : 2

@@ -1,6 +1,6 @@
 {
   "$schema": "http://json-schema.org/draft-04/schema#",
-  "type": "object",
+  "type": "array",
   "description": "Describes RTP Sender transport parameters",
   "title": "RTP Sender Transport Parameters",
   "items": {
