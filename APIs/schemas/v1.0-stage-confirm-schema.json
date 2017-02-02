@@ -19,6 +19,11 @@
 	    "type":"string",
 	    "description":"Indicated which field caused the error during the request",
 	    "enum":[
+		"sender_id",
+		"receiver_id",
+		"type",
+		"data",
+		"by_reference"
 		"src_ip",
 		"dest_ip",
 		"src_port",
@@ -36,6 +41,10 @@
 		"rtcp_src_port"
 	    ]
 	},
+	"transport_param_index": {
+	    "type":"integer",
+	    "description":"Where two transport parameter objects are used gives the zero based index of the object which produced the error"
+	}
 	"message": {
 	    "type":"string",
 	    "description":"Human readable error message"

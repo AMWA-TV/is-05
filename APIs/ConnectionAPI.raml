@@ -61,7 +61,7 @@ documentation:
             description: Returned when the requested resource does not exist
     /staged:
       get:
-        description: Get sender parameters object
+        description: Get staged sender parameters object
         responses:
           200:
             body:
@@ -70,10 +70,10 @@ documentation:
           404:
             description: Returned when the requested resource does not exist
       put:
-        descruption: Update all fields in the sender parameters object. All fields MUST be present.
+        description: Update all fields in the sender parameters object. All fields MUST be present.
         body:
           description: PUT must comply with schema served at /schema
-          example: !include ../examples/v1.0-stage-put.json
+          example: !include ../examples/v1.0-sender-stage-put.json
         responses:
           200:
             description: Will comply with the schema served at /schema
@@ -87,7 +87,7 @@ documentation:
         description: Update staged parameters for sender using RFC 7396 JSON Merge Patch requests. PATCH may not add or remove fields from the object.
         body:
           schema: !include schemas/v1.0-sender-patch-schema.json
-          example: !include ../examples/v1.0-stage-patch.json
+          example: !include ../examples/v1.0-sender-patch.json
         responses:
           200:
             schema: !include schemas/v1.0-stage-confirm-schema.json
@@ -154,21 +154,33 @@ documentation:
           description: Returned when the requested resource does not exist
     /schema:
       get:
-        description: Get schema for receiver parameters
+        description: Get schema for receiver parameters. All parameters in the served schema are compulsory for the client, but the API may implement a subset of the transport parameters according to the sender corresponding receiver transport parameters schema. This allows devices that do not support certian features - say FEC - to not present them as options to clients. Clients not wishing to use available features must disable them using the presented parameters. For example in the case of FEC 'fec_mode' should be set to 'Disabled'. Parameters in the sender object are persitant and may not be deleted or added by the client.
         responses:
           200:
             body:
               example: !include ../examples/v1.0-receiver-schema.json
+	      example: !include ../examples/v1.0-receiver-schema-no-fec.json
+	      example: !include ../examples/v1.0-receiver-schema-no-session-description.json
+          404:
+            description: Returned when the requested resource does not exist
+    /staged
+      get:
+        description: Get staged receiver parameters object
+        responses:
+          200:
+            body:
+              schema: !include schemas/v1.0-receiver-schema.json
+              example: !include ../examples/v1.0-receiver-get-200.json
           404:
             description: Returned when the requested resource does not exist
       put:
-        descruption: Update all fields in the sender parameters object. All fields MUST be present.
+        description: Update all fields in the sender parameters object. All fields MUST be present.
         body:
           schema: !include schemas/v1.0-receiver-put-schema.json
-          example: !include ../examples/v1.0-stage-put.json
+          example: !include ../examples/v1.0-receiver-stage-put.json
         responses:
           200:
-            schema: !include schemas/v1.0-stage-confirm-schema.json
+            description: Will comply with the schema served at /schema
             example: ../examples/v1.0-stage-success.json
           400:
             schema: !include schemas/v1.0-stage-confirm-schema.json
@@ -189,22 +201,13 @@ documentation:
             example: !include ../examples/v1.0-stage-fail.json
           404:
             description: Returned when the requested resource does not exist
-    /staged:
-      get:
-        description: Get schema for receiver parameters
-        responses:
-          200:
-            body:
-              example: !include ../examples/v1.0-TBD.json
-          404:
-            description: Returned when the requested resource does not exist
     /active:
       get:
         description: Get schema for receiver parameters
         responses:
           200:
             body:
-              example: !include ../examples/v1.0-TBD.json
+              example: !include ../examples/v1.0-receiver-get-200.json
           404:
             description: Returned when the requested resource does not exist
     /activate:

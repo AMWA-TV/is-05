@@ -71,39 +71,6 @@
 			"minimum": 5000,
 			"maximum": 49151
 		    },
-		    "fec_type": {
-			"type": "string",
-			"description": "forward error correction mode to apply",
-			"enum": [
-			    "XOR",
-			    "Reed-Solomon"
-			]
-		    },
-  		    "fec_mode": {
-			"type": "string",
-			"description": "forward error correction mode to apply",
-			"enum": [
-			    "Disabled",
-			    "1D",
-			    "2D"
-			]
-		    },
-		    "fec1D_dest_port": {
-			"type": ["integer", "string"],
-			"description": "destination port for RTP Column FEC packets (auto = RTP dest_port+2)",
-			"minimum": 5000,
-			"maximum": 49151,
-			"pattern": "^auto$",
-			"default": "auto"
-		    },
-		    "fec2D_dest_port": {
-			"type": ["integer", "string"],
-			"description": "destination port for RTP Row FEC packets (auto = RTP dest_port+4)",
-			"minimum": 5000,
-			"maximum": 49151,
-			"pattern": "^auto$",
-			"default": "auto"
-		    },
 		    "rtcp_dest_ip": {
 			"type":"string",
 			"description": "Destination IP address of RTCP packets (auto = same as RTP dest_ip)",
