@@ -54,9 +54,16 @@ documentation:
         responses:
           200:
             body:
-              example: !include ../examples/v1.0-sender-schema.json
-              example: !include ../examples/v1.0-sender-schema-no-fec.json
-              example: !include ../examples/v1.0-sender-schema-no-rtcp.json
+              examples:
+                full:
+                  description: An example for a schema using all possible fields
+                  example: !include ../examples/v1.0-sender-schema.json
+                noFec:
+                  description: An example for a schema not supporting FEC
+                  example: !include ../examples/v1.0-sender-schema-no-fec.json
+                noRtcp:
+                  description: An example for a schema not supporting RTCP
+                  example: !include ../examples/v1.0-sender-schema-no-rtcp.json
           404:
             description: Returned when the requested resource does not exist
     /staged:
@@ -76,27 +83,32 @@ documentation:
           example: !include ../examples/v1.0-sender-stage-put.json
         responses:
           200:
-            description: Will comply with the schema served at /schema
-            example: ../examples/v1.0-stage-success.json
+            body:
+              description: Will comply with the schema served at /schema
+              example: !include ../examples/v1.0-stage-success.json
           400:
-            schema: !include schemas/v1.0-stage-confirm-schema.json
-            example: !include schemas/v1.0-stage-fail.json
+            body:
+              schema: !include schemas/v1.0-stage-confirm-schema.json
+              example: !include ../examples/v1.0-stage-fail.json
           404:
             description: Returned when the requested resource does not exist
       patch:
         description: Update staged parameters for sender using RFC 7396 JSON Merge Patch requests. PATCH may not add or remove fields from the object.
         body:
-          schema: !include schemas/v1.0-sender-patch-schema.json
+          description: Patch must comply with the schema served at /schema
           example: !include ../examples/v1.0-sender-patch.json
         responses:
           200:
-            schema: !include schemas/v1.0-stage-confirm-schema.json
-            example: !include ../examples/v1.0-stage-success.json
+            body:
+              schema: !include schemas/v1.0-stage-confirm-schema.json
+              example: !include ../examples/v1.0-stage-success.json
           400:
-            schema: !include schemas/v1.0-stage-confirm-schema.json
-            example: !include ../examples/v1.0-stage-fail.json
+            body:
+              schema: !include schemas/v1.0-stage-confirm-schema.json
+              example: !include ../examples/v1.0-stage-fail.json
           404:
-            description: Returned when the requested resource does not exist
+            body:
+              description: Returned when the requested resource does not exist
     /active:
       get:
         description: Get schema for sender parameters
@@ -158,47 +170,58 @@ documentation:
         responses:
           200:
             body:
-              example: !include ../examples/v1.0-receiver-schema.json
-	      example: !include ../examples/v1.0-receiver-schema-no-fec.json
-	      example: !include ../examples/v1.0-receiver-schema-no-session-description.json
+              examples:
+                full:
+                  description: An example for a schema using all possible fields
+                  example: !include ../examples/v1.0-receiver-schema.json
+                noFec:
+                  description: An example for a schema not supporting FEC
+                  example: !include ../examples/v1.0-receiver-schema-no-fec.json
+                noSessionDescription:
+                  description: An example for a schema not supporting session description
+                  example: !include ../examples/v1.0-receiver-schema-no-session-description.json
           404:
             description: Returned when the requested resource does not exist
-    /staged
+    /staged:
       get:
         description: Get staged receiver parameters object
         responses:
           200:
             body:
-              schema: !include schemas/v1.0-receiver-schema.json
+              description: Will comply with the schema served at /schema
               example: !include ../examples/v1.0-receiver-get-200.json
           404:
             description: Returned when the requested resource does not exist
       put:
         description: Update all fields in the sender parameters object. All fields MUST be present.
         body:
-          schema: !include schemas/v1.0-receiver-put-schema.json
+          description: PUT must comply with schema served at /schema
           example: !include ../examples/v1.0-receiver-stage-put.json
         responses:
           200:
-            description: Will comply with the schema served at /schema
-            example: ../examples/v1.0-stage-success.json
+            body:
+              schema: !include schemas/v1.0-stage-confirm-schema.json
+              example: !include ../examples/v1.0-stage-success.json
           400:
-            schema: !include schemas/v1.0-stage-confirm-schema.json
-            example: !include schemas/v1.0-stage-fail.json
+            body:
+              schema: !include schemas/v1.0-stage-confirm-schema.json
+              example: !include ../examples/v1.0-stage-fail.json
           404:
             description: Returned when the requested resource does not exist
       patch:
         description: Update staged parameters for receiver using RFC 7396 JSON Merge PATCH requests. PATCH may not add or remove nodes from the object.
         body:
-          schema: !include schemas/v1.0-receiver-schema.json
+          description: patch must comply with the schema served at /schema
           example: ../examples/v1.0-receiver-patch.json
         responses:
           200:
-            schema: !include schemas/v1.0-stage-confirm-schema.json
-            example: !include ../examples/v1.0-stage-success.json
+            body:
+              schema: !include schemas/v1.0-stage-confirm-schema.json
+              example: !include ../examples/v1.0-stage-success.json
           400:
-            schema: !include schemas/v1.0-stage-confirm-schema.json
-            example: !include ../examples/v1.0-stage-fail.json
+            body:
+              schema: !include schemas/v1.0-stage-confirm-schema.json
+              example: !include ../examples/v1.0-stage-fail.json
           404:
             description: Returned when the requested resource does not exist
     /active:
