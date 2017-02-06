@@ -25,7 +25,15 @@
 		"required": [
 		    "src_ip",
 		    "dest_ip",
-		    "dest_port"
+		    "dest_port",
+		    "fec_type",
+		    "fec_mode",
+		    "fec1D_dest_port",
+		    "fec2D_dest_port",
+		    "rtcp_dest_ip",
+		    "rtcp_mode",
+		    "rtcp_dest_port",
+		    "rtp_enabled"
 		],
 		"properties" : {
 		    "src_ip": {
@@ -108,6 +116,14 @@
 			"maximum": 49151,
 			"pattern": "^auto$",
 			"default": "auto"
+		    }
+		    "rtp_enabled": {
+       			"type": "string",
+			"description": "RTP reception active/inactive",
+			"enum": [
+        		    "Enabled",
+          		    "Disabled"
+			]
 		    }
 		}
 	    },

@@ -38,7 +38,8 @@
 		"rtcp_mode",
 		"rtcp_dest_ip",
 		"rtcp_dest_port",
-		"rtcp_src_port"
+		"rtcp_src_port",
+		"rtp_enabled",
 	    ]
 	},
 	"transport_param_index": {

@@ -10,7 +10,8 @@
       "src_ip",
       "dest_ip",
       "src_port",
-      "dest_port"
+      "dest_port",
+      "rtp_enabled"
     ],
     "properties" : {
       "src_ip": {
@@ -124,6 +125,14 @@
         "description": "source port for RTCP packets",
         "minimum": 5000,
         "maximum": 49151
+      },
+      "rtp_enabled": {
+       	"type": "string",
+        "description": "RTP transmission active/inactive",
+        "enum": [
+        	"Enabled",
+          	"Disabled"
+        ]
       }
     }
   },

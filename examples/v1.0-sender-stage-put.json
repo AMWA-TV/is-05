@@ -15,6 +15,7 @@
 	"rtcp_mode": "Enabled",
 	"rtcp_dest_ip": "172.29.82.24",
 	"rtcp_dest_port": 5008,
-	"rtcp_src_port": 5008
+	"rtcp_src_port": 5008,
+	"rtp_enabled": true,
     }]
 }

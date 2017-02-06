@@ -1,99 +1,108 @@
 {
-  "$schema": "http://json-schema.org/draft-04/schema#",
-  "description": "Describes RTP Receiver transport parameters",
-  "title": "RTP Receiver Transport Parameters",
-  "type": "array",
-  "items": {
-    "type": "object",
-    "title": "Receiver Input",
-    "required": [
-      "src_ip",
-      "dest_ip",
-      "dest_port"
-    ],
-    "properties" : {
-      "src_ip": {
-        "type":"string",
-        "description": "Source IP address of RTP packets (relevant for source-specific multicast)",
-        "anyOf": [
-          {"format": "ipv4"},
-          {"format": "ipv6"}
-        ]
-      },
-      "dest_ip": {
-        "type":"string",
-        "description": "Destination IP address of RTP packets (may be multicast group address, otherwise IP address of the interface bound to this receiver input)",
-        "anyOf": [
-          {"format": "ipv4"},
-          {"format": "ipv6"}
-        ]
-      },
-      "dest_port": {
-        "type": "integer",
-        "description": "destination port for RTP packets",
-        "minimum": 5000,
-        "maximum": 49151
-      },
-      "fec_type": {
-        "type": "string",
-        "description": "forward error correction mode to apply",
-        "enum": [
-          "XOR",
-          "Reed-Solomon"
-        ]
-      },
-  	  "fec_mode": {
-        "type": "string",
-        "description": "forward error correction mode to apply",
-        "enum": [
-          "Disabled",
-          "1D",
-          "2D"
-        ]
-      },
-      "fec1D_dest_port": {
-        "type": ["integer", "string"],
-        "description": "destination port for RTP Column FEC packets (auto = RTP dest_port+2)",
-        "minimum": 5000,
-        "maximum": 49151,
-        "pattern": "^auto$",
-        "default": "auto"
-      },
-      "fec2D_dest_port": {
-        "type": ["integer", "string"],
-        "description": "destination port for RTP Row FEC packets (auto = RTP dest_port+4)",
-        "minimum": 5000,
-        "maximum": 49151,
-        "pattern": "^auto$",
-        "default": "auto"
-      },
-      "rtcp_dest_ip": {
-        "type":"string",
-        "description": "Destination IP address of RTCP packets (auto = same as RTP dest_ip)",
-        "anyOf": [
-          {"format": "ipv4"},
-          {"format": "ipv6"},
-          {"pattern": "^auto$"}
-        ],
-        "default":"auto"
-      },
-      "rtcp_mode": {
-        "type": "string",
-        "description": "rtcp on/off",
-        "enum": [
-          "Disabled",
-          "Enabled"
-        ]
-      },
-      "rtcp_dest_port": {
-        "type": ["integer", "string"],
-        "description": "destination port for RTCP packets (auto = RTP dest_port+1 )",
-        "minimum": 5000,
-        "maximum": 49151,
-        "pattern": "^auto$",
-        "default": "auto"
-      }
-    }
-  },
-  "maxItems" : 2
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "description": "Describes RTP Receiver transport parameters",
+    "title": "RTP Receiver Transport Parameters",
+    "type": "array",
+    "items": {
+	"type": "object",
+	"title": "Receiver Input",
+	"required": [
+	    "src_ip",
+	    "dest_ip",
+	    "dest_port",
+	    "rtp_enabled"
+	],
+	"properties" : {
+	    "src_ip": {
+		"type":"string",
+		"description": "Source IP address of RTP packets (relevant for source-specific multicast)",
+		"anyOf": [
+		    {"format": "ipv4"},
+		    {"format": "ipv6"}
+		]
+	    },
+	    "dest_ip": {
+		"type":"string",
+		"description": "Destination IP address of RTP packets (may be multicast group address, otherwise IP address of the interface bound to this receiver input)",
+		"anyOf": [
+		    {"format": "ipv4"},
+		    {"format": "ipv6"}
+		]
+	    },
+	    "dest_port": {
+		"type": "integer",
+		"description": "destination port for RTP packets",
+		"minimum": 5000,
+		"maximum": 49151
+	    },
+	    "fec_type": {
+		"type": "string",
+		"description": "forward error correction mode to apply",
+		"enum": [
+		    "XOR",
+		    "Reed-Solomon"
+		]
+	    },
+  	    "fec_mode": {
+		"type": "string",
+		"description": "forward error correction mode to apply",
+		"enum": [
+		    "Disabled",
+		    "1D",
+		    "2D"
+		]
+	    },
+	    "fec1D_dest_port": {
+		"type": ["integer", "string"],
+		"description": "destination port for RTP Column FEC packets (auto = RTP dest_port+2)",
+		"minimum": 5000,
+		"maximum": 49151,
+		"pattern": "^auto$",
+		"default": "auto"
+	    },
+	    "fec2D_dest_port": {
+		"type": ["integer", "string"],
+		"description": "destination port for RTP Row FEC packets (auto = RTP dest_port+4)",
+		"minimum": 5000,
+		"maximum": 49151,
+		"pattern": "^auto$",
+		"default": "auto"
+	    },
+	    "rtcp_dest_ip": {
+		"type":"string",
+		"description": "Destination IP address of RTCP packets (auto = same as RTP dest_ip)",
+		"anyOf": [
+		    {"format": "ipv4"},
+		    {"format": "ipv6"},
+		    {"pattern": "^auto$"}
+		],
+		"default":"auto"
+	    },
+	    "rtcp_mode": {
+		"type": "string",
+		"description": "rtcp on/off",
+		"enum": [
+		    "Disabled",
+		    "Enabled"
+		]
+	    },
+	    "rtcp_dest_port": {
+		"type": ["integer", "string"],
+		"description": "destination port for RTCP packets (auto = RTP dest_port+1 )",
+		"minimum": 5000,
+		"maximum": 49151,
+		"pattern": "^auto$",
+		"default": "auto"
+	    },
+            "rtp_enabled": {
+       		"type": "string",
+		"description": "RTP reception active/inactive",
+		"enum": [
+        	    "Enabled",
+          	    "Disabled"
+		]
+	    }
+	}
+    },
+    "maxItems" : 2
 }
