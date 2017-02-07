@@ -1,5 +1,6 @@
 {
-  "mode":"activate_scheduled_absolute",
-  "scheduled_time":"1441704616:587121295",
+  "mode":"activate_immediate",
+  "requested_time":"",
+  "scheduled_time":"1441704000:587121295",
   "status":"fail"
 }

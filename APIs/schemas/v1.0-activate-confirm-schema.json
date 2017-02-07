@@ -10,7 +10,7 @@
   ],
   "properties": {
     "mode": {
-      "description": "mode of activation: immediate (on message rx), scheduled_absolute (when internal clock >= scheduled_time), scheduled_relative (when internal clock >= time of message rx + scheduled_time)",
+      "description": "mode of activation: immediate (on message rx), scheduled_absolute (when internal clock >= requested_time), scheduled_relative (when internal clock >= time of message rx + requested_time)",
       "type": "string",
       "enum": [
         "activate_immediate",
@@ -18,17 +18,22 @@
         "activate_scheduled_relative"
       ]
     },
+    "requested_time": {
+      "description": "String formatted TAI timestamp (<seconds>:<nanoseconds>) indicating requested time (absolute or relative) for activation",
+      "type": "string",
+      "pattern": "^[0-9]+:[0-9]+$"
+    },
     "scheduled_time": {
-      "description": "String formatted TAI timestamp (<seconds>:<nanoseconds>) indicating time (absolute or relative) for activation",
+      "description": "String formatted TAI timestamp (<seconds>:<nanoseconds>) indicating absolute time at which activation was scheduled (in case of scheduled_relative request scheduled_time is calculated as time of reception of request + requested_time)",
       "type": "string",
       "pattern": "^[0-9]+:[0-9]+$"
     },
     "status": {
-      "description": "activation status (populated by system - pending on message reception, success once activation successfully completed, fail if activation failed)",
+      "description": "status of activation (populated by system - waiting before scheduled activation is triggered, success once activation successfully completed, activate_in_progress if activation triggered but not yet completed, fail if activation failed)",
       "type": "string",
       "enum" : [
         "waiting",
-        "pending",
+        "activating",
         "success",
         "fail"
       ]
