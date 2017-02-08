@@ -1,0 +1,24 @@
+{
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "type": "object",
+    "description": "Describes a client error response to an activate POST request",
+    "title": "Activation error response object",
+    "required": [
+	"field"
+    ],
+    "properties": {
+	"field": {
+	    "type":"string",
+	    "description":"Indicated which field caused the error during the request",
+	    "enum":[
+		"mode",
+		"requested_time",
+		"scheduled_time"
+	    ]
+	},
+	"message": {
+	    "type":"string",
+	    "description":"Human readable error message"
+	}
+    }    
+}
