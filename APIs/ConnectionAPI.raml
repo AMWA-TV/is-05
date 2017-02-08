@@ -144,9 +144,17 @@ documentation:
               schema: !include schemas/v1.0-activate-confirm-schema.json
               example: !include ../examples/v1.0-activate-waiting.json
           400:
-            description: Returned when validation of the payload fails
+	    description: Returned for a mal-formed request
+	    body:
+              schema: !include schemas/v1.0-activate-confirm-schema.json
+	      example !include ../examples/v1.0-activate-error.json
           404:
             description: Returned when the requested resource does not exist
+	  500:
+	    description: Returned when the request was valid, but the activation could not be carried out for some other reason
+	    body:
+              schema: !include schemas/v1.0-activate-confirm-schema.json
+	      example !include ../examples/v1.0-activate-error.json
 /receivers:
   displayName: Receivers
   get:
@@ -258,6 +266,14 @@ documentation:
               schema: !include schemas/v1.0-activate-confirm-schema.json
               example: !include ../examples/v1.0-activate-waiting.json
           400:
-            description: Returned when validation of the payload fails
+	    description: Returned for a mal-formed request
+	    body:
+              schema: !include schemas/v1.0-activate-confirm-schema.json
+	      example !include ../examples/v1.0-activate-error.json
           404:
             description: Returned when the requested resource does not exist
+	  500:
+	    description: Returned when the request was valid, but the activation could not be carried out for some other reason
+	    body:
+              schema: !include schemas/v1.0-activate-confirm-schema.json
+	      example !include ../examples/v1.0-activate-error.json

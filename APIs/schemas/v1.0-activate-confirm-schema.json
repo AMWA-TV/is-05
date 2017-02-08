@@ -29,14 +29,19 @@
       "pattern": "^[0-9]+:[0-9]+$"
     },
     "status": {
-      "description": "status of activation (populated by system - waiting before scheduled activation is triggered, success once activation successfully completed, activate_in_progress if activation triggered but not yet completed, fail if activation failed)",
+      "description": "status of activation (populated by system - waiting before scheduled activation is triggered, success once activation successfully completed, activate_in_progress if activation triggered but not yet completed, fail if activation failed for some internal reason, or error if the request is mal-formed)",
       "type": "string",
       "enum" : [
         "waiting",
         "activating",
         "success",
-        "fail"
+        "fail",
+	"error"
       ]
+    },
+    "message": {
+      "description": "Human readable message providing an explanation of any errors",
+      "type": "string"
     }
   }
 }
