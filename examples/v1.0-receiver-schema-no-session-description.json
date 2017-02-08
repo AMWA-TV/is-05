@@ -116,7 +116,7 @@
 			"maximum": 49151,
 			"pattern": "^auto$",
 			"default": "auto"
-		    }
+		    },
 		    "rtp_enabled": {
        			"type": "string",
 			"description": "RTP reception active/inactive",

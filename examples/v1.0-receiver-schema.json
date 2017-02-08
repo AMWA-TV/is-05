@@ -54,7 +54,7 @@
 		    "rtcp_dest_ip",
 		    "rtcp_mode",
 		    "rtcp_dest_port",
-		    "rtp_enabled",
+		    "rtp_enabled"
 		],
 		"properties" : {
 		    "src_ip": {
@@ -137,7 +137,7 @@
 			"maximum": 49151,
 			"pattern": "^auto$",
 			"default": "auto"
-		    }
+		    },
 		    "rtp_enabled": {
        			"type": "string",
 			"description": "RTP reception active/inactive",
