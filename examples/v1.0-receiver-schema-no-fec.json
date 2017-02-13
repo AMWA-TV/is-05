@@ -48,7 +48,7 @@
 		    "dest_ip",
 		    "dest_port",
 		    "rtcp_dest_ip",
-		    "rtcp_mode",
+		    "rtcp_enabled",
 		    "rtcp_dest_port",
 		    "rtp_enabled"
 		],
@@ -85,14 +85,10 @@
 			],
 			"default":"auto"
 		    },
-		    "rtcp_mode": {
-			"type": "string",
-			"description": "rtcp on/off",
-			"enum": [
-			    "Disabled",
-			    "Enabled"
-			]
-		    },
+	            "rtcp_enabled": {
+		        "type": "boolean",
+		        "description": "rtcp on/off",
+	            },
 		    "rtcp_dest_port": {
 			"type": ["integer", "string"],
 			"description": "destination port for RTCP packets (auto = RTP dest_port+1 )",
@@ -101,14 +97,10 @@
 			"pattern": "^auto$",
 			"default": "auto"
 		    },
-		    "rtp_enabled": {
-       			"type": "string",
-			"description": "RTP reception active/inactive",
-			"enum": [
-        		    "Enabled",
-          		    "Disabled"
-			]
-		    }
+                    "rtp_enabled": {
+       		        "type": "boolean",
+		        "description": "RTP reception active/inactive",
+	            }
 		}
 	    },
 	    "maxItems" : 2
@@ -116,4 +108,14 @@
 	}
     }
 }
+
+
+
+
+
+
+
+
+
+
 

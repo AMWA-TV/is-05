@@ -1,4 +1,5 @@
 {
-    "field": "mode",
-    "message": "Unrecognised value for mode"
+    "code": 500,
+    "error": "Unrecognised value for mode",
+    "debug": null
 }

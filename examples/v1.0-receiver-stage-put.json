@@ -9,24 +9,26 @@
 	"src_ip": "172.23.19.48",
 	"dest_ip": "172.23.19.35",
 	"dest_port": 5000,
+        "fec_enabled": true,
 	"fec_type": "XOR",
 	"fec_mode": "2D",
 	"fec1D_dest_port": "auto",
 	"fec2D_dest_port": "auto",
 	"rtcp_dest_ip": "auto",
-	"rtcp_mode": "Enabled",
+	"rtcp_enabled": true,
 	"rtcp_dest_port": 5001,
 	"rtp_enabled": true
     }, {
 	"src_ip": "172.23.19.48",
 	"dest_ip": "172.23.19.35",
 	"dest_port": 5000,
+        "fec_enabled": true,
 	"fec_type": "XOR",
 	"fec_mode": "2D",
 	"fec1D_dest_port": "auto",
 	"fec2D_dest_port": "auto",
 	"rtcp_dest_ip": "auto",
-	"rtcp_mode": "Enabled",
+	"rtcp_enabled": true,
 	"rtcp_dest_port": 5001,
 	"rtp_enabled": true
     }]

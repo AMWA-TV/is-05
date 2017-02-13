@@ -50,7 +50,7 @@ documentation:
           description: Returned when the requested Sender ID does not exist
     /schema:
       get:
-        description: Get schema for sender parameters. All parameters in the served schema are compulsory for the client, but the API may implement a subset of the transport parameters according to the sender corresponding sender transport parameters schema. This allows devices that do not support certian features - say FEC - to not present them as options to clients. Clients not wishing to use available features must disable them using the presented parameters. For example in the case of FEC 'fec_mode' should be set to 'Disabled'. Parameters in the sender object are persitant and may not be deleted or added by the client.
+        description: Get schema for sender parameters. All parameters in the served schema are compulsory for the client, but the API may implement a subset of the transport parameters according to the sender corresponding sender transport parameters schema. This allows devices that do not support certian features - say FEC - to not present them as options to clients. Clients not wishing to use available features must disable them using the presented parameters. For example in the case of FEC 'fec_enabled' should be set to false. Parameters in the sender object are persitant and may not be deleted or added by the client.
         responses:
           200:
             body:
@@ -72,7 +72,7 @@ documentation:
         responses:
           200:
             body:
-              schema: !include schemas/v1.0-sender-schema.json
+              description: Will comply with the schema served at /schema
               example: !include ../examples/v1.0-sender-get-200.json
           404:
             description: Returned when the requested resource does not exist
@@ -88,30 +88,30 @@ documentation:
               example: !include ../examples/v1.0-stage-success.json
           400:
             body:
-              schema: !include schemas/v1.0-stage-confirm-schema.json
+              schema: !include schemas/error.json
               example: !include ../examples/v1.0-stage-fail.json
           404:
             description: Returned when the requested resource does not exist
       patch:
         description: Update staged parameters for sender using RFC 7396 JSON Merge Patch requests. PATCH may not add or remove fields from the object.
         body:
-          description: Patch must comply with the schema served at /schema
+          description: Patch must comply with the schema served at /schema, but no fields are mandatory
           example: !include ../examples/v1.0-sender-patch.json
         responses:
           200:
             body:
-              schema: !include schemas/v1.0-stage-confirm-schema.json
+              description: Will comply with the schema served at /schema
               example: !include ../examples/v1.0-stage-success.json
           400:
             body:
-              schema: !include schemas/v1.0-stage-confirm-schema.json
+              schema: !include schemas/error.json
               example: !include ../examples/v1.0-stage-fail.json
           404:
             body:
               description: Returned when the requested resource does not exist
     /active:
       get:
-        description: Get schema for sender parameters
+        description: Get active sender parameters
         responses:
           200:
             body:
@@ -125,8 +125,7 @@ documentation:
           200:
             body:
               schema: !include schemas/v1.0-activate-confirm-schema.json
-              example: !include ../examples/v1.0-activate-fail.json
-          202:
+              example: !include ../examples/v1.0-activate-success.json
           404:
             description: Returned when the requested resource does not exist
       post:
@@ -146,7 +145,7 @@ documentation:
           400:
             body:           
               description: Returned for a mal-formed request
-              schema: !include schemas/v1.0-activate-error-schema.json
+              schema: !include schemas/error.json
               example: !include ../examples/v1.0-activate-error.json
           404:
             description: Returned when the requested resource does not exist
@@ -174,7 +173,7 @@ documentation:
           description: Returned when the requested resource does not exist
     /schema:
       get:
-        description: Get schema for receiver parameters. All parameters in the served schema are compulsory for the client, but the API may implement a subset of the transport parameters according to the sender corresponding receiver transport parameters schema. This allows devices that do not support certian features - say FEC - to not present them as options to clients. Clients not wishing to use available features must disable them using the presented parameters. For example in the case of FEC 'fec_mode' should be set to 'Disabled'. Parameters in the sender object are persitant and may not be deleted or added by the client.
+        description: Get schema for receiver parameters. All parameters in the served schema are compulsory for the client, but the API may implement a subset of the transport parameters and session description according to the sender corresponding receiver transport parameters schema. This allows devices that do not support certian features - say FEC - to not present them as options to clients. Clients not wishing to use available features must disable them using the presented parameters. For example in the case of FEC 'fec_enabled' should be set to false. Parameters in the sender object are persitant and may not be deleted or added by the client.
         responses:
           200:
             body:
@@ -208,33 +207,33 @@ documentation:
         responses:
           200:
             body:
-              schema: !include schemas/v1.0-stage-confirm-schema.json
-              example: !include ../examples/v1.0-stage-success.json
+              description: Will comply with the schema served at /schema
+              example: !include ../examples/v1.0-receiver-stage-success.json
           400:
             body:
-              schema: !include schemas/v1.0-stage-confirm-schema.json
+              schema: !include schemas/error.json
               example: !include ../examples/v1.0-stage-fail.json
           404:
             description: Returned when the requested resource does not exist
       patch:
         description: Update staged parameters for receiver using RFC 7396 JSON Merge PATCH requests. PATCH may not add or remove nodes from the object.
         body:
-          description: patch must comply with the schema served at /schema
-          example: ../examples/v1.0-receiver-patch.json
+          description: patch must comply with the schema served at /schema but not all fields are mandatory
+          example: !include ../examples/v1.0-receiver-patch.json
         responses:
           200:
             body:
-              schema: !include schemas/v1.0-stage-confirm-schema.json
-              example: !include ../examples/v1.0-stage-success.json
+              description: Will comply with the schema served at /schema
+              example: !include ../examples/v1.0-receiver-stage-success.json
           400:
             body:
-              schema: !include schemas/v1.0-stage-confirm-schema.json
+              schema: !include schemas/error.json
               example: !include ../examples/v1.0-stage-fail.json
           404:
             description: Returned when the requested resource does not exist
     /active:
       get:
-        description: Get schema for receiver parameters
+        description: Get active receiver parameters
         responses:
           200:
             body:
@@ -268,7 +267,7 @@ documentation:
           400:
             body:
               description: Returned for a mal-formed request
-              schema: !include schemas/v1.0-activate-error-schema.json
+              schema: !include schemas/error.json
               example: !include ../examples/v1.0-activate-error.json
           404:
             description: Returned when the requested resource does not exist

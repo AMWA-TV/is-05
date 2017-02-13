@@ -35,6 +35,10 @@
 		"minimum": 5000,
 		"maximum": 49151
 	    },
+            "fec_enabled": {
+                "type": "boolean",
+                "description": "FEC usage on/off"
+            },
 	    "fec_type": {
 		"type": "string",
 		"description": "forward error correction mode to apply",
@@ -47,7 +51,6 @@
 		"type": "string",
 		"description": "forward error correction mode to apply",
 		"enum": [
-		    "Disabled",
 		    "1D",
 		    "2D"
 		]
@@ -78,13 +81,9 @@
 		],
 		"default":"auto"
 	    },
-	    "rtcp_mode": {
-		"type": "string",
+	    "rtcp_enabled": {
+		"type": "boolean",
 		"description": "rtcp on/off",
-		"enum": [
-		    "Disabled",
-		    "Enabled"
-		]
 	    },
 	    "rtcp_dest_port": {
 		"type": ["integer", "string"],
@@ -94,13 +93,9 @@
 		"pattern": "^auto$",
 		"default": "auto"
 	    },
-            "rtp_enabled": {
-       		"type": "string",
+           "rtp_enabled": {
+       		"type": "boolean",
 		"description": "RTP reception active/inactive",
-		"enum": [
-        	    "Enabled",
-          	    "Disabled"
-		]
 	    }
 	}
     },

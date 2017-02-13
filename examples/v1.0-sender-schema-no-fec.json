@@ -27,7 +27,7 @@
 		    "dest_ip",
 		    "src_port",
 		    "dest_port",
-		    "rtcp_mode",
+		    "rtcp_enabled",
 		    "rtcp_dest_ip",
 		    "rtcp_dest_port",
 		    "rtcp_src_port",
@@ -63,14 +63,10 @@
 			"minimum": 5000,
 			"maximum": 49151
 		    },
-		    "rtcp_mode": {
-			"type": "string",
-			"description": "rtcp on/off",
-			"enum": [
-			    "Disabled",
-			    "Enabled"
-			]
-		    },
+	            "rtcp_enabled": {
+		        "type": "boolean",
+		        "description": "rtcp on/off",
+	            },
 		    "rtcp_dest_ip": {
 			"type":"string",
 			"description": "IP address to which RTCP packets will be sent (auto = same as RTP dest_ip)",
@@ -95,14 +91,10 @@
 			"minimum": 5000,
 			"maximum": 49151
 		    },
-		    "rtp_enabled": {
-       			"type": "string",
-			"description": "RTP reception active/inactive",
-			"enum": [
-        		    "Enabled",
-          		    "Disabled"
-			]
-		    }
+                    "rtp_enabled": {
+       		        "type": "boolean",
+		        "description": "RTP reception active/inactive",
+	            }
 		}
 	    },
 	    "maxItems" : 2
