@@ -7,6 +7,7 @@
 	"receiver_id",
 	"transport_params"
     ],
+    "additionalProperties": false,
     "properties": {
 	"receiver_id": {
 	    "description": "ID of the target Receiver of this Sender (relevant for unicast only)",
@@ -28,6 +29,7 @@
 		    "src_port",
 		    "dest_port",
                     "fec_enabled",
+                    "fec_dest_ip",
 		    "fec_type",
 		    "fec_mode",
 		    "fec_block_width",
@@ -41,6 +43,7 @@
 		    "rtcp_src_port",
 		    "rtp_enabled"
 		],
+                "additionalProperties": false,
 		"properties" : {
 	            "src_ip": {
 		        "type":"string",
@@ -67,6 +70,15 @@
                     "fec_enabled": {
                         "type": "boolean",
                         "description": "FEC usage on/off"
+                    },
+                    "fec_dest_ip": {
+                        "type": "string",
+                        "description": "May be used if NAT is being used at the destination (auto = rtp_dest_ip)",
+                        "anyOf": [
+                            {"format": "ipv4"},
+                            {"format": "ipv6"},
+                            {"pattern": "^auto$"}
+                        ]
                     },
 	            "fec_type": {
 		        "type": "string",

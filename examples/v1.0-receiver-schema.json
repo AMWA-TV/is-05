@@ -7,6 +7,7 @@
 	"sender_id",
 	"transport_params"
     ],
+    "additionalProperties": false,
     "properties": {
 	"sender_id": {
 	    "description": "ID of the Sender subscribed to by this Receiver",
@@ -17,6 +18,12 @@
 	"session_description": {
 	    "type": "object",
 	    "default": null,
+            "additionalProperties": false,
+            "required": [
+                "type",
+                "data",
+                "by_reference"
+            ],
 	    "properties": {
 		"type": {
 		    "type":"string",
@@ -47,6 +54,8 @@
 		    "src_ip",
 		    "dest_ip",
 		    "dest_port",
+                    "fec_enabled",
+                    "fec_dest_ip",
 		    "fec_type",
 		    "fec_mode",
 		    "fec1D_dest_port",
@@ -56,6 +65,7 @@
 		    "rtcp_dest_port",
 		    "rtp_enabled"
 		],
+                "additionalProperties": false,
 		"properties" : {
 	            "src_ip": {
 		        "type":"string",
@@ -82,6 +92,15 @@
                     "fec_enabled": {
                         "type": "boolean",
                         "description": "FEC usage on/off"
+                    },
+                    "fec_dest_ip": {
+                        "type": "string",
+                        "description": "May be used if NAT is being used at the destination (auto = rtp_dest_ip)",
+                        "anyOf": [
+                            {"format": "ipv4"},
+                            {"format": "ipv6"},
+                            {"pattern": "^auto$"}
+                        ]
                     },
 	            "fec_type": {
 		        "type": "string",

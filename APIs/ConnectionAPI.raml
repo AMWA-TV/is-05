@@ -55,15 +55,9 @@ documentation:
           200:
             body:
               examples:
-                full:
-                  description: An example for a schema using all possible fields
-                  example: !include ../examples/v1.0-sender-schema.json
-                noFec:
-                  description: An example for a schema not supporting FEC
-                  example: !include ../examples/v1.0-sender-schema-no-fec.json
-                noRtcp:
-                  description: An example for a schema not supporting RTCP
-                  example: !include ../examples/v1.0-sender-schema-no-rtcp.json
+                full: !include ../examples/v1.0-sender-schema.json
+                noFec: !include ../examples/v1.0-sender-schema-no-fec.json
+                noRtcp: !include ../examples/v1.0-sender-schema-no-rtcp.json
           404:
             description: Returned when the requested resource does not exist
     /staged:

@@ -12,6 +12,7 @@
 	    "dest_port",
 	    "rtp_enabled"
 	],
+        "additionalProperties": false,
 	"properties" : {
 	    "src_ip": {
 		"type":"string",
@@ -38,6 +39,15 @@
             "fec_enabled": {
                 "type": "boolean",
                 "description": "FEC usage on/off"
+            },
+            "fec_dest_ip": {
+                "type": "string",
+                "description": "May be used if NAT is being used at the destination (auto = rtp_dest_ip)",
+                "anyOf": [
+                    {"format": "ipv4"},
+                    {"format": "ipv6"},
+                    {"pattern": "^auto$"}
+                ]
             },
 	    "fec_type": {
 		"type": "string",
@@ -83,7 +93,7 @@
 	    },
 	    "rtcp_enabled": {
 		"type": "boolean",
-		"description": "rtcp on/off",
+		"description": "rtcp on/off"
 	    },
 	    "rtcp_dest_port": {
 		"type": ["integer", "string"],
@@ -95,9 +105,9 @@
 	    },
            "rtp_enabled": {
        		"type": "boolean",
-		"description": "RTP reception active/inactive",
+		"description": "RTP reception active/inactive"
 	    }
-	}
+	},
     },
     "maxItems" : 2
 }

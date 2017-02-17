@@ -7,6 +7,7 @@
 	"receiver_id",
 	"transport_params"
     ],
+    "additionalProperties": false,
     "properties": {
 	"receiver_id": {
 	    "description": "ID of the target Receiver of this Sender (relevant for unicast only)",
@@ -33,6 +34,7 @@
 		    "rtcp_src_port",
 		    "rtp_enabled"
 		],
+                "additionalProperties": false,
 		"properties" : {
 		    "src_ip": {
 			"type":"string",

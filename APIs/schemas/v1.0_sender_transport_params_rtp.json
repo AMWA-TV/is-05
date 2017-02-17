@@ -13,6 +13,7 @@
             "dest_port",
             "rtp_enabled"
         ],
+        "additionalProperties": false,
         "properties" : {
             "src_ip": {
                 "type":"string",
@@ -45,6 +46,19 @@
                 "minimum": 5000,
                 "maximum": 49151
             },
+            "fec_enabled":{
+                "type": "boolean",
+                "description": "FEC on/off"
+            },
+            "fec_dest_ip": {
+                "type": "string",
+                "description": "May be used if NAT is being used at the destination (auto = rtp_dest_ip)",
+                "anyOf": [
+                    {"format": "ipv4"},
+                    {"format": "ipv6"},
+                    {"pattern": "^auto$"}
+                ]
+            },
             "fec_type": {
                 "type": "string",
                 "description": "forward error correction mode to apply",
@@ -52,10 +66,6 @@
                     "XOR",
                     "Reed-Solomon"
                 ]
-            },
-            "fec_enabled":{
-                "type": "boolean",
-                "description": "FEC on/off"
             },
             "fec_mode": {
                 "type": "string",
@@ -111,7 +121,7 @@
             },
             "rtcp_enabled": {
                 "type": "boolean",
-                "description": "rtcp on/off",
+                "description": "rtcp on/off"
             },
             "rtcp_dest_ip": {
                 "type":"string",
@@ -141,9 +151,9 @@
             },
             "rtp_enabled": {
        	        "type": "boolean",
-                "description": "RTP transmission active/inactive",
+                "description": "RTP transmission active/inactive"
             }
-        }
+        },
     },
     "maxItems" : 2
 }

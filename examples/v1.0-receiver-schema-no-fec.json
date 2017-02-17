@@ -7,6 +7,7 @@
 	"sender_id",
 	"transport_params"
     ],
+    "additionalProperties": false,
     "properties": {
 	"sender_id": {
 	    "description": "ID of the Sender subscribed to by this Receiver",
@@ -17,6 +18,7 @@
 	"session_description": {
 	    "type": "object",
 	    "default": null,
+            "additionalProperties": false,
 	    "properties": {
 		"type": {
 		    "type":"string",
@@ -52,6 +54,7 @@
 		    "rtcp_dest_port",
 		    "rtp_enabled"
 		],
+                "additionalProperties": false,
 		"properties" : {
 		    "src_ip": {
 			"type":"string",
@@ -101,21 +104,9 @@
        		        "type": "boolean",
 		        "description": "RTP reception active/inactive",
 	            }
-		}
+		},
 	    },
 	    "maxItems" : 2
-
 	}
     }
 }
-
-
-
-
-
-
-
-
-
-
-
