@@ -1,22 +1,20 @@
 {
   "$schema": "http://json-schema.org/draft-04/schema#",
-  "type": "object",
-  "description": "Describes RTP Sender transport parameters",
-  "title": "RTP Sender Transport Parameters",
+  "description": "Describes RTP Receiver transport parameters",
+  "title": "RTP Receiver Transport Parameters",
+  "type": "array",
   "items": {
     "type": "object",
-    "title": "Sender Output",
+    "title": "Receiver Input",
     "required": [
       "src_ip",
       "dest_ip",
-      "src_port",
       "dest_port"
     ],
     "properties" : {
       "src_ip": {
         "type":"string",
-        "description": "IP address from which RTP packets will be sent (IP address of interface bound to this output)",
-        "readOnly": true,
+        "description": "Source IP address of RTP packets (relevant for source-specific multicast)",
         "anyOf": [
           {"format": "ipv4"},
           {"format": "ipv6"}
@@ -24,17 +22,11 @@
       },
       "dest_ip": {
         "type":"string",
-        "description": "IP address to which RTP packets will be sent",
+        "description": "Destination IP address of RTP packets (may be multicast group address, otherwise IP address of the interface bound to this receiver input)",
         "anyOf": [
           {"format": "ipv4"},
           {"format": "ipv6"}
         ]
-      },
-  	  "src_port": {
-        "type": "integer",
-        "description": "source port for RTP packets",
-        "minimum": 5000,
-        "maximum": 49151
       },
       "dest_port": {
         "type": "integer",
@@ -59,18 +51,6 @@
           "2D"
         ]
       },
-      "fec_block_width": {
-        "type": "integer",
-        "description": "width of block over which FEC is calculated in packets",
-        "minimum": 4,
-        "maximum": 200
-      },
-      "fec_block_height": {
-        "type": "integer",
-        "description": "height of block over which FEC is calculated in packets",
-        "minimum": 4,
-        "maximum": 200
-      },
       "fec1D_dest_port": {
         "type": ["integer", "string"],
         "description": "destination port for RTP Column FEC packets (auto = RTP dest_port+2)",
@@ -87,11 +67,15 @@
         "pattern": "^auto$",
         "default": "auto"
       },
-      "fec_src_port": {
-        "type": "integer",
-        "description": "source port for RTP FEC packets",
-        "minimum": 5000,
-        "maximum": 49151
+      "rtcp_dest_ip": {
+        "type":"string",
+        "description": "Destination IP address of RTCP packets (auto = same as RTP dest_ip)",
+        "anyOf": [
+          {"format": "ipv4"},
+          {"format": "ipv6"},
+          {"pattern": "^auto$"}
+        ],
+        "default":"auto"
       },
       "rtcp_mode": {
         "type": "string",
@@ -101,31 +85,15 @@
           "Enabled"
         ]
       },
-      "rtcp_dest_ip": {
-        "type":"string",
-        "description": "IP address to which RTCP packets will be sent (auto = same as RTP dest_ip)",
-        "anyOf": [
-          {"format": "ipv4"},
-          {"format": "ipv6"},
-          {"pattern": "^auto$"}
-        ],
-        "default":"auto"
-      },
       "rtcp_dest_port": {
         "type": ["integer", "string"],
-        "description": "destination port for RTCP packets",
+        "description": "destination port for RTCP packets (auto = RTP dest_port+1 )",
         "minimum": 5000,
         "maximum": 49151,
         "pattern": "^auto$",
         "default": "auto"
-      },
-      "rtcp_src_port": {
-        "type": "integer",
-        "description": "source port for RTCP packets",
-        "minimum": 5000,
-        "maximum": 49151
       }
     }
   },
-"maxItems" : 2
+  "maxItems" : 2
 }

@@ -1,5 +1,5 @@
 {
-  "mode":"activate_immediate",
+  "mode":"activate_scheduled_absolute",
   "scheduled_time":"1441704616:587121295",
-  "code":200
+  "status":"success"
 }
