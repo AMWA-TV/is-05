@@ -1,5 +1,12 @@
 {
-	"oneOf": [{
+    "oneOf": [{
+		"$schema": "http://json-schema.org/draft-04/schema#",
+		"type": "object",
+		"description": "Initial value served from GET before any activate request is made",
+		"title": "Activation object",
+		"additionalProperties": false,
+		"properties": {}
+    },{
 		"$schema": "http://json-schema.org/draft-04/schema#",
 		"type": "object",
 		"description": "Describes parameters for connection activation for a sucessful immediate activation",
