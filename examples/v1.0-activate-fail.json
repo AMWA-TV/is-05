@@ -1,6 +1,5 @@
 {
-  "mode":"activate_immediate",
-  "scheduled_time":"1441704000:587121295",
-  "requested_time":"1441704000:587121295",
-  "status":"fail"
+    "code": 500,
+    "error": "Device failed to respond",
+    "debug": "test"
 }

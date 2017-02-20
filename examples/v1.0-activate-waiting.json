@@ -1,6 +1,6 @@
 {
   "mode":"activate_scheduled_relative",
-  "requested_time":"5:0",
-  "scheduled_time":"1441704616:587121295",
-  "status":"waiting"
+  "requested_time": "5:0",
+  "scheduled_time": "1441704616:587121295",
+  "code": 202
 }

@@ -114,38 +114,48 @@ documentation:
             description: Returned when the requested resource does not exist
     /activate:
       get:
-        description: Get details of most recent activation request
+        description: Get details of most recent activation request. The response returned may change over time even if no further activations are requested, as scheduled activations are executed.
         responses:
           200:
+            description: Returns an object describing the status of the last activation request. Note that the HTTP response code is the state of the current GET request not the previous activation. As such the HTTP response code and the value of "code" in the response object may differ and have different meanings. When scheduled activations transition from waiting to completed their entry under 'code' will change from 202 to 200 or 500 depending on the outcome.
             body:
               schema: !include schemas/v1.0-activate-confirm-schema.json
-              example: !include ../examples/v1.0-activate-success.json
+              examples:
+                Immediate-activation-ok: !include ../examples/v1.0-activate-success.json
+                Scheduled-activation-completed: !include ../examples/v1.0-activate-scheduled-completed.json
+                Waiting: !include ../examples/v1.0-activate-waiting.json
+                Error: !include ../examples/v1.0-activate-error.json
+                Failed: !include ../examples/v1.0-activate-fail.json
           404:
             description: Returned when the requested resource does not exist
       post:
-        description: Post activation object to trigger activation of staged parameters
+        description: Post activation object to trigger activation of staged parameters. Activations may be scheduled at an absolute time, a time relative to when the request is received by the server, or be carried out immediately. In the case of scheduled requests, the server should endevour to carry out requests at the time requested by the client. If this is not possible the scheduled time returned to the client will not match the requested time. An activation is deemed to have completed successfully once the device parameters have been set to their new values. This may be before the transmission of any new packets.
         body:
           schema: !include schemas/v1.0-activate-schema.json
           example: !include ../examples/v1.0-activate-post.json
         responses:
           200:
+            description: This code is returned either when a immediate activation is completed successfully, or if a scheduled activation is received at, or after, its scheduled time and completes successfully.
             body:
               schema: !include schemas/v1.0-activate-confirm-schema.json
-              example: !include ../examples/v1.0-activate-success.json
+              examples:
+                Immediate-activation-ok: !include ../examples/v1.0-activate-success.json
+                Scheduled-activation-completed: !include ../examples/v1.0-activate-scheduled-completed.json
           202:
+            description: This indicates that a scheduled activation has been accepted and is pending activation at its scheduled time.
             body:
               schema: !include schemas/v1.0-activate-confirm-schema.json
               example: !include ../examples/v1.0-activate-waiting.json
           400:
-            body:           
-              description: Returned for a mal-formed request
-              schema: !include schemas/error.json
+            description: Returned when the request from the client could not be parsed.
+            body:
+              schema: !include schemas/v1.0-activate-confirm-schema.json
               example: !include ../examples/v1.0-activate-error.json
           404:
-            description: Returned when the requested resource does not exist
+            description: Returned when the requested resource does not exist.
           500:
+            description: Returned when the request was valid, but the activation could not be carried out for some other reason (e.g error in the device).
             body:
-              description: Returned when the request was valid, but the activation could not be carried out for some other reason
               schema: !include schemas/v1.0-activate-confirm-schema.json
               example: !include ../examples/v1.0-activate-fail.json
 /receivers:
@@ -236,37 +246,47 @@ documentation:
             description: Returned when the requested resource does not exist
     /activate:
       get:
-        description: Get details of most recent activation request
+        description: Get details of most recent activation request. The response returned may change over time even if no further activations are requested, as scheduled activations are executed.
         responses:
           200:
+            description: Returns an object describing the status of the last activation request. Note that the HTTP response code is the state of the current GET request not the previous activation. As such the HTTP response code and the value of "code" in the response object may differ and have different meanings. When scheduled activations transition from waiting to completed their entry under 'code' will change from 202 to 200 or 500 depending on the outcome.
             body:
               schema: !include schemas/v1.0-activate-confirm-schema.json
-              example: !include ../examples/v1.0-activate-waiting.json
+              examples:
+                Immediate-activation-ok: !include ../examples/v1.0-activate-success.json
+                Scheduled-activation-completed: !include ../examples/v1.0-activate-scheduled-completed.json
+                Waiting: !include ../examples/v1.0-activate-waiting.json
+                Error: !include ../examples/v1.0-activate-error.json
+                Failed: !include ../examples/v1.0-activate-fail.json
           404:
             description: Returned when the requested resource does not exist
       post:
-        description: Post activation object to trigger activation of staged parameters
+        description: Post activation object to trigger activation of staged parameters. Activations may be scheduled at an absolute time, a time relative to when the request is received by the server, or be carried out immediately. In the case of scheduled requests, the server should endevour to carry out requests at the time requested by the client. If this is not possible the scheduled time returned to the client will not match the requested time. An activation is deemed to have completed successfully once the device parameters have been set to their new values. This may be before the receipt of any new packets.
         body:
           schema: !include schemas/v1.0-activate-schema.json
           example: !include ../examples/v1.0-activate-post.json
         responses:
           200:
+            description: This code is returned either when a immediate activation is completed successfully, or if a scheduled activation is received at, or after, its scheduled time and completes successfully.
             body:
               schema: !include schemas/v1.0-activate-confirm-schema.json
-              example: !include ../examples/v1.0-activate-success.json
+              examples:
+                Immediate-activation-ok: !include ../examples/v1.0-activate-success.json
+                Scheduled-activation-completed: !include ../examples/v1.0-activate-scheduled-completed.json
           202:
+            description: This indicates that a scheduled activation has been accepted and is pending activation at its scheduled time.
             body:
               schema: !include schemas/v1.0-activate-confirm-schema.json
               example: !include ../examples/v1.0-activate-waiting.json
           400:
+            description: Returned when the request from the client could not be parsed.
             body:
-              description: Returned for a mal-formed request
-              schema: !include schemas/error.json
+              schema: !include schemas/v1.0-activate-confirm-schema.json
               example: !include ../examples/v1.0-activate-error.json
           404:
-            description: Returned when the requested resource does not exist
+            description: Returned when the requested resource does not exist.
           500:
+            description: Returned when the request was valid, but the activation could not be carried out for some other reason (e.g error in the device).
             body:
-              description: Returned when the request was valid, but the activation could not be carried out for some other reason
               schema: !include schemas/v1.0-activate-confirm-schema.json
               example: !include ../examples/v1.0-activate-fail.json
