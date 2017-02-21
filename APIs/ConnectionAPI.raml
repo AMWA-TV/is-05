@@ -86,6 +86,8 @@ documentation:
               example: !include ../examples/v1.0-stage-fail.json
           404:
             description: Returned when the requested resource does not exist
+          423:
+            description: Returned when the resource is locked because an activation has been scheduled
       patch:
         description: Update staged parameters for sender using RFC 7396 JSON Merge Patch requests. PATCH may not add or remove fields from the object.
         body:
@@ -103,6 +105,9 @@ documentation:
           404:
             body:
               description: Returned when the requested resource does not exist
+          423:
+            body:
+              description: Return when the resource is locked because an activation has been scheduled
     /active:
       get:
         description: Get active sender parameters
@@ -126,21 +131,25 @@ documentation:
                 Waiting: !include ../examples/v1.0-activate-waiting.json
                 Error: !include ../examples/v1.0-activate-error.json
                 Failed: !include ../examples/v1.0-activate-fail.json
+                None: !include ../examples/v1.0-activate-none.json
           404:
             description: Returned when the requested resource does not exist
       post:
-        description: Post activation object to trigger activation of staged parameters. Activations may be scheduled at an absolute time, a time relative to when the request is received by the server, or be carried out immediately. In the case of scheduled requests, the server should endevour to carry out requests at the time requested by the client. If this is not possible the scheduled time returned to the client will not match the requested time. An activation is deemed to have completed successfully once the device parameters have been set to their new values. This may be before the transmission of any new packets.
+        description: Post activation object to trigger activation of staged parameters. Activations may be scheduled at an absolute time, a time relative to when the request is received by the server, or be carried out immediately. In the case of scheduled requests, the server should endevour to carry out requests at the time requested by the client. If this is not possible the scheduled time returned to the client will not match the requested time. An activation is deemed to have completed successfully once the device parameters have been set to their new values. This may be before the transmission of any new packets. Once an activation is scheduled /staged will be locked and cannot be changed until the activation has completed, failed or is cancelled.
         body:
           schema: !include schemas/v1.0-activate-schema.json
-          example: !include ../examples/v1.0-activate-post.json
+          examples:
+            Scheduled-activation: !include ../examples/v1.0-activate-post.json
+            Cancel-activation: !include ../examples/v1.0-activate-none.json
         responses:
           200:
-            description: This code is returned either when a immediate activation is completed successfully, or if a scheduled activation is received at, or after, its scheduled time and completes successfully.
+            description: This code is returned either when a immediate activation is completed successfully, or if a scheduled activation is received at, or after, its scheduled time and completes successfully. It is also returned when an activation is cancled using "acitivate_none"
             body:
               schema: !include schemas/v1.0-activate-confirm-schema.json
               examples:
                 Immediate-activation-ok: !include ../examples/v1.0-activate-success.json
                 Scheduled-activation-completed: !include ../examples/v1.0-activate-scheduled-completed.json
+                Cancel-activation: !include ../examples/v1.0-activate-none.json
           202:
             description: This indicates that a scheduled activation has been accepted and is pending activation at its scheduled time.
             body:
@@ -219,6 +228,8 @@ documentation:
               example: !include ../examples/v1.0-stage-fail.json
           404:
             description: Returned when the requested resource does not exist
+          423:
+            description: Returned when the resource is locked because an activation has been scheduled
       patch:
         description: Update staged parameters for receiver using RFC 7396 JSON Merge PATCH requests. PATCH may not add or remove nodes from the object.
         body:
@@ -235,6 +246,8 @@ documentation:
               example: !include ../examples/v1.0-stage-fail.json
           404:
             description: Returned when the requested resource does not exist
+          423:
+            description: Returned when the resource is locked because an activation has been scheduled
     /active:
       get:
         description: Get active receiver parameters
@@ -258,13 +271,16 @@ documentation:
                 Waiting: !include ../examples/v1.0-activate-waiting.json
                 Error: !include ../examples/v1.0-activate-error.json
                 Failed: !include ../examples/v1.0-activate-fail.json
+                None: !include ../examples/v1.0-activate-none.json
           404:
             description: Returned when the requested resource does not exist
       post:
-        description: Post activation object to trigger activation of staged parameters. Activations may be scheduled at an absolute time, a time relative to when the request is received by the server, or be carried out immediately. In the case of scheduled requests, the server should endevour to carry out requests at the time requested by the client. If this is not possible the scheduled time returned to the client will not match the requested time. An activation is deemed to have completed successfully once the device parameters have been set to their new values. This may be before the receipt of any new packets.
+        description: Post activation object to trigger activation of staged parameters. Activations may be scheduled at an absolute time, a time relative to when the request is received by the server, or be carried out immediately. In the case of scheduled requests, the server should endevour to carry out requests at the time requested by the client. If this is not possible the scheduled time returned to the client will not match the requested time. An activation is deemed to have completed successfully once the device parameters have been set to their new values. This may be before the receipt of any new packets. Once an activation is scheduled /staged will be locked and cannot be changed until the activation has completed, failed or is cancelled.
         body:
           schema: !include schemas/v1.0-activate-schema.json
-          example: !include ../examples/v1.0-activate-post.json
+          examples:
+            Scheduled-activation: !include ../examples/v1.0-activate-post.json
+            Cancel-activation: !include ../examples/v1.0-activate-none.json
         responses:
           200:
             description: This code is returned either when a immediate activation is completed successfully, or if a scheduled activation is received at, or after, its scheduled time and completes successfully.
@@ -273,6 +289,7 @@ documentation:
               examples:
                 Immediate-activation-ok: !include ../examples/v1.0-activate-success.json
                 Scheduled-activation-completed: !include ../examples/v1.0-activate-scheduled-completed.json
+                Cancel-activation: !include ../examples/v1.0-activate-none.json
           202:
             description: This indicates that a scheduled activation has been accepted and is pending activation at its scheduled time.
             body:

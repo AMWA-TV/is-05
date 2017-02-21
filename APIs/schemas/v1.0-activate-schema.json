@@ -8,12 +8,13 @@
   ],
   "properties": {
     "mode": {
-      "description": "mode of activation: immediate (on message rx), scheduled_absolute (when internal clock >= requested_time), scheduled_relative (when internal clock >= time of message rx + requested_time)",
+      "description": "mode of activation: immediate (on message rx), scheduled_absolute (when internal clock >= requested_time), scheduled_relative (when internal clock >= time of message rx + requested_time), activate_none (removes the currently scheduled activation)",
       "type": "string",
       "enum": [
         "activate_immediate",
         "activate_scheduled_absolute",
-        "activate_scheduled_relative"
+        "activate_scheduled_relative",
+        "activate_none"  
       ]
     },
     "requested_time": {
