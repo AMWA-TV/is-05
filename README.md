@@ -31,6 +31,6 @@ In adittion the API may be used with or without the NMOS query API. The workflow
 
 Given below are two sequence diagrams that illustrate the various combinations of work-flow available for the API given these options.
 
-![Diagram showing Connection Management API operating by reference.](docs/by_ref_seq_diagram.pdf)
+![Diagram showing Connection Management API operating by reference.](docs/by_ref_seq_diagram.png)
 
-![Diagram showing Connection Management API operating directly.](docs/direct_seq_diagram.pdf)
+![Diagram showing Connection Management API operating directly.](docs/direct_seq_diagram.png)
