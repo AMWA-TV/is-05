@@ -19,3 +19,18 @@ Readers should then read the [documentation](docs/) in this repository, and the 
 * [examples/](examples/) -- Example JSON requests and responses for APIs
 * [LICENSE](LICENSE) -- Licenses for software and text documents
 * [NOTICE](NOTICE) -- Disclaimer
+
+## Usage
+
+### Sequence Diagrams
+When working with transport files it is possible to use the the API in one of two possible ways. The transport file may either be passed the the receiver by reference or directly. Where it is passed by reference the receiver is passed a URL pointing to the transport file. The receiver is then expected to retrieve the transport file itself.
+
+The method of passing files by reference is preferred, as it allows the transport file to be directly acessed from its origin. The prevents the receiver being in posession of a stale copy.
+
+In adittion the API may be used with or without the NMOS query API. The workflow when operating with the query API is slightly simpler but incurs the overhead of requiring a discovery and registration system.
+
+Given below are two sequence diagrams that illustrate the various combinations of work-flow available for the API given these options.
+
+![Diagram showing Connection Management API operating by reference.](docs/by_ref_seq_diagram.pdf)
+
+![Diagram showing Connection Management API operating directly.](docs/direct_seq_diagram.pdf)
