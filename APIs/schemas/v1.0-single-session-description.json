@@ -1,0 +1,36 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "description": "Describes a receiver",
+  "title": "Receiver resource",
+  "requred": [
+    "session_description"
+  ],
+  "additionalProperties": false,
+  "properties": {
+    "session_description": {
+      "type": "object",
+      "default": null,
+      "properties": {
+        "type": {
+          "type": "string",
+          "description": "e.g. application/sdp",
+          "pattern": "^[^\\s\\/]+\\/[^\\s\\/]+$"
+        },
+        "data": {
+          "description": "string providing connection and stream format parameters. If provided, the information contained in this string will override all user-configuration of parameters in the transport_params.  For RTP receivers, this string will be in SDP format",
+          "type": [
+            "string",
+            "null"
+          ],
+          "default": null
+        },
+        "by_reference": {
+          "description": "data provides a reference to the session_description string rather than the data itself",
+          "type": "boolean",
+          "default": false
+        }
+      }
+    }
+  }
+}
