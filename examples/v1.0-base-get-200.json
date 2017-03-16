@@ -1,4 +1,4 @@
 [
-    "senders/",
-    "receivers/"
+    "bulk/",
+    "single/"
 ]
