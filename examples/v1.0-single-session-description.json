@@ -1,0 +1,7 @@
+{
+    "session_description": {
+	"type": "application/sdp",
+	"data": "http://172.23.19.31:80/x-nmos/connection/v1.0/senders/single/5a63e6d6-08c5-11e7-93ae-92361f002671/active/transportfile",
+	"by_reference": true
+    }
+}
