@@ -169,152 +169,159 @@ documentation:
      responses:
        200:
          body:
-           example: !include ../examples/v1.0-resourcelist-get-200.json
-   /{senderId}:
+           example: !include ../examples/v1.0-single-root.json
+   /senders:
      get:
-       description: Get a single Sender
+       description: Sender root
        responses:
          200:
            body:
-             example: !include ../examples/v1.0-resource-get-200.json
-         404:
-           description: Returned when the requested Sender ID does not exist
-     /schema:
-       get:
-         description: Get schema for sender session description parameters. All parameters in the served schema are compulsory for the client, but the API may implement a subset of the transport parameters according to the sender corresponding sender transport parameters schema. This allows devices that do not support certian features - say FEC - to not present them as options to clients. Clients not wishing to use available features must disable them using the presented parameters. For example in the case of FEC 'fec_enabled' should be set to false. Parameters in the sender object are persitant and may not be deleted or added by the client.
-         responses:
-           200:
-             body:
-               examples:
-                 full: !include ../examples/v1.0-sender-schema.json
-                 noFec: !include ../examples/v1.0-sender-schema-no-fec.json
-                 noRtcp: !include ../examples/v1.0-sender-schema-no-rtcp.json
-           404:
-             description: Returned when the requested resource does not exist
-     /staged:
-       get:
-         description: Get staged sender parameters object
-         responses:
-           200:
-             body:
-               description: Will comply with the schema served at /schema
-               example: !include ../examples/v1.0-sender-get-200.json
-           404:
-             description: Returned when the requested resource does not exist
-       put:
-         description: Update all fields in the sender parameters object. All fields MUST be present.
-         body:
-           description: PUT must comply with schema served at /schema
-           example: !include ../examples/v1.0-sender-stage-put.json
-         responses:
-           200:
-             body:
-               description: Will comply with the schema served at /schema
-               example: !include ../examples/v1.0-stage-success.json
-           400:
-             body:
-               schema: !include schemas/error.json
-               example: !include ../examples/v1.0-stage-fail.json
-           404:
-             description: Returned when the requested resource does not exist
-           423:
-             description: Returned when the resource is locked because an activation has been scheduled
-       patch:
-         description: Update staged parameters for sender using RFC 7396 JSON Merge Patch requests. PATCH may not add or remove fields from the object.
-         body:
-           description: Patch must comply with the schema served at /schema, but no fields are mandatory
-           example: !include ../examples/v1.0-sender-patch.json
-         responses:
-           200:
-             body:
-               description: Will comply with the schema served at /schema
-               example: !include ../examples/v1.0-stage-success.json
-           400:
-             body:
-               schema: !include schemas/error.json
-               example: !include ../examples/v1.0-stage-fail.json
-           404:
-             body:
-               description: Returned when the requested resource does not exist
-           423:
-             body:
-               description: Return when the resource is locked because an activation has been scheduled
-     /active:
-       get:
-         description: Root of activate resource
-         responses:
-           200:
-             body:
-               example: !include ../examples/v1.0-sender-root.json
-       /transportparams:
+             example: !include ../examples/v1.0-resourcelist-get-200.json
+     /{senderId}:
          get:
-           description: Get active sender parameters
+           description: Get a single Sender
            responses:
              200:
                body:
-                 example: !include ../examples/v1.0-sender-get-200.json
+                 example: !include ../examples/v1.0-resource-get-200.json
              404:
-               description: Returned when the requested resource does not exist
-       /transportfile:
-         get:
-           description: Redirects to the locations of the sender\'s transport file for the active parameter set
-           responses:
-             307:
-               body:
-                 description: A temporary redirect to the transport file
-             404:
-               body:
+               description: Returned when the requested Sender ID does not exist
+         /schema:
+           get:
+             description: Get schema for sender session description parameters. All parameters in the served schema are compulsory for the client, but the API may implement a subset of the transport parameters according to the sender corresponding sender transport parameters schema. This allows devices that do not support certian features - say FEC - to not present them as options to clients. Clients not wishing to use available features must disable them using the presented parameters. For example in the case of FEC 'fec_enabled' should be set to false. Parameters in the sender object are persitant and may not be deleted or added by the client.
+             responses:
+               200:
+                 body:
+                   examples:
+                     full: !include ../examples/v1.0-sender-schema.json
+                     noFec: !include ../examples/v1.0-sender-schema-no-fec.json
+                     noRtcp: !include ../examples/v1.0-sender-schema-no-rtcp.json
+               404:
                  description: Returned when the requested resource does not exist
-     /activate:
-       get:
-         description: Get details of most recent activation request. The response returned may change over time even if no further activations are requested, as scheduled activations are executed.
-         responses:
-           200:
-             description: Returns an object describing the status of the last activation request. Note that the HTTP response code is the state of the current GET request not the previous activation. As such the HTTP response code and the value of "code" in the response object may differ and have different meanings. When scheduled activations transition from waiting to completed their entry under 'code' will change from 202 to 200 or 500 depending on the outcome.
+         /staged:
+           get:
+             description: Get staged sender parameters object
+             responses:
+               200:
+                 body:
+                   description: Will comply with the schema served at /schema
+                   example: !include ../examples/v1.0-sender-get-200.json
+               404:
+                 description: Returned when the requested resource does not exist
+           put:
+             description: Update all fields in the sender parameters object. All fields MUST be present.
              body:
-               schema: !include schemas/v1.0-activate-confirm-schema.json
-               examples:
-                 Immediate-activation-ok: !include ../examples/v1.0-activate-success.json
-                 Scheduled-activation-completed: !include ../examples/v1.0-activate-scheduled-completed.json
-                 Waiting: !include ../examples/v1.0-activate-waiting.json
-                 Error: !include ../examples/v1.0-activate-error.json
-                 Failed: !include ../examples/v1.0-activate-fail.json
-                 None: !include ../examples/v1.0-activate-none.json
-           404:
-             description: Returned when the requested resource does not exist
-       post:
-         description: Post activation object to trigger activation of staged parameters. Activations may be scheduled at an absolute time, a time relative to when the request is received by the server, or be carried out immediately. In the case of scheduled requests, the server should endevour to carry out requests at the time requested by the client. If this is not possible the scheduled time returned to the client will not match the requested time. An activation is deemed to have completed successfully once the device parameters have been set to their new values. This may be before the transmission of any new packets. Once an activation is scheduled /staged will be locked and cannot be changed until the activation has completed, failed or is cancelled.
-         body:
-           schema: !include schemas/v1.0-activate-schema.json
-           examples:
-             Scheduled-activation: !include ../examples/v1.0-activate-post.json
-             Cancel-activation: !include ../examples/v1.0-activate-none.json
-         responses:
-           200:
-             description: This code is returned either when a immediate activation is completed successfully, or if a scheduled activation is received at, or after, its scheduled time and completes successfully. It is also returned when an activation is cancled using "acitivate_none"
+               description: PUT must comply with schema served at /schema
+               example: !include ../examples/v1.0-sender-stage-put.json
+             responses:
+               200:
+                 body:
+                   description: Will comply with the schema served at /schema
+                   example: !include ../examples/v1.0-stage-success.json
+               400:
+                 body:
+                   schema: !include schemas/error.json
+                   example: !include ../examples/v1.0-stage-fail.json
+               404:
+                 description: Returned when the requested resource does not exist
+               423:
+                 description: Returned when the resource is locked because an activation has been scheduled
+           patch:
+             description: Update staged parameters for sender using RFC 7396 JSON Merge Patch requests. PATCH may not add or remove fields from the object.
              body:
-               schema: !include schemas/v1.0-activate-confirm-schema.json
+               description: Patch must comply with the schema served at /schema, but no fields are mandatory
+               example: !include ../examples/v1.0-sender-patch.json
+             responses:
+               200:
+                 body:
+                   description: Will comply with the schema served at /schema
+                   example: !include ../examples/v1.0-stage-success.json
+               400:
+                 body:
+                   schema: !include schemas/error.json
+                   example: !include ../examples/v1.0-stage-fail.json
+               404:
+                 body:
+                   description: Returned when the requested resource does not exist
+               423:
+                 body:
+                   description: Return when the resource is locked because an activation has been scheduled
+         /active:
+           get:
+             description: Root of activate resource
+             responses:
+               200:
+                 body:
+                   example: !include ../examples/v1.0-sender-root.json
+           /transportparams:
+             get:
+               description: Get active sender parameters
+               responses:
+                 200:
+                   body:
+                     example: !include ../examples/v1.0-sender-get-200.json
+                 404:
+                   description: Returned when the requested resource does not exist
+           /transportfile:
+             get:
+               description: Redirects to the locations of the sender\'s transport file for the active parameter set
+               responses:
+                 307:
+                   body:
+                     description: A temporary redirect to the transport file
+                 404:
+                   body:
+                     description: Returned when the requested resource does not exist
+         /activate:
+           get:
+             description: Get details of most recent activation request. The response returned may change over time even if no further activations are requested, as scheduled activations are executed.
+             responses:
+               200:
+                 description: Returns an object describing the status of the last activation request. Note that the HTTP response code is the state of the current GET request not the previous activation. As such the HTTP response code and the value of "code" in the response object may differ and have different meanings. When scheduled activations transition from waiting to completed their entry under 'code' will change from 202 to 200 or 500 depending on the outcome.
+                 body:
+                   schema: !include schemas/v1.0-activate-confirm-schema.json
+                   examples:
+                     Immediate-activation-ok: !include ../examples/v1.0-activate-success.json
+                     Scheduled-activation-completed: !include ../examples/v1.0-activate-scheduled-completed.json
+                     Waiting: !include ../examples/v1.0-activate-waiting.json
+                     Error: !include ../examples/v1.0-activate-error.json
+                     Failed: !include ../examples/v1.0-activate-fail.json
+                     None: !include ../examples/v1.0-activate-none.json
+               404:
+                 description: Returned when the requested resource does not exist
+           post:
+             description: Post activation object to trigger activation of staged parameters. Activations may be scheduled at an absolute time, a time relative to when the request is received by the server, or be carried out immediately. In the case of scheduled requests, the server should endevour to carry out requests at the time requested by the client. If this is not possible the scheduled time returned to the client will not match the requested time. An activation is deemed to have completed successfully once the device parameters have been set to their new values. This may be before the transmission of any new packets. Once an activation is scheduled /staged will be locked and cannot be changed until the activation has completed, failed or is cancelled.
+             body:
+               schema: !include schemas/v1.0-activate-schema.json
                examples:
-                 Immediate-activation-ok: !include ../examples/v1.0-activate-success.json
-                 Scheduled-activation-completed: !include ../examples/v1.0-activate-scheduled-completed.json
+                 Scheduled-activation: !include ../examples/v1.0-activate-post.json
                  Cancel-activation: !include ../examples/v1.0-activate-none.json
-           202:
-             description: This indicates that a scheduled activation has been accepted and is pending activation at its scheduled time.
-             body:
-               schema: !include schemas/v1.0-activate-confirm-schema.json
-               example: !include ../examples/v1.0-activate-waiting.json
-           400:
-             description: Returned when the request from the client could not be parsed.
-             body:
-               schema: !include schemas/v1.0-activate-confirm-schema.json
-               example: !include ../examples/v1.0-activate-error.json
-           404:
-             description: Returned when the requested resource does not exist.
-           500:
-             description: Returned when the request was valid, but the activation could not be carried out for some other reason (e.g error in the device).
-             body:
-               schema: !include schemas/v1.0-activate-confirm-schema.json
-               example: !include ../examples/v1.0-activate-fail.json
+             responses:
+               200:
+                 description: This code is returned either when a immediate activation is completed successfully, or if a scheduled activation is received at, or after, its scheduled time and completes successfully. It is also returned when an activation is cancled using "acitivate_none"
+                 body:
+                   schema: !include schemas/v1.0-activate-confirm-schema.json
+                   examples:
+                     Immediate-activation-ok: !include ../examples/v1.0-activate-success.json
+                     Scheduled-activation-completed: !include ../examples/v1.0-activate-scheduled-completed.json
+                     Cancel-activation: !include ../examples/v1.0-activate-none.json
+               202:
+                 description: This indicates that a scheduled activation has been accepted and is pending activation at its scheduled time.
+                 body:
+                   schema: !include schemas/v1.0-activate-confirm-schema.json
+                   example: !include ../examples/v1.0-activate-waiting.json
+               400:
+                 description: Returned when the request from the client could not be parsed.
+                 body:
+                   schema: !include schemas/v1.0-activate-confirm-schema.json
+                   example: !include ../examples/v1.0-activate-error.json
+               404:
+                 description: Returned when the requested resource does not exist.
+               500:
+                 description: Returned when the request was valid, but the activation could not be carried out for some other reason (e.g error in the device).
+                 body:
+                   schema: !include schemas/v1.0-activate-confirm-schema.json
+                   example: !include ../examples/v1.0-activate-fail.json
    /receivers:
      displayName: Receivers
      get:
