@@ -133,7 +133,7 @@ documentation:
                 example: !include ../examples/v1.0-bulk-stage-confirm.json
             400:
               description: The body of the request did validate against the schema (ignoring transport parameters - these are validated individually by each device and failures are recorded in the response object for a 200 return).
-      /sessiondescription:
+      /transportfile:
         description: Target for bulk updating of session descriptions.
         put:
           description: Allows the updating of session descriptions (i.e the transport file) for multiple receivers at the stame time.
