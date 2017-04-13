@@ -5,6 +5,8 @@
         "7a3ec21a-0405-11e7-93ae-92361f002671",
         "7a3ec3b4-0405-11e7-93ae-92361f002671"
     ],
-    "mode":"activate_scheduled_absolute",
-    "requested_time":"1441704616:587121295"
+    "params": {
+        "mode":"activate_scheduled_absolute",
+        "requested_time":"1441704616:587121295"
+    }
 }

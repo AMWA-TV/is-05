@@ -4,11 +4,11 @@
     "description": "Used for bulk updating receiver session descriptions",
     "title": "Receiver Session Description Bulk Update",
     "required": [
-	"receiver_ids",
-	"session_description"
+	"ids",
+        "params"
     ],
     "properties": {
-        "receiver_ids": {
+        "ids": {
             "type": "array",
             "items": [
                 {
@@ -18,26 +18,34 @@
                 }
             ]
         },
-        "session_description": {
-	    "type": "object",
-	    "default": null,
-	    "properties": {
-		"type": {
-		    "type":"string",
-		    "description": "e.g. application/sdp",
-		    "pattern": "^[^\\s\\/]+\\/[^\\s\\/]+$"
-		},
-		"data": {
-		    "description": "string providing connection and stream format parameters. If provided, the information contained in this string will override all user-configuration of parameters in the transport_params.  For RTP receivers, this string will be in SDP format",
-		    "type": ["string", "null"],
-		    "default": null
-		},
-		"by_reference": {
-		    "description": "data provides a reference to the session_description string rather than the data itself",
-		    "type": "boolean",
-		    "default": false
-		}
-	    }
-	}
+        "params": {
+            "type": "object",
+            "required":[
+                "session_description"
+            ],
+            "properties":{
+                "session_description": {
+	            "type": "object",
+	            "default": null,
+	            "properties": {
+		        "type": {
+		            "type":"string",
+		            "description": "e.g. application/sdp",
+		            "pattern": "^[^\\s\\/]+\\/[^\\s\\/]+$"
+		        },
+		        "data": {
+		            "description": "string providing connection and stream format parameters. If provided, the information contained in this string will override all user-configuration of parameters in the transport_params.  For RTP receivers, this string will be in SDP format",
+		            "type": ["string", "null"],
+		            "default": null
+		        },
+		        "by_reference": {
+		            "description": "data provides a reference to the session_description string rather than the data itself",
+		            "type": "boolean",
+		            "default": false
+		        }
+	            }
+	        }
+            }
+        }
     }
 }

@@ -1,13 +1,15 @@
 {
-    "receiver_ids": [
+    "ids": [
         "0a174530-e3cf-11e6-bf01-fe55135034f3",
         "7a3ebebe-0405-11e7-93ae-92361f002671",
         "7a3ec21a-0405-11e7-93ae-92361f002671",
         "7a3ec3b4-0405-11e7-93ae-92361f002671"
     ],
-    "session_description": {
-	"type": "application/sdp",
-	"data": "http://172.23.19.31:80/session/sdp.sdp",
-	"by_reference": true
+    "params":{
+        "session_description": {
+	    "type": "application/sdp",
+	    "data": "http://172.23.19.31:80/session/sdp.sdp",
+	    "by_reference": true
+        }
     }
 }

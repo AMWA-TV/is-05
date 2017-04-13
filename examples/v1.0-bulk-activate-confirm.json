@@ -1,20 +1,16 @@
-{
-    "outcomes": [
-        {
-            "id": "0a174530-e3cf-11e6-bf01-fe55135034f3",
-            "status": 202
-        },
-        {
-            "id": "7a3ebebe-0405-11e7-93ae-92361f002671",
-            "status": 202
-        },        {
-            "id": "7a3ec21a-0405-11e7-93ae-92361f002671",
-            "status": 202
-        },        {
-            "id": "7a3ec3b4-0405-11e7-93ae-92361f002671",
-            "status": 500
-        }
-    ],
-    "mode":"activate_scheduled_absolute",
-    "requested_time":"1441704616:587121295"
-}
+[
+    {
+        "id": "0a174530-e3cf-11e6-bf01-fe55135034f3",
+        "status": 202
+    },
+    {
+        "id": "7a3ebebe-0405-11e7-93ae-92361f002671",
+        "status": 202
+    },        {
+        "id": "7a3ec21a-0405-11e7-93ae-92361f002671",
+        "status": 202
+    },        {
+        "id": "7a3ec3b4-0405-11e7-93ae-92361f002671",
+        "status": 500
+    }
+]
