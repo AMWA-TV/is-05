@@ -355,6 +355,12 @@ documentation:
              404:
                description: Returned when the requested resource does not exist
        /staged:
+         get:
+           description: root or staged resource
+           responses:
+             200:
+               body:
+                 example: !include ../examples/v1.0-receiver-root.json
          /transportfile:
            get:
              description: Gives details of the transport file to be used
