@@ -1,4 +1,4 @@
 [
-    "/transportparams",
-    "/sessiondescription"
+    "transportparams/",
+    "sessiondescription/"
 ]
