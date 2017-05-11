@@ -18,7 +18,6 @@
             "src_ip": {
                 "type":"string",
                 "description": "IP address from which RTP packets will be sent (IP address of interface bound to this output)",
-                "readOnly": true,
                 "anyOf": [
                     {"format": "ipv4"},
                     {"format": "ipv6"},
@@ -31,7 +30,8 @@
                 "description": "IP address to which RTP packets will be sent",
                 "anyOf": [
                     {"format": "ipv4"},
-                    {"format": "ipv6"}
+                    {"format": "ipv6"},
+                    {"pattern": "^auto$"}
                 ]
             },
   	    "src_port": {
