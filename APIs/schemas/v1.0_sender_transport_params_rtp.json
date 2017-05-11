@@ -21,8 +21,10 @@
                 "readOnly": true,
                 "anyOf": [
                     {"format": "ipv4"},
-                    {"format": "ipv6"}
-                ]
+                    {"format": "ipv6"},
+                    {"pattern": "^auto$"}
+                ],
+                "default": "auto"
             },
             "dest_ip": {
                 "type":"string",
