@@ -17,15 +17,15 @@ documentation:
       The Connection API URL for an NMOS Device is advertised in the list of controls for that device in the Node API using type: "urn:x-nmos:control:sr-ctrl/v1.0". This information is populated into the NMOS registry via the standard registration mechanism, so it is discoverable through the Query API (see NMOS discovery & registration specification).
   - title: API Structure
     content: |
-      The API presents two distinct interfaces. A "bulk" interface for controlling multiple devices, and a "single" interface to control single devices.
+      The API presents two distinct interfaces. A "salvo" interface for controlling multiple devices, and a "single" interface to control single devices.
 
       The "single" interface presents a control interface to a running device instance. Each entity controlled through the API presents four subresources, which are used in the following way:
       * **schema** contains the schema for the entire control parameter set: parameter types, ranges etc.  This is encoded in json-schema v4 format.
       * **staged** provides a path to write new values for the parameters defined by the schema. These parameters can also be read back using HTTP GET.
       * **active** contains the active values of the parameters (read only).
       * **activate** is a resource that loads the staged parameter values into the running device, making them active.
-      
-      The API also exposes a mechanism for applying the same set of parameters to multiple nodes using the bulk interface. This presents two sub-resource, which are used in the following way:
+
+      The API also exposes a mechanism for applying parameters to multiple nodes using the salvo interface. This presents two sub-resource, which are used in the following way:
       * **staged** contains a target for control parameters set under **transportparams**. In the receiver case it also contains a target for transport file information used under **transportfile**. This interface allows the same parameters to be staged to multiple nodes.
       * **activate** triggers the deployment of the staged parameters to multiple nodes simultainiously.
 
@@ -37,6 +37,141 @@ documentation:
       200:
         body:
           example: !include ../examples/v1.0-base-get-200.json
+/salvo:
+  displayName: Salvo control interface
+  get:
+    description: Senders / receivers options
+    responses:
+      200:
+        body:
+          example: !include ../examples/v1.0-salvo-base-get.json
+  /senders:
+    get:
+      description: Sender salvo actions root
+      responses:
+        200:
+          body:
+            example: !include ../examples/v1.0-salvo-sender-get.json
+    /staged:
+      description: Salvo sender staged parameters root
+      get:
+        responses:
+          200:
+            body:
+              example: !include ../examples/v1.0-sender-salvo-root.json
+      /transportparams:
+        description: Target for salvo staging of transport parameters.
+        patch:
+          description: Allows staging of multiple sender parameters at the same time in a single request.
+          body:
+            description: The actual subset of transport parameters used for the patch must be compatible with the associated sender's schema, which may be checked using the individual sender\'s /schema url.
+            example: !include ../examples/v1.0-salvo-sender-stage-patch.json
+          responses:
+            200:
+              description: Gives the status of each of the individual senders after the staging. Will be returned even if individual transport parameters did not validate. The response object provides the HTTP status code that would have been returned by each sender had the request been carried out individually.
+              body:
+                schema: !include schemas/v1.0-salvo-stage-confirm.json
+                example: !include ../examples/v1.0-salvo-stage-confirm.json
+            400:
+              description: The body of the request did validate against the schema (ignoring transport parameters - these are validated individually by each device and failures are recorded in the response object for a 200 return).
+        put:
+          description: Allows staging of multiple sender parameters at the same time in a single request.
+          body:
+            description: Allows complete configuration of stage transport paramters for multiple senders.
+            example: !include ../examples/v1.0-salvo-sender-stage-put.json
+          responses:
+            200:
+              description: Gives the status of each of the individual senders after the staging. Will be returned even if individual transport parameters did not validate. The response object provides the HTTP status code that would have been returned by each sender had the request been carried out individually.
+              body:
+                schema: !include schemas/v1.0-salvo-stage-confirm.json
+                example: !include ../examples/v1.0-salvo-stage-confirm.json
+            400:
+              description: The body of the request did validate against the schema (ignoring transport parameters - these are validated individually by each device and failures are recorded in the response object for a 200 return).
+    /activate:
+      put:
+        description: Allows the simultaneous activation of multiple senders.
+        body:
+          description: Different activation parameters may be applied to each of the senders listed.
+          schema: !include schemas/v1.0-salvo-activate.json
+          example: !include ../examples/v1.0-salvo-activate-post.json
+        responses:
+          200:
+            description: Returned even if some senders return errors during activation. The response object indicates the return code from each individual sender. For more detail the client may do a get on the individual /activate for that sender.
+            body:
+              schema: !include schemas/v1.0-salvo-activate-confirm.json
+              example: !include ../examples/v1.0-salvo-active-confirm.json
+  /receivers:
+    description: Receiver salvo actions root
+    get:
+      description: List all paths available for salvo actions
+      responses:
+        200:
+          body:
+            example: !include ../examples/v1.0-salvo-base-get.json
+    /staged:
+      description: Salvo sender staged parameters root
+      get:
+        responses:
+          200:
+            body:
+              example: !include ../examples/v1.0-receiver-root.json
+      /transportparams:
+        description: Target for bulk uploads of transport parameters.
+        put:
+          description: Allows staging of multiple receiver parameters at the same time in a single request.
+          body:
+            description: The actual set of transport parameters used must be compatible with all receiver being adressed, which may be checked using the individual sender\'s /schema url.
+            example: !include ../examples/v1.0-salvo-receiver-stage-put.json
+          responses:
+            200:
+              description: Gives the status of each of the individual receivers after the staging. Will be returned even if individual transport parameters did not validate. The response object provides the HTTP status code that would have been returned by each receiver had the request been carried out individually.
+              body:
+                schema: !include schemas/v1.0-salvo-stage-confirm.json
+                example: !include ../examples/v1.0-salvo-stage-confirm.json
+            400:
+              description: The body of the request did validate against the schema (ignoring transport parameters - these are validated individually by each device and failures are recorded in the response object for a 200 return).
+        patch:
+          description: Allows staging of a subset of multiple receiver parameters at the same time in a single request.
+          body:
+            description: The actual subset of transport parameters used must be compatible with all receivers being adressed, which may be checked using the individual sender\'s /schema url.
+            example: !include ../examples/v1.0-salvo-receiver-stage-patch.json
+          responses:
+            200:
+              description: Gives the status of each of the individual receivers after the staging. Will be returned even if individual transport parameters did not validate. The response object provides the HTTP status code that would have been returned by each receiver had the request been carried out individually.
+              body:
+                schema: !include schemas/v1.0-salvo-stage-confirm.json
+                example: !include ../examples/v1.0-salvo-stage-confirm.json
+            400:
+              description: The body of the request did validate against the schema (ignoring transport parameters - these are validated individually by each device and failures are recorded in the response object for a 200 return).
+      /transportfile:
+        description: Target for salvo updating of session descriptions.
+        put:
+          description: Allows the updating of session descriptions (i.e the transport file) for multiple receivers at the stame time.
+          body:
+            schema: !include schemas/v1.0-salvo-session-description.json
+            example: !include ../examples/v1.0-salvo-session-description.json
+          responses:
+            200:
+              description: Gives the status of each of the individual receivers after the staging. Will be returned even if individual transport parameters did not validate. The response object provides the HTTP status code that would have been returned by each receiver had the request been carried out individually.
+              body:
+                schema: !include schemas/v1.0-salvo-stage-confirm.json
+                example: !include ../examples/v1.0-salvo-stage-confirm.json
+            400:
+              description: The body of the request did validate against the schema (ignoring the session description - these are validated individually by each device and failures are recorded in the response object for a 200 return).
+    /activate:
+      description: Target for salvo activations.
+      put:
+        description: Allows the simultaneous activation of multiple senders.
+        body:
+          description: The same activation parameters are applied to each of the senders listed.
+          schema: !include schemas/v1.0-salvo-activate.json
+          example: !include ../examples/v1.0-salvo-activate-post.json
+        responses:
+          200:
+            description: Returned even if some senders return errors during activation. The response object indicates the return code from each individual sender. For more detail the client may do a get on the individual /activate for that sender.
+            body:
+              schema: !include schemas/v1.0-salvo-activate-confirm.json
+              example: !include ../examples/v1.0-salvo-active-confirm.json
 /bulk:
   displayName: Bulk control interface
   get:
@@ -377,7 +512,7 @@ documentation:
                schema: !include schemas/v1.0-single-session-description.json
                example: !include ../examples/v1.0-single-session-description.json
              responses:
-               200:                  
+               200:
                  description: Update was sucessful, returns the currently staged parameters
                  body:
                    schema: !include schemas/v1.0-single-session-description.json

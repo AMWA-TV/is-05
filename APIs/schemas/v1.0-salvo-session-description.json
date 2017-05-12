@@ -1,0 +1,56 @@
+{
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "type": "array",
+    "description": "Used for salvo updating receiver transport files",
+    "title": "Receiver transport file update",
+    "items":[
+        {
+            "type": "object",
+	    "default": null,
+            "required": [
+	        "id",
+                "sender_id",
+                "session_description"
+            ],
+	    "properties": {
+                "id": {
+                    "description": "ID of a receiver to have its transport parameters updated",
+                    "type": "string",
+                    "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-[1-5][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$"
+                },
+                "sender_id": {
+	            "description": "ID of the Sender subscribed to by this Receiver",
+	            "type": ["string", "null"],
+	            "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-[1-5][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$",
+	            "default": null
+                },
+                "session_description": {
+                    "type": "object",
+                    "default": null,
+                    "required":[
+                        "type",
+                        "data",
+                        "by_reference"
+                    ],
+                    "properties": {
+		        "type": {
+		            "type":"string",
+		            "description": "e.g. application/sdp",
+		            "pattern": "^[^\\s\\/]+\\/[^\\s\\/]+$"
+		        },
+		        "data": {
+		            "description": "string providing connection and stream format parameters. If provided, the information contained in this string will override all user-configuration of parameters in the transport_params.  For RTP receivers, this string will be in SDP format",
+		            "type": ["string", "null"],
+		            "default": null
+		        },
+		        "by_reference": {
+		            "description": "data provides a reference to the session_description string rather than the data itself",
+		            "type": "boolean",
+		            "default": false
+	 	        }
+                    }
+                }
+            }
+        }
+    ]
+}

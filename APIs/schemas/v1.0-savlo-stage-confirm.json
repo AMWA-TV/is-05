@@ -1,0 +1,31 @@
+{
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "description": "Response from a salvo update of parameters",
+    "title": "Salvo Update Response",
+    "type": "array",
+    "items": {
+        "type": "object",
+        "required": [
+            "id",
+            "status"
+        ],
+        "additionalProperties": false,
+        "properties" : {
+            "id":{
+                "description": "ID of each of the devices updated",
+                "type": "string",
+                "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-[1-5][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$"
+            },
+            "status":{
+                "description": "HTTP status code that would have resulted from an individual update on this device",
+                "type": "integer",
+                "enum": [
+                    200,
+                    400,
+                    404,
+                    423
+                ]
+            }
+        }
+    }
+}
