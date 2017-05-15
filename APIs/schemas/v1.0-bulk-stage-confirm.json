@@ -7,7 +7,7 @@
         "type": "object",
         "required": [
             "id",
-            "status"
+            "code"
         ],
         "additionalProperties": false,
         "properties" : {
@@ -16,7 +16,7 @@
                 "type": "string",
                 "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-[1-5][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$"
             },
-            "status":{
+            "code":{
                 "description": "HTTP status code that would have resulted from an individual update on this device",
                 "type": "integer",
                 "enum": [
@@ -25,6 +25,14 @@
                     404,
                     423
                 ]
+            },
+            "error": {
+                "description": "Human readable message which is suitable for user interface display, and helpful to the user. Only included if 'code' indicates an error state",
+                "type": "string"
+            },
+            "debug": {
+                "description": "Debug information which may assist a programmer working with the API. Only included if 'code' indicates an error state",
+                "type": ["null", "string"]
             }
         }
     }
