@@ -446,7 +446,7 @@ documentation:
                      description: A temporary redirect to the transport file
                  404:
                    body:
-                     description: Returned when the requested resource does not exist
+                     description: Returned if the resource does not exist or if the sender is not currently configured
          /activate:
            get:
              description: Get details of most recent activation request. The response returned may change over time even if no further activations are requested, as scheduled activations are executed.
