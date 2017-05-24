@@ -44,8 +44,8 @@ When a sender or receiver is first started it may not have all the parameters it
 
 ### Stopping and Parking Senders and Receivers
 
-In certain implementations it may be desirable to actively break the connection. This may be done in one of two ways:
+In certain implementations it may be desirable to actively break the connection. This may be done in one of three ways:
 
 * RTP senders and receivers have an ```rtp_enable field```. This may be set to ```false``` to prevent the transmission or reception of RTP data.
 * If it is desired to actively show that a connection no longer exists the source address on receivers and the destination address on senders may be set to null. Note that in the case of senders doing this should result in the active transport file endpoint returning a 404.
-
+* Receivers may be disabled by activating a staged transport file resource where ```data``` has been set to null.
