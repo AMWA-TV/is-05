@@ -1,42 +1,43 @@
 {
-  "$schema": "http://json-schema.org/draft-04/schema#",
-  "type": "object",
-  "description": "Describes a receiver",
-  "title": "Receiver resource",
-  "requred": [
-    "session_description"
-  ],
-  "additionalProperties": false,
-  "properties": {
-      "sender_id": {
-	  "description": "ID of the Sender subscribed to by this Receiver",
-	  "type": ["string", "null"],
-	  "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-[1-5][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$",
-	  "default": null
-      },
-      "session_description": {
-      "type": "object",
-      "default": null,
-      "properties": {
-        "type": {
-          "type": "string",
-          "description": "e.g. application/sdp",
-          "pattern": "^[^\\s\\/]+\\/[^\\s\\/]+$"
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "type": "object",
+    "description": "Describes the behaviour of the transport file endpoint on receivers",
+    "title": "Receiver Transport File Resource",
+    "requred": [
+        "transport_file",
+        "sender_id"
+    ],
+    "additionalProperties": false,
+    "properties": {
+        "sender_id": {
+	    "description": "ID of the Sender subscribed to by this Receiver if available",
+	    "type": ["string", "null"],
+	    "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-[1-5][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$",
+	    "default": null
         },
-        "data": {
-          "description": "string providing connection and stream format parameters. If provided, the information contained in this string will override all user-configuration of parameters in the transport_params.  For RTP receivers, this string will be in SDP format",
-          "type": [
-            "string",
-            "null"
-          ],
-          "default": null
-        },
-        "by_reference": {
-          "description": "data provides a reference to the session_description string rather than the data itself",
-          "type": "boolean",
-          "default": false
+        "transport_file": {
+            "type": "object",
+            "properties": {
+                "type": {
+                    "type": ["string", "null"],
+                    "description": "e.g. application/sdp",
+                    "pattern": "^[^\\s\\/]+\\/[^\\s\\/]+$",
+                    "default": null
+                },
+                "data": {
+                    "description": "string providing connection and stream format parameters. If provided, the information contained in this string will override all user-configuration of parameters in the transport_params.  For RTP receivers, this string will be in SDP format. Setting this parameter to null signals that the receiver should be disabled on activation. In the case of RTP receivers this will cause the rtp_enabled transport parameter to be set to false.",
+                    "type": [
+                        "string",
+                        "null"
+                    ],
+                    "default": null
+                },
+                "by_reference": {
+                    "description": "data provides a reference to the transport file rather than the data itself",
+                    "type": "boolean",
+                    "default": false
+                }
+            }
         }
-      }
     }
-  }
 }
