@@ -42,6 +42,14 @@ When a sender or receiver is first started it may not have all the parameters it
 * Senders and receivers should present sensible default values on transport parameter endpoints. Suggested defaults are given in the relevant schemas. Parameters such as port numbers may have defaults in various RFCs that should be followed. Parameters where no sensible defaults exist, such as source IP address on a receiver, should be set to null.
 * Senders that are not configured (for example have a null source IP address value), should return 404 on their active transport file endpoint, until a usable set of parameters has been activated.
 
+### Interaction with the Node API###
+
+The Connection Management API supersedes the now deprecated method of updating the "subscription" parameter on Node API receivers in order to establish connection. The two methods of operation are likely to co-exist for some time, and as such the following best practice should be followed when both are in use:
+
+* Where a client updates the Node API subscription the result on connection management should be the same as if the client had first staged the parameters and then called an immediate activation. That is to say that the new parameters will be reflected both in the staged and active endpoints of the receiver.
+* Where a client updates a Connection Management API receiver the active ```sender_id``` parameter should be populated in the Node API subscription parameter with key ```sender_id```.
+* After a Connection Management API activation the corresponding sender's/receiver's ```version``` property should be updated to the instant of the activation.
+
 ### Stopping and Parking Senders and Receivers
 
 In certain implementations it may be desirable to actively break the connection. This may be done in one of three ways:
