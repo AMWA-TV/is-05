@@ -1,7 +1,4 @@
 {
-    "session_description": {
-	"data": "http://172.23.19.32:80/session/sdp.sdp",
-    },
     "transport_params": [{
 	"src_ip": "172.23.19.49",
     }, {
