@@ -6,13 +6,6 @@
     "items": {
         "type": "object",
         "title": "Sender Output",
-        "required": [
-            "src_ip",
-            "dest_ip",
-            "src_port",
-            "dest_port",
-            "rtp_enabled"
-        ],
         "additionalProperties": false,
         "properties" : {
             "src_ip": {
@@ -46,11 +39,13 @@
                 "type": "integer",
                 "description": "destination port for RTP packets",
                 "minimum": 5000,
-                "maximum": 49151
+                "maximum": 49151,
+                "default": 5004
             },
             "fec_enabled":{
                 "type": "boolean",
-                "description": "FEC on/off"
+                "description": "FEC on/off",
+                "default": false
             },
             "fec_dest_ip": {
                 "type": "string",
@@ -59,7 +54,8 @@
                     {"format": "ipv4"},
                     {"format": "ipv6"},
                     {"pattern": "^auto$"}
-                ]
+                ],
+                "default": "auto"
             },
             "fec_type": {
                 "type": "string",
@@ -67,7 +63,8 @@
                 "enum": [
                     "XOR",
                     "Reed-Solomon"
-                ]
+                ],
+                "default": "XOR"
             },
             "fec_mode": {
                 "type": "string",
@@ -75,19 +72,23 @@
                 "enum": [
                     "1D",
                     "2D"
-                ]
+                ],
+                "default": "1D"
             },
             "fec_block_width": {
                 "type": "integer",
                 "description": "width of block over which FEC is calculated in packets",
                 "minimum": 4,
-                "maximum": 200
+                "maximum": 200,
+                "default": 4
+                
             },
             "fec_block_height": {
                 "type": "integer",
                 "description": "height of block over which FEC is calculated in packets",
                 "minimum": 4,
-                "maximum": 200
+                "maximum": 200,
+                "default": 4
             },
             "fec1D_dest_port": {
                 "type": ["integer", "string"],
@@ -133,6 +134,7 @@
                     {"format": "ipv6"},
                     {"pattern": "^auto$"}
                 ],
+
                 "default":"auto"
             },
             "rtcp_dest_port": {
@@ -153,9 +155,10 @@
             },
             "rtp_enabled": {
        	        "type": "boolean",
-                "description": "RTP transmission active/inactive"
+                "description": "RTP transmission active/inactive",
+                "default": true
             }
-        },
+        }
     },
     "maxItems" : 2
 }

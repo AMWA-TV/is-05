@@ -1,105 +1,84 @@
 {
     "$schema": "http://json-schema.org/draft-04/schema#",
-    "type": "object",
-    "description": "Describes a sender",
-    "title": "Sender resource",
-    "required": [
-	"receiver_id",
-	"transport_params"
-    ],
-    "additionalProperties": false,
-    "properties": {
-	"receiver_id": {
-	    "description": "ID of the target Receiver of this Sender (relevant for unicast only)",
-	    "type": ["string", "null"],
-	    "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-[1-5][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$",
-	    "default": null
-	},
-	"transport_params": {
-	    "description": "Transport-specific parameters",
-	    "type": "array",
-	    "description": "Describes RTP Sender transport parameters",
-	    "title": "RTP Sender Transport Parameters",
-	    "items": {
-		"type": "object",
-		"title": "Sender Output",
-		"required": [
-		    "src_ip",
-		    "dest_ip",
-		    "src_port",
-		    "dest_port",
-		    "rtcp_enabled",
-		    "rtcp_dest_ip",
-		    "rtcp_dest_port",
-		    "rtcp_src_port",
-		    "rtp_enabled"
-		],
-                "additionalProperties": false,
-		"properties" : {
-		    "src_ip": {
-			"type":"string",
-			"description": "IP address from which RTP packets will be sent (IP address of interface bound to this output)",
-			"readOnly": true,
-			"anyOf": [
-			    {"format": "ipv4"},
-			    {"format": "ipv6"}
-			]
-		    },
-		    "dest_ip": {
-			"type":"string",
-			"description": "IP address to which RTP packets will be sent",
-			"anyOf": [
-			    {"format": "ipv4"},
-			    {"format": "ipv6"}
-			]
-		    },
-  		    "src_port": {
-			"type": "integer",
-			"description": "source port for RTP packets",
-			"minimum": 5000,
-			"maximum": 49151
-		    },
-		    "dest_port": {
-			"type": "integer",
-			"description": "destination port for RTP packets",
-			"minimum": 5000,
-			"maximum": 49151
-		    },
-	            "rtcp_enabled": {
-		        "type": "boolean",
-		        "description": "rtcp on/off",
-	            },
-		    "rtcp_dest_ip": {
-			"type":"string",
-			"description": "IP address to which RTCP packets will be sent (auto = same as RTP dest_ip)",
-			"anyOf": [
-			    {"format": "ipv4"},
-			    {"format": "ipv6"},
-			    {"pattern": "^auto$"}
-			],
-			"default":"auto"
-		    },
-		    "rtcp_dest_port": {
-			"type": ["integer", "string"],
-			"description": "destination port for RTCP packets",
-			"minimum": 5000,
-			"maximum": 49151,
-			"pattern": "^auto$",
-			"default": "auto"
-		    },
-		    "rtcp_src_port": {
-			"type": "integer",
-			"description": "source port for RTCP packets",
-			"minimum": 5000,
-			"maximum": 49151
-		    },
-                    "rtp_enabled": {
-       		        "type": "boolean",
-		        "description": "RTP reception active/inactive",
-	            }
-		}
-	    },
-	    "maxItems" : 2
-	}
-    }
+    "type": "array",
+    "description": "Describes RTP Sender transport parameters",
+    "title": "RTP Sender Transport Parameters",
+    "items": {
+        "type": "object",
+        "title": "Sender Output",
+        "additionalProperties": false,
+        "properties" : {
+            "src_ip": {
+                "type":"string",
+                "description": "IP address from which RTP packets will be sent (IP address of interface bound to this output)",
+                "anyOf": [
+                    {"format": "ipv4"},
+                    {"format": "ipv6"},
+                    {"pattern": "^auto$"}
+                ],
+                "default": "auto"
+            },
+            "dest_ip": {
+                "type":"string",
+                "description": "IP address to which RTP packets will be sent",
+                "anyOf": [
+                    {"format": "ipv4"},
+                    {"format": "ipv6"},
+                    {"pattern": "^auto$"}
+                ]
+            },
+  	    "src_port": {
+                "type": ["integer", "string"],
+                "description": "source port for RTP packets",
+                "minimum": 5000,
+                "maximum": 49151,
+                "pattern": "^auto$",
+                "default": "auto"
+            },
+            "dest_port": {
+                "type": "integer",
+                "description": "destination port for RTP packets",
+                "minimum": 5000,
+                "maximum": 49151,
+                "default": 5004
+            },
+            "rtcp_enabled": {
+                "type": "boolean",
+                "description": "rtcp on/off"
+            },
+            "rtcp_dest_ip": {
+                "type":"string",
+                "description": "IP address to which RTCP packets will be sent (auto = same as RTP dest_ip)",
+                "anyOf": [
+                    {"format": "ipv4"},
+                    {"format": "ipv6"},
+                    {"pattern": "^auto$"}
+                ],
+
+                "default":"auto"
+            },
+            "rtcp_dest_port": {
+                "type": ["integer", "string"],
+                "description": "destination port for RTCP packets",
+                "minimum": 5000,
+                "maximum": 49151,
+                "pattern": "^auto$",
+                "default": "auto"
+            },
+            "rtcp_src_port": {
+                "type": ["integer", "string"],
+                "description": "source port for RTCP packets. (auto = generated by server)",
+                "minimum": 5000,
+                "maximum": 49151,
+                "pattern": "^auto$",
+                "default": "auto"
+            },
+            "rtp_enabled": {
+       	        "type": "boolean",
+                "description": "RTP transmission active/inactive",
+                "default": true
+            }
+        }
+    },
+    "maxItems" : 2
 }

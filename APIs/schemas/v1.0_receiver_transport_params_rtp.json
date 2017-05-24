@@ -6,12 +6,6 @@
     "items": {
 	"type": "object",
 	"title": "Receiver Input",
-	"required": [
-	    "src_ip",
-	    "dest_ip",
-	    "dest_port",
-	    "rtp_enabled"
-	],
         "additionalProperties": false,
 	"properties" : {
 	    "src_ip": {
@@ -19,26 +13,32 @@
 		"description": "Source IP address of RTP packets (relevant for source-specific multicast)",
 		"anyOf": [
 		    {"format": "ipv4"},
-		    {"format": "ipv6"}
-		]
+		    {"format": "ipv6"},
+                    {"type": "null"}
+		],
+                "default": null
 	    },
 	    "dest_ip": {
 		"type":"string",
 		"description": "Destination IP address of RTP packets (may be multicast group address, otherwise IP address of the interface bound to this receiver input)",
 		"anyOf": [
 		    {"format": "ipv4"},
-		    {"format": "ipv6"}
-		]
+		    {"format": "ipv6"},
+                    {"format": "null"}
+		],
+                "default": null
 	    },
 	    "dest_port": {
 		"type": "integer",
 		"description": "destination port for RTP packets",
 		"minimum": 5000,
-		"maximum": 49151
+		"maximum": 49151,
+                "default": 5004
 	    },
             "fec_enabled": {
                 "type": "boolean",
-                "description": "FEC usage on/off"
+                "description": "FEC usage on/off",
+                "default": false
             },
             "fec_dest_ip": {
                 "type": "string",
@@ -47,7 +47,8 @@
                     {"format": "ipv4"},
                     {"format": "ipv6"},
                     {"pattern": "^auto$"}
-                ]
+                ],
+                "default": "auto"
             },
 	    "fec_type": {
 		"type": "string",
@@ -55,7 +56,8 @@
 		"enum": [
 		    "XOR",
 		    "Reed-Solomon"
-		]
+		],
+                "default": "XOR"
 	    },
   	    "fec_mode": {
 		"type": "string",
@@ -63,7 +65,8 @@
 		"enum": [
 		    "1D",
 		    "2D"
-		]
+		],
+                "default": "1D"
 	    },
 	    "fec1D_dest_port": {
 		"type": ["integer", "string"],
@@ -93,7 +96,8 @@
 	    },
 	    "rtcp_enabled": {
 		"type": "boolean",
-		"description": "rtcp on/off"
+		"description": "rtcp on/off",
+                "default": false
 	    },
 	    "rtcp_dest_port": {
 		"type": ["integer", "string"],
@@ -105,9 +109,10 @@
 	    },
            "rtp_enabled": {
        		"type": "boolean",
-		"description": "RTP reception active/inactive"
+	       "description": "RTP reception active/inactive",
+               "default": true
 	    }
-	},
+	}
     },
     "maxItems" : 2
 }
