@@ -21,15 +21,16 @@
         "params": {
             "type": "object",
             "required":[
-                "transport_file"
+                "transport_file",
+                "sender_id"
             ],
-            "sender_id": {
-	        "description": "ID of the Sender subscribed to by this Receiver if available",
-	        "type": ["string", "null"],
-	        "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-[1-5][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$",
-	        "default": null
-            },
-            "properties":{           
+            "properties":{
+                "sender_id": {
+	            "description": "ID of the Sender subscribed to by this Receiver if available",
+	            "type": ["string", "null"],
+	            "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-[1-5][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$",
+	            "default": null
+                },
                 "transport_file": {
                     "type": "object",
                     "properties": {
