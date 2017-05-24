@@ -25,12 +25,27 @@ Readers should then read the [documentation](docs/) in this repository, and the 
 ### Sequence Diagrams
 When working with transport files it is possible to use the the API in one of two possible ways. The transport file may either be passed the the receiver by reference or directly. Where it is passed by reference the receiver is passed a URL pointing to the transport file. The receiver is then expected to retrieve the transport file itself.
 
-The method of passing files by reference is preferred, as it allows the transport file to be directly acessed from its origin. The prevents the receiver being in posession of a stale copy.
+The method of passing files by reference is preferred, as it allows the transport file to be directly accessed from its origin. The prevents the receiver being in possession of a stale copy.
 
-In adittion the API may be used with or without the NMOS query API. The workflow when operating with the query API is slightly simpler but incurs the overhead of requiring a discovery and registration system.
+In addition the API may be used with or without the NMOS query API. The work-flow when operating with the query API is slightly simpler but incurs the overhead of requiring a discovery and registration system.
 
 Given below are two sequence diagrams that illustrate the various combinations of work-flow available for the API given these options.
 
 ![Diagram showing Connection Management API operating by reference.](docs/by_ref_seq_diagram.png)
 
 ![Diagram showing Connection Management API operating directly.](docs/direct_seq_diagram.png)
+
+### Un-initialised Senders and Receivers
+
+When a sender or receiver is first started it may not have all the parameters it needs to operate. For example IP addresses and port numbers may not be set. In this instance:
+
+* Senders and receivers should present sensible default values on transport parameter endpoints. Suggested defaults are given in the relevant schemas. Parameters such as port numbers may have defaults in various RFCs that should be followed. Parameters where no sensible defaults exist, such as source IP address on a receiver, should be set to null.
+* Senders that are not configured (for example have a null source IP address value), should return 404 on their active transport file endpoint, until a usable set of parameters has been activated.
+
+### Stopping and Parking Senders and Receivers
+
+In certain implementations it may be desirable to actively break the connection. This may be done in one of two ways:
+
+* RTP senders and receivers have an ```rtp_enable field```. This may be set to ```false``` to prevent the transmission or reception of RTP data.
+* If it is desired to actively show that a connection no longer exists the source address on receivers and the destination address on senders may be set to null. Note that in the case of senders doing this should result in the active transport file endpoint returning a 404.
+
