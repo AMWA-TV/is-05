@@ -44,7 +44,7 @@ When a sender or receiver is first started it may not have all the parameters it
 
 ### Interaction with the Node API###
 
-The Connection Management API supersedes the now deprecated method of updating the "subscription" parameter on Node API receivers in order to establish connection. The two methods of operation are likely to co-exist for some time, and as such the following best practice should be followed when both are in use:
+The Connection Management API supersedes the now deprecated method of updating the "subscription" parameter on Node API receivers in order to establish connection. The two methods of operation are likely to co-exist until Version 2.0 of TR-04. As such the following best practice should be followed when both are in use:
 
 * Where a client updates the Node API subscription the result on connection management should be the same as if the client had first staged the parameters and then called an immediate activation. That is to say that the new parameters will be reflected both in the staged and active endpoints of the receiver.
 * Where a client updates a Connection Management API receiver the active ```sender_id``` parameter should be populated in the Node API subscription parameter with key ```sender_id```.
@@ -54,6 +54,6 @@ The Connection Management API supersedes the now deprecated method of updating t
 
 In certain implementations it may be desirable to actively break the connection. This may be done in one of three ways:
 
-* RTP senders and receivers have an ```rtp_enable field```. This may be set to ```false``` to prevent the transmission or reception of RTP data.
+* RTP senders and receivers have an ```rtp_enabled field```. This may be set to ```false``` to prevent the transmission or reception of RTP data.
 * If it is desired to actively show that a connection no longer exists the source address on receivers and the destination address on senders may be set to null. Note that in the case of senders doing this should result in the active transport file endpoint returning a 404.
 * Receivers may be disabled by activating a staged transport file resource where ```data``` has been set to null.

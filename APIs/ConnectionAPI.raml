@@ -546,7 +546,7 @@ documentation:
                404:
                  description: The requested resource could not be found
            put:
-             description: Update staged transport file parameters. Transport files may either be passed by reference, where the URL of the transport file is placed in 'data', or by value, where the value of 'data' is the content of the transport file itself. The endpoint may also be used to disable the receiver by setting the value of data to 'null'. On RTP receivers this should result in the 'rtp_enabled' parameter being set to false.
+             description: Update staged transport file parameters. Transport files may either be passed by reference, where the URL of the transport file is placed in 'data', or by value, where the value of 'data' is the content of the transport file itself. The endpoint may also be used to disable the receiver by setting the value of data to 'null'. On RTP receivers this should result in the 'rtp_enabled' parameter being set to false. The response should only be returned once the transport file has been parsed sucessfully.
              body:
                schema: !include schemas/v1.0-single-session-description.json
                examples:
