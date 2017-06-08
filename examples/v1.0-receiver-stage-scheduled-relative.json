@@ -2,8 +2,9 @@
     "sender_id": "5709255c-c0ae-4e1e-99a0-e872e83e48e0",
     "master_enable": true,
     "activation":{
-        "mode": null,
-        "requested_time": null
+        "mode": "activate_scheduled_relative",
+        "requested_time": "2:0",
+        "scheduled_time": "1496739064:0"
     },
     "transport_file":{
         "data": null,
@@ -11,11 +12,10 @@
     },
     "transport_params": [{
 	"src_ip": "172.23.19.48",
-        "multicast_group": "232.250.98.80",
-        "interface_ip": "172.23.19.110",
+	"multicast_group": "232.250.98.80",
+        "interface_ip": "172.23.19.35",
 	"dest_port": 5000,
         "fec_enabled": true,
-        "fec_dest_ip": "auto",
 	"fec_type": "XOR",
 	"fec_mode": "2D",
 	"fec1D_dest_port": "auto",
@@ -24,13 +24,11 @@
         "rtcp_dest_ip": "auto",
 	"rtcp_dest_port": 5001,
 	"rtp_enabled": true
-    },{
+    }, {
 	"src_ip": "172.23.20.48",
-        "multicast_group": "232.250.99.80",
-        "interface_ip": "172.23.20.110",
-	"dest_port": 5000,
+	"multicast_group": "232.11.105.25",
+        "interface_ip": "172.23.20.35",
         "fec_enabled": true,
-        "fec_dest_ip": "auto",
 	"fec_type": "XOR",
 	"fec_mode": "2D",
 	"fec1D_dest_port": "auto",

@@ -1,8 +1,0 @@
-{
-    "sender_id": null,
-    "transport_file": {
-	"type": "application/sdp",
-	"data": null,
-	"by_reference": true
-    }
-}

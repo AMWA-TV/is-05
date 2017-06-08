@@ -2,8 +2,8 @@
     "receiver_id": "0a174530-e3cf-11e6-bf01-fe55135034f3",
     "master_enable": true,
     "activation":{
-        "mode": null,
-        "requested_time": null
+        "mode": "activate_immediate",
+        "activation_time": "1496759200:0"
     },
     "transport_params": [{
 	"src_ip": "172.29.82.23",

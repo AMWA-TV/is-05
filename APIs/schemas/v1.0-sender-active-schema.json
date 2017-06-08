@@ -1,0 +1,83 @@
+{
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "type": "object",
+    "description": "Describes a sender",
+    "title": "Sender resource",
+    "additionalProperties": false,
+    "properties": {
+        "receiver_id": {
+            "description": "ID of the target Receiver of this Sender (relevant for unicast only)",
+            "type": [
+                "string",
+                "null"
+            ],
+            "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-[1-5][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$",
+            "default": null
+        },
+        "master_enable": {
+            "description": "Master on/off control for receiver",
+            "type": "boolean",
+            "default": true
+        },
+        "activation":{
+            "description": "Parameters concerned with activation of the transport parameters",
+            "type": "object",
+            "additionalProperties": false,
+            "properties":{
+                "mode": {
+                    "description": "mode of activation: immediate (on message rx), scheduled_absolute (when internal clock >= requested_time), scheduled_relative (when internal clock >= time of message rx + requested_time), null (no activation scheduled)",
+                    "type": [
+                        "string",
+                        "null"
+                    ],
+                    "enum": [
+                        "activate_immediate",
+                        "activate_scheduled_absolute",
+                        "activate_scheduled_relative",
+                        null
+                    ]
+                },
+                "activation_time": {
+                    "description": "String formatted TAI timestamp (<seconds>:<nanoseconds>) indicating absolute time the current pameters were activated. May be null after startup.",
+                    "type": [
+                        "string",
+                        "null"
+                    ],
+                    "default": null,
+                    "pattern": "^[0-9]+:[0-9]+$"
+                }
+                
+            }
+        },
+        "transport_file":{
+            "type": "object",
+            "description": "Transport file parameters",
+            "additionalProperties": false,
+            "properties":{
+                "data":{
+                    "description": "Content of the transport file",
+                    "type": [
+                        "string",
+                        "null"
+                    ],
+                    "default": null
+                },
+                "type":{
+                    "description": "Mime type for file (e.g application/sdp)",
+                    "type": [
+                        "string",
+                        "null"
+                    ],
+                    "default": null
+                }
+            }
+        },
+        "transport_params": {
+            "description": "Transport-specific parameters",
+            "oneOf": [
+                { "$ref": "v1.0_sender_transport_params_rtp" },
+                { "$ref": "v1.0_sender_transport_params_dash" }
+            ]
+        }
+    }
+}

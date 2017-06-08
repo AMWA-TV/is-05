@@ -1,0 +1,45 @@
+{
+    "sender_id": "5709255c-c0ae-4e1e-99a0-e872e83e48e0",
+    "master_enable": true,
+    "activation":{
+        "mode": null,
+        "requested_time": null,
+        "scheduled_time": null
+    },
+    "transport_file":{
+        "data":         "data": "v=0
+o=- 1496222842 1496222842 IN IP4 172.29.226.25
+s=IP Studio Stream
+t=0 0
+m=video 5010 RTP/AVP 103
+c=IN IP4 232.250.98.80/32
+a=source-filter:incl IN IP4 232.250.98.80 172.29.226.25
+a=rtpmap:103 raw/90000
+a=fmtp:103 sampling=YCbCr-4:2:2; width=1920; height=1080; depth=10; interlace=1; framerate=25; colorimetry=BT709-2
+a=mediaclk:direct=1876655126 rate=90000
+a=extmap:1 urn:x-nmos:rtp-hdrext:origin-timestamp
+a=extmap:2 urn:ietf:params:rtp-hdrext:smpte-tc 3600@90000/25
+a=extmap:3 urn:x-nmos:rtp-hdrext:flow-id
+a=extmap:4 urn:x-nmos:rtp-hdrext:source-id
+a=extmap:5 urn:x-nmos:rtp-hdrext:grain-flags
+a=extmap:7 urn:x-nmos:rtp-hdrext:sync-timestamp
+a=extmap:9 urn:x-nmos:rtp-hdrext:grain-duration
+a=ts-refclk:ptp=IEEE1588-2008:08-00-11-ff-fe-21-e1-b0",
+        "type": "application/sdp"
+    },
+    "transport_params": [{
+	"src_ip": "172.29.226.25",
+	"multicast_group": "232.250.98.80",
+        "interface_ip": "172.23.19.35",
+	"dest_port": 5010,
+        "fec_enabled": false,
+	"fec_type": "XOR",
+	"fec_mode": "2D",
+	"fec1D_dest_port": "auto",
+	"fec2D_dest_port": "auto",
+        "rtcp_enabled": false,
+        "rtcp_dest_ip": "auto",
+	"rtcp_dest_port": 5001,
+	"rtp_enabled": true
+    }]
+}

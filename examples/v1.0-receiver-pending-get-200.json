@@ -2,8 +2,8 @@
     "sender_id": "5709255c-c0ae-4e1e-99a0-e872e83e48e0",
     "master_enable": true,
     "activation":{
-        "mode": null,
-        "requested_time": null
+        "mode": "activate_scheduled_relative",
+        "requested_time": "5:0"
     },
     "transport_file":{
         "data": null,

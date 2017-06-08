@@ -1,5 +1,0 @@
-{
-    "code": 400,
-    "error": "Request did not include mandatory field 'id' in one or more entries",
-    "debug": "<stack trace>"
-}

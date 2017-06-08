@@ -1,6 +1,5 @@
 [
-    "schema/",
+    "constraints/",
     "staged/",
-    "active/",
-    "activate/",
+    "active/"
 ]

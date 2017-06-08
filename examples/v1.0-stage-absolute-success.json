@@ -1,9 +1,9 @@
 {
     "receiver_id": "0a174530-e3cf-11e6-bf01-fe55135034f3",
-    "master_enable": true,
     "activation":{
-        "mode": null,
-        "requested_time": null
+        "mode": "activate_scheduled_relative",
+        "requested_time": "1496759200:0",
+        "scheduled_time": "1496759200:5000"
     },
     "transport_params": [{
 	"src_ip": "172.29.82.23",
@@ -11,7 +11,6 @@
 	"src_port": 5000,
 	"dest_port": 5000,
         "fec_enabled": true,
-        "fec_dest_ip": "auto",
 	"fec_type": "XOR",
 	"fec_mode": "2D",
 	"fec_block_width": 50,
@@ -24,14 +23,13 @@
 	"rtcp_dest_ip": "172.29.82.24",
 	"rtcp_dest_port": 5008,
 	"rtcp_src_port": 5008,
-	"rtp_enabled": true,
+	"rtp_enabled": true
     }, {
 	"src_ip": "172.30.82.23",
 	"dest_ip": "172.30.82.95",
 	"src_port": 5000,
 	"dest_port": 5000,
         "fec_enabled": true,
-        "fec_dest_ip": "auto",
 	"fec_type": "XOR",
 	"fec_mode": "2D",
 	"fec_block_width": 50,
@@ -44,6 +42,6 @@
 	"rtcp_dest_ip": "172.30.82.24",
 	"rtcp_dest_port": 5008,
 	"rtcp_src_port": 5008,
-	"rtp_enabled": true,
+	"rtp_enabled": true
     }]
 }

@@ -1,7 +1,7 @@
 #%RAML 1.0
 
 # AMWA NMOS Discovery and Registration Specification: Connection API
-# (c) AMWA 2016
+# (c) AMWA 2017
 
 title: Connection
 baseUri: http://example.api.com/x-nmos/connection/{version}
@@ -17,185 +17,16 @@ documentation:
       The Connection API URL for an NMOS Device is advertised in the list of controls for that device in the Node API using type: "urn:x-nmos:control:sr-ctrl/v1.0". This information is populated into the NMOS registry via the standard registration mechanism, so it is discoverable through the Query API (see NMOS discovery & registration specification).
   - title: API Structure
     content: |
-      The API presents two distinct interfaces. A "salvo" interface for controlling multiple senders/receivers, and a "single" interface to control single devices.
-
-      The "single" interface presents a control interface to a running sender/receiver instance. Each entity controlled through the API presents four subresources, which are used in the following way:
-      * **schema** contains the schema for the entire control parameter set: parameter types, ranges etc.  This is encoded in json-schema v4 format.
-      * **staged** provides a path to write new values for the parameters defined by the schema. These parameters can also be read back using HTTP GET.
-      * **active** contains the active values of the parameters (read only).
-      * **activate** is a resource that loads the staged parameter values into the running sender/receiver, making them active.
-
-      The API also exposes a mechanism for applying parameters to multiple nodes using the salvo interface. This presents two sub-resource, which are used in the following way:
-      * **staged** contains a target for control parameters set under **transportparams**. In the receiver case it also contains a target for transport file information used under **transportfile**. This interface allows the same parameters to be staged to multiple nodes.
-      * **activate** triggers the deployment of the staged parameters to multiple nodes simultainiously.
+      The API presents two distinct interfaces. A "bulk" interface for controlling multiple senders/receivers, and a "single" interface to control single devices.
 
 /:
   displayName: Base
   get:
-    description: List of modes available from this API
+    description: List of modes available from this API - single and bulk. Both are compulsory parts of the spec.
     responses:
       200:
         body:
           example: !include ../examples/v1.0-base-get-200.json
-/salvo:
-  displayName: Salvo control interface
-  get:
-    description: Senders / receivers options
-    responses:
-      200:
-        body:
-          example: !include ../examples/v1.0-salvo-base-get.json
-  /senders:
-    get:
-      description: Sender salvo actions root
-      responses:
-        200:
-          body:
-            example: !include ../examples/v1.0-salvo-sender-get.json
-    /staged:
-      description: Salvo sender staged parameters root
-      get:
-        responses:
-          200:
-            body:
-              example: !include ../examples/v1.0-sender-salvo-root.json
-      /transportparams:
-        description: Target for salvo staging of transport parameters.
-        patch:
-          description: Allows staging of multiple sender parameters at the same time in a single request.
-          body:
-            description: The actual subset of transport parameters used for the patch must be compatible with the associated sender's schema, which may be checked using the individual sender\'s /schema url.
-            example: !include ../examples/v1.0-salvo-sender-stage-patch.json
-          responses:
-            200:
-              description: Gives the status of each of the individual senders after the staging. Will be returned even if individual transport parameters did not validate. The response object provides the HTTP status code that would have been returned by each sender had the request been carried out individually.
-              body:
-                schema: !include schemas/v1.0-salvo-stage-confirm.json
-                example: !include ../examples/v1.0-salvo-stage-confirm.json
-            400:
-              description: The body of the request did validate against the schema (ignoring transport parameters - these are validated individually by each sender/receiver and failures are recorded in the response object for a 200 return).
-              body:
-                schema: !include schemas/error.json
-                example: !include ../examples/v1.0-salvo-stage-fail.json
-        put:
-          description: Allows staging of multiple sender parameters at the same time in a single request.
-          body:
-            description: Allows complete configuration of stage transport paramters for multiple senders.
-            example: !include ../examples/v1.0-salvo-sender-stage-put.json
-          responses:
-            200:
-              description: Gives the status of each of the individual senders after the staging. Will be returned even if individual transport parameters did not validate. The response object provides the HTTP status code that would have been returned by each sender had the request been carried out individually.
-              body:
-                schema: !include schemas/v1.0-salvo-stage-confirm.json
-                example: !include ../examples/v1.0-salvo-stage-confirm.json
-            400:
-              description: The body of the request did validate against the schema (ignoring transport parameters - these are validated individually by each sender/receiver and failures are recorded in the response object for a 200 return).
-              body:
-                schema: !include schemas/error.json
-                example: !include ../examples/v1.0-salvo-stage-fail.json
-    /activate:
-      put:
-        description: Allows the simultaneous activation of multiple senders.
-        body:
-          description: Different activation parameters may be applied to each of the senders listed.
-          schema: !include schemas/v1.0-salvo-activate.json
-          example: !include ../examples/v1.0-salvo-activate-post.json
-        responses:
-          200:
-            description: Returned even if some senders return errors during activation. The response object indicates the return code from each individual sender. For more detail the client may do a get on the individual /activate for that sender.
-            body:
-              schema: !include schemas/v1.0-salvo-activate-confirm.json
-              example: !include ../examples/v1.0-salvo-active-confirm.json
-          400:
-            description: The body of the request did validate against the schema (ignoring transport parameters - these are validated individually by each sender/receiver and failures are recorded in the response object for a 200 return).
-            body:
-              schema: !include schemas/error.json
-              example: !include ../examples/v1.0-salvo-activate-fail.json
-  /receivers:
-    description: Receiver salvo actions root
-    get:
-      description: List all paths available for salvo actions
-      responses:
-        200:
-          body:
-            example: !include ../examples/v1.0-salvo-receiver-get.json
-    /staged:
-      description: Salvo sender staged parameters root
-      get:
-        responses:
-          200:
-            body:
-              example: !include ../examples/v1.0-receiver-root.json
-      /transportparams:
-        description: Target for bulk uploads of transport parameters.
-        put:
-          description: Allows staging of multiple receiver parameters at the same time in a single request.
-          body:
-            description: The actual set of transport parameters used must be compatible with all receiver being adressed, which may be checked using the individual sender\'s /schema url.
-            example: !include ../examples/v1.0-salvo-receiver-stage-put.json
-          responses:
-            200:
-              description: Gives the status of each of the individual receivers after the staging. Will be returned even if individual transport parameters did not validate. The response object provides the HTTP status code that would have been returned by each receiver had the request been carried out individually.
-              body:
-                schema: !include schemas/v1.0-salvo-stage-confirm.json
-                example: !include ../examples/v1.0-salvo-stage-confirm.json
-            400:
-              description: The body of the request did validate against the schema (ignoring transport parameters - these are validated individually by each sender/receiver and failures are recorded in the response object for a 200 return).
-              body:
-                schema: !include schemas/error.json
-                example: !include ../examples/v1.0-salvo-stage-fail.json
-        patch:
-          description: Allows staging of a subset of multiple receiver parameters at the same time in a single request.
-          body:
-            description: The actual subset of transport parameters used must be compatible with all receivers being adressed, which may be checked using the individual sender\'s /schema url.
-            example: !include ../examples/v1.0-salvo-receiver-stage-patch.json
-          responses:
-            200:
-              description: Gives the status of each of the individual receivers after the staging. Will be returned even if individual transport parameters did not validate. The response object provides the HTTP status code that would have been returned by each receiver had the request been carried out individually.
-              body:
-                schema: !include schemas/v1.0-salvo-stage-confirm.json
-                example: !include ../examples/v1.0-salvo-stage-confirm.json
-            400:
-              description: The body of the request did validate against the schema (ignoring transport parameters - these are validated individually by each sender/receiver and failures are recorded in the response object for a 200 return).
-              body:
-                schema: !include schemas/error.json
-                example: !include ../examples/v1.0-salvo-stage-fail.json
-      /transportfile:
-        description: Target for salvo updating of session descriptions.
-        put:
-          description: Allows the updating of session descriptions (i.e the transport file) for multiple receivers at the stame time.
-          body:
-            schema: !include schemas/v1.0-salvo-session-description.json
-            example: !include ../examples/v1.0-salvo-session-description.json
-          responses:
-            200:
-              description: Gives the status of each of the individual receivers after the staging. Will be returned even if individual sender/receiver's request objects did not validate. The response object provides the HTTP status code that would have been returned by each receiver had the request been carried out individually.
-              body:
-                schema: !include schemas/v1.0-salvo-stage-confirm.json
-                example: !include ../examples/v1.0-salvo-stage-tp-confirm.json
-            400:
-              description: The body of the request did validate against the schema.
-              body:
-                schema: !include schemas/error.json
-                example: !include ../examples/v1.0-salvo-stage-fail.json
-    /activate:
-      description: Target for salvo activations.
-      put:
-        description: Allows the simultaneous activation of multiple senders.
-        body:
-          description: The same activation parameters are applied to each of the senders listed.
-          schema: !include schemas/v1.0-salvo-activate.json
-          example: !include ../examples/v1.0-salvo-activate-post.json
-        responses:
-          200:
-            description: Returned even if some senders return errors during activation. The response object indicates the return code from each individual sender. For more detail the client may do a get on the individual /activate for that sender.
-            body:
-              schema: !include schemas/v1.0-salvo-activate-confirm.json
-              example: !include ../examples/v1.0-salvo-active-confirm.json
-          400:
-            body:
-              schema: !include schemas/error.json
-              example: !include ../examples/v1.0-salvo-stage-fail.json
 /bulk:
   displayName: Bulk control interface
   get:
@@ -203,144 +34,68 @@ documentation:
     responses:
       200:
         body:
-          example: !include ../examples/v1.0-bulk-base-200.json
+          example: !include ../examples/v1.0-bulk-base-get-200.json
   /senders:
-    displayName: Senders bulk interface
-    description: Send bulk actions root
-    get:
-        description: List all paths available for bulk actions
-        responses:
-          200:
-            body:
-              example: !include ../examples/v1.0-bulk-get-200.json
-    /staged:
-      description: Bulk sender staged parameters root
-      get:
-        responses:
-          200:
-            body:
-              example: !include ../examples/v1.0-sender-bulk-root.json
-      /transportparams:
-        description: Target for bulk uploads of transport parameters.
-        patch:
-          description: Allows staging of multiple sender parameters at the same time in a single request.
-          body:
-            description: The actual subset of transport parameters used for the patch must be compatible with all senders being adressed, which may be checked using the individual sender\'s /schema url. It is clearly undesireable to update all senders to have the same source IP, so implementations may choose to return an error response if this is attempted. For similar reasons a PUT method shall not be provided for this interface.
-            example: !include ../examples/v1.0-bulk-sender-stage-patch.json
-          responses:
-            200:
-              description: Gives the status of each of the individual senders after the staging. Will be returned even if individual transport parameters did not validate. The response object provides the HTTP status code that would have been returned by each sender had the request been carried out individually.
-              body:
-                schema: !include schemas/v1.0-bulk-stage-confirm.json
-                example: !include ../examples/v1.0-bulk-stage-confirm.json
-            400:
-              description: The body of the request did validate against the schema (ignoring transport parameters - these are validated individually by each sender/receiver and failures are recorded in the response object for a 200 return).
-              body:
-                schema: !include schemas/error.json
-                example: !include ../examples/v1.0-bulk-stage-fail.json
-    /activate:
-      description: Target for bulk activations.
-      put:
-        description: Allows the simultaneous activation of multiple senders.
-        body:
-          description: The same activation parameters are applied to each of the senders listed.
-          schema: !include schemas/v1.0-bulk-activate.json
-          example: !include ../examples/v1.0-bulk-activate-post.json
-        responses:
-          200:
-            description: Returned even if some senders return errors during activation. The response object indicates the return code from each individual sender. For more detail the client may do a get on the individual /activate for that sender.
-            body:
-              schema: !include schemas/v1.0-bulk-activate-confirm.json
-              example: !include ../examples/v1.0-bulk-activate-confirm.json
-          400:
-            body:
-              schema: !include schemas/error.json
-              example: !include ../examples/v1.0-bulk-activate-fail.json
-  /receivers:
-    description: Receiver bulk actions root
-    get:
-      description: List all paths available for bulk actions
+    description: Target for bulk staging of transport parameters.
+    post:
+      description: Allows staging and activation of multiple sender parameters at the same time in a single request.
+      body:
+        description: >
+          The actual subset of transport parameters used for the patch must be compatible with the
+          associated sender's constraints, which may be checked using the individual sender\'s /constraints url.
+        schema: !include schemas/v1.0-bulk-sender-post-schema.json
+        example: !include ../examples/v1.0-bulk-sender-stage-post.json
       responses:
         200:
+          description: >
+            Gives the status of each of the individual senders after the staging.
+            Will be returned even if individual `params` did not validate.
+            The response object provides the HTTP status code that would have been returned
+            by each sender had the request been carried out individually.
           body:
-            example: !include ../examples/v1.0-bulk-get-200.json
-    /staged:
-      description: Bulk sender staged parameters root
-      get:
-        responses:
-          200:
-            body:
-              example: !include ../examples/v1.0-receiver-root.json
-      /transportparams:
+            schema: !include schemas/v1.0-bulk-stage-confirm.json
+            example: !include ../examples/v1.0-bulk-post-confirm.json
+        400:
+          description: >
+            The body of the request did validate against the schema (ignoring the content of the
+            `params` field - these are validated individually by each sender/receiver and failures
+            are recorded in the response object for a 200 return).
+          body:
+            schema: !include schemas/error.json
+            example: !include ../examples/v1.0-bulk-stage-fail.json
+  /receivers:
         description: Target for bulk uploads of transport parameters.
-        put:
-          description: Allows staging of multiple receiver parameters at the same time in a single request.
+        post:
+          description: >
+            Allows staging and activation of a subset of multiple
+            receiver parameters at the same time in a single request.
           body:
-            description: The actual set of transport parameters used must be compatible with all receivers being adressed, which may be checked using the individual sender\'s /schema url.
-            example: !include ../examples/v1.0-bulk-receiver-stage-put.json
-          responses:
-            200:
-              description: Gives the status of each of the individual receivers after the staging. Will be returned even if individual transport parameters did not validate. The response object provides the HTTP status code that would have been returned by each receiver had the request been carried out individually.
-              body:
-                schema: !include schemas/v1.0-bulk-stage-confirm.json
-                example: !include ../examples/v1.0-bulk-stage-confirm.json
-            400:
-              description: The body of the request did validate against the schema (ignoring transport parameters - these are validated individually by each sender/receiver and failures are recorded in the response object for a 200 return).
-              body:
-                schema: !include schemas/error.json
-                example: !include ../examples/v1.0-bulk-stage-fail.json
-        patch:
-          description: Allows staging of a subset of multiple receiver parameters at the same time in a single request.
-          body:
-            description: The actual subset of transport parameters used must be compatible with all receivers being adressed, which may be checked using the individual sender\'s /schema url.
+            description: >
+              The actual subset of transport parameters used must be compatible with all receivers
+              being adressed, which may be checked using the individual sender\'s /constraints url.
+            schema: !include schemas/v1.0-bulk-receiver-post-schema.json
             example: !include ../examples/v1.0-bulk-receiver-stage-patch.json
           responses:
             200:
-              description: Gives the status of each of the individual receivers after the staging. Will be returned even if individual transport parameters did not validate. The response object provides the HTTP status code that would have been returned by each receiver had the request been carried out individually.
+              description: >
+                Gives the status of each of the individual receivers after the staging.
+                Will be returned even if individual parameters in `params` did not validate.
+                The response object provides the HTTP status code that would have been
+                returned by each receiver had the request been carried out individually.
               body:
                 schema: !include schemas/v1.0-bulk-stage-confirm.json
-                example: !include ../examples/v1.0-bulk-stage-confirm.json
+                example: !include ../examples/v1.0-bulk-post-confirm.json
             400:
-              description: The body of the request did validate against the schema (ignoring transport parameters - these are validated individually by each sender/receiver and failures are recorded in the response object for a 200 return).
+              description: >
+                The body of the request did validate against the schema (ignoring the content of the
+                `params` field - these are validated individually by each sender/receiver and failures
+                are recorded in the response object for a 200 return).
               body:
                 schema: !include schemas/error.json
                 example: !include ../examples/v1.0-bulk-stage-fail.json
-      /transportfile:
-        description: Target for bulk updating of session descriptions.
-        put:
-          description: Allows the updating of session descriptions (i.e the transport file) for multiple receivers at the stame time.
-          body:
-            schema: !include schemas/v1.0-bulk-session-description.json
-            example: !include ../examples/v1.0-bulk-session-description.json
-          responses:
-            200:
-              description: Gives the status of each of the individual receivers after the staging. Will be returned even if individual transport parameters did not validate. The response object provides the HTTP status code that would have been returned by each receiver had the request been carried out individually.
-              body:
-                schema: !include schemas/v1.0-bulk-stage-confirm.json
-                example: !include ../examples/v1.0-bulk-stage-tf-confirm.json
-            400:
-              description: The body of the request did validate against the schema (ignoring the session description - these are validated individually by each sender/receiver and failures are recorded in the response object for a 200 return).
-              body:
-                schema: !include schemas/error.json
-                example: !include ../examples/v1.0-bulk-stage-fail.json
-    /activate:
-      description: Target for bulk activations.
-      put:
-        description: Allows the simultaneous activation of multiple senders.
-        body:
-          description: The same activation parameters are applied to each of the senders listed.
-          schema: !include schemas/v1.0-bulk-activate.json
-          example: !include ../examples/v1.0-bulk-activate-post.json
-        responses:
-          200:
-            description: Returned even if some senders return errors during activation. The response object indicates the return code from each individual sender. For more detail the client may do a get on the individual /activate for that sender.
-            body:
-              schema: !include schemas/v1.0-bulk-activate-confirm.json
-              example: !include ../examples/v1.0-bulk-activate-confirm.json
 /single:
-   displayName: Individual control interface
+   displayName: Single control interface
    get:
-     description: List Available Senders
      responses:
        200:
          body:
@@ -350,152 +105,140 @@ documentation:
        description: Sender root
        responses:
          200:
+           description: List Available Senders. All UUIDs are appended with / to indicate the ID forms part of the URL for the next layer down.
            body:
              example: !include ../examples/v1.0-resourcelist-get-200.json
      /{senderId}:
          get:
-           description: Get a single Sender
+           description: List all the API endpoints for a single senders.
            responses:
              200:
                body:
                  example: !include ../examples/v1.0-resource-get-200.json
              404:
-               description: Returned when the requested Sender ID does not exist
-         /schema:
+               description: Returned when the requested Sender ID does not exist.
+         /constraints:
            get:
-             description: Get schema for sender session description parameters. All parameters in the served schema are compulsory for the client, but the API may implement a subset of the transport parameters according to the sender corresponding sender transport parameters schema. This allows senders/receivers that do not support certian features - say FEC - to not present them as options to clients. Clients not wishing to use available features must disable them using the presented parameters. For example in the case of FEC 'fec_enabled' should be set to false. Parameters in the sender object are persitant and may not be deleted or added by the client.
+             description: Lists the constraints for each transport parameter (e.g max/min value, enumerated values etc.) using a very limited subset of JSON schema. Every transport parameter in the staged resource must be represented here. If SMPTE 2022-7 is in use, two entries are in the outer array of the resource. The first entry is the constraints for the primary leg. If SMPTE 2022-7 is not in use only one entry should be present in the outer array.
              responses:
                200:
                  body:
+                   schema: !include schemas/v1.0-constraints-schema.json
                    examples:
-                     full: !include ../examples/v1.0-sender-schema.json
-                     noFec: !include ../examples/v1.0-sender-schema-no-fec.json
-                     noRtcp: !include ../examples/v1.0-sender-schema-no-rtcp.json
+                     SMPTE2022-7: !include ../examples/v1.0-sender-constraints-get-200-2022-7.json
+                     No2022-7: !include ../examples/v1.0-sender-constraints-get-200.json
                404:
                  description: Returned when the requested resource does not exist
          /staged:
            get:
-             description: Get staged sender parameters object
+             description: >
+              Get staged receiver transport parameters object. In SMPTE 2022-7 operation element 0
+              of the `transport_params` array shall be the parameters applied to the primary leg, and
+              element 1 the secondary leg. There shall only be one element present in `transport_params`
+              when SMPTE 2022-7 is not in use. When the `master_enable` parameter is false the RTP
+              receiver should stop transmitting media and the `/transportfile` endpoint should return
+              an HTTP 404 response.
              responses:
                200:
-                 body:
-                   description: Will comply with the schema served at /schema
-                   example: !include ../examples/v1.0-sender-get-200.json
+                description: Adittionally constrained by the constraints at /constraints
+                body:
+                 schema: !include schemas/v1.0-sender-stage-schema.json
+                 example: !include ../examples/v1.0-sender-get-200.json
                404:
                  description: Returned when the requested resource does not exist
-           put:
-             description: Update all fields in the sender parameters object. All fields MUST be present.
-             body:
-               description: PUT must comply with schema served at /schema
-               example: !include ../examples/v1.0-sender-stage-put.json
-             responses:
-               200:
-                 body:
-                   description: Will comply with the schema served at /schema
-                   example: !include ../examples/v1.0-stage-success.json
-               400:
-                 body:
-                   schema: !include schemas/error.json
-                   example: !include ../examples/v1.0-stage-fail.json
-               404:
-                 description: Returned when the requested resource does not exist
-               423:
-                 description: Returned when the resource is locked because an activation has been scheduled
            patch:
-             description: Update staged parameters for sender using RFC 7396 JSON Merge Patch requests. PATCH may not add or remove fields from the object.
+             description: >
+              Update staged parameters for sender.
+              Note that for activations the `mode` parameter will return to null once the activation
+              is completed.
+              In SMPTE 2022-7 operation element 0 of the `transport_params`
+              array shall be the parameters applied to the primary leg, and element 1 the secondary leg.
+              There shall only be one element present in `transport_params` when SMPTE 2022-7 is not in use.
              body:
-               description: Patch must comply with the schema served at /schema, but no fields are mandatory
-               example: !include ../examples/v1.0-sender-patch.json
+               description: PATCH must comply with the constraints served at /constraints but not all fields are mandatory.
+               schema: !include schemas/v1.0-sender-stage-schema.json
+               examples:
+                 immediate-activation: !include ../examples/v1.0-sender-patch.json
+                 relative-scheduled-activation: !include ../examples/v1.0-sender-patch-relative.json
+                 absolute-scheduled-activation: !include ../examples/v1.0-sender-patch-absolute.json
              responses:
                200:
+                description: >
+                  A 200 response is returned for PATCH requests where no activation has been scheduled,
+                  an activation has been cancelled, or an immediate activation has been requested.
+                  The response will always contain the full set of parameters in the response schema, and all
+                  supported transport parameters. For a request with an immediate activation the API should
+                  only return a response once the activation has completed.
+                  Note the presence of the extra `scheduled_time` parameter in the response. For immediate activation
+                  this should be the time the activation actually occured as an absolute TAI timestamp.
+                  When the `master_enable` parameter is true senders should not transmit any media streams.
+                  For RTP senders the `rtp_enable` parameter allows for the individual disabling of SMPTE 2022-7
+                  legs, and the disabling of RTP operation on senderss that may be capable of using multiple protocols.
+                body:
+                  schema: !include schemas/v1.0-sender-patch-success-schema.json
+                  examples:
+                     immediate-activation: !include ../examples/v1.0-stage-success.json
+               202:
+                 description: >
+                   A 202 response is returned when a request for a scheduled activation is accepted, to indicate
+                   that while the request itself was acceptable it has not yet been acted upon by the sender.
+                   For scheduled activations `scheduled_time` should be the absolute TAI time the parameters
+                   will actually transition. For absolute scheduled acitivations should be the same
+                   as the requested time, but may differ if the sender is unable to schedule at
+                   the requested time. This may be because the transition may only occur, for example,
+                   at a frame boundry or end of GOP. If no activation was requested in the PATCH
+                   `scheduled_time` will be set `null`. In all other ways this response behaves identically
+                   to a 200 response.
                  body:
-                   description: Will comply with the schema served at /schema
-                   example: !include ../examples/v1.0-stage-success.json
+                   schema: !include schemas/v1.0-sender-patch-success-schema.json
+                   examples:
+                    relative-scheduled-activation: !include ../examples/v1.0-stage-relative-success.json
+                    absolute-scheduled-activation: !include ../examples/v1.0-stage-absolute-success.json
                400:
+                 description: A 400 response is returned when the request did not meet the schema and constraints.
                  body:
                    schema: !include schemas/error.json
                    example: !include ../examples/v1.0-stage-fail.json
                404:
-                 body:
-                   description: Returned when the requested resource does not exist
+                 description: Returned when the requested resource does not exist
                423:
-                 body:
-                   description: Return when the resource is locked because an activation has been scheduled
+                 description: >
+                  Returned when the resource is locked because an activation has been scheduled.
+                  A resource may be un-locked by setting `mode` in `activation` to `null`, which
+                  will cancel the pending activation. This may be done in the same request as a change
+                  to other parameters.
+               500:
+                description: >
+                 A 500 response may be returned if the transpor file could not be parsed, or there is
+                 some failure caused by activation which was not caused by a violation or schema or constraints.
+                body:
+                 schema: !include schemas/error.json
+                 example: !include ../examples/v1.0-stage-error.json
          /active:
            get:
-             description: Root of activate resource
+             description: Get active sender parameters
              responses:
                200:
                  body:
-                   example: !include ../examples/v1.0-sender-root.json
-           /transportparams:
-             get:
-               description: Get active sender parameters
-               responses:
-                 200:
-                   body:
-                     example: !include ../examples/v1.0-sender-get-200.json
-                 404:
-                   description: Returned when the requested resource does not exist
-           /transportfile:
-             get:
-               description: Redirects to the locations of the sender\'s transport file for the active parameter set
-               responses:
-                 307:
-                   body:
-                     description: A temporary redirect to the transport file
-                 404:
-                   body:
-                     description: Returned if the resource does not exist or if the sender is not currently configured
-         /activate:
-           get:
-             description: Get details of most recent activation request. The response returned may change over time even if no further activations are requested, as scheduled activations are executed.
-             responses:
-               200:
-                 description: Returns an object describing the status of the last activation request. Note that the HTTP response code is the state of the current GET request not the previous activation. As such the HTTP response code and the value of "code" in the response object may differ and have different meanings. When scheduled activations transition from waiting to completed their entry under 'code' will change from 202 to 200 or 500 depending on the outcome.
-                 body:
-                   schema: !include schemas/v1.0-activate-confirm-schema.json
-                   examples:
-                     Immediate-activation-ok: !include ../examples/v1.0-activate-success.json
-                     Scheduled-activation-completed: !include ../examples/v1.0-activate-scheduled-completed.json
-                     Error: !include ../examples/v1.0-activate-error.json
-                     Failed: !include ../examples/v1.0-activate-fail.json
-                     None: !include ../examples/v1.0-activate-none.json
+                   schema: !include schemas/v1.0-sender-active-schema.json
+                   example: !include ../examples/v1.0-sender-active-get.json
                404:
                  description: Returned when the requested resource does not exist
-           post:
-             description: Post activation object to trigger activation of staged parameters. Activations may be scheduled at an absolute time, a time relative to when the request is received by the server, or be carried out immediately. In the case of scheduled requests, the server should endevour to carry out requests at the time requested by the client. If this is not possible the scheduled time returned to the client will not match the requested time. An activation is deemed to have completed successfully once the parameters have been set to their new values. This may be before the transmission of any new packets. Once an activation is scheduled /staged will be locked and cannot be changed until the activation has completed, failed or is cancelled.
-             body:
-               schema: !include schemas/v1.0-activate-schema.json
-               examples:
-                 Scheduled-activation: !include ../examples/v1.0-activate-post.json
-                 Cancel-activation: !include ../examples/v1.0-activate-none.json
+         /transportfile:
+           get:
+             description: >
+              Redirects to the locations of the sender's transport file or returns the transport file directly.
+              Check HTTP resonse code to determine which mode of operation is in use. When returning the transport
+              file directly ensure that the `Content-Type` entity header is correctly set.
              responses:
                200:
-                 description: This code is returned either when a immediate activation is completed successfully, or if a scheduled activation is received at, or after, its scheduled time and completes successfully. It is also returned when an activation is cancled using "acitivate_none"
-                 body:
-                   schema: !include schemas/v1.0-activate-confirm-schema.json
-                   examples:
-                     Immediate-activation-ok: !include ../examples/v1.0-activate-success.json
-                     Scheduled-activation-completed: !include ../examples/v1.0-activate-scheduled-completed.json
-                     Cancel-activation: !include ../examples/v1.0-activate-none.json
-               202:
-                 description: This indicates that a scheduled activation has been accepted and is pending activation at its scheduled time.
-                 body:
-                   schema: !include schemas/v1.0-activate-confirm-schema.json
-                   example: !include ../examples/v1.0-activate-waiting.json
-               400:
-                 description: Returned when the request from the client could not be parsed.
-                 body:
-                   schema: !include schemas/v1.0-activate-confirm-schema.json
-                   example: !include ../examples/v1.0-activate-error.json
+                description: The transport file itself will be served
+               307:
+                description: A temporary redirect to the transport file
                404:
-                 description: Returned when the requested resource does not exist.
-               500:
-                 description: Returned when the request was valid, but the activation could not be carried out for some other reason (e.g error in the device).
                  body:
-                   schema: !include schemas/v1.0-activate-confirm-schema.json
-                   example: !include ../examples/v1.0-activate-fail.json
+                   description: >
+                    Returned if the resource does not exist or if the sender is not currently configured
    /receivers:
      displayName: Receivers
      get:
@@ -506,170 +249,133 @@ documentation:
              example: !include ../examples/v1.0-resourcelist-get-200.json
      /{receiverId}:
        get:
-         description: List available receivers
+         description: List API endpoints
          responses:
            200:
              body:
                example: !include ../examples/v1.0-resource-get-200.json
            404:
              description: Returned when the requested resource does not exist
-       /schema:
-         get:
-           description: Get schema for receiver parameters. All parameters in the served schema are compulsory for the client, but the API may implement a subset of the transport parameters and session description according to the sender corresponding receiver transport parameters schema. This allows senders/receivers that do not support certian features - say FEC - to not present them as options to clients. Clients not wishing to use available features must disable them using the presented parameters. For example in the case of FEC 'fec_enabled' should be set to false. Parameters in the sender object are persitant and may not be deleted or added by the client.
-           responses:
-             200:
-               body:
-                 examples:
-                   full:
-                     description: An example for a schema using all possible fields
-                     example: !include ../examples/v1.0-receiver-schema.json
-                   noFec:
-                     description: An example for a schema not supporting FEC
-                     example: !include ../examples/v1.0-receiver-schema-no-fec.json
-             404:
-               description: Returned when the requested resource does not exist
+     /constraints:
+       get:
+         description: Lists the constraints for each transport parameter (e.g max/min value, enumerated values etc.) using a very limited subset of JSON schema. Every transport parameter in the staged resource must be represented here. If SMPTE 2022-7 is in use, two entries are in the outer array of the resource. The first entry is the constraints for the primary leg. If SMPTE 2022-7 is not in use only one entry should be present in the outer array.
+         responses:
+           200:
+             body:
+               schema: !include schemas/v1.0-constraints-schema.json
+               examples:
+                 SMPTE2022-7: !include ../examples/v1.0-receiver-constraints-get-200-2022-7.json
+                 No2022-7: !include ../examples/v1.0-receiver-constraints-get-200.json
+           404:
+             description: Returned when the requested resource does not exist
        /staged:
          get:
-           description: root or staged resource
+           description: >
+            Get staged receiver transport parameters object. In SMPTE 2022-7 operation element 0
+            of the `transport_params` array shall be the parameters applied to the primary leg, and
+            element 1 the secondary leg. There shall only be one element present in `transport_params`
+            when SMPTE 2022-7 is not in use.
            responses:
              200:
+               description: Adittionally constrained by the constraints at /constraints
                body:
-                 example: !include ../examples/v1.0-receiver-root.json
-         /transportfile:
-           get:
-             description: Gives details of the transport file to be used
-             responses:
-               200:
-                 body:
-                   description: Returns the current staged session description file parameters
-                   example: !include ../examples/v1.0-single-session-description.json
-               404:
-                 description: The requested resource could not be found
-           put:
-             description: Update staged transport file parameters. Transport files may either be passed by reference, where the URL of the transport file is placed in 'data', or by value, where the value of 'data' is the content of the transport file itself. The endpoint may also be used to disable the receiver by setting the value of data to 'null'. On RTP receivers this should result in the 'rtp_enabled' parameter being set to false. The response should only be returned once the transport file has been parsed sucessfully.
-             body:
-               schema: !include schemas/v1.0-single-session-description.json
-               examples:
-                 update: !include ../examples/v1.0-single-session-description.json
-                 disable: !include ../examples/v1.0-single-transport-file-disable.json
-             responses:
-               200:
-                 description: Update was sucessful, returns the currently staged parameters
-                 body:
-                   schema: !include schemas/v1.0-single-session-description.json
-                   example: !include ../examples/v1.0-single-session-description.json
-               400:
-                 description: Was unable to process the clients request
-                 body:
-                   schema: !include schemas/error.json
-               404:
-                 description: The requested resource could not be found
-               500:
-                 description: The request was valid but could not be processed due to a problem with the node
-                 body:
-                   schema: !include schemas/error.json
-         /transportparams:
-           get:
-             description: Get staged receiver transport parameters object
-             responses:
-               200:
-                 body:
-                   description: Will comply with the schema served at /schema
-                   example: !include ../examples/v1.0-receiver-get-200.json
-               404:
-                 description: Returned when the requested resource does not exist
-           put:
-             description: Update all fields in the sender parameters object. All fields MUST be present.
-             body:
-               description: PUT must comply with schema served at /schema
-               example: !include ../examples/v1.0-receiver-stage-put.json
-             responses:
-               200:
-                 body:
-                   description: Will comply with the schema served at /schema
-                   example: !include ../examples/v1.0-receiver-stage-success.json
-               400:
-                 body:
-                   schema: !include schemas/error.json
-                   example: !include ../examples/v1.0-stage-fail.json
-               404:
-                 description: Returned when the requested resource does not exist
-               423:
-                 description: Returned when the resource is locked because an activation has been scheduled
-           patch:
-             description: Update staged parameters for receiver using RFC 7396 JSON Merge PATCH requests. PATCH may not add or remove nodes from the object.
-             body:
-               description: patch must comply with the schema served at /schema but not all fields are mandatory
-               example: !include ../examples/v1.0-receiver-patch.json
-             responses:
-               200:
-                 body:
-                   description: Will comply with the schema served at /schema
-                   example: !include ../examples/v1.0-receiver-stage-success.json
-               400:
-                 body:
-                   schema: !include schemas/error.json
-                   example: !include ../examples/v1.0-stage-fail.json
-               404:
-                 description: Returned when the requested resource does not exist
-               423:
-                 description: Returned when the resource is locked because an activation has been scheduled
+                 schema: !include schemas/v1.0-receiver-stage-schema.json
+                 examples:
+                   Normal: !include ../examples/v1.0-receiver-get-200.json
+                   Pending: !include ../examples/v1.0-receiver-pending-get-200.json
+             404:
+               description: Returned when the requested resource does not exist
+         patch:
+           description: >
+            Update staged parameters for receiver.
+            Note that for activations the `mode` parameter will return to null once the activation
+            is completed.
+            When a transport file is staged the parameters in that transport file should be propogated to
+            their coresponding transport parameters and the response should show these updated values.
+            On activation the value of the entries in `transport_paramters` must be used to program
+            the receiver, not those in the transport file directly. However while the transport file is still present
+            (i.e `data` is not null) media paramters in the transport file should be applied to the RTP
+            receiver. Setting `data` to null has no impact on the `transport_parameters` array, or
+            any other property.
+            Where a transport file has been staged the transport
+            parameters in the response will reflect the new values assigned to them by the transport file.
+            The transport parameters should be updated from the transport file in `data` on every PATCH
+            request that includes the `data` field. Even if the value of `data` in the request
+            matches the value of `data` currently stored in the API the transport parameters are still re-populated.
+            In SMPTE 2022-7 operation element 0 of the `transport_params`
+            array shall be the parameters applied to the primary leg, and element 1 the secondary leg.
+            There shall only be one element present in `transport_params` when SMPTE 2022-7 is not in use.
+            When the `master_enable` parameter is true receivers should not process any incoming streams, and
+            should un-subscribe from any multicast streams they are receiving. For RTP receivers the
+            `rtp_enable` parameter allows for the individual disabling of SMPTE 2022-7 legs, and the disabling of RTP
+            operation on receivers that may be capable of receiving using multiple different protocols.
+           body:
+             description: >
+              PATCH must comply with the constraints served at /constraints but not all fields are mandatory.
+             schema: !include schemas/v1.0-receiver-stage-schema.json
+             examples:
+               activate-immediate: !include ../examples/v1.0-receiver-patch.json
+               activate-scheduled-relative: !include ../examples/v1.0-receiver-patch-relative.json
+               activate-scheduled-absolute: !include ../examples/v1.0-receiver-patch-absolute.json
+               stage-transportfile: !include ../examples/v1.0-receiver-patch-transportfile.json
+           responses:
+             200:
+               description: >
+                 A 200 response is returned for PATCH requests where no activation has been scheduled,
+                 an activation has been cancelled, or an immediate activation has been requested.
+                 The response will always contain the full set of parameters in the response schema, and all
+                 supported transport parameters. For a request involving an immediate activation the API
+                 should only return once the activation has completed.
+                 Note the presence of the extra `scheduled_time` parameter in the response. For immediate activation
+                 this should be the time the activation actually occured as an absolute TAI timestamp.
+               body:
+                 schema: !include schemas/v1.0-receiver-patch-success-schema.json
+                 examples:
+                   activate-immediate: !include ../examples/v1.0-receiver-stage-success.json
+                   stage-transportfile: !include ../examples/v1.0-receiver-stage-scheduled-transportfile.json
+             202:
+               description: >
+                 A 202 response is returned when a request for a scheduled activation is accepted, to indicate
+                 that while the request itself was acceptable it has not yet been acted upon by the receiver.
+                 For scheduled activations `scheduled_time` should be the absolute TAI time the parameters
+                 will actually transition. For absolute scheduled acitivations should be the same
+                 as the requested time, but may differ if the receiver is unable to schedule at
+                 the requested time. This may be because the transition may only occur, for example,
+                 at a frame boundry or end of GOP. If no activation was requested in the PATCH
+                 `scheduled_time` will be set `null`. In all other ways this response behaves identically
+                 to a 200 response.
+               body:
+                 schema: !include schemas/v1.0-receiver-patch-success-schema.json
+                 examples:
+                   activate-scheduled-relative: !include ../examples/v1.0-receiver-stage-scheduled-relative.json
+                   activate-scheduled-absolute: !include ../examples/v1.0-receiver-stage-scheduled-absolute.json
+             400:
+                description: A 400 response is returned when the request did not meet the schema and constraints.
+                body:
+                  schema: !include schemas/error.json
+                  example: !include ../examples/v1.0-stage-fail.json
+             404:
+               description: Returned when the requested resource does not exist
+             423:
+               description: >
+                 Returned when the resource is locked because an activation has been scheduled.
+                 A resource may be un-locked by setting `mode` in `activation` to `null`, which
+                 will cancel the pending activation. This may be done in the same request as a change
+                 to other parameters.
+             500:
+               description: >
+                A 500 response may be returned if the transpor file could not be parsed, or there is
+                some failure caused by activation which was not caused by a violation or schema or constraints.
+               body:
+                 schema: !include schemas/error.json
+                 example: !include ../examples/v1.0-stage-error.json
        /active:
          get:
            description: Get active receiver parameters
            responses:
              200:
                body:
-                 example: !include ../examples/v1.0-receiver-get-200.json
+                 schema: !include schemas/v1.0-receiver-active-schema.json
+                 example: !include ../examples/v1.0-receiver-active-get-200.json
              404:
                description: Returned when the requested resource does not exist
-       /activate:
-         get:
-           description: Get details of most recent activation request. The response returned may change over time even if no further activations are requested, as scheduled activations are executed.
-           responses:
-             200:
-               description: Returns an object describing the status of the last activation request. Note that the HTTP response code is the state of the current GET request not the previous activation. As such the HTTP response code and the value of "code" in the response object may differ and have different meanings. When scheduled activations transition from waiting to completed their entry under 'code' will change from 202 to 200 or 500 depending on the outcome.
-               body:
-                 schema: !include schemas/v1.0-activate-confirm-schema.json
-                 examples:
-                   Immediate-activation-ok: !include ../examples/v1.0-activate-success.json
-                   Scheduled-activation-completed: !include ../examples/v1.0-activate-scheduled-completed.json
-                   Waiting: !include ../examples/v1.0-activate-waiting.json
-                   Error: !include ../examples/v1.0-activate-error.json
-                   Failed: !include ../examples/v1.0-activate-fail.json
-                   None: !include ../examples/v1.0-activate-none.json
-             404:
-               description: Returned when the requested resource does not exist
-         post:
-           description: Post activation object to trigger activation of staged parameters. Activations may be scheduled at an absolute time, a time relative to when the request is received by the server, or be carried out immediately. In the case of scheduled requests, the server should endevour to carry out requests at the time requested by the client. If this is not possible the scheduled time returned to the client will not match the requested time. An activation is deemed to have completed successfully once the sender/receiver parameters have been set to their new values. This may be before the receipt of any new packets. Once an activation is scheduled /staged will be locked and cannot be changed until the activation has completed, failed or is cancelled.
-           body:
-             schema: !include schemas/v1.0-activate-schema.json
-             examples:
-               Scheduled-activation: !include ../examples/v1.0-activate-post.json
-               Cancel-activation: !include ../examples/v1.0-activate-none.json
-           responses:
-             200:
-               description: This code is returned either when a immediate activation is completed successfully, or if a scheduled activation is received at, or after, its scheduled time and completes successfully.
-               body:
-                 schema: !include schemas/v1.0-activate-confirm-schema.json
-                 examples:
-                   Immediate-activation-ok: !include ../examples/v1.0-activate-success.json
-                   Scheduled-activation-completed: !include ../examples/v1.0-activate-scheduled-completed.json
-                   Cancel-activation: !include ../examples/v1.0-activate-none.json
-             202:
-               description: This indicates that a scheduled activation has been accepted and is pending activation at its scheduled time.
-               body:
-                 schema: !include schemas/v1.0-activate-confirm-schema.json
-                 example: !include ../examples/v1.0-activate-waiting.json
-             400:
-               description: Returned when the request from the client could not be parsed.
-               body:
-                 schema: !include schemas/v1.0-activate-confirm-schema.json
-                 example: !include ../examples/v1.0-activate-error.json
-             404:
-               description: Returned when the requested resource does not exist.
-             500:
-               description: Returned when the request was valid, but the activation could not be carried out for some other reason (e.g error in the device).
-               body:
-                 schema: !include schemas/v1.0-activate-confirm-schema.json
-                 example: !include ../examples/v1.0-activate-fail.json
