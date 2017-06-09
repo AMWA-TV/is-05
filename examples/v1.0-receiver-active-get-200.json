@@ -3,7 +3,7 @@
     "master_enable": true,
     "activation":{
         "mode": "activate_immediate",
-        "acitvation_time": "1496739062:263900"
+        "activation_time": "1496739062:263900"
     },
     "transport_file":{
         "data": "v=0

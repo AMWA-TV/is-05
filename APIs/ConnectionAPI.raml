@@ -37,6 +37,12 @@ documentation:
           example: !include ../examples/v1.0-bulk-base-get-200.json
   /senders:
     description: Target for bulk staging of transport parameters.
+    get:
+      responses:
+        405:
+          description: >
+            The API should actively return an HTTP 405 if a GET is called on the
+            endpoint.
     post:
       description: Allows staging and activation of multiple sender parameters at the same time in a single request.
       body:
@@ -65,6 +71,12 @@ documentation:
             example: !include ../examples/v1.0-bulk-stage-fail.json
   /receivers:
         description: Target for bulk uploads of transport parameters.
+        get:
+          responses:
+            405:
+              description:
+                The API should actively return an HTTP 405 if a GET is called on the
+                endpoint.
         post:
           description: >
             Allows staging and activation of a subset of multiple
@@ -114,12 +126,26 @@ documentation:
            responses:
              200:
                body:
-                 example: !include ../examples/v1.0-resource-get-200.json
+                 example: !include ../examples/v1.0-sender-resource-get-200.json
              404:
                description: Returned when the requested Sender ID does not exist.
          /constraints:
            get:
-             description: Lists the constraints for each transport parameter (e.g max/min value, enumerated values etc.) using a very limited subset of JSON schema. Every transport parameter in the staged resource must be represented here. If SMPTE 2022-7 is in use, two entries are in the outer array of the resource. The first entry is the constraints for the primary leg. If SMPTE 2022-7 is not in use only one entry should be present in the outer array.
+             description: >
+               Lists the constraints for each transport parameter (e.g max/min value,
+               enumerated values etc.) using a very limited subset of JSON schema.
+               Every transport parameter in the staged resource must be represented here.
+               min/max constraints listed here must not allow a wider range of values than
+               those allowed by the core schema. Where an enum is specified for a parameter
+               in the core schema any enum defined on this endpoint for that parameter must
+               only contain a subset of the parameters in the core schema. If the sender/receiver does
+               not constrain parameters beyond what is specified in the core schema then the
+               constraints in the core schema should not be duplicated on this endpoint. Where
+               an "auto" mode is allowed in the core schema this mode must always be supported by
+               the sender/receiver if the parameter is exposed.
+               If SMPTE 2022-7 is in use, two entries are in the outer array of the resource.
+               The first entry is the constraints for the primary leg.
+               If SMPTE 2022-7 is not in use only one entry should be present in the outer array.
              responses:
                200:
                  body:
@@ -171,13 +197,14 @@ documentation:
                   only return a response once the activation has completed.
                   Note the presence of the extra `scheduled_time` parameter in the response. For immediate activation
                   this should be the time the activation actually occured as an absolute TAI timestamp.
+                  If no activation was requested in the PATCH `scheduled_time` will be set `null`.
                   When the `master_enable` parameter is true senders should not transmit any media streams.
                   For RTP senders the `rtp_enable` parameter allows for the individual disabling of SMPTE 2022-7
-                  legs, and the disabling of RTP operation on senderss that may be capable of using multiple protocols.
+                  legs.
                 body:
-                  schema: !include schemas/v1.0-sender-patch-success-schema.json
-                  examples:
-                     immediate-activation: !include ../examples/v1.0-stage-success.json
+                 schema: !include schemas/v1.0-sender-patch-success-schema.json
+                 examples:
+                  immediate-activation: !include ../examples/v1.0-stage-success.json
                202:
                  description: >
                    A 202 response is returned when a request for a scheduled activation is accepted, to indicate
@@ -186,8 +213,7 @@ documentation:
                    will actually transition. For absolute scheduled acitivations should be the same
                    as the requested time, but may differ if the sender is unable to schedule at
                    the requested time. This may be because the transition may only occur, for example,
-                   at a frame boundry or end of GOP. If no activation was requested in the PATCH
-                   `scheduled_time` will be set `null`. In all other ways this response behaves identically
+                   at a frame boundry or end of GOP. In all other ways this response behaves identically
                    to a 200 response.
                  body:
                    schema: !include schemas/v1.0-sender-patch-success-schema.json
@@ -209,7 +235,7 @@ documentation:
                   to other parameters.
                500:
                 description: >
-                 A 500 response may be returned if the transpor file could not be parsed, or there is
+                 A 500 response may be returned if the transport file could not be parsed, or there is
                  some failure caused by activation which was not caused by a violation or schema or constraints.
                 body:
                  schema: !include schemas/error.json
@@ -242,7 +268,7 @@ documentation:
    /receivers:
      displayName: Receivers
      get:
-       description: List available receivers
+       description: List available receivers. All UUIDs are appended with / to indicate the ID forms part of the URL for the next layer down.
        responses:
          200:
            body:
@@ -253,21 +279,35 @@ documentation:
          responses:
            200:
              body:
-               example: !include ../examples/v1.0-resource-get-200.json
+               example: !include ../examples/v1.0-receiver-resource-get-200.json
            404:
              description: Returned when the requested resource does not exist
-     /constraints:
-       get:
-         description: Lists the constraints for each transport parameter (e.g max/min value, enumerated values etc.) using a very limited subset of JSON schema. Every transport parameter in the staged resource must be represented here. If SMPTE 2022-7 is in use, two entries are in the outer array of the resource. The first entry is the constraints for the primary leg. If SMPTE 2022-7 is not in use only one entry should be present in the outer array.
-         responses:
-           200:
-             body:
-               schema: !include schemas/v1.0-constraints-schema.json
-               examples:
-                 SMPTE2022-7: !include ../examples/v1.0-receiver-constraints-get-200-2022-7.json
-                 No2022-7: !include ../examples/v1.0-receiver-constraints-get-200.json
-           404:
-             description: Returned when the requested resource does not exist
+       /constraints:
+         get:
+           description: >
+             Lists the constraints for each transport parameter (e.g max/min value,
+             enumerated values etc.) using a very limited subset of JSON schema.
+             Every transport parameter in the staged resource must be represented here.
+             min/max constraints listed here must not allow a wider range of values than
+             those allowed by the core schema. Where an enum is specified for a parameter
+             in the core schema any enum defined on this endpoint for that parameter must
+             only contain a subset of the parameters in the core schema. If the sender/receiver does
+             not constrain parameters beyond what is specified in the core schema then the
+             constraints in the core schema should not be duplicated on this endpoint. Where
+             an "auto" mode is allowed in the core schema this mode must always be supported by
+             the sender/receiver if the parameter is exposed.
+             If SMPTE 2022-7 is in use, two entries are in the outer array of the resource.
+             The first entry is the constraints for the primary leg.
+             If SMPTE 2022-7 is not in use only one entry should be present in the outer array.
+           responses:
+             200:
+               body:
+                 schema: !include schemas/v1.0-constraints-schema.json
+                 examples:
+                   SMPTE2022-7: !include ../examples/v1.0-receiver-constraints-get-200-2022-7.json
+                   No2022-7: !include ../examples/v1.0-receiver-constraints-get-200.json
+             404:
+               description: Returned when the requested resource does not exist
        /staged:
          get:
            description: >
@@ -307,8 +347,7 @@ documentation:
             There shall only be one element present in `transport_params` when SMPTE 2022-7 is not in use.
             When the `master_enable` parameter is true receivers should not process any incoming streams, and
             should un-subscribe from any multicast streams they are receiving. For RTP receivers the
-            `rtp_enable` parameter allows for the individual disabling of SMPTE 2022-7 legs, and the disabling of RTP
-            operation on receivers that may be capable of receiving using multiple different protocols.
+            `rtp_enable` parameter allows for the individual disabling of SMPTE 2022-7 legs.
            body:
              description: >
               PATCH must comply with the constraints served at /constraints but not all fields are mandatory.
@@ -328,6 +367,7 @@ documentation:
                  should only return once the activation has completed.
                  Note the presence of the extra `scheduled_time` parameter in the response. For immediate activation
                  this should be the time the activation actually occured as an absolute TAI timestamp.
+                 If no activation was requested in the `scheduled_time` will be set `null`.
                body:
                  schema: !include schemas/v1.0-receiver-patch-success-schema.json
                  examples:
@@ -341,8 +381,7 @@ documentation:
                  will actually transition. For absolute scheduled acitivations should be the same
                  as the requested time, but may differ if the receiver is unable to schedule at
                  the requested time. This may be because the transition may only occur, for example,
-                 at a frame boundry or end of GOP. If no activation was requested in the PATCH
-                 `scheduled_time` will be set `null`. In all other ways this response behaves identically
+                 at a frame boundry or end of GOP. In all other ways this response behaves identically
                  to a 200 response.
                body:
                  schema: !include schemas/v1.0-receiver-patch-success-schema.json
@@ -364,7 +403,7 @@ documentation:
                  to other parameters.
              500:
                description: >
-                A 500 response may be returned if the transpor file could not be parsed, or there is
+                A 500 response may be returned if the transport file could not be parsed, or there is
                 some failure caused by activation which was not caused by a violation or schema or constraints.
                body:
                  schema: !include schemas/error.json
