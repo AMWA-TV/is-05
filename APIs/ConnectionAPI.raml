@@ -162,7 +162,7 @@ documentation:
               of the `transport_params` array shall be the parameters applied to the primary leg, and
               element 1 the secondary leg. There shall only be one element present in `transport_params`
               when SMPTE 2022-7 is not in use. When the `master_enable` parameter is false the RTP
-              receiver should stop transmitting media and the `/transportfile` endpoint should return
+              sender should stop transmitting media and the `/transportfile` endpoint should return
               an HTTP 404 response.
              responses:
                200:
@@ -196,7 +196,7 @@ documentation:
                   supported transport parameters. For a request with an immediate activation the API should
                   only return a response once the activation has completed.
                   Note the presence of the extra `scheduled_time` parameter in the response. For immediate activation
-                  this should be the time the activation actually occured as an absolute TAI timestamp.
+                  this should be the time the activation actually occurred as an absolute TAI timestamp.
                   If no activation was requested in the PATCH `scheduled_time` will be set `null`.
                   When the `master_enable` parameter is true senders should not transmit any media streams.
                   For RTP senders the `rtp_enable` parameter allows for the individual disabling of SMPTE 2022-7
@@ -210,7 +210,7 @@ documentation:
                    A 202 response is returned when a request for a scheduled activation is accepted, to indicate
                    that while the request itself was acceptable it has not yet been acted upon by the sender.
                    For scheduled activations `scheduled_time` should be the absolute TAI time the parameters
-                   will actually transition. For absolute scheduled acitivations should be the same
+                   will actually transition. For absolute scheduled activations should be the same
                    as the requested time, but may differ if the sender is unable to schedule at
                    the requested time. This may be because the transition may only occur, for example,
                    at a frame boundry or end of GOP. In all other ways this response behaves identically
@@ -253,7 +253,7 @@ documentation:
          /transportfile:
            get:
              description: >
-              Redirects to the locations of the sender's transport file or returns the transport file directly.
+              Redirects to the location of the sender's transport file or returns the transport file directly.
               Check HTTP resonse code to determine which mode of operation is in use. When returning the transport
               file directly ensure that the `Content-Type` entity header is correctly set.
              responses:
@@ -330,11 +330,11 @@ documentation:
             Update staged parameters for receiver.
             Note that for activations the `mode` parameter will return to null once the activation
             is completed.
-            When a transport file is staged the parameters in that transport file should be propogated to
+            When a transport file is staged the parameters in that transport file should be propagated to
             their coresponding transport parameters and the response should show these updated values.
-            On activation the value of the entries in `transport_paramters` must be used to program
+            On activation the value of the entries in `transport_parameters` must be used to program
             the receiver, not those in the transport file directly. However while the transport file is still present
-            (i.e `data` is not null) media paramters in the transport file should be applied to the RTP
+            (i.e `data` is not null) media parameters in the transport file should be applied to the RTP
             receiver. Setting `data` to null has no impact on the `transport_parameters` array, or
             any other property.
             Where a transport file has been staged the transport
@@ -366,7 +366,7 @@ documentation:
                  supported transport parameters. For a request involving an immediate activation the API
                  should only return once the activation has completed.
                  Note the presence of the extra `scheduled_time` parameter in the response. For immediate activation
-                 this should be the time the activation actually occured as an absolute TAI timestamp.
+                 this should be the time the activation actually occurred as an absolute TAI timestamp.
                  If no activation was requested in the `scheduled_time` will be set `null`.
                body:
                  schema: !include schemas/v1.0-receiver-patch-success-schema.json
@@ -378,7 +378,7 @@ documentation:
                  A 202 response is returned when a request for a scheduled activation is accepted, to indicate
                  that while the request itself was acceptable it has not yet been acted upon by the receiver.
                  For scheduled activations `scheduled_time` should be the absolute TAI time the parameters
-                 will actually transition. For absolute scheduled acitivations should be the same
+                 will actually transition. For absolute scheduled activations should be the same
                  as the requested time, but may differ if the receiver is unable to schedule at
                  the requested time. This may be because the transition may only occur, for example,
                  at a frame boundry or end of GOP. In all other ways this response behaves identically
