@@ -1,5 +1,5 @@
 {
-    "$schema": "http:\/\/json-schema.org\/draft-04\/schema#",
+    "$schema": "http://json-schema.org/draft-04/schema#",
     "type": "array",
     "description": "Used to express the dynamic constraints on transport parameters. These constraints may be set and changed at run time. Parameters must also conform with constraints inferred from the specification. Every transport parameter must have an entry, even if only the `parameter` property is used.",
     "title": "Constraints",
@@ -31,21 +31,30 @@
                 "enum": {
                     "description": "An array of allowed values",
                     "type": "array",
-                    "anyof": [
+                    "minItems": 1,
+                    "uniqueItems": true,
+                    "anyOf": [
+                        {
+                            "type": "boolean"
+                        },
+                        {
+                            "type": "integer"
+                        },
+                        {
+                            "type": "null"
+                        },
                         {
                             "type": "number"
                         },
                         {
                             "type": "string"
-                        },
-                        {
-                            "type": "integer"
                         }
                     ]
                 },
                 "pattern": {
                     "description": "A regex pattern that must be satisfied for this parameter",
-                    "type": "string"
+                    "type": "string",
+                    "format": "regex"
                 }
             },
             "additionalProperties": false,

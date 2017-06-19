@@ -1,13 +1,13 @@
 {
     "sender_id": "5709255c-c0ae-4e1e-99a0-e872e83e48e0",
     "master_enable": true,
-    "activation"{
-        "mode": "acitvate_scheduled_absolute",
+    "activation": {
+        "mode": "activate_scheduled_absolute",
         "requested_time": "1496677550:20"
     },
     "transport_params": [{
-	"src_ip": "172.23.19.49",
+	"src_ip": "172.23.19.49"
     }, {
-	"src_ip": "172.23.19.49",
+	"src_ip": "172.23.19.49"
     }]
 }

@@ -24,7 +24,7 @@
 	"rtcp_dest_ip": "172.29.82.24",
 	"rtcp_dest_port": 5008,
 	"rtcp_src_port": 5008,
-	"rtp_enabled": true,
+	"rtp_enabled": true
     }, {
 	"src_ip": "172.30.82.23",
 	"dest_ip": "172.30.82.95",
@@ -44,6 +44,6 @@
 	"rtcp_dest_ip": "172.30.82.24",
 	"rtcp_dest_port": 5008,
 	"rtcp_src_port": 5008,
-	"rtp_enabled": true,
+	"rtp_enabled": true
     }]
 }

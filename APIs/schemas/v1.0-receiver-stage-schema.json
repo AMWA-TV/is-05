@@ -75,9 +75,7 @@
       "description": "Transport-specific parameters",
       "oneOf": [
         {
-          "$ref": "schemas/v1.0_receiver_transport_params_rtp"
-        },{
-          "$ref": "schemas/v1.0_receiver_transport_params_dash"
+          "$ref": "v1.0_receiver_transport_params_rtp.json"
         }
       ]
     }

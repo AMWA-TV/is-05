@@ -15,7 +15,7 @@
       "default": null
     },
     "master_enable": {
-      "description": "Master on/off control for receiver",
+      "description": "Master on/off control for sender",
       "type": "boolean",
       "default": true
     },
@@ -74,8 +74,8 @@
     "transport_params": {
       "description": "Transport-specific parameters",
       "oneOf": [
-        { "$ref": "v1.0_sender_transport_params_rtp" },
-        { "$ref": "v1.0_sender_transport_params_dash" }
+        { "$ref": "v1.0_sender_transport_params_rtp.json" },
+        { "$ref": "v1.0_sender_transport_params_dash.json" }
       ]
     }
   }

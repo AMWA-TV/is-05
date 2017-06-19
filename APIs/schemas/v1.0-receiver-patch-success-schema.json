@@ -96,7 +96,7 @@
             "description": "Transport-specific parameters",
             "oneOf": [
                 {
-                    "$ref": "schemas/v1.0_receiver_transport_params_rtp.json#"
+                    "$ref": "v1.0_receiver_transport_params_rtp.json"
                 }
             ]
         }
