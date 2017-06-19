@@ -288,10 +288,10 @@ documentation:
              Lists the constraints for each transport parameter (e.g max/min value,
              enumerated values etc.) using a very limited subset of JSON schema.
              Every transport parameter in the staged resource must be represented here.
-             min/max constraints listed here must not allow a wider range of values than
-             those allowed by the core schema. Where an enum is specified for a parameter
-             in the core schema any enum defined on this endpoint for that parameter must
-             only contain a subset of the parameters in the core schema. If the sender/receiver does
+             Any minimum/maximum constraints listed here must not allow a wider range of values than
+             those allowed by the core schema. Any enum defined on this endpoint must only contain a
+             subset of the values allowed for that parameter in the core schema. Similarly, pattern
+             constraints must only narrow the allowed values. If the sender/receiver does
              not constrain parameters beyond what is specified in the core schema then the
              constraints in the core schema should not be duplicated on this endpoint. Where
              an "auto" mode is allowed in the core schema this mode must always be supported by
