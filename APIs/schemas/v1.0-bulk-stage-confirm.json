@@ -1,7 +1,7 @@
 {
     "$schema": "http://json-schema.org/draft-04/schema#",
-    "description": "Describes a response to a salvo activation request",
-    "title": "Salvo activation response",
+    "description": "Describes a response to a bulk activation request",
+    "title": "Bulk activation response",
     "type": "array",
     "items": {
         "type": "object",
