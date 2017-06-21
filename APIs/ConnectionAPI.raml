@@ -198,7 +198,7 @@ documentation:
                   Note the presence of the extra `scheduled_time` parameter in the response. For immediate activation
                   this should be the time the activation actually occurred as an absolute TAI timestamp.
                   If no activation was requested in the PATCH `scheduled_time` will be set `null`.
-                  When the `master_enable` parameter is true senders should not transmit any media streams.
+                  When the `master_enable` parameter is false senders should not transmit any media streams.
                   For RTP senders the `rtp_enable` parameter allows for the individual disabling of SMPTE 2022-7
                   legs.
                 body:
@@ -345,7 +345,7 @@ documentation:
             In SMPTE 2022-7 operation element 0 of the `transport_params`
             array shall be the parameters applied to the primary leg, and element 1 the secondary leg.
             There shall only be one element present in `transport_params` when SMPTE 2022-7 is not in use.
-            When the `master_enable` parameter is true receivers should not process any incoming streams, and
+            When the `master_enable` parameter is false receivers should not process any incoming streams, and
             should unsubscribe from any multicast streams they are receiving. For RTP receivers the
             `rtp_enable` parameter allows for the individual disabling of SMPTE 2022-7 legs.
            body:
