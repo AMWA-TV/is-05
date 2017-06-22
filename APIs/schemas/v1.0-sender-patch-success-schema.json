@@ -47,7 +47,7 @@
                     "pattern": "^[0-9]+:[0-9]+$"
                 },
                 "scheduled_time": {
-                    "description": "String formatted TAI timestamp (<seconds>:<nanoseconds>) indicating Time (absolute or relative) the sender will actually activate for scheduled activations, or the time acitvation occured for immediate activations.",
+                    "description": "String formatted TAI timestamp (<seconds>:<nanoseconds>) indicating Time (absolute or relative) the sender will actually activate for scheduled activations, or the time activation occurred for immediate activations.",
                     "type": [
                         "string",
                         "null"
