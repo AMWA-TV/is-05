@@ -13,7 +13,7 @@
     ],
     "properties": {
         "sender_id": {
-            "description": "ID of the Sender subscribed to by this Receiver",
+            "description": "ID of the Sender subscribed to by this Receiver. This will be null if the receiver has not been configured to receive anything, or if it is receiving from a non-NMOS sender.",
             "type": [
                 "string",
                 "null"

@@ -6,7 +6,7 @@
   "additionalProperties": false,
   "properties": {
     "receiver_id": {
-      "description": "ID of the target Receiver of this Sender (relevant for unicast only)",
+      "description": "ID of the target Receiver of this Sender. This will be null if the sender is operating in multicast mode, or has not been assigned a receiver in unicast mode, or is sending to a non-NMOS receiver in unicast mode.",
       "type": [
         "string",
         "null"
