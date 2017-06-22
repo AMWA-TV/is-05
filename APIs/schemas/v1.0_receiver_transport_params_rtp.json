@@ -25,7 +25,7 @@
                         "type": "null"
                     }
                 ],
-                "default": "auto"
+                "default": null
             },
             "multicast_group":{
                 "type": [
@@ -60,7 +60,7 @@
                         "pattern": "^auto$"
                     }
                 ],
-                "default": null
+                "default": "auto"
             },
             "dest_port": {
                 "type": "integer",
