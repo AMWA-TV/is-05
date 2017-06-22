@@ -47,11 +47,8 @@
                 "default": null
             },
             "interface_ip":{
-                "type": [
-                    "string",
-                    "null"
-                ],
-                "description": "IP multicast group address used in multicast operation only. Should be set to null during unicast operation.",
+                "type": "string",
+                "description": "IP address of the network interface the receiver should use. If set to auto the receiver should determine which interface to use for itself. The receiver should provide an enum in the constraints endpoint. This should contain either all the available interface addresses, 'auto', or both.",
                 "anyOf": [
                     {
                         "format": "ipv4"
@@ -60,7 +57,7 @@
                         "format": "ipv6"
                     },
                     {
-                        "type": "null"
+                        "pattern": "^auto$"
                     }
                 ],
                 "default": null
