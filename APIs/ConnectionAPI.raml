@@ -168,7 +168,7 @@ documentation:
                200:
                 description: Additionally constrained by the constraints at /constraints
                 body:
-                 schema: !include schemas/v1.0-sender-stage-schema.json
+                 schema: !include schemas/v1.0-sender-response-schema.json
                  example: !include ../examples/v1.0-sender-get-200.json
                404:
                  description: Returned when the requested resource does not exist
@@ -202,7 +202,7 @@ documentation:
                   For RTP senders the `rtp_enable` parameter allows for the individual disabling of SMPTE 2022-7
                   legs.
                 body:
-                 schema: !include schemas/v1.0-sender-patch-success-schema.json
+                 schema: !include schemas/v1.0-sender-response-schema.json
                  examples:
                   immediate-activation: !include ../examples/v1.0-stage-success.json
                202:
@@ -216,7 +216,7 @@ documentation:
                    at a frame boundary or end of GOP. In all other ways this response behaves identically
                    to a 200 response.
                  body:
-                   schema: !include schemas/v1.0-sender-patch-success-schema.json
+                   schema: !include schemas/v1.0-sender-response-schema.json
                    examples:
                     relative-scheduled-activation: !include ../examples/v1.0-stage-relative-success.json
                     absolute-scheduled-activation: !include ../examples/v1.0-stage-absolute-success.json
@@ -369,7 +369,7 @@ documentation:
                  this should be the time the activation actually occurred as an absolute TAI timestamp.
                  If no activation was requested in the `scheduled_time` will be set `null`.
                body:
-                 schema: !include schemas/v1.0-receiver-patch-success-schema.json
+                 schema: !include schemas/v1.0-receiver-response-schema.json
                  examples:
                    activate-immediate: !include ../examples/v1.0-receiver-stage-success.json
                    stage-transportfile: !include ../examples/v1.0-receiver-stage-scheduled-transportfile.json
@@ -384,7 +384,7 @@ documentation:
                  at a frame boundary or end of GOP. In all other ways this response behaves identically
                  to a 200 response.
                body:
-                 schema: !include schemas/v1.0-receiver-patch-success-schema.json
+                 schema: !include schemas/v1.0-receiver-response-schema.json
                  examples:
                    activate-scheduled-relative: !include ../examples/v1.0-receiver-stage-scheduled-relative.json
                    activate-scheduled-absolute: !include ../examples/v1.0-receiver-stage-scheduled-absolute.json
