@@ -33,23 +33,25 @@
                     "type": "array",
                     "minItems": 1,
                     "uniqueItems": true,
-                    "anyOf": [
-                        {
-                            "type": "boolean"
-                        },
-                        {
-                            "type": "integer"
-                        },
-                        {
-                            "type": "null"
-                        },
-                        {
-                            "type": "number"
-                        },
-                        {
-                            "type": "string"
-                        }
-                    ]
+                    "items":{
+                        "anyof":[
+                            {
+                                "type": "boolean"
+                            },
+                            {
+                                "type": "integer"
+                            },
+                            {
+                                "type": "null"
+                            },
+                            {
+                                "type": "number"
+                            },
+                            {
+                                "type": "string"
+                            }
+                        ]
+                    }
                 },
                 "pattern": {
                     "description": "A regex pattern that must be satisfied for this parameter",
