@@ -34,7 +34,7 @@
                     "minItems": 1,
                     "uniqueItems": true,
                     "items":{
-                        "anyof":[
+                        "anyOf":[
                             {
                                 "type": "boolean"
                             },
