@@ -48,7 +48,7 @@
             },
             "interface_ip":{
                 "type": "string",
-                "description": "IP address of the network interface the receiver should use. If set to auto the receiver should determine which interface to use for itself. The receiver should provide an enum in the constraints endpoint. This should contain either all the available interface addresses, 'auto', or both.",
+                "description": "IP address of the network interface the receiver should use. If set to auto the receiver should determine which interface to use for itself. The receiver should provide an enum in the constraints endpoint. This should contain 'auto', and optionally the available interface addresses."
                 "anyOf": [
                     {
                         "format": "ipv4"
