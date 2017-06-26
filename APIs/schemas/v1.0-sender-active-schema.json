@@ -4,9 +4,16 @@
     "description": "Describes a sender",
     "title": "Sender resource",
     "additionalProperties": false,
+    "required":[
+        "receiver_id",
+        "master_enable",
+        "activation",
+        "transport_file",
+        "transport_params"
+    ],
     "properties": {
         "receiver_id": {
-            "description": "ID of the target Receiver of this Sender (relevant for unicast only)",
+            "description": "ID of the target Receiver of this Sender. This will be null if the sender is operating in multicast mode, or has not been assigned a receiver in unicast mode, or is sending to a non-NMOS receiver in unicast mode.",
             "type": [
                 "string",
                 "null"
@@ -23,9 +30,13 @@
             "description": "Parameters concerned with activation of the transport parameters",
             "type": "object",
             "additionalProperties": false,
+            "required":[
+                "mode",
+                "activation_time"
+            ],
             "properties":{
                 "mode": {
-                    "description": "mode of activation: immediate (on message rx), scheduled_absolute (when internal clock >= requested_time), scheduled_relative (when internal clock >= time of message rx + requested_time), null (no activation scheduled)",
+                    "description": "Mode of activation: immediate (on message receipt), scheduled_absolute (when internal clock >= requested_time), scheduled_relative (when internal clock >= time of message receipt + requested_time), or null (no activation scheduled)",
                     "type": [
                         "string",
                         "null"
@@ -38,7 +49,7 @@
                     ]
                 },
                 "activation_time": {
-                    "description": "String formatted TAI timestamp (<seconds>:<nanoseconds>) indicating absolute time the current pameters were activated. May be null after startup.",
+                    "description": "String formatted TAI timestamp (<seconds>:<nanoseconds>) indicating absolute time the sender was activated with the current parameters. This field may be null after startup.",
                     "type": [
                         "string",
                         "null"
@@ -46,13 +57,16 @@
                     "default": null,
                     "pattern": "^[0-9]+:[0-9]+$"
                 }
-                
             }
         },
         "transport_file":{
             "type": "object",
             "description": "Transport file parameters",
             "additionalProperties": false,
+            "required":[
+                "data",
+                "type"
+            ],
             "properties":{
                 "data":{
                     "description": "Content of the transport file",
@@ -63,7 +77,7 @@
                     "default": null
                 },
                 "type":{
-                    "description": "Mime type for file (e.g application/sdp)",
+                    "description": "IANA assigned media type for file (e.g application/sdp)",
                     "type": [
                         "string",
                         "null"

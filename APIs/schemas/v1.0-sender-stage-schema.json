@@ -25,7 +25,7 @@
       "additionalProperties": false,
       "properties":{
         "mode": {
-          "description": "mode of activation: immediate (on message rx), scheduled_absolute (when internal clock >= requested_time), scheduled_relative (when internal clock >= time of message rx + requested_time), null (no activation scheduled)",
+          "description": "Mode of activation: immediate (on message receipt), scheduled_absolute (when internal clock >= requested_time), scheduled_relative (when internal clock >= time of message receipt + requested_time), or null (no activation scheduled)",
           "type": [
             "string",
             "null"
@@ -62,7 +62,7 @@
           "default": null
         },
         "type":{
-          "description": "Mime type for file (e.g application/sdp)",
+          "description": "IANA assigned media type for file (e.g application/sdp)",
           "type": [
             "string",
             "null"
