@@ -8,7 +8,6 @@
         "receiver_id",
         "master_enable",
         "activation",
-        "transport_file",
         "transport_params"
     ],
     "properties": {
@@ -66,33 +65,6 @@
                     ],
                     "default": null,
                     "pattern": "^[0-9]+:[0-9]+$"
-                }
-            }
-        },
-        "transport_file":{
-            "type": "object",
-            "description": "Transport file parameters",
-            "additionalProperties": false,
-            "required":[
-                "data",
-                "type"
-            ],
-            "properties":{
-                "data":{
-                    "description": "Content of the transport file",
-                    "type": [
-                        "string",
-                        "null"
-                    ],
-                    "default": null
-                },
-                "type":{
-                    "description": "IANA assigned media type for file (e.g application/sdp)",
-                    "type": [
-                        "string",
-                        "null"
-                    ],
-                    "default": null
                 }
             }
         },

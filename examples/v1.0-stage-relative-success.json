@@ -1,4 +1,5 @@
 {
+    "master_enable": true,
     "receiver_id": "0a174530-e3cf-11e6-bf01-fe55135034f3",
     "activation":{
         "mode": "activate_scheduled_relative",
