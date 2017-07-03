@@ -59,7 +59,7 @@ documentation:
             The response object provides the HTTP status code that would have been returned
             by each sender had the request been carried out individually.
           body:
-            schema: !include schemas/v1.0-bulk-stage-confirm.json
+            type: !include schemas/v1.0-bulk-stage-confirm.json
             example: !include ../examples/v1.0-bulk-post-confirm.json
         400:
           description: >
@@ -67,7 +67,7 @@ documentation:
             `params` field - these are validated individually by each sender/receiver and failures
             are recorded in the response object for a 200 return).
           body:
-            schema: !include schemas/error.json
+            type: !include schemas/error.json
             example: !include ../examples/v1.0-bulk-stage-fail.json
   /receivers:
         description: Target for bulk uploads of transport parameters.
@@ -95,7 +95,7 @@ documentation:
                 The response object provides the HTTP status code that would have been
                 returned by each receiver had the request been carried out individually.
               body:
-                schema: !include schemas/v1.0-bulk-stage-confirm.json
+                type: !include schemas/v1.0-bulk-stage-confirm.json
                 example: !include ../examples/v1.0-bulk-post-confirm.json
             400:
               description: >
@@ -103,7 +103,7 @@ documentation:
                 `params` field - these are validated individually by each sender/receiver and failures
                 are recorded in the response object for a 200 return).
               body:
-                schema: !include schemas/error.json
+                type: !include schemas/error.json
                 example: !include ../examples/v1.0-bulk-stage-fail.json
 /single:
    displayName: Single control interface
@@ -149,7 +149,7 @@ documentation:
              responses:
                200:
                  body:
-                   schema: !include schemas/v1.0-constraints-schema.json
+                   type: !include schemas/v1.0-constraints-schema.json
                    examples:
                      SMPTE2022-7: !include ../examples/v1.0-sender-constraints-get-200-2022-7.json
                      No2022-7: !include ../examples/v1.0-sender-constraints-get-200.json
@@ -223,7 +223,7 @@ documentation:
                400:
                  description: A 400 response is returned when the request did not meet the schema and constraints.
                  body:
-                   schema: !include schemas/error.json
+                   type: !include schemas/error.json
                    example: !include ../examples/v1.0-stage-fail.json
                404:
                  description: Returned when the requested resource does not exist
@@ -238,7 +238,7 @@ documentation:
                  A 500 response may be returned if the transport file could not be parsed, or there is
                  some failure caused by activation which was not caused by a violation or schema or constraints.
                 body:
-                 schema: !include schemas/error.json
+                 type: !include schemas/error.json
                  example: !include ../examples/v1.0-stage-error.json
          /active:
            get:
@@ -302,7 +302,7 @@ documentation:
            responses:
              200:
                body:
-                 schema: !include schemas/v1.0-constraints-schema.json
+                 type: !include schemas/v1.0-constraints-schema.json
                  examples:
                    SMPTE2022-7: !include ../examples/v1.0-receiver-constraints-get-200-2022-7.json
                    No2022-7: !include ../examples/v1.0-receiver-constraints-get-200.json
@@ -391,7 +391,7 @@ documentation:
              400:
                 description: A 400 response is returned when the request did not meet the schema and constraints.
                 body:
-                  schema: !include schemas/error.json
+                  type: !include schemas/error.json
                   example: !include ../examples/v1.0-stage-fail.json
              404:
                description: Returned when the requested resource does not exist
@@ -406,7 +406,7 @@ documentation:
                 A 500 response may be returned if the transport file could not be parsed, or there is
                 some failure caused by activation which was not caused by a violation or schema or constraints.
                body:
-                 schema: !include schemas/error.json
+                 type: !include schemas/error.json
                  example: !include ../examples/v1.0-stage-error.json
        /active:
          get:
