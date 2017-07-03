@@ -48,29 +48,6 @@
         }
       }
     },
-    "transport_file":{
-      "type": "object",
-      "description": "Transport file parameters",
-      "additionalProperties": false,
-      "properties":{
-        "data":{
-          "description": "Content of the transport file",
-          "type": [
-            "string",
-            "null"
-          ],
-          "default": null
-        },
-        "type":{
-          "description": "IANA assigned media type for file (e.g application/sdp)",
-          "type": [
-            "string",
-            "null"
-          ],
-          "default": null
-        }
-      }
-    },
     "transport_params": {
       "description": "Transport-specific parameters",
       "oneOf": [

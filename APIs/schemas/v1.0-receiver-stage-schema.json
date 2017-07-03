@@ -1,3 +1,4 @@
+
 {
   "$schema": "http://json-schema.org/draft-04/schema#",
   "type": "object",
@@ -45,29 +46,6 @@
             ],
           "default": null,
           "pattern": "^[0-9]+:[0-9]+$"
-        }
-      }
-    },
-    "transport_file":{
-      "type": "object",
-      "description": "Transport file parameters",
-      "additionalProperties": false,
-      "properties":{
-        "data":{
-          "description": "Content of the transport file",
-          "type": [
-            "string",
-            "null"
-          ],
-          "default": null
-        },
-        "type":{
-          "description": "IANA assigned media type for file (e.g application/sdp)",
-          "type": [
-            "string",
-            "null"
-          ],
-          "default": null
         }
       }
     },

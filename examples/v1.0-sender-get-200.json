@@ -3,7 +3,8 @@
     "master_enable": true,
     "activation":{
         "mode": null,
-        "requested_time": null
+        "requested_time": null,
+        "scheduled_time": null
     },
     "transport_params": [{
 	"src_ip": "172.29.82.23",
