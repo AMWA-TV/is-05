@@ -13,7 +13,7 @@
                     "string",
                     "null"
                 ],
-                "description": "Source IP address of RTP packets in unicast, source for source specific multicast",
+                "description": "Source IP address of RTP packets in unicast mode, source filter for source specific multicast",
                 "anyOf": [
                     {
                         "format": "ipv4"
@@ -48,7 +48,7 @@
             },
             "interface_ip":{
                 "type": "string",
-                "description": "IP address of the network interface the receiver should use. If set to auto the receiver should determine which interface to use for itself. The receiver should provide an enum in the constraints endpoint. This should contain 'auto', and optionally the available interface addresses.",
+                "description": "IP address of the network interface the receiver should use. The receiver should provide an enum in the constraints endpoint. This should contain 'auto', and the available interface addresses. If set to auto in multicast mode the receiver should determine which interface to use for itself. The behaviour of auto is undefined in unicast mode, and controllers should supply a specific interface address.",
                 "anyOf": [
                     {
                         "format": "ipv4"
