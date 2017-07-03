@@ -8,7 +8,7 @@
         "title": "Receiver Input",
         "additionalProperties": false,
         "properties": {
-            "src_ip": {
+            "source_ip": {
                 "type": [
                     "string",
                     "null"
@@ -27,7 +27,7 @@
                 ],
                 "default": null
             },
-            "multicast_group":{
+            "multicast_ip":{
                 "type": [
                     "string",
                     "null"
@@ -48,7 +48,7 @@
             },
             "interface_ip":{
                 "type": "string",
-                "description": "IP address of the network interface the receiver should use. The receiver should provide an enum in the constraints endpoint. This should contain 'auto', and the available interface addresses. If set to auto in multicast mode the receiver should determine which interface to use for itself. The behaviour of auto is undefined in unicast mode, and controllers should supply a specific interface address.",
+                "description": "IP address of the network interface the receiver should use. The receiver should provide an enum in the constraints endpoint, which should contain 'auto', and the available interface addresses. If set to auto in multicast mode the receiver should determine which interface to use for itself. The behaviour of auto is undefined in unicast mode, and controllers should supply a specific interface address.",
                 "anyOf": [
                     {
                         "format": "ipv4"
@@ -62,7 +62,7 @@
                 ],
                 "default": "auto"
             },
-            "dest_port": {
+            "destination_port": {
                 "type": "integer",
                 "description": "destination port for RTP packets",
                 "minimum": 1,
@@ -74,7 +74,7 @@
                 "description": "FEC usage on/off",
                 "default": false
             },
-            "fec_dest_ip": {
+            "fec_destination_ip": {
                 "type": "string",
                 "description": "May be used if NAT is being used at the destination (auto = rtp_dest_ip)",
                 "anyOf": [
@@ -108,7 +108,7 @@
                 ],
                 "default": "1D"
             },
-            "fec1D_dest_port": {
+            "fec1D_destination_port": {
                 "type": [
                     "integer",
                     "string"
@@ -119,7 +119,7 @@
                 "pattern": "^auto$",
                 "default": "auto"
             },
-            "fec2D_dest_port": {
+            "fec2D_destination_port": {
                 "type": [
                     "integer",
                     "string"
@@ -130,7 +130,7 @@
                 "pattern": "^auto$",
                 "default": "auto"
             },
-            "rtcp_dest_ip": {
+            "rtcp_destination_ip": {
                 "type": "string",
                 "description": "Destination IP address of RTCP packets (auto = same as RTP dest_ip)",
                 "anyOf": [
@@ -151,7 +151,7 @@
                 "description": "rtcp on/off",
                 "default": false
             },
-            "rtcp_dest_port": {
+            "rtcp_destination_port": {
                 "type": [
                     "integer",
                     "string"
