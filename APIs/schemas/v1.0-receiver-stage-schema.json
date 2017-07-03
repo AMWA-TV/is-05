@@ -12,8 +12,7 @@
         "string",
         "null"
       ],
-      "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-[1-5][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$",
-      "default": null
+      "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-[1-5][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$"
     },
     "master_enable": {
       "description": "Master on/off control for receiver",
@@ -44,8 +43,28 @@
               "string",
               "null"
             ],
-          "default": null,
           "pattern": "^[0-9]+:[0-9]+$"
+        }
+      }
+    },
+    "transport_file":{
+      "type": "object",
+      "description": "Transport file parameters",
+      "additionalProperties": false,
+      "properties":{
+        "data":{
+          "description": "Content of the transport file",
+          "type": [
+              "string",
+              "null"
+          ]
+        },
+        "type":{
+          "description": "IANA assigned media type for file (e.g application/sdp)",
+          "type": [
+            "string",
+            "null"
+          ]
         }
       }
     },

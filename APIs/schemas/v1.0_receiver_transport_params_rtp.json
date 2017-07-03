@@ -13,7 +13,7 @@
                     "string",
                     "null"
                 ],
-                "description": "Source IP address of RTP packets in unicast mode, source filter for source specific multicast",
+                "description": "Source IP address of RTP packets in unicast mode, source filter for source specific multicast. A null value indicates that the receiver has not yet been configured.",
                 "anyOf": [
                     {
                         "format": "ipv4"
@@ -24,8 +24,7 @@
                     {
                         "type": "null"
                     }
-                ],
-                "default": null
+                ]
             },
             "multicast_ip":{
                 "type": [
@@ -43,8 +42,7 @@
                     {
                         "type": "null"
                     }
-                ],
-                "default": null
+                ]
             },
             "interface_ip":{
                 "type": "string",
