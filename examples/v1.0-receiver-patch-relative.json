@@ -6,8 +6,8 @@
         "requested_time": "2:0"
     },
     "transport_params": [{
-	"src_ip": "172.23.19.49"
+	"source_ip": "172.23.19.49"
     }, {
-	"src_ip": "172.23.19.49"
+	"source_ip": "172.23.19.49"
     }]
 }

@@ -7,9 +7,9 @@
     },
     "transport_params": [{
 	"rtcp_enabled": false,
-	"rtcp_src_port": 5010
+	"rtcp_source_port": 5010
     },{
 	"rtcp_enabled": false,
-	"rtcp_src_port": 5010
+	"rtcp_source_port": 5010
     }]
 }

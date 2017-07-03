@@ -11,13 +11,11 @@
         "string",
         "null"
       ],
-      "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-[1-5][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$",
-      "default": null
+      "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-[1-5][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$"
     },
     "master_enable": {
       "description": "Master on/off control for sender",
-      "type": "boolean",
-      "default": true
+      "type": "boolean"
     },
     "activation":{
       "description": "Parameters concerned with activation of the transport parameters",
@@ -43,7 +41,6 @@
               "string",
               "null"
             ],
-          "default": null,
           "pattern": "^[0-9]+:[0-9]+$"
         }
       }
