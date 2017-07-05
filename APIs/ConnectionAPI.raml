@@ -18,7 +18,6 @@ documentation:
   - title: API Structure
     content: |
       The API presents two distinct interfaces. A "bulk" interface for controlling multiple senders/receivers, and a "single" interface to control single devices.
-
 /:
   displayName: Base
   get:
@@ -147,13 +146,13 @@ documentation:
                The first entry is the constraints for the primary leg.
                If SMPTE 2022-7 is not in use only one entry should be present in the outer array.
              responses:
-               200:
+              200:
                  body:
                    type: !include schemas/v1.0-constraints-schema.json
                    examples:
                      SMPTE2022-7: !include ../examples/v1.0-sender-constraints-get-200-2022-7.json
                      No2022-7: !include ../examples/v1.0-sender-constraints-get-200.json
-               404:
+              404:
                  description: Returned when the requested resource does not exist
          /staged:
            get:
@@ -169,7 +168,9 @@ documentation:
                 description: Additionally constrained by the constraints at /constraints
                 body:
                  type: !include schemas/v1.0-sender-response-schema.json
-                 example: !include ../examples/v1.0-sender-get-200.json
+                 examples:
+                   Normal: !include ../examples/v1.0-sender-get-200.json
+                   Uninitialised: !include ../examples/v1.0-sender-get-200-uninit.json
                404:
                  description: Returned when the requested resource does not exist
            patch:
@@ -242,12 +243,21 @@ documentation:
                  example: !include ../examples/v1.0-stage-error.json
          /active:
            get:
-             description: Get active sender parameters
+             description: >
+              Get active sender parameters. On activation all instances of "auto" should be resolved
+              into the actual values that will be used by the sender. For example if a sender has the `destination_ip`
+              parameter set to `auto` in /staged then `destination_ip` in /active should show the multicast IP
+              chosen by the receiver. The parameter will remain set to `auto` in staged, and may be resolve to
+              a different value at each activation. In cases, such as `destination_ip`, where the parameter changing unexpectedly
+              at activation through re-resolution may be un-desirable, care should be taken in implementation
+              to manage this.
              responses:
                200:
                  body:
                    type: !include schemas/v1.0-sender-active-schema.json
-                   example: !include ../examples/v1.0-sender-active-get.json
+                   examples:
+                     Normal: !include ../examples/v1.0-sender-active-get.json
+                     Uninitialised: !include ../examples/v1.0-sender-active-get-uninit.json
                404:
                  description: Returned when the requested resource does not exist
          /transportfile:
@@ -323,6 +333,7 @@ documentation:
                  examples:
                    Normal: !include ../examples/v1.0-receiver-get-200.json
                    Pending: !include ../examples/v1.0-receiver-pending-get-200.json
+                   uninitialised: !include ../examples/v1.0-receiver-get-200-uninit.json
              404:
                description: Returned when the requested resource does not exist
          patch:
@@ -342,6 +353,8 @@ documentation:
             The transport parameters should be updated from the transport file in `data` on every PATCH
             request that includes the `data` field. Even if the value of `data` in the request
             matches the value of `data` currently stored in the API the transport parameters are still re-populated.
+            In the case where the transport file and transport parameters are updated in the same PATCH request
+            transport parameters specified in the request object take precidence over those in the transport file.
             In SMPTE 2022-7 operation element 0 of the `transport_params`
             array shall be the parameters applied to the primary leg, and element 1 the secondary leg.
             There shall only be one element present in `transport_params` when SMPTE 2022-7 is not in use.
@@ -410,11 +423,20 @@ documentation:
                  example: !include ../examples/v1.0-stage-error.json
        /active:
          get:
-           description: Get active receiver parameters
+           description: >
+            Get active receiver parameters. On activation all instances of "auto" should be resolved
+            into the actual values that will be used by the receiver. For example if a receiver has the `interface_ip`
+            parameter set to `auto` in /staged then `interface_ip` in /active should show the IP address of the interface
+            chosen by the receiver. The parameter will remain set to `auto` in staged, and may be resolve to
+            a different value at activation. In cases, such as `interface_ip`, where the parameter changing unexpectedly
+            at activation through re-resolution may be un-desirable, care should be taken in implementation
+            to manage this.
            responses:
              200:
                body:
                  type: !include schemas/v1.0-receiver-active-schema.json
-                 example: !include ../examples/v1.0-receiver-active-get-200.json
+                 examples:
+                   running-state: !include ../examples/v1.0-receiver-active-get-200.json
+                   uninitialised: !include ../examples/v1.0-receiver-active-get-200-uninit.json
              404:
                description: Returned when the requested resource does not exist
