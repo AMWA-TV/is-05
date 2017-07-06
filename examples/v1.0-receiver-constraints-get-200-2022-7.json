@@ -1,10 +1,10 @@
 [
   [
     {
-      "parameter": "src_ip"
+      "parameter": "source_ip"
     },
     {
-      "parameter": "multicast_group"
+      "parameter": "multicast_ip"
     },
     {
       "parameter": "interface_ip",
@@ -16,7 +16,7 @@
       ]
     },
     {
-      "parameter": "dest_port",
+      "parameter": "destination_port",
       "maximum": 50000,
       "minimum": 49151
     },
@@ -24,7 +24,7 @@
       "parameter": "fec_enabled"
     },
     {
-      "parameter": "fec_dest_ip"
+      "parameter": "fec_destination_ip"
     },
     {
       "parameter": "fec_type",
@@ -51,12 +51,12 @@
       "maximum": 200
     },
     {
-      "parameter": "fec1D_dest_port",
+      "parameter": "fec1D_destination_port",
       "minimum": 5000,
       "maximum": 49151
     },
     {
-      "parameter": "fec2D_dest_port",
+      "parameter": "fec2D_destination_port",
       "minimum": 5000,
       "maximum": 49151
     },
@@ -64,10 +64,10 @@
       "parameter": "rtcp_enabled"
     },
     {
-      "parameter": "rtcp_dest_ip"
+      "parameter": "rtcp_destination_ip"
     },
     {
-      "parameter": "rtcp_dest_port",
+      "parameter": "rtcp_destination_port",
       "minimum": 5000,
       "maximum": 49151
     },
@@ -77,10 +77,10 @@
   ],
   [
     {
-      "parameter": "src_ip"
+      "parameter": "source_ip"
     },
     {
-      "parameter": "multicast_group"
+      "parameter": "multicast_ip"
     },
     {
       "parameter": "interface_ip",
@@ -92,7 +92,7 @@
       ]
     },
     {
-      "parameter": "dest_port",
+      "parameter": "destination_port",
       "maximum": 50000,
       "minimum": 49151
     },
@@ -100,7 +100,7 @@
       "parameter": "fec_enabled"
     },
     {
-      "parameter": "fec_dest_ip"
+      "parameter": "fec_destination_ip"
     },
     {
       "parameter": "fec_type",
@@ -127,12 +127,12 @@
       "maximum": 200
     },
     {
-      "parameter": "fec1D_dest_port",
+      "parameter": "fec1D_destination_port",
       "minimum": 5000,
       "maximum": 49151
     },
     {
-      "parameter": "fec2D_dest_port",
+      "parameter": "fec2D_destination_port",
       "minimum": 5000,
       "maximum": 49151
     },
@@ -140,10 +140,10 @@
       "parameter": "rtcp_enabled"
     },
     {
-      "parameter": "rtcp_dest_ip"
+      "parameter": "rtcp_destination_ip"
     },
     {
-      "parameter": "rtcp_dest_port",
+      "parameter": "rtcp_destination_port",
       "minimum": 5000,
       "maximum": 49151
     },
