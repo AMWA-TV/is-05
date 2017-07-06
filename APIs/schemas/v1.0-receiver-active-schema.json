@@ -4,7 +4,7 @@
   "description": "Describes a receiver",
   "title": "Receiver resource",
   "additionalProperties": false,
-  "required":[
+  "required": [
       "sender_id",
       "master_enable",
       "activation",
@@ -26,15 +26,15 @@
       "type": "boolean",
       "default": true
     },
-    "activation":{
+    "activation": {
       "description": "Parameters concerned with activation of the transport parameters",
       "type": "object",
       "additionalProperties": false,
-            "required":[
+            "required": [
                 "mode",
                 "activation_time"
             ],
-      "properties":{
+      "properties": {
         "mode": {
           "description": "Mode of activation: immediate (on message receipt), scheduled_absolute (when internal clock >= requested_time), scheduled_relative (when internal clock >= time of message receipt + requested_time), or null (no activation scheduled)",
           "type": [
@@ -51,24 +51,24 @@
         "activation_time": {
           "description": "String formatted TAI timestamp (<seconds>:<nanoseconds>) indicating absolute time the receiver was activated with the current parameters. This field may be null after startup.",
           "type": [
-              "string",
-              "null"
-            ],
+            "string",
+            "null"
+          ],
           "default": null,
           "pattern": "^[0-9]+:[0-9]+$"
         }
       }
     },
-    "transport_file":{
+    "transport_file": {
       "type": "object",
       "description": "Transport file parameters",
       "additionalProperties": false,
-      "required":[
+      "required": [
         "data",
         "type"
       ],
-      "properties":{
-        "data":{
+      "properties": {
+        "data": {
           "description": "Content of the transport file",
           "type": [
             "string",
@@ -76,7 +76,7 @@
           ],
           "default": null
         },
-        "type":{
+        "type": {
           "description": "IANA assigned media type for file (e.g application/sdp)",
           "type": [
             "string",
