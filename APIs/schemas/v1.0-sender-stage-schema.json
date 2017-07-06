@@ -17,11 +17,11 @@
       "description": "Master on/off control for sender",
       "type": "boolean"
     },
-    "activation":{
+    "activation": {
       "description": "Parameters concerned with activation of the transport parameters",
       "type": "object",
       "additionalProperties": false,
-      "properties":{
+      "properties": {
         "mode": {
           "description": "Mode of activation: immediate (on message receipt), scheduled_absolute (when internal clock >= requested_time), scheduled_relative (when internal clock >= time of message receipt + requested_time), or null (no activation scheduled)",
           "type": [

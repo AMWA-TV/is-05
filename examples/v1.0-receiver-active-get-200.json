@@ -1,27 +1,27 @@
 {
     "sender_id": "5709255c-c0ae-4e1e-99a0-e872e83e48e0",
     "master_enable": true,
-    "activation":{
+    "activation": {
         "mode": "activate_immediate",
         "activation_time": "1496739062:263900"
     },
-    "transport_file":{
+    "transport_file": {
         "data": "v=0\r\no=- 1496222842 1496222842 IN IP4 172.29.226.25\r\ns=IP Studio Stream\r\nt=0 0\r\nm=video 5010 RTP/AVP 103\r\nc=IN IP4 232.250.98.80/32\r\na=source-filter:incl IN IP4 232.250.98.80 172.29.226.25\r\na=rtpmap:103 raw/90000\r\na=fmtp:103 sampling=YCbCr-4:2:2; width=1920; height=1080; depth=10; interlace=1; framerate=25; colorimetry=BT709-2\r\na=mediaclk:direct=1876655126 rate=90000\r\na=extmap:1 urn:x-nmos:rtp-hdrext:origin-timestamp\r\na=extmap:2 urn:ietf:params:rtp-hdrext:smpte-tc 3600@90000/25\r\na=extmap:3 urn:x-nmos:rtp-hdrext:flow-id\r\na=extmap:4 urn:x-nmos:rtp-hdrext:source-id\r\na=extmap:5 urn:x-nmos:rtp-hdrext:grain-flags\r\na=extmap:7 urn:x-nmos:rtp-hdrext:sync-timestamp\r\na=extmap:9 urn:x-nmos:rtp-hdrext:grain-duration\r\na=ts-refclk:ptp=IEEE1588-2008:08-00-11-FF-FE-21-E1-B0\r\n",
         "type": "application/sdp"
     },
     "transport_params": [{
-	"source_ip": "172.29.226.25",
-	"multicast_ip": "232.250.98.80",
+        "source_ip": "172.29.226.25",
+        "multicast_ip": "232.250.98.80",
         "interface_ip": "172.23.19.35",
-	"destination_port": 5010,
+        "destination_port": 5010,
         "fec_enabled": false,
-	"fec_type": "XOR",
-	"fec_mode": "2D",
-	"fec1D_destination_port": 5012,
-	"fec2D_destination_port": 5014,
+        "fec_type": "XOR",
+        "fec_mode": "2D",
+        "fec1D_destination_port": 5012,
+        "fec2D_destination_port": 5014,
         "rtcp_enabled": false,
         "rtcp_destination_ip": "232.250.98.80",
-	"rtcp_destination_port": 5001,
-	"rtp_enabled": true
+        "rtcp_destination_port": 5001,
+        "rtp_enabled": true
     }]
 }

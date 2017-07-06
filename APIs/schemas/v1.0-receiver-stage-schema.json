@@ -1,4 +1,3 @@
-
 {
   "$schema": "http://json-schema.org/draft-04/schema#",
   "type": "object",
@@ -19,11 +18,11 @@
       "type": "boolean",
       "default": true
     },
-    "activation":{
+    "activation": {
       "description": "Parameters concerned with activation of the transport parameters",
       "type": "object",
       "additionalProperties": false,
-      "properties":{
+      "properties": {
         "mode": {
           "description": "Mode of activation: immediate (on message receipt), scheduled_absolute (when internal clock >= requested_time), scheduled_relative (when internal clock >= time of message receipt + requested_time), or null (no activation scheduled)",
           "type": [
@@ -47,19 +46,19 @@
         }
       }
     },
-    "transport_file":{
+    "transport_file": {
       "type": "object",
       "description": "Transport file parameters",
       "additionalProperties": false,
-      "properties":{
-        "data":{
+      "properties": {
+        "data": {
           "description": "Content of the transport file",
           "type": [
               "string",
               "null"
           ]
         },
-        "type":{
+        "type": {
           "description": "IANA assigned media type for file (e.g application/sdp)",
           "type": [
             "string",
