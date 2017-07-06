@@ -1,6 +1,6 @@
 {
     "$schema": "http://json-schema.org/draft-04/schema#",
-    "description": "Describes RTP Receiver transport parameters. The constraints in this schema are minimum constraints, but may be further constrained at the constraints endpoint. Receivers must support at least the `source_ip`, `interface_ip`, `rtp_enabled` and `destination_port` parameters, and must support the `multicast_ip` parameter is they are capable of multicast operation. Receivers supporting fec and/or rtcp must support parameters prefixed with fec and rtcp respectively.",
+    "description": "Describes RTP Receiver transport parameters. The constraints in this schema are minimum constraints, but may be further constrained at the constraints endpoint. Receivers must support at least the `source_ip`, `interface_ip`, `rtp_enabled` and `destination_port` parameters, and must support the `multicast_ip` parameter if they are capable of multicast operation. Receivers supporting fec and/or rtcp must support parameters prefixed with fec and rtcp respectively.",
     "title": "RTP Receiver Transport Parameters",
     "type": "array",
     "items": {
