@@ -1,15 +1,15 @@
 {
     "receiver_id": "0b174530-e3cf-41e6-bf01-fe55135034f3",
     "master_enable": true,
-    "activation":{
+    "activation": {
         "mode": "activate_scheduled_relative",
         "requested_time": "2:0"
     },
     "transport_params": [{
-	"rtcp_enabled": false,
-	"rtcp_source_port": 5010
+        "rtcp_enabled": false,
+        "rtcp_source_port": 5010
     },{
-	"rtcp_enabled": false,
-	"rtcp_source_port": 5010
+        "rtcp_enabled": false,
+        "rtcp_source_port": 5010
     }]
 }

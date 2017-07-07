@@ -4,7 +4,7 @@
     "description": "Describes a sender",
     "title": "Sender resource",
     "additionalProperties": false,
-    "required":[
+    "required": [
         "receiver_id",
         "master_enable",
         "activation",
@@ -25,15 +25,15 @@
             "type": "boolean",
             "default": true
         },
-        "activation":{
+        "activation": {
             "description": "Parameters concerned with activation of the transport parameters",
             "type": "object",
             "additionalProperties": false,
-            "required":[
+            "required": [
                 "mode",
                 "activation_time"
             ],
-            "properties":{
+            "properties": {
                 "mode": {
                     "description": "Mode of activation: immediate (on message receipt), scheduled_absolute (when internal clock >= requested_time), scheduled_relative (when internal clock >= time of message receipt + requested_time), or null (no activation scheduled)",
                     "type": [

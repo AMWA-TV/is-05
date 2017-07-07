@@ -4,7 +4,7 @@
     "description": "Describes a sender",
     "title": "Sender resource",
     "additionalProperties": false,
-    "required":[
+    "required": [
         "receiver_id",
         "master_enable",
         "activation",
@@ -25,16 +25,16 @@
             "type": "boolean",
             "default": true
         },
-        "activation":{
+        "activation": {
             "description": "Parameters concerned with activation of the transport parameters",
             "type": "object",
             "additionalProperties": false,
-            "required":[
+            "required": [
                 "mode",
                 "requested_time",
                 "scheduled_time"
             ],
-            "properties":{
+            "properties": {
                 "mode": {
                     "description": "Mode of activation: immediate (on message receipt), scheduled_absolute (when internal clock >= requested_time), scheduled_relative (when internal clock >= time of message receipt + requested_time), or null (no activation scheduled). This parameter returns to null once an activation is completed. For immediate activations, in the response to the PATCH request this field will be set to 'activate_immediate', but will be null in response to any subsequent GET requests.",
                     "type": [
