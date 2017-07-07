@@ -194,7 +194,7 @@
                     "integer",
                     "string"
                 ],
-                "description": "source port for RTCP packets (auto = next highest odd port number after RTP source_port)",
+                "description": "source port for RTCP packets (destination port for RTCP packets (auto = RTP destination_port + 1))",
                 "minimum": 0,
                 "maximum": 65535,
                 "pattern": "^auto$",
