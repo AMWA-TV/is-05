@@ -20,14 +20,19 @@ Readers should then read the [documentation](docs/) in this repository, and the 
 * [LICENSE](LICENSE) -- Licenses for software and text documents
 * [NOTICE](NOTICE) -- Disclaimer
 
+### Sequence Diagram
+The sequence diagram below shows a basic interaction with the Connection Management API:
+
+![Sequence Diagram](docs/direct_seq_diagram.png)
+
 ### Un-initialised Senders and Receivers
 
 When a sender or receiver is first started it may not have all the parameters it needs to operate. For example IP addresses and port numbers may not be set. In this instance:
 
-* Senders and receivers should present sensible default values on transport parameter endpoints. Suggested defaults are given in the relevant schemas. Parameters such as port numbers may have defaults in various RFCs that should be followed. Parameters where no sensible defaults exist, such as source IP address on a receiver, should be set to null.
+* Senders and receivers should present sensible default values on transport parameter endpoints. Suggested defaults are given in the relevant schemas, but will generally be 'auto' or null. Parameters such as port numbers may have defaults in various RFCs that should be followed. Parameters where no sensible defaults exist, such as source IP address on a receiver, should be set to null.
 * Senders that are not configured (for example have a null source IP address value), should return 404 on their active transport file endpoint, until a usable set of parameters has been activated.
 
-### Interaction with the Node API###
+### Interaction with the Node API
 
 The Connection Management API supersedes the now deprecated method of updating the "subscription" parameter on Node API receivers in order to establish connection. The two methods of operation are likely to co-exist until Version 2.0 of TR-04. As such the following best practice should be followed when both are in use:
 
