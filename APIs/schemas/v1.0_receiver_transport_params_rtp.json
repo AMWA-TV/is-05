@@ -91,23 +91,15 @@
                 ],
                 "default": "auto"
             },
-            "fec_type": {
-                "type": "string",
-                "description": "forward error correction mode to apply",
-                "enum": [
-                    "XOR",
-                    "Reed-Solomon"
-                ],
-                "default": "XOR"
-            },
             "fec_mode": {
                 "type": "string",
-                "description": "forward error correction mode to apply",
+                "description": "forward error correction mode to apply. (auto = highest possible number of dimensions available)",
                 "enum": [
+                    "auto",
                     "1D",
                     "2D"
                 ],
-                "default": "1D"
+                "default": "auto"
             },
             "fec1D_destination_port": {
                 "type": [
