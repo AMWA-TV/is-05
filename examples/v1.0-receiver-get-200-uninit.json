@@ -17,7 +17,6 @@
         "destination_port": "auto",
         "fec_enabled": false,
         "fec_destination_ip": "auto",
-        "fec_type": "XOR",
         "fec_mode": "1D",
         "fec1D_destination_port": "auto",
         "fec2D_destination_port": "auto",
