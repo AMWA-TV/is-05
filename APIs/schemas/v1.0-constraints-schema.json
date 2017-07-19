@@ -5,15 +5,36 @@
     "title": "Constraints",
     "maxitems": 2,
     "items": {
-        "type": "array",
-        "items": {
+        "type": "object",
+        "description": "Contains the constraints for on transport leg",
+        "properties": {
+            "destination_ip": { "$ref": "#/definitions/constraint"},
+            "destination_port": { "$ref": "#/definitions/constraint"},
+            "source_ip": { "$ref": "#/definitions/constraint"},
+            "interface_ip": { "$ref": "#/definitions/constraint"},
+            "source_port": { "$ref": "#/definitions/constraint"},
+            "fec_enabled": { "$ref": "#/definitions/constraint"},
+            "fec_destination_ip": { "$ref": "#/definitions/constraint"},
+            "fec_mode": { "$ref": "#/definitions/constraint"},
+            "fec_type": { "$ref": "#/definitions/constraint"},
+            "fec_block_width": { "$ref": "#/definitions/constraint"},
+            "fec_block_height": { "$ref": "#/definitions/constraint"},
+            "fec1D_destination_port": { "$ref": "#/definitions/constraint"},
+            "fec2D_destination_port": { "$ref": "#/definitions/constraint"},
+            "fec1D_source_port": { "$ref": "#/definitions/constraint"},
+            "fec2D_source_port": { "$ref": "#/definitions/constraint"},
+            "rtcp_enabled": { "$ref": "#/definitions/constraint"},
+            "rtcp_destination_ip": { "$ref": "#/definitions/constraint"},
+            "rtcp_destination_port": { "$ref": "#/definitions/constraint"},
+            "rtcp_source_port": { "$ref": "#/definitions/constraint"},
+            "rtp_enabled": { "$ref": "#/definitions/constraint"}
+        }
+    },
+    "definitions": {
+        "constraint":{
             "type": "object",
             "description": "The constraints for a single transport parameter",
             "properties": {
-                "parameter": {
-                    "type": "string",
-                    "description": "the id of the parameter being constrained"
-                },
                 "maximum": {
                     "description": "The inclusive maximum value the parameter can be set to",
                     "type": [
@@ -59,10 +80,7 @@
                     "format": "regex"
                 }
             },
-            "additionalProperties": false,
-            "required": [
-                "parameter"
-            ]
+            "additionalProperties": false
         }
     }
 }
