@@ -59,7 +59,7 @@
                     "pattern": "^[0-9]+:[0-9]+$"
                 },
                 "scheduled_time": {
-                    "description": "String formatted TAI timestamp (<seconds>:<nanoseconds>) indicating time (absolute or relative) the receiver will actually activate for scheduled activations, or the time activation occurred for immediate activations. This field returns to null once the activation is completed. For immediate activations, this property will be the time the activation actually occurred in the response to the PATCH request, but null in response to any GET requests thereafter.",
+                    "description": "String formatted TAI timestamp (<seconds>:<nanoseconds>) indicating the absolute time the receiver will actually activate for scheduled activations, or the time activation occurred for immediate activations. This field returns to null once the activation is completed. For immediate activations, this property will be the time the activation actually occurred in the response to the PATCH request, but null in response to any GET requests thereafter.",
                     "type": [
                         "string",
                         "null"
