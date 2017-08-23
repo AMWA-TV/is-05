@@ -196,9 +196,9 @@ documentation:
                    The response will always contain the full set of parameters in the response schema, and all
                    supported transport parameters. For a request with an immediate activation the API should
                    only return a response once the activation has completed.
-                   Note the presence of the extra `scheduled_time` parameter in the response. For immediate activation
+                   Note the presence of the extra `activation_time` parameter in the response. For immediate activation
                    this should be the time the activation actually occurred as an absolute TAI timestamp.
-                   If no activation was requested in the PATCH `scheduled_time` will be set `null`.
+                   If no activation was requested in the PATCH `activation_time` will be set `null`.
                    When the `master_enable` parameter is false senders should not transmit any media streams.
                    For RTP senders the `rtp_enable` parameter allows for the individual disabling of SMPTE 2022-7
                    legs.
@@ -210,7 +210,7 @@ documentation:
                  description: >
                    A 202 response is returned when a request for a scheduled activation is accepted, to indicate
                    that while the request itself was acceptable it has not yet been acted upon by the sender.
-                   For scheduled activations `scheduled_time` should be the absolute TAI time the parameters
+                   For scheduled activations `activation_time` should be the absolute TAI time the parameters
                    will actually transition. For absolute scheduled activations should be the same
                    as the requested time, but may differ if the sender is unable to schedule at
                    the requested time. This may be because the transition may only occur, for example,
@@ -254,7 +254,7 @@ documentation:
              responses:
                200:
                  body:
-                   type: !include schemas/v1.0-sender-active-schema.json
+                   type: !include schemas/v1.0-sender-response-schema.json
                    examples:
                      Normal: !include ../examples/v1.0-sender-active-get.json
                      Uninitialised: !include ../examples/v1.0-sender-active-get-uninit.json
@@ -378,9 +378,9 @@ documentation:
                  The response will always contain the full set of parameters in the response schema, and all
                  supported transport parameters. For a request involving an immediate activation the API
                  should only return once the activation has completed.
-                 Note the presence of the extra `scheduled_time` parameter in the response. For immediate activation
+                 Note the presence of the extra `activation_time` parameter in the response. For immediate activation
                  this should be the time the activation actually occurred as an absolute TAI timestamp.
-                 If no activation was requested in the `scheduled_time` will be set `null`.
+                 If no activation was requested in the `activation_time` will be set `null`.
                body:
                  type: !include schemas/v1.0-receiver-response-schema.json
                  examples:
@@ -390,7 +390,7 @@ documentation:
                description: >
                  A 202 response is returned when a request for a scheduled activation is accepted, to indicate
                  that while the request itself was acceptable it has not yet been acted upon by the receiver.
-                 For scheduled activations `scheduled_time` should be the absolute TAI time the parameters
+                 For scheduled activations `activation_time` should be the absolute TAI time the parameters
                  will actually transition. For absolute scheduled activations should be the same
                  as the requested time, but may differ if the receiver is unable to schedule at
                  the requested time. This may be because the transition may only occur, for example,
@@ -434,7 +434,7 @@ documentation:
            responses:
              200:
                body:
-                 type: !include schemas/v1.0-receiver-active-schema.json
+                 type: !include schemas/v1.0-receiver-response-schema.json
                  examples:
                    running-state: !include ../examples/v1.0-receiver-active-get-200.json
                    Uninitialised: !include ../examples/v1.0-receiver-active-get-200-uninit.json

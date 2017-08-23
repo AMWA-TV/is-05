@@ -4,7 +4,7 @@
     "activation": {
         "mode": "activate_scheduled_relative",
         "requested_time": "2:0",
-        "scheduled_time": "1496739064:0"
+        "activation_time": "1496739064:0"
     },
     "transport_file": {
         "data": null,

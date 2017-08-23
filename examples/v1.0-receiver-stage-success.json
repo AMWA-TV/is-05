@@ -4,7 +4,7 @@
     "activation": {
         "mode": "activate_immediate",
         "requested_time": null,
-        "scheduled_time": "1496739062:0"
+        "activation_time": "1496739062:0"
     },
     "transport_file": {
         "data": null,
