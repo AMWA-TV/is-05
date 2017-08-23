@@ -4,7 +4,7 @@
     "activation": {
         "mode": "activate_scheduled_relative",
         "requested_time": "1496759200:0",
-        "scheduled_time": "1496759200:5000"
+        "activation_time": "1496759200:5000"
     },
     "transport_params": [{
         "source_ip": "172.29.82.23",
