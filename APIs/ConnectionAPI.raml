@@ -62,7 +62,7 @@ documentation:
             example: !include ../examples/v1.0-bulk-post-confirm.json
         400:
           description: >
-            The body of the request did validate against the schema (ignoring the content of the
+            The body of the request did not validate against the schema (ignoring the content of the
             `params` field - these are validated individually by each sender/receiver and failures
             are recorded in the response object for a 200 return).
           body:
@@ -98,7 +98,7 @@ documentation:
             example: !include ../examples/v1.0-bulk-post-confirm.json
         400:
           description: >
-            The body of the request did validate against the schema (ignoring the content of the
+            The body of the request did not validate against the schema (ignoring the content of the
             `params` field - these are validated individually by each sender/receiver and failures
             are recorded in the response object for a 200 return).
           body:
