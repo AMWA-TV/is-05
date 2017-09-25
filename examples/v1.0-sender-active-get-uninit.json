@@ -3,6 +3,7 @@
     "master_enable": true,
     "activation": {
         "mode": null,
+        "requested_time": null,
         "activation_time": null
     },
     "transport_params": [{
