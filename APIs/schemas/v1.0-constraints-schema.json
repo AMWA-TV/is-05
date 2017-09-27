@@ -78,6 +78,10 @@
                     "description": "A regex pattern that must be satisfied for this parameter",
                     "type": "string",
                     "format": "regex"
+                },
+                "description": {
+                    "description": "A human readable string describing the constraint (optional)",
+                    "type": "string"
                 }
             },
             "additionalProperties": false
