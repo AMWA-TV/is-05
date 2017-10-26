@@ -1,6 +1,6 @@
 #!/bin/bash
 
-git clone --no-checkout https://github.com/AMWA-TV/nmos-discovery-registration source-repo/
+git clone --no-checkout https://github.com/AMWA-TV/nmos-device-connection-management source-repo/
 
 mkdir branches
 for branch in $(cd source-repo; git branch -r | sed 's:origin/::' | grep -v HEAD | grep -v gh-pages); do

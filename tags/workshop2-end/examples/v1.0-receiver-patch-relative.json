@@ -1,0 +1,13 @@
+{
+    "sender_id": "5709255c-c0ae-4e1e-99a0-e872e83e48e0",
+    "master_enable": true,
+    "activation": {
+        "mode": "activate_scheduled_relative",
+        "requested_time": "2:0"
+    },
+    "transport_params": [{
+        "source_ip": "172.23.19.49"
+    }, {
+        "source_ip": "172.23.19.49"
+    }]
+}
