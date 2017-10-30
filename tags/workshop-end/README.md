@@ -6,6 +6,10 @@
 
  - [ConnectionAPI](html-APIs/ConnectionAPI.html)
 
+# JSON Schemas for workshop-end
+
+ - [APIs/*](html-schemas/APIs/*.json)
+
 # Examples for workshop-end
 
  - [v1.0-activate-error](examples/v1.0-activate-error.json)

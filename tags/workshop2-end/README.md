@@ -15,6 +15,10 @@
 
  - [ConnectionAPI](html-APIs/ConnectionAPI.html)
 
+# JSON Schemas for workshop2-end
+
+ - [APIs/*](html-schemas/APIs/*.json)
+
 # Examples for workshop2-end
 
  - [v1.0-base-get-200](examples/v1.0-base-get-200.json)

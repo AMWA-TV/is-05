@@ -15,6 +15,10 @@
 
  - [ConnectionAPI](html-APIs/ConnectionAPI.html)
 
+# JSON Schemas for documentation
+
+ - [APIs/*](html-schemas/APIs/*.json)
+
 # Examples for documentation
 
  - [v1.0-base-get-200](examples/v1.0-base-get-200.json)
