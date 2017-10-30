@@ -1,6 +1,5 @@
 # Examples for workshop-end
 
- - [v1.0-TBD](examples/v1.0-TBD.json)
  - [v1.0-activate-error](examples/v1.0-activate-error.json)
  - [v1.0-activate-fail](examples/v1.0-activate-fail.json)
  - [v1.0-activate-none](examples/v1.0-activate-none.json)
@@ -26,8 +25,8 @@
  - [v1.0-receiver-get-200](examples/v1.0-receiver-get-200.json)
  - [v1.0-receiver-patch](examples/v1.0-receiver-patch.json)
  - [v1.0-receiver-root](examples/v1.0-receiver-root.json)
- - [v1.0-receiver-schema-no-fec](examples/v1.0-receiver-schema-no-fec.json)
  - [v1.0-receiver-schema](examples/v1.0-receiver-schema.json)
+ - [v1.0-receiver-schema-no-fec](examples/v1.0-receiver-schema-no-fec.json)
  - [v1.0-receiver-stage-put](examples/v1.0-receiver-stage-put.json)
  - [v1.0-receiver-stage-success](examples/v1.0-receiver-stage-success.json)
  - [v1.0-resource-get-200](examples/v1.0-resource-get-200.json)
@@ -52,9 +51,9 @@
  - [v1.0-sender-patch](examples/v1.0-sender-patch.json)
  - [v1.0-sender-root](examples/v1.0-sender-root.json)
  - [v1.0-sender-salvo-root](examples/v1.0-sender-salvo-root.json)
+ - [v1.0-sender-schema](examples/v1.0-sender-schema.json)
  - [v1.0-sender-schema-no-fec](examples/v1.0-sender-schema-no-fec.json)
  - [v1.0-sender-schema-no-rtcp](examples/v1.0-sender-schema-no-rtcp.json)
- - [v1.0-sender-schema](examples/v1.0-sender-schema.json)
  - [v1.0-sender-stage-put](examples/v1.0-sender-stage-put.json)
  - [v1.0-single-root](examples/v1.0-single-root.json)
  - [v1.0-single-session-description](examples/v1.0-single-session-description.json)
@@ -62,3 +61,4 @@
  - [v1.0-slavo-base-get](examples/v1.0-slavo-base-get.json)
  - [v1.0-stage-fail](examples/v1.0-stage-fail.json)
  - [v1.0-stage-success](examples/v1.0-stage-success.json)
+ - [v1.0-TBD](examples/v1.0-TBD.json)
