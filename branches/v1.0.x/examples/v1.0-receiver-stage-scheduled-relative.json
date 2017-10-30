@@ -1,0 +1,38 @@
+{
+    "sender_id": "5709255c-c0ae-4e1e-99a0-e872e83e48e0",
+    "master_enable": true,
+    "activation": {
+        "mode": "activate_scheduled_relative",
+        "requested_time": "2:0",
+        "activation_time": "1496739064:0"
+    },
+    "transport_file": {
+        "data": null,
+        "type": "application/sdp"
+    },
+    "transport_params": [{
+        "source_ip": "172.23.19.48",
+        "multicast_ip": "232.250.98.80",
+        "interface_ip": "172.23.19.35",
+        "destination_port": 5000,
+        "fec_enabled": true,
+        "fec_mode": "2D",
+        "fec1D_destination_port": "auto",
+        "fec2D_destination_port": "auto",
+        "rtcp_enabled": true,
+        "rtcp_destination_ip": "auto",
+        "rtcp_destination_port": 5001,
+        "rtp_enabled": true
+    }, {
+        "source_ip": "172.23.20.48",
+        "multicast_ip": "232.11.105.25",
+        "interface_ip": "172.23.20.35",
+        "fec_enabled": true,
+        "fec_mode": "2D",
+        "fec1D_destination_port": "auto",
+        "fec2D_destination_port": "auto",
+        "rtcp_enabled": true,
+        "rtcp_destination_ip": "auto",
+        "rtcp_destination_port": 5001,
+        "rtp_enabled": true
+    }]}

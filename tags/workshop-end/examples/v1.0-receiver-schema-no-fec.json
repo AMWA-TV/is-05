@@ -1,0 +1,69 @@
+{
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "description": "Describes RTP Receiver transport parameters",
+    "title": "RTP Receiver Transport Parameters",
+    "type": "array",
+    "items": {
+	"type": "object",
+	"title": "Receiver Input",
+        "additionalProperties": false,
+	"properties" : {
+	    "src_ip": {
+		"type":"string",
+		"description": "Source IP address of RTP packets (relevant for source-specific multicast)",
+		"anyOf": [
+		    {"format": "ipv4"},
+		    {"format": "ipv6"},
+                    {"type": "null"}
+		],
+                "default": null
+	    },
+	    "dest_ip": {
+		"type":"string",
+		"description": "Destination IP address of RTP packets (may be multicast group address, otherwise IP address of the interface bound to this receiver input)",
+		"anyOf": [
+		    {"format": "ipv4"},
+		    {"format": "ipv6"},
+                    {"format": "null"}
+		],
+                "default": null
+	    },
+	    "dest_port": {
+		"type": "integer",
+		"description": "destination port for RTP packets",
+		"minimum": 5000,
+		"maximum": 49151,
+                "default": 5004
+	    },
+	    "rtcp_dest_ip": {
+		"type":"string",
+		"description": "Destination IP address of RTCP packets (auto = same as RTP dest_ip)",
+		"anyOf": [
+		    {"format": "ipv4"},
+		    {"format": "ipv6"},
+		    {"pattern": "^auto$"}
+		],
+		"default":"auto"
+	    },
+	    "rtcp_enabled": {
+		"type": "boolean",
+		"description": "rtcp on/off",
+                "default": false
+	    },
+	    "rtcp_dest_port": {
+		"type": ["integer", "string"],
+		"description": "destination port for RTCP packets (auto = RTP dest_port+1 )",
+		"minimum": 5000,
+		"maximum": 49151,
+		"pattern": "^auto$",
+		"default": "auto"
+	    },
+           "rtp_enabled": {
+       		"type": "boolean",
+	       "description": "RTP reception active/inactive",
+               "default": true
+	    }
+	}
+    },
+    "maxItems" : 2
+}

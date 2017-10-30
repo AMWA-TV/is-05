@@ -1,0 +1,26 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "description": "Describes parameters for connection activation",
+  "title": "Activation object",
+  "required": [
+    "mode"
+  ],
+  "properties": {
+    "mode": {
+      "description": "mode of activation: immediate (on message rx), scheduled_absolute (when internal clock >= requested_time), scheduled_relative (when internal clock >= time of message rx + requested_time), activate_none (removes the currently scheduled activation)",
+      "type": "string",
+      "enum": [
+        "activate_immediate",
+        "activate_scheduled_absolute",
+        "activate_scheduled_relative",
+        "activate_none"  
+      ]
+    },
+    "requested_time": {
+      "description": "String formatted TAI timestamp (<seconds>:<nanoseconds>) indicating time (absolute or relative) for activation",
+      "type": "string",
+      "pattern": "^[0-9]+:[0-9]+$"
+    }
+  }
+}

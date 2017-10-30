@@ -1,0 +1,97 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "description": "Describes a receiver",
+  "title": "Receiver resource",
+  "additionalProperties": false,
+  "required":[
+      "sender_id",
+      "master_enable",
+      "activation",
+      "transport_file",
+      "transport_params"
+  ],
+  "properties": {
+    "sender_id": {
+      "description": "ID of the Sender subscribed to by this Receiver. This will be null if the receiver has not been configured to receive anything, or if it is receiving from a non-NMOS sender.",
+      "type": [
+        "string",
+        "null"
+      ],
+      "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-[1-5][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$",
+      "default": null
+    },
+    "master_enable": {
+      "description": "Master on/off control for receiver",
+      "type": "boolean",
+      "default": true
+    },
+    "activation":{
+      "description": "Parameters concerned with activation of the transport parameters",
+      "type": "object",
+      "additionalProperties": false,
+            "required":[
+                "mode",
+                "activation_time"
+            ],
+      "properties":{
+        "mode": {
+          "description": "Mode of activation: immediate (on message receipt), scheduled_absolute (when internal clock >= requested_time), scheduled_relative (when internal clock >= time of message receipt + requested_time), or null (no activation scheduled)",
+          "type": [
+            "string",
+            "null"
+          ],
+          "enum": [
+            "activate_immediate",
+            "activate_scheduled_absolute",
+            "activate_scheduled_relative",
+            null
+          ]
+        },
+        "activation_time": {
+          "description": "String formatted TAI timestamp (<seconds>:<nanoseconds>) indicating absolute time the receiver was activated with the current parameters. This field may be null after startup.",
+          "type": [
+              "string",
+              "null"
+            ],
+          "default": null,
+          "pattern": "^[0-9]+:[0-9]+$"
+        }
+      }
+    },
+    "transport_file":{
+      "type": "object",
+      "description": "Transport file parameters",
+      "additionalProperties": false,
+      "required":[
+        "data",
+        "type"
+      ],
+      "properties":{
+        "data":{
+          "description": "Content of the transport file",
+          "type": [
+            "string",
+            "null"
+          ],
+          "default": null
+        },
+        "type":{
+          "description": "IANA assigned media type for file (e.g application/sdp)",
+          "type": [
+            "string",
+            "null"
+          ],
+          "default": null
+        }
+      }
+    },
+    "transport_params": {
+      "description": "Transport-specific parameters",
+      "oneOf": [
+        { "$ref": "v1.0_receiver_transport_params_rtp.json" },
+        { "$ref": "v1.0_receiver_transport_params_dash.json" }
+      ]
+    }
+  }
+}

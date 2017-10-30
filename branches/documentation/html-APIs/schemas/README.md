@@ -1,0 +1,17 @@
+# JSON Schemas for documentation
+
+ - [error](html-APIs/schemas/error.json)
+ - [v1.0-bulk-receiver-post-schema](html-APIs/schemas/v1.0-bulk-receiver-post-schema.json)
+ - [v1.0-bulk-sender-post-schema](html-APIs/schemas/v1.0-bulk-sender-post-schema.json)
+ - [v1.0-bulk-stage-confirm](html-APIs/schemas/v1.0-bulk-stage-confirm.json)
+ - [v1.0-constraints-schema](html-APIs/schemas/v1.0-constraints-schema.json)
+ - [v1.0-receiver-active-schema](html-APIs/schemas/v1.0-receiver-active-schema.json)
+ - [v1.0-receiver-response-schema](html-APIs/schemas/v1.0-receiver-response-schema.json)
+ - [v1.0-receiver-stage-schema](html-APIs/schemas/v1.0-receiver-stage-schema.json)
+ - [v1.0_receiver_transport_params_dash](html-APIs/schemas/v1.0_receiver_transport_params_dash.json)
+ - [v1.0_receiver_transport_params_rtp](html-APIs/schemas/v1.0_receiver_transport_params_rtp.json)
+ - [v1.0-sender-active-schema](html-APIs/schemas/v1.0-sender-active-schema.json)
+ - [v1.0-sender-response-schema](html-APIs/schemas/v1.0-sender-response-schema.json)
+ - [v1.0-sender-stage-schema](html-APIs/schemas/v1.0-sender-stage-schema.json)
+ - [v1.0_sender_transport_params_dash](html-APIs/schemas/v1.0_sender_transport_params_dash.json)
+ - [v1.0_sender_transport_params_rtp](html-APIs/schemas/v1.0_sender_transport_params_rtp.json)

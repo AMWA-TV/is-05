@@ -9,19 +9,3 @@ See [here](https://amwa-tv.github.io/nmos) for an overview of NMOS specifcations
 The formal IS-05 specification is provided at in [this GitHub repository](https://github.com/AMWA-TV/nmos-device-connection-management). These pages provide supporting documentation and HTML renders of the APIs (which are specified in RAML and JSON Schema).
 
 
-## Branches
-
-[documentation](branches/documentation)
-
-[master](branches/master)
-
-[v1.0.x](branches/v1.0.x)
-
-## Tags
-
-[v1.0](tags/v1.0)
-
-[workshop2-end](tags/workshop2-end)
-
-[workshop-end](tags/workshop-end)
-

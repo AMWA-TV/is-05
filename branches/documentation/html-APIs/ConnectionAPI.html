@@ -1,0 +1,1453 @@
+<!DOCTYPE HTML><html><head><title>Connection API documentation</title><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta http-equiv="Content-Type" content="text/html; charset=utf-8"><meta name="generator" content="https://github.com/raml2html/raml2html 6.3.0"><link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.3.0/styles/default.min.css"><script type="text/javascript" src="https://code.jquery.com/jquery-1.11.0.min.js"></script><script type="text/javascript" src="https://netdna.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script><script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.3.0/highlight.min.js"></script><script type="text/javascript">
+      $(document).ready(function() {
+        $('.page-header pre code, .top-resource-description pre code, .modal-body pre code').each(function(i, block) {
+          hljs.highlightBlock(block);
+        });
+
+        $('[data-toggle]').click(function() {
+          var selector = $(this).data('target') + ' pre code';
+          $(selector).each(function(i, block) {
+            hljs.highlightBlock(block);
+          });
+        });
+
+        // open modal on hashes like #_action_get
+        $(window).bind('hashchange', function(e) {
+          var anchor_id = document.location.hash.substr(1); //strip #
+          var element = $('#' + anchor_id);
+
+          // do we have such element + is it a modal?  --> show it
+          if (element.length && element.hasClass('modal')) {
+            element.modal('show');
+          }
+        });
+
+        // execute hashchange on first page load
+        $(window).trigger('hashchange');
+
+        // remove url fragment on modal hide
+        $('.modal').on('hidden.bs.modal', function() {
+          try {
+            if (history && history.replaceState) {
+                history.replaceState({}, '', '#');
+            }
+          } catch(e) {}
+        });
+      });
+    </script><style>
+      .hljs {
+        background: transparent;
+      }
+      .parent {
+        color: #999;
+      }
+      .list-group-item > .badge {
+        float: none;
+        margin-right: 6px;
+      }
+      .panel-title > .methods {
+        float: right;
+      }
+      .badge {
+        border-radius: 0;
+        text-transform: uppercase;
+        width: 70px;
+        font-weight: normal;
+        color: #f3f3f6;
+        line-height: normal;
+      }
+      .badge_get {
+        background-color: #63a8e2;
+      }
+      .badge_post {
+        background-color: #6cbd7d;
+      }
+      .badge_put {
+        background-color: #22bac4;
+      }
+      .badge_delete {
+        background-color: #d26460;
+      }
+      .badge_patch {
+        background-color: #ccc444;
+      }
+      .list-group, .panel-group {
+        margin-bottom: 0;
+      }
+      .panel-group .panel+.panel-white {
+        margin-top: 0;
+      }
+      .panel-group .panel-white {
+        border-bottom: 1px solid #F5F5F5;
+        border-radius: 0;
+      }
+      .panel-white:last-child {
+        border-bottom-color: white;
+        -webkit-box-shadow: none;
+        box-shadow: none;
+      }
+      .panel-white .panel-heading {
+        background: white;
+      }
+      .tab-pane ul {
+        padding-left: 2em;
+      }
+      .tab-pane h1 {
+        font-size: 1.3em;
+      }
+      .tab-pane h2 {
+        font-size: 1.2em;
+        padding-bottom: 4px;
+        border-bottom: 1px solid #ddd;
+      }
+      .tab-pane h3 {
+        font-size: 1.1em;
+      }
+      .tab-content {
+        border-left: 1px solid #ddd;
+        border-right: 1px solid #ddd;
+        border-bottom: 1px solid #ddd;
+        padding: 10px;
+      }
+      #sidebar {
+        margin-top: 30px;
+        padding-right: 5px;
+        overflow: auto;
+        height: 90%;
+      }
+      .top-resource-description {
+        border-bottom: 1px solid #ddd;
+        background: #fcfcfc;
+        padding: 15px 15px 0 15px;
+        margin: -15px -15px 10px -15px;
+      }
+      .resource-description {
+        border-bottom: 1px solid #fcfcfc;
+        background: #fcfcfc;
+        padding: 15px 15px 0 15px;
+        margin: -15px -15px 10px -15px;
+      }
+      .resource-description p:last-child {
+        margin: 0;
+      }
+      .list-group .badge {
+        float: left;
+      }
+      .method_description {
+        margin-left: 85px;
+      }
+      .method_description p:last-child {
+        margin: 0;
+      }
+      .list-group-item {
+        cursor: pointer;
+      }
+      .list-group-item:hover {
+        background-color: #f5f5f5;
+      }
+      pre code {
+        overflow: auto;
+        word-wrap: normal;
+        white-space: pre;
+      }
+      .items {
+        background: #f5f5f5;
+        color: #333;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        padding: 9.5px;
+        margin: 0 0 10px;
+        font-size: 13px;
+        line-height: 1.42857143;
+      }
+      .examples {
+        margin-left: 0.5em;
+      }
+      .resource-modal li > ul {
+        margin-bottom: 1em;
+      }
+    </style></head><body data-spy="scroll" data-target="#sidebar"><div class="container"><div class="row"><div class="col-md-9" role="main"><div class="page-header"><h1>Connection API documentation <small>version v1.0</small></h1><p>http://example.api.com/x-nmos/connection/{version}</p><ul><li><strong>version</strong>: <em>required (v1.0)</em></li></ul><h3 id="overview"><a href="#overview">Overview</a></h3><p>The Connection API is exposed by NMOS Devices as a standard control interface for management of inter-device connnections.</p><h3 id="endpoint_discovery"><a href="#endpoint_discovery">Endpoint Discovery</a></h3><p>The Connection API URL for an NMOS Device is advertised in the list of controls for that device in the Node API using type: "urn:x-nmos:control:sr-ctrl/v1.0". This information is populated into the NMOS registry via the standard registration mechanism, so it is discoverable through the Query API (see NMOS discovery &amp; registration specification).</p><h3 id="api_structure"><a href="#api_structure">API Structure</a></h3><p>The API presents two distinct interfaces. A "bulk" interface for controlling multiple senders/receivers, and a "single" interface to control single devices.</p></div><div class="panel panel-default"><div class="panel-heading"><h3 class="panel-title">Base</h3></div><div class="panel-body"><div class="panel-group"><div class="panel panel-white resource-modal"><div class="panel-heading"><h4 class="panel-title"><a class="collapsed" data-toggle="collapse" href="#panel_"><span class="parent"></span>/</a> <span class="methods"><a href="#_get"><span class="badge badge_get">get</span></a></span></h4></div><div id="panel_" class="panel-collapse collapse"><div class="panel-body"><div class="list-group"><div onclick="window.location.href = '#_get'" class="list-group-item"><span class="badge badge_get">get</span><div class="method_description"><p>List of modes available from this API - single and bulk. Both are compulsory parts of the spec.</p></div><div class="clearfix"></div></div></div></div></div><div class="modal fade" tabindex="0" id="_get"><div class="modal-dialog modal-lg"><div class="modal-content"><div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button><h4 class="modal-title" id="myModalLabel"><span class="badge badge_get">get</span> <span class="parent"></span>/</h4></div><div class="modal-body"><div class="alert alert-info"><p>List of modes available from this API - single and bulk. Both are compulsory parts of the spec.</p></div><ul class="nav nav-tabs"><li class="active"><a href="#_get_response" data-toggle="tab">Response</a></li></ul><div class="tab-content"><div class="tab-pane active" id="_get_response"><h2>HTTP status code <a href="http://httpstatus.es/200" target="_blank">200</a></h2><h3>Body</h3><p><strong>Media type</strong>: application/json</p><p><strong>Type</strong>: object</p><p><strong>Example</strong>:</p><div class="examples"><pre><code>[
+    "bulk/",
+    "single/"
+]
+</code></pre></div></div></div></div></div></div></div></div></div></div></div><div class="panel panel-default"><div class="panel-heading"><h3 id="bulk" class="panel-title">Bulk control interface</h3></div><div class="panel-body"><div class="panel-group"><div class="panel panel-white resource-modal"><div class="panel-heading"><h4 class="panel-title"><a class="collapsed" data-toggle="collapse" href="#panel_bulk"><span class="parent"></span>/bulk</a> <span class="methods"><a href="#bulk_get"><span class="badge badge_get">get</span></a></span></h4></div><div id="panel_bulk" class="panel-collapse collapse"><div class="panel-body"><div class="list-group"><div onclick="window.location.href = '#bulk_get'" class="list-group-item"><span class="badge badge_get">get</span><div class="method_description"><p>Senders / receivers options</p></div><div class="clearfix"></div></div></div></div></div><div class="modal fade" tabindex="0" id="bulk_get"><div class="modal-dialog modal-lg"><div class="modal-content"><div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button><h4 class="modal-title" id="myModalLabel"><span class="badge badge_get">get</span> <span class="parent"></span>/bulk</h4></div><div class="modal-body"><div class="alert alert-info"><p>Senders / receivers options</p></div><ul class="nav nav-tabs"><li class="active"><a href="#bulk_get_response" data-toggle="tab">Response</a></li></ul><div class="tab-content"><div class="tab-pane active" id="bulk_get_response"><h2>HTTP status code <a href="http://httpstatus.es/200" target="_blank">200</a></h2><h3>Body</h3><p><strong>Media type</strong>: application/json</p><p><strong>Type</strong>: object</p><p><strong>Example</strong>:</p><div class="examples"><pre><code>[
+    "senders/",
+    "receivers/"
+]
+</code></pre></div></div></div></div></div></div></div></div><div class="panel panel-white resource-modal"><div class="panel-heading"><h4 class="panel-title"><a class="collapsed" data-toggle="collapse" href="#panel_bulk_senders"><span class="parent">/bulk</span>/senders</a> <span class="methods"><a href="#bulk_senders_get"><span class="badge badge_get">get</span></a> <a href="#bulk_senders_post"><span class="badge badge_post">post</span></a></span></h4></div><div id="panel_bulk_senders" class="panel-collapse collapse"><div class="panel-body"><div class="resource-description"><p>Target for bulk staging of transport parameters.</p></div><div class="list-group"><div onclick="window.location.href = '#bulk_senders_get'" class="list-group-item"><span class="badge badge_get">get</span><div class="method_description"></div><div class="clearfix"></div></div><div onclick="window.location.href = '#bulk_senders_post'" class="list-group-item"><span class="badge badge_post">post</span><div class="method_description"><p>Allows staging and activation of multiple sender parameters at the same time in a single request.</p></div><div class="clearfix"></div></div></div></div></div><div class="modal fade" tabindex="0" id="bulk_senders_get"><div class="modal-dialog modal-lg"><div class="modal-content"><div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button><h4 class="modal-title" id="myModalLabel"><span class="badge badge_get">get</span> <span class="parent">/bulk</span>/senders</h4></div><div class="modal-body"><ul class="nav nav-tabs"><li class="active"><a href="#bulk_senders_get_response" data-toggle="tab">Response</a></li></ul><div class="tab-content"><div class="tab-pane active" id="bulk_senders_get_response"><h2>HTTP status code <a href="http://httpstatus.es/405" target="_blank">405</a></h2><p>The API should actively return an HTTP 405 if a GET is called on the endpoint.</p></div></div></div></div></div></div><div class="modal fade" tabindex="0" id="bulk_senders_post"><div class="modal-dialog modal-lg"><div class="modal-content"><div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button><h4 class="modal-title" id="myModalLabel"><span class="badge badge_post">post</span> <span class="parent">/bulk</span>/senders</h4></div><div class="modal-body"><div class="alert alert-info"><p>Allows staging and activation of multiple sender parameters at the same time in a single request.</p></div><ul class="nav nav-tabs"><li class="active"><a href="#bulk_senders_post_request" data-toggle="tab">Request</a></li><li><a href="#bulk_senders_post_response" data-toggle="tab">Response</a></li></ul><div class="tab-content"><div class="tab-pane active" id="bulk_senders_post_request"><h3>Body</h3><p><strong>Media type</strong>: application/json</p><p><strong>Example</strong>:</p><div class="examples"><pre><code>[
+    {
+        "id": "0a174530-e3cf-11e6-bf01-fe55135034f3",
+        "params":{
+            "master_enable": true,
+            "activation":{
+                "mode": "activate_scheduled_absolute",
+                "requested_time": "1496759200:0"
+            },
+            "transport_params": [{
+                "fec_enabled": true,
+	        "rtcp_enabled": true,
+	        "rtp_enabled": true
+            }, {
+                "fec_enabled": true,
+	        "rtcp_enabled": true,
+	        "rtp_enabled": true
+            }]
+        }
+    },
+    {
+        "id": "7a3ebebe-0405-11e7-93ae-92361f002671",
+        "params":{
+            "master_enable": true,
+            "activation":{
+                "mode": "activate_scheduled_relative",
+                "requested_time": "2:0"
+            },
+            "transport_params": [{
+                "fec_enabled": true
+            }, {
+                "fec_enabled": true
+            }]
+        }
+    }
+]
+</code></pre></div></div><div class="tab-pane" id="bulk_senders_post_response"><h2>HTTP status code <a href="http://httpstatus.es/200" target="_blank">200</a></h2><p>Gives the status of each of the individual senders after the staging. Will be returned even if individual <code>params</code> did not validate. The response object provides the HTTP status code that would have been returned by each sender had the request been carried out individually.</p><h3>Body</h3><p><strong>Media type</strong>: application/json</p><p><strong>Example</strong>:</p><div class="examples"><pre><code>[
+    {
+        "id": "0a174530-e3cf-11e6-bf01-fe55135034f3",
+        "code": 200
+    },
+    {
+        "id": "7a3ebebe-0405-11e7-93ae-92361f002671",
+        "code": 200
+    },
+    {
+        "id": "7a3ec21a-0405-11e7-93ae-92361f002671",
+        "code": 200
+    },
+    {
+        "id": "7a3ec3b4-0405-11e7-93ae-92361f002671",
+        "code": 400,
+        "error": "Un-recognised parameter &#39;frc_enabled&#39;",
+        "debug": "&lt;stack trace&gt;"
+    }
+]
+</code></pre></div><h2>HTTP status code <a href="http://httpstatus.es/400" target="_blank">400</a></h2><p>The body of the request did validate against the schema (ignoring the content of the <code>params</code> field - these are validated individually by each sender/receiver and failures are recorded in the response object for a 200 return).</p><h3>Body</h3><p><strong>Media type</strong>: application/json</p><p><strong>Example</strong>:</p><div class="examples"><pre><code>{
+    "code": 400,
+    "error": "Request contained invalid JSON",
+    "debug": "&lt;stack trace&gt;"
+}
+</code></pre></div></div></div></div></div></div></div></div><div class="panel panel-white resource-modal"><div class="panel-heading"><h4 class="panel-title"><a class="collapsed" data-toggle="collapse" href="#panel_bulk_receivers"><span class="parent">/bulk</span>/receivers</a> <span class="methods"><a href="#bulk_receivers_get"><span class="badge badge_get">get</span></a> <a href="#bulk_receivers_post"><span class="badge badge_post">post</span></a></span></h4></div><div id="panel_bulk_receivers" class="panel-collapse collapse"><div class="panel-body"><div class="resource-description"><p>Target for bulk uploads of transport parameters.</p></div><div class="list-group"><div onclick="window.location.href = '#bulk_receivers_get'" class="list-group-item"><span class="badge badge_get">get</span><div class="method_description"></div><div class="clearfix"></div></div><div onclick="window.location.href = '#bulk_receivers_post'" class="list-group-item"><span class="badge badge_post">post</span><div class="method_description"><p>Allows staging and activation of a subset of multiple receiver parameters at the same time in a single request.</p></div><div class="clearfix"></div></div></div></div></div><div class="modal fade" tabindex="0" id="bulk_receivers_get"><div class="modal-dialog modal-lg"><div class="modal-content"><div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button><h4 class="modal-title" id="myModalLabel"><span class="badge badge_get">get</span> <span class="parent">/bulk</span>/receivers</h4></div><div class="modal-body"><ul class="nav nav-tabs"><li class="active"><a href="#bulk_receivers_get_response" data-toggle="tab">Response</a></li></ul><div class="tab-content"><div class="tab-pane active" id="bulk_receivers_get_response"><h2>HTTP status code <a href="http://httpstatus.es/405" target="_blank">405</a></h2><p>The API should actively return an HTTP 405 if a GET is called on the endpoint.</p></div></div></div></div></div></div><div class="modal fade" tabindex="0" id="bulk_receivers_post"><div class="modal-dialog modal-lg"><div class="modal-content"><div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button><h4 class="modal-title" id="myModalLabel"><span class="badge badge_post">post</span> <span class="parent">/bulk</span>/receivers</h4></div><div class="modal-body"><div class="alert alert-info"><p>Allows staging and activation of a subset of multiple receiver parameters at the same time in a single request.</p></div><ul class="nav nav-tabs"><li class="active"><a href="#bulk_receivers_post_request" data-toggle="tab">Request</a></li><li><a href="#bulk_receivers_post_response" data-toggle="tab">Response</a></li></ul><div class="tab-content"><div class="tab-pane active" id="bulk_receivers_post_request"><h3>Body</h3><p><strong>Media type</strong>: application/json</p><p><strong>Example</strong>:</p><div class="examples"><pre><code>[
+    {
+        "id": "0a174530-e3cf-11e6-bf01-fe55135034f3",
+        "params"{
+            "master_enable": true,
+            "activation":{
+                "mode": "activate_scheduled_absolute",
+                "requested_time": "1496759200:0"
+            },
+            "transport_params": [{
+	        "rtp_enabled": true
+            }, {
+                "rtcp_enabled": true,
+            }],
+            "transport_file":{
+                "data": "v=0\r\no=- 1496222842 1496222842 IN IP4 172.29.226.25\r\ns=IP Studio Stream\r\nt=0 0\r\nm=video 5010 RTP/AVP 103\r\nc=IN IP4 232.250.98.80/32\r\na=source-filter:incl IN IP4 232.250.98.80 172.29.226.25\r\na=rtpmap:103 raw/90000\r\na=fmtp:103 sampling=YCbCr-4:2:2; width=1920; height=1080; depth=10; interlace=1; framerate=25; colorimetry=BT709-2\r\na=mediaclk:direct=1876655126 rate=90000\r\na=extmap:1 urn:x-nmos:rtp-hdrext:origin-timestamp\r\na=extmap:2 urn:ietf:params:rtp-hdrext:smpte-tc 3600@90000/25\r\na=extmap:3 urn:x-nmos:rtp-hdrext:flow-id\r\na=extmap:4 urn:x-nmos:rtp-hdrext:source-id\r\na=extmap:5 urn:x-nmos:rtp-hdrext:grain-flags\r\na=extmap:7 urn:x-nmos:rtp-hdrext:sync-timestamp\r\na=extmap:9 urn:x-nmos:rtp-hdrext:grain-duration\r\na=ts-refclk:ptp=IEEE1588-2008:08-00-11-FF-FE-21-E1-B0\r\n",
+                "type": "application/sdp"
+            }
+        }
+    },
+    {
+        "id": "7a3ebebe-0405-11e7-93ae-92361f002671",
+        "params"{
+            "master_enable": true,
+            "activation":{
+                "mode": "activate_scheduled_relative",
+                "requested_time": "2:0"
+            },
+            "transport_params": [{
+	        "rtp_enabled": true
+            }, {
+	        "rtp_enabled": true
+            }]
+        }
+    }
+]
+</code></pre></div></div><div class="tab-pane" id="bulk_receivers_post_response"><h2>HTTP status code <a href="http://httpstatus.es/200" target="_blank">200</a></h2><p>Gives the status of each of the individual receivers after the staging. Will be returned even if individual parameters in <code>params</code> did not validate. The response object provides the HTTP status code that would have been returned by each receiver had the request been carried out individually.</p><h3>Body</h3><p><strong>Media type</strong>: application/json</p><p><strong>Example</strong>:</p><div class="examples"><pre><code>[
+    {
+        "id": "0a174530-e3cf-11e6-bf01-fe55135034f3",
+        "code": 200
+    },
+    {
+        "id": "7a3ebebe-0405-11e7-93ae-92361f002671",
+        "code": 200
+    },
+    {
+        "id": "7a3ec21a-0405-11e7-93ae-92361f002671",
+        "code": 200
+    },
+    {
+        "id": "7a3ec3b4-0405-11e7-93ae-92361f002671",
+        "code": 400,
+        "error": "Un-recognised parameter &#39;frc_enabled&#39;",
+        "debug": "&lt;stack trace&gt;"
+    }
+]
+</code></pre></div><h2>HTTP status code <a href="http://httpstatus.es/400" target="_blank">400</a></h2><p>The body of the request did validate against the schema (ignoring the content of the <code>params</code> field - these are validated individually by each sender/receiver and failures are recorded in the response object for a 200 return).</p><h3>Body</h3><p><strong>Media type</strong>: application/json</p><p><strong>Example</strong>:</p><div class="examples"><pre><code>{
+    "code": 400,
+    "error": "Request contained invalid JSON",
+    "debug": "&lt;stack trace&gt;"
+}
+</code></pre></div></div></div></div></div></div></div></div></div></div></div><div class="panel panel-default"><div class="panel-heading"><h3 id="single" class="panel-title">Single control interface</h3></div><div class="panel-body"><div class="panel-group"><div class="panel panel-white resource-modal"><div class="panel-heading"><h4 class="panel-title"><a class="collapsed" data-toggle="collapse" href="#panel_single"><span class="parent"></span>/single</a> <span class="methods"><a href="#single_get"><span class="badge badge_get">get</span></a></span></h4></div><div id="panel_single" class="panel-collapse collapse"><div class="panel-body"><div class="list-group"><div onclick="window.location.href = '#single_get'" class="list-group-item"><span class="badge badge_get">get</span><div class="method_description"></div><div class="clearfix"></div></div></div></div></div><div class="modal fade" tabindex="0" id="single_get"><div class="modal-dialog modal-lg"><div class="modal-content"><div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button><h4 class="modal-title" id="myModalLabel"><span class="badge badge_get">get</span> <span class="parent"></span>/single</h4></div><div class="modal-body"><ul class="nav nav-tabs"><li class="active"><a href="#single_get_response" data-toggle="tab">Response</a></li></ul><div class="tab-content"><div class="tab-pane active" id="single_get_response"><h2>HTTP status code <a href="http://httpstatus.es/200" target="_blank">200</a></h2><h3>Body</h3><p><strong>Media type</strong>: application/json</p><p><strong>Type</strong>: object</p><p><strong>Example</strong>:</p><div class="examples"><pre><code>[
+    "senders/",
+    "receivers/"
+]
+</code></pre></div></div></div></div></div></div></div></div><div class="panel panel-white resource-modal"><div class="panel-heading"><h4 class="panel-title"><a class="collapsed" data-toggle="collapse" href="#panel_single_senders"><span class="parent">/single</span>/senders</a> <span class="methods"><a href="#single_senders_get"><span class="badge badge_get">get</span></a></span></h4></div><div id="panel_single_senders" class="panel-collapse collapse"><div class="panel-body"><div class="list-group"><div onclick="window.location.href = '#single_senders_get'" class="list-group-item"><span class="badge badge_get">get</span><div class="method_description"><p>Sender root</p></div><div class="clearfix"></div></div></div></div></div><div class="modal fade" tabindex="0" id="single_senders_get"><div class="modal-dialog modal-lg"><div class="modal-content"><div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button><h4 class="modal-title" id="myModalLabel"><span class="badge badge_get">get</span> <span class="parent">/single</span>/senders</h4></div><div class="modal-body"><div class="alert alert-info"><p>Sender root</p></div><ul class="nav nav-tabs"><li class="active"><a href="#single_senders_get_response" data-toggle="tab">Response</a></li></ul><div class="tab-content"><div class="tab-pane active" id="single_senders_get_response"><h2>HTTP status code <a href="http://httpstatus.es/200" target="_blank">200</a></h2><p>List Available Senders. All UUIDs are appended with / to indicate the ID forms part of the URL for the next layer down.</p><h3>Body</h3><p><strong>Media type</strong>: application/json</p><p><strong>Type</strong>: object</p><p><strong>Example</strong>:</p><div class="examples"><pre><code>[
+  "c72cca5b-01db-47aa-bb00-03893defbfae/",
+  "171d5c80-7fff-4c23-9383-46503eb1c63e/",
+  "a2655c48-8a46-4c82-b9bc-98760d59d7f8/"
+]
+</code></pre></div></div></div></div></div></div></div></div><div class="panel panel-white resource-modal"><div class="panel-heading"><h4 class="panel-title"><a class="collapsed" data-toggle="collapse" href="#panel_single_senders__senderid_"><span class="parent">/single/senders</span>/{senderId}</a> <span class="methods"><a href="#single_senders__senderid__get"><span class="badge badge_get">get</span></a></span></h4></div><div id="panel_single_senders__senderid_" class="panel-collapse collapse"><div class="panel-body"><div class="list-group"><div onclick="window.location.href = '#single_senders__senderid__get'" class="list-group-item"><span class="badge badge_get">get</span><div class="method_description"><p>List all the API endpoints for a single senders.</p></div><div class="clearfix"></div></div></div></div></div><div class="modal fade" tabindex="0" id="single_senders__senderid__get"><div class="modal-dialog modal-lg"><div class="modal-content"><div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button><h4 class="modal-title" id="myModalLabel"><span class="badge badge_get">get</span> <span class="parent">/single/senders</span>/{senderId}</h4></div><div class="modal-body"><div class="alert alert-info"><p>List all the API endpoints for a single senders.</p></div><ul class="nav nav-tabs"><li class="active"><a href="#single_senders__senderid__get_request" data-toggle="tab">Request</a></li><li><a href="#single_senders__senderid__get_response" data-toggle="tab">Response</a></li></ul><div class="tab-content"><div class="tab-pane active" id="single_senders__senderid__get_request"><h3>URI Parameters</h3><ul><li><strong>senderId</strong>: <em>required (string)</em></li></ul></div><div class="tab-pane" id="single_senders__senderid__get_response"><h2>HTTP status code <a href="http://httpstatus.es/200" target="_blank">200</a></h2><h3>Body</h3><p><strong>Media type</strong>: application/json</p><p><strong>Type</strong>: object</p><p><strong>Example</strong>:</p><div class="examples"><pre><code>[
+    "constraints/",
+    "staged/",
+    "active/",
+    "transportfile/"
+]
+</code></pre></div><h2>HTTP status code <a href="http://httpstatus.es/404" target="_blank">404</a></h2><p>Returned when the requested Sender ID does not exist.</p></div></div></div></div></div></div></div><div class="panel panel-white resource-modal"><div class="panel-heading"><h4 class="panel-title"><a class="collapsed" data-toggle="collapse" href="#panel_single_senders__senderid__constraints"><span class="parent">/single/senders/{senderId}</span>/constraints</a> <span class="methods"><a href="#single_senders__senderid__constraints_get"><span class="badge badge_get">get</span></a></span></h4></div><div id="panel_single_senders__senderid__constraints" class="panel-collapse collapse"><div class="panel-body"><div class="list-group"><div onclick="window.location.href = '#single_senders__senderid__constraints_get'" class="list-group-item"><span class="badge badge_get">get</span><div class="method_description"><p>Lists the constraints for each transport parameter (e.g max/min value, enumerated values etc.) using a very limited subset of JSON schema. Every transport parameter in the staged resource must be represented here. Any minimum/maximum constraints listed here must not allow a wider range of values than those allowed by the core schema. Any enum defined on this endpoint must only contain a subset of the values allowed for that parameter in the core schema. Similarly, pattern constraints must only narrow the allowed values. If the sender/receiver does not constrain parameters beyond what is specified in the core schema then the constraints in the core schema should not be duplicated on this endpoint. Where an "auto" mode is allowed in the core schema this mode must always be supported by the sender/receiver if the parameter is exposed. If SMPTE 2022-7 is in use, two entries are in the outer array of the resource. The first entry is the constraints for the primary leg. If SMPTE 2022-7 is not in use only one entry should be present in the outer array.</p></div><div class="clearfix"></div></div></div></div></div><div class="modal fade" tabindex="0" id="single_senders__senderid__constraints_get"><div class="modal-dialog modal-lg"><div class="modal-content"><div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button><h4 class="modal-title" id="myModalLabel"><span class="badge badge_get">get</span> <span class="parent">/single/senders/{senderId}</span>/constraints</h4></div><div class="modal-body"><div class="alert alert-info"><p>Lists the constraints for each transport parameter (e.g max/min value, enumerated values etc.) using a very limited subset of JSON schema. Every transport parameter in the staged resource must be represented here. Any minimum/maximum constraints listed here must not allow a wider range of values than those allowed by the core schema. Any enum defined on this endpoint must only contain a subset of the values allowed for that parameter in the core schema. Similarly, pattern constraints must only narrow the allowed values. If the sender/receiver does not constrain parameters beyond what is specified in the core schema then the constraints in the core schema should not be duplicated on this endpoint. Where an "auto" mode is allowed in the core schema this mode must always be supported by the sender/receiver if the parameter is exposed. If SMPTE 2022-7 is in use, two entries are in the outer array of the resource. The first entry is the constraints for the primary leg. If SMPTE 2022-7 is not in use only one entry should be present in the outer array.</p></div><ul class="nav nav-tabs"><li class="active"><a href="#single_senders__senderid__constraints_get_request" data-toggle="tab">Request</a></li><li><a href="#single_senders__senderid__constraints_get_response" data-toggle="tab">Response</a></li></ul><div class="tab-content"><div class="tab-pane active" id="single_senders__senderid__constraints_get_request"><h3>URI Parameters</h3><ul><li><strong>senderId</strong>: <em>required (string)</em></li></ul></div><div class="tab-pane" id="single_senders__senderid__constraints_get_response"><h2>HTTP status code <a href="http://httpstatus.es/200" target="_blank">200</a></h2><h3>Body</h3><p><strong>Media type</strong>: application/json</p><p><strong>Examples</strong>:</p><div class="examples"><p><strong>SMPTE2022-7</strong>:<br></p><pre><code>[
+  [
+    {
+      "parameter": "src_ip",
+      "enum": [
+        "192.168.7.2",
+        "192.168.8.5",
+        "2001:0db8:85a3:0000:0000:8a2e:0370:7334",
+        "2001:0db8:85a3:0000:0000:8a2e:0370:a24b"
+      ]
+    },
+    {
+      "parameter": "dest_ip"
+    },
+    {
+      "parameter": "src_port",
+      "maximum": 50000,
+      "minimum": 49151
+    },
+    {
+      "parameter": "dest_port",
+      "maximum": 50000,
+      "minimum": 49151
+    },
+    {
+      "parameter": "fec_enabled"
+    },
+    {
+      "parameter": "fec_dest_ip"
+    },
+    {
+      "parameter": "fec_type",
+      "enum": [
+        "XOR",
+        "Reed-Solomon"
+      ]
+    },
+    {
+      "parameter": "fec_mode",
+      "enum": [
+        "1D",
+        "2D"
+      ]
+    },
+    {
+      "parameter": "fec_block_width",
+      "minimum": 4,
+      "maximum": 200
+    },
+    {
+      "parameter": "fec_block_height",
+      "minimum": 4,
+      "maximum": 200
+    },
+    {
+      "parameter": "fec1D_dest_port",
+      "minimum": 5000,
+      "maximum": 49151
+    },
+    {
+      "parameter": "fec2D_dest_port",
+      "minimum": 5000,
+      "maximum": 49151
+    },
+    {
+      "parameter": "fec1D_src_port",
+      "minimum": 5000,
+      "maximum": 49151
+    },
+    {
+      "parameter": "fec2D_src_port",
+      "minimum": 5000,
+      "maximum": 49151
+    },
+    {
+      "parameter": "rtcp_enabled"
+    },
+    {
+      "parameter": "rtcp_dest_ip"
+    },
+    {
+      "parameter": "rtcp_dest_port",
+      "minimum": 5000,
+      "maximum": 49151
+    },
+    {
+      "parameter": "rtcp_src_port",
+      "minimum": 5000,
+      "maximum": 49151
+    },
+    {
+      "parameter": "rtp_enabled"
+    }
+  ],
+  [
+    {
+      "parameter": "src_ip",
+      "enum": [
+        "192.168.9.2",
+        "192.168.10.5",
+        "2001:0db8:85a3:0000:0000:8a2e:0370:2bb4",
+        "2001:0db8:85a3:0000:0000:8a2e:0370:433f"
+      ]
+    },
+    {
+      "parameter": "dest_ip"
+    },
+    {
+      "parameter": "src_port",
+      "maximum": 50000,
+      "minimum": 49151
+    },
+    {
+      "parameter": "dest_port",
+      "maximum": 50000,
+      "minimum": 49151
+    },
+    {
+      "parameter": "fec_enabled"
+    },
+    {
+      "parameter": "fec_dest_ip"
+    },
+    {
+      "parameter": "fec_type",
+      "enum": [
+        "XOR",
+        "Reed-Solomon"
+      ]
+    },
+    {
+      "parameter": "fec_mode",
+      "enum": [
+        "1D",
+        "2D"
+      ]
+    },
+    {
+      "parameter": "fec_block_width",
+      "minimum": 4,
+      "maximum": 200
+    },
+    {
+      "parameter": "fec_block_height",
+      "minimum": 4,
+      "maximum": 200
+    },
+    {
+      "parameter": "fec1D_dest_port",
+      "minimum": 5000,
+      "maximum": 49151
+    },
+    {
+      "parameter": "fec2D_dest_port",
+      "minimum": 5000,
+      "maximum": 49151
+    },
+    {
+      "parameter": "fec1D_src_port",
+      "minimum": 5000,
+      "maximum": 49151
+    },
+    {
+      "parameter": "fec2D_src_port",
+      "minimum": 5000,
+      "maximum": 49151
+    },
+    {
+      "parameter": "rtcp_enabled"
+    },
+    {
+      "parameter": "rtcp_dest_ip"
+    },
+    {
+      "parameter": "rtcp_dest_port",
+      "minimum": 5000,
+      "maximum": 49151
+    },
+    {
+      "parameter": "rtcp_src_port",
+      "minimum": 5000,
+      "maximum": 49151
+    },
+    {
+      "parameter": "rtp_enabled"
+    }
+  ]
+]
+</code></pre><p><strong>No2022-7</strong>:<br></p><pre><code>[
+  [
+    {
+      "parameter": "src_ip",
+      "enum": [
+        "192.168.7.2",
+        "192.168.8.5",
+        "2001:0db8:85a3:0000:0000:8a2e:0370:7334",
+        "2001:0db8:85a3:0000:0000:8a2e:0370:a24b"
+      ]
+    },
+    {
+      "parameter": "dest_ip"
+    },
+    {
+      "parameter": "src_port",
+      "maximum": 50000,
+      "minimum": 49151
+    },
+    {
+      "parameter": "dest_port",
+      "maximum": 50000,
+      "minimum": 49151
+    },
+    {
+      "parameter": "fec_enabled"
+    },
+    {
+      "parameter": "fec_dest_ip"
+    },
+    {
+      "parameter": "fec_type",
+      "enum": [
+        "XOR",
+        "Reed-Solomon"
+      ]
+    },
+    {
+      "parameter": "fec_mode",
+      "enum": [
+        "1D",
+        "2D"
+      ]
+    },
+    {
+      "parameter": "fec_block_width",
+      "minimum": 4,
+      "maximum": 200
+    },
+    {
+      "parameter": "fec_block_height",
+      "minimum": 4,
+      "maximum": 200
+    },
+    {
+      "parameter": "fec1D_dest_port",
+      "minimum": 5000,
+      "maximum": 49151
+    },
+    {
+      "parameter": "fec2D_dest_port",
+      "minimum": 5000,
+      "maximum": 49151
+    },
+    {
+      "parameter": "fec1D_src_port",
+      "minimum": 5000,
+      "maximum": 49151
+    },
+    {
+      "parameter": "fec2D_src_port",
+      "minimum": 5000,
+      "maximum": 49151
+    },
+    {
+      "parameter": "rtcp_enabled"
+    },
+    {
+      "parameter": "rtcp_dest_ip"
+    },
+    {
+      "parameter": "rtcp_dest_port",
+      "minimum": 5000,
+      "maximum": 49151
+    },
+    {
+      "parameter": "rtcp_src_port",
+      "minimum": 5000,
+      "maximum": 49151
+    },
+    {
+      "parameter": "rtp_enabled"
+    }
+  ]
+]
+</code></pre></div><h2>HTTP status code <a href="http://httpstatus.es/404" target="_blank">404</a></h2><p>Returned when the requested resource does not exist</p></div></div></div></div></div></div></div><div class="panel panel-white resource-modal"><div class="panel-heading"><h4 class="panel-title"><a class="collapsed" data-toggle="collapse" href="#panel_single_senders__senderid__staged"><span class="parent">/single/senders/{senderId}</span>/staged</a> <span class="methods"><a href="#single_senders__senderid__staged_get"><span class="badge badge_get">get</span></a> <a href="#single_senders__senderid__staged_patch"><span class="badge badge_patch">patch</span></a></span></h4></div><div id="panel_single_senders__senderid__staged" class="panel-collapse collapse"><div class="panel-body"><div class="list-group"><div onclick="window.location.href = '#single_senders__senderid__staged_get'" class="list-group-item"><span class="badge badge_get">get</span><div class="method_description"><p>Get staged receiver transport parameters object. In SMPTE 2022-7 operation element 0 of the <code>transport_params</code> array shall be the parameters applied to the primary leg, and element 1 the secondary leg. There shall only be one element present in <code>transport_params</code> when SMPTE 2022-7 is not in use. When the <code>master_enable</code> parameter is false the RTP sender should stop transmitting media and the <code>/transportfile</code> endpoint should return an HTTP 404 response.</p></div><div class="clearfix"></div></div><div onclick="window.location.href = '#single_senders__senderid__staged_patch'" class="list-group-item"><span class="badge badge_patch">patch</span><div class="method_description"><p>Update staged parameters for sender. Note that for activations the <code>mode</code> parameter will return to null once the activation is completed. In SMPTE 2022-7 operation element 0 of the <code>transport_params</code> array shall be the parameters applied to the primary leg, and element 1 the secondary leg. There shall only be one element present in <code>transport_params</code> when SMPTE 2022-7 is not in use.</p></div><div class="clearfix"></div></div></div></div></div><div class="modal fade" tabindex="0" id="single_senders__senderid__staged_get"><div class="modal-dialog modal-lg"><div class="modal-content"><div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button><h4 class="modal-title" id="myModalLabel"><span class="badge badge_get">get</span> <span class="parent">/single/senders/{senderId}</span>/staged</h4></div><div class="modal-body"><div class="alert alert-info"><p>Get staged receiver transport parameters object. In SMPTE 2022-7 operation element 0 of the <code>transport_params</code> array shall be the parameters applied to the primary leg, and element 1 the secondary leg. There shall only be one element present in <code>transport_params</code> when SMPTE 2022-7 is not in use. When the <code>master_enable</code> parameter is false the RTP sender should stop transmitting media and the <code>/transportfile</code> endpoint should return an HTTP 404 response.</p></div><ul class="nav nav-tabs"><li class="active"><a href="#single_senders__senderid__staged_get_request" data-toggle="tab">Request</a></li><li><a href="#single_senders__senderid__staged_get_response" data-toggle="tab">Response</a></li></ul><div class="tab-content"><div class="tab-pane active" id="single_senders__senderid__staged_get_request"><h3>URI Parameters</h3><ul><li><strong>senderId</strong>: <em>required (string)</em></li></ul></div><div class="tab-pane" id="single_senders__senderid__staged_get_response"><h2>HTTP status code <a href="http://httpstatus.es/200" target="_blank">200</a></h2><p>Additionally constrained by the constraints at /constraints</p><h3>Body</h3><p><strong>Media type</strong>: application/json</p><p><strong>Example</strong>:</p><div class="examples"><pre><code>{
+    "receiver_id": "0a174530-e3cf-11e6-bf01-fe55135034f3",
+    "master_enable": true,
+    "activation":{
+        "mode": null,
+        "requested_time": null
+    },
+    "transport_params": [{
+	"src_ip": "172.29.82.23",
+	"dest_ip": "172.29.82.95",
+	"src_port": 5000,
+	"dest_port": 5000,
+        "fec_enabled": true,
+        "fec_dest_ip": "auto",
+	"fec_type": "XOR",
+	"fec_mode": "2D",
+	"fec_block_width": 50,
+	"fec_block_height": 50,
+	"fec1D_dest_port": "auto",
+	"fec2D_dest_port": "auto",
+	"fec1D_src_port": 5010,
+        "fec2D_src_port": 5012,
+	"rtcp_enabled": true,
+	"rtcp_dest_ip": "172.29.82.24",
+	"rtcp_dest_port": 5008,
+	"rtcp_src_port": 5008,
+	"rtp_enabled": true
+    }, {
+	"src_ip": "172.30.82.23",
+	"dest_ip": "172.30.82.95",
+	"src_port": 5000,
+	"dest_port": 5000,
+        "fec_enabled": true,
+        "fec_dest_ip": "auto",
+	"fec_type": "XOR",
+	"fec_mode": "2D",
+	"fec_block_width": 50,
+	"fec_block_height": 50,
+	"fec1D_dest_port": "auto",
+	"fec2D_dest_port": "auto",
+	"fec1D_src_port": 5010,
+        "fec2D_src_port": 5012,
+	"rtcp_enabled": true,
+	"rtcp_dest_ip": "172.30.82.24",
+	"rtcp_dest_port": 5008,
+	"rtcp_src_port": 5008,
+	"rtp_enabled": true
+    }]
+}
+</code></pre></div><h2>HTTP status code <a href="http://httpstatus.es/404" target="_blank">404</a></h2><p>Returned when the requested resource does not exist</p></div></div></div></div></div></div><div class="modal fade" tabindex="0" id="single_senders__senderid__staged_patch"><div class="modal-dialog modal-lg"><div class="modal-content"><div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button><h4 class="modal-title" id="myModalLabel"><span class="badge badge_patch">patch</span> <span class="parent">/single/senders/{senderId}</span>/staged</h4></div><div class="modal-body"><div class="alert alert-info"><p>Update staged parameters for sender. Note that for activations the <code>mode</code> parameter will return to null once the activation is completed. In SMPTE 2022-7 operation element 0 of the <code>transport_params</code> array shall be the parameters applied to the primary leg, and element 1 the secondary leg. There shall only be one element present in <code>transport_params</code> when SMPTE 2022-7 is not in use.</p></div><ul class="nav nav-tabs"><li class="active"><a href="#single_senders__senderid__staged_patch_request" data-toggle="tab">Request</a></li><li><a href="#single_senders__senderid__staged_patch_response" data-toggle="tab">Response</a></li></ul><div class="tab-content"><div class="tab-pane active" id="single_senders__senderid__staged_patch_request"><h3>URI Parameters</h3><ul><li><strong>senderId</strong>: <em>required (string)</em></li></ul><h3>Body</h3><p><strong>Media type</strong>: application/json</p><p><strong>Examples</strong>:</p><div class="examples"><p><strong>immediate-activation</strong>:<br></p><pre><code>{
+    "receiver_id": "0b174530-e3cf-41e6-bf01-fe55135034f3",
+    "master_enable": true,
+    "activation":{
+        "mode": "activate_immediate",
+        "requested_time": null
+    },
+    "transport_params": [{
+	"rtcp_enabled": false,
+	"rtcp_src_port": 5010
+    },{
+	"rtcp_enabled": false,
+	"rtcp_src_port": 5010
+    }]
+}
+</code></pre><p><strong>relative-scheduled-activation</strong>:<br></p><pre><code>{
+    "receiver_id": "0b174530-e3cf-41e6-bf01-fe55135034f3",
+    "master_enable": true,
+    "activation":{
+        "mode": "activate_scheduled_relative",
+        "requested_time": "2:0"
+    },
+    "transport_params": [{
+	"rtcp_enabled": false,
+	"rtcp_src_port": 5010
+    },{
+	"rtcp_enabled": false,
+	"rtcp_src_port": 5010
+    }]
+}
+</code></pre><p><strong>absolute-scheduled-activation</strong>:<br></p><pre><code>{
+    "receiver_id": "0b174530-e3cf-41e6-bf01-fe55135034f3",
+    "master_enable": true,
+    "activation":{
+        "mode": "activate_scheduled_absolute",
+        "requested_time": "1496759200:0"
+    },
+    "transport_params": [{
+	"rtcp_enabled": false,
+	"rtcp_src_port": 5010
+    },{
+	"rtcp_enabled": false,
+	"rtcp_src_port": 5010
+    }]
+}
+</code></pre></div></div><div class="tab-pane" id="single_senders__senderid__staged_patch_response"><h2>HTTP status code <a href="http://httpstatus.es/200" target="_blank">200</a></h2><p>A 200 response is returned for PATCH requests where no activation has been scheduled, an activation has been cancelled, or an immediate activation has been requested. The response will always contain the full set of parameters in the response schema, and all supported transport parameters. For a request with an immediate activation the API should only return a response once the activation has completed. Note the presence of the extra <code>scheduled_time</code> parameter in the response. For immediate activation this should be the time the activation actually occurred as an absolute TAI timestamp. If no activation was requested in the PATCH <code>scheduled_time</code> will be set <code>null</code>. When the <code>master_enable</code> parameter is false senders should not transmit any media streams. For RTP senders the <code>rtp_enable</code> parameter allows for the individual disabling of SMPTE 2022-7 legs.</p><h3>Body</h3><p><strong>Media type</strong>: application/json</p><p><strong>Example</strong>:</p><div class="examples"><p><strong>immediate-activation</strong>:<br></p><pre><code>{
+    "receiver_id": "0a174530-e3cf-11e6-bf01-fe55135034f3",
+    "activation":{
+        "mode": "activate_immediate",
+        "requested_time": null,
+        "scheduled_time": "1496759200:0"
+    },
+    "transport_params": [{
+	"src_ip": "172.29.82.23",
+	"dest_ip": "172.29.82.95",
+	"src_port": 5000,
+	"dest_port": 5000,
+        "fec_enabled": true,
+	"fec_type": "XOR",
+	"fec_mode": "2D",
+	"fec_block_width": 50,
+	"fec_block_height": 50,
+	"fec1D_dest_port": "auto",
+	"fec2D_dest_port": "auto",
+	"fec1D_src_port": 5010,
+        "fec2D_src_port": 5012,
+	"rtcp_enabled": true,
+	"rtcp_dest_ip": "172.29.82.24",
+	"rtcp_dest_port": 5008,
+	"rtcp_src_port": 5008,
+	"rtp_enabled": true
+    }, {
+	"src_ip": "172.30.82.23",
+	"dest_ip": "172.30.82.95",
+	"src_port": 5000,
+	"dest_port": 5000,
+        "fec_enabled": true,
+	"fec_type": "XOR",
+	"fec_mode": "2D",
+	"fec_block_width": 50,
+	"fec_block_height": 50,
+	"fec1D_dest_port": "auto",
+	"fec2D_dest_port": "auto",
+	"fec1D_src_port": 5010,
+        "fec2D_src_port": 5012,
+	"rtcp_enabled": true,
+	"rtcp_dest_ip": "172.30.82.24",
+	"rtcp_dest_port": 5008,
+	"rtcp_src_port": 5008,
+	"rtp_enabled": true
+    }]
+}
+</code></pre></div><h2>HTTP status code <a href="http://httpstatus.es/202" target="_blank">202</a></h2><p>A 202 response is returned when a request for a scheduled activation is accepted, to indicate that while the request itself was acceptable it has not yet been acted upon by the sender. For scheduled activations <code>scheduled_time</code> should be the absolute TAI time the parameters will actually transition. For absolute scheduled activations should be the same as the requested time, but may differ if the sender is unable to schedule at the requested time. This may be because the transition may only occur, for example, at a frame boundary or end of GOP. In all other ways this response behaves identically to a 200 response.</p><h3>Body</h3><p><strong>Media type</strong>: application/json</p><p><strong>Examples</strong>:</p><div class="examples"><p><strong>relative-scheduled-activation</strong>:<br></p><pre><code>{
+    "receiver_id": "0a174530-e3cf-11e6-bf01-fe55135034f3",
+    "activation":{
+        "mode": "activate_scheduled_relative",
+        "requested_time": "2:0",
+        "scheduled_time": "1496759200:0"
+    },
+    "transport_params": [{
+	"src_ip": "172.29.82.23",
+	"dest_ip": "172.29.82.95",
+	"src_port": 5000,
+	"dest_port": 5000,
+        "fec_enabled": true,
+	"fec_type": "XOR",
+	"fec_mode": "2D",
+	"fec_block_width": 50,
+	"fec_block_height": 50,
+	"fec1D_dest_port": "auto",
+	"fec2D_dest_port": "auto",
+	"fec1D_src_port": 5010,
+        "fec2D_src_port": 5012,
+	"rtcp_enabled": true,
+	"rtcp_dest_ip": "172.29.82.24",
+	"rtcp_dest_port": 5008,
+	"rtcp_src_port": 5008,
+	"rtp_enabled": true
+    }, {
+	"src_ip": "172.30.82.23",
+	"dest_ip": "172.30.82.95",
+	"src_port": 5000,
+	"dest_port": 5000,
+        "fec_enabled": true,
+	"fec_type": "XOR",
+	"fec_mode": "2D",
+	"fec_block_width": 50,
+	"fec_block_height": 50,
+	"fec1D_dest_port": "auto",
+	"fec2D_dest_port": "auto",
+	"fec1D_src_port": 5010,
+        "fec2D_src_port": 5012,
+	"rtcp_enabled": true,
+	"rtcp_dest_ip": "172.30.82.24",
+	"rtcp_dest_port": 5008,
+	"rtcp_src_port": 5008,
+	"rtp_enabled": true
+    }]
+}
+</code></pre><p><strong>absolute-scheduled-activation</strong>:<br></p><pre><code>{
+    "receiver_id": "0a174530-e3cf-11e6-bf01-fe55135034f3",
+    "activation":{
+        "mode": "activate_scheduled_relative",
+        "requested_time": "1496759200:0",
+        "scheduled_time": "1496759200:5000"
+    },
+    "transport_params": [{
+	"src_ip": "172.29.82.23",
+	"dest_ip": "172.29.82.95",
+	"src_port": 5000,
+	"dest_port": 5000,
+        "fec_enabled": true,
+	"fec_type": "XOR",
+	"fec_mode": "2D",
+	"fec_block_width": 50,
+	"fec_block_height": 50,
+	"fec1D_dest_port": "auto",
+	"fec2D_dest_port": "auto",
+	"fec1D_src_port": 5010,
+        "fec2D_src_port": 5012,
+	"rtcp_enabled": true,
+	"rtcp_dest_ip": "172.29.82.24",
+	"rtcp_dest_port": 5008,
+	"rtcp_src_port": 5008,
+	"rtp_enabled": true
+    }, {
+	"src_ip": "172.30.82.23",
+	"dest_ip": "172.30.82.95",
+	"src_port": 5000,
+	"dest_port": 5000,
+        "fec_enabled": true,
+	"fec_type": "XOR",
+	"fec_mode": "2D",
+	"fec_block_width": 50,
+	"fec_block_height": 50,
+	"fec1D_dest_port": "auto",
+	"fec2D_dest_port": "auto",
+	"fec1D_src_port": 5010,
+        "fec2D_src_port": 5012,
+	"rtcp_enabled": true,
+	"rtcp_dest_ip": "172.30.82.24",
+	"rtcp_dest_port": 5008,
+	"rtcp_src_port": 5008,
+	"rtp_enabled": true
+    }]
+}
+</code></pre></div><h2>HTTP status code <a href="http://httpstatus.es/400" target="_blank">400</a></h2><p>A 400 response is returned when the request did not meet the schema and constraints.</p><h3>Body</h3><p><strong>Media type</strong>: application/json</p><p><strong>Example</strong>:</p><div class="examples"><pre><code>{
+    "code": 400,
+    "error":"`src_ip` must be a valid IPv4 or IPv6 address",
+    "debug": null
+}
+</code></pre></div><h2>HTTP status code <a href="http://httpstatus.es/404" target="_blank">404</a></h2><p>Returned when the requested resource does not exist</p><h2>HTTP status code <a href="http://httpstatus.es/423" target="_blank">423</a></h2><p>Returned when the resource is locked because an activation has been scheduled. A resource may be unlocked by setting <code>mode</code> in <code>activation</code> to <code>null</code>, which will cancel the pending activation. This may be done in the same request as a change to other parameters.</p><h2>HTTP status code <a href="http://httpstatus.es/500" target="_blank">500</a></h2><p>A 500 response may be returned if the transport file could not be parsed, or there is some failure caused by activation which was not caused by a violation or schema or constraints.</p><h3>Body</h3><p><strong>Media type</strong>: application/json</p><p><strong>Example</strong>:</p><div class="examples"><pre><code>{
+    "code": 500,
+    "error":"Could not establish link to hardware",
+    "debug": null
+}
+</code></pre></div></div></div></div></div></div></div></div><div class="panel panel-white resource-modal"><div class="panel-heading"><h4 class="panel-title"><a class="collapsed" data-toggle="collapse" href="#panel_single_senders__senderid__active"><span class="parent">/single/senders/{senderId}</span>/active</a> <span class="methods"><a href="#single_senders__senderid__active_get"><span class="badge badge_get">get</span></a></span></h4></div><div id="panel_single_senders__senderid__active" class="panel-collapse collapse"><div class="panel-body"><div class="list-group"><div onclick="window.location.href = '#single_senders__senderid__active_get'" class="list-group-item"><span class="badge badge_get">get</span><div class="method_description"><p>Get active sender parameters</p></div><div class="clearfix"></div></div></div></div></div><div class="modal fade" tabindex="0" id="single_senders__senderid__active_get"><div class="modal-dialog modal-lg"><div class="modal-content"><div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button><h4 class="modal-title" id="myModalLabel"><span class="badge badge_get">get</span> <span class="parent">/single/senders/{senderId}</span>/active</h4></div><div class="modal-body"><div class="alert alert-info"><p>Get active sender parameters</p></div><ul class="nav nav-tabs"><li class="active"><a href="#single_senders__senderid__active_get_request" data-toggle="tab">Request</a></li><li><a href="#single_senders__senderid__active_get_response" data-toggle="tab">Response</a></li></ul><div class="tab-content"><div class="tab-pane active" id="single_senders__senderid__active_get_request"><h3>URI Parameters</h3><ul><li><strong>senderId</strong>: <em>required (string)</em></li></ul></div><div class="tab-pane" id="single_senders__senderid__active_get_response"><h2>HTTP status code <a href="http://httpstatus.es/200" target="_blank">200</a></h2><h3>Body</h3><p><strong>Media type</strong>: application/json</p><p><strong>Example</strong>:</p><div class="examples"><pre><code>{
+    "receiver_id": "0a174530-e3cf-11e6-bf01-fe55135034f3",
+    "master_enable": true,
+    "activation":{
+        "mode": "activate_immediate",
+        "activation_time": "1496759200:0"
+    },
+    "transport_params": [{
+	"src_ip": "172.29.82.23",
+	"dest_ip": "172.29.82.95",
+	"src_port": 5000,
+	"dest_port": 5000,
+        "fec_enabled": true,
+        "fec_dest_ip": "auto",
+	"fec_type": "XOR",
+	"fec_mode": "2D",
+	"fec_block_width": 50,
+	"fec_block_height": 50,
+	"fec1D_dest_port": "auto",
+	"fec2D_dest_port": "auto",
+	"fec1D_src_port": 5010,
+        "fec2D_src_port": 5012,
+	"rtcp_enabled": true,
+	"rtcp_dest_ip": "172.29.82.24",
+	"rtcp_dest_port": 5008,
+	"rtcp_src_port": 5008,
+	"rtp_enabled": true
+    }, {
+	"src_ip": "172.30.82.23",
+	"dest_ip": "172.30.82.95",
+	"src_port": 5000,
+	"dest_port": 5000,
+        "fec_enabled": true,
+        "fec_dest_ip": "auto",
+	"fec_type": "XOR",
+	"fec_mode": "2D",
+	"fec_block_width": 50,
+	"fec_block_height": 50,
+	"fec1D_dest_port": "auto",
+	"fec2D_dest_port": "auto",
+	"fec1D_src_port": 5010,
+        "fec2D_src_port": 5012,
+	"rtcp_enabled": true,
+	"rtcp_dest_ip": "172.30.82.24",
+	"rtcp_dest_port": 5008,
+	"rtcp_src_port": 5008,
+	"rtp_enabled": true
+    }]
+}
+</code></pre></div><h2>HTTP status code <a href="http://httpstatus.es/404" target="_blank">404</a></h2><p>Returned when the requested resource does not exist</p></div></div></div></div></div></div></div><div class="panel panel-white resource-modal"><div class="panel-heading"><h4 class="panel-title"><a class="collapsed" data-toggle="collapse" href="#panel_single_senders__senderid__transportfile"><span class="parent">/single/senders/{senderId}</span>/transportfile</a> <span class="methods"><a href="#single_senders__senderid__transportfile_get"><span class="badge badge_get">get</span></a></span></h4></div><div id="panel_single_senders__senderid__transportfile" class="panel-collapse collapse"><div class="panel-body"><div class="list-group"><div onclick="window.location.href = '#single_senders__senderid__transportfile_get'" class="list-group-item"><span class="badge badge_get">get</span><div class="method_description"><p>Redirects to the location of the sender&#39;s transport file or returns the transport file directly. Check HTTP response code to determine which mode of operation is in use. When returning the transport file directly ensure that the <code>Content-Type</code> entity header is correctly set.</p></div><div class="clearfix"></div></div></div></div></div><div class="modal fade" tabindex="0" id="single_senders__senderid__transportfile_get"><div class="modal-dialog modal-lg"><div class="modal-content"><div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button><h4 class="modal-title" id="myModalLabel"><span class="badge badge_get">get</span> <span class="parent">/single/senders/{senderId}</span>/transportfile</h4></div><div class="modal-body"><div class="alert alert-info"><p>Redirects to the location of the sender&#39;s transport file or returns the transport file directly. Check HTTP response code to determine which mode of operation is in use. When returning the transport file directly ensure that the <code>Content-Type</code> entity header is correctly set.</p></div><ul class="nav nav-tabs"><li class="active"><a href="#single_senders__senderid__transportfile_get_request" data-toggle="tab">Request</a></li><li><a href="#single_senders__senderid__transportfile_get_response" data-toggle="tab">Response</a></li></ul><div class="tab-content"><div class="tab-pane active" id="single_senders__senderid__transportfile_get_request"><h3>URI Parameters</h3><ul><li><strong>senderId</strong>: <em>required (string)</em></li></ul></div><div class="tab-pane" id="single_senders__senderid__transportfile_get_response"><h2>HTTP status code <a href="http://httpstatus.es/200" target="_blank">200</a></h2><p>The transport file itself will be served</p><h2>HTTP status code <a href="http://httpstatus.es/307" target="_blank">307</a></h2><p>A temporary redirect to the transport file</p><h2>HTTP status code <a href="http://httpstatus.es/404" target="_blank">404</a></h2><h3>Body</h3><p><strong>Media type</strong>: application/json</p><p><strong>Type</strong>: object</p></div></div></div></div></div></div></div><div class="panel panel-white resource-modal"><div class="panel-heading"><h4 class="panel-title"><a class="collapsed" data-toggle="collapse" href="#panel_single_receivers"><span class="parent">/single</span>/receivers</a> <span class="methods"><a href="#single_receivers_get"><span class="badge badge_get">get</span></a></span></h4></div><div id="panel_single_receivers" class="panel-collapse collapse"><div class="panel-body"><div class="list-group"><div onclick="window.location.href = '#single_receivers_get'" class="list-group-item"><span class="badge badge_get">get</span><div class="method_description"><p>List available receivers. All UUIDs are appended with / to indicate the ID forms part of the URL for the next layer down.</p></div><div class="clearfix"></div></div></div></div></div><div class="modal fade" tabindex="0" id="single_receivers_get"><div class="modal-dialog modal-lg"><div class="modal-content"><div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button><h4 class="modal-title" id="myModalLabel"><span class="badge badge_get">get</span> <span class="parent">/single</span>/receivers</h4></div><div class="modal-body"><div class="alert alert-info"><p>List available receivers. All UUIDs are appended with / to indicate the ID forms part of the URL for the next layer down.</p></div><ul class="nav nav-tabs"><li class="active"><a href="#single_receivers_get_response" data-toggle="tab">Response</a></li></ul><div class="tab-content"><div class="tab-pane active" id="single_receivers_get_response"><h2>HTTP status code <a href="http://httpstatus.es/200" target="_blank">200</a></h2><h3>Body</h3><p><strong>Media type</strong>: application/json</p><p><strong>Type</strong>: object</p><p><strong>Example</strong>:</p><div class="examples"><pre><code>[
+  "c72cca5b-01db-47aa-bb00-03893defbfae/",
+  "171d5c80-7fff-4c23-9383-46503eb1c63e/",
+  "a2655c48-8a46-4c82-b9bc-98760d59d7f8/"
+]
+</code></pre></div></div></div></div></div></div></div></div><div class="panel panel-white resource-modal"><div class="panel-heading"><h4 class="panel-title"><a class="collapsed" data-toggle="collapse" href="#panel_single_receivers__receiverid_"><span class="parent">/single/receivers</span>/{receiverId}</a> <span class="methods"><a href="#single_receivers__receiverid__get"><span class="badge badge_get">get</span></a></span></h4></div><div id="panel_single_receivers__receiverid_" class="panel-collapse collapse"><div class="panel-body"><div class="list-group"><div onclick="window.location.href = '#single_receivers__receiverid__get'" class="list-group-item"><span class="badge badge_get">get</span><div class="method_description"><p>List API endpoints</p></div><div class="clearfix"></div></div></div></div></div><div class="modal fade" tabindex="0" id="single_receivers__receiverid__get"><div class="modal-dialog modal-lg"><div class="modal-content"><div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button><h4 class="modal-title" id="myModalLabel"><span class="badge badge_get">get</span> <span class="parent">/single/receivers</span>/{receiverId}</h4></div><div class="modal-body"><div class="alert alert-info"><p>List API endpoints</p></div><ul class="nav nav-tabs"><li class="active"><a href="#single_receivers__receiverid__get_request" data-toggle="tab">Request</a></li><li><a href="#single_receivers__receiverid__get_response" data-toggle="tab">Response</a></li></ul><div class="tab-content"><div class="tab-pane active" id="single_receivers__receiverid__get_request"><h3>URI Parameters</h3><ul><li><strong>receiverId</strong>: <em>required (string)</em></li></ul></div><div class="tab-pane" id="single_receivers__receiverid__get_response"><h2>HTTP status code <a href="http://httpstatus.es/200" target="_blank">200</a></h2><h3>Body</h3><p><strong>Media type</strong>: application/json</p><p><strong>Type</strong>: object</p><p><strong>Example</strong>:</p><div class="examples"><pre><code>[
+    "constraints/",
+    "staged/",
+    "active/"
+]
+</code></pre></div><h2>HTTP status code <a href="http://httpstatus.es/404" target="_blank">404</a></h2><p>Returned when the requested resource does not exist</p></div></div></div></div></div></div></div><div class="panel panel-white resource-modal"><div class="panel-heading"><h4 class="panel-title"><a class="collapsed" data-toggle="collapse" href="#panel_single_receivers__receiverid__constraints"><span class="parent">/single/receivers/{receiverId}</span>/constraints</a> <span class="methods"><a href="#single_receivers__receiverid__constraints_get"><span class="badge badge_get">get</span></a></span></h4></div><div id="panel_single_receivers__receiverid__constraints" class="panel-collapse collapse"><div class="panel-body"><div class="list-group"><div onclick="window.location.href = '#single_receivers__receiverid__constraints_get'" class="list-group-item"><span class="badge badge_get">get</span><div class="method_description"><p>Lists the constraints for each transport parameter (e.g max/min value, enumerated values etc.) using a very limited subset of JSON schema. Every transport parameter in the staged resource must be represented here. Any minimum/maximum constraints listed here must not allow a wider range of values than those allowed by the core schema. Any enum defined on this endpoint must only contain a subset of the values allowed for that parameter in the core schema. Similarly, pattern constraints must only narrow the allowed values. If the sender/receiver does not constrain parameters beyond what is specified in the core schema then the constraints in the core schema should not be duplicated on this endpoint. Where an "auto" mode is allowed in the core schema this mode must always be supported by the sender/receiver if the parameter is exposed. If SMPTE 2022-7 is in use, two entries are in the outer array of the resource. The first entry is the constraints for the primary leg. If SMPTE 2022-7 is not in use only one entry should be present in the outer array.</p></div><div class="clearfix"></div></div></div></div></div><div class="modal fade" tabindex="0" id="single_receivers__receiverid__constraints_get"><div class="modal-dialog modal-lg"><div class="modal-content"><div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button><h4 class="modal-title" id="myModalLabel"><span class="badge badge_get">get</span> <span class="parent">/single/receivers/{receiverId}</span>/constraints</h4></div><div class="modal-body"><div class="alert alert-info"><p>Lists the constraints for each transport parameter (e.g max/min value, enumerated values etc.) using a very limited subset of JSON schema. Every transport parameter in the staged resource must be represented here. Any minimum/maximum constraints listed here must not allow a wider range of values than those allowed by the core schema. Any enum defined on this endpoint must only contain a subset of the values allowed for that parameter in the core schema. Similarly, pattern constraints must only narrow the allowed values. If the sender/receiver does not constrain parameters beyond what is specified in the core schema then the constraints in the core schema should not be duplicated on this endpoint. Where an "auto" mode is allowed in the core schema this mode must always be supported by the sender/receiver if the parameter is exposed. If SMPTE 2022-7 is in use, two entries are in the outer array of the resource. The first entry is the constraints for the primary leg. If SMPTE 2022-7 is not in use only one entry should be present in the outer array.</p></div><ul class="nav nav-tabs"><li class="active"><a href="#single_receivers__receiverid__constraints_get_request" data-toggle="tab">Request</a></li><li><a href="#single_receivers__receiverid__constraints_get_response" data-toggle="tab">Response</a></li></ul><div class="tab-content"><div class="tab-pane active" id="single_receivers__receiverid__constraints_get_request"><h3>URI Parameters</h3><ul><li><strong>receiverId</strong>: <em>required (string)</em></li></ul></div><div class="tab-pane" id="single_receivers__receiverid__constraints_get_response"><h2>HTTP status code <a href="http://httpstatus.es/200" target="_blank">200</a></h2><h3>Body</h3><p><strong>Media type</strong>: application/json</p><p><strong>Examples</strong>:</p><div class="examples"><p><strong>SMPTE2022-7</strong>:<br></p><pre><code>[
+  [
+    {
+      "parameter": "src_ip"
+    },
+    {
+      "parameter": "multicast_group"
+    },
+    {
+      "parameter": "interface_ip",
+      "enum": [
+        "192.168.7.2",
+        "192.168.8.5",
+        "2001:0db8:85a3:0000:0000:8a2e:0370:7334",
+        "2001:0db8:85a3:0000:0000:8a2e:0370:a24b"
+      ]
+    },
+    {
+      "parameter": "dest_port",
+      "maximum": 50000,
+      "minimum": 49151
+    },
+    {
+      "parameter": "fec_enabled"
+    },
+    {
+      "parameter": "fec_dest_ip"
+    },
+    {
+      "parameter": "fec_type",
+      "enum": [
+        "XOR",
+        "Reed-Solomon"
+      ]
+    },
+    {
+      "parameter": "fec_mode",
+      "enum": [
+        "1D",
+        "2D"
+      ]
+    },
+    {
+      "parameter": "fec_block_width",
+      "minimum": 4,
+      "maximum": 200
+    },
+    {
+      "parameter": "fec_block_height",
+      "minimum": 4,
+      "maximum": 200
+    },
+    {
+      "parameter": "fec1D_dest_port",
+      "minimum": 5000,
+      "maximum": 49151
+    },
+    {
+      "parameter": "fec2D_dest_port",
+      "minimum": 5000,
+      "maximum": 49151
+    },
+    {
+      "parameter": "rtcp_enabled"
+    },
+    {
+      "parameter": "rtcp_dest_ip"
+    },
+    {
+      "parameter": "rtcp_dest_port",
+      "minimum": 5000,
+      "maximum": 49151
+    },
+    {
+      "parameter": "rtp_enabled"
+    }
+  ],
+  [
+    {
+      "parameter": "src_ip"
+    },
+    {
+      "parameter": "multicast_group"
+    },
+    {
+      "parameter": "interface_ip",
+      "enum": [
+        "192.168.7.2",
+        "192.168.8.5",
+        "2001:0db8:85a3:0000:0000:8a2e:0370:7334",
+        "2001:0db8:85a3:0000:0000:8a2e:0370:a24b"
+      ]
+    },
+    {
+      "parameter": "dest_port",
+      "maximum": 50000,
+      "minimum": 49151
+    },
+    {
+      "parameter": "fec_enabled"
+    },
+    {
+      "parameter": "fec_dest_ip"
+    },
+    {
+      "parameter": "fec_type",
+      "enum": [
+        "XOR",
+        "Reed-Solomon"
+      ]
+    },
+    {
+      "parameter": "fec_mode",
+      "enum": [
+        "1D",
+        "2D"
+      ]
+    },
+    {
+      "parameter": "fec_block_width",
+      "minimum": 4,
+      "maximum": 200
+    },
+    {
+      "parameter": "fec_block_height",
+      "minimum": 4,
+      "maximum": 200
+    },
+    {
+      "parameter": "fec1D_dest_port",
+      "minimum": 5000,
+      "maximum": 49151
+    },
+    {
+      "parameter": "fec2D_dest_port",
+      "minimum": 5000,
+      "maximum": 49151
+    },
+    {
+      "parameter": "rtcp_enabled"
+    },
+    {
+      "parameter": "rtcp_dest_ip"
+    },
+    {
+      "parameter": "rtcp_dest_port",
+      "minimum": 5000,
+      "maximum": 49151
+    },
+    {
+      "parameter": "rtp_enabled"
+    }
+  ]
+]
+</code></pre><p><strong>No2022-7</strong>:<br></p><pre><code>[
+  [
+    {
+      "parameter": "src_ip"
+    },
+    {
+      "parameter": "multicast_group"
+    },
+    {
+      "parameter": "interface_ip",
+      "enum": [
+        "192.168.7.2",
+        "192.168.8.5",
+        "2001:0db8:85a3:0000:0000:8a2e:0370:7334",
+        "2001:0db8:85a3:0000:0000:8a2e:0370:a24b"
+      ]
+    },
+    {
+      "parameter": "dest_port",
+      "maximum": 50000,
+      "minimum": 49151
+    },
+    {
+      "parameter": "fec_enabled"
+    },
+    {
+      "parameter": "fec_dest_ip"
+    },
+    {
+      "parameter": "fec_type",
+      "enum": [
+        "XOR",
+        "Reed-Solomon"
+      ]
+    },
+    {
+      "parameter": "fec_mode",
+      "enum": [
+        "1D",
+        "2D"
+      ]
+    },
+    {
+      "parameter": "fec_block_width",
+      "minimum": 4,
+      "maximum": 200
+    },
+    {
+      "parameter": "fec_block_height",
+      "minimum": 4,
+      "maximum": 200
+    },
+    {
+      "parameter": "fec1D_dest_port",
+      "minimum": 5000,
+      "maximum": 49151
+    },
+    {
+      "parameter": "fec2D_dest_port",
+      "minimum": 5000,
+      "maximum": 49151
+    },
+    {
+      "parameter": "rtcp_enabled"
+    },
+    {
+      "parameter": "rtcp_dest_ip"
+    },
+    {
+      "parameter": "rtcp_dest_port",
+      "minimum": 5000,
+      "maximum": 49151
+    },
+    {
+      "parameter": "rtp_enabled"
+    }
+  ]
+]
+</code></pre></div><h2>HTTP status code <a href="http://httpstatus.es/404" target="_blank">404</a></h2><p>Returned when the requested resource does not exist</p></div></div></div></div></div></div></div><div class="panel panel-white resource-modal"><div class="panel-heading"><h4 class="panel-title"><a class="collapsed" data-toggle="collapse" href="#panel_single_receivers__receiverid__staged"><span class="parent">/single/receivers/{receiverId}</span>/staged</a> <span class="methods"><a href="#single_receivers__receiverid__staged_get"><span class="badge badge_get">get</span></a> <a href="#single_receivers__receiverid__staged_patch"><span class="badge badge_patch">patch</span></a></span></h4></div><div id="panel_single_receivers__receiverid__staged" class="panel-collapse collapse"><div class="panel-body"><div class="list-group"><div onclick="window.location.href = '#single_receivers__receiverid__staged_get'" class="list-group-item"><span class="badge badge_get">get</span><div class="method_description"><p>Get staged receiver transport parameters object. In SMPTE 2022-7 operation element 0 of the <code>transport_params</code> array shall be the parameters applied to the primary leg, and element 1 the secondary leg. There shall only be one element present in <code>transport_params</code> when SMPTE 2022-7 is not in use.</p></div><div class="clearfix"></div></div><div onclick="window.location.href = '#single_receivers__receiverid__staged_patch'" class="list-group-item"><span class="badge badge_patch">patch</span><div class="method_description"><p>Update staged parameters for receiver. Note that for activations the <code>mode</code> parameter will return to null once the activation is completed. When a transport file is staged the parameters in that transport file should be propagated to their coresponding transport parameters and the response should show these updated values. On activation the value of the entries in <code>transport_parameters</code> must be used to program the receiver, not those in the transport file directly. However while the transport file is still present (i.e <code>data</code> is not null) media parameters in the transport file should be applied to the RTP receiver. Setting <code>data</code> to null has no impact on the <code>transport_parameters</code> array, or any other property. Where a transport file has been staged the transport parameters in the response will reflect the new values assigned to them by the transport file. The transport parameters should be updated from the transport file in <code>data</code> on every PATCH request that includes the <code>data</code> field. Even if the value of <code>data</code> in the request matches the value of <code>data</code> currently stored in the API the transport parameters are still re-populated. In SMPTE 2022-7 operation element 0 of the <code>transport_params</code> array shall be the parameters applied to the primary leg, and element 1 the secondary leg. There shall only be one element present in <code>transport_params</code> when SMPTE 2022-7 is not in use. When the <code>master_enable</code> parameter is false receivers should not process any incoming streams, and should unsubscribe from any multicast streams they are receiving. For RTP receivers the <code>rtp_enable</code> parameter allows for the individual disabling of SMPTE 2022-7 legs.</p></div><div class="clearfix"></div></div></div></div></div><div class="modal fade" tabindex="0" id="single_receivers__receiverid__staged_get"><div class="modal-dialog modal-lg"><div class="modal-content"><div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button><h4 class="modal-title" id="myModalLabel"><span class="badge badge_get">get</span> <span class="parent">/single/receivers/{receiverId}</span>/staged</h4></div><div class="modal-body"><div class="alert alert-info"><p>Get staged receiver transport parameters object. In SMPTE 2022-7 operation element 0 of the <code>transport_params</code> array shall be the parameters applied to the primary leg, and element 1 the secondary leg. There shall only be one element present in <code>transport_params</code> when SMPTE 2022-7 is not in use.</p></div><ul class="nav nav-tabs"><li class="active"><a href="#single_receivers__receiverid__staged_get_request" data-toggle="tab">Request</a></li><li><a href="#single_receivers__receiverid__staged_get_response" data-toggle="tab">Response</a></li></ul><div class="tab-content"><div class="tab-pane active" id="single_receivers__receiverid__staged_get_request"><h3>URI Parameters</h3><ul><li><strong>receiverId</strong>: <em>required (string)</em></li></ul></div><div class="tab-pane" id="single_receivers__receiverid__staged_get_response"><h2>HTTP status code <a href="http://httpstatus.es/200" target="_blank">200</a></h2><p>Additionally constrained by the constraints at /constraints</p><h3>Body</h3><p><strong>Media type</strong>: application/json</p><p><strong>Examples</strong>:</p><div class="examples"><p><strong>Normal</strong>:<br></p><pre><code>{
+    "sender_id": "5709255c-c0ae-4e1e-99a0-e872e83e48e0",
+    "master_enable": true,
+    "activation":{
+        "mode": null,
+        "requested_time": null
+    },
+    "transport_file":{
+        "data": null,
+        "type": "application/sdp"
+    },
+    "transport_params": [{
+	"src_ip": "172.23.19.48",
+        "multicast_group": "232.250.98.80",
+        "interface_ip": "172.23.19.110",
+	"dest_port": 5000,
+        "fec_enabled": true,
+        "fec_dest_ip": "auto",
+	"fec_type": "XOR",
+	"fec_mode": "2D",
+	"fec1D_dest_port": "auto",
+	"fec2D_dest_port": "auto",
+        "rtcp_enabled": true,
+        "rtcp_dest_ip": "auto",
+	"rtcp_dest_port": 5001,
+	"rtp_enabled": true
+    },{
+	"src_ip": "172.23.20.48",
+        "multicast_group": "232.250.99.80",
+        "interface_ip": "172.23.20.110",
+	"dest_port": 5000,
+        "fec_enabled": true,
+        "fec_dest_ip": "auto",
+	"fec_type": "XOR",
+	"fec_mode": "2D",
+	"fec1D_dest_port": "auto",
+	"fec2D_dest_port": "auto",
+        "rtcp_enabled": true,
+	"rtcp_dest_ip": "auto",
+	"rtcp_dest_port": 5001,
+	"rtp_enabled": true
+    }]
+}
+</code></pre><p><strong>Pending</strong>:<br></p><pre><code>{
+    "sender_id": "5709255c-c0ae-4e1e-99a0-e872e83e48e0",
+    "master_enable": true,
+    "activation":{
+        "mode": "activate_scheduled_relative",
+        "requested_time": "5:0"
+    },
+    "transport_file":{
+        "data": null,
+        "type": "application/sdp"
+    },
+    "transport_params": [{
+	"src_ip": "172.23.19.48",
+        "multicast_group": "232.250.98.80",
+        "interface_ip": "172.23.19.110",
+	"dest_port": 5000,
+        "fec_enabled": true,
+        "fec_dest_ip": "auto",
+	"fec_type": "XOR",
+	"fec_mode": "2D",
+	"fec1D_dest_port": "auto",
+	"fec2D_dest_port": "auto",
+        "rtcp_enabled": true,
+        "rtcp_dest_ip": "auto",
+	"rtcp_dest_port": 5001,
+	"rtp_enabled": true
+    },{
+	"src_ip": "172.23.20.48",
+        "multicast_group": "232.250.99.80",
+        "interface_ip": "172.23.20.110",
+	"dest_port": 5000,
+        "fec_enabled": true,
+        "fec_dest_ip": "auto",
+	"fec_type": "XOR",
+	"fec_mode": "2D",
+	"fec1D_dest_port": "auto",
+	"fec2D_dest_port": "auto",
+        "rtcp_enabled": true,
+	"rtcp_dest_ip": "auto",
+	"rtcp_dest_port": 5001,
+	"rtp_enabled": true
+    }]
+}
+</code></pre></div><h2>HTTP status code <a href="http://httpstatus.es/404" target="_blank">404</a></h2><p>Returned when the requested resource does not exist</p></div></div></div></div></div></div><div class="modal fade" tabindex="0" id="single_receivers__receiverid__staged_patch"><div class="modal-dialog modal-lg"><div class="modal-content"><div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button><h4 class="modal-title" id="myModalLabel"><span class="badge badge_patch">patch</span> <span class="parent">/single/receivers/{receiverId}</span>/staged</h4></div><div class="modal-body"><div class="alert alert-info"><p>Update staged parameters for receiver. Note that for activations the <code>mode</code> parameter will return to null once the activation is completed. When a transport file is staged the parameters in that transport file should be propagated to their coresponding transport parameters and the response should show these updated values. On activation the value of the entries in <code>transport_parameters</code> must be used to program the receiver, not those in the transport file directly. However while the transport file is still present (i.e <code>data</code> is not null) media parameters in the transport file should be applied to the RTP receiver. Setting <code>data</code> to null has no impact on the <code>transport_parameters</code> array, or any other property. Where a transport file has been staged the transport parameters in the response will reflect the new values assigned to them by the transport file. The transport parameters should be updated from the transport file in <code>data</code> on every PATCH request that includes the <code>data</code> field. Even if the value of <code>data</code> in the request matches the value of <code>data</code> currently stored in the API the transport parameters are still re-populated. In SMPTE 2022-7 operation element 0 of the <code>transport_params</code> array shall be the parameters applied to the primary leg, and element 1 the secondary leg. There shall only be one element present in <code>transport_params</code> when SMPTE 2022-7 is not in use. When the <code>master_enable</code> parameter is false receivers should not process any incoming streams, and should unsubscribe from any multicast streams they are receiving. For RTP receivers the <code>rtp_enable</code> parameter allows for the individual disabling of SMPTE 2022-7 legs.</p></div><ul class="nav nav-tabs"><li class="active"><a href="#single_receivers__receiverid__staged_patch_request" data-toggle="tab">Request</a></li><li><a href="#single_receivers__receiverid__staged_patch_response" data-toggle="tab">Response</a></li></ul><div class="tab-content"><div class="tab-pane active" id="single_receivers__receiverid__staged_patch_request"><h3>URI Parameters</h3><ul><li><strong>receiverId</strong>: <em>required (string)</em></li></ul><h3>Body</h3><p><strong>Media type</strong>: application/json</p><p><strong>Examples</strong>:</p><div class="examples"><p><strong>activate-immediate</strong>:<br></p><pre><code>{
+    "sender_id": "5709255c-c0ae-4e1e-99a0-e872e83e48e0",
+    "master_enable": true,
+    "activation": {
+        "mode": "activate_immediate",
+        "requested_time": null
+    },
+    "transport_params": [{
+	"src_ip": "172.23.19.49"
+    }, {
+	"src_ip": "172.23.19.49"
+    }]
+}
+</code></pre><p><strong>activate-scheduled-relative</strong>:<br></p><pre><code>{
+    "sender_id": "5709255c-c0ae-4e1e-99a0-e872e83e48e0",
+    "master_enable": true,
+    "activation": {
+        "mode": "activate_scheduled_relative",
+        "requested_time": "2:0"
+    },
+    "transport_params": [{
+	"src_ip": "172.23.19.49"
+    }, {
+	"src_ip": "172.23.19.49"
+    }]
+}
+</code></pre><p><strong>activate-scheduled-absolute</strong>:<br></p><pre><code>{
+    "sender_id": "5709255c-c0ae-4e1e-99a0-e872e83e48e0",
+    "master_enable": true,
+    "activation": {
+        "mode": "activate_scheduled_absolute",
+        "requested_time": "1496677550:20"
+    },
+    "transport_params": [{
+	"src_ip": "172.23.19.49"
+    }, {
+	"src_ip": "172.23.19.49"
+    }]
+}
+</code></pre><p><strong>stage-transportfile</strong>:<br></p><pre><code>{
+    "sender_id": "5709255c-c0ae-4e1e-99a0-e872e83e48e0",
+    "transport_file":{
+        "data": "v=0\r\no=- 1496222842 1496222842 IN IP4 172.29.226.25\r\ns=IP Studio Stream\r\nt=0 0\r\nm=video 5010 RTP/AVP 103\r\nc=IN IP4 232.250.98.80/32\r\na=source-filter:incl IN IP4 232.250.98.80 172.29.226.25\r\na=rtpmap:103 raw/90000\r\na=fmtp:103 sampling=YCbCr-4:2:2; width=1920; height=1080; depth=10; interlace=1; framerate=25; colorimetry=BT709-2\r\na=mediaclk:direct=1876655126 rate=90000\r\na=extmap:1 urn:x-nmos:rtp-hdrext:origin-timestamp\r\na=extmap:2 urn:ietf:params:rtp-hdrext:smpte-tc 3600@90000/25\r\na=extmap:3 urn:x-nmos:rtp-hdrext:flow-id\r\na=extmap:4 urn:x-nmos:rtp-hdrext:source-id\r\na=extmap:5 urn:x-nmos:rtp-hdrext:grain-flags\r\na=extmap:7 urn:x-nmos:rtp-hdrext:sync-timestamp\r\na=extmap:9 urn:x-nmos:rtp-hdrext:grain-duration\r\na=ts-refclk:ptp=IEEE1588-2008:08-00-11-FF-FE-21-E1-B0\r\n",
+        "type": "application/sdp"
+    }
+}
+</code></pre></div></div><div class="tab-pane" id="single_receivers__receiverid__staged_patch_response"><h2>HTTP status code <a href="http://httpstatus.es/200" target="_blank">200</a></h2><p>A 200 response is returned for PATCH requests where no activation has been scheduled, an activation has been cancelled, or an immediate activation has been requested. The response will always contain the full set of parameters in the response schema, and all supported transport parameters. For a request involving an immediate activation the API should only return once the activation has completed. Note the presence of the extra <code>scheduled_time</code> parameter in the response. For immediate activation this should be the time the activation actually occurred as an absolute TAI timestamp. If no activation was requested in the <code>scheduled_time</code> will be set <code>null</code>.</p><h3>Body</h3><p><strong>Media type</strong>: application/json</p><p><strong>Examples</strong>:</p><div class="examples"><p><strong>activate-immediate</strong>:<br></p><pre><code>{
+    "sender_id": "5709255c-c0ae-4e1e-99a0-e872e83e48e0",
+    "master_enable": true,
+    "activation":{
+        "mode": "activate_immediate",
+        "requested_time": null,
+        "scheduled_time": "1496739062:0"
+    },
+    "transport_file":{
+        "data": null,
+        "type": "application/sdp"
+    },
+    "transport_params": [{
+	"src_ip": "172.23.19.48",
+	"multicast_group": "232.250.98.80",
+        "interface_ip": "172.23.19.35",
+	"dest_port": 5000,
+        "fec_enabled": true,
+	"fec_type": "XOR",
+	"fec_mode": "2D",
+	"fec1D_dest_port": "auto",
+	"fec2D_dest_port": "auto",
+        "rtcp_enabled": true,
+        "rtcp_dest_ip": "auto",
+	"rtcp_dest_port": 5001,
+	"rtp_enabled": true
+    }, {
+	"src_ip": "172.23.20.48",
+	"multicast_group": "232.11.105.25",
+        "interface_ip": "172.23.20.35",
+        "fec_enabled": true,
+	"fec_type": "XOR",
+	"fec_mode": "2D",
+	"fec1D_dest_port": "auto",
+	"fec2D_dest_port": "auto",
+        "rtcp_enabled": true,
+	"rtcp_dest_ip": "auto",
+	"rtcp_dest_port": 5001,
+	"rtp_enabled": true
+    }]
+}
+</code></pre><p><strong>stage-transportfile</strong>:<br></p><pre><code>{
+    "sender_id": "5709255c-c0ae-4e1e-99a0-e872e83e48e0",
+    "master_enable": true,
+    "activation":{
+        "mode": null,
+        "requested_time": null,
+        "scheduled_time": null
+    },
+    "transport_file":{
+        "data": "v=0o=- 1496222842 1496222842 IN IP4 172.29.226.25\r\ns=IP Studio Stream\r\nt=0 0\r\nm=video 5010 RTP/AVP 103\r\nc=IN IP4 232.250.98.80/32\r\na=source-filter:incl IN IP4 232.250.98.80 172.29.226.25\r\na=rtpmap:103 raw/90000\r\na=fmtp:103 sampling=YCbCr-4:2:2; width=1920; height=1080; depth=10; interlace=1; framerate=25; colorimetry=BT709-2\r\na=mediaclk:direct=1876655126 rate=90000\r\na=extmap:1 urn:x-nmos:rtp-hdrext:origin-timestamp\r\na=extmap:2 urn:ietf:params:rtp-hdrext:smpte-tc 3600@90000/25\r\na=extmap:3 urn:x-nmos:rtp-hdrext:flow-id\r\na=extmap:4 urn:x-nmos:rtp-hdrext:source-id\r\na=extmap:5 urn:x-nmos:rtp-hdrext:grain-flags\r\na=extmap:7 urn:x-nmos:rtp-hdrext:sync-timestamp\r\na=extmap:9 urn:x-nmos:rtp-hdrext:grain-duration\r\na=ts-refclk:ptp=IEEE1588-2008:08-00-11-FF-FE-21-E1-B0\r\n",
+        "type": "application/sdp"
+    },
+    "transport_params": [{
+	"src_ip": "172.29.226.25",
+	"multicast_group": "232.250.98.80",
+        "interface_ip": "172.23.19.35",
+	"dest_port": 5010,
+        "fec_enabled": false,
+	"fec_type": "XOR",
+	"fec_mode": "2D",
+	"fec1D_dest_port": "auto",
+	"fec2D_dest_port": "auto",
+        "rtcp_enabled": false,
+        "rtcp_dest_ip": "auto",
+	"rtcp_dest_port": 5001,
+	"rtp_enabled": true
+    }]
+}
+</code></pre></div><h2>HTTP status code <a href="http://httpstatus.es/202" target="_blank">202</a></h2><p>A 202 response is returned when a request for a scheduled activation is accepted, to indicate that while the request itself was acceptable it has not yet been acted upon by the receiver. For scheduled activations <code>scheduled_time</code> should be the absolute TAI time the parameters will actually transition. For absolute scheduled activations should be the same as the requested time, but may differ if the receiver is unable to schedule at the requested time. This may be because the transition may only occur, for example, at a frame boundary or end of GOP. In all other ways this response behaves identically to a 200 response.</p><h3>Body</h3><p><strong>Media type</strong>: application/json</p><p><strong>Examples</strong>:</p><div class="examples"><p><strong>activate-scheduled-relative</strong>:<br></p><pre><code>{
+    "sender_id": "5709255c-c0ae-4e1e-99a0-e872e83e48e0",
+    "master_enable": true,
+    "activation":{
+        "mode": "activate_scheduled_relative",
+        "requested_time": "2:0",
+        "scheduled_time": "1496739064:0"
+    },
+    "transport_file":{
+        "data": null,
+        "type": "application/sdp"
+    },
+    "transport_params": [{
+	"src_ip": "172.23.19.48",
+	"multicast_group": "232.250.98.80",
+        "interface_ip": "172.23.19.35",
+	"dest_port": 5000,
+        "fec_enabled": true,
+	"fec_type": "XOR",
+	"fec_mode": "2D",
+	"fec1D_dest_port": "auto",
+	"fec2D_dest_port": "auto",
+        "rtcp_enabled": true,
+        "rtcp_dest_ip": "auto",
+	"rtcp_dest_port": 5001,
+	"rtp_enabled": true
+    }, {
+	"src_ip": "172.23.20.48",
+	"multicast_group": "232.11.105.25",
+        "interface_ip": "172.23.20.35",
+        "fec_enabled": true,
+	"fec_type": "XOR",
+	"fec_mode": "2D",
+	"fec1D_dest_port": "auto",
+	"fec2D_dest_port": "auto",
+        "rtcp_enabled": true,
+	"rtcp_dest_ip": "auto",
+	"rtcp_dest_port": 5001,
+	"rtp_enabled": true
+    }]
+}
+</code></pre><p><strong>activate-scheduled-absolute</strong>:<br></p><pre><code>{
+    "sender_id": "5709255c-c0ae-4e1e-99a0-e872e83e48e0",
+    "master_enable": true,
+    "activation":{
+        "mode": "activate_scheduled_relative",
+        "requested_time": "1496739064:0",
+        "scheduled_time": "1496739064:2500"
+    },
+    "transport_file":{
+        "data": null,
+        "type": "application/sdp"
+    },
+    "transport_params": [{
+	"src_ip": "172.23.19.48",
+	"multicast_group": "232.250.98.80",
+        "interface_ip": "172.23.19.35",
+	"dest_port": 5000,
+        "fec_enabled": true,
+	"fec_type": "XOR",
+	"fec_mode": "2D",
+	"fec1D_dest_port": "auto",
+	"fec2D_dest_port": "auto",
+        "rtcp_enabled": true,
+        "rtcp_dest_ip": "auto",
+	"rtcp_dest_port": 5001,
+	"rtp_enabled": true
+    }, {
+	"src_ip": "172.23.20.48",
+	"multicast_group": "232.11.105.25",
+        "interface_ip": "172.23.20.35",
+        "fec_enabled": true,
+	"fec_type": "XOR",
+	"fec_mode": "2D",
+	"fec1D_dest_port": "auto",
+	"fec2D_dest_port": "auto",
+        "rtcp_enabled": true,
+	"rtcp_dest_ip": "auto",
+	"rtcp_dest_port": 5001,
+	"rtp_enabled": true
+    }]
+}
+</code></pre></div><h2>HTTP status code <a href="http://httpstatus.es/400" target="_blank">400</a></h2><p>A 400 response is returned when the request did not meet the schema and constraints.</p><h3>Body</h3><p><strong>Media type</strong>: application/json</p><p><strong>Example</strong>:</p><div class="examples"><pre><code>{
+    "code": 400,
+    "error":"`src_ip` must be a valid IPv4 or IPv6 address",
+    "debug": null
+}
+</code></pre></div><h2>HTTP status code <a href="http://httpstatus.es/404" target="_blank">404</a></h2><p>Returned when the requested resource does not exist</p><h2>HTTP status code <a href="http://httpstatus.es/423" target="_blank">423</a></h2><p>Returned when the resource is locked because an activation has been scheduled. A resource may be unlocked by setting <code>mode</code> in <code>activation</code> to <code>null</code>, which will cancel the pending activation. This may be done in the same request as a change to other parameters.</p><h2>HTTP status code <a href="http://httpstatus.es/500" target="_blank">500</a></h2><p>A 500 response may be returned if the transport file could not be parsed, or there is some failure caused by activation which was not caused by a violation or schema or constraints.</p><h3>Body</h3><p><strong>Media type</strong>: application/json</p><p><strong>Example</strong>:</p><div class="examples"><pre><code>{
+    "code": 500,
+    "error":"Could not establish link to hardware",
+    "debug": null
+}
+</code></pre></div></div></div></div></div></div></div></div><div class="panel panel-white resource-modal"><div class="panel-heading"><h4 class="panel-title"><a class="collapsed" data-toggle="collapse" href="#panel_single_receivers__receiverid__active"><span class="parent">/single/receivers/{receiverId}</span>/active</a> <span class="methods"><a href="#single_receivers__receiverid__active_get"><span class="badge badge_get">get</span></a></span></h4></div><div id="panel_single_receivers__receiverid__active" class="panel-collapse collapse"><div class="panel-body"><div class="list-group"><div onclick="window.location.href = '#single_receivers__receiverid__active_get'" class="list-group-item"><span class="badge badge_get">get</span><div class="method_description"><p>Get active receiver parameters</p></div><div class="clearfix"></div></div></div></div></div><div class="modal fade" tabindex="0" id="single_receivers__receiverid__active_get"><div class="modal-dialog modal-lg"><div class="modal-content"><div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button><h4 class="modal-title" id="myModalLabel"><span class="badge badge_get">get</span> <span class="parent">/single/receivers/{receiverId}</span>/active</h4></div><div class="modal-body"><div class="alert alert-info"><p>Get active receiver parameters</p></div><ul class="nav nav-tabs"><li class="active"><a href="#single_receivers__receiverid__active_get_request" data-toggle="tab">Request</a></li><li><a href="#single_receivers__receiverid__active_get_response" data-toggle="tab">Response</a></li></ul><div class="tab-content"><div class="tab-pane active" id="single_receivers__receiverid__active_get_request"><h3>URI Parameters</h3><ul><li><strong>receiverId</strong>: <em>required (string)</em></li></ul></div><div class="tab-pane" id="single_receivers__receiverid__active_get_response"><h2>HTTP status code <a href="http://httpstatus.es/200" target="_blank">200</a></h2><h3>Body</h3><p><strong>Media type</strong>: application/json</p><p><strong>Example</strong>:</p><div class="examples"><pre><code>{
+    "sender_id": "5709255c-c0ae-4e1e-99a0-e872e83e48e0",
+    "master_enable": true,
+    "activation":{
+        "mode": "activate_immediate",
+        "activation_time": "1496739062:263900"
+    },
+    "transport_file":{
+        "data": "v=0\r\no=- 1496222842 1496222842 IN IP4 172.29.226.25\r\ns=IP Studio Stream\r\nt=0 0\r\nm=video 5010 RTP/AVP 103\r\nc=IN IP4 232.250.98.80/32\r\na=source-filter:incl IN IP4 232.250.98.80 172.29.226.25\r\na=rtpmap:103 raw/90000\r\na=fmtp:103 sampling=YCbCr-4:2:2; width=1920; height=1080; depth=10; interlace=1; framerate=25; colorimetry=BT709-2\r\na=mediaclk:direct=1876655126 rate=90000\r\na=extmap:1 urn:x-nmos:rtp-hdrext:origin-timestamp\r\na=extmap:2 urn:ietf:params:rtp-hdrext:smpte-tc 3600@90000/25\r\na=extmap:3 urn:x-nmos:rtp-hdrext:flow-id\r\na=extmap:4 urn:x-nmos:rtp-hdrext:source-id\r\na=extmap:5 urn:x-nmos:rtp-hdrext:grain-flags\r\na=extmap:7 urn:x-nmos:rtp-hdrext:sync-timestamp\r\na=extmap:9 urn:x-nmos:rtp-hdrext:grain-duration\r\na=ts-refclk:ptp=IEEE1588-2008:08-00-11-FF-FE-21-E1-B0\r\n",
+        "type": "application/sdp"
+    },
+    "transport_params": [{
+	"src_ip": "172.29.226.25",
+	"multicast_group": "232.250.98.80",
+        "interface_ip": "172.23.19.35",
+	"dest_port": 5010,
+        "fec_enabled": false,
+	"fec_type": "XOR",
+	"fec_mode": "2D",
+	"fec1D_dest_port": "auto",
+	"fec2D_dest_port": "auto",
+        "rtcp_enabled": false,
+        "rtcp_dest_ip": "auto",
+	"rtcp_dest_port": 5001,
+	"rtp_enabled": true
+    }]
+}
+</code></pre></div><h2>HTTP status code <a href="http://httpstatus.es/404" target="_blank">404</a></h2><p>Returned when the requested resource does not exist</p></div></div></div></div></div></div></div></div></div></div></div><div class="col-md-3"><div id="sidebar" class="hidden-print affix" role="complementary"><ul class="nav nav-pills nav-stacked"><li><a href="#">Base</a></li><li><a href="#bulk">Bulk control interface</a></li><li><a href="#single">Single control interface</a></li></ul></div></div></div></div></body></html>

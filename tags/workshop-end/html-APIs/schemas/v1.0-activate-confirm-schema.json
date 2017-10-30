@@ -1,0 +1,142 @@
+{
+  "oneOf": [
+    {
+      "$schema": "http://json-schema.org/draft-04/schema#",
+      "type": "object",
+      "description": "Served when there is no currently scheduled activation",
+      "title": "Activation object",
+      "required": [
+        "mode"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "mode": {
+          "description": "Indicates that no activation is currently scheduled",
+          "type": "string",
+          "enum": [
+            "activate_none"
+          ]
+        }
+      }
+    },
+    {
+      "$schema": "http://json-schema.org/draft-04/schema#",
+      "type": "object",
+      "description": "Describes parameters for connection activation for a sucessful immediate activation",
+      "title": "Activation object",
+      "required": [
+        "mode",
+        "scheduled_time"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "mode": {
+          "description": "indicates that the sucessful request was of the type activate immediate",
+          "type": "string",
+          "enum": [
+            "activate_immediate"
+          ]
+        },
+        "scheduled_time": {
+          "description": "String formatted TAI timestamp (<seconds>:<nanoseconds>) indicating absolute time at which activation was actually completed. This should be the point at which the parameters of the sender/receiver have been configured, but may be before any packets have been received or sent.",
+          "type": "string",
+          "pattern": "^[0-9]+:[0-9]+$"
+        }
+      }
+    },
+    {
+      "$schema": "http://json-schema.org/draft-04/schema#",
+      "type": "object",
+      "description": "Describes parameters for a sucessful scheduled activation. This may be returned when the scheduled time for the activation has passed and the sender/receiver parameters have been updated sucessfully. This may be before any packets are sent or received.",
+      "title": "Activation object",
+      "required": [
+        "mode",
+        "scheduled_time",
+        "requested_time"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "mode": {
+          "description": "mode of activation: immediate (on message rx), scheduled_absolute (when internal clock >= requested_time), scheduled_relative (when internal clock >= time of message rx + requested_time). activate_scheduled* must only be used with a code of 200 if the scheduled time has passed and the sender/receiver has been successfully configured with the new parameters",
+          "type": "string",
+          "enum": [
+            "activate_scheduled_absolute",
+            "activate_scheduled_relative"
+          ]
+        },
+        "scheduled_time": {
+          "description": "String formatted TAI timestamp (<seconds>:<nanoseconds>) indicating absolute time at which activation was completed. This should be the point at which the parameters of the sender/receiver have been configured, but may be before any packets have been received or sent.",
+          "type": "string",
+          "pattern": "^[0-9]+:[0-9]+$"
+        },
+        "requested_time": {
+          "description": "String formatted TAI timestamp (<seconds>:<nanoseconds>) indicating requested time (absolute or relative) for activation",
+          "type": "string",
+          "pattern": "^[0-9]+:[0-9]+$"
+        }
+      }
+    },
+    {
+      "$schema": "http://json-schema.org/draft-04/schema#",
+      "type": "object",
+      "description": "Describes a response where the request object from the client did not validate correctly",
+      "title": "Activation object",
+      "required": [
+        "error",
+        "debug"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "code": {
+          "description": "HTTP error code",
+          "type": "integer",
+          "enum": [
+            400
+          ]
+        },
+        "error": {
+          "description": "Human readable message which is suitable for user interface display, and helpful to the user",
+          "type": "string"
+        },
+        "debug": {
+          "description": "Debug information which may assist a programmer working with the API",
+          "type": [
+            "null",
+            "string"
+          ]
+        }
+      }
+    },
+    {
+      "$schema": "http://json-schema.org/draft-04/schema#",
+      "type": "object",
+      "description": "Describes a response where the request object from the client validated but the request could not be handled for some other reason",
+      "title": "Activation object",
+      "required": [
+        "error",
+        "debug"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "code": {
+          "description": "HTTP error code",
+          "type": "integer",
+          "enum": [
+            500
+          ]
+        },
+        "error": {
+          "description": "Human readable message which is suitable for user interface display, and helpful to the user",
+          "type": "string"
+        },
+        "debug": {
+          "description": "Debug information which may assist a programmer working with the API",
+          "type": [
+            "null",
+            "string"
+          ]
+        }
+      }
+    }
+  ]
+}

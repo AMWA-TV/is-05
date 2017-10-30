@@ -1,0 +1,107 @@
+{
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "type": "object",
+    "description": "Describes a sender",
+    "title": "Sender resource",
+    "additionalProperties": false,
+    "required":[
+        "receiver_id",
+        "master_enable",
+        "activation",
+        "transport_file",
+        "transport_params"
+    ],
+    "properties": {
+        "receiver_id": {
+            "description": "ID of the target Receiver of this Sender. This will be null if the sender is operating in multicast mode, or has not been assigned a receiver in unicast mode, or is sending to a non-NMOS receiver in unicast mode.",
+            "type": [
+                "string",
+                "null"
+            ],
+            "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-[1-5][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$",
+            "default": null
+        },
+        "master_enable": {
+            "description": "Master on/off control for receiver",
+            "type": "boolean",
+            "default": true
+        },
+        "activation":{
+            "description": "Parameters concerned with activation of the transport parameters",
+            "type": "object",
+            "additionalProperties": false,
+            "required":[
+                "mode",
+                "requested_time",
+                "scheduled_time"
+            ],
+            "properties":{
+                "mode": {
+                    "description": "Mode of activation: immediate (on message receipt), scheduled_absolute (when internal clock >= requested_time), scheduled_relative (when internal clock >= time of message receipt + requested_time), or null (no activation scheduled). This parameter returns to null once an activation is completed. For immediate activations, in the response to the PATCH request this field will be set to 'activate_immediate', but will be null in response to any subsequent GET requests.",
+                    "type": [
+                        "string",
+                        "null"
+                    ],
+                    "enum": [
+                        "activate_immediate",
+                        "activate_scheduled_absolute",
+                        "activate_scheduled_relative",
+                        null
+                    ]
+                },
+                "requested_time": {
+                    "description": "String formatted TAI timestamp (<seconds>:<nanoseconds>) indicating time (absolute or relative) for activation. This field returns to null once the activation is completed. For an immediate activation this field will always be null, even in the response to the PATCH request.",
+                    "type": [
+                        "string",
+                        "null"
+                    ],
+                    "default": null,
+                    "pattern": "^[0-9]+:[0-9]+$"
+                },
+                "scheduled_time": {
+                    "description": "String formatted TAI timestamp (<seconds>:<nanoseconds>) indicating time (absolute or relative) the sender will actually activate for scheduled activations, or the time activation occured for immediate activations. This field returns to null once the activation is completed. For immediate activations, this property will be the time the activation actually occurred in the response to the PATCH request, but null in response to any GET requests thereafter.",
+                    "type": [
+                        "string",
+                        "null"
+                    ],
+                    "default": null,
+                    "pattern": "^[0-9]+:[0-9]+$"
+                }
+            }
+        },
+        "transport_file":{
+            "type": "object",
+            "description": "Transport file parameters",
+            "additionalProperties": false,
+            "required":[
+                "data",
+                "type"
+            ],
+            "properties":{
+                "data":{
+                    "description": "Content of the transport file",
+                    "type": [
+                        "string",
+                        "null"
+                    ],
+                    "default": null
+                },
+                "type":{
+                    "description": "IANA assigned media type for file (e.g application/sdp)",
+                    "type": [
+                        "string",
+                        "null"
+                    ],
+                    "default": null
+                }
+            }
+        },
+        "transport_params": {
+            "description": "Transport-specific parameters",
+            "oneOf": [
+                { "$ref": "v1.0_sender_transport_params_rtp.json" },
+                { "$ref": "v1.0_sender_transport_params_dash.json" }
+            ]
+        }
+    }
+}
