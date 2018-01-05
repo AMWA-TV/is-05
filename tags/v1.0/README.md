@@ -11,7 +11,7 @@
    - [RTP Transport Type](docs/4.1. Behaviour - RTP Transport Type.md)
  - [Upgrade Path](docs/5.0. Upgrade Path.md)
 
-## APIs
+## APIs for v1.0
  - [ConnectionAPI](html-APIs/ConnectionAPI.html)
 
 ### [JSON Schemas](html-APIs/schemas/)

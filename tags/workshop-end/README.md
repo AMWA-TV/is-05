@@ -2,7 +2,7 @@
 
    - [docs/[1-9]*](docs/[1-9]*.md)
 
-## APIs
+## APIs for workshop-end
  - [ConnectionAPI](html-APIs/ConnectionAPI.html)
 
 ### [JSON Schemas](html-APIs/schemas/)
