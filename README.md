@@ -11,8 +11,6 @@ The formal IS-05 specification is provided at in [this GitHub repository](https:
 
 ## Branches
 
-[documentation](branches/documentation)
-
 [master](branches/master)
 
 [v1.0.x](branches/v1.0.x)

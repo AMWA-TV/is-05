@@ -1,7 +1,5 @@
 ## Branches
 
-[documentation](branches/documentation)
-
 [master](branches/master)
 
 [v1.0.x](branches/v1.0.x)
