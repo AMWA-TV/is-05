@@ -35,4 +35,3 @@ mkdir tags
 for tag in $(cd source-repo; git tag); do
     extract "tags/$tag" "tags/$tag"
 done
-
