@@ -1,8 +1,5 @@
 .PHONY: build all source-repo docs readmes fix-links push clean
 
-
-
-# build: source-repo docs readmes fix-links
 build: source-repo docs indexes fix-links
 
 all: build push
@@ -13,9 +10,6 @@ source-repo:
 
 docs:
 	./extract-docs.sh
-
-#readmes:
-#	./make-readmes.sh
 
 indexes:
 	./make-indexes.sh
