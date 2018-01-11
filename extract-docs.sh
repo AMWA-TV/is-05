@@ -13,7 +13,7 @@ function extract {
             perl -pi.orig -e 's=("\$ref": ")(.*)(\.json)=$1schemas/$2$3=' schemas/*.json
             ./generateHTML
             for i in schemas/*.json.orig; do
-                mv $i ${i%%.orig}
+                mv "$i" "${i%%.orig}"
             done
             mkdir "../../$target_dir/html-APIs"
             mv *.html "../../$target_dir/html-APIs/"

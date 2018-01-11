@@ -15,7 +15,7 @@ for b_or_t in branches tags; do
             echo -e "# Documentation for $dirname\n" > "$INDEX"
             for doc in docs/[1-9]*.md; do
                 no_ext="${doc%%.md}"
-                # Spaces causing problems so rename (only in extracted docs)
+                # Spaces causing problems so rename extracted docs to use underscore
                 underscore_space_doc="${doc// /_}"
                 mv "$doc" "$underscore_space_doc"
 
