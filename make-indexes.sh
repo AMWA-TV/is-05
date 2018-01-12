@@ -2,6 +2,8 @@
 
 # TODO: Move some of the common code into functions (DRY)
 
+shopt -s nullglob
+
 # Filename for index in each dir
 INDEX=index.md
 
