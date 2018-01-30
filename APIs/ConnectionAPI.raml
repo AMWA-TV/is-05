@@ -177,7 +177,7 @@ documentation:
              description: >
                Update staged parameters for sender.
                Note that for activations the `mode` parameter will return to null once the activation
-               is completed.
+               transaction with the client is completed (i.e the response to the PATCH has been sent by the server).
                In SMPTE 2022-7 operation element 0 of the `transport_params`
                array shall be the parameters applied to the primary leg, and element 1 the secondary leg.
                There shall only be one element present in `transport_params` when SMPTE 2022-7 is not in use.
@@ -195,7 +195,7 @@ documentation:
                    an activation has been cancelled, or an immediate activation has been requested.
                    The response will always contain the full set of parameters in the response schema, and all
                    supported transport parameters. For a request with an immediate activation the API should
-                   only return a response once the activation has completed.
+                   only return a response once the new transport parameters have been applied to the sender.
                    Note the presence of the extra `activation_time` parameter in the response. For immediate activation
                    this should be the time the activation actually occurred as an absolute TAI timestamp.
                    If no activation was requested in the PATCH `activation_time` will be set `null`.
@@ -340,7 +340,7 @@ documentation:
            description: >
              Update staged parameters for receiver.
              Note that for activations the `mode` parameter will return to null once the activation
-             is completed.
+             transaction with the client is completed (i.e the response to the PATCH has been sent by the server).
              When a transport file is staged the parameters in that transport file should be propagated to
              their corresponding transport parameters and the response should show these updated values.
              On activation the value of the entries in `transport_parameters` must be used to program
@@ -377,7 +377,7 @@ documentation:
                  an activation has been cancelled, or an immediate activation has been requested.
                  The response will always contain the full set of parameters in the response schema, and all
                  supported transport parameters. For a request involving an immediate activation the API
-                 should only return once the activation has completed.
+                 should only return once the transport parameters have been applied to the receiver.
                  Note the presence of the extra `activation_time` parameter in the response. For immediate activation
                  this should be the time the activation actually occurred as an absolute TAI timestamp.
                  If no activation was requested in the `activation_time` will be set `null`.
