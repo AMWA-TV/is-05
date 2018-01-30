@@ -182,7 +182,12 @@ documentation:
                array shall be the parameters applied to the primary leg, and element 1 the secondary leg.
                There shall only be one element present in `transport_params` when SMPTE 2022-7 is not in use.
              body:
-               description: PATCH must comply with the constraints served at /constraints but not all fields are mandatory.
+               description: >
+                PATCH must comply with the constraints served at /constraints but not all fields are mandatory.
+                Any fields not included in the reqest JSON remain unchanged, even if they are a child of a property
+                that was included in the request. For example a request containing changes to a single transport parameter
+                will not alter any other transport parameter, even though the `transport_params` propoerty was part
+                of the request.
                type: !include schemas/v1.0-sender-stage-schema.json
                examples:
                  immediate-activation: !include ../examples/v1.0-sender-patch.json
@@ -363,7 +368,11 @@ documentation:
              `rtp_enable` parameter allows for the individual disabling of SMPTE 2022-7 legs.
            body:
              description: >
-               PATCH must comply with the constraints served at /constraints but not all fields are mandatory.
+              PATCH must comply with the constraints served at /constraints but not all fields are mandatory.
+              Any fields not included in the reqest JSON remain unchanged, even if they are a child of a property
+              that was included in the request. For example a request containing changes to a single transport parameter
+              will not alter any other transport parameter, even though the `transport_params` propoerty was part
+              of the request.
              type: !include schemas/v1.0-receiver-stage-schema.json
              examples:
                activate-immediate: !include ../examples/v1.0-receiver-patch.json
