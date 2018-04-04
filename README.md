@@ -1,4 +1,4 @@
-#**\[Proposed Specification\]** AMWA Device Connection Management Specification
+#**\[Proposed Specification\]** AMWA Device Connection Management Specification (IS-05)
 
 This repository contains details of this AMWA Specification for controlling aspects of NMOS Devices to effect connection management between Senders and Receivers.
 
