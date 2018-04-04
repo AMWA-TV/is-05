@@ -42,6 +42,11 @@ documentation:
           description: >
             The API should actively return an HTTP 405 if a GET is called on the
             endpoint.
+    options:
+      description: A pre-flight check generally used for Cross-Origin Resource Sharing (CORS) purposes
+      responses:
+        200:
+        403:
     post:
       description: Allows staging and activation of multiple sender parameters at the same time in a single request.
       body:
@@ -76,6 +81,11 @@ documentation:
           description:
             The API should actively return an HTTP 405 if a GET is called on the
             endpoint.
+    options:
+      description: A pre-flight check generally used for Cross-Origin Resource Sharing (CORS) purposes
+      responses:
+        200:
+        403:
     post:
       description: >
         Allows staging and activation of a subset of multiple
@@ -173,6 +183,12 @@ documentation:
                      Uninitialised: !include ../examples/v1.0-sender-get-200-uninit.json
                404:
                  description: Returned when the requested resource does not exist
+           options:
+             description: A pre-flight check generally used for Cross-Origin Resource Sharing (CORS) purposes
+             responses:
+               200:
+               403:
+               404:
            patch:
              description: >
                Update staged parameters for sender.
@@ -349,6 +365,12 @@ documentation:
                    Uninitialised: !include ../examples/v1.0-receiver-get-200-uninit.json
              404:
                description: Returned when the requested resource does not exist
+         options:
+           description: A pre-flight check generally used for Cross-Origin Resource Sharing (CORS) purposes
+           responses:
+             200:
+             403:
+             404:
          patch:
            description: >
              Update staged parameters for receiver.
