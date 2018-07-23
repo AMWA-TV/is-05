@@ -189,6 +189,9 @@ documentation:
                  relative-scheduled-activation: !include ../examples/v1.0-sender-patch-relative.json
                  absolute-scheduled-activation: !include ../examples/v1.0-sender-patch-absolute.json
                  activation-only: !include ../examples/v1.0-sender-patch-activation-only.json
+                 redundant-streams: !include ../examples/v1.0-sender-patch-redundant-streams.json
+                 unicast: !include ../examples/v1.0-sender-patch-unicast.json
+
              responses:
                200:
                  description: >
@@ -206,7 +209,8 @@ documentation:
                  body:
                    type: !include schemas/v1.0-sender-response-schema.json
                    examples:
-                     immediate-activation: !include ../examples/v1.0-stage-success.json
+                     immediate-activation: !include ../examples/v1.0-sender-stage-success.json
+                     redundant-streams: !include ../examples/v1.0-sender-stage-success-redundant-streams.json
                202:
                  description: >
                    A 202 response is returned when a request for a scheduled activation is accepted, to indicate
@@ -220,8 +224,8 @@ documentation:
                  body:
                    type: !include schemas/v1.0-sender-response-schema.json
                    examples:
-                     relative-scheduled-activation: !include ../examples/v1.0-stage-relative-success.json
-                     absolute-scheduled-activation: !include ../examples/v1.0-stage-absolute-success.json
+                     relative-scheduled-activation: !include ../examples/v1.0-sender-stage-relative-success.json
+                     absolute-scheduled-activation: !include ../examples/v1.0-sender-stage-absolute-success.json
                400:
                  description: A 400 response is returned when the request did not meet the schema and constraints.
                  body:
@@ -372,6 +376,8 @@ documentation:
                activate-scheduled-absolute: !include ../examples/v1.0-receiver-patch-absolute.json
                activation-only: !include ../examples/v1.0-receiver-patch-activation-only.json
                stage-transportfile: !include ../examples/v1.0-receiver-patch-transportfile.json
+               redundant-streams: !include ../examples/v1.0-receiver-patch-redundant-streams.json
+               unicast: !include ../examples/v1.0-receiver-patch-unicast.json
            responses:
              200:
                description: >
@@ -388,6 +394,7 @@ documentation:
                  examples:
                    activate-immediate: !include ../examples/v1.0-receiver-stage-success.json
                    stage-transportfile: !include ../examples/v1.0-receiver-stage-scheduled-transportfile.json
+                   redundant-streams: !include ../examples/v1.0-receiver-stage-success-redundant-streams.json
              202:
                description: >
                  A 202 response is returned when a request for a scheduled activation is accepted, to indicate
