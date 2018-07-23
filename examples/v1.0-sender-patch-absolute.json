@@ -1,15 +1,17 @@
 {
-    "receiver_id": "0b174530-e3cf-41e6-bf01-fe55135034f3",
+    "receiver_id": null,
     "master_enable": true,
     "activation": {
         "mode": "activate_scheduled_absolute",
         "requested_time": "1496759200:0"
     },
-    "transport_params": [{
-        "rtcp_enabled": false,
-        "rtcp_source_port": 5010
-    },{
-        "rtcp_enabled": false,
-        "rtcp_source_port": 5010
-    }]
+  "transport_params": [
+    {
+      "source_ip": "192.168.200.10",
+      "destination_ip": "232.105.26.177",
+      "source_port": 5000,
+      "destination_port": 5000,
+      "rtp_enabled": true
+    }
+  ]
 }
