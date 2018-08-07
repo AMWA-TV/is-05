@@ -1,12 +1,11 @@
 {
-    "receiver_id": null,
-    "master_enable": true,
-    "activation": {
-        "mode": "activate_immediate",
-        "requested_time": null
-    },
-  "transport_params": [
-    {
+  "receiver_id": null,
+  "master_enable": true,
+  "activation": {
+    "mode": "activate_immediate",
+    "requested_time": null
+  },
+  "transport_params": [{
       "source_ip": "192.168.200.10",
       "destination_ip": "232.105.26.177",
       "source_port": 5000,
