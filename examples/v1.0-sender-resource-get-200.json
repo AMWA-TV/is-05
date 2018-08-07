@@ -1,6 +1,6 @@
 [
-    "constraints/",
-    "staged/",
-    "active/",
-    "transportfile/"
+  "constraints/",
+  "staged/",
+  "active/",
+  "transportfile/"
 ]

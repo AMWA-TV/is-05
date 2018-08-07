@@ -1,6 +1,6 @@
 {
-    "activation": {
-        "mode": "activate_immediate",
-        "requested_time": null
-    }
+  "activation": {
+    "mode": "activate_immediate",
+    "requested_time": null
+  }
 }
