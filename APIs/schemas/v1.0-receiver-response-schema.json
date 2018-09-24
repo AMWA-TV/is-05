@@ -18,13 +18,11 @@
         "string",
         "null"
       ],
-      "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-[1-5][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$",
-      "default": null
+      "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-[1-5][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$"
     },
     "master_enable": {
       "description": "Master on/off control for receiver",
-      "type": "boolean",
-      "default": true
+      "type": "boolean"
     },
     "activation": {
       "$ref": "v1.0-activation-response-schema.json"
@@ -43,16 +41,14 @@
           "type": [
             "string",
             "null"
-          ],
-          "default": null
+          ]
         },
         "type": {
           "description": "IANA assigned media type for file (e.g application/sdp)",
           "type": [
             "string",
             "null"
-          ],
-          "default": null
+          ]
         }
       }
     },

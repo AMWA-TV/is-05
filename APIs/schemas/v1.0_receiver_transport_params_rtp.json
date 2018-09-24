@@ -53,8 +53,7 @@
           {
             "pattern": "^auto$"
           }
-        ],
-        "default": "auto"
+        ]
       },
       "destination_port": {
         "type": [
@@ -64,13 +63,11 @@
         "description": "destination port for RTP packets (auto = 5004)",
         "minimum": 1,
         "maximum": 65535,
-        "pattern": "^auto$",
-        "default": "auto"
+        "pattern": "^auto$"
       },
       "fec_enabled": {
         "type": "boolean",
-        "description": "FEC on/off",
-        "default": false
+        "description": "FEC on/off"
       },
       "fec_destination_ip": {
         "type": "string",
@@ -84,8 +81,7 @@
           {
             "pattern": "^auto$"
           }
-        ],
-        "default": "auto"
+        ]
       },
       "fec_mode": {
         "type": "string",
@@ -94,8 +90,7 @@
           "auto",
           "1D",
           "2D"
-        ],
-        "default": "auto"
+        ]
       },
       "fec1D_destination_port": {
         "type": [
@@ -105,8 +100,7 @@
         "description": "destination port for RTP Column FEC packets (auto = RTP destination_port + 2)",
         "minimum": 1,
         "maximum": 65535,
-        "pattern": "^auto$",
-        "default": "auto"
+        "pattern": "^auto$"
       },
       "fec2D_destination_port": {
         "type": [
@@ -116,8 +110,7 @@
         "description": "destination port for RTP Row FEC packets (auto = RTP destination_port + 4)",
         "minimum": 1,
         "maximum": 65535,
-        "pattern": "^auto$",
-        "default": "auto"
+        "pattern": "^auto$"
       },
       "rtcp_destination_ip": {
         "type": "string",
@@ -131,13 +124,11 @@
           {
             "pattern": "^auto$"
           }
-        ],
-        "default": "auto"
+        ]
       },
       "rtcp_enabled": {
         "type": "boolean",
-        "description": "RTCP on/off",
-        "default": false
+        "description": "RTCP on/off"
       },
       "rtcp_destination_port": {
         "type": [
@@ -147,13 +138,11 @@
         "description": "destination port for RTCP packets (auto = RTP destination_port + 1)",
         "minimum": 1,
         "maximum": 65535,
-        "pattern": "^auto$",
-        "default": "auto"
+        "pattern": "^auto$"
       },
       "rtp_enabled": {
         "type": "boolean",
-        "description": "RTP reception active/inactive",
-        "default": true
+        "description": "RTP reception active/inactive"
       }
     }
   }
