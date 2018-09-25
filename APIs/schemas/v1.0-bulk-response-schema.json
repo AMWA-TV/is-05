@@ -18,13 +18,7 @@
       "code": {
         "description": "HTTP status code that would have resulted from an individual activation on this device",
         "type": "integer",
-        "enum": [
-          200,
-          202,
-          400,
-          404,
-          500
-        ]
+        "pattern": "^[245][0-9]{2}$"
       },
       "error": {
         "description": "Human readable message which is suitable for user interface display, and helpful to the user. Only included if 'code' indicates an error state",
