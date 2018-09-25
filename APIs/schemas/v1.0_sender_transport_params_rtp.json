@@ -67,6 +67,9 @@
           },
           {
             "format": "ipv6"
+          },
+          {
+            "pattern": "^auto$"
           }
         ]
       },
