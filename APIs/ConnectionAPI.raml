@@ -49,7 +49,7 @@ documentation:
           The actual subset of transport parameters used for the patch must be compatible with the
           associated sender's constraints, which may be checked using the individual sender\'s /constraints url.
         type: !include schemas/v1.0-bulk-sender-post-schema.json
-        example: !include ../examples/v1.0-bulk-sender-stage-post.json
+        example: !include ../examples/v1.0-bulk-sender-post.json
       responses:
         200:
           description: >
@@ -58,16 +58,16 @@ documentation:
             The response object provides the HTTP status code that would have been returned
             by each sender had the request been carried out individually.
           body:
-            type: !include schemas/v1.0-bulk-stage-confirm.json
+            type: !include schemas/v1.0-bulk-response-schema.json
             example: !include ../examples/v1.0-bulk-post-confirm.json
         400:
           description: >
             The body of the request did not validate against the schema (ignoring the content of the
-            `params` field - these are validated individually by each sender/receiver and failures
+            `params` field - these are validated individually by each sender and failures
             are recorded in the response object for a 200 return).
           body:
             type: !include schemas/error.json
-            example: !include ../examples/v1.0-bulk-stage-fail.json
+            example: !include ../examples/v1.0-bulk-post-fail.json
   /receivers:
     description: Target for bulk uploads of transport parameters.
     get:
@@ -83,9 +83,9 @@ documentation:
       body:
         description: >
           The actual subset of transport parameters used must be compatible with all receivers
-          being addressed, which may be checked using the individual sender\'s /constraints url.
+          being addressed, which may be checked using the individual receiver\'s /constraints url.
         type: !include schemas/v1.0-bulk-receiver-post-schema.json
-        example: !include ../examples/v1.0-bulk-receiver-stage-patch.json
+        example: !include ../examples/v1.0-bulk-receiver-post.json
       responses:
         200:
           description: >
@@ -94,16 +94,16 @@ documentation:
             The response object provides the HTTP status code that would have been
             returned by each receiver had the request been carried out individually.
           body:
-            type: !include schemas/v1.0-bulk-stage-confirm.json
+            type: !include schemas/v1.0-bulk-response.json
             example: !include ../examples/v1.0-bulk-post-confirm.json
         400:
           description: >
             The body of the request did not validate against the schema (ignoring the content of the
-            `params` field - these are validated individually by each sender/receiver and failures
+            `params` field - these are validated individually by each receiver and failures
             are recorded in the response object for a 200 return).
           body:
             type: !include schemas/error.json
-            example: !include ../examples/v1.0-bulk-stage-fail.json
+            example: !include ../examples/v1.0-bulk-post-fail.json
 /single:
    displayName: Single control interface
    get:
@@ -121,7 +121,7 @@ documentation:
              example: !include ../examples/v1.0-resourcelist-get-200.json
      /{senderId}:
          get:
-           description: List all the API endpoints for a single senders.
+           description: List all the API endpoints for a single sender.
            responses:
              200:
                body:
@@ -137,11 +137,11 @@ documentation:
                Any minimum/maximum constraints listed here must not allow a wider range of values than
                those allowed by the core schema. Any enum defined on this endpoint must only contain a
                subset of the values allowed for that parameter in the core schema. Similarly, pattern
-               constraints must only narrow the allowed values. If the sender/receiver does
+               constraints must only narrow the allowed values. If the sender does
                not constrain parameters beyond what is specified in the core schema then the
                constraints in the core schema should not be duplicated on this endpoint. Where
                an "auto" mode is allowed in the core schema this mode must always be supported by
-               the sender/receiver if the parameter is exposed.
+               the sender if the parameter is exposed.
                If SMPTE 2022-7 is in use, two entries are in the outer array of the resource.
                The first entry is the constraints for the primary leg.
                If SMPTE 2022-7 is not in use only one entry should be present in the outer array.
@@ -184,7 +184,7 @@ documentation:
              body:
                description: >
                 PATCH must comply with the constraints served at /constraints but not all fields are mandatory.
-                Any fields not included in the reqest JSON remain unchanged, even if they are a child of a property
+                Any fields not included in the request JSON remain unchanged, even if they are a child of a property
                 that was included in the request. For example a request containing changes to a single transport parameter
                 will not alter any other transport parameter, even though the `transport_params` property was part
                 of the request.
@@ -258,7 +258,7 @@ documentation:
                into the actual values that will be used by the sender, unless there is an error condition.
                For example if a sender has the `destination_ip`
                parameter set to `auto` in /staged then `destination_ip` in /active should show the multicast IP
-               chosen by the receiver. The parameter will remain set to `auto` in staged, and may be resolved to a different
+               chosen by the sender. The parameter will remain set to `auto` in staged, and may be resolved to a different
                value on each subsequent activation. In cases, such as `destination_ip`, where the parameter changing unexpectedly
                at activation through re-resolution may be undesirable, care should be taken in implementation
                to manage this.
@@ -314,11 +314,11 @@ documentation:
              Any minimum/maximum constraints listed here must not allow a wider range of values than
              those allowed by the core schema. Any enum defined on this endpoint must only contain a
              subset of the values allowed for that parameter in the core schema. Similarly, pattern
-             constraints must only narrow the allowed values. If the sender/receiver does
+             constraints must only narrow the allowed values. If the receiver does
              not constrain parameters beyond what is specified in the core schema then the
              constraints in the core schema should not be duplicated on this endpoint. Where
              an "auto" mode is allowed in the core schema this mode must always be supported by
-             the sender/receiver if the parameter is exposed.
+             the receiver if the parameter is exposed.
              If SMPTE 2022-7 is in use, two entries are in the outer array of the resource.
              The first entry is the constraints for the primary leg.
              If SMPTE 2022-7 is not in use only one entry should be present in the outer array.
@@ -377,7 +377,7 @@ documentation:
            body:
              description: >
               PATCH must comply with the constraints served at /constraints but not all fields are mandatory.
-              Any fields not included in the reqest JSON remain unchanged, even if they are a child of a property
+              Any fields not included in the request JSON remain unchanged, even if they are a child of a property
               that was included in the request. For example a request containing changes to a single transport parameter
               will not alter any other transport parameter, even though the `transport_params` property was part
               of the request.

@@ -2,7 +2,7 @@
   "sender_id": "5709255c-c0ae-4e1e-99a0-e872e83e48e0",
   "master_enable": true,
   "activation": {
-    "mode": "activate_scheduled_relative",
+    "mode": "activate_scheduled_absolute",
     "requested_time": "1496739064:0",
     "activation_time": "1496739064:2500"
   },
