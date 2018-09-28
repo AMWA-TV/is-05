@@ -258,7 +258,7 @@ documentation:
                into the actual values that will be used by the sender, unless there is an error condition.
                For example if a sender has the `destination_ip`
                parameter set to `auto` in /staged then `destination_ip` in /active should show the multicast IP
-               chosen by the receiver. The parameter will remain set to `auto` in staged, and may be resolved to a different
+               chosen by the sender. The parameter will remain set to `auto` in staged, and may be resolved to a different
                value on each subsequent activation. In cases, such as `destination_ip`, where the parameter changing unexpectedly
                at activation through re-resolution may be undesirable, care should be taken in implementation
                to manage this.
