@@ -9,7 +9,7 @@
     "description": "Contains the constraints for on transport leg",
     "properties": {
       "multicast_ip": {
-	      "$ref": "#/definitions/constraint"
+        "$ref": "#/definitions/constraint"
       },
       "destination_ip": {
         "$ref": "#/definitions/constraint"
