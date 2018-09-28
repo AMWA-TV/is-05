@@ -18,12 +18,9 @@
       "code": {
         "description": "HTTP status code that would have resulted from an individual activation on this device",
         "type": "integer",
-        "enum": [
-          200,
-          202,
-          400,
-          404,
-          500
+        "anyOf": [
+          { "minimum": 200, "maximum": 299 },
+          { "minimum": 400, "maximum": 599 }
         ]
       },
       "error": {
