@@ -49,7 +49,7 @@ documentation:
           The actual subset of transport parameters used for the patch must be compatible with the
           associated sender's constraints, which may be checked using the individual sender\'s /constraints url.
         type: !include schemas/v1.0-bulk-sender-post-schema.json
-        example: !include ../examples/v1.0-bulk-sender-stage-post.json
+        example: !include ../examples/v1.0-bulk-sender-post.json
       responses:
         200:
           description: >
@@ -58,16 +58,16 @@ documentation:
             The response object provides the HTTP status code that would have been returned
             by each sender had the request been carried out individually.
           body:
-            type: !include schemas/v1.0-bulk-stage-confirm.json
+            type: !include schemas/v1.0-bulk-response-schema.json
             example: !include ../examples/v1.0-bulk-post-confirm.json
         400:
           description: >
             The body of the request did not validate against the schema (ignoring the content of the
-            `params` field - these are validated individually by each sender/receiver and failures
+            `params` field - these are validated individually by each sender and failures
             are recorded in the response object for a 200 return).
           body:
             type: !include schemas/error.json
-            example: !include ../examples/v1.0-bulk-stage-fail.json
+            example: !include ../examples/v1.0-bulk-post-fail.json
   /receivers:
     description: Target for bulk uploads of transport parameters.
     get:
@@ -83,9 +83,9 @@ documentation:
       body:
         description: >
           The actual subset of transport parameters used must be compatible with all receivers
-          being addressed, which may be checked using the individual sender\'s /constraints url.
+          being addressed, which may be checked using the individual receiver\'s /constraints url.
         type: !include schemas/v1.0-bulk-receiver-post-schema.json
-        example: !include ../examples/v1.0-bulk-receiver-stage-patch.json
+        example: !include ../examples/v1.0-bulk-receiver-post.json
       responses:
         200:
           description: >
@@ -94,16 +94,16 @@ documentation:
             The response object provides the HTTP status code that would have been
             returned by each receiver had the request been carried out individually.
           body:
-            type: !include schemas/v1.0-bulk-stage-confirm.json
+            type: !include schemas/v1.0-bulk-response.json
             example: !include ../examples/v1.0-bulk-post-confirm.json
         400:
           description: >
             The body of the request did not validate against the schema (ignoring the content of the
-            `params` field - these are validated individually by each sender/receiver and failures
+            `params` field - these are validated individually by each receiver and failures
             are recorded in the response object for a 200 return).
           body:
             type: !include schemas/error.json
-            example: !include ../examples/v1.0-bulk-stage-fail.json
+            example: !include ../examples/v1.0-bulk-post-fail.json
 /single:
    displayName: Single control interface
    get:
@@ -121,7 +121,7 @@ documentation:
              example: !include ../examples/v1.0-resourcelist-get-200.json
      /{senderId}:
          get:
-           description: List all the API endpoints for a single senders.
+           description: List all the API endpoints for a single sender.
            responses:
              200:
                body:
@@ -137,11 +137,11 @@ documentation:
                Any minimum/maximum constraints listed here must not allow a wider range of values than
                those allowed by the core schema. Any enum defined on this endpoint must only contain a
                subset of the values allowed for that parameter in the core schema. Similarly, pattern
-               constraints must only narrow the allowed values. If the sender/receiver does
+               constraints must only narrow the allowed values. If the sender does
                not constrain parameters beyond what is specified in the core schema then the
                constraints in the core schema should not be duplicated on this endpoint. Where
                an "auto" mode is allowed in the core schema this mode must always be supported by
-               the sender/receiver if the parameter is exposed.
+               the sender if the parameter is exposed.
                If SMPTE 2022-7 is in use, two entries are in the outer array of the resource.
                The first entry is the constraints for the primary leg.
                If SMPTE 2022-7 is not in use only one entry should be present in the outer array.
@@ -157,7 +157,7 @@ documentation:
          /staged:
            get:
              description: >
-               Get staged receiver transport parameters object. In SMPTE 2022-7 operation element 0
+               Get staged sender transport parameters object. In SMPTE 2022-7 operation element 0
                of the `transport_params` array shall be the parameters applied to the primary leg, and
                element 1 the secondary leg. There shall only be one element present in `transport_params`
                when SMPTE 2022-7 is not in use. When the `master_enable` parameter is false the RTP
@@ -177,17 +177,26 @@ documentation:
              description: >
                Update staged parameters for sender.
                Note that for activations the `mode` parameter will return to null once the activation
-               is completed.
+               transaction with the client is completed (i.e the response to the PATCH has been sent by the server).
                In SMPTE 2022-7 operation element 0 of the `transport_params`
                array shall be the parameters applied to the primary leg, and element 1 the secondary leg.
                There shall only be one element present in `transport_params` when SMPTE 2022-7 is not in use.
              body:
-               description: PATCH must comply with the constraints served at /constraints but not all fields are mandatory.
+               description: >
+                PATCH must comply with the constraints served at /constraints but not all fields are mandatory.
+                Any fields not included in the request JSON remain unchanged, even if they are a child of a property
+                that was included in the request. For example a request containing changes to a single transport parameter
+                will not alter any other transport parameter, even though the `transport_params` property was part
+                of the request.
                type: !include schemas/v1.0-sender-stage-schema.json
                examples:
                  immediate-activation: !include ../examples/v1.0-sender-patch.json
                  relative-scheduled-activation: !include ../examples/v1.0-sender-patch-relative.json
                  absolute-scheduled-activation: !include ../examples/v1.0-sender-patch-absolute.json
+                 activation-only: !include ../examples/v1.0-sender-patch-activation-only.json
+                 redundant-streams: !include ../examples/v1.0-sender-patch-redundant-streams.json
+                 unicast: !include ../examples/v1.0-sender-patch-unicast.json
+
              responses:
                200:
                  description: >
@@ -195,7 +204,7 @@ documentation:
                    an activation has been cancelled, or an immediate activation has been requested.
                    The response will always contain the full set of parameters in the response schema, and all
                    supported transport parameters. For a request with an immediate activation the API should
-                   only return a response once the activation has completed.
+                   only return a response once the new transport parameters have been applied to the underlying sender.
                    Note the presence of the extra `activation_time` parameter in the response. For immediate activation
                    this should be the time the activation actually occurred as an absolute TAI timestamp.
                    If no activation was requested in the PATCH `activation_time` will be set `null`.
@@ -205,7 +214,8 @@ documentation:
                  body:
                    type: !include schemas/v1.0-sender-response-schema.json
                    examples:
-                     immediate-activation: !include ../examples/v1.0-stage-success.json
+                     immediate-activation: !include ../examples/v1.0-sender-stage-success.json
+                     redundant-streams: !include ../examples/v1.0-sender-stage-success-redundant-streams.json
                202:
                  description: >
                    A 202 response is returned when a request for a scheduled activation is accepted, to indicate
@@ -219,8 +229,8 @@ documentation:
                  body:
                    type: !include schemas/v1.0-sender-response-schema.json
                    examples:
-                     relative-scheduled-activation: !include ../examples/v1.0-stage-relative-success.json
-                     absolute-scheduled-activation: !include ../examples/v1.0-stage-absolute-success.json
+                     relative-scheduled-activation: !include ../examples/v1.0-sender-stage-relative-success.json
+                     absolute-scheduled-activation: !include ../examples/v1.0-sender-stage-absolute-success.json
                400:
                  description: A 400 response is returned when the request did not meet the schema and constraints.
                  body:
@@ -244,13 +254,16 @@ documentation:
          /active:
            get:
              description: >
-               Get active sender parameters. On activation all instances of "auto" should be resolved
-               into the actual values that will be used by the sender. For example if a sender has the `destination_ip`
+               Get active sender parameters. On activation all instances of "auto" must be resolved
+               into the actual values that will be used by the sender, unless there is an error condition.
+               For example if a sender has the `destination_ip`
                parameter set to `auto` in /staged then `destination_ip` in /active should show the multicast IP
-               chosen by the receiver. The parameter will remain set to `auto` in staged, and may be resolved to a different
+               chosen by the sender. The parameter will remain set to `auto` in staged, and may be resolved to a different
                value on each subsequent activation. In cases, such as `destination_ip`, where the parameter changing unexpectedly
                at activation through re-resolution may be undesirable, care should be taken in implementation
                to manage this.
+               If there is an error condition that means `auto` cannot be resolved, the active transport parameters
+               must not change, and the underlying sender must continue as before.
              responses:
                200:
                  body:
@@ -301,11 +314,11 @@ documentation:
              Any minimum/maximum constraints listed here must not allow a wider range of values than
              those allowed by the core schema. Any enum defined on this endpoint must only contain a
              subset of the values allowed for that parameter in the core schema. Similarly, pattern
-             constraints must only narrow the allowed values. If the sender/receiver does
+             constraints must only narrow the allowed values. If the receiver does
              not constrain parameters beyond what is specified in the core schema then the
              constraints in the core schema should not be duplicated on this endpoint. Where
              an "auto" mode is allowed in the core schema this mode must always be supported by
-             the sender/receiver if the parameter is exposed.
+             the receiver if the parameter is exposed.
              If SMPTE 2022-7 is in use, two entries are in the outer array of the resource.
              The first entry is the constraints for the primary leg.
              If SMPTE 2022-7 is not in use only one entry should be present in the outer array.
@@ -340,7 +353,7 @@ documentation:
            description: >
              Update staged parameters for receiver.
              Note that for activations the `mode` parameter will return to null once the activation
-             is completed.
+             transaction with the client is completed (i.e the response to the PATCH has been sent by the server).
              When a transport file is staged the parameters in that transport file should be propagated to
              their corresponding transport parameters and the response should show these updated values.
              On activation the value of the entries in `transport_parameters` must be used to program
@@ -363,13 +376,20 @@ documentation:
              `rtp_enable` parameter allows for the individual disabling of SMPTE 2022-7 legs.
            body:
              description: >
-               PATCH must comply with the constraints served at /constraints but not all fields are mandatory.
+              PATCH must comply with the constraints served at /constraints but not all fields are mandatory.
+              Any fields not included in the request JSON remain unchanged, even if they are a child of a property
+              that was included in the request. For example a request containing changes to a single transport parameter
+              will not alter any other transport parameter, even though the `transport_params` property was part
+              of the request.
              type: !include schemas/v1.0-receiver-stage-schema.json
              examples:
                activate-immediate: !include ../examples/v1.0-receiver-patch.json
                activate-scheduled-relative: !include ../examples/v1.0-receiver-patch-relative.json
                activate-scheduled-absolute: !include ../examples/v1.0-receiver-patch-absolute.json
+               activation-only: !include ../examples/v1.0-receiver-patch-activation-only.json
                stage-transportfile: !include ../examples/v1.0-receiver-patch-transportfile.json
+               redundant-streams: !include ../examples/v1.0-receiver-patch-redundant-streams.json
+               unicast: !include ../examples/v1.0-receiver-patch-unicast.json
            responses:
              200:
                description: >
@@ -377,7 +397,7 @@ documentation:
                  an activation has been cancelled, or an immediate activation has been requested.
                  The response will always contain the full set of parameters in the response schema, and all
                  supported transport parameters. For a request involving an immediate activation the API
-                 should only return once the activation has completed.
+                 should only return once the transport parameters have been applied to the underlying receiver.
                  Note the presence of the extra `activation_time` parameter in the response. For immediate activation
                  this should be the time the activation actually occurred as an absolute TAI timestamp.
                  If no activation was requested in the `activation_time` will be set `null`.
@@ -386,6 +406,7 @@ documentation:
                  examples:
                    activate-immediate: !include ../examples/v1.0-receiver-stage-success.json
                    stage-transportfile: !include ../examples/v1.0-receiver-stage-scheduled-transportfile.json
+                   redundant-streams: !include ../examples/v1.0-receiver-stage-success-redundant-streams.json
              202:
                description: >
                  A 202 response is returned when a request for a scheduled activation is accepted, to indicate
@@ -424,13 +445,16 @@ documentation:
        /active:
          get:
            description: >
-             Get active receiver parameters. On activation all instances of "auto" should be resolved
-             into the actual values that will be used by the receiver. For example if a receiver has the `interface_ip`
+             Get active receiver parameters. On activation all instances of "auto" must be resolved
+             into the actual values that will be used by the receiver, unless there is an error condition.
+             For example if a receiver has the `interface_ip`
              parameter set to `auto` in /staged then `interface_ip` in /active should show the IP address of the interface
              chosen by the receiver. The parameter will remain set to `auto` in staged, and may be resolved to a different
              value on each subsequent activation. In cases, such as `interface_ip`, where the parameter changing unexpectedly
              at activation through re-resolution may be undesirable, care should be taken in implementation
              to manage this.
+             If there is an error condition that means `auto` cannot be resolved, the active transport parameters
+             must not change, and the underlying receiver must continue as before.
            responses:
              200:
                body:

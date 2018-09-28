@@ -7,7 +7,7 @@
   },
   "transport_params": [{
     "interface_ip": "192.168.200.15",
-    "multicast_ip": "232.105.26.177",
+    "multicast_ip": null,
     "source_ip": "192.168.200.10",
     "destination_port": 5000,
     "rtp_enabled": true
