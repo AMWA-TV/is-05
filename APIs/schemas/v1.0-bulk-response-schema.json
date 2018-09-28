@@ -18,10 +18,10 @@
       "code": {
         "description": "HTTP status code that would have resulted from an individual activation on this device",
         "type": "integer",
-	"anyOf": [
-	  { "minimum": 200, "maximum": 299 },
-	  { "minimum": 400, "maximum": 599 }
-	]
+        "anyOf": [
+          { "minimum": 200, "maximum": 299 },
+          { "minimum": 400, "maximum": 599 }
+        ]
       },
       "error": {
         "description": "Human readable message which is suitable for user interface display, and helpful to the user. Only included if 'code' indicates an error state",
