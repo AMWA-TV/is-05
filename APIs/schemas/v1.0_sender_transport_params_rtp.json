@@ -19,8 +19,7 @@
           {
             "pattern": "^auto$"
           }
-        ],
-        "default": "auto"
+        ]
       },
       "destination_ip": {
         "type": "string",
@@ -44,8 +43,7 @@
         "description": "source port for RTP packets (auto = 5004)",
         "minimum": 0,
         "maximum": 65535,
-        "pattern": "^auto$",
-        "default": "auto"
+        "pattern": "^auto$"
       },
       "destination_port": {
         "type": [
@@ -55,13 +53,11 @@
         "description": "destination port for RTP packets (auto = 5004)",
         "minimum": 1,
         "maximum": 65535,
-        "pattern": "^auto$",
-        "default": "auto"
+        "pattern": "^auto$"
       },
       "fec_enabled": {
         "type": "boolean",
-        "description": "FEC on/off",
-        "default": false
+        "description": "FEC on/off"
       },
       "fec_destination_ip": {
         "type": "string",
@@ -75,8 +71,7 @@
           {
             "pattern": "^auto$"
           }
-        ],
-        "default": "auto"
+        ]
       },
       "fec_type": {
         "type": "string",
@@ -84,8 +79,7 @@
         "enum": [
           "XOR",
           "Reed-Solomon"
-        ],
-        "default": "XOR"
+        ]
       },
       "fec_mode": {
         "type": "string",
@@ -93,22 +87,19 @@
         "enum": [
           "1D",
           "2D"
-        ],
-        "default": "1D"
+        ]
       },
       "fec_block_width": {
         "type": "integer",
         "description": "width of block over which FEC is calculated in packets",
         "minimum": 4,
-        "maximum": 200,
-        "default": 4
+        "maximum": 200
       },
       "fec_block_height": {
         "type": "integer",
         "description": "height of block over which FEC is calculated in packets",
         "minimum": 4,
-        "maximum": 200,
-        "default": 4
+        "maximum": 200
       },
       "fec1D_destination_port": {
         "type": [
@@ -118,8 +109,7 @@
         "description": "destination port for RTP Column FEC packets (auto = RTP destination_port + 2)",
         "minimum": 1,
         "maximum": 65535,
-        "pattern": "^auto$",
-        "default": "auto"
+        "pattern": "^auto$"
       },
       "fec2D_destination_port": {
         "type": [
@@ -129,8 +119,7 @@
         "description": "destination port for RTP Row FEC packets (auto = RTP destination_port + 4)",
         "minimum": 1,
         "maximum": 65535,
-        "pattern": "^auto$",
-        "default": "auto"
+        "pattern": "^auto$"
       },
       "fec1D_source_port": {
         "type": [
@@ -140,8 +129,7 @@
         "description": "source port for RTP FEC packets (auto = RTP source_port + 2)",
         "minimum": 0,
         "maximum": 65535,
-        "pattern": "^auto$",
-        "default": "auto"
+        "pattern": "^auto$"
       },
       "fec2D_source_port": {
         "type": [
@@ -151,13 +139,11 @@
         "description": "source port for RTP FEC packets (auto = RTP source_port + 4)",
         "minimum": 0,
         "maximum": 65535,
-        "pattern": "^auto$",
-        "default": "auto"
+        "pattern": "^auto$"
       },
       "rtcp_enabled": {
         "type": "boolean",
-        "description": "rtcp on/off",
-        "default": false
+        "description": "rtcp on/off"
       },
       "rtcp_destination_ip": {
         "type": "string",
@@ -171,8 +157,7 @@
           {
             "pattern": "^auto$"
           }
-        ],
-        "default": "auto"
+        ]
       },
       "rtcp_destination_port": {
         "type": [
@@ -182,8 +167,7 @@
         "description": "destination port for RTCP packets (auto = next highest odd port number after RTP destination_port)",
         "minimum": 1,
         "maximum": 65535,
-        "pattern": "^auto$",
-        "default": "auto"
+        "pattern": "^auto$"
       },
       "rtcp_source_port": {
         "type": [
@@ -193,13 +177,11 @@
         "description": "source port for RTCP packets (destination port for RTCP packets (auto = RTP destination_port + 1))",
         "minimum": 0,
         "maximum": 65535,
-        "pattern": "^auto$",
-        "default": "auto"
+        "pattern": "^auto$"
       },
       "rtp_enabled": {
         "type": "boolean",
-        "description": "RTP transmission active/inactive",
-        "default": true
+        "description": "RTP transmission active/inactive"
       }
     }
   }

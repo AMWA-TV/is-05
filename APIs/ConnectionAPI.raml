@@ -254,13 +254,16 @@ documentation:
          /active:
            get:
              description: >
-               Get active sender parameters. On activation all instances of "auto" should be resolved
-               into the actual values that will be used by the sender. For example if a sender has the `destination_ip`
+               Get active sender parameters. On activation all instances of "auto" must be resolved
+               into the actual values that will be used by the sender, unless there is an error condition.
+               For example if a sender has the `destination_ip`
                parameter set to `auto` in /staged then `destination_ip` in /active should show the multicast IP
                chosen by the receiver. The parameter will remain set to `auto` in staged, and may be resolved to a different
                value on each subsequent activation. In cases, such as `destination_ip`, where the parameter changing unexpectedly
                at activation through re-resolution may be undesirable, care should be taken in implementation
                to manage this.
+               If there is an error condition that means `auto` cannot be resolved, the active transport parameters
+               must not change, and the underlying sender must continue as before.
              responses:
                200:
                  body:
@@ -442,13 +445,16 @@ documentation:
        /active:
          get:
            description: >
-             Get active receiver parameters. On activation all instances of "auto" should be resolved
-             into the actual values that will be used by the receiver. For example if a receiver has the `interface_ip`
+             Get active receiver parameters. On activation all instances of "auto" must be resolved
+             into the actual values that will be used by the receiver, unless there is an error condition.
+             For example if a receiver has the `interface_ip`
              parameter set to `auto` in /staged then `interface_ip` in /active should show the IP address of the interface
              chosen by the receiver. The parameter will remain set to `auto` in staged, and may be resolved to a different
              value on each subsequent activation. In cases, such as `interface_ip`, where the parameter changing unexpectedly
              at activation through re-resolution may be undesirable, care should be taken in implementation
              to manage this.
+             If there is an error condition that means `auto` cannot be resolved, the active transport parameters
+             must not change, and the underlying receiver must continue as before.
            responses:
              200:
                body:

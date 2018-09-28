@@ -15,8 +15,7 @@
     },
     "master_enable": {
       "description": "Master on/off control for receiver",
-      "type": "boolean",
-      "default": true
+      "type": "boolean"
     },
     "activation": {
       "$ref": "v1.0-activation-schema.json"
