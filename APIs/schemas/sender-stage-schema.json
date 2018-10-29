@@ -4,12 +4,6 @@
   "description": "Describes a sender",
   "title": "Sender resource",
   "additionalProperties": false,
-  "required": [
-    "receiver_id",
-    "master_enable",
-    "activation",
-    "transport_params"
-  ],
   "properties": {
     "receiver_id": {
       "description": "ID of the target Receiver of this Sender. This will be null if the sender is operating in multicast mode, or has not been assigned a receiver in unicast mode, or is sending to a non-NMOS receiver in unicast mode.",
@@ -24,15 +18,15 @@
       "type": "boolean"
     },
     "activation": {
-      "$ref": "v1.0-activation-response-schema.json"
+      "$ref": "activation-schema.json"
     },
     "transport_params": {
       "description": "Transport-specific parameters",
       "oneOf": [{
-          "$ref": "v1.0_sender_transport_params_rtp.json"
+          "$ref": "sender_transport_params_rtp.json"
         },
         {
-          "$ref": "v1.0_sender_transport_params_dash.json"
+          "$ref": "sender_transport_params_dash.json"
         }
       ]
     }
