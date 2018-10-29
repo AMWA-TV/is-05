@@ -1,4 +1,4 @@
-# AMWA IS-05 NMOS Device Connection Management Specification (Stable)
+# AMWA IS-05 NMOS Device Connection Management Specification
 
 This repository contains details of this AMWA Specification for controlling aspects of NMOS Devices to effect connection management between Senders and Receivers.
 
