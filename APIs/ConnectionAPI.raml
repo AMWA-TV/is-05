@@ -308,6 +308,19 @@ documentation:
                  body:
                    description: >
                      Returned if the resource does not exist or if the sender is not currently configured
+         /transporttype:
+           get:
+             description: >
+               Returns the URN for the transport type employed by this sender.
+             responses:
+               200:
+                 body:
+                   type: !include schemas/transporttype-response-schema.json
+                   example: !include ../examples/transporttype-get.json
+               404:
+                body:
+                 description: >
+                   Returned when the resource does not exist
    /receivers:
      displayName: Receivers
      get:
@@ -487,7 +500,18 @@ documentation:
                body:
                  type: !include schemas/receiver-response-schema.json
                  examples:
-                   running-state: !include ../examples/receiver-active-get-200.json
+                   NormalRTP: !include ../examples/receiver-active-get-200.json
+                   NormalMQTT: !include ../examples/receiver-active-get-200-mqtt.json
                    Uninitialised: !include ../examples/receiver-active-get-200-uninit.json
              404:
                description: Returned when the requested resource does not exist
+       /transporttype:
+         get:
+           description: Returns the URN for the transport type employed by this receiver.
+           responses:
+             200:
+               body:
+                 type: !include schemas/transporttype-response-schema.json
+                 example: !include ../examples/transporttype-get.json
+             404:
+               description: Returned when the resource does not exist
