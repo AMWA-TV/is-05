@@ -1,6 +1,6 @@
 {
   "master_enable": true,
-  "receiver_id": "",
+  "receiver_id": null,
   "activation": {
     "mode": "activate_scheduled_relative",
     "requested_time": "2:0",
