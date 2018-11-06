@@ -1,0 +1,15 @@
+[{
+  "destination_host": {},
+  "destination_port": {
+    "enum": [
+      1833,
+      8883
+    ]
+  },
+  "broker_topic": {
+    "enum": [
+      "fixedTopicName1",
+      "fixedTopicName2"
+    ]
+  }
+}]

@@ -165,7 +165,9 @@ documentation:
                    type: !include schemas/constraints-schema.json
                    examples:
                      SMPTE2022-7: !include ../examples/sender-constraints-get-200-2022-7.json
-                     No2022-7: !include ../examples/sender-constraints-get-200.json
+                     RTPNo2022-7: !include ../examples/sender-constraints-get-200.json
+                     MQTT: !include ../examples/sender-constraints-get-200-mqtt.json
+                     WebSocketPlusExt: !include ../examples/sender-constraints-get-200-websocket-ext.json
               404:
                  description: Returned when the requested resource does not exist
          /staged:
@@ -289,7 +291,8 @@ documentation:
                  body:
                    type: !include schemas/sender-response-schema.json
                    examples:
-                     Normal: !include ../examples/sender-active-get.json
+                     NormalRTP: !include ../examples/sender-active-get.json
+                     NormalMQTT: !include ../examples/sender-active-get-mqtt.json
                      Uninitialised: !include ../examples/sender-active-get-uninit.json
                404:
                  description: Returned when the requested resource does not exist
@@ -362,7 +365,9 @@ documentation:
                  type: !include schemas/constraints-schema.json
                  examples:
                    SMPTE2022-7: !include ../examples/receiver-constraints-get-200-2022-7.json
-                   No2022-7: !include ../examples/receiver-constraints-get-200.json
+                   RTPNo2022-7: !include ../examples/receiver-constraints-get-200.json
+                   MQTT: !include ../examples/receiver-constraints-get-200-mqtt.json
+                   WebSocketPlusExt: !include ../examples/receiver-constraints-get-200-websocket-ext.json
              404:
                description: Returned when the requested resource does not exist
        /staged:
