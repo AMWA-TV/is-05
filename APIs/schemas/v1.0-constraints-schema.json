@@ -6,7 +6,7 @@
   "maxitems": 2,
   "items": {
     "type": "object",
-    "description": "Contains the constraints for on transport leg",
+    "description": "Contains the constraints for one transport leg",
     "properties": {
       "multicast_ip": {
         "$ref": "#/definitions/constraint"
