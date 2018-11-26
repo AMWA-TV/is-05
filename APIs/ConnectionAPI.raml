@@ -26,6 +26,7 @@ documentation:
       200:
         body:
           example: !include ../examples/base-get-200.json
+          schema: !include schemas/connectionapi-base.json
 /bulk:
   displayName: Bulk control interface
   get:
@@ -34,6 +35,7 @@ documentation:
       200:
         body:
           example: !include ../examples/bulk-base-get-200.json
+          schema: !include schemas/connectionapi-bulk.json
   /senders:
     description: Target for bulk staging of transport parameters.
     get:
@@ -121,6 +123,7 @@ documentation:
        200:
          body:
            example: !include ../examples/single-root.json
+           schema: !include schemas/connectionapi-single.json
    /senders:
      get:
        description: Sender root
@@ -136,6 +139,7 @@ documentation:
              200:
                body:
                  example: !include ../examples/sender-resource-get-200.json
+                 schema: !include schemas/connectionapi-sender.json
              404:
                description: Returned when the requested Sender ID does not exist.
          /constraints:
@@ -319,6 +323,7 @@ documentation:
            200:
              body:
                example: !include ../examples/receiver-resource-get-200.json
+               schema: !include schemas/connectionapi-receiver.json
            404:
              description: Returned when the requested resource does not exist
        /constraints:
