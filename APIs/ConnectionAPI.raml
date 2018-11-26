@@ -5,7 +5,7 @@
 
 title: Connection
 baseUri: http://example.api.com/x-nmos/connection/{version}
-version: v1.0
+version: v1.1
 mediaType: application/json
 
 documentation:
@@ -25,7 +25,7 @@ documentation:
     responses:
       200:
         body:
-          example: !include ../examples/v1.0-base-get-200.json
+          example: !include ../examples/base-get-200.json
           schema: !include schemas/connectionapi-base.json
 /bulk:
   displayName: Bulk control interface
@@ -34,7 +34,7 @@ documentation:
     responses:
       200:
         body:
-          example: !include ../examples/v1.0-bulk-base-get-200.json
+          example: !include ../examples/bulk-base-get-200.json
           schema: !include schemas/connectionapi-bulk.json
   /senders:
     description: Target for bulk staging of transport parameters.
@@ -44,14 +44,19 @@ documentation:
           description: >
             The API should actively return an HTTP 405 if a GET is called on the
             endpoint.
+    options:
+      description: A pre-flight check generally used for Cross-Origin Resource Sharing (CORS) purposes
+      responses:
+        200:
+        403:
     post:
       description: Allows staging and activation of multiple sender parameters at the same time in a single request.
       body:
         description: >
           The actual subset of transport parameters used for the patch must be compatible with the
           associated sender's constraints, which may be checked using the individual sender\'s /constraints url.
-        type: !include schemas/v1.0-bulk-sender-post-schema.json
-        example: !include ../examples/v1.0-bulk-sender-post.json
+        type: !include schemas/bulk-sender-post-schema.json
+        example: !include ../examples/bulk-sender-post.json
       responses:
         200:
           description: >
@@ -60,8 +65,8 @@ documentation:
             The response object provides the HTTP status code that would have been returned
             by each sender had the request been carried out individually.
           body:
-            type: !include schemas/v1.0-bulk-response-schema.json
-            example: !include ../examples/v1.0-bulk-post-confirm.json
+            type: !include schemas/bulk-response-schema.json
+            example: !include ../examples/bulk-post-confirm.json
         400:
           description: >
             The body of the request did not validate against the schema (ignoring the content of the
@@ -69,7 +74,7 @@ documentation:
             are recorded in the response object for a 200 return).
           body:
             type: !include schemas/error.json
-            example: !include ../examples/v1.0-bulk-post-fail.json
+            example: !include ../examples/bulk-post-fail.json
   /receivers:
     description: Target for bulk uploads of transport parameters.
     get:
@@ -78,6 +83,11 @@ documentation:
           description:
             The API should actively return an HTTP 405 if a GET is called on the
             endpoint.
+    options:
+      description: A pre-flight check generally used for Cross-Origin Resource Sharing (CORS) purposes
+      responses:
+        200:
+        403:
     post:
       description: >
         Allows staging and activation of a subset of multiple
@@ -86,8 +96,8 @@ documentation:
         description: >
           The actual subset of transport parameters used must be compatible with all receivers
           being addressed, which may be checked using the individual receiver\'s /constraints url.
-        type: !include schemas/v1.0-bulk-receiver-post-schema.json
-        example: !include ../examples/v1.0-bulk-receiver-post.json
+        type: !include schemas/bulk-receiver-post-schema.json
+        example: !include ../examples/bulk-receiver-post.json
       responses:
         200:
           description: >
@@ -96,8 +106,8 @@ documentation:
             The response object provides the HTTP status code that would have been
             returned by each receiver had the request been carried out individually.
           body:
-            type: !include schemas/v1.0-bulk-response-schema.json
-            example: !include ../examples/v1.0-bulk-post-confirm.json
+            type: !include schemas/bulk-response-schema.json
+            example: !include ../examples/bulk-post-confirm.json
         400:
           description: >
             The body of the request did not validate against the schema (ignoring the content of the
@@ -105,14 +115,14 @@ documentation:
             are recorded in the response object for a 200 return).
           body:
             type: !include schemas/error.json
-            example: !include ../examples/v1.0-bulk-post-fail.json
+            example: !include ../examples/bulk-post-fail.json
 /single:
    displayName: Single control interface
    get:
      responses:
        200:
          body:
-           example: !include ../examples/v1.0-single-root.json
+           example: !include ../examples/single-root.json
            schema: !include schemas/connectionapi-single.json
    /senders:
      get:
@@ -121,14 +131,14 @@ documentation:
          200:
            description: List Available Senders. All UUIDs are appended with / to indicate the ID forms part of the URL for the next layer down.
            body:
-             example: !include ../examples/v1.0-resourcelist-get-200.json
+             example: !include ../examples/resourcelist-get-200.json
      /{senderId}:
          get:
            description: List all the API endpoints for a single sender.
            responses:
              200:
                body:
-                 example: !include ../examples/v1.0-sender-resource-get-200.json
+                 example: !include ../examples/sender-resource-get-200.json
                  schema: !include schemas/connectionapi-sender.json
              404:
                description: Returned when the requested Sender ID does not exist.
@@ -152,10 +162,10 @@ documentation:
              responses:
               200:
                  body:
-                   type: !include schemas/v1.0-constraints-schema.json
+                   type: !include schemas/constraints-schema.json
                    examples:
-                     SMPTE2022-7: !include ../examples/v1.0-sender-constraints-get-200-2022-7.json
-                     No2022-7: !include ../examples/v1.0-sender-constraints-get-200.json
+                     SMPTE2022-7: !include ../examples/sender-constraints-get-200-2022-7.json
+                     No2022-7: !include ../examples/sender-constraints-get-200.json
               404:
                  description: Returned when the requested resource does not exist
          /staged:
@@ -171,12 +181,18 @@ documentation:
                200:
                  description: Additionally constrained by the constraints at /constraints
                  body:
-                   type: !include schemas/v1.0-sender-response-schema.json
+                   type: !include schemas/sender-response-schema.json
                    examples:
-                     Normal: !include ../examples/v1.0-sender-get-200.json
-                     Uninitialised: !include ../examples/v1.0-sender-get-200-uninit.json
+                     Normal: !include ../examples/sender-get-200.json
+                     Uninitialised: !include ../examples/sender-get-200-uninit.json
                404:
                  description: Returned when the requested resource does not exist
+           options:
+             description: A pre-flight check generally used for Cross-Origin Resource Sharing (CORS) purposes
+             responses:
+               200:
+               403:
+               404:
            patch:
              description: >
                Update staged parameters for sender.
@@ -192,14 +208,14 @@ documentation:
                 that was included in the request. For example a request containing changes to a single transport parameter
                 will not alter any other transport parameter, even though the `transport_params` property was part
                 of the request.
-               type: !include schemas/v1.0-sender-stage-schema.json
+               type: !include schemas/sender-stage-schema.json
                examples:
-                 immediate-activation: !include ../examples/v1.0-sender-patch.json
-                 relative-scheduled-activation: !include ../examples/v1.0-sender-patch-relative.json
-                 absolute-scheduled-activation: !include ../examples/v1.0-sender-patch-absolute.json
-                 activation-only: !include ../examples/v1.0-sender-patch-activation-only.json
-                 redundant-streams: !include ../examples/v1.0-sender-patch-redundant-streams.json
-                 unicast: !include ../examples/v1.0-sender-patch-unicast.json
+                 immediate-activation: !include ../examples/sender-patch.json
+                 relative-scheduled-activation: !include ../examples/sender-patch-relative.json
+                 absolute-scheduled-activation: !include ../examples/sender-patch-absolute.json
+                 activation-only: !include ../examples/sender-patch-activation-only.json
+                 redundant-streams: !include ../examples/sender-patch-redundant-streams.json
+                 unicast: !include ../examples/sender-patch-unicast.json
 
              responses:
                200:
@@ -216,10 +232,10 @@ documentation:
                    For RTP senders the `rtp_enable` parameter allows for the individual disabling of SMPTE 2022-7
                    legs.
                  body:
-                   type: !include schemas/v1.0-sender-response-schema.json
+                   type: !include schemas/sender-response-schema.json
                    examples:
-                     immediate-activation: !include ../examples/v1.0-sender-stage-success.json
-                     redundant-streams: !include ../examples/v1.0-sender-stage-success-redundant-streams.json
+                     immediate-activation: !include ../examples/sender-stage-success.json
+                     redundant-streams: !include ../examples/sender-stage-success-redundant-streams.json
                202:
                  description: >
                    A 202 response is returned when a request for a scheduled activation is accepted, to indicate
@@ -231,15 +247,15 @@ documentation:
                    at a frame boundary or end of GOP. In all other ways this response behaves identically
                    to a 200 response.
                  body:
-                   type: !include schemas/v1.0-sender-response-schema.json
+                   type: !include schemas/sender-response-schema.json
                    examples:
-                     relative-scheduled-activation: !include ../examples/v1.0-sender-stage-relative-success.json
-                     absolute-scheduled-activation: !include ../examples/v1.0-sender-stage-absolute-success.json
+                     relative-scheduled-activation: !include ../examples/sender-stage-relative-success.json
+                     absolute-scheduled-activation: !include ../examples/sender-stage-absolute-success.json
                400:
                  description: A 400 response is returned when the request did not meet the schema and constraints.
                  body:
                    type: !include schemas/error.json
-                   example: !include ../examples/v1.0-stage-fail.json
+                   example: !include ../examples/stage-fail.json
                404:
                  description: Returned when the requested resource does not exist
                423:
@@ -254,7 +270,7 @@ documentation:
                    some failure caused by activation which was not caused by a violation or schema or constraints.
                  body:
                    type: !include schemas/error.json
-                   example: !include ../examples/v1.0-stage-error.json
+                   example: !include ../examples/stage-error.json
          /active:
            get:
              description: >
@@ -271,10 +287,10 @@ documentation:
              responses:
                200:
                  body:
-                   type: !include schemas/v1.0-sender-response-schema.json
+                   type: !include schemas/sender-response-schema.json
                    examples:
-                     Normal: !include ../examples/v1.0-sender-active-get.json
-                     Uninitialised: !include ../examples/v1.0-sender-active-get-uninit.json
+                     Normal: !include ../examples/sender-active-get.json
+                     Uninitialised: !include ../examples/sender-active-get-uninit.json
                404:
                  description: Returned when the requested resource does not exist
          /transportfile:
@@ -299,14 +315,14 @@ documentation:
        responses:
          200:
            body:
-             example: !include ../examples/v1.0-resourcelist-get-200.json
+             example: !include ../examples/resourcelist-get-200.json
      /{receiverId}:
        get:
          description: List API endpoints
          responses:
            200:
              body:
-               example: !include ../examples/v1.0-receiver-resource-get-200.json
+               example: !include ../examples/receiver-resource-get-200.json
                schema: !include schemas/connectionapi-receiver.json
            404:
              description: Returned when the requested resource does not exist
@@ -330,10 +346,10 @@ documentation:
            responses:
              200:
                body:
-                 type: !include schemas/v1.0-constraints-schema.json
+                 type: !include schemas/constraints-schema.json
                  examples:
-                   SMPTE2022-7: !include ../examples/v1.0-receiver-constraints-get-200-2022-7.json
-                   No2022-7: !include ../examples/v1.0-receiver-constraints-get-200.json
+                   SMPTE2022-7: !include ../examples/receiver-constraints-get-200-2022-7.json
+                   No2022-7: !include ../examples/receiver-constraints-get-200.json
              404:
                description: Returned when the requested resource does not exist
        /staged:
@@ -347,13 +363,19 @@ documentation:
              200:
                description: Additionally constrained by the constraints at /constraints
                body:
-                 type: !include schemas/v1.0-receiver-response-schema.json
+                 type: !include schemas/receiver-response-schema.json
                  examples:
-                   Normal: !include ../examples/v1.0-receiver-get-200.json
-                   Pending: !include ../examples/v1.0-receiver-pending-get-200.json
-                   Uninitialised: !include ../examples/v1.0-receiver-get-200-uninit.json
+                   Normal: !include ../examples/receiver-get-200.json
+                   Pending: !include ../examples/receiver-pending-get-200.json
+                   Uninitialised: !include ../examples/receiver-get-200-uninit.json
              404:
                description: Returned when the requested resource does not exist
+         options:
+           description: A pre-flight check generally used for Cross-Origin Resource Sharing (CORS) purposes
+           responses:
+             200:
+             403:
+             404:
          patch:
            description: >
              Update staged parameters for receiver.
@@ -386,15 +408,15 @@ documentation:
               that was included in the request. For example a request containing changes to a single transport parameter
               will not alter any other transport parameter, even though the `transport_params` property was part
               of the request.
-             type: !include schemas/v1.0-receiver-stage-schema.json
+             type: !include schemas/receiver-stage-schema.json
              examples:
-               activate-immediate: !include ../examples/v1.0-receiver-patch.json
-               activate-scheduled-relative: !include ../examples/v1.0-receiver-patch-relative.json
-               activate-scheduled-absolute: !include ../examples/v1.0-receiver-patch-absolute.json
-               activation-only: !include ../examples/v1.0-receiver-patch-activation-only.json
-               stage-transportfile: !include ../examples/v1.0-receiver-patch-transportfile.json
-               redundant-streams: !include ../examples/v1.0-receiver-patch-redundant-streams.json
-               unicast: !include ../examples/v1.0-receiver-patch-unicast.json
+               activate-immediate: !include ../examples/receiver-patch.json
+               activate-scheduled-relative: !include ../examples/receiver-patch-relative.json
+               activate-scheduled-absolute: !include ../examples/receiver-patch-absolute.json
+               activation-only: !include ../examples/receiver-patch-activation-only.json
+               stage-transportfile: !include ../examples/receiver-patch-transportfile.json
+               redundant-streams: !include ../examples/receiver-patch-redundant-streams.json
+               unicast: !include ../examples/receiver-patch-unicast.json
            responses:
              200:
                description: >
@@ -407,11 +429,11 @@ documentation:
                  this should be the time the activation actually occurred as an absolute TAI timestamp.
                  If no activation was requested in the `activation_time` will be set `null`.
                body:
-                 type: !include schemas/v1.0-receiver-response-schema.json
+                 type: !include schemas/receiver-response-schema.json
                  examples:
-                   activate-immediate: !include ../examples/v1.0-receiver-stage-success.json
-                   stage-transportfile: !include ../examples/v1.0-receiver-stage-scheduled-transportfile.json
-                   redundant-streams: !include ../examples/v1.0-receiver-stage-success-redundant-streams.json
+                   activate-immediate: !include ../examples/receiver-stage-success.json
+                   stage-transportfile: !include ../examples/receiver-stage-scheduled-transportfile.json
+                   redundant-streams: !include ../examples/receiver-stage-success-redundant-streams.json
              202:
                description: >
                  A 202 response is returned when a request for a scheduled activation is accepted, to indicate
@@ -423,15 +445,15 @@ documentation:
                  at a frame boundary or end of GOP. In all other ways this response behaves identically
                  to a 200 response.
                body:
-                 type: !include schemas/v1.0-receiver-response-schema.json
+                 type: !include schemas/receiver-response-schema.json
                  examples:
-                   activate-scheduled-relative: !include ../examples/v1.0-receiver-stage-scheduled-relative.json
-                   activate-scheduled-absolute: !include ../examples/v1.0-receiver-stage-scheduled-absolute.json
+                   activate-scheduled-relative: !include ../examples/receiver-stage-scheduled-relative.json
+                   activate-scheduled-absolute: !include ../examples/receiver-stage-scheduled-absolute.json
              400:
                 description: A 400 response is returned when the request did not meet the schema and constraints.
                 body:
                   type: !include schemas/error.json
-                  example: !include ../examples/v1.0-stage-fail.json
+                  example: !include ../examples/stage-fail.json
              404:
                description: Returned when the requested resource does not exist
              423:
@@ -446,7 +468,7 @@ documentation:
                  some failure caused by activation which was not caused by a violation or schema or constraints.
                body:
                  type: !include schemas/error.json
-                 example: !include ../examples/v1.0-stage-error.json
+                 example: !include ../examples/stage-error.json
        /active:
          get:
            description: >
@@ -463,9 +485,9 @@ documentation:
            responses:
              200:
                body:
-                 type: !include schemas/v1.0-receiver-response-schema.json
+                 type: !include schemas/receiver-response-schema.json
                  examples:
-                   running-state: !include ../examples/v1.0-receiver-active-get-200.json
-                   Uninitialised: !include ../examples/v1.0-receiver-active-get-200-uninit.json
+                   running-state: !include ../examples/receiver-active-get-200.json
+                   Uninitialised: !include ../examples/receiver-active-get-200-uninit.json
              404:
                description: Returned when the requested resource does not exist
