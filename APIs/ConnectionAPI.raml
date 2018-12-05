@@ -213,7 +213,7 @@ documentation:
                    this should be the time the activation actually occurred as an absolute TAI timestamp.
                    If no activation was requested in the PATCH `activation_time` will be set `null`.
                    When the `master_enable` parameter is false senders should not transmit any media streams.
-                   For RTP senders the `rtp_enable` parameter allows for the individual disabling of SMPTE 2022-7
+                   For RTP senders the `rtp_enabled` parameter allows for the individual disabling of SMPTE 2022-7
                    legs.
                  body:
                    type: !include schemas/v1.0-sender-response-schema.json
@@ -378,7 +378,7 @@ documentation:
              There shall only be one element present in `transport_params` when SMPTE 2022-7 is not in use.
              When the `master_enable` parameter is false receivers should not process any incoming streams, and
              should unsubscribe from any multicast streams they are receiving. For RTP receivers the
-             `rtp_enable` parameter allows for the individual disabling of SMPTE 2022-7 legs.
+             `rtp_enabled` parameter allows for the individual disabling of SMPTE 2022-7 legs.
            body:
              description: >
               PATCH must comply with the constraints served at /constraints but not all fields are mandatory.
