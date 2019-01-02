@@ -165,7 +165,9 @@ documentation:
                    type: !include schemas/constraints-schema.json
                    examples:
                      SMPTE2022-7: !include ../examples/sender-constraints-get-200-2022-7.json
-                     No2022-7: !include ../examples/sender-constraints-get-200.json
+                     RTPNo2022-7: !include ../examples/sender-constraints-get-200.json
+                     MQTT: !include ../examples/sender-constraints-get-200-mqtt.json
+                     WebSocketPlusExt: !include ../examples/sender-constraints-get-200-websocket-ext.json
               404:
                  description: Returned when the requested resource does not exist
          /staged:
@@ -174,7 +176,7 @@ documentation:
                Get staged sender transport parameters object. In SMPTE 2022-7 operation element 0
                of the `transport_params` array shall be the parameters applied to the primary leg, and
                element 1 the secondary leg. There shall only be one element present in `transport_params`
-               when SMPTE 2022-7 is not in use. When the `master_enable` parameter is false the RTP
+               when SMPTE 2022-7 is not in use. When the `master_enable` parameter is false the
                sender should stop transmitting media and the `/transportfile` endpoint should return
                an HTTP 404 response.
              responses:
@@ -289,7 +291,8 @@ documentation:
                  body:
                    type: !include schemas/sender-response-schema.json
                    examples:
-                     Normal: !include ../examples/sender-active-get.json
+                     NormalRTP: !include ../examples/sender-active-get.json
+                     NormalMQTT: !include ../examples/sender-active-get-mqtt.json
                      Uninitialised: !include ../examples/sender-active-get-uninit.json
                404:
                  description: Returned when the requested resource does not exist
@@ -308,6 +311,19 @@ documentation:
                  body:
                    description: >
                      Returned if the resource does not exist or if the sender is not currently configured
+         /transporttype:
+           get:
+             description: >
+               Returns the URN for the transport type employed by this sender.
+             responses:
+               200:
+                 body:
+                   type: !include schemas/transporttype-response-schema.json
+                   example: !include ../examples/transporttype-get.json
+               404:
+                body:
+                 description: >
+                   Returned when the resource does not exist
    /receivers:
      displayName: Receivers
      get:
@@ -349,7 +365,9 @@ documentation:
                  type: !include schemas/constraints-schema.json
                  examples:
                    SMPTE2022-7: !include ../examples/receiver-constraints-get-200-2022-7.json
-                   No2022-7: !include ../examples/receiver-constraints-get-200.json
+                   RTPNo2022-7: !include ../examples/receiver-constraints-get-200.json
+                   MQTT: !include ../examples/receiver-constraints-get-200-mqtt.json
+                   WebSocketPlusExt: !include ../examples/receiver-constraints-get-200-websocket-ext.json
              404:
                description: Returned when the requested resource does not exist
        /staged:
@@ -385,7 +403,7 @@ documentation:
              their corresponding transport parameters and the response should show these updated values.
              On activation the value of the entries in `transport_parameters` must be used to program
              the receiver, not those in the transport file directly. However while the transport file is still present
-             (i.e `data` is not null) media parameters in the transport file should be applied to the RTP
+             (i.e `data` is not null) media parameters in the transport file should be applied to the
              receiver. Setting `data` to null has no impact on the `transport_parameters` array, or
              any other property.
              Where a transport file has been staged the transport
@@ -487,7 +505,18 @@ documentation:
                body:
                  type: !include schemas/receiver-response-schema.json
                  examples:
-                   running-state: !include ../examples/receiver-active-get-200.json
+                   NormalRTP: !include ../examples/receiver-active-get-200.json
+                   NormalMQTT: !include ../examples/receiver-active-get-200-mqtt.json
                    Uninitialised: !include ../examples/receiver-active-get-200-uninit.json
              404:
                description: Returned when the requested resource does not exist
+       /transporttype:
+         get:
+           description: Returns the URN for the transport type employed by this receiver.
+           responses:
+             200:
+               body:
+                 type: !include schemas/transporttype-response-schema.json
+                 example: !include ../examples/transporttype-get.json
+             404:
+               description: Returned when the resource does not exist

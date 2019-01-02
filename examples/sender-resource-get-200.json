@@ -2,5 +2,6 @@
   "constraints/",
   "staged/",
   "active/",
-  "transportfile/"
+  "transportfile/",
+  "transporttype/"
 ]

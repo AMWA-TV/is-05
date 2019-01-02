@@ -1,0 +1,10 @@
+[{
+  "source_host": {},
+  "source_port": {
+    "enum": [
+      1833,
+      8883
+    ]
+  },
+  "broker_topic": {}
+}]
