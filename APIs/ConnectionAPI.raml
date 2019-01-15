@@ -26,7 +26,7 @@ documentation:
       200:
         body:
           example: !include ../examples/v1.0-base-get-200.json
-          schema: !include schemas/connectionapi-base.json
+          type: !include schemas/connectionapi-base.json
 /bulk:
   displayName: Bulk control interface
   get:
@@ -35,7 +35,7 @@ documentation:
       200:
         body:
           example: !include ../examples/v1.0-bulk-base-get-200.json
-          schema: !include schemas/connectionapi-bulk.json
+          type: !include schemas/connectionapi-bulk.json
   /senders:
     description: Target for bulk staging of transport parameters.
     get:
@@ -113,7 +113,7 @@ documentation:
        200:
          body:
            example: !include ../examples/v1.0-single-root.json
-           schema: !include schemas/connectionapi-single.json
+           type: !include schemas/connectionapi-single.json
    /senders:
      get:
        description: Sender root
@@ -122,6 +122,7 @@ documentation:
            description: List Available Senders. All UUIDs are appended with / to indicate the ID forms part of the URL for the next layer down.
            body:
              example: !include ../examples/v1.0-resourcelist-get-200.json
+             type: !include schemas/sender-receiver-base.json
      /{senderId}:
          get:
            description: List all the API endpoints for a single sender.
@@ -129,7 +130,7 @@ documentation:
              200:
                body:
                  example: !include ../examples/v1.0-sender-resource-get-200.json
-                 schema: !include schemas/connectionapi-sender.json
+                 type: !include schemas/connectionapi-sender.json
              404:
                description: Returned when the requested Sender ID does not exist.
          /constraints:
@@ -300,6 +301,7 @@ documentation:
          200:
            body:
              example: !include ../examples/v1.0-resourcelist-get-200.json
+             type: !include schemas/sender-receiver-base.json
      /{receiverId}:
        get:
          description: List API endpoints
@@ -307,7 +309,7 @@ documentation:
            200:
              body:
                example: !include ../examples/v1.0-receiver-resource-get-200.json
-               schema: !include schemas/connectionapi-receiver.json
+               type: !include schemas/connectionapi-receiver.json
            404:
              description: Returned when the requested resource does not exist
        /constraints:
