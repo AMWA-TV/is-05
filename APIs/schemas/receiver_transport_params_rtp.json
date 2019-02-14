@@ -42,19 +42,18 @@
             ]
           },
           "interface_ip": {
-            "type": [
-              "string",
-              "null"
-            ],
             "description": "IP address of the network interface the receiver should use. The receiver should provide an enum in the constraints endpoint, which should contain 'auto', and the available interface addresses. If set to auto in multicast mode the receiver should determine which interface to use for itself, for example by using the routing tables. The behaviour of auto is undefined in unicast mode, and controllers should supply a specific interface address.",
             "anyOf": [{
+                "type": "string",
                 "format": "ipv4"
               },
               {
-                "format": "ipv6"
+                "format": "ipv6",
+                "type": "string"
               },
               {
-                "pattern": "^auto$"
+                "pattern": "^auto$",
+                "type": "string"
               },
               {
                 "type": "null"
@@ -83,16 +82,20 @@
             "description": "FEC on/off"
           },
           "fec_destination_ip": {
-            "type": "string",
             "description": "May be used if NAT is being used at the destination (auto = multicast_ip (multicast mode) or interface_ip (unicast mode))",
             "anyOf": [{
+                "type": "string",
                 "format": "ipv4"
               },
               {
-                "format": "ipv6"
+                "format": "ipv6",
+                "type": "string"
               },
               {
-                "pattern": "^auto$"
+                "pattern": "^auto$",
+                "type": "string"
+              },{
+                "type": "null"
               }
             ]
           },
