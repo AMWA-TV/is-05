@@ -12,176 +12,257 @@
         "type": "object",
         "properties": {
           "source_ip": {
-            "type": "string",
             "description": "IP address from which RTP packets will be sent (IP address of interface bound to this output). The sender should provide an enum in the constraints endpoint, which should contain 'auto', and the available interface addresses. If the parameter is set to auto the sender should establish for itself which interface it should use, based on routing rules or its own internal configuration.",
             "anyOf": [{
+                "type": "string",
                 "format": "ipv4"
               },
               {
+                "type": "string",
                 "format": "ipv6"
               },
               {
+                "type": "string",
                 "pattern": "^auto$"
+              },{
+                "type": "null"
               }
             ]
           },
           "destination_ip": {
-            "type": "string",
             "description": "IP address to which RTP packets will be sent. If auto is set the sender should select a multicast address to send to itself. For example it may implement MADCAP (RFC 2730), ZMAAP, or be allocated address by some other system responsible for co-ordination multicast address use.",
             "anyOf": [{
+                "type": "string",
                 "format": "ipv4"
               },
               {
+                "type": "string",
                 "format": "ipv6"
               },
               {
+                "type": "string",
                 "pattern": "^auto$"
+              },{
+                "type": "null"
               }
             ]
           },
           "source_port": {
-            "type": [
-              "integer",
-              "string"
+            "anyOf":[
+              {
+                "type": "integer",
+                "minimum": 0,
+                "maximum": 65535                
+              },{
+                "type": "string",
+                "pattern": "^auto$"
+              },{
+                "type": "null"
+              }
             ],
-            "description": "source port for RTP packets (auto = 5004)",
-            "minimum": 0,
-            "maximum": 65535,
-            "pattern": "^auto$"
+            "description": "source port for RTP packets (auto = 5004)"
           },
           "destination_port": {
-            "type": [
-              "integer",
-              "string"
+            "anyOf":[
+              {
+                "type": "string",
+                "pattern": "^auto$"
+              },{
+                "type": "integer",
+                "minimum": 1,
+                "maximum": 65535
+              },{
+                "type": "null"
+              }
             ],
-            "description": "destination port for RTP packets (auto = 5004)",
-            "minimum": 1,
-            "maximum": 65535,
-            "pattern": "^auto$"
+            "description": "destination port for RTP packets (auto = 5004)"
           },
           "fec_enabled": {
             "type": "boolean",
             "description": "FEC on/off"
           },
           "fec_destination_ip": {
-            "type": "string",
             "description": "May be used if NAT is being used at the destination (auto = destination_ip)",
             "anyOf": [{
+                "type": "string",
                 "format": "ipv4"
               },
               {
+                "type": "string",
                 "format": "ipv6"
               },
               {
+                "type": "string",
                 "pattern": "^auto$"
+              },{
+                "type": "null"
               }
             ]
           },
           "fec_type": {
-            "type": "string",
-            "description": "forward error correction mode to apply",
-            "enum": [
-              "XOR",
-              "Reed-Solomon"
-            ]
+            "anyOf": [
+              {
+                "type": "string",
+                "enum": [
+                  "XOR",
+                  "Reed-Solomon"
+                ]
+              },{
+                "type": "null"
+              }
+            ],
+            "description": "forward error correction mode to apply"
           },
           "fec_mode": {
-            "type": "string",
             "description": "forward error correction mode to apply",
-            "enum": [
-              "1D",
-              "2D"
+            "anyOf":[
+              {
+                "type": "string",
+                "enum": [
+                  "1D",
+                  "2D"
+                ]
+              },{
+                "type": "null"
+              }
             ]
           },
           "fec_block_width": {
-            "type": "integer",
-            "description": "width of block over which FEC is calculated in packets",
-            "minimum": 4,
-            "maximum": 200
+            "anyOf":[
+              {
+                "type": "integer",
+                "minimum": 4,
+                "maximum": 200
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "description": "width of block over which FEC is calculated in packets"
           },
           "fec_block_height": {
-            "type": "integer",
             "description": "height of block over which FEC is calculated in packets",
-            "minimum": 4,
-            "maximum": 200
+            "anyOf":[
+              {
+                "type": "integer",
+                "minimum": 4,
+                "maximum": 200
+              },{
+                "type": "null"
+              }
+            ]
           },
           "fec1D_destination_port": {
-            "type": [
-              "integer",
-              "string"
-            ],
             "description": "destination port for RTP Column FEC packets (auto = RTP destination_port + 2)",
-            "minimum": 1,
-            "maximum": 65535,
-            "pattern": "^auto$"
+            "anyOf":[
+              {
+                "minimum": 1,
+                "maximum": 65535,
+                "type": "integer"
+              },{
+                "type": "string",
+                "pattern": "^auto$",
+              },{
+                "type": "null"
+              }
+            ]
           },
           "fec2D_destination_port": {
-            "type": [
-              "integer",
-              "string"
-            ],
             "description": "destination port for RTP Row FEC packets (auto = RTP destination_port + 4)",
-            "minimum": 1,
-            "maximum": 65535,
-            "pattern": "^auto$"
+            "anyOf":[
+              {
+                "type": "string",
+                "pattern": "^auto$"
+              },{
+                "type": "integer",
+                "minimum": 1,
+                "maximum": 65535                
+              },{
+                "type": "null"
+              }
+            ]
           },
           "fec1D_source_port": {
-            "type": [
-              "integer",
-              "string"
-            ],
             "description": "source port for RTP FEC packets (auto = RTP source_port + 2)",
-            "minimum": 0,
-            "maximum": 65535,
-            "pattern": "^auto$"
+            "anyOf":[
+              {
+                "pattern": "^auto$",
+                "type": "string"
+              },{
+                "type": "integer",
+                "minimum": 0,
+                "maximum": 65535
+              },{
+                "type": "null"
+              }
+            ]
           },
           "fec2D_source_port": {
-            "type": [
-              "integer",
-              "string"
-            ],
             "description": "source port for RTP FEC packets (auto = RTP source_port + 4)",
-            "minimum": 0,
-            "maximum": 65535,
-            "pattern": "^auto$"
+            "anyOf":[
+              {
+                "minimum": 0,
+                "maximum": 65535,
+                "type": "string"
+              },{
+                "type": "string",
+                "pattern": "^auto$"
+              },{
+                "type": "null"
+              }
+            ]
           },
           "rtcp_enabled": {
             "type": "boolean",
             "description": "rtcp on/off"
           },
           "rtcp_destination_ip": {
-            "type": "string",
             "description": "IP address to which RTCP packets will be sent (auto = same as RTP destination_ip)",
             "anyOf": [{
+                "type": "string",
                 "format": "ipv4"
               },
               {
+                "type": "string",
                 "format": "ipv6"
               },
               {
+                "type": "string",
                 "pattern": "^auto$"
+              },{
+                "type": "null"
               }
             ]
           },
           "rtcp_destination_port": {
-            "type": [
-              "integer",
-              "string"
-            ],
             "description": "destination port for RTCP packets (auto = RTP destination_port + 1)",
-            "minimum": 1,
-            "maximum": 65535,
-            "pattern": "^auto$"
+            "anyOf":[
+              {
+                "type": "string",
+                "pattern": "^auto$"
+              },{
+                "type": "integer",
+                "minimum": 1,
+                "maximum": 65535
+              },{
+                "type": "null"
+              }
+            ]
           },
           "rtcp_source_port": {
-            "type": [
-              "integer",
-              "string"
-            ],
             "description": "source port for RTCP packets (auto = RTP source_port + 1)",
-            "minimum": 0,
-            "maximum": 65535,
-            "pattern": "^auto$"
+            "anyOf":[
+              {
+                "type": "integer",
+                "minimum": 0,
+                "maximum": 65535
+              },{
+                "type": "string",
+                "pattern": "^auto$"
+              },{
+                "type": "null"
+              }
+            ]
           },
           "rtp_enabled": {
             "type": "boolean",

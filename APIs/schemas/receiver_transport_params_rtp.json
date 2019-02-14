@@ -12,15 +12,13 @@
         "type": "object",
         "properties": {
           "source_ip": {
-            "type": [
-              "string",
-              "null"
-            ],
             "description": "Source IP address of RTP packets in unicast mode, source filter for source specific multicast. A null value indicates that the receiver has not yet been configured, or in any-source multicast mode.",
             "anyOf": [{
+                "type": "string",
                 "format": "ipv4"
               },
               {
+                "type": "string",
                 "format": "ipv6"
               },
               {
@@ -29,15 +27,13 @@
             ]
           },
           "multicast_ip": {
-            "type": [
-              "string",
-              "null"
-            ],
             "description": "IP multicast group address used in multicast operation only. Should be set to null during unicast operation. A null value indicates the parameter has not been configured, or the receiver is operating in unicast mode.",
             "anyOf": [{
+                "type": "string",
                 "format": "ipv4"
               },
               {
+                "type": "string",
                 "format": "ipv6"
               },
               {
@@ -46,7 +42,10 @@
             ]
           },
           "interface_ip": {
-            "type": "string",
+            "type": [
+              "string",
+              "null"
+            ],
             "description": "IP address of the network interface the receiver should use. The receiver should provide an enum in the constraints endpoint, which should contain 'auto', and the available interface addresses. If set to auto in multicast mode the receiver should determine which interface to use for itself, for example by using the routing tables. The behaviour of auto is undefined in unicast mode, and controllers should supply a specific interface address.",
             "anyOf": [{
                 "format": "ipv4"
@@ -56,18 +55,28 @@
               },
               {
                 "pattern": "^auto$"
+              },
+              {
+                "type": "null"
               }
             ]
           },
           "destination_port": {
-            "type": [
-              "integer",
-              "string"
+            "anyOf": [
+              {
+                "type": "integer",
+                "minimum": 1,
+                "maximum": 65535
+              },
+              {
+                "type": "string",
+                "pattern": "^auto$"
+              },
+              {
+                "type": "null"
+              }
             ],
-            "description": "destination port for RTP packets (auto = 5004)",
-            "minimum": 1,
-            "maximum": 65535,
-            "pattern": "^auto$"
+            "description": "destination port for RTP packets (auto = 5004)"
           },
           "fec_enabled": {
             "type": "boolean",
@@ -88,45 +97,66 @@
             ]
           },
           "fec_mode": {
-            "type": "string",
             "description": "forward error correction mode to apply. (auto = highest possible number of dimensions available)",
-            "enum": [
-              "auto",
-              "1D",
-              "2D"
+            "anyOf":[
+              {
+                "type": "string",
+                "enum": [
+                  "auto",
+                  "1D",
+                  "2D"
+                ]
+              },
+              {
+                "type": "null"
+              }
             ]
           },
           "fec1D_destination_port": {
-            "type": [
-              "integer",
-              "string"
+            "anyOf": [
+              {
+                "type": "integer",
+                "minimum": 1,
+                "maximum": 65535
+              },
+              {
+                "type": "string",
+                "pattern": "^auto$"
+              },
+              {
+                "type": "null"
+              }
             ],
             "description": "destination port for RTP Column FEC packets (auto = RTP destination_port + 2)",
-            "minimum": 1,
-            "maximum": 65535,
-            "pattern": "^auto$"
           },
           "fec2D_destination_port": {
-            "type": [
-              "integer",
-              "string"
+            "anyOf":[
+              {
+                "type": "integer",
+                "minimum": 1,
+                "maximum": 65535
+              },{
+                "type": "string",
+                "pattern": "^auto$"
+              }
             ],
-            "description": "destination port for RTP Row FEC packets (auto = RTP destination_port + 4)",
-            "minimum": 1,
-            "maximum": 65535,
-            "pattern": "^auto$"
+            "description": "destination port for RTP Row FEC packets (auto = RTP destination_port + 4)"
           },
           "rtcp_destination_ip": {
-            "type": "string",
             "description": "Destination IP address of RTCP packets (auto = multicast_ip (multicast mode) or interface_ip (unicast mode))",
             "anyOf": [{
+                "type": "string",
                 "format": "ipv4"
               },
               {
+                "type": "string",
                 "format": "ipv6"
               },
               {
+                "type": "string",
                 "pattern": "^auto$"
+              },{
+                "type": "null"
               }
             ]
           },
@@ -135,14 +165,19 @@
             "description": "RTCP on/off"
           },
           "rtcp_destination_port": {
-            "type": [
-              "integer",
-              "string"
-            ],
             "description": "destination port for RTCP packets (auto = RTP destination_port + 1)",
-            "minimum": 1,
-            "maximum": 65535,
-            "pattern": "^auto$"
+            "anyOf":[
+              {
+                "type": "integer",
+                "minimum": 1,
+                "maximum": 65535
+              },{
+                "type": "string",
+                "pattern": "^auto$"
+              },{
+                "type": "null"
+              }
+            ]
           },
           "rtp_enabled": {
             "type": "boolean",
