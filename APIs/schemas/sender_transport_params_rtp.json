@@ -161,7 +161,7 @@
                 "type": "integer"
               },{
                 "type": "string",
-                "pattern": "^auto$",
+                "pattern": "^auto$"
               },{
                 "type": "null"
               }

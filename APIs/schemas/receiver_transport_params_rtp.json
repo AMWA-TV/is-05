@@ -127,7 +127,7 @@
                 "type": "null"
               }
             ],
-            "description": "destination port for RTP Column FEC packets (auto = RTP destination_port + 2)",
+            "description": "destination port for RTP Column FEC packets (auto = RTP destination_port + 2)"
           },
           "fec2D_destination_port": {
             "anyOf":[
