@@ -50,6 +50,13 @@
               "null"
             ],
             "description": "The topic which MQTT messages will be received from via the MQTT broker. A null value indicates that the receiver has not yet been configured."
+          },
+          "connection_status_broker_topic": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "description": "The topic used for MQTT status messages such as MQTT Last Will which are received via the MQTT broker. A null value indicates that the receiver has not yet been configured, or is not using a connection status topic."
           }
         }
       }
