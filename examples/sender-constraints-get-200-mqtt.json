@@ -11,5 +11,10 @@
       "fixedTopicName1",
       "fixedTopicName2"
     ]
+  },
+  "connection_status_broker_topic": {
+    "enum": [
+      "connStatusTopic"
+    ]
   }
 }]
