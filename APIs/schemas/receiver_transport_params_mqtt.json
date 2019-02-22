@@ -16,7 +16,7 @@
               "string",
               "null"
             ],
-            "description": "Hostname or IP hosting the MQTT broker. The Receiver should provide an enum in the constraints endpoint, which should contain 'auto', and the available interface addresses formatted as connection URIs. If the parameter is set to auto the Receiver should establish for itself which broker it should use, based on a discovery mechanism or its own internal configuration. A null value indicates that the receiver has not yet been configured.",
+            "description": "Hostname or IP hosting the MQTT broker. The Receiver should provide an enum in the constraints endpoint, which should contain the available interface addresses. If the parameter is set to auto the Receiver should establish for itself which broker it should use, based on a discovery mechanism or its own internal configuration. A null value indicates that the receiver has not yet been configured.",
             "anyOf": [{
                 "pattern": "^auto$"
               },
