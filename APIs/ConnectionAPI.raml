@@ -311,7 +311,8 @@ documentation:
                404:
                  body:
                    description: >
-                     Returned if the resource does not exist or if the sender is not currently configured
+                     Returned if the resource does not exist, or the transport type does not require a transport file,
+                     or if the sender is not currently configured.
          /transporttype:
            get:
              description: >
