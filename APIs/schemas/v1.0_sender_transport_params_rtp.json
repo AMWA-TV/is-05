@@ -9,7 +9,7 @@
     "properties": {
       "source_ip": {
         "type": "string",
-        "description": "IP address from which RTP packets will be sent (IP address of interface bound to this output). The sender should provide an enum in the constraints endpoint, which should contain 'auto', and the available interface addresses. If the parameter is set to auto the sender should establish for itself which interface it should use, based on routing rules or its own internal configuration.",
+        "description": "IP address from which RTP packets will be sent (IP address of interface bound to this output). The sender should provide an enum in the constraints endpoint, which should contain the available interface addresses. If the parameter is set to auto the sender should establish for itself which interface it should use, based on routing rules or its own internal configuration.",
         "anyOf": [{
             "format": "ipv4"
           },
