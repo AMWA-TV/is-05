@@ -13,6 +13,7 @@
   "transport_params": [{
     "source_host": "broker.mydomain.com",
     "source_port": 1883,
-    "broker_topic": "my_topic_name"
+    "broker_topic": "my_topic_name",
+    "connection_status_broker_topic": "my_status_topic_name"
   }]
 }

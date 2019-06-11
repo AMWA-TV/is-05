@@ -17,6 +17,9 @@
     "broker_topic": {
       "$ref": "constraint-schema.json#/definitions/constraint"
     },
+    "connection_status_broker_topic": {
+      "$ref": "constraint-schema.json#/definitions/constraint"
+    },
     "source_port": {
       "$ref": "constraint-schema.json#/definitions/constraint"
     },

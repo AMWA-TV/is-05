@@ -6,5 +6,6 @@
       8883
     ]
   },
-  "broker_topic": {}
+  "broker_topic": {},
+  "connection_status_broker_topic": {}
 }]
