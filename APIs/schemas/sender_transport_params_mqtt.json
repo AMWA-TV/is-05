@@ -16,7 +16,7 @@
               "string",
               "null"
             ],
-            "description": "Hostname or IP hosting the MQTT broker. The sender should provide an enum in the constraints endpoint, which should contain the available interface addresses. If the parameter is set to auto the sender should establish for itself which broker it should use, based on a discovery mechanism or its own internal configuration. A null value indicates that the sender has not yet been configured.",
+            "description": "Hostname or IP hosting the MQTT broker. If the parameter is set to auto the Sender should establish for itself which broker it should use, based on a discovery mechanism or its own internal configuration. A null value indicates that the Sender has not yet been configured.",
             "anyOf": [{
                 "pattern": "^auto$"
               },
@@ -39,7 +39,7 @@
               "integer",
               "string"
             ],
-            "description": "Destination port for MQTT traffic.  If the parameter is set to auto the sender should establish for itself which broker it should use, based on a discovery mechanism or its own internal configuration.",
+            "description": "Destination port for MQTT traffic.  If the parameter is set to auto the Sender should establish for itself which broker it should use, based on a discovery mechanism or its own internal configuration.",
             "minimum": 1,
             "maximum": 65535,
             "pattern": "^auto$"
@@ -49,14 +49,14 @@
               "string",
               "null"
             ],
-            "description": "The topic which MQTT messages will be sent to on the MQTT broker. A null value indicates that the sender has not yet been configured."
+            "description": "The topic which MQTT messages will be sent to on the MQTT broker. A null value indicates that the Sender has not yet been configured."
           },
           "connection_status_broker_topic": {
             "type": [
               "string",
               "null"
             ],
-            "description": "The topic which MQTT status messages such as MQTT Last Will are sent to on the MQTT broker. A null value indicates that the sender has not yet been configured, or is not using a connection status topic."
+            "description": "The topic which MQTT status messages such as MQTT Last Will are sent to on the MQTT broker. A null value indicates that the Sender has not yet been configured, or is not using a connection status topic."
           }
         }
       }
