@@ -1,7 +1,7 @@
 {
   "$schema": "http://json-schema.org/draft-04/schema#",
   "type": "object",
-  "description": "Transport file parameters",
+  "description": "Transport file parameters. 'data' and 'type' must both be strings or both be null",
   "title": "Transport file",
   "additionalProperties": false,
   "required": [
