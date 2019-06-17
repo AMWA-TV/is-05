@@ -39,10 +39,18 @@
               "integer",
               "string"
             ],
-            "description": "Destination port for MQTT traffic.  If the parameter is set to auto the Sender should establish for itself which broker it should use, based on a discovery mechanism or its own internal configuration.",
+            "description": "Destination port for MQTT traffic. If the parameter is set to auto the Sender should establish for itself which broker it should use, based on a discovery mechanism or its own internal configuration.",
             "minimum": 1,
             "maximum": 65535,
             "pattern": "^auto$"
+          },
+          "broker_scheme": {
+            "type": "string",
+            "description": "Indication of whether TLS is used for communication with the broker. 'mqtt' indicates plain text operation, and 'secure-mqtt' indicates use of TLS.",
+            "enum": [
+              "mqtt",
+              "secure-mqtt"
+            ]
           },
           "broker_topic": {
             "type": [
