@@ -46,7 +46,7 @@
           },
           "broker_protocol": {
             "type": "string",
-            "description": "Indication of whether TLS is used for communication with the broker. 'mqtt' indicates plain text operation, and 'secure-mqtt' indicates use of TLS.",
+            "description": "Indication of whether TLS is used for communication with the broker. 'mqtt' indicates operation without TLS, and 'secure-mqtt' indicates use of TLS.",
             "enum": [
               "mqtt",
               "secure-mqtt"
