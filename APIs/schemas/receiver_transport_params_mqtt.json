@@ -44,7 +44,7 @@
             "maximum": 65535,
             "pattern": "^auto$"
           },
-          "broker_scheme": {
+          "broker_protocol": {
             "type": "string",
             "description": "Indication of whether TLS is used for communication with the broker. 'mqtt' indicates plain text operation, and 'secure-mqtt' indicates use of TLS.",
             "enum": [
