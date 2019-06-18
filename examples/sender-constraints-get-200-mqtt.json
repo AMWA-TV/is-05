@@ -12,6 +12,7 @@
       "fixedTopicName2"
     ]
   },
+  "broker_protocol": {},
   "connection_status_broker_topic": {
     "enum": [
       "connStatusTopic"
