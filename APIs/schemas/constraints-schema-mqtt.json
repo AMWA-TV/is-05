@@ -20,6 +20,9 @@
     "broker_protocol": {
       "$ref": "constraint-schema.json#/definitions/constraint"
     },
+    "broker_authorization": {
+      "$ref": "constraint-schema.json#/definitions/constraint"
+    },
     "connection_status_broker_topic": {
       "$ref": "constraint-schema.json#/definitions/constraint"
     },

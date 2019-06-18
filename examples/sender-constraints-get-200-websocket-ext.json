@@ -4,6 +4,7 @@
       "ws://172.29.80.65:5476/websocketServer"
     ]
   },
+  "connection_authorization": {},
   "ext_subscription_data": {
     "enum": [
       "fixedConnectionParameter"
