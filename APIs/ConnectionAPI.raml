@@ -316,7 +316,7 @@ documentation:
          /transporttype:
            get:
              description: >
-               Returns the URN for the transport type employed by this sender.
+               Returns the URN base for the transport type employed by this sender with any subclassifications or versions removed.
              responses:
                200:
                  body:
@@ -515,7 +515,8 @@ documentation:
                description: Returned when the requested resource does not exist
        /transporttype:
          get:
-           description: Returns the URN for the transport type employed by this receiver.
+           description: >
+             Returns the URN base for the transport type employed by this receiver with any subclassifications or versions removed.
            responses:
              200:
                body:

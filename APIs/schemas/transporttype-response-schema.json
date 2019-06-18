@@ -1,7 +1,7 @@
 {
   "$schema": "http://json-schema.org/draft-04/schema#",
   "title": "Transport Type",
-  "description": "Transport type used by the Sender or Receiver in URN format",
+  "description": "Transport type URN base used by the Sender or Receiver (i.e. with any subclassifications or versions removed)",
   "type": "string",
   "oneOf": [
     {
