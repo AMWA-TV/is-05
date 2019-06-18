@@ -46,7 +46,7 @@
           },
           "broker_protocol": {
             "type": "string",
-            "description": "Indication of whether TLS is used for communication with the broker. 'mqtt' indicates operation without TLS, and 'secure-mqtt' indicates use of TLS. If the parameter is set to auto the Sender should establish for itself which protocol it should use, based on a discovery mechanism or its own internal configuration. ",
+            "description": "Indication of whether TLS is used for communication with the broker. 'mqtt' indicates operation without TLS, and 'secure-mqtt' indicates use of TLS. If the parameter is set to auto the Sender should establish for itself which protocol it should use, based on a discovery mechanism or its own internal configuration.",
             "enum": [
               "auto",
               "mqtt",
@@ -58,7 +58,7 @@
               "string",
               "boolean"
             ],
-            "description": "Indication of whether authorization is used for communication with the broker. If the parameter is set to auto the Sender should establish for itself whether authorization should be used, based on a discovery mechanism or its own internal configuration. ",
+            "description": "Indication of whether authorization is used for communication with the broker. If the parameter is set to auto the Sender should establish for itself whether authorization should be used, based on a discovery mechanism or its own internal configuration.",
             "enum": [
               "auto",
               true,
