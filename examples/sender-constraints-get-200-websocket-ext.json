@@ -6,7 +6,6 @@
   },
   "connection_authorization": {
     "enum": [
-      true,
       false
     ]
   },

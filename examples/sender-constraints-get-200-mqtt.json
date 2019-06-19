@@ -12,18 +12,8 @@
       "fixedTopicName2"
     ]
   },
-  "broker_protocol": {
-    "enum": [
-      "mqtt",
-      "secure-mqtt"
-    ]
-  },
-  "broker_authorization": {
-    "enum": [
-      true,
-      false
-    ]
-  },
+  "broker_protocol": {},
+  "broker_authorization": {},
   "connection_status_broker_topic": {
     "enum": [
       "connStatusTopic"

@@ -1,11 +1,6 @@
 [{
   "connection_uri": {},
-  "connection_authorization": {
-    "enum": [
-      true,
-      false
-    ]
-  },
+  "connection_authorization": {},
   "ext_subscription_data": {},
   "ext_retry_timeout": {
     "maximum": 60,
