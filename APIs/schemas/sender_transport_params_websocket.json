@@ -37,7 +37,7 @@
             "enum": [
               "auto",
               true,
-              false,
+              false
             ]
           }
         }

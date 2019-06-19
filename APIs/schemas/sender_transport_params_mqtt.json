@@ -62,7 +62,7 @@
             "enum": [
               "auto",
               true,
-              false,
+              false
             ]
           },
           "broker_topic": {
