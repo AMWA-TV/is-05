@@ -10,6 +10,9 @@
   "properties": {
     "connection_uri": {
       "$ref": "constraint-schema.json#/definitions/constraint"
+    },
+    "connection_authorization": {
+      "$ref": "constraint-schema.json#/definitions/constraint"
     }
   }
 }
