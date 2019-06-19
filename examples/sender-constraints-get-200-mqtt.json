@@ -14,8 +14,8 @@
   },
   "broker_protocol": {
     "enum": [
-      true,
-      false
+      "mqtt",
+      "secure-mqtt"
     ]
   },
   "broker_authorization": {

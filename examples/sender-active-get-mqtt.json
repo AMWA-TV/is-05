@@ -10,6 +10,8 @@
     "destination_host": "broker.mydomain.com",
     "destination_port": 1883,
     "broker_topic": "my_topic_name",
+    "broker_protocol": "mqtt",
+    "broker_authorization": false,
     "connection_status_broker_topic": "my_status_topic_name"
   }]
 }

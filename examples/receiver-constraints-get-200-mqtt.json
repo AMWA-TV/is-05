@@ -9,7 +9,7 @@
   "broker_topic": {},
   "broker_protocol": {
     "enum": [
-      false
+      "mqtt"
     ]
   },
   "broker_authorization": {
