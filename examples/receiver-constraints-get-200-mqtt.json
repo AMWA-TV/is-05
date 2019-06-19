@@ -7,6 +7,15 @@
     ]
   },
   "broker_topic": {},
-  "broker_protocol": {},
+  "broker_protocol": {
+    "enum": [
+      false
+    ]
+  },
+  "broker_authorization": {
+    "enum": [
+      false
+    ]
+  },
   "connection_status_broker_topic": {}
 }]

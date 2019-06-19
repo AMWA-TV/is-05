@@ -12,7 +12,18 @@
       "fixedTopicName2"
     ]
   },
-  "broker_protocol": {},
+  "broker_protocol": {
+    "enum": [
+      true,
+      false
+    ]
+  },
+  "broker_authorization": {
+    "enum": [
+      true,
+      false
+    ]
+  },
   "connection_status_broker_topic": {
     "enum": [
       "connStatusTopic"
