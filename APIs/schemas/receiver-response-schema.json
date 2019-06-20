@@ -25,40 +25,24 @@
       "type": "boolean"
     },
     "activation": {
-      "$ref": "v1.0-activation-response-schema.json"
+      "$ref": "activation-response-schema.json"
     },
     "transport_file": {
-      "type": "object",
-      "description": "Transport file parameters. 'data' and 'type' must both be strings or both be null",
-      "additionalProperties": false,
-      "required": [
-        "data",
-        "type"
-      ],
-      "properties": {
-        "data": {
-          "description": "Content of the transport file",
-          "type": [
-            "string",
-            "null"
-          ]
-        },
-        "type": {
-          "description": "IANA assigned media type for file (e.g application/sdp)",
-          "type": [
-            "string",
-            "null"
-          ]
-        }
-      }
+      "$ref": "receiver-transport-file.json"
     },
     "transport_params": {
       "description": "Transport-specific parameters",
-      "oneOf": [{
-          "$ref": "v1.0_receiver_transport_params_rtp.json"
+      "anyOf": [{
+          "$ref": "receiver_transport_params_rtp.json"
         },
         {
-          "$ref": "v1.0_receiver_transport_params_dash.json"
+          "$ref": "receiver_transport_params_dash.json"
+        },
+        {
+          "$ref": "receiver_transport_params_websocket.json"
+        },
+        {
+          "$ref": "receiver_transport_params_mqtt.json"
         }
       ]
     }

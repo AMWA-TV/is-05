@@ -1,0 +1,17 @@
+[{
+  "connection_uri": {
+    "enum": [
+      "ws://172.29.80.65:5476/websocketServer"
+    ]
+  },
+  "connection_authorization": {
+    "enum": [
+      false
+    ]
+  },
+  "ext_subscription_data": {
+    "enum": [
+      "fixedConnectionParameter"
+    ]
+  }
+}]

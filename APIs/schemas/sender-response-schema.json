@@ -24,15 +24,21 @@
       "type": "boolean"
     },
     "activation": {
-      "$ref": "v1.0-activation-response-schema.json"
+      "$ref": "activation-response-schema.json"
     },
     "transport_params": {
       "description": "Transport-specific parameters",
-      "oneOf": [{
-          "$ref": "v1.0_sender_transport_params_rtp.json"
+      "anyOf": [{
+          "$ref": "sender_transport_params_rtp.json"
         },
         {
-          "$ref": "v1.0_sender_transport_params_dash.json"
+          "$ref": "sender_transport_params_dash.json"
+        },
+        {
+          "$ref": "sender_transport_params_websocket.json"
+        },
+        {
+          "$ref": "sender_transport_params_mqtt.json"
         }
       ]
     }

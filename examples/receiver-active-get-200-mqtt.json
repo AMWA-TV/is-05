@@ -1,0 +1,21 @@
+{
+  "sender_id": "eae33112-b56c-4a36-8b68-05ab5b6268bc",
+  "master_enable": true,
+  "activation": {
+    "mode": "activate_immediate",
+    "requested_time": "1541508905:0",
+    "activation_time": "1541508905:263900"
+  },
+  "transport_file": {
+    "data": null,
+    "type": null
+  },
+  "transport_params": [{
+    "source_host": "broker.mydomain.com",
+    "source_port": 1883,
+    "broker_topic": "my_topic_name",
+    "broker_protocol": "mqtt",
+    "broker_authorization": false,
+    "connection_status_broker_topic": "my_status_topic_name"
+  }]
+}
