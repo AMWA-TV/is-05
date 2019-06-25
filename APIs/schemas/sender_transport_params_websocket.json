@@ -21,6 +21,7 @@
                 "pattern": "^auto$"
               },
               {
+                "format": "uri",
                 "pattern": "^wss?:\/\/.*"
               },
               {

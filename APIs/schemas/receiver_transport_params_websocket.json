@@ -18,6 +18,7 @@
             ],
             "description": "URI hosting the WebSocket server as defined in RFC 6455 Section 3. A null value indicates that the receiver has not yet been configured.",
             "anyOf": [{
+                "format": "uri",
                 "pattern": "^wss?:\/\/.*"
               },
               {
