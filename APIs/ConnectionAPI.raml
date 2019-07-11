@@ -143,6 +143,11 @@ documentation:
                  type: !include schemas/connectionapi-sender.json
              404:
                description: Returned when the requested Sender ID does not exist.
+             409:
+               description: Returned when the requested resource is only available at a different API version.
+               headers:
+                 Location:
+                   example: /x-nmos/connection/{version}/single/senders/3b8be755-08ff-452b-b217-c9151eb21193
          /constraints:
            get:
              description: >
@@ -171,6 +176,11 @@ documentation:
                      WebSocketPlusExt: !include ../examples/sender-constraints-get-200-websocket-ext.json
               404:
                  description: Returned when the requested resource does not exist
+              409:
+                description: Returned when the requested resource is only available at a different API version.
+                headers:
+                  Location:
+                    example: /x-nmos/connection/{version}/single/senders/3b8be755-08ff-452b-b217-c9151eb21193/constraints
          /staged:
            get:
              description: >
@@ -190,6 +200,11 @@ documentation:
                      Uninitialised: !include ../examples/sender-get-200-uninit.json
                404:
                  description: Returned when the requested resource does not exist
+               409:
+                 description: Returned when the requested resource is only available at a different API version.
+                 headers:
+                   Location:
+                     example: /x-nmos/connection/{version}/single/senders/3b8be755-08ff-452b-b217-c9151eb21193/staged
            options:
              description: A pre-flight check generally used for Cross-Origin Resource Sharing (CORS) purposes
              responses:
@@ -261,6 +276,11 @@ documentation:
                    example: !include ../examples/stage-fail.json
                404:
                  description: Returned when the requested resource does not exist
+               409:
+                 description: Returned when the requested resource is only available at a different API version.
+                 headers:
+                   Location:
+                     example: /x-nmos/connection/{version}/single/senders/3b8be755-08ff-452b-b217-c9151eb21193/staged
                423:
                  description: >
                    Returned when the resource is locked because an activation has been scheduled.
@@ -297,6 +317,11 @@ documentation:
                      Uninitialised: !include ../examples/sender-active-get-uninit.json
                404:
                  description: Returned when the requested resource does not exist
+               409:
+                 description: Returned when the requested resource is only available at a different API version.
+                 headers:
+                   Location:
+                     example: /x-nmos/connection/{version}/single/senders/3b8be755-08ff-452b-b217-c9151eb21193/active
          /transportfile:
            get:
              description: >
@@ -313,6 +338,11 @@ documentation:
                    description: >
                      Returned if the resource does not exist, or the transport type does not require a transport file,
                      or if the sender is not currently configured.
+               409:
+                 description: Returned when the requested resource is only available at a different API version.
+                 headers:
+                   Location:
+                     example: /x-nmos/connection/{version}/single/senders/3b8be755-08ff-452b-b217-c9151eb21193/transportfile
          /transporttype:
            get:
              description: >
@@ -326,6 +356,11 @@ documentation:
                 body:
                  description: >
                    Returned when the resource does not exist
+               409:
+                 description: Returned when the requested resource is only available at a different API version.
+                 headers:
+                   Location:
+                     example: /x-nmos/connection/{version}/single/senders/3b8be755-08ff-452b-b217-c9151eb21193/transporttype
    /receivers:
      displayName: Receivers
      get:
@@ -345,6 +380,11 @@ documentation:
                type: !include schemas/connectionapi-receiver.json
            404:
              description: Returned when the requested resource does not exist
+           409:
+             description: Returned when the requested resource is only available at a different API version.
+             headers:
+               Location:
+                 example: /x-nmos/connection/{version}/single/receivers/3b8be755-08ff-452b-b217-c9151eb21193
        /constraints:
          get:
            description: >
@@ -373,6 +413,11 @@ documentation:
                    WebSocketPlusExt: !include ../examples/receiver-constraints-get-200-websocket-ext.json
              404:
                description: Returned when the requested resource does not exist
+             409:
+               description: Returned when the requested resource is only available at a different API version.
+               headers:
+                 Location:
+                   example: /x-nmos/connection/{version}/single/receivers/3b8be755-08ff-452b-b217-c9151eb21193/constraints
        /staged:
          get:
            description: >
@@ -391,6 +436,11 @@ documentation:
                    Uninitialised: !include ../examples/receiver-get-200-uninit.json
              404:
                description: Returned when the requested resource does not exist
+             409:
+               description: Returned when the requested resource is only available at a different API version.
+               headers:
+                 Location:
+                   example: /x-nmos/connection/{version}/single/receivers/3b8be755-08ff-452b-b217-c9151eb21193/staged
          options:
            description: A pre-flight check generally used for Cross-Origin Resource Sharing (CORS) purposes
            responses:
@@ -477,6 +527,11 @@ documentation:
                   example: !include ../examples/stage-fail.json
              404:
                description: Returned when the requested resource does not exist
+             409:
+               description: Returned when the requested resource is only available at a different API version.
+               headers:
+                 Location:
+                   example: /x-nmos/connection/{version}/single/receivers/3b8be755-08ff-452b-b217-c9151eb21193/staged
              423:
                description: >
                  Returned when the resource is locked because an activation has been scheduled.
@@ -513,6 +568,11 @@ documentation:
                    Uninitialised: !include ../examples/receiver-active-get-200-uninit.json
              404:
                description: Returned when the requested resource does not exist
+             409:
+               description: Returned when the requested resource is only available at a different API version.
+               headers:
+                 Location:
+                   example: /x-nmos/connection/{version}/single/receivers/3b8be755-08ff-452b-b217-c9151eb21193/active
        /transporttype:
          get:
            description: >
@@ -524,3 +584,8 @@ documentation:
                  example: !include ../examples/transporttype-get.json
              404:
                description: Returned when the resource does not exist
+             409:
+               description: Returned when the requested resource is only available at a different API version.
+               headers:
+                 Location:
+                   example: /x-nmos/connection/{version}/single/receivers/3b8be755-08ff-452b-b217-c9151eb21193/transporttype
