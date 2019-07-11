@@ -1,6 +1,6 @@
 {
   "$schema": "http://json-schema.org/draft-04/schema#",
-  "description": "Describes WebSocket Sender transport parameters. The constraints in this schema are minimum constraints, but may be further constrained at the constraints endpoint. All senders must support `connection_uri`.",
+  "description": "Describes WebSocket Sender transport parameters. The constraints in this schema are minimum constraints, but may be further constrained at the constraints endpoint. WebSocket Senders must support all parameters in this schema.",
   "title": "WebSocket Sender Transport Parameters",
   "type": "object",
   "title": "Sender Output",
@@ -19,6 +19,7 @@
               "pattern": "^auto$"
             },
             {
+              "format": "uri",
               "pattern": "^wss?:\/\/.*"
             },
             {
