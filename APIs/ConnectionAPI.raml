@@ -14,7 +14,7 @@ documentation:
       The Connection API is exposed by NMOS Devices as a standard control interface for management of inter-device connnections.
   - title: Endpoint Discovery
     content: |
-      The Connection API URL for an NMOS Device is advertised in the list of controls for that device in the Node API using type: "urn:x-nmos:control:sr-ctrl/v1.0". This information is populated into the NMOS registry via the standard registration mechanism, so it is discoverable through the Query API (see NMOS Discovery and Registration specification).
+      The Connection API URL for an NMOS Device is advertised in the list of controls for that device in the Node API using type: "urn:x-nmos:control:sr-ctrl/{version}". This information is populated into the NMOS registry via the standard registration mechanism, so it is discoverable through the Query API (see NMOS Discovery and Registration specification).
   - title: API Structure
     content: |
       The API presents two distinct interfaces. A "bulk" interface for controlling multiple senders/receivers, and a "single" interface to control single devices.
