@@ -5,11 +5,13 @@ This repository contains details of this AMWA Specification for controlling aspe
 ## Getting started
 
 Readers are advised to be familiar with:
-*   The JT-NM Reference Architecture <http://jt-nm.org/>
+*   The [JT-NM Reference Architecture](http://jt-nm.org/RA-1.0/)
 *   The [overview of Networked Media Open Specifications](https://github.com/AMWA-TV/nmos)
 *   The [NMOS Discovery and Registration Specification](https://github.com/AMWA-TV/nmos-discovery-registration) (IS-04)
 
 Readers should then read the [documentation](docs/) in this repository, and the [APIs](APIs/), which are written in RAML -- if a suitable tool is not available for reading this, then [this](APIs/generateHTML) will create HTML versions.
+
+> HTML rendered versions of all NMOS Specifications are available on the [NMOS GitHub pages](https://amwa-tv.github.io/nmos)
 
 ## Contents
 
