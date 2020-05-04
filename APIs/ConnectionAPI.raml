@@ -187,9 +187,7 @@ documentation:
                Get staged sender transport parameters object. In SMPTE 2022-7 operation element 0
                of the `transport_params` array shall be the parameters applied to the primary leg, and
                element 1 the secondary leg. There shall only be one element present in `transport_params`
-               when SMPTE 2022-7 is not in use. When the `master_enable` parameter is false the
-               sender should stop transmitting media and the `/transportfile` endpoint should return
-               an HTTP 404 response.
+               when SMPTE 2022-7 is not in use.
              responses:
                200:
                  description: Additionally constrained by the constraints at /constraints
@@ -214,7 +212,7 @@ documentation:
            patch:
              description: >
                Update staged parameters for sender.
-               Note that for activations the `mode` parameter will return to null once the activation
+               Note that for activations the `mode` parameter will return to `null` once the activation
                transaction with the client is completed (i.e the response to the PATCH has been sent by the server).
                In SMPTE 2022-7 operation element 0 of the `transport_params`
                array shall be the parameters applied to the primary leg, and element 1 the secondary leg.
@@ -246,9 +244,6 @@ documentation:
                    Note the presence of the extra `activation_time` parameter in the response. For immediate activation
                    this should be the time the activation actually occurred as an absolute TAI timestamp.
                    If no activation was requested in the PATCH `activation_time` will be set `null`.
-                   When the `master_enable` parameter is false senders should not transmit any media streams.
-                   For RTP senders the `rtp_enabled` parameter allows for the individual disabling of SMPTE 2022-7
-                   legs.
                  body:
                    type: !include schemas/sender-response-schema.json
                    examples:
@@ -297,7 +292,11 @@ documentation:
          /active:
            get:
              description: >
-               Get active sender parameters. On activation all instances of "auto" must be resolved
+               Get active sender parameters.
+               When the `master_enable` parameter is `false` senders should not transmit any media streams.
+               For RTP senders the `rtp_enabled` parameter allows for the individual disabling of SMPTE 2022-7
+               legs.
+               On activation all instances of `auto` must be resolved
                into the actual values that will be used by the sender, unless there is an error condition.
                For example if a sender has the `destination_ip`
                parameter set to `auto` in /staged then `destination_ip` in /active should show the multicast IP
@@ -334,10 +333,11 @@ documentation:
                307:
                  description: A temporary redirect to the transport file
                404:
-                 body:
-                   description: >
-                     Returned if the resource does not exist, or the transport type does not require a transport file,
-                     or if the sender is not currently configured.
+                 description: >
+                   Returned if the resource does not exist, or the transport type does not require a transport file,
+                   or if the sender is not currently configured.
+                   May also be returned when the `master_enable` parameter is `false` in /active, if the sender only maintains
+                   a transport file when transmitting.
                409:
                  description: Returned when the requested resource is only available at a different API version.
                  headers:
@@ -353,7 +353,6 @@ documentation:
                    type: !include schemas/transporttype-response-schema.json
                    example: !include ../examples/transporttype-get.json
                404:
-                body:
                  description: >
                    Returned when the resource does not exist
                409:
@@ -450,14 +449,14 @@ documentation:
          patch:
            description: >
              Update staged parameters for receiver.
-             Note that for activations the `mode` parameter will return to null once the activation
+             Note that for activations the `mode` parameter will return to `null` once the activation
              transaction with the client is completed (i.e the response to the PATCH has been sent by the server).
              When a transport file is staged the parameters in that transport file should be propagated to
              their corresponding transport parameters and the response should show these updated values.
              On activation the value of the entries in `transport_parameters` must be used to program
              the receiver, not those in the transport file directly. However while the transport file is still present
-             (i.e `data` is not null) media parameters in the transport file should be applied to the
-             receiver. Setting `data` to null has no impact on the `transport_parameters` array, or
+             (i.e `data` is not `null`) media parameters in the transport file should be applied to the
+             receiver. Setting `data` to `null` has no impact on the `transport_parameters` array, or
              any other property.
              Where a transport file has been staged the transport
              parameters in the response will reflect the new values assigned to them by the transport file.
@@ -469,9 +468,6 @@ documentation:
              In SMPTE 2022-7 operation element 0 of the `transport_params`
              array shall be the parameters applied to the primary leg, and element 1 the secondary leg.
              There shall only be one element present in `transport_params` when SMPTE 2022-7 is not in use.
-             When the `master_enable` parameter is false receivers should not process any incoming streams, and
-             should unsubscribe from any multicast streams they are receiving. For RTP receivers the
-             `rtp_enabled` parameter allows for the individual disabling of SMPTE 2022-7 legs.
            body:
              description: >
               PATCH must comply with the constraints served at /constraints but not all fields are mandatory.
@@ -548,7 +544,11 @@ documentation:
        /active:
          get:
            description: >
-             Get active receiver parameters. On activation all instances of "auto" must be resolved
+             Get active receiver parameters.
+             When the `master_enable` parameter is `false` receivers should not process any incoming streams, and
+             should unsubscribe from any multicast streams they are receiving. For RTP receivers the
+             `rtp_enabled` parameter allows for the individual disabling of SMPTE 2022-7 legs.
+             On activation all instances of `auto` must be resolved
              into the actual values that will be used by the receiver, unless there is an error condition.
              For example if a receiver has the `interface_ip`
              parameter set to `auto` in /staged then `interface_ip` in /active should show the IP address of the interface
