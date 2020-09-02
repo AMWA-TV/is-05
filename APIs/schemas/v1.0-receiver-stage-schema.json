@@ -22,7 +22,7 @@
     },
     "transport_file": {
       "type": "object",
-      "description": "Transport file parameters. 'data' and 'type' must both be strings or both be null",
+      "description": "Transport file parameters. 'data' and 'type' must both be strings or both be null. If 'type' is non-null 'data' is expected to contain a valid instance of the specified media type.",
       "additionalProperties": false,
       "properties": {
         "data": {
