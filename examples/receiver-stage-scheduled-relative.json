@@ -8,7 +8,7 @@
   },
   "transport_file": {
     "data": null,
-    "type": "application/sdp"
+    "type": null
   },
   "transport_params": [{
     "interface_ip": "192.168.200.15",
