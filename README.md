@@ -1,5 +1,8 @@
 # AMWA IS-05 NMOS Device Connection Management Specification
 
+[![Lint Status](https://github.com/AMWA-TV/nmos-device-connection-management/workflows/Lint/badge.svg)](https://github.com/AMWA-TV/nmos-device-connection-management/actions?query=workflow%3ALint)
+[![Render Status](https://github.com/AMWA-TV/nmos-device-connection-management/workflows/Render/badge.svg)](https://github.com/AMWA-TV/nmos-device-connection-management/actions?query=workflow%3ARender)
+
 This repository contains details of this AMWA Specification for controlling aspects of NMOS Devices to effect connection management between Senders and Receivers.
 
 ## Getting started
