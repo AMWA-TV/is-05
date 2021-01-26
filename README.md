@@ -3,24 +3,29 @@
 [![Lint Status](https://github.com/AMWA-TV/nmos-device-connection-management/workflows/Lint/badge.svg)](https://github.com/AMWA-TV/nmos-device-connection-management/actions?query=workflow%3ALint)
 [![Render Status](https://github.com/AMWA-TV/nmos-device-connection-management/workflows/Render/badge.svg)](https://github.com/AMWA-TV/nmos-device-connection-management/actions?query=workflow%3ARender)
 
-This repository contains details of this AMWA Specification for controlling aspects of NMOS Devices to effect connection management between Senders and Receivers.
+[//]: # "INTRO-START"
+
+### What does it do?
+
+- Provides a transport-independent way of connecting Media Nodes
+  - Supports RTP, WebSocket and MQTT connections
+- Supports single + bulk connections, immediate + delayed connections
+
+### Why does it matter?
+
+- ST 2110 does not specify how to do this
+  - So without IS-05 there is a danger of multiple proprietary approaches
+  - ...and difficulty in adopting new stream formats.
+- Provides support for new specifications
+  - such as IS-07 event transport
+
+### How does it work?
+
+- Control application sends instructions to Media Nodes
+- ``transport_params`` conveys the connection information
+
+[//]: # "INTRO-END"
 
 ## Getting started
 
-Readers are advised to be familiar with:
-*   The [JT-NM Reference Architecture](http://jt-nm.org/reference-architecture/)
-*   The [overview of Networked Media Open Specifications](https://github.com/AMWA-TV/nmos)
-*   The [NMOS Discovery and Registration Specification](https://github.com/AMWA-TV/nmos-discovery-registration) (IS-04)
-
-Readers should then read the [documentation](docs/), [APIs](APIs/) (RAML and JSON Schema), and [examples](examples/) (JSON) 
-
-> HTML rendered versions of all NMOS Specifications are available at <https://specs.amwa.tv/nmos>
-
-## Contents
-
-*   README.md -- This file
-*   [docs/](docs/) -- Documentation targeting those implementing APIs and clients.
-*   [APIs/](APIs/) -- Normative specifications of APIs
-*   [examples/](examples/) -- Example JSON requests and responses for APIs
-*   [LICENSE](LICENSE) -- Licenses for software and text documents
-*   [NOTICE](NOTICE) -- Disclaimer
+There is more information about the NMOS Specifications and their GitHub repos at <https://specs.amwa.tv/nmos>.
