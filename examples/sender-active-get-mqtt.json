@@ -7,7 +7,7 @@
     "activation_time": "1541508905:0"
   },
   "transport_params": [{
-    "destination_host": "broker.mydomain.com",
+    "destination_host": "broker.example.com",
     "destination_port": 1883,
     "broker_topic": "my_topic_name",
     "broker_protocol": "mqtt",

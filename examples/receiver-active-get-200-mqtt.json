@@ -11,7 +11,7 @@
     "type": null
   },
   "transport_params": [{
-    "source_host": "broker.mydomain.com",
+    "source_host": "broker.example.com",
     "source_port": 1883,
     "broker_topic": "my_topic_name",
     "broker_protocol": "mqtt",
