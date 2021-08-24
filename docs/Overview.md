@@ -60,7 +60,7 @@ The `/transporttype` endpoint identifies the transport type which is used by thi
 
 The API provides a mechanism to modify settings for an individual Sender or Receiver. This is referred to as the 'single' interface.
 
-The API also provides a mechanism to modify settings for many Senders or Receivers at once which sit within the scope of the API implementation (typically contained by a Node or Device). This is referred to as the 'bulk' interface, and can be used to support 'salvo' operations in capable Devices, as described in [Behaviour](4.0.%20Behaviour.md).
+The API also provides a mechanism to modify settings for many Senders or Receivers at once which sit within the scope of the API implementation (typically contained by a Node or Device). This is referred to as the 'bulk' interface, and can be used to support 'salvo' operations in capable Devices, as described in [Behaviour](Behaviour.md).
 
 ## API Interaction
 
