@@ -27,11 +27,11 @@ The associated `href` is the URL of the Connection API base resource.
 
 As shown above the API version is included in the `type`, and in the `href`. Further control endpoints for the Connection API MAY be advertised for Devices which support multiple versions simultaneously, or have multiple network interfaces.
 
-More details about multi-version support can be found in [Upgrade Path](5.0.%20Upgrade%20Path.md).
+More details about multi-version support can be found in [Upgrade Path](Upgrade%20Path.md).
 
 A given instance of the Connection API MAY offer control of multiple Devices in a Node from a single URI. Alternatively there MAY be multiple instances of the API on one Node, each corresponding to one Device. A separate endpoint for each Device's Connection Management instance MUST be advertised in the Device's `controls`, even if the URI is the same.
 
-API implementations MAY list an `href` with or without a trailing slash, provided that the trailing slash policy in [APIs](2.0.%20APIs.md#urls-approach-to-trailing-slashes) is adhered to. Implementers of clients need to avoid double or missing slashes when appending paths onto `href`s.
+API implementations MAY list an `href` with or without a trailing slash, provided that the trailing slash policy in [APIs](APIs.md#urls-approach-to-trailing-slashes) is adhered to. Implementers of clients need to avoid double or missing slashes when appending paths onto `href`s.
 
 ## Sender & Receiver IDs
 

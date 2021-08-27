@@ -104,4 +104,4 @@ For HTTP codes `400` and upwards, a JSON format response MUST be returned as fol
 
 `code` SHOULD match the HTTP status code. `error` MUST always be present and in string format. `debug` MAY be `null` if no further debug information is available.
 
-Further details on when APIs will respond with particular codes is covered in the [Behaviour](4.0.%20Behaviour.md) section.
+Further details on when APIs will respond with particular codes is covered in the [Behaviour](Behaviour.md) section.
