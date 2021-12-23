@@ -1,0 +1,12 @@
+amwa_id: IS-05
+url: https://specs.amwa.tv/is-05
+name: Device Connection Management
+status: AMWA Specification (Stable)
+repo_name: is-05
+alt_repo_name: nmos-device-connection-management
+repo_url: https://github.com/AMWA-TV/is-05
+releases:
+  - v1.1.1
+  - v1.0.2
+default_branch: v1.1.x
+show_in_index: true
