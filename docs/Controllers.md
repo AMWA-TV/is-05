@@ -36,7 +36,7 @@ Implementers of Controllers are RECOMMENDED to support multiple versions of the 
 
 #### API Common Keys
 
-Controllers SHOULD follow the requirements for common APi keys specificified in the [IS-04 APIs: Common Keys](APIs%20-%20Common%20Keys.md) document including the requirements regarding [use of URNs](APIs%20-%20Common%20Keys.md#use-of-urns).
+Controllers SHOULD follow the requirements for common APi keys specified in the [IS-04 APIs: Common Keys](APIs%20-%20Common%20Keys.md) document including the requirements regarding [use of URNs](APIs%20-%20Common%20Keys.md#use-of-urns).
 
 #### Error Codes & Responses
 
@@ -55,7 +55,7 @@ The Controller SHOULD also refresh the endpoints of the relevant resources to en
 
 ## Connection Management
 
-The Controller SHALL implement connection management according to the [APIs section](APIs.md) of this specufucation.
+The Controller SHALL implement connection management according to the [APIs section](APIs.md) of this specification.
 
 The Controller SHALL be able to perform an immediate activation between a specified Sender and Receiver	via the IS-05 Connection API
 
