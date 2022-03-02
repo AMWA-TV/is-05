@@ -66,14 +66,14 @@ The Controller SHALL monitor and update the connection status of all registered 
 * The Controller SHALL identify the Sender connected to that Receiver. 
 * The Controller SHALL Identify when the Receiver connection has been deactivated. 
 
-Where making requests to a large number or Senders/Receivers on the same Device, Controllers SHOULD make use of the /bulk endpoint to bundle them into a single request.
+Where making requests to a large number or Senders/Receivers on the same Device, Controllers SHOULD make use of the `/bulk` endpoint to bundle them into a single request.
 
-When altering the transport parameters in the /staged endpoint, the Controller SHOULD check the /constraints endpoint to check the available choices of parameters accepted by a particular sender and receiver.
+When altering the transport parameters in the `/staged` endpoint, the Controller SHOULD check the `/constraints` endpoint to check the available choices of parameters accepted by a particular sender and receiver.
 
-When PATCHing to the transport parameters, parameters may have changed since the last get.
-Therefore the Controller SHOULD set parameters that are important for a connection (e.g master_enable/rtp_enable) in the PATCH request, even if the Controller believes they are already set as required.
+When `PATCH`ing to the transport parameters, parameters could possibly have changed since the last get.
+Therefore the Controller SHOULD set parameters that are important for a connection (e.g `master_enable`/`rtp_enable`) in the `PATCH` request, even if the Controller believes they are already set as required.
 
-When working with an NMOS Sender the Controller SHOULD include the Sender UUID to the receiver using the sender_id parameter.
+When connecting a Receiver to an NMOS Sender, the Controller SHOULD communicate the Sender UUID to the receiver using the `sender_id` parameter of the `/staged` endpoint.
 
 ## Client Side Implementation Notes
 
@@ -101,7 +101,8 @@ When the Controller is interacting with Receivers that support SMPTE 2022-7 is M
 ### Version Timestamp
 
 The Controller SHOULD use the IS-04 Query API websocket to monitor version timestamp increments on Devices being controlled.
-A version timestamp increment indicates that another controller has possibly changed the transport parameters, and as such any information cached by the Controller may be stale.
+
+A version timestamp increment indicates that another controller has possibly changed the transport parameters, and as such any information cached by the Controller could possibly be stale.
 
 ### Sender Multicast Address
 
@@ -114,4 +115,5 @@ The NMOS Controller SHOULD use persistent TCP connections wherever possible,
 to allow multiple operations to be performed without repeatedly closing and reopening connections for each operation.
 
 The use of HTTP pipelining has been known to cause interoperability issues in some cases.
-If the NMOS Controller uses HTTP pipelining, this should be done with great care, particularly when making API calls that can change the state of a resource.
+
+If the NMOS Controller uses HTTP pipelining, it SHOULD follow the guidelines set out in [RFC 7230 section 6.3.2](https://datatracker.ietf.org/doc/html/rfc7230#section-6.3.2).
