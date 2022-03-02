@@ -106,8 +106,8 @@ A version timestamp increment indicates that another controller has possibly cha
 
 ### Sender Multicast Address
 
-The NMOS Controller SHOULD allow allocation of multicast addresses which will allow avoidance of conflicts.
-In that case, when a Sender is added to a new system, the NMOS Controller SHALL allow the use AMWA IS-05 to configure the multicast transmit information (`transport_params`) before or in the same transaction as enabling the transmitter (`master_enable` = `true`).
+The NMOS Controller SHOULD allow allocation of multicast addresses to allow avoidance of conflicts.
+To avoid conflicts, when a Sender is added to a new system, the NMOS Controller SHALL allow the use AMWA IS-05 to configure the multicast transmit information (`transport_params`) before or in the same transaction as enabling the transmitter (`master_enable` = `true`).
 
 ### TCP sessions
 
