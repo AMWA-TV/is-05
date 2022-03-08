@@ -102,7 +102,7 @@ When the Controller is interacting with Receivers that support SMPTE 2022-7 is M
 
 The Controller SHOULD use the IS-04 Query API websocket to monitor version timestamp increments on Devices being controlled.
 
-A version timestamp increment indicates that another controller has possibly changed the transport parameters, and as such any information cached by the Controller could possibly be stale.
+A version timestamp increment indicates that another controller has possibly changed ~~the transport~~ resource parameters, and as such any information cached by the Controller could possibly be stale.
 
 ### Sender Multicast Address
 
