@@ -55,16 +55,16 @@ The Controller SHOULD also refresh the endpoints of the relevant resources to en
 
 ## Connection Management
 
-The Controller SHALL implement connection management according to the [APIs section](APIs.md) of this specification.
+The Controller MUST implement connection management according to the [APIs section](APIs.md) of this specification.
 
-The Controller SHALL be able to perform an immediate activation between a specified Sender and Receiver	via the IS-05 Connection API
+The Controller MUST be able to perform an immediate activation between a specified Sender and Receiver	via the IS-05 Connection API
 
-The Controller SHALL allow removal of active connections via the IS-05 Connection API.	
+The Controller MUST allow removal of active connections via the IS-05 Connection API.	
 
-The Controller SHALL monitor and update the connection status of all registered Devices. For instance:
-* The Controller SHALL identify that a connection to a Receiver has been activated. 
-* The Controller SHALL identify the Sender connected to that Receiver. 
-* The Controller SHALL Identify when the Receiver connection has been deactivated. 
+The Controller MUST monitor and update the connection status of all registered Devices. For instance:
+* The Controller MUST identify that a connection to a Receiver has been activated. 
+* The Controller MUST identify the Sender connected to that Receiver. 
+* The Controller MUST Identify when the Receiver connection has been deactivated. 
 
 Where making requests to a large number or Senders/Receivers on the same Device, Controllers SHOULD make use of the `/bulk` endpoint to bundle them into a single request.
 
@@ -77,7 +77,7 @@ When connecting a Receiver to an NMOS Sender, the Controller SHOULD communicate 
 
 ## Client Side Implementation Notes
 
-Controllers SHALL adhere the Client Side Implementation Notes described in this specification, namely the sections on [Conformance to Schemas](APIs%20-%20Client%20Side%20Implementation.md#conforming-to-schemas), [RTP Operating Point](APIs%20-%20Client%20Side%20Implementation.md#rtp-operating-point), and [Failure Modes](APIs%20-%20Client%20Side%20Implementation.md#failure-modes).
+Controllers MUST adhere the Client Side Implementation Notes described in this specification, namely the sections on [Conformance to Schemas](APIs%20-%20Client%20Side%20Implementation.md#conforming-to-schemas), [RTP Operating Point](APIs%20-%20Client%20Side%20Implementation.md#rtp-operating-point), and [Failure Modes](APIs%20-%20Client%20Side%20Implementation.md#failure-modes).
 
 ## Interoperability
 
@@ -86,7 +86,7 @@ Controllers SHALL adhere the Client Side Implementation Notes described in this 
 As is described in the [Identifying Active Connections section of the Interoperability: IS-04 document](Interoperability%20-%20IS-04.md#identifying-active-connections) in this specification,
 in order to populate the subscription attribute of IS-04 Senders and Receivers, the Connection API includes keys for sender_id and receiver_id in its staged parameters.
 These SHOULD be used to signal that a Sender or Receiver is being connected to another NMOS compatible Sender or Receiver. 
-The NMOS Controller SHALL set and unset (using `null`) the `sender_id` or `receiver_id` parameters when modifying the transport_params or transport_file.
+The NMOS Controller MUST set and unset (using `null`) the `sender_id` or `receiver_id` parameters when modifying the transport_params or transport_file.
 
 ### Interacting with Non-NMOS Devices
 
@@ -102,12 +102,12 @@ When the Controller is interacting with Receivers that support SMPTE 2022-7 is M
 
 The Controller SHOULD use the IS-04 Query API websocket to monitor version timestamp increments on Devices being controlled.
 
-A version timestamp increment indicates that another controller has possibly changed ~~the transport~~ resource parameters, and as such any information cached by the Controller could possibly be stale.
+A version timestamp increment indicates that another controller has possibly changed resource parameters, and as such any information cached by the Controller could possibly be stale.
 
 ### Sender Multicast Address
 
 The NMOS Controller SHOULD allow allocation of multicast addresses to allow avoidance of conflicts.
-To avoid conflicts, when a Sender is added to a new system, the NMOS Controller SHALL allow the use AMWA IS-05 to configure the multicast transmit information (`transport_params`) before or in the same transaction as enabling the transmitter (`master_enable` = `true`).
+To avoid conflicts, when a Sender is added to a new system, the NMOS Controller MUST allow the use AMWA IS-05 to configure the multicast transmit information (`transport_params`) before or in the same transaction as enabling the transmitter (`master_enable` = `true`).
 
 ### TCP sessions
 
