@@ -57,7 +57,7 @@ The Controller SHOULD also refresh the endpoints of the relevant resources to en
 
 The Controller MUST implement connection management according to the [APIs section](APIs.md) of this specification.
 
-The Controller MUST be able to perform an immediate activation between a specified Sender and Receiver	via the IS-05 Connection API
+The Controller MUST be able to perform an immediate activation between a specified Sender and Receiver	via the IS-05 Connection API.
 
 The Controller MUST allow removal of active connections via the IS-05 Connection API.	
 
@@ -70,7 +70,7 @@ Where making requests to a large number or Senders/Receivers on the same Device,
 
 When altering the transport parameters in the `/staged` endpoint, the Controller SHOULD check the `/constraints` endpoint to check the available choices of parameters accepted by a particular sender and receiver.
 
-When `PATCH`ing to the transport parameters, parameters could possibly have changed since the last get.
+When `PATCH`ing to the transport parameters, parameters could possibly have changed since the last `GET`.
 Therefore the Controller SHOULD set parameters that are important for a connection (e.g `master_enable`/`rtp_enable`) in the `PATCH` request, even if the Controller believes they are already set as required.
 
 When connecting a Receiver to an NMOS Sender, the Controller SHOULD communicate the Sender UUID to the receiver using the `sender_id` parameter of the `/staged` endpoint.
@@ -84,9 +84,9 @@ Controllers MUST adhere the Client Side Implementation Notes described in this s
 ### Identifying Active Connections
 
 As is described in the [Identifying Active Connections section of the Interoperability: IS-04 document](Interoperability%20-%20IS-04.md#identifying-active-connections) in this specification,
-in order to populate the subscription attribute of IS-04 Senders and Receivers, the Connection API includes keys for sender_id and receiver_id in its staged parameters.
+in order to populate the subscription attribute of IS-04 Senders and Receivers, the Connection API includes keys for `sender_id` and `receiver_id` in its `/staged` parameters.
 These SHOULD be used to signal that a Sender or Receiver is being connected to another NMOS compatible Sender or Receiver. 
-The NMOS Controller MUST set and unset (using `null`) the `sender_id` or `receiver_id` parameters when modifying the transport_params or transport_file.
+The Controller MUST set and unset (using `null`) the `sender_id` or `receiver_id` parameters when modifying the `transport_params` or `transport_file`.
 
 ### Interacting with Non-NMOS Devices
 
@@ -96,24 +96,24 @@ Controllers MUST follow the requirements for a Client interacting with non-NMOS 
 
 ### Operation with SMPTE 2022-7
 
-When the Controller is interacting with Receivers that support SMPTE 2022-7 is MUST follow the requirements for Clients described in the [Operation with SMPTE 2022-7 section of the Behaviour - RTP Transport Type document](Behaviour%20-%20RTP%20Transport%20Type.md#operation-with-smpte-2022-7) in this specification.
+When the Controller is interacting with Receivers that support SMPTE 2022-7 it MUST follow the requirements for Clients described in the [Operation with SMPTE 2022-7 section of the Behaviour - RTP Transport Type document](Behaviour%20-%20RTP%20Transport%20Type.md#operation-with-smpte-2022-7) in this specification.
 
 ### Version Timestamp
 
-The Controller SHOULD use the IS-04 Query API websocket to monitor version timestamp increments on Devices being controlled.
+The Controller SHOULD use the IS-04 Query API WebSocket to monitor version timestamp increments on Devices being controlled.
 
-A version timestamp increment indicates that another controller has possibly changed resource parameters, and as such any information cached by the Controller could possibly be stale.
+A version timestamp increment indicates that another Controller has possibly changed resource parameters, and as such any information cached by the Controller could possibly be stale.
 
 ### Sender Multicast Address
 
-The NMOS Controller SHOULD allow allocation of multicast addresses to allow avoidance of conflicts.
-To avoid conflicts, when a Sender is added to a new system, the NMOS Controller MUST allow the use AMWA IS-05 to configure the multicast transmit information (`transport_params`) before or in the same transaction as enabling the transmitter (`master_enable` = `true`).
+The Controller SHOULD allow allocation of multicast addresses to allow avoidance of conflicts.
+To avoid conflicts, when a Sender is added to a new system, the Controller MUST allow the use IS-05 to configure the multicast transmit information (`transport_params`) before or in the same transaction as enabling the transmitter (`master_enable` = `true`).
 
 ### TCP sessions
 
-The NMOS Controller SHOULD use persistent TCP connections wherever possible,
+The Controller SHOULD use persistent TCP connections wherever possible,
 to allow multiple operations to be performed without repeatedly closing and reopening connections for each operation.
 
 The use of HTTP pipelining has been known to cause interoperability issues in some cases.
 
-If the NMOS Controller uses HTTP pipelining, it SHOULD follow the guidelines set out in [RFC 7230 section 6.3.2](https://datatracker.ietf.org/doc/html/rfc7230#section-6.3.2).
+If the Controller uses HTTP pipelining, it SHOULD follow the guidelines set out in [RFC 7230 section 6.3.2](https://datatracker.ietf.org/doc/html/rfc7230#section-6.3.2).
