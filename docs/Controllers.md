@@ -14,6 +14,7 @@ A Controller is Client software that interacts with the NMOS APIs to discover, c
 ## General
 
 ### User
+
 Where this document refers to the "user" of a Controller, this includes both human operators who drive the Controller manually and automation systems that drive the Controller programmatically.
 
 ### HTTP APIs
@@ -30,26 +31,26 @@ The versioning format is `v<MAJOR>.<MINOR>`
 * `MINOR` increments will be performed for non-breaking changes (such as the addition of attributes in a response)
 * `MAJOR` increments will be performed for breaking changes (such as the renaming of a resource or attribute)
 
-Versions MUST be represented as complete strings. Parsing MUST proceed as follows: separate into two strings, using the point (.) as a delimiter. Compare integer representations of `MAJOR`, `MINOR` version (such that v1.12 is greater than v1.5).
+Versions MUST be represented as complete strings. Parsing MUST proceed as follows: separate into two strings, using the point (`.`) as a delimiter. Compare integer representations of `MAJOR`, `MINOR` version (such that v1.12 is greater than v1.5).
 
 Implementers of Controllers are RECOMMENDED to support multiple versions of the NMOS APIs simultaneously in order to ease the upgrade process in live facilities.
 
 #### API Common Keys
 
-Controllers SHOULD follow the requirements for common APi keys specified in the [IS-04 APIs: Common Keys](APIs%20-%20Common%20Keys.md) document including the requirements regarding [use of URNs](APIs%20-%20Common%20Keys.md#use-of-urns).
+Controllers SHOULD follow the requirements for common API keys specified in the [IS-04 APIs: Common Keys](APIs%20-%20Common%20Keys.md) document including the requirements regarding [use of URNs](APIs%20-%20Common%20Keys.md#use-of-urns).
 
 #### Error Codes & Responses
 
 The NMOS APIs use HTTP status codes to indicate success, failure and other cases to Controllers as per [RFC 7231](https://tools.ietf.org/html/rfc7231) and related standards.
 
-As explicit handling of every possible HTTP response code is not expected, Controllers MUST implement generic handling for ranges of response codes (1xx, 2xx, 3xx, 4xx and 5xx).
+As explicit handling of every possible HTTP response code is not expected, Controllers MUST implement generic handling for ranges of response codes (`1xx`, `2xx`, `3xx`, `4xx` and `5xx`).
 However, where the RAML specification of an API specifies explicit response codes the Controller SHOULD handle these cases explicitly.
 
 For Controllers performing `GET` and `HEAD` requests, using these methods SHOULD correctly handle a `301` (Moved Permanently) response.
 
-When a 301 is supported, the Controller MUST follow the redirect in order to retrieve the required response payload.
+When a `301` is supported, the Controller MUST follow the redirect in order to retrieve the required response payload.
 
-If a Controller receives a HTTP 5xx or 4xx response code from the API, a failure has occurred.
+If a Controller receives an HTTP `5xx` or `4xx` response code from the API, a failure has occurred.
 The Controller SHOULD display the content of the response's error field to the user if possible, and indicate that the resource is likely to be in an unknown state.
 The Controller SHOULD also refresh the endpoints of the relevant resources to ensure the Controller is accurately reflecting the current state of the API.
 
