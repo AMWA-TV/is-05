@@ -58,21 +58,21 @@ The Controller SHOULD also refresh the endpoints of the relevant resources to en
 
 The Controller MUST implement connection management according to the [APIs section](APIs.md) of this specification.
 
-The Controller MUST be able to perform an immediate activation between a specified Sender and Receiver	via the IS-05 Connection API.
+The Controller MUST be able to perform an immediate activation between a specified Sender and Receiver via the IS-05 Connection API.
 
 The Controller MUST allow removal of active connections via the IS-05 Connection API.	
 
 The Controller MUST monitor and update the connection status of all registered Devices. For instance:
 * The Controller MUST identify that a connection to a Receiver has been activated. 
 * The Controller MUST identify the Sender connected to that Receiver. 
-* The Controller MUST Identify when the Receiver connection has been deactivated. 
+* The Controller MUST identify when the Receiver connection has been deactivated. 
 
 Where making requests to a large number or Senders/Receivers on the same Device, Controllers SHOULD make use of the `/bulk` endpoint to bundle them into a single request.
 
-When altering the transport parameters in the `/staged` endpoint, the Controller SHOULD check the `/constraints` endpoint to check the available choices of parameters accepted by a particular sender and receiver.
+When altering the transport parameters in the `/staged` endpoint, the Controller SHOULD check the `/constraints` endpoint for the available choices of parameters accepted by the particular Sender and Receiver.
 
 When `PATCH`ing to the transport parameters, parameters could possibly have changed since the last `GET`.
-Therefore the Controller SHOULD set parameters that are important for a connection (e.g `master_enable`/`rtp_enable`) in the `PATCH` request, even if the Controller believes they are already set as required.
+Therefore the Controller SHOULD set parameters that are important for a connection (e.g. `master_enable` and `rtp_enable`) in the `PATCH` request, even if the Controller believes they are already set as required.
 
 When connecting a Receiver to an NMOS Sender, the Controller SHOULD communicate the Sender UUID to the receiver using the `sender_id` parameter of the `/staged` endpoint.
 
@@ -91,7 +91,7 @@ The Controller MUST set and unset (using `null`) the `sender_id` or `receiver_id
 
 ### Interacting with Non-NMOS Devices
 
-Controllers MUST follow the requirements for a Client interacting with non-NMOS Devices, as described in the [Interoperability: Non-NMOS Devices document](Interoperability%20-%20Non-NMOS%20Devices.md) in this sepcficiation.
+Controllers MUST follow the requirements for a Client interacting with non-NMOS Devices, as described in the [Interoperability: Non-NMOS Devices](Interoperability%20-%20Non-NMOS%20Devices.md) section of this Specification.
 
 ## Behaviour
 
@@ -108,9 +108,9 @@ A version timestamp increment indicates that another Controller has possibly cha
 ### Sender Multicast Address
 
 The Controller SHOULD allow allocation of multicast addresses to allow avoidance of conflicts.
-To avoid conflicts, when a Sender is added to a new system, the Controller MUST allow the use IS-05 to configure the multicast transmit information (`transport_params`) before or in the same transaction as enabling the transmitter (`master_enable` = `true`).
+To avoid conflicts, when a Sender is added to a new system, the Controller MUST allow the use of IS-05 to configure the multicast transmit information (`transport_params`) before or in the same transaction as enabling the transmitter (`master_enable` = `true`).
 
-### TCP sessions
+### TCP Sessions
 
 The Controller SHOULD use persistent TCP connections wherever possible,
 to allow multiple operations to be performed without repeatedly closing and reopening connections for each operation.
