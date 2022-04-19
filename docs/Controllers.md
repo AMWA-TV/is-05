@@ -67,9 +67,9 @@ The Controller MUST monitor and update the connection status of all discovered I
 * The Controller MUST be able to identify when an NMOS Sender is connected to that Receiver.
 * The Controller MUST identify when the Receiver connection has been deactivated. 
 
-Where making requests to a large number or Senders/Receivers on the same Device, Controllers SHOULD make use of the `/bulk` endpoint to bundle them into a single request.
+Where making requests to a large number of Senders and/or Receivers on the same Device, Controllers SHOULD make use of the `/bulk` endpoint to bundle them into a single request.
 
-When altering the transport parameters in the `/staged` endpoint, the Controller SHOULD check the `/constraints` endpoint for the available choices of parameters accepted by the particular Sender and Receiver.
+When altering the transport parameters in the `/staged` endpoint, the Controller SHOULD check the `/constraints` endpoint for the available choices of parameters accepted by the particular Sender or Receiver.
 
 When `PATCH`ing to the transport parameters, parameters could possibly have changed since the last `GET`.
 Therefore the Controller SHOULD set parameters that are important for a connection (e.g. `master_enable` and `rtp_enable`) in the `PATCH` request, even if the Controller believes they are already set as required.
@@ -78,14 +78,14 @@ When connecting a Receiver to an NMOS Sender, the Controller SHOULD communicate 
 
 ## Client Side Implementation Notes
 
-Controllers MUST adhere the Client Side Implementation Notes described in this specification, namely the sections on [Conformance to Schemas](APIs%20-%20Client%20Side%20Implementation.md#conforming-to-schemas), [RTP Operating Point](APIs%20-%20Client%20Side%20Implementation.md#rtp-operating-point), and [Failure Modes](APIs%20-%20Client%20Side%20Implementation.md#failure-modes).
+Controllers MUST adhere to the [Client Side Implementation Notes]((APIs%20-%20Client%20Side%20Implementation.md) described in this specification, such as the sections on Conformance to Schemas, RTP Operating Point, and Failure Modes.
 
 ## Interoperability
 
 ### Identifying Active Connections
 
 As is described in the [Identifying Active Connections section of the Interoperability: IS-04 document](Interoperability%20-%20IS-04.md#identifying-active-connections) in this specification,
-in order to populate the subscription attribute of IS-04 Senders and Receivers, the Connection API includes keys for `sender_id` and `receiver_id` in its `/staged` parameters.
+in order to populate the subscription attribute of IS-04 Senders and Receivers, the Connection API includes keys for `sender_id` and `receiver_id` in its `/active` and `/staged` parameters.
 These are used to signal that a Sender or Receiver is connected to an NMOS Receiver or Sender. 
 The Controller MUST set and unset (using `null`) the `sender_id` or `receiver_id` parameters when modifying the `transport_params` or `transport_file`.
 
