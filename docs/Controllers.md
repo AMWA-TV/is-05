@@ -86,7 +86,7 @@ Controllers MUST adhere the Client Side Implementation Notes described in this s
 
 As is described in the [Identifying Active Connections section of the Interoperability: IS-04 document](Interoperability%20-%20IS-04.md#identifying-active-connections) in this specification,
 in order to populate the subscription attribute of IS-04 Senders and Receivers, the Connection API includes keys for `sender_id` and `receiver_id` in its `/staged` parameters.
-These SHOULD be used to signal that a Sender or Receiver is being connected to another NMOS compatible Sender or Receiver. 
+These are used to signal that a Sender or Receiver is connected to an NMOS Receiver or Sender. 
 The Controller MUST set and unset (using `null`) the `sender_id` or `receiver_id` parameters when modifying the `transport_params` or `transport_file`.
 
 ### Interacting with Non-NMOS Devices
