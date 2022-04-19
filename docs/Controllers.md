@@ -64,7 +64,7 @@ The Controller MUST allow removal of active connections via the IS-05 Connection
 
 The Controller MUST monitor and update the connection status of all registered Devices. For instance:
 * The Controller MUST identify that a connection to a Receiver has been activated. 
-* The Controller MUST identify the Sender connected to that Receiver. 
+* The Controller MUST be able to identify when an NMOS Sender is connected to that Receiver.
 * The Controller MUST identify when the Receiver connection has been deactivated. 
 
 Where making requests to a large number or Senders/Receivers on the same Device, Controllers SHOULD make use of the `/bulk` endpoint to bundle them into a single request.
