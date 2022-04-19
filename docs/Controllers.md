@@ -51,7 +51,7 @@ For Controllers performing `GET` and `HEAD` requests, using these methods SHOULD
 When a `301` is supported, the Controller MUST follow the redirect in order to retrieve the required response payload.
 
 If a Controller receives an HTTP `5xx` or `4xx` response code from the API, a failure has occurred.
-The Controller SHOULD display the content of the response's error field to the user if possible, and indicate that the resource is likely to be in an unknown state.
+The Controller SHOULD display the content of the response's error field to the User if possible, and indicate that the resource is likely to be in an unknown state.
 The Controller SHOULD also refresh the endpoints of the relevant resources to ensure the Controller is accurately reflecting the current state of the API.
 
 ## Connection Management
@@ -107,8 +107,8 @@ A version timestamp increment indicates that another Controller has possibly cha
 
 ### Sender Multicast Address
 
-The Controller SHOULD allow allocation of multicast addresses to allow avoidance of conflicts.
-To avoid conflicts, when a Sender is added to a new system, the Controller MUST allow the use of IS-05 to configure the multicast transmit information (`transport_params`) before or in the same transaction as enabling the transmitter (`master_enable` = `true`).
+The Controller MUST allow the User to configure the multicast transmit information (using IS-05 `transport_params`) before or in the same transaction as enabling the transmitter (setting `master_enable` to `true`).
+This allows avoiding conflicts with other senders' configurations, in particular when a Sender is added to a new system.
 
 ### TCP Sessions
 
