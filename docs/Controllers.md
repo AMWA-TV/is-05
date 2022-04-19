@@ -62,7 +62,7 @@ The Controller MUST be able to perform an immediate activation between a specifi
 
 The Controller MUST allow removal of active connections via the IS-05 Connection API.	
 
-The Controller MUST monitor and update the connection status of all registered Devices. For instance:
+The Controller MUST monitor and update the connection status of all discovered IS-05 Senders and Receivers. For instance:
 * The Controller MUST identify that a connection to a Receiver has been activated. 
 * The Controller MUST be able to identify when an NMOS Sender is connected to that Receiver.
 * The Controller MUST identify when the Receiver connection has been deactivated. 
