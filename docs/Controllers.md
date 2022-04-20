@@ -84,7 +84,7 @@ Controllers MUST adhere to the [Client Side Implementation Notes]((APIs%20-%20Cl
 
 ### Identifying Active Connections
 
-As is described in the [Identifying Active Connections section of the Interoperability: IS-04 document](Interoperability%20-%20IS-04.md#identifying-active-connections) in this specification,
+As is described in the [Interoperability: IS-04: Identifying Active Connections](Interoperability%20-%20IS-04.md#identifying-active-connections) section of this specification,
 in order to populate the subscription attribute of IS-04 Senders and Receivers, the Connection API includes keys for `sender_id` and `receiver_id` in its `/active` and `/staged` parameters.
 These are used to signal that a Sender or Receiver is connected to an NMOS Receiver or Sender. 
 The Controller MUST set and unset (using `null`) the `sender_id` or `receiver_id` parameters when modifying the `transport_params` or `transport_file`.
@@ -97,7 +97,7 @@ Controllers MUST follow the requirements for a Client interacting with non-NMOS 
 
 ### Operation with SMPTE 2022-7
 
-When the Controller is interacting with Receivers that support SMPTE 2022-7 it MUST follow the requirements for Clients described in the [Operation with SMPTE 2022-7 section of the Behaviour - RTP Transport Type document](Behaviour%20-%20RTP%20Transport%20Type.md#operation-with-smpte-2022-7) in this specification.
+When the Controller is interacting with Receivers that support SMPTE 2022-7 it MUST follow the requirements for Clients described in the [Behaviour: RTP Transport Type: Operation with SMPTE 2022-7](Behaviour%20-%20RTP%20Transport%20Type.md#operation-with-smpte-2022-7) section of this specification.
 
 ### Version Timestamp
 
