@@ -44,7 +44,7 @@ Controllers SHOULD follow the requirements for common API keys specified in the 
 The NMOS APIs use HTTP status codes to indicate success, failure and other cases to Controllers as per [RFC 7231](https://tools.ietf.org/html/rfc7231) and related standards.
 
 As explicit handling of every possible HTTP response code is not expected, Controllers MUST implement generic handling for ranges of response codes (`1xx`, `2xx`, `3xx`, `4xx` and `5xx`).
-However, where the RAML specification of an API specifies explicit response codes the Controller SHOULD handle these cases explicitly.
+However, where the API specifies explicit response codes the Controller SHOULD handle these cases explicitly.
 
 For Controllers performing `GET` and `HEAD` requests, using these methods SHOULD correctly handle a `301` (Moved Permanently) response.
 
@@ -115,6 +115,4 @@ This allows avoiding conflicts with other senders' configurations, in particular
 The Controller SHOULD use persistent TCP connections wherever possible,
 to allow multiple operations to be performed without repeatedly closing and reopening connections for each operation.
 
-The use of HTTP pipelining has been known to cause interoperability issues in some cases.
-
-If the Controller uses HTTP pipelining, it SHOULD follow the guidelines set out in [RFC 7230 section 6.3.2](https://datatracker.ietf.org/doc/html/rfc7230#section-6.3.2).
+If the Controller uses HTTP pipelining, the guidelines set out in [RFC 7230 section 6.3.2](https://datatracker.ietf.org/doc/html/rfc7230#section-6.3.2) apply.
