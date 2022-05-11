@@ -21,7 +21,8 @@ The Specification includes:
 
 IS-05 is intended to be used in conjunction with an [IS-04 NMOS Discovery & Registration](https://specs.amwa.tv/is-04) deployment; however it has been written in such a way to provide useful functionality even in the absence of such a system.
 
-The terms 'Node', 'Device', 'Sender' and 'Receiver' are used extensively in this documenation set. The [NMOS Technical Overview](https://specs.amwa.tv/nmos/main/docs/2.0._Technical_Overview.html) provides an outline of these terms, and IS-04 provides corresponding schema definitions.
+The terms 'Node', 'Device', 'Sender' and 'Receiver' are used extensively in this documentation set.
+The [NMOS Technical Overview](https://specs.amwa.tv/nmos/main/docs/2.0._Technical_Overview.html) and the [NMOS Glossary][Glossary] define these and other common terms that have specific meanings in NMOS. 
 
 ## Use of Normative Language
 
@@ -68,4 +69,5 @@ The following sequence diagram shows the interactions between a client and the A
 
 ![Connection Management Sequence](images/direct_seq_diagram.png)
 
+[Glossary]: https://specs.amwa.tv/nmos/main/docs/Glossary.html "NMOS Glossary"
 [RFC-2119]: https://tools.ietf.org/html/rfc2119 "Key words for use in RFCs"

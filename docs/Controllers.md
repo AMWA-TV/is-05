@@ -2,20 +2,18 @@
 
 _(c) AMWA 2022, CC Attribution-NoDerivatives 4.0 International (CC BY-ND 4.0)_
 
-## Informative
+## Introduction
 
-A Controller is Client software that interacts with the NMOS APIs to discover, connect and manage devices within a networked media system.
+A Controller is Client software that interacts with the NMOS APIs to discover, connect and manage resources (Nodes, Devices, Senders and Receivers) within a networked media system.
 
 * This document includes normative references to be followed when implementing a Controller.
 * This document covers how the Controller interacts with the NMOS APIs only.
   It does not cover other features of the Controller software, such as presentation.
 * This document does not cover any requirements relating to where a Controller is additionally acting as a Node (e.g. receiving monitoring information via IS-07).
 
+Where this document refers to a User, this can include both human operators who drive a Controller manually and automation systems that drive a Controller programmatically.
+
 ## General
-
-### User
-
-Where this document refers to the "user" of a Controller, this includes both human operators who drive the Controller manually and automation systems that drive the Controller programmatically.
 
 ### HTTP APIs
 
@@ -35,10 +33,6 @@ Versions MUST be represented as complete strings. Parsing MUST proceed as follow
 
 Implementers of Controllers are RECOMMENDED to support multiple versions of the NMOS APIs simultaneously in order to ease the upgrade process in live facilities.
 
-#### API Common Keys
-
-Controllers SHOULD follow the requirements for common API keys specified in the [IS-04 APIs: Common Keys](APIs%20-%20Common%20Keys.md) document including the requirements regarding [use of URNs](APIs%20-%20Common%20Keys.md#use-of-urns).
-
 #### Error Codes & Responses
 
 The NMOS APIs use HTTP status codes to indicate success, failure and other cases to Controllers as per [RFC 7231](https://tools.ietf.org/html/rfc7231) and related standards.
@@ -46,13 +40,10 @@ The NMOS APIs use HTTP status codes to indicate success, failure and other cases
 As explicit handling of every possible HTTP response code is not expected, Controllers MUST implement generic handling for ranges of response codes (`1xx`, `2xx`, `3xx`, `4xx` and `5xx`).
 However, where the API specifies explicit response codes the Controller SHOULD handle these cases explicitly.
 
-For Controllers performing `GET` and `HEAD` requests, using these methods SHOULD correctly handle a `301` (Moved Permanently) response.
-
-When a `301` is supported, the Controller MUST follow the redirect in order to retrieve the required response payload.
+When a Controller performs `GET` and `HEAD` requests, it MUST correctly handle a `301` (Moved Permanently) response by following the redirect `Location` header.
 
 If a Controller receives an HTTP `5xx` or `4xx` response code from the API, a failure has occurred.
-The Controller SHOULD display the content of the response's error field to the User if possible, and indicate that the resource is likely to be in an unknown state.
-The Controller SHOULD also refresh the endpoints of the relevant resources to ensure the Controller is accurately reflecting the current state of the API.
+The Controller SHOULD display the content of the response's `error` field to the User if possible.
 
 ## Connection Management
 
@@ -82,7 +73,13 @@ Controllers MUST adhere to the [Client Side Implementation Notes]((APIs%20-%20Cl
 
 ## Interoperability
 
-### Identifying Active Connections
+### Interoperability with IS-04
+
+#### API Common Keys
+
+Controllers MUST follow the requirements for common API keys specified in the [IS-04 APIs: Common Keys](https://specs.amwa.tv/is-04/releases/v1.3.1/docs/2.1._APIs_-_Common_Keys.html) document including the requirements regarding [use of URNs](https://specs.amwa.tv/is-04/releases/v1.3.1/docs/2.1._APIs_-_Common_Keys.html#use-of-urns).
+
+#### Identifying Active Connections
 
 As is described in the [Interoperability: IS-04: Identifying Active Connections](Interoperability%20-%20IS-04.md#identifying-active-connections) section of this specification,
 in order to populate the subscription attribute of IS-04 Senders and Receivers, the Connection API includes keys for `sender_id` and `receiver_id` in its `/active` and `/staged` parameters.
