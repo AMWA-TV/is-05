@@ -43,7 +43,9 @@ In order to prevent unnecessary polling of the Connection API, changes to active
 
 ## Identifying Active Connections
 
-In order to populate the `subscription` attribute of IS-04 Senders and Receivers, the Connection API includes keys for `sender_id` and `receiver_id` in its staged parameters. These SHOULD be used to signal that a Sender or Receiver is being connected to another NMOS compatible Sender or Receiver. It is the client's responsibility to set and unset (using `null`) the `sender_id` or `receiver_id` parameters when modifying the `transport_params` or `transport_file`.
+In order to populate the `subscription` attribute of IS-04 Senders and Receivers, the Connection API includes keys for `sender_id` and `receiver_id` in the `/active` and `/staged` endpoints of Receivers and Senders respectively.
+These can be used to indicate that a Receiver or Sender is connected to an NMOS Sender or Receiver.
+It is the client's responsibility to set or unset (using `null`) the `sender_id` or `receiver_id` parameters when modifying the `transport_params` or `transport_file`.
 
 ## Support For Legacy IS-04 Connection Management
 
