@@ -65,7 +65,8 @@ When altering the transport parameters in the `/staged` endpoint, the Controller
 When `PATCH`ing to the transport parameters, parameters could possibly have changed since the last `GET`.
 Therefore the Controller SHOULD set parameters that are important for a connection (e.g. `master_enable` and `rtp_enable`) in the `PATCH` request, even if the Controller believes they are already set as required.
 
-The Connection API includes keys for `sender_id` and `receiver_id` in the `/active` and `/staged` endpoints of Receivers and Senders respectively.
+The Connection API includes a `sender_id` parameter in each Receiver's `/active` and `/staged` endpoints.
+Similarly, it includes a `receiver_id` parameter in each Sender's `/active` and `/staged` endpoints.
 When modifying `transport_params` or `transport_file` to configure a connection to a specific NMOS Sender or Receiver, the Controller MUST set the `sender_id` or `receiver_id` parameter.
 Otherwise, when modifying `transport_params` or `transport_file`, the Controller MUST set the `sender_id` or `receiver_id` parameter to `null`.
 
