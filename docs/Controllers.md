@@ -67,7 +67,8 @@ Therefore the Controller SHOULD set parameters that are important for a connecti
 
 The Connection API includes a `sender_id` parameter in each Receiver's `/active` and `/staged` endpoints.
 Similarly, it includes a `receiver_id` parameter in each Sender's `/active` and `/staged` endpoints.
-When modifying `transport_params` or `transport_file` to configure a connection to a specific NMOS Sender or Receiver, the Controller MUST set the `sender_id` or `receiver_id` parameter.
+When modifying `transport_params` or `transport_file` to configure a Receiver to connect with a specific NMOS Sender, for example, via unicast RTP or source-specific multicast, the Controller MUST set the `sender_id` parameter.
+Similarly, when modifying `transport_params` to configure a Sender to connect with a specific NMOS Receiver, for example, via unicast RTP, the Controller MUST set the `receiver_id` parameter.
 Otherwise, when modifying `transport_params` or `transport_file`, the Controller MUST set the `sender_id` or `receiver_id` parameter to `null`.
 
 ## Client Side Implementation Notes
