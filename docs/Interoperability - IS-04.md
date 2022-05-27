@@ -54,6 +54,7 @@ It is the client's responsibility to set or unset (using `null`) the `sender_id`
 The Connection API supersedes the now deprecated method of updating the `/target` resource on Node API Receivers in order to establish connections. The two methods of operation are likely to co-exist until Version 2.0 of IS-04. As such the following best practice SHOULD be followed when both are in use:
 
 - Where a client establishes a connection via the Node API `/target` resource, which updates the Receiver's `subscription` object, the result on the Connection API SHOULD be as if the client had staged the parameters and requested an immediate activation to enable the Receiver. That is to say that the new parameters, including the `sender_id` and with `master_enable` set to `true`, will be reflected in both the `/staged` and `/active` endpoints of the Receiver.
+- Where a client breaks a connection via the Node API `/target` resource, which updates the Receiver's `subscription` object, the result on the Connection API SHOULD be as if the client had requested an immediate activation with the `sender_id` set to `null` and `master_enable` set to `false`.
 - The `version` attribute of the Node API resource is also updated on every activation, as described in [Version Increments](#Version-Increments).
 
 If staged modifications are present when a legacy activation is performed, these parameters MUST be discarded in favour of those provided via the Node API interface.
