@@ -46,6 +46,7 @@ In order to prevent unnecessary polling of the Connection API, changes to active
 The Connection API includes a `master_enable` parameter in the `/active` endpoint of each Sender and Receiver.
 The Receiver endpoint also includes a `sender_id` parameter that can be used to indicate that the Receiver is connected to a specific NMOS Sender, for example, via unicast RTP or source-specific multicast.
 Similarly, the Sender endpoint includes a `receiver_id` parameter that can be used to indicate that the Sender is connected to a specific NMOS Receiver, for example, via unicast RTP.
+
 The API implementation MUST use these parameters to populate the `subscription` attribute of the corresponding IS-04 Sender or Receiver, according to the [Behaviour: Nodes](https://specs.amwa.tv/is-04/releases/v1.3.1/docs/4.3._Behaviour_-_Nodes.html) section of the IS-04 specification.
 It is the client's responsibility to set or unset (using `null`) the `sender_id` or `receiver_id` parameters when modifying the `transport_params` or `transport_file`.
 
