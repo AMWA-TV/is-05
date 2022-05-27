@@ -65,7 +65,11 @@ When altering the transport parameters in the `/staged` endpoint, the Controller
 When `PATCH`ing to the transport parameters, parameters could possibly have changed since the last `GET`.
 Therefore the Controller SHOULD set parameters that are important for a connection (e.g. `master_enable` and `rtp_enable`) in the `PATCH` request, even if the Controller believes they are already set as required.
 
-When connecting a Receiver to an NMOS Sender, the Controller SHOULD communicate the Sender UUID to the receiver using the `sender_id` parameter of the `/staged` endpoint.
+The Connection API includes a `sender_id` parameter in each Receiver's `/active` and `/staged` endpoints.
+Similarly, it includes a `receiver_id` parameter in each Sender's `/active` and `/staged` endpoints.
+When modifying `transport_params` or `transport_file` to configure a Receiver to connect with a specific NMOS Sender, for example, via unicast RTP or source-specific multicast, the Controller MUST set the `sender_id` parameter.
+Similarly, when modifying `transport_params` to configure a Sender to connect with a specific NMOS Receiver, for example, via unicast RTP, the Controller MUST set the `receiver_id` parameter.
+Otherwise, when modifying `transport_params` or `transport_file`, the Controller MUST set the `sender_id` or `receiver_id` parameter to `null`.
 
 ## Client Side Implementation Notes
 
@@ -78,13 +82,6 @@ Controllers MUST adhere to the [APIs: Client Side Implementation Notes](APIs%20-
 #### API Common Keys
 
 Controllers MUST follow the requirements for common API keys specified in the [IS-04 APIs: Common Keys](https://specs.amwa.tv/is-04/releases/v1.3.1/docs/2.1._APIs_-_Common_Keys.html) document including the requirements regarding [use of URNs](https://specs.amwa.tv/is-04/releases/v1.3.1/docs/2.1._APIs_-_Common_Keys.html#use-of-urns).
-
-#### Identifying Active Connections
-
-As is described in the [Interoperability: IS-04: Identifying Active Connections](Interoperability%20-%20IS-04.md#identifying-active-connections) section of this specification,
-in order to populate the subscription attribute of IS-04 Senders and Receivers, the Connection API includes keys for `sender_id` and `receiver_id` in its `/active` and `/staged` parameters.
-These are used to signal that a Sender or Receiver is connected to an NMOS Receiver or Sender. 
-The Controller MUST set and unset (using `null`) the `sender_id` or `receiver_id` parameters when modifying the `transport_params` or `transport_file`.
 
 ### Interacting with Non-NMOS Devices
 
