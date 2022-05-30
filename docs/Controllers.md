@@ -49,20 +49,20 @@ The Controller SHOULD display the content of the response's `error` field to the
 
 The Controller MUST implement connection management according to the [APIs section](APIs.md) of this specification.
 
-The Controller MUST be able to perform an immediate activation between a specified Sender and Receiver via the IS-05 Connection API.
+The Controller MUST be able to perform immediate activations of Senders and Receivers to configure connections between them via the IS-05 Connection API.
 
-The Controller MUST allow removal of active connections via the IS-05 Connection API.	
+The Controller MUST be able to perform an immediate activation to disable an active connection via the IS-05 Connection API.	
 
 The Controller MUST monitor and update the connection status of all discovered IS-05 Senders and Receivers. For instance:
 * The Controller MUST identify that a connection to a Receiver has been activated. 
-* The Controller MUST be able to identify when an NMOS Sender is connected to that Receiver.
+* The Controller MUST be able to identify that an NMOS Sender is connected to that Receiver.
 * The Controller MUST identify when the Receiver connection has been deactivated. 
 
 Where making requests to a large number of Senders and/or Receivers on the same Device, Controllers SHOULD make use of the `/bulk` endpoint to bundle them into a single request.
 
-When altering the transport parameters in the `/staged` endpoint, the Controller SHOULD check the `/constraints` endpoint for the available choices of parameters accepted by the particular Sender or Receiver.
+When altering the transport parameters in the `/staged` endpoint, the Controller SHOULD check the `/constraints` endpoint for the available choices for parameters accepted by the particular Sender or Receiver.
 
-When `PATCH`ing to the transport parameters, parameters could possibly have changed since the last `GET`.
+When `PATCH`ing the transport parameters, parameters could possibly have changed since the last `GET`.
 Therefore the Controller SHOULD set parameters that are important for a connection (e.g. `master_enable` and `rtp_enable`) in the `PATCH` request, even if the Controller believes they are already set as required.
 
 The Connection API includes a `sender_id` parameter in each Receiver's `/active` and `/staged` endpoints.
