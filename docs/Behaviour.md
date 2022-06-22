@@ -41,6 +41,8 @@ If a 'bulk' request includes multiple sets of parameters for the same Sender or 
 
 IS-05 provides a mechanism whereby the activation of staged transport parameters can be performed at a particular TAI time, or after a given interval.
 
+In NMOS APIs, a TAI timestamp is represented as a string of the format: `<seconds>:<nanoseconds>`. Note the `:` as opposed to a `.`, indicating that the value `1439299836:10` is interpreted as 1439299836 seconds and 10 nanoseconds.
+
 The primary use case for this behaviour is to allow the synchronisation of large salvo operations, where multiple systems carry out a change in transport parameters simultaneously. A controller will stage parameters with multiple IS-05 APIs with the same activation timestamp, and know that activation will occur at the same time on all devices regardless of the latency between the controller and the device. It is not intended to act as a mechanism for scheduling activations far in the future.
 
 In the event of an error occurring between scheduling an activation and the activation time, the IS-05 transport parameters SHOULD reflect the current configuration of the device. For example, if a sender is no longer sending data at all it would set `master_enable` to `false`.
