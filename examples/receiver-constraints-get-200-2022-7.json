@@ -1,4 +1,5 @@
-[{
+[
+  {
     "source_ip": {},
     "multicast_ip": {},
     "interface_ip": {
@@ -10,8 +11,8 @@
       ]
     },
     "destination_port": {
-      "maximum": 50000,
-      "minimum": 49151
+      "minimum": 5000,
+      "maximum": 49150
     },
     "fec_enabled": {},
     "fec_destination_ip": {},
@@ -23,17 +24,17 @@
     },
     "fec1D_destination_port": {
       "minimum": 5000,
-      "maximum": 49151
+      "maximum": 49150
     },
     "fec2D_destination_port": {
       "minimum": 5000,
-      "maximum": 49151
+      "maximum": 49150
     },
     "rtcp_enabled": {},
     "rtcp_destination_ip": {},
     "rtcp_destination_port": {
       "minimum": 5000,
-      "maximum": 49151
+      "maximum": 49150
     },
     "rtp_enabled": {}
   },
@@ -49,8 +50,8 @@
       ]
     },
     "destination_port": {
-      "maximum": 50000,
-      "minimum": 49151
+      "minimum": 5000,
+      "maximum": 49150
     },
     "fec_enabled": {},
     "fec_destination_ip": {},
@@ -70,17 +71,17 @@
     },
     "fec1D_destination_port": {
       "minimum": 5000,
-      "maximum": 49151
+      "maximum": 49150
     },
     "fec2D_destination_port": {
       "minimum": 5000,
-      "maximum": 49151
+      "maximum": 49150
     },
     "rtcp_enabled": {},
     "rtcp_destination_ip": {},
     "rtcp_destination_port": {
       "minimum": 5000,
-      "maximum": 49151
+      "maximum": 49150
     },
     "rtp_enabled": {}
   }

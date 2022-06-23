@@ -9,12 +9,12 @@
   },
   "destination_ip": {},
   "source_port": {
-    "maximum": 50000,
-    "minimum": 49151
+    "minimum": 1025,
+    "maximum": 65535
   },
   "destination_port": {
-    "maximum": 50000,
-    "minimum": 49151
+    "minimum": 5000,
+    "maximum": 49150
   },
   "fec_enabled": {},
   "fec_destination_ip": {},
@@ -40,29 +40,29 @@
   },
   "fec1D_destination_port": {
     "minimum": 5000,
-    "maximum": 49151
+    "maximum": 49150
   },
   "fec2D_destination_port": {
     "minimum": 5000,
-    "maximum": 49151
+    "maximum": 49150
   },
   "fec1D_source_port": {
-    "minimum": 5000,
-    "maximum": 49151
+    "minimum": 1025,
+    "maximum": 65535
   },
   "fec2D_source_port": {
-    "minimum": 5000,
-    "maximum": 49151
+    "minimum": 1025,
+    "maximum": 65535
   },
   "rtcp_enabled": {},
   "rtcp_destination_ip": {},
   "rtcp_destination_port": {
     "minimum": 5000,
-    "maximum": 49151
+    "maximum": 49150
   },
   "rtcp_source_port": {
-    "minimum": 5000,
-    "maximum": 49151
+    "minimum": 1025,
+    "maximum": 65535
   },
   "rtp_enabled": {}
 }]
