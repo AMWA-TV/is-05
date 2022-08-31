@@ -81,7 +81,7 @@ Controllers MUST adhere to the [APIs: Client Side Implementation Notes](APIs%20-
 
 #### API Common Keys
 
-Controllers MUST follow the requirements for common API keys specified in the [IS-04 APIs: Common Keys](https://specs.amwa.tv/is-04/releases/v1.3.1/docs/2.1._APIs_-_Common_Keys.html) document including the requirements regarding [use of URNs](https://specs.amwa.tv/is-04/releases/v1.3.1/docs/2.1._APIs_-_Common_Keys.html#use-of-urns).
+Controllers MUST follow the requirements for common API keys specified in the [IS-04 APIs: Common Keys](https://specs.amwa.tv/is-04/releases/v1.3.2/docs/APIs_-_Common_Keys.html) document including the requirements regarding [use of URNs](https://specs.amwa.tv/is-04/releases/v1.3.2/docs/APIs_-_Common_Keys.html#use-of-urns).
 
 ### Interacting with Non-NMOS Devices
 
