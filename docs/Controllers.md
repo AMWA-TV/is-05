@@ -53,7 +53,7 @@ The Controller MUST be able to perform immediate activations of Senders and Rece
 
 The Controller MUST be able to perform an immediate activation to disable an active connection via the IS-05 Connection API.	
 
-A Controller tracks the connection status of IS-05 Senders and Receivers being controlled.
+The Controller tracks the connection status of IS-05 Senders and Receivers being controlled.
 [IS-04 provides a mechanism](#version-timestamp) to enable this.
 
 * The Controller MUST identify that a connection to a Receiver has been activated. 
