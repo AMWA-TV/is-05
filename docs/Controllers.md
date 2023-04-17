@@ -97,9 +97,9 @@ When the Controller is interacting with Receivers that support SMPTE 2022-7 it M
 
 ### Version Timestamp
 
-The Controller SHOULD use an IS-04 Query API WebSocket connection to monitor version timestamp increments on Senders and Receivers being controlled.
+In IS-04, a version timestamp increment indicates that the properties of a resource have changed, for example by the action of another Controller, and as such any information cached by the Controller could possibly be stale.
 
-A version timestamp increment indicates that the properties of a resource have changed, for example by the action of another Controller, and as such any information cached by the Controller could possibly be stale.
+In Registered Operation, to avoid polling of the HTTP API the Controller SHOULD use an IS-04 Query API WebSocket connection to monitor version timestamp increments on Senders and Receivers being controlled.
 
 ### Sender Multicast Address
 
