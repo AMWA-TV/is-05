@@ -338,7 +338,7 @@ a=mid:Ch1
 
 ## Operation with RTCP
 
-RTCP provides various functions to support the operation of RTP, principally QoS reporting. RTCP is defined in Section 6 of RFC 3550, which suggests that the next highest odd port after the RTP port is used for its transmission. Where RTCP and forward error correction are both in use the RTP port SHOULD be chosen to be even, to satisfy the recommendations of both RFC 3550 and SMPTE 2022-5 without resulting in port collisions.
+RTCP provides various functions to support the operation of RTP, principally QoS reporting. RTCP is defined in Section 6 of RFC 3550, which suggests that the next higher odd port after the RTP port is used for its transmission. Where RTCP and forward error correction are both in use the RTP port SHOULD be chosen to be even, to satisfy the recommendations of both RFC 3550 and SMPTE 2022-5 without resulting in port collisions.
 
 Senders and Receivers supporting RTCP SHOULD comply with RFC 3605 when creating and receiving SDP files. An RFC 3605 compliant SDP file is shown below, along with the transport parameters that would be presented on the `/staged` endpoint by a Receiver that has parsed the file.
 
