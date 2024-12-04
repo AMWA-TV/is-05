@@ -3,14 +3,23 @@
   "title": "Transport Type",
   "description": "Transport type URN base used by the Sender or Receiver (i.e. with any subclassifications or versions removed)",
   "type": "string",
-  "oneOf": [
+  "anyOf": [
     {
-      "enum": [
-        "urn:x-nmos:transport:rtp",
-        "urn:x-nmos:transport:dash",
-        "urn:x-nmos:transport:websocket",
-        "urn:x-nmos:transport:mqtt"
+      "oneOf": [
+        {
+          "enum": [
+            "urn:x-nmos:transport:rtp",
+            "urn:x-nmos:transport:dash",
+            "urn:x-nmos:transport:websocket",
+            "urn:x-nmos:transport:mqtt"
+          ]
+        }
       ]
+    },
+    {
+      "description": "Any transport registered in the parameter register",
+      "type": "string",
+      "pattern": "^urn:x-nmos:transport:[a-zA-Z0-9_]+$"
     }
   ],
   "format": "uri"
