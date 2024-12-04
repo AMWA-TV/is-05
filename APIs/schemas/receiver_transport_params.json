@@ -30,7 +30,7 @@
     {
       "type": "array",
       "items": {
-        "description": "Any other definition for transports registered in the parameter register",
+        "description": "Transport-specific parameters for another transport defined in Transports register of the NMOS Parameter Registers",
         "type": "object",
         "patternProperties": {
           "^[a-zA-Z0-9_]+$": {
