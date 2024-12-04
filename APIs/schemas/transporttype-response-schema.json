@@ -17,7 +17,7 @@
       ]
     },
     {
-      "description": "Any transport registered in the parameter register",
+      "description": "Any transport type URN base defined in the Transports register of the NMOS Parameter Registers",
       "type": "string",
       "pattern": "^urn:x-nmos:transport:[a-zA-Z0-9_]+$"
     }
