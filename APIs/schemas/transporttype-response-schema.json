@@ -15,7 +15,7 @@
     {
       "description": "Any transport type URN base defined by an AMWA specification in the Transports register of the NMOS Parameter Registers",
       "type": "string",
-      "pattern": "^urn:x-nmos:transport:[a-zA-Z0-9_]+$"
+      "pattern": "^urn:x-nmos:transport:[^./]+$"
     },
     {
       "description": "Any manufacturer-specific transport type URN base defined in the Transports register of the NMOS Parameter Registers",
