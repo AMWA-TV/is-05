@@ -5,15 +5,7 @@
   "type": "string",
   "anyOf": [
     {
-      "enum": [
-        "urn:x-nmos:transport:rtp",
-        "urn:x-nmos:transport:dash",
-        "urn:x-nmos:transport:websocket",
-        "urn:x-nmos:transport:mqtt"
-      ]
-    },
-    {
-      "description": "Any transport type URN base defined by an AMWA specification in the Transports register of the NMOS Parameter Registers",
+      "description": "Any transport type URN base defined in IS-05 or by an AMWA specification in the Transports register of the NMOS Parameter Registers",
       "type": "string",
       "pattern": "^urn:x-nmos:transport:[^./]+$"
     },
