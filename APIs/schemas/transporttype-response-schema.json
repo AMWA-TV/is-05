@@ -10,7 +10,7 @@
       "pattern": "^urn:x-nmos:transport:[^./]+$"
     },
     {
-      "description": "Any manufacturer-specific transport type URN base defined in the Transports register of the NMOS Parameter Registers",
+      "description": "Any manufacturer-specific transport type URN base",
       "not": {
         "pattern": "^urn:x-nmos:"
       }

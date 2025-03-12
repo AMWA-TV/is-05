@@ -4,7 +4,7 @@
   "title": "Receiver Transport Parameters",
   "type": "array",
   "items": {
-    "description": "Transport-specific parameters for a transport defined in IS-05 or in the Transports register of the NMOS Parameter Registers",
+    "description": "Transport-specific parameters for a transport",
     "type": "object",
     "patternProperties": {
       "^[a-zA-Z0-9_]+$": {
