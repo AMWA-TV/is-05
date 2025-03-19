@@ -12,6 +12,8 @@ Implementers of the Connection API MUST support at least one API version, and MA
 
 Where a transport type is added in a new version of the Connection API specification, earlier versioned APIs MUST NOT list any Senders or Receivers which make use of this new transport type. In these cases, requests to an inaccessible ID MUST return a `409` (Conflict) HTTP code.
 
+Note: From v1.2 onwards, additional transport types and associated schemas are defined in the [Transports register](https://specs.amwa.tv/nmos-parameter-registers/branches/main/transports/) of the NMOS Parameter Registers.
+
 Where new transport parameters are added to a pre-existing transport type in a new version of the Connection API, earlier versioned APIs MUST NOT list these parameters. New transport parameters SHOULD be defined such that a request which omits them can proceed without error. This ensures that servers implementing multiple versions of the Connection API can continue to process earlier versioned requests successfully.
 
 Connection APIs do not need to provide for forwards compatibility as it might be impossible to generate data for new attributes in schemas.

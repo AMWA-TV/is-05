@@ -46,6 +46,8 @@ In some cases the behaviour is more complex, and can be determined by the vendor
 
 It is strongly RECOMMENDED that API implementations validate requests received from clients against the JSON schema included in this specification. Where additional constraints are applied by the API using the `/constraints` resource, these restrictions SHOULD be merged with the provided JSON schema in order to provide consistent validation.
 
+Note: From v1.2 onwards, additional transport types and associated schemas are defined in the [Transports register](https://specs.amwa.tv/nmos-parameter-registers/branches/main/transports/) of the NMOS Parameter Registers.
+
 ### Constraining Interfaces
 
 The constraints are used to advertise the available network interfaces on the Device. This happens through use of an `enum` constraint, which contains an array of the available interface IP addresses. For interfaces capable of operating with IPv6 and IPv4 each interface SHOULD have two entries containing the interface's IPv4 and IPv6 addresses. Examples are provided in the API documentation.

@@ -10,12 +10,15 @@ The Connection API is specified using:
 
 - The following sub-sections describing common API properties.
 - [RAML](http://raml.org/) documents and [JSON schemas](http://tools.ietf.org/html/draft-zyp-json-schema-04) in the [APIs](../APIs/) folder.
+- Transport types and associated schemas defined in the [Transports register](https://specs.amwa.tv/nmos-parameter-registers/branches/main/transports/) of the NMOS Parameter Registers (from v1.2 onwards)
 
 Examples of JSON format output are provided in the [examples](../examples/) folder.
 
 ## API Validation
 
 JSON schemas are included with the RAML API definitions. These include validation for values used within the APIs. It is RECOMMENDED that implementers of a Connection API use these JSON schemas as part of a validation stage when receiving requests from clients. Invalid requests SHOULD cause a `400` (Bad Request) HTTP error to be returned to the client.
+
+Note: From v1.2 onwards, additional transport types and associated schemas are defined in the [Transports register](https://specs.amwa.tv/nmos-parameter-registers/branches/main/transports/) of the NMOS Parameter Registers.
 
 ### Content Types
 
