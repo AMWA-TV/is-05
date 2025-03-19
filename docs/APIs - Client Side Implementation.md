@@ -6,6 +6,8 @@ _(c) AMWA 2017, CC Attribution-NoDerivatives 4.0 International (CC BY-ND 4.0)_
 
 The Connection API schemas define sets of parameters for each supported transport type; these are also described in pages in the [Behaviour](Behaviour.md) section of these documents. These pages define which parameters are always present (core), and which are feature-dependent; a client can determine what a Device supports by getting its `/constraints` resource, and SHOULD parse this resource in all cases as a Device might have a constrained range or enumeration of supported values, even for core parameters.
 
+Note: From v1.2 onwards, additional transport types and associated schemas are defined in the [Transports register](https://specs.amwa.tv/nmos-parameter-registers/branches/main/transports/) of the NMOS Parameter Registers.
+
 ## RTP Operating Point
 
 When establishing an RTP connection between two Devices that implement NMOS Connection Management, the expectation is that the primary means of connection will be to supply the SDP file from the Sender to the Receiver. This ensures Receivers have the media information in the SDP file. If desired the client can adjust individual transport parameters on the Receiver. For example it could use the `rtcp_enable` parameter to toggle RTCP operation.
