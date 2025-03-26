@@ -1,6 +1,5 @@
 {
   "$schema": "http://json-schema.org/draft-04/schema#",
-  "type": "object",
   "title": "Activation resource",
   "description": "Parameters concerned with activation of the transport parameters",
   "type": "object",
