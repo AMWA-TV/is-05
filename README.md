@@ -8,7 +8,7 @@
 ## What does it do?
 
 - Provides a transport-independent way of connecting Media Nodes
-  - Supports RTP, WebSocket and MQTT connections
+  - Supports RTP, WebSocket, MQTT and other transports via the [Transports register](https://specs.amwa.tv/nmos-parameter-registers/branches/main/transports/)
 - Supports single + bulk connections, immediate + delayed connections
 
 ## Why does it matter?
