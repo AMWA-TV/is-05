@@ -4,7 +4,7 @@ _(c) AMWA 2017, CC Attribution-NoDerivatives 4.0 International (CC BY-ND 4.0)_
 
 The Connection API shares a data model with the IS-04 specification, and as a result it is designed to be used alongside it. The following sub-sections identify correct behaviour for doing this.
 
-When this API is used alongside IS-04 in a deployment, the IS-04 APIs SHOULD be operating at version 1.2 or greater in order to ensure full interoperability.
+When this API is used alongside IS-04 in a deployment, the IS-04 APIs SHOULD be operating at version 1.3 or greater in order to ensure full interoperability.
 
 ## Discovery
 
