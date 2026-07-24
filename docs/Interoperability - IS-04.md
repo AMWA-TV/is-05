@@ -18,8 +18,8 @@ The associated `href` is the URL of the Connection API base resource.
 ...
 "controls": [
   {
-    "type": "urn:x-nmos:control:sr-ctrl/v1.1",
-    "href": "http://192.168.10.3/x-nmos/connection/v1.1/"
+    "type": "urn:x-nmos:control:sr-ctrl/v1.2",
+    "href": "http://192.168.10.3/x-nmos/connection/v1.2/"
   }
 ]
 ...
