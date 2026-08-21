@@ -1,0 +1,20 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "description": "Transport-specific parameters. If this parameter is included in a client request it must include the same number of array elements (or 'legs') as specified in the constraints. If no changes are required to a specific leg it must be included as an empty object ({}).",
+  "title": "Receiver Transport Parameters",
+  "type": "array",
+  "items": {
+    "description": "Transport-specific parameters for a transport",
+    "type": "object",
+    "patternProperties": {
+      "^[a-zA-Z0-9_]+$": {
+        "type": [
+          "string",
+          "boolean",
+          "null",
+          "number"
+        ]
+      }
+    }
+  }
+}

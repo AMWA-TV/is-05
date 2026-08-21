@@ -1,0 +1,4258 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="AMWA NMOS Interface Specification IS-05">
+      
+      
+      
+        <link rel="canonical" href="https://specs.amwa.tv/new/is-05/v1.2.x/Behaviour%20-%20RTP%20Transport%20Type/">
+      
+      
+        <link rel="prev" href="../Behaviour%20-%20MQTT%20Transport%20Type/">
+      
+      
+        <link rel="next" href="../Behaviour%20-%20WebSocket%20Transport%20Type/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="zensical-0.0.56">
+    
+    
+      
+        <title>Behaviour: RTP Transport Type - AMWA IS-05 NMOS Device Connection Management Specification</title>
+      
+    
+    
+      
+        
+      
+      <link rel="stylesheet" href="../assets/stylesheets/modern/main.20815dad.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inter:300,300i,400,400i,500,500i,700,700i%7CJetBrains+Mono:400,400i,700,700i&amp;display=fallback">
+        <style>:root{--md-text-font:"Inter";--md-code-font:"JetBrains Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../stylesheets/extra.css">
+    
+    <script>__md_scope=new URL("..",location),__md_scope.pathname.endsWith("/")||(__md_scope=new URL(__md_scope.pathname+"/",location)),__md_hash=e=>[...e].reduce(((e,t)=>(e<<5)-e+t.charCodeAt(0)),0),__md_get=(e,t=localStorage,_=__md_scope)=>JSON.parse(t.getItem(_.pathname+"."+e)),__md_set=(e,t,_=localStorage,a=__md_scope)=>{try{_.setItem(a.pathname+"."+e,JSON.stringify(t))}catch(e){}},document.documentElement.setAttribute("data-platform",navigator.platform)</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    <body dir="ltr">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer" aria-label="Navigation"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#behaviour-rtp-transport-type" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      <div data-md-color-scheme="default" data-md-component="outdated" hidden>
+        
+      </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="./.." title="AMWA IS-05 NMOS Device Connection Management Specification" class="md-header__button md-logo" aria-label="AMWA IS-05 NMOS Device Connection Management Specification" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-book-open" viewBox="0 0 24 24"><path d="M12 5v16M20.001 19A2 2 0 0 0 22 17V5a2 2 0 0 0-1.999-2L16 3.002A5 5 0 0 0 12 5a5 5 0 0 0-4-2H4a2 2 0 0 0-2 2v12a2 2 0 0 0 1.999 2H8a5 5 0 0 1 4 2 5 5 0 0 1 4-2z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer" aria-label="Navigation">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-menu" viewBox="0 0 24 24"><path d="M4 5h16M4 12h16M4 19h16"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            AMWA IS-05 NMOS Device Connection Management Specification
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Behaviour: RTP Transport Type
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search" aria-label="Search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-search" viewBox="0 0 24 24"><path d="m21 21-4.34-4.34"/><circle cx="11" cy="11" r="8"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog" aria-label="Search">
+  <button type="button" class="md-search__button">
+    Search
+  </button>
+</div>
+      
+    
+    <div class="md-header__source">
+      
+        <a href="https://github.com/AMWA-TV/is-05" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.3.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2026 Fonticons, Inc.--><path fill="currentColor" d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    AMWA-TV/is-05
+  </div>
+</a>
+      
+    </div>
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="./.." title="AMWA IS-05 NMOS Device Connection Management Specification" class="md-nav__button md-logo" aria-label="AMWA IS-05 NMOS Device Connection Management Specification" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-book-open" viewBox="0 0 24 24"><path d="M12 5v16M20.001 19A2 2 0 0 0 22 17V5a2 2 0 0 0-1.999-2L16 3.002A5 5 0 0 0 12 5a5 5 0 0 0-4-2H4a2 2 0 0 0-2 2v12a2 2 0 0 0 1.999 2H8a5 5 0 0 1 4 2 5 5 0 0 1 4-2z"/></svg>
+
+    </a>
+    AMWA IS-05 NMOS Device Connection Management Specification
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/AMWA-TV/is-05" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.3.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2026 Fonticons, Inc.--><path fill="currentColor" d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    AMWA-TV/is-05
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="./.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  AMWA IS-05 NMOS Device Connection Management Specification
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../APIs%20-%20Client%20Side%20Implementation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  APIs: Client Side Implementation Notes
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../APIs%20-%20Server%20Side%20Implementation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  APIs: Server Side Implementation Notes
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  APIs
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+  APIs
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../APIs/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  APIs
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_2" id="__nav_4_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Schemas
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+  Schemas
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../APIs/schemas/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  JSON Schemas
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../APIs/schemas/activation-response-schema/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  activation-response-schema
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../APIs/schemas/activation-schema/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  activation-schema
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../APIs/schemas/bulk-receiver-post-schema/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  bulk-receiver-post-schema
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../APIs/schemas/bulk-response-schema/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  bulk-response-schema
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../APIs/schemas/bulk-sender-post-schema/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  bulk-sender-post-schema
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../APIs/schemas/connectionapi-base/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  connectionapi-base
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../APIs/schemas/connectionapi-bulk/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  connectionapi-bulk
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../APIs/schemas/connectionapi-receiver/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  connectionapi-receiver
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../APIs/schemas/connectionapi-sender/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  connectionapi-sender
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../APIs/schemas/connectionapi-single/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  connectionapi-single
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../APIs/schemas/constraint-schema/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  constraint-schema
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../APIs/schemas/constraints-schema-mqtt/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  constraints-schema-mqtt
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../APIs/schemas/constraints-schema-rtp/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  constraints-schema-rtp
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../APIs/schemas/constraints-schema-websocket/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  constraints-schema-websocket
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../APIs/schemas/constraints-schema/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  constraints-schema
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../APIs/schemas/error/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  error
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../APIs/schemas/receiver-response-schema/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  receiver-response-schema
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../APIs/schemas/receiver-stage-schema/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  receiver-stage-schema
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../APIs/schemas/receiver-transport-file/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  receiver-transport-file
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../APIs/schemas/receiver_transport_params/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  receiver_transport_params
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../APIs/schemas/receiver_transport_params_dash/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  receiver_transport_params_dash
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../APIs/schemas/receiver_transport_params_ext/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  receiver_transport_params_ext
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../APIs/schemas/receiver_transport_params_mqtt/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  receiver_transport_params_mqtt
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../APIs/schemas/receiver_transport_params_rtp/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  receiver_transport_params_rtp
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../APIs/schemas/receiver_transport_params_websocket/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  receiver_transport_params_websocket
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../APIs/schemas/sender-receiver-base/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  sender-receiver-base
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../APIs/schemas/sender-response-schema/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  sender-response-schema
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../APIs/schemas/sender-stage-schema/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  sender-stage-schema
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../APIs/schemas/sender_transport_params/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  sender_transport_params
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../APIs/schemas/sender_transport_params_dash/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  sender_transport_params_dash
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../APIs/schemas/sender_transport_params_ext/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  sender_transport_params_ext
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../APIs/schemas/sender_transport_params_mqtt/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  sender_transport_params_mqtt
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../APIs/schemas/sender_transport_params_rtp/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  sender_transport_params_rtp
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../APIs/schemas/sender_transport_params_websocket/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  sender_transport_params_websocket
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../APIs/schemas/transporttype-response-schema/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  transporttype-response-schema
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Behaviour%20-%20MQTT%20Transport%20Type/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Behaviour: MQTT Transport Type
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Behaviour: RTP Transport Type
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="././" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Behaviour: RTP Transport Type
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+
+<nav class="md-nav md-nav--secondary" aria-label="On this page">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      On this page
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#transport-file-resource" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Transport File Resource
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#parameter-sets" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Parameter Sets
+      </span>
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Parameter Sets">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#receiver-parameter-sets" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Receiver Parameter Sets
+      </span>
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Receiver Parameter Sets">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#core-parameters" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Core Parameters
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#multicast-parameters" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Multicast Parameters
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fec-parameters" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        FEC Parameters
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#rtcp-parameters" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        RTCP Parameters
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sender-parameter-sets" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Sender Parameter Sets
+      </span>
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Sender Parameter Sets">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#core-parameters_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Core Parameters
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fec-parameters_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        FEC Parameters
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#rtcp-parameters_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        RTCP Parameters
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#use-of-auto" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Use of auto
+      </span>
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Use of auto">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#sender-source_ip-and-receiver-interface_ip" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Sender <code>source_ip</code> and Receiver <code>interface_ip</code>
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sender-destination_ip" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Sender <code>destination_ip</code>
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#behaviour-of-sdp-media-information" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Behaviour of SDP Media Information
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#interpretation-of-sdp-files" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Interpretation of SDP Files
+      </span>
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Interpretation of SDP Files">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#unicast" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Unicast
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#source-specific-multicast" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Source Specific Multicast
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#any-source-multicast" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Any Source Multicast
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#operation-with-smpte-2022-5" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Operation with SMPTE 2022-5
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#operation-with-smpte-2022-7" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Operation with SMPTE 2022-7
+      </span>
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Operation with SMPTE 2022-7">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#separate-source-addresses" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Separate Source Addresses
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#separate-destination-addresses" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Separate Destination Addresses
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#temporal-redundancy" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Temporal Redundancy
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#operation-with-rtcp" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Operation with RTCP
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Behaviour%20-%20WebSocket%20Transport%20Type/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Behaviour: WebSocket Transport Type
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Behaviour/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Behaviour
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Controllers/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Controllers
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Interoperability%20-%20IS-04/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Interoperability: IS-04
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Interoperability%20-%20Non-NMOS%20Devices/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Interoperability: Non-NMOS Devices
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Interoperability/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Interoperability
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Overview/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  AMWA IS-05 NMOS Device Connection Management Specification: Overview
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Upgrade%20Path/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Upgrade Path
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_15" >
+        
+          
+          <label class="md-nav__link" for="__nav_15" id="__nav_15_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Examples
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_15_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_15">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+  Examples
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../examples/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Examples
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../examples/base-get-200/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Example: base-get-200.json
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../examples/bulk-base-get-200/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Example: bulk-base-get-200.json
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../examples/bulk-post-confirm/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Example: bulk-post-confirm.json
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../examples/bulk-post-fail/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Example: bulk-post-fail.json
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../examples/bulk-receiver-post/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Example: bulk-receiver-post.json
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../examples/bulk-sender-post/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Example: bulk-sender-post.json
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../examples/receiver-active-get-200-mqtt/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Example: receiver-active-get-200-mqtt.json
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../examples/receiver-active-get-200-uninit/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Example: receiver-active-get-200-uninit.json
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../examples/receiver-active-get-200/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Example: receiver-active-get-200.json
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../examples/receiver-constraints-get-200-2022-7/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Example: receiver-constraints-get-200-2022-7.json
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../examples/receiver-constraints-get-200-mqtt/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Example: receiver-constraints-get-200-mqtt.json
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../examples/receiver-constraints-get-200-websocket-ext/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Example: receiver-constraints-get-200-websocket-ext.json
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../examples/receiver-constraints-get-200/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Example: receiver-constraints-get-200.json
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../examples/receiver-get-200-uninit/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Example: receiver-get-200-uninit.json
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../examples/receiver-get-200/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Example: receiver-get-200.json
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../examples/receiver-patch-absolute/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Example: receiver-patch-absolute.json
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../examples/receiver-patch-activation-only/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Example: receiver-patch-activation-only.json
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../examples/receiver-patch-redundant-streams/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Example: receiver-patch-redundant-streams.json
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../examples/receiver-patch-relative/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Example: receiver-patch-relative.json
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../examples/receiver-patch-transportfile/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Example: receiver-patch-transportfile.json
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../examples/receiver-patch-unicast/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Example: receiver-patch-unicast.json
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../examples/receiver-patch/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Example: receiver-patch.json
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../examples/receiver-pending-get-200/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Example: receiver-pending-get-200.json
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../examples/receiver-resource-get-200/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Example: receiver-resource-get-200.json
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../examples/receiver-stage-scheduled-absolute/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Example: receiver-stage-scheduled-absolute.json
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../examples/receiver-stage-scheduled-relative/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Example: receiver-stage-scheduled-relative.json
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../examples/receiver-stage-scheduled-transportfile/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Example: receiver-stage-scheduled-transportfile.json
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../examples/receiver-stage-success-redundant-streams/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Example: receiver-stage-success-redundant-streams.json
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../examples/receiver-stage-success/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Example: receiver-stage-success.json
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../examples/resourcelist-get-200/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Example: resourcelist-get-200.json
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../examples/sender-active-get-mqtt/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Example: sender-active-get-mqtt.json
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../examples/sender-active-get-uninit/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Example: sender-active-get-uninit.json
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../examples/sender-active-get/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Example: sender-active-get.json
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../examples/sender-constraints-get-200-2022-7/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Example: sender-constraints-get-200-2022-7.json
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../examples/sender-constraints-get-200-mqtt/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Example: sender-constraints-get-200-mqtt.json
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../examples/sender-constraints-get-200-websocket-ext/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Example: sender-constraints-get-200-websocket-ext.json
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../examples/sender-constraints-get-200/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Example: sender-constraints-get-200.json
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../examples/sender-get-200-uninit/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Example: sender-get-200-uninit.json
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../examples/sender-get-200/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Example: sender-get-200.json
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../examples/sender-patch-absolute/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Example: sender-patch-absolute.json
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../examples/sender-patch-activation-only/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Example: sender-patch-activation-only.json
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../examples/sender-patch-redundant-streams/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Example: sender-patch-redundant-streams.json
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../examples/sender-patch-relative/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Example: sender-patch-relative.json
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../examples/sender-patch-unicast/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Example: sender-patch-unicast.json
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../examples/sender-patch/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Example: sender-patch.json
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../examples/sender-resource-get-200/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Example: sender-resource-get-200.json
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../examples/sender-stage-absolute-success/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Example: sender-stage-absolute-success.json
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../examples/sender-stage-relative-success/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Example: sender-stage-relative-success.json
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../examples/sender-stage-success-redundant-streams/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Example: sender-stage-success-redundant-streams.json
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../examples/sender-stage-success/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Example: sender-stage-success.json
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../examples/single-root/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Example: single-root.json
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../examples/stage-error/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Example: stage-error.json
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../examples/stage-fail/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Example: stage-fail.json
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../examples/transporttype-get/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Example: transporttype-get.json
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  
+                    
+                    
+                    
+                      
+                    
+                    
+                      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+                      <div class="md-sidebar-button__wrapper">
+                        <label class="md-sidebar-button" for="__toc"></label>
+                      </div>
+                    
+                  
+                  <div class="md-sidebar__inner">
+                    
+
+
+<nav class="md-nav md-nav--secondary" aria-label="On this page">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      On this page
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#transport-file-resource" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Transport File Resource
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#parameter-sets" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Parameter Sets
+      </span>
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Parameter Sets">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#receiver-parameter-sets" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Receiver Parameter Sets
+      </span>
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Receiver Parameter Sets">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#core-parameters" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Core Parameters
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#multicast-parameters" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Multicast Parameters
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fec-parameters" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        FEC Parameters
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#rtcp-parameters" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        RTCP Parameters
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sender-parameter-sets" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Sender Parameter Sets
+      </span>
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Sender Parameter Sets">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#core-parameters_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Core Parameters
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fec-parameters_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        FEC Parameters
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#rtcp-parameters_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        RTCP Parameters
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#use-of-auto" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Use of auto
+      </span>
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Use of auto">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#sender-source_ip-and-receiver-interface_ip" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Sender <code>source_ip</code> and Receiver <code>interface_ip</code>
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sender-destination_ip" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Sender <code>destination_ip</code>
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#behaviour-of-sdp-media-information" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Behaviour of SDP Media Information
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#interpretation-of-sdp-files" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Interpretation of SDP Files
+      </span>
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Interpretation of SDP Files">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#unicast" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Unicast
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#source-specific-multicast" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Source Specific Multicast
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#any-source-multicast" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Any Source Multicast
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#operation-with-smpte-2022-5" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Operation with SMPTE 2022-5
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#operation-with-smpte-2022-7" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Operation with SMPTE 2022-7
+      </span>
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Operation with SMPTE 2022-7">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#separate-source-addresses" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Separate Source Addresses
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#separate-destination-addresses" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Separate Destination Addresses
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#temporal-redundancy" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Temporal Redundancy
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#operation-with-rtcp" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Operation with RTCP
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+  
+  
+
+
+<h1 id="behaviour-rtp-transport-type">Behaviour: RTP Transport Type</h1>
+<p><em>(c) AMWA 2017, CC Attribution-NoDerivatives 4.0 International (CC BY-ND 4.0)</em></p>
+<h2 id="transport-file-resource">Transport File Resource</h2>
+<p>The Sender <code>/transportfile</code> resource SHOULD use the following HTTP header when returning the transport file:</p>
+<p><code>Content-Type: application/sdp</code></p>
+<h2 id="parameter-sets">Parameter Sets</h2>
+<p>Sender and Receiver Connection Management endpoints MUST support a core parameter set. In addition they MAY support multicast, FEC and/or RTCP parameter sets. Endpoints MUST support all parameters in a parameter set, or none at all.</p>
+<h3 id="receiver-parameter-sets">Receiver Parameter Sets</h3>
+<h4 id="core-parameters">Core Parameters</h4>
+<ul>
+<li><code>source_ip</code></li>
+<li><code>interface_ip</code></li>
+<li><code>destination_port</code></li>
+<li><code>rtp_enabled</code></li>
+</ul>
+<h4 id="multicast-parameters">Multicast Parameters</h4>
+<ul>
+<li><code>multicast_ip</code></li>
+</ul>
+<h4 id="fec-parameters">FEC Parameters</h4>
+<ul>
+<li><code>fec_enabled</code></li>
+<li><code>fec_destination_ip</code></li>
+<li><code>fec_mode</code></li>
+<li><code>fec1D_destination_port</code></li>
+<li><code>fec2D_destination_port</code></li>
+</ul>
+<h4 id="rtcp-parameters">RTCP Parameters</h4>
+<ul>
+<li><code>rtcp_enabled</code></li>
+<li><code>rtcp_destination_ip</code></li>
+<li><code>rtcp_destination_port</code></li>
+</ul>
+<h3 id="sender-parameter-sets">Sender Parameter Sets</h3>
+<h4 id="core-parameters_1">Core Parameters</h4>
+<ul>
+<li><code>source_ip</code></li>
+<li><code>destination_ip</code></li>
+<li><code>source_port</code></li>
+<li><code>destination_port</code></li>
+<li><code>rtp_enabled</code></li>
+</ul>
+<h4 id="fec-parameters_1">FEC Parameters</h4>
+<ul>
+<li><code>fec_enabled</code></li>
+<li><code>fec_destination_ip</code></li>
+<li><code>fec_type</code></li>
+<li><code>fec_mode</code></li>
+<li><code>fec_block_width</code></li>
+<li><code>fec_block_height</code></li>
+<li><code>fec1D_destination_port</code></li>
+<li><code>fec2D_destination_port</code></li>
+<li><code>fec1D_source_port</code></li>
+<li><code>fec2D_source_port</code></li>
+</ul>
+<h4 id="rtcp-parameters_1">RTCP Parameters</h4>
+<ul>
+<li><code>rtcp_enabled</code></li>
+<li><code>rtcp_destination_ip</code></li>
+<li><code>rtcp_destination_port</code></li>
+<li><code>rtcp_source_port</code></li>
+</ul>
+<h2 id="use-of-auto">Use of auto</h2>
+<p>Parameters which support use of <code>auto</code> are identified in the schemas. This section clarifies the use of <code>auto</code> in some cases that might be unclear.</p>
+<h3 id="sender-source_ip-and-receiver-interface_ip">Sender <code>source_ip</code> and Receiver <code>interface_ip</code></h3>
+<p>These parameters specify the interface binding to use for sending or receiving traffic. Use of <code>auto</code> here means the Device SHOULD determine for itself which of its interfaces is the most appropriate to use. In Devices where only one interface is available for media traffic this is trivial. In Devices with multiple media network interfaces Devices could use mechanisms such as routing tables, out-of-band controls or evaluation of loading on the interfaces.</p>
+<h3 id="sender-destination_ip">Sender <code>destination_ip</code></h3>
+<p>If this parameter is set to <code>auto</code> the Sender is expected to automatically select an address to send on. This could be determined by an external network control system, or through technologies such as MADCAP (RFC 2730) or ZMAAP.</p>
+<h2 id="behaviour-of-sdp-media-information">Behaviour of SDP Media Information</h2>
+<p>SDP files contain both connection information and media information. When a parameter set is activated with an SDP file present in <code>data</code> the Receiver SHOULD use the media information in the SDP file.</p>
+<h2 id="interpretation-of-sdp-files">Interpretation of SDP Files</h2>
+<p>All Senders and Receivers SHOULD comply with RFC 4566 (Session Description Protocol) when creating and parsing SDP files. Multicast Senders and Receivers SHOULD additionally comply with RFC 4570 (SDP Source Filters). Three examples are given below, showing an SDP file and the transport parameters that would be presented at the <code>/staged</code> endpoint by a single-legged Receiver that has parsed the file.</p>
+<p>A Receiver sets the <code>rtp_enabled</code> parameter to <code>true</code> for each leg it has configured from the SDP file, unless overridden by the requested <code>transport_params</code> as noted below.</p>
+<p>In the event that a Receiver is presented with an SDP file and a set of transport parameters that
+contradict each other in the same <code>PATCH</code> request, the transport parameters take priority
+over the SDP file and MUST be the parameters used for activation. This only applies
+in the case where there is contradiction between the SDP file and transport parameters within
+a single <code>PATCH</code> request, in all other cases the most recently received <code>PATCH</code> request takes priority.</p>
+<h3 id="unicast">Unicast</h3>
+<p><code>v=0
+o=- 2890844526 2890842807 IN IP4 10.47.16.5
+s=SDP Example
+c=IN IP4 10.46.16.34/127
+t=2873397496 2873404696
+a=recvonly
+m=video 51372 RTP/AVP 99
+a=rtpmap:99 h263-1998/90000</code></p>
+<p><code>json
+"transport_params": [
+    {
+        "source_ip": null,
+        "multicast_ip": null,
+        "interface_ip": "10.46.16.34",
+        "destination_port": 51372,
+        "rtp_enabled": true
+    }
+]</code></p>
+<h3 id="source-specific-multicast">Source Specific Multicast</h3>
+<p><code>v=0
+o=- 1497010742 1497010742 IN IP4 172.29.26.24
+s=SDP Example
+t=2873397496 2873404696
+m=video 5000 RTP/AVP 103
+c=IN IP4 232.21.21.133/32
+a=source-filter: incl IN IP4 232.21.21.133 172.29.226.24
+a=rtpmap:103 raw/90000</code></p>
+<p><code>json
+"transport_params": [
+    {
+        "source_ip": "172.29.226.24",
+        "multicast_ip": "232.21.21.133",
+        "interface_ip": "auto",
+        "destination_port": 5000,
+        "rtp_enabled": true
+    }
+]</code></p>
+<h3 id="any-source-multicast">Any Source Multicast</h3>
+<p><code>v=0
+o=- 1497010742 1497010742 IN IP4 172.29.26.24
+s=SDP Example
+t=2873397496 2873404696
+m=video 5000 RTP/AVP 103
+c=IN IP4 239.21.21.133/32
+a=rtpmap:103 raw/90000</code></p>
+<p><code>json
+"transport_params": [
+    {
+        "source_ip": null,
+        "multicast_ip": "239.21.21.133",
+        "interface_ip": "auto",
+        "destination_port": 5000,
+        "rtp_enabled": true
+    }
+]</code></p>
+<h2 id="operation-with-smpte-2022-5">Operation with SMPTE 2022-5</h2>
+<p>SMPTE 2022-5 describes RTP streams with forward error correction (FEC), and is supported by the Connection Management Specification. This support takes the form of the FEC transport parameter set described in <a href="#parameter-sets">Parameter Sets</a>. Note that Senders have additional parameters used to specify the type of FEC to be used and matrix rows and columns, which are not present on the Receiver side. In SMPTE 2022-5 this information is conveyed in the FEC stream headers, and as such does not need to be conveyed separately in Connection Management.</p>
+<p>Connection APIs supporting SMPTE 2022-5 MUST comply with RFC 6364 when creating and interpreting SDP files. Implementers are advised to consider the guidance given in VSF TR-04. An example SDP file from RFC 6364 is shown below, followed by the transport parameters that would be presented on the <code>/staged</code> endpoint by a Receiver that has parsed the file.</p>
+<p><code>v=0
+o=ali 1122334455 1122334466 IN IP4 172.29.26.24
+s=FEC Framework Examples
+t=0 0
+a=group:FEC-FR S1 R1
+m=video 30000 RTP/AVP 100
+c=IN IP4 233.252.0.1/127
+a=rtpmap:100 MP2T/90000
+a=fec-source-flow: id=0
+a=mid:S1
+m=application 30000 UDP/FEC
+c=IN IP4 233.252.0.2/127
+a=fec-repair-flow: encoding-id=10; ss-fssi=n:7,k:5
+a=mid:R1</code></p>
+<p><code>json
+"transport_params": [
+    {
+        "source_ip": null,
+        "multicast_ip": "233.252.0.1",
+        "interface_ip": "auto",
+        "destination_port": 30000,
+        "rtp_enabled": true,
+        "fec_enable": true,
+        "fec_mode": "auto",
+        "fec1D_destination_port": 30000,
+        "fec2D_destination_port": "auto",
+        "fec_destination_ip": "233.252.0.2"
+    }
+]</code></p>
+<h2 id="operation-with-smpte-2022-7">Operation with SMPTE 2022-7</h2>
+<p>SMPTE 2022-7 describes redundant streams for RTP connections, and is supported by the Connection Management Specification. This manifests itself in the fact that the JSON which describes constraints and transport parameters resides within an array. Where SMPTE-2022-7 is not supported this array contains only one object. Where SMPTE-2022-7 is supported the array contains two entries. The first entry contains information pertaining to Path 1, the second information pertaining to Path 2.</p>
+<p>Where a Receiver supports SMPTE 2022-7 but receives a request with a non-SMPTE 2022-7 transport file, the Receiver SHOULD set <code>rtp_enabled</code> in the second set of parameters to <code>false</code> and transport parameters in the SDP file SHOULD be mapped onto that first set of parameters in the array with <code>rtp_enabled</code> set to <code>true</code> (bearing in mind that the <code>transport_params</code> values in the same request take priority).</p>
+<p>Where a client request does not include a transport file and uses only <code>transport_params</code> to configure such a Receiver for a non-SMPTE 2022-7 stream, the request SHOULD explicitly set <code>rtp_enabled</code> in the second set of parameters to <code>false</code>.</p>
+<p>Where a Receiver does not support SMPTE 2022-7 but receives a SMPTE 2022-7 transport file containing two sets of transport parameters it is RECOMMENDED that it parses the first set of transport parameters found in the file and joins the stream as if it were a non-SMPTE 2022-7 stream. This ensures compatibility with Senders which do not support operation in a non-SMPTE 2022-7 mode.</p>
+<p>In all cases, if a client request includes <code>transport_params</code>, it MUST have the same number of array elements (or 'legs') as specified in the constraints. If no changes are needed to a specific leg it MUST be included as an empty object (<code>{}</code>).</p>
+<p>Connection APIs supporting SMPTE 2022-7 MUST comply with RFC 7104 when creating and interpreting SDP files. Implementers are advised to consider the guidance given in VSF TR-04. The stream listed first in the SDP file SHOULD be interpreted as being Path 1, and be populated to the first transport parameter object in <code>/staged</code>, with the inverse being true for Path 2.</p>
+<p>The three examples given in RFC 7104 are shown below, followed by the transport parameters that would be presented on the <code>/staged</code> endpoint by a Receiver that has parsed the file.</p>
+<h3 id="separate-source-addresses">Separate Source Addresses</h3>
+<p><code>v=0
+o=ali 1122334455 1122334466 IN IP4 dup.example.com
+s=DUP Grouping Semantics
+t=0 0
+m=video 30000 RTP/AVP 100
+c=IN IP4 233.252.0.1/127
+a=source-filter: incl IN IP4 233.252.0.1 198.51.100.1 198.51.100.2
+a=rtpmap:100 MP2T/90000
+a=ssrc:1000 cname:ch1@example.com
+a=ssrc:1010 cname:ch1@example.com
+a=ssrc-group:DUP 1000 1010
+a=mid:Ch1</code></p>
+<p><code>json
+"transport_params": [
+    {
+        "source_ip": "198.51.100.1",
+        "multicast_ip": "233.252.0.1",
+        "interface_ip": "auto",
+        "destination_port": 30000,
+        "rtp_enabled": true
+    }, {
+        "source_ip": "198.51.100.2",
+        "multicast_ip": "233.252.0.1",
+        "interface_ip": "auto",
+        "destination_port": 30000,
+        "rtp_enabled": true
+    }
+]</code></p>
+<h3 id="separate-destination-addresses">Separate Destination Addresses</h3>
+<p><code>v=0
+o=ali 1122334455 1122334466 IN IP4 dup.example.com
+s=DUP Grouping Semantics
+t=0 0
+a=group:DUP S1a S1b
+m=video 30000 RTP/AVP 100
+c=IN IP4 233.252.0.1/127
+a=source-filter: incl IN IP4 233.252.0.1 198.51.100.1
+a=rtpmap:100 MP2T/90000
+a=mid:S1a
+m=video 30000 RTP/AVP 101
+c=IN IP4 233.252.0.2/127
+a=source-filter: incl IN IP4 233.252.0.2 198.51.100.1
+a=rtpmap:101 MP2T/90000
+a=mid:S1b</code></p>
+<p><code>json
+"transport_params": [
+    {
+        "source_ip": "198.51.100.1",
+        "multicast_ip": "233.252.0.1",
+        "interface_ip": "auto",
+        "destination_port": 30000,
+        "rtp_enabled": true
+    }, {
+        "source_ip": "198.51.100.1",
+        "multicast_ip": "233.252.0.2",
+        "interface_ip": "auto",
+        "destination_port": 30000,
+        "rtp_enabled": true
+    }
+]</code></p>
+<h3 id="temporal-redundancy">Temporal Redundancy</h3>
+<p><code>v=0
+o=ali 1122334455 1122334466 IN IP4 dup.example.com
+s=Delayed Duplication
+t=0 0
+m=video 30000 RTP/AVP 100
+c=IN IP4 233.252.0.1/127
+a=source-filter: incl IN IP4 233.252.0.1 198.51.100.1
+a=rtpmap:100 MP2T/90000
+a=ssrc:1000 cname:ch1a@example.com
+a=ssrc:1010 cname:ch1a@example.com
+a=ssrc-group:DUP 1000 1010
+a=duplication-delay:50
+a=mid:Ch1</code></p>
+<p><code>json
+"transport_params": [
+    {
+        "source_ip": "198.51.100.1",
+        "multicast_ip": "233.252.0.1",
+        "interface_ip": "auto",
+        "destination_port": 30000,
+        "rtp_enabled": true
+    }, {
+        "source_ip": "198.51.100.1",
+        "multicast_ip": "233.252.0.1",
+        "interface_ip": "auto",
+        "destination_port": 30000,
+        "rtp_enabled": true
+    }
+]</code></p>
+<h2 id="operation-with-rtcp">Operation with RTCP</h2>
+<p>RTCP provides various functions to support the operation of RTP, principally QoS reporting. RTCP is defined in Section 6 of RFC 3550, and Section 11 of RFC 3550 suggests that RTP use an even destination port number and the corresponding RTCP stream use the next higher (odd) destination port number. (Note: this convention will also satisfy the recommendations of ST 2022-5 for cases where forward error correction is used.)</p>
+<p>Senders and Receivers supporting RTCP SHOULD comply with RFC 3605 when creating and receiving SDP files. An RFC 3605 compliant SDP file is shown below, along with the transport parameters that would be presented on the <code>/staged</code> endpoint by a Receiver that has parsed the file.</p>
+<p><code>v=0
+o=- 1497010742 1497010742 IN IP4 172.29.26.24
+s=SDP Example
+t=2873397496 2873404696
+m=video 5000 RTP/AVP 103
+c=IN IP4 232.21.21.133/32
+a=source-filter: incl IN IP4 232.21.21.133 172.29.226.24
+a=rtpmap:103 raw/90000
+a=rtcp:5001 IN IP4 232.21.21.133</code></p>
+<p><code>json
+"transport_params": [
+    {
+        "source_ip": "172.29.226.24",
+        "multicast_ip": "232.21.21.133",
+        "interface_ip": "auto",
+        "destination_port": 5000,
+        "rtcp_enabled": true,
+        "rtcp_destination_ip": "232.21.21.133",
+        "rtcp_destination_port": 5001,
+        "rtp_enabled": true
+    }
+]</code></p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://zensical.org/" target="_blank" rel="noopener">
+      Zensical
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate":null,"base":"..","features":[],"search":"../assets/javascripts/workers/search.7d14d953.min.js","tags":null,"translations":{"clipboard.copied":"Copied to clipboard","clipboard.copy":"Copy to clipboard","search.result.more.one":"1 more on this page","search.result.more.other":"# more on this page","search.result.none":"No matching documents","search.result.one":"1 matching document","search.result.other":"# matching documents","search.result.placeholder":"Type to start searching","search.result.term.missing":"Missing","select.version":"Select version"},"version":{"provider":"mike"}}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.e886cdf1.min.js"></script>
+      
+        <script src="../javascripts/json-viewer.js"></script>
+      
+    
+  </body>
+</html>
