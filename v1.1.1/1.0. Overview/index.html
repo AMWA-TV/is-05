@@ -3521,10 +3521,10 @@
   
 
 
-<h1 id="amwa-is-05-nmos-device-connection-management-specification-overview">AMWA IS-05 NMOS Device Connection Management Specification: Overview<a class="headerlink" href="#amwa-is-05-nmos-device-connection-management-specification-overview" title="Permanent link">&para;</a></h1>
+<h1 id="amwa-is-05-nmos-device-connection-management-specification-overview">AMWA IS-05 NMOS Device Connection Management Specification: Overview</h1>
 <!-- _(c) AMWA 2017, CC Attribution-NoDerivatives 4.0 International (CC BY-ND 4.0)_  -->
 
-<h2 id="introduction">Introduction<a class="headerlink" href="#introduction" title="Permanent link">&para;</a></h2>
+<h2 id="introduction">Introduction</h2>
 <p>AMWA IS-05 specifies how to allow a Device in an NMOS compatible system to connect to other Devices, by means of the Devices' Senders and Receivers.</p>
 <p>The Specification includes:</p>
 <ul>
@@ -3537,27 +3537,27 @@
 </ul>
 <p>IS-05 is intended to be used in conjunction with an <a href="https://specs.amwa.tv/is-04">IS-04 NMOS Discovery &amp; Registration</a> deployment; however it has been written in such a way to provide useful functionality even in the absence of such a system.</p>
 <p>The terms 'Node', 'Device', 'Sender' and 'Receiver' are used extensively in this documenation set. The <a href="https://specs.amwa.tv/nmos/main/docs/2.0._Technical_Overview.html">NMOS Technical Overview</a> provides an outline of these terms, and IS-04 provides corresponding schema definitions.</p>
-<h2 id="use-of-normative-language">Use of Normative Language<a class="headerlink" href="#use-of-normative-language" title="Permanent link">&para;</a></h2>
+<h2 id="use-of-normative-language">Use of Normative Language</h2>
 <p>The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT", "SHOULD", "SHOULD NOT", "RECOMMENDED", "MAY",
 and "OPTIONAL" in this documentation set are to be interpreted as described in <a href="https://tools.ietf.org/html/rfc2119" title="Key words for use in RFCs">RFC 2119</a>.</p>
-<h2 id="api-structure">API Structure<a class="headerlink" href="#api-structure" title="Permanent link">&para;</a></h2>
+<h2 id="api-structure">API Structure</h2>
 <p>The API provides a mechanism to change the settings associated with logical Senders and Receivers which abstract the implementations of different IP based transport protocols. The primary use case for this API is in the control of Senders and Receivers which implement the Real Time Protocol (RTP) transport type. WebSocket and MQTT are supported since v1.1, and the API is extensible to support control of other protocols.</p>
-<h3 id="resources">Resources<a class="headerlink" href="#resources" title="Permanent link">&para;</a></h3>
+<h3 id="resources">Resources</h3>
 <p>Each Sender or Receiver implementation has a common set of paths as follows.</p>
-<h4 id="constraints">Constraints<a class="headerlink" href="#constraints" title="Permanent link">&para;</a></h4>
+<h4 id="constraints">Constraints</h4>
 <p>The <code>/constraints</code> endpoint describes any restrictions associated with each parameter which is defined for a given transport type, and permit, for example, parameter values to be restricted to a set of valid IP addresses.</p>
-<h4 id="staged">Staged<a class="headerlink" href="#staged" title="Permanent link">&para;</a></h4>
+<h4 id="staged">Staged</h4>
 <p>The <code>/staged</code> endpoint provides the means to make changes to settings associated with a Sender or Receiver. These changes can be applied to the underlying implementation immediately, or at a scheduled time signalled in the HTTP request.</p>
-<h4 id="active">Active<a class="headerlink" href="#active" title="Permanent link">&para;</a></h4>
+<h4 id="active">Active</h4>
 <p>The <code>/active</code> endpoint reflects the current running configuration of the underlying Sender or Receiver. When a set of staged settings is activated, these settings transition from <code>/staged' into the</code>/active` resource.</p>
-<h4 id="transport-file">Transport File<a class="headerlink" href="#transport-file" title="Permanent link">&para;</a></h4>
+<h4 id="transport-file">Transport File</h4>
 <p>Where a transport protocol is accompanied by a file format which advertises connection parameters, this can be exposed via the <code>/transportfile</code> endpoint of a Sender. This provides the means to expose a Session Description Protocol (SDP) file in the case of RTP for example.</p>
-<h4 id="transport-type">Transport Type<a class="headerlink" href="#transport-type" title="Permanent link">&para;</a></h4>
+<h4 id="transport-type">Transport Type</h4>
 <p>The <code>/transporttype</code> endpoint identifies the transport type which is used by this Sender or Receiver. It is intended to enable disambiguation between the parameter sets which can be presented under the other resources.</p>
-<h3 id="single-bulk-interfaces">Single &amp; Bulk Interfaces<a class="headerlink" href="#single-bulk-interfaces" title="Permanent link">&para;</a></h3>
+<h3 id="single-bulk-interfaces">Single &amp; Bulk Interfaces</h3>
 <p>The API provides a mechanism to modify settings for an individual Sender or Receiver. This is referred to as the 'single' interface.</p>
 <p>The API also provides a mechanism to modify settings for many Senders or Receivers at once which sit within the scope of the API implementation (typically contained by a Node or Device). This is referred to as the 'bulk' interface, and can be used to support 'salvo' operations in capable Devices, as described in <a href="../4.0.%20Behaviour/">Behaviour</a>.</p>
-<h2 id="api-interaction">API Interaction<a class="headerlink" href="#api-interaction" title="Permanent link">&para;</a></h2>
+<h2 id="api-interaction">API Interaction</h2>
 <p>The following sequence diagram shows the interactions between a client and the API.</p>
 <p><img alt="Connection Management Sequence" src="../images/direct_seq_diagram.png" /></p>
 

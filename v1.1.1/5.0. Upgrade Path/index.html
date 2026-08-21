@@ -3321,18 +3321,18 @@
   
 
 
-<h1 id="upgrade-path">Upgrade Path<a class="headerlink" href="#upgrade-path" title="Permanent link">&para;</a></h1>
-<p><em>&copy; AMWA 2017, CC Attribution-NoDerivatives 4.0 International (CC BY-ND 4.0)</em></p>
+<h1 id="upgrade-path">Upgrade Path</h1>
+<p><em>(c) AMWA 2017, CC Attribution-NoDerivatives 4.0 International (CC BY-ND 4.0)</em></p>
 <p>As is common with web APIs, over time changes will be made to support new use cases and deprecate old ways of working. The NMOS APIs are no different, and have been designed to permit in-service upgrades across a facility which could be running large amounts of equipment with support for different versions of these specifications.</p>
 <p>API versioning is specified in the <a href="../2.0.%20APIs/">APIs</a> documentation, with procedures for handling upgrades described below.</p>
-<h2 id="requirements-for-connection-apis">Requirements for Connection APIs<a class="headerlink" href="#requirements-for-connection-apis" title="Permanent link">&para;</a></h2>
+<h2 id="requirements-for-connection-apis">Requirements for Connection APIs</h2>
 <p>Implementers of the Connection API MUST support at least one API version, and MAY support more than one at a time.</p>
 <p>Where a transport type is added in a new version of the Connection API specification, earlier versioned APIs MUST NOT list any Senders or Receivers which make use of this new transport type. In these cases, requests to an inaccessible ID MUST return a <code>409</code> (Conflict) HTTP code.</p>
 <p>Where new transport parameters are added to a pre-existing transport type in a new version of the Connection API, earlier versioned APIs MUST NOT list these parameters. New transport parameters SHOULD be defined such that a request which omits them can proceed without error. This ensures that servers implementing multiple versions of the Connection API can continue to process earlier versioned requests successfully.</p>
 <p>Connection APIs do not need to provide for forwards compatibility as it might be impossible to generate data for new attributes in schemas.</p>
-<h2 id="requirements-for-connection-management-clients">Requirements for Connection Management clients<a class="headerlink" href="#requirements-for-connection-management-clients" title="Permanent link">&para;</a></h2>
+<h2 id="requirements-for-connection-management-clients">Requirements for Connection Management clients</h2>
 <p>Implementers of Connection Management clients are strongly RECOMMENDED to support multiple versions of the Connection API simultaneously in order to ease the upgrade process in live facilities.</p>
-<h2 id="performing-upgrades">Performing Upgrades<a class="headerlink" href="#performing-upgrades" title="Permanent link">&para;</a></h2>
+<h2 id="performing-upgrades">Performing Upgrades</h2>
 <p>The following procedure is suggested for a live system which needs to migrate between API versions.</p>
 <ul>
 <li>Upgrade API clients to their new versions, to support all Connection API versions you are currently using in your deployment.</li>

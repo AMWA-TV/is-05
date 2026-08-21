@@ -3365,35 +3365,35 @@
   
 
 
-<h1 id="interoperability-is-04">Interoperability: IS-04<a class="headerlink" href="#interoperability-is-04" title="Permanent link">&para;</a></h1>
-<p><em>&copy; AMWA 2017, CC Attribution-NoDerivatives 4.0 International (CC BY-ND 4.0)</em></p>
+<h1 id="interoperability-is-04">Interoperability: IS-04</h1>
+<p><em>(c) AMWA 2017, CC Attribution-NoDerivatives 4.0 International (CC BY-ND 4.0)</em></p>
 <p>The Connection API shares a data model with the IS-04 specification, and as a result it is designed to be used alongside it. The following sub-sections identify correct behaviour for doing this.</p>
 <p>When this API is used alongside IS-04 in a deployment, the IS-04 APIs SHOULD be operating at version 1.2 or greater in order to ensure full interoperability.</p>
-<h2 id="discovery">Discovery<a class="headerlink" href="#discovery" title="Permanent link">&para;</a></h2>
+<h2 id="discovery">Discovery</h2>
 <p>The Connection API SHOULD be advertised as a control endpoint when publishing a compliant NMOS Device.
 Control interfaces can identify all Devices which implement the Connection API by a <code>type</code> Uniform Resource Name (URN) having the base <code>urn:x-nmos:control:sr-ctrl</code> followed by a <code>/</code> character and the API version.
 The associated <code>href</code> is the URL of the Connection API base resource.</p>
 <p><strong>Example:</strong> The <code>controls</code> attribute of a single NMOS Device</p>
-<div class="language-json highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="err">...</span>
-</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="nt">"controls"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
-</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="w">  </span><span class="p">{</span>
-</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="w">    </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"urn:x-nmos:control:sr-ctrl/v1.1"</span><span class="p">,</span>
-</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="w">    </span><span class="nt">"href"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://192.168.10.3/x-nmos/connection/v1.1/"</span>
-</span><span id="__span-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a><span class="w">  </span><span class="p">}</span>
-</span><span id="__span-0-7"><a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a><span class="p">]</span>
-</span><span id="__span-0-8"><a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a><span class="err">...</span>
-</span></code></pre></div>
+<p><code>json
+...
+"controls": [
+  {
+    "type": "urn:x-nmos:control:sr-ctrl/v1.1",
+    "href": "http://192.168.10.3/x-nmos/connection/v1.1/"
+  }
+]
+...</code></p>
 <p>As shown above the API version is included in the <code>type</code>, and in the <code>href</code>. Further control endpoints for the Connection API MAY be advertised for Devices which support multiple versions simultaneously, or have multiple network interfaces.</p>
 <p>More details about multi-version support can be found in <a href="../5.0.%20Upgrade%20Path/">Upgrade Path</a>.</p>
 <p>A given instance of the Connection API MAY offer control of multiple Devices in a Node from a single URI. Alternatively there MAY be multiple instances of the API on one Node, each corresponding to one Device. A separate endpoint for each Device's Connection Management instance MUST be advertised in the Device's <code>controls</code>, even if the URI is the same.</p>
 <p>API implementations MAY list an <code>href</code> with or without a trailing slash, provided that the trailing slash policy in <a href="../2.0.%20APIs/#urls-approach-to-trailing-slashes">APIs</a> is adhered to. Implementers of clients need to avoid double or missing slashes when appending paths onto <code>href</code>s.</p>
-<h2 id="sender-receiver-ids">Sender &amp; Receiver IDs<a class="headerlink" href="#sender-receiver-ids" title="Permanent link">&para;</a></h2>
+<h2 id="sender-receiver-ids">Sender &amp; Receiver IDs</h2>
 <p>The UUIDs used to advertise Senders and Receivers in the Connection API MUST match those used in a corresponding IS-04 implementation.</p>
-<h2 id="version-increments">Version Increments<a class="headerlink" href="#version-increments" title="Permanent link">&para;</a></h2>
+<h2 id="version-increments">Version Increments</h2>
 <p>In order to prevent unnecessary polling of the Connection API, changes to active connection parameters are signalled via the IS-04 versioning mechanism. When the active parameters of a Sender or Receiver are modified, or when a re-activation of the same parameters is performed, the <code>version</code> attribute of the relevant IS-04 Sender or Receiver MUST be incremented.</p>
-<h2 id="identifying-active-connections">Identifying Active Connections<a class="headerlink" href="#identifying-active-connections" title="Permanent link">&para;</a></h2>
+<h2 id="identifying-active-connections">Identifying Active Connections</h2>
 <p>In order to populate the <code>subscription</code> attribute of IS-04 Senders and Receivers, the Connection API includes keys for <code>sender_id</code> and <code>receiver_id</code> in its staged parameters. These SHOULD be used to signal that a Sender or Receiver is being connected to another NMOS compatible Sender or Receiver. It is the client's responsibility to set and unset (using <code>null</code>) the <code>sender_id</code> or <code>receiver_id</code> parameters when modifying the <code>transport_params</code> or <code>transport_file</code>.</p>
-<h2 id="support-for-legacy-is-04-connection-management">Support For Legacy IS-04 Connection Management<a class="headerlink" href="#support-for-legacy-is-04-connection-management" title="Permanent link">&para;</a></h2>
+<h2 id="support-for-legacy-is-04-connection-management">Support For Legacy IS-04 Connection Management</h2>
 <p>The Connection API supersedes the now deprecated method of updating the <code>/target</code> resource on Node API Receivers in order to establish connections. The two methods of operation are likely to co-exist until Version 2.0 of IS-04. As such the following best practice SHOULD be followed when both are in use:</p>
 <ul>
 <li>Where a client establishes a connection via the Node API <code>/target</code> resource, which updates the Receiver's <code>subscription</code> object, the result on the Connection API SHOULD be as if the client had staged the parameters and requested an immediate activation to enable the Receiver. That is to say that the new parameters, including the <code>sender_id</code> and with <code>master_enable</code> set to <code>true</code>, will be reflected in both the <code>/staged</code> and <code>/active</code> endpoints of the Receiver.</li>

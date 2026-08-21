@@ -3431,34 +3431,34 @@
   
 
 
-<h1 id="behaviour">Behaviour<a class="headerlink" href="#behaviour" title="Permanent link">&para;</a></h1>
-<p><em>&copy; AMWA 2017, CC Attribution-NoDerivatives 4.0 International (CC BY-ND 4.0)</em></p>
-<h2 id="re-activating-senders-receivers">Re-Activating Senders &amp; Receivers<a class="headerlink" href="#re-activating-senders-receivers" title="Permanent link">&para;</a></h2>
+<h1 id="behaviour">Behaviour</h1>
+<p><em>(c) AMWA 2017, CC Attribution-NoDerivatives 4.0 International (CC BY-ND 4.0)</em></p>
+<h2 id="re-activating-senders-receivers">Re-Activating Senders &amp; Receivers</h2>
 <p>If an explicit activation is performed against a Sender or Receiver, the API MUST request a re-application of settings to the underlying Sender or Receiver implementation whether the setting have changed or not. For example in the case of multicast Receivers it is suggested that this involves an explicit IGMP leave and join. For a Sender this might involve stopping and re-starting the stream.</p>
-<h2 id="transport-files-caching">Transport Files &amp; Caching<a class="headerlink" href="#transport-files-caching" title="Permanent link">&para;</a></h2>
+<h2 id="transport-files-caching">Transport Files &amp; Caching</h2>
 <p>It is strongly RECOMMENDED that the following caching headers are included via the <code>/transportfile</code> endpoint (or whatever this endpoint redirects to).</p>
-<div class="language-http highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="err">Cache-Control: no-cache</span>
-</span></code></pre></div>
+<p><code>http
+Cache-Control: no-cache</code></p>
 <p>This is important to ensure that connection management clients do not cache the contents of transport files which are liable to change.</p>
-<h2 id="multi-client-operation">Multi-Client Operation<a class="headerlink" href="#multi-client-operation" title="Permanent link">&para;</a></h2>
+<h2 id="multi-client-operation">Multi-Client Operation</h2>
 <p>In environments where multiple clients might be operating against a single Connection API, it is possible that staging of parameters could result in conflicts. There is intentionally no mechanism to prevent this in the API, however clients SHOULD examine the results of HTTP <code>PATCH</code> operations which will return the full complement of current settings, allowing the client to confirm that only the changes it had requested have been made.</p>
-<h2 id="in-progress-activations">In-Progress Activations<a class="headerlink" href="#in-progress-activations" title="Permanent link">&para;</a></h2>
+<h2 id="in-progress-activations">In-Progress Activations</h2>
 <p>When an implementation is in the process of activating a new set of transport parameters, concurrent requests to the API from other clients could result in unexpected results. In order to minimise these cases, implementations are RECOMMENDED to adopt the following practice:</p>
 <ul>
 <li>While an activation is in progress, concurrent <code>GET</code> requests to the <code>/active</code> resource SHOULD reflect the current configuration of the Sender or Receiver as accurately as possible at the instant of the request.</li>
 <li>If an API implementation receives a new <code>PATCH</code> request to the <code>/staged</code> resource while an activation is in progress it SHOULD block the request until the previous activation is complete. Any <code>GET</code> requests to <code>/staged</code> during this time MAY also be blocked until the activation is complete.</li>
 </ul>
-<h2 id="connection-status">Connection Status<a class="headerlink" href="#connection-status" title="Permanent link">&para;</a></h2>
+<h2 id="connection-status">Connection Status</h2>
 <p>The Connection API does not take any responsibility for monitoring the status of a connection between a Sender and a Receiver, for example whether a Receiver is currently receiving packets. As such a loss of packets at a connectionless Receiver (e.g. UDP) or a recoverable error on a connection-oriented transport (e.g. TCP) MUST NOT be indicated via changes to the <code>/active</code> resource. Where a connection-oriented transport encounters a recoverable error (such as a broken connection or timeout), the underlying Sender or Receiver SHOULD attempt to recover from the error unless otherwise configured not to do so. This could involve the use of exponential backoff up to a defined limit. Where a Sender or Receiver is permanently unable to recover a connection-oriented transport without user interaction, for example due to erroneous configuration which was not identified prior to activation, the implementation MAY set <code>master_enable</code> to <code>false</code> in the <code>/active</code> resource.</p>
-<h2 id="salvo-operation">'Salvo' Operation<a class="headerlink" href="#salvo-operation" title="Permanent link">&para;</a></h2>
+<h2 id="salvo-operation">'Salvo' Operation</h2>
 <p>Where a server implementation supports concurrent application of settings changes to underlying Senders and Receivers, it could choose to perform 'bulk' resource operations in a parallel fashion internally. This is an implementation decision and is not a requirement of this specification.</p>
 <p>If a 'bulk' request includes multiple sets of parameters for the same Sender or Receiver ID the behaviour is defined by the implementation. In order to maximise interoperability clients are encouraged not to include the same Sender or Receiver ID multiple times in the same 'bulk' request.</p>
-<h2 id="scheduled-activations">Scheduled Activations<a class="headerlink" href="#scheduled-activations" title="Permanent link">&para;</a></h2>
+<h2 id="scheduled-activations">Scheduled Activations</h2>
 <p>IS-05 provides a mechanism whereby the activation of staged transport parameters can be performed at a particular TAI time, or after a given interval.</p>
 <p>The primary use case for this behaviour is to allow the synchronisation of large salvo operations, where multiple systems carry out a change in transport parameters simultaneously. A controller will stage parameters with multiple IS-05 APIs with the same activation timestamp, and know that activation will occur at the same time on all devices regardless of the latency between the controller and the device. It is not intended to act as a mechanism for scheduling activations far in the future.</p>
 <p>In the event of an error occurring between scheduling an activation and the activation time, the IS-05 transport parameters SHOULD reflect the current configuration of the device. For example, if a sender is no longer sending data at all it would set <code>master_enable</code> to <code>false</code>.</p>
 <p>API clients SHOULD check back with the API after the expected activation time to ensure activations have completed successfully, and that the device is in the expected state. Note that a client would normally expect to see a change in the IS-04 <code>version</code> timestamp upon a successful activation of transport parameters, and SHOULD monitor for this <code>version</code> timestamp update via an IS-04 Query API WebSocket subscription where IS-05 is being used alongside IS-04.</p>
-<h2 id="externally-defined-parameters">Externally Defined Parameters<a class="headerlink" href="#externally-defined-parameters" title="Permanent link">&para;</a></h2>
+<h2 id="externally-defined-parameters">Externally Defined Parameters</h2>
 <p>IS-05 aims to provide a defined core set of parameters for each supported transport type. These parameters are based upon the standard(s) which define the transport type.</p>
 <p>In some cases it is necessary to advertise and accept additional parameters in order to make a connection, for example where an external specification extends an existing transport type in order to fulfil its own requirements. In such cases, IS-05 provides the capability to define additional transport parameters which use the prefix <code>ext_</code>. These transport parameters are governed by the same constraints structure as any other parameter, but are intended to make IS-05 more extensible for these use cases.</p>
 <p>Where <code>ext_</code> parameters are utilised, their naming, usage and versioning is defined externally to IS-05. Clients SHOULD ignore any such parameters they do not recognise.</p>
