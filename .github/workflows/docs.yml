@@ -1,4 +1,5 @@
 name: Documentation (Zensical)
+run-name: Documentation - ${{ inputs.ref || github.ref_name }}
 
 # Experimental shared-toolkit rendering. The existing render.yml workflow and
 # .render pipeline remain active until the new output has been accepted.
