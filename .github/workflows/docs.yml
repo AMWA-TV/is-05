@@ -3,17 +3,18 @@ name: Documentation (Zensical)
 # Experimental shared-toolkit rendering. The existing render.yml workflow and
 # .render pipeline remain active until the new output has been accepted.
 on:
+  push:
+    branches:
+      - 'v[0-9]+.[0-9]+-dev'
+      - 'v[0-9]+.[0-9]+.x'
+      - 'publish-*'
+  release:
   workflow_dispatch:
     inputs:
       ref:
         description: Optional branch or tag to rebuild
         required: false
         default: ''
-      alias_latest:
-        description: Also publish this build under the latest alias
-        required: false
-        type: boolean
-        default: false
 
 permissions:
   contents: write
@@ -26,6 +27,5 @@ jobs:
       site-name: is-05
       public-docs-root: https://specs.amwa.tv/new/is-05
       source-ref: ${{ inputs.ref || github.ref_name }}
-      alias-latest: ${{ inputs.alias_latest || false }}
       toolkit-ref: main
     secrets: inherit
