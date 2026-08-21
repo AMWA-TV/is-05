@@ -20,6 +20,10 @@ on:
 permissions:
   contents: write
 
+concurrency:
+  group: amwa-documentation-${{ github.repository }}
+  cancel-in-progress: false
+
 jobs:
   docs:
     uses: AMWA-TV/amwa-spec-docs/.github/workflows/docs.yml@main
