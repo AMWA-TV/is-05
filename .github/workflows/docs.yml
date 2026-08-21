@@ -1,5 +1,5 @@
 name: Documentation (Zensical)
-run-name: ${{ github.event_name == 'push' && format('{0} - {1}', github.event.head_commit.message, github.ref_name) || github.event_name == 'release' && format('Release - {0}', github.event.release.tag_name) || format('Documentation - {0}', inputs.ref || github.ref_name) }}
+run-name: ${{ github.event_name == 'push' && format('Push - {0}', github.ref_name) || github.event_name == 'release' && format('Release - {0}', github.event.release.tag_name) || format('Documentation - {0}', inputs.ref || github.ref_name) }}
 
 # Experimental shared-toolkit rendering. The existing render.yml workflow and
 # .render pipeline remain active until the new output has been accepted.
@@ -19,6 +19,7 @@ on:
 
 permissions:
   contents: write
+  actions: write
 
 concurrency:
   group: amwa-documentation-${{ github.repository }}
