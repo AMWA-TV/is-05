@@ -1,0 +1,17 @@
+[project]
+site_name = "AMWA IS-05 NMOS Device Connection Management Specification"
+site_description = "AMWA NMOS Interface Specification IS-05"
+site_url = "https://specs.amwa.tv/is-05/"
+repo_name = "AMWA-TV/is-05"
+repo_url = "https://github.com/AMWA-TV/is-05"
+extra_css = ["stylesheets/extra.css"]
+extra_javascript = ["javascripts/json-viewer.js"]
+
+[project.markdown_extensions.pymdownx.tabbed]
+alternate_style = true
+
+[project.markdown_extensions.toc]
+permalink = false
+
+[project.extra.version]
+provider = "mike"

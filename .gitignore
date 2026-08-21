@@ -2,3 +2,10 @@
 *.swp
 *~
 .DS_Store
+site/
+
+# Generated from README.md by the shared amwa-spec-docs toolkit.
+docs/index.md
+
+# Local Zensical rendering output
+.render-zensical/
