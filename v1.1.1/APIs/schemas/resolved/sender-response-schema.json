@@ -1,0 +1,448 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "description": "Describes a sender",
+  "title": "Sender resource",
+  "additionalProperties": false,
+  "required": [
+    "receiver_id",
+    "master_enable",
+    "activation",
+    "transport_params"
+  ],
+  "properties": {
+    "receiver_id": {
+      "description": "ID of the target Receiver of this Sender. This will be null if the sender is operating in multicast mode, or has not been assigned a receiver in unicast mode, or is sending to a non-NMOS receiver in unicast mode.",
+      "type": [
+        "string",
+        "null"
+      ],
+      "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-[1-5][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$"
+    },
+    "master_enable": {
+      "description": "Master on/off control for sender",
+      "type": "boolean"
+    },
+    "activation": {
+      "$schema": "http://json-schema.org/draft-04/schema#",
+      "description": "Parameters concerned with activation of the transport parameters",
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "mode",
+        "requested_time",
+        "activation_time"
+      ],
+      "properties": {
+        "mode": {
+          "description": "Mode of activation: immediate (on message receipt), scheduled_absolute (when internal clock >= requested_time), scheduled_relative (when internal clock >= time of message receipt + requested_time), or null (no activation scheduled). This parameter returns to null on the staged endpoint once an activation is completed or when it is explicitly set to null. For immediate activations, in the response to the PATCH request this field will be set to 'activate_immediate', but will be null in response to any subsequent GET requests.",
+          "anyOf": [
+            {
+              "type": "string",
+              "enum": [
+                "activate_immediate",
+                "activate_scheduled_absolute",
+                "activate_scheduled_relative"
+              ]
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "requested_time": {
+          "description": "String formatted TAI timestamp (<seconds>:<nanoseconds>) indicating time (absolute or relative) for activation requested. This field returns to null once the activation is completed on the staged endpoint or when the resource is unlocked by setting the activation mode to null. For an immediate activation this field will always be null on the staged endpoint, even in the response to the PATCH request.",
+          "anyOf": [
+            {
+              "type": "string",
+              "pattern": "^[0-9]+:[0-9]+$"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "activation_time": {
+          "description": "String formatted TAI timestamp (<seconds>:<nanoseconds>) indicating the absolute time the sender or receiver will or did actually activate for scheduled activations, or the time activation occurred for immediate activations. On the staged endpoint this field returns to null once the activation is completed or when the resource is unlocked by setting the activation mode to null. For immediate activations on the staged endpoint this property will be the time the activation actually occurred in the response to the PATCH request, but null in response to any GET requests thereafter.",
+          "anyOf": [
+            {
+              "type": "string",
+              "pattern": "^[0-9]+:[0-9]+$"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        }
+      }
+    },
+    "transport_params": {
+      "$schema": "http://json-schema.org/draft-04/schema#",
+      "description": "Transport-specific parameters. If this parameter is included in a client request it must include the same number of array elements (or 'legs') as specified in the constraints. If no changes are required to a specific leg it must be included as an empty object ({}).",
+      "title": "Sender Transport Parameters",
+      "anyOf": [
+        {
+          "type": "array",
+          "items": {
+            "$schema": "http://json-schema.org/draft-04/schema#",
+            "description": "Describes RTP Sender transport parameters. The constraints in this schema are minimum constraints, but may be further constrained at the constraints endpoint. As a minimum all senders must support `source_ip`, `destination_ip`, `source_port`, `rtp_enabled` and `destination_port`. Senders supporting FEC and/or RTCP must support parameters prefixed with `fec` and `rtcp` respectively.",
+            "title": "Sender Output",
+            "type": "object",
+            "properties": {
+              "source_ip": {
+                "type": "string",
+                "description": "IP address from which RTP packets will be sent (IP address of interface bound to this output). The sender should provide an enum in the constraints endpoint, which should contain the available interface addresses. If the parameter is set to auto the sender should establish for itself which interface it should use, based on routing rules or its own internal configuration.",
+                "anyOf": [
+                  {
+                    "format": "ipv4"
+                  },
+                  {
+                    "format": "ipv6"
+                  },
+                  {
+                    "pattern": "^auto$"
+                  }
+                ]
+              },
+              "destination_ip": {
+                "type": "string",
+                "description": "IP address to which RTP packets will be sent. If auto is set the sender should select a multicast address to send to itself. For example it may implement MADCAP (RFC 2730), ZMAAP, or be allocated address by some other system responsible for co-ordination multicast address use.",
+                "anyOf": [
+                  {
+                    "format": "ipv4"
+                  },
+                  {
+                    "format": "ipv6"
+                  },
+                  {
+                    "pattern": "^auto$"
+                  }
+                ]
+              },
+              "source_port": {
+                "type": [
+                  "integer",
+                  "string"
+                ],
+                "description": "source port for RTP packets (auto = 5004 by default)",
+                "minimum": 0,
+                "maximum": 65535,
+                "pattern": "^auto$"
+              },
+              "destination_port": {
+                "type": [
+                  "integer",
+                  "string"
+                ],
+                "description": "destination port for RTP packets (auto = 5004 by default)",
+                "minimum": 1,
+                "maximum": 65535,
+                "pattern": "^auto$"
+              },
+              "fec_enabled": {
+                "type": "boolean",
+                "description": "FEC on/off"
+              },
+              "fec_destination_ip": {
+                "type": "string",
+                "description": "May be used if NAT is being used at the destination (auto = destination_ip by default)",
+                "anyOf": [
+                  {
+                    "format": "ipv4"
+                  },
+                  {
+                    "format": "ipv6"
+                  },
+                  {
+                    "pattern": "^auto$"
+                  }
+                ]
+              },
+              "fec_type": {
+                "type": "string",
+                "description": "forward error correction mode to apply",
+                "enum": [
+                  "XOR",
+                  "Reed-Solomon"
+                ]
+              },
+              "fec_mode": {
+                "type": "string",
+                "description": "forward error correction mode to apply",
+                "enum": [
+                  "1D",
+                  "2D"
+                ]
+              },
+              "fec_block_width": {
+                "type": "integer",
+                "description": "width of block over which FEC is calculated in packets",
+                "minimum": 4,
+                "maximum": 200
+              },
+              "fec_block_height": {
+                "type": "integer",
+                "description": "height of block over which FEC is calculated in packets",
+                "minimum": 4,
+                "maximum": 200
+              },
+              "fec1D_destination_port": {
+                "type": [
+                  "integer",
+                  "string"
+                ],
+                "description": "destination port for RTP Column FEC packets (auto = RTP destination_port + 2 by default)",
+                "minimum": 1,
+                "maximum": 65535,
+                "pattern": "^auto$"
+              },
+              "fec2D_destination_port": {
+                "type": [
+                  "integer",
+                  "string"
+                ],
+                "description": "destination port for RTP Row FEC packets (auto = RTP destination_port + 4 by default)",
+                "minimum": 1,
+                "maximum": 65535,
+                "pattern": "^auto$"
+              },
+              "fec1D_source_port": {
+                "type": [
+                  "integer",
+                  "string"
+                ],
+                "description": "source port for RTP FEC packets (auto = RTP source_port + 2 by default)",
+                "minimum": 0,
+                "maximum": 65535,
+                "pattern": "^auto$"
+              },
+              "fec2D_source_port": {
+                "type": [
+                  "integer",
+                  "string"
+                ],
+                "description": "source port for RTP FEC packets (auto = RTP source_port + 4 by default)",
+                "minimum": 0,
+                "maximum": 65535,
+                "pattern": "^auto$"
+              },
+              "rtcp_enabled": {
+                "type": "boolean",
+                "description": "rtcp on/off"
+              },
+              "rtcp_destination_ip": {
+                "type": "string",
+                "description": "IP address to which RTCP packets will be sent (auto = same as RTP destination_ip by default)",
+                "anyOf": [
+                  {
+                    "format": "ipv4"
+                  },
+                  {
+                    "format": "ipv6"
+                  },
+                  {
+                    "pattern": "^auto$"
+                  }
+                ]
+              },
+              "rtcp_destination_port": {
+                "type": [
+                  "integer",
+                  "string"
+                ],
+                "description": "destination port for RTCP packets (auto = RTP destination_port + 1 by default)",
+                "minimum": 1,
+                "maximum": 65535,
+                "pattern": "^auto$"
+              },
+              "rtcp_source_port": {
+                "type": [
+                  "integer",
+                  "string"
+                ],
+                "description": "source port for RTCP packets (auto = RTP source_port + 1 by default)",
+                "minimum": 0,
+                "maximum": 65535,
+                "pattern": "^auto$"
+              },
+              "rtp_enabled": {
+                "type": "boolean",
+                "description": "RTP transmission active/inactive"
+              }
+            },
+            "patternProperties": {
+              "^ext_[a-zA-Z0-9_]+$": {
+                "$schema": "http://json-schema.org/draft-04/schema#",
+                "description": "Describes external Sender transport parameters defined in other AMWA specifications. The constraints in this schema are minimum constraints, but may be further constrained at the constraints endpoint.",
+                "title": "External Sender Transport Parameters",
+                "type": [
+                  "string",
+                  "boolean",
+                  "null",
+                  "number"
+                ]
+              }
+            },
+            "additionalProperties": false
+          }
+        },
+        {
+          "type": "array",
+          "items": {
+            "not": {}
+          }
+        },
+        {
+          "type": "array",
+          "items": {
+            "$schema": "http://json-schema.org/draft-04/schema#",
+            "description": "Describes WebSocket Sender transport parameters. The constraints in this schema are minimum constraints, but may be further constrained at the constraints endpoint. WebSocket Senders must support all parameters in this schema.",
+            "title": "Sender Output",
+            "type": "object",
+            "properties": {
+              "connection_uri": {
+                "type": [
+                  "string",
+                  "null"
+                ],
+                "description": "URI hosting the WebSocket server as defined in RFC 6455 Section 3. The sender should provide an enum in the constraints endpoint, which should contain the available interface addresses formatted as connection URIs. If the parameter is set to auto the sender should establish for itself which interface it should use, based on routing rules or its own internal configuration. A null value indicates that the sender has not yet been configured.",
+                "anyOf": [
+                  {
+                    "pattern": "^auto$"
+                  },
+                  {
+                    "format": "uri",
+                    "pattern": "^wss?://.*"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ]
+              },
+              "connection_authorization": {
+                "type": [
+                  "string",
+                  "boolean"
+                ],
+                "description": "Indication of whether authorization is required to make a connection. If the parameter is set to auto the Sender should establish for itself whether authorization should be used, based on its own internal configuration.",
+                "enum": [
+                  "auto",
+                  true,
+                  false
+                ]
+              }
+            },
+            "patternProperties": {
+              "^ext_[a-zA-Z0-9_]+$": {
+                "$schema": "http://json-schema.org/draft-04/schema#",
+                "description": "Describes external Sender transport parameters defined in other AMWA specifications. The constraints in this schema are minimum constraints, but may be further constrained at the constraints endpoint.",
+                "title": "External Sender Transport Parameters",
+                "type": [
+                  "string",
+                  "boolean",
+                  "null",
+                  "number"
+                ]
+              }
+            },
+            "additionalProperties": false
+          }
+        },
+        {
+          "type": "array",
+          "items": {
+            "$schema": "http://json-schema.org/draft-04/schema#",
+            "description": "Describes MQTT Sender transport parameters. The constraints in this schema are minimum constraints, but may be further constrained at the constraints endpoint. MQTT Senders must support all properties in this schema.",
+            "title": "Sender Output",
+            "type": "object",
+            "properties": {
+              "destination_host": {
+                "type": [
+                  "string",
+                  "null"
+                ],
+                "description": "Hostname or IP hosting the MQTT broker. If the parameter is set to auto the Sender should establish for itself which broker it should use, based on a discovery mechanism or its own internal configuration. A null value indicates that the Sender has not yet been configured.",
+                "anyOf": [
+                  {
+                    "pattern": "^auto$"
+                  },
+                  {
+                    "format": "hostname"
+                  },
+                  {
+                    "format": "ipv4"
+                  },
+                  {
+                    "format": "ipv6"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ]
+              },
+              "destination_port": {
+                "type": [
+                  "integer",
+                  "string"
+                ],
+                "description": "Destination port for MQTT traffic. If the parameter is set to auto the Sender should establish for itself which broker it should use, based on a discovery mechanism or its own internal configuration.",
+                "minimum": 1,
+                "maximum": 65535,
+                "pattern": "^auto$"
+              },
+              "broker_protocol": {
+                "type": "string",
+                "description": "Indication of whether TLS is used for communication with the broker. 'mqtt' indicates operation without TLS, and 'secure-mqtt' indicates use of TLS. If the parameter is set to auto the Sender should establish for itself which protocol it should use, based on a discovery mechanism or its own internal configuration.",
+                "enum": [
+                  "auto",
+                  "mqtt",
+                  "secure-mqtt"
+                ]
+              },
+              "broker_authorization": {
+                "type": [
+                  "string",
+                  "boolean"
+                ],
+                "description": "Indication of whether authorization is used for communication with the broker. If the parameter is set to auto the Sender should establish for itself whether authorization should be used, based on a discovery mechanism or its own internal configuration.",
+                "enum": [
+                  "auto",
+                  true,
+                  false
+                ]
+              },
+              "broker_topic": {
+                "type": [
+                  "string",
+                  "null"
+                ],
+                "description": "The topic which MQTT messages will be sent to on the MQTT broker. A null value indicates that the Sender has not yet been configured."
+              },
+              "connection_status_broker_topic": {
+                "type": [
+                  "string",
+                  "null"
+                ],
+                "description": "The topic which MQTT status messages such as MQTT Last Will are sent to on the MQTT broker. A null value indicates that the Sender has not yet been configured, or is not using a connection status topic."
+              }
+            },
+            "patternProperties": {
+              "^ext_[a-zA-Z0-9_]+$": {
+                "$schema": "http://json-schema.org/draft-04/schema#",
+                "description": "Describes external Sender transport parameters defined in other AMWA specifications. The constraints in this schema are minimum constraints, but may be further constrained at the constraints endpoint.",
+                "title": "External Sender Transport Parameters",
+                "type": [
+                  "string",
+                  "boolean",
+                  "null",
+                  "number"
+                ]
+              }
+            },
+            "additionalProperties": false
+          }
+        }
+      ]
+    }
+  }
+}

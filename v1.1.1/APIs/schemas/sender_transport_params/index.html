@@ -1,0 +1,4090 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <link rel="canonical" href="https://specs.amwa.tv/new/is-05/v1.1.1/APIs/schemas/sender_transport_params/">
+      
+      
+        <link rel="prev" href="../sender-stage-schema/">
+      
+      
+        <link rel="next" href="../sender_transport_params_dash/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../../assets/images/favicon.png">
+      <meta name="generator" content="zensical-0.0.56">
+    
+    
+      
+        <title>sender_transport_params - is-05</title>
+      
+    
+    
+      
+        
+      
+      <link rel="stylesheet" href="../../../assets/stylesheets/modern/main.20815dad.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inter:300,300i,400,400i,500,500i,700,700i%7CJetBrains+Mono:400,400i,700,700i&amp;display=fallback">
+        <style>:root{--md-text-font:"Inter";--md-code-font:"JetBrains Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../../..",location),__md_scope.pathname.endsWith("/")||(__md_scope=new URL(__md_scope.pathname+"/",location)),__md_hash=e=>[...e].reduce(((e,t)=>(e<<5)-e+t.charCodeAt(0)),0),__md_get=(e,t=localStorage,_=__md_scope)=>JSON.parse(t.getItem(_.pathname+"."+e)),__md_set=(e,t,_=localStorage,a=__md_scope)=>{try{_.setItem(a.pathname+"."+e,JSON.stringify(t))}catch(e){}},document.documentElement.setAttribute("data-platform",navigator.platform)</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    <body dir="ltr">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer" aria-label="Navigation"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#sender_transport_params" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      <div data-md-color-scheme="default" data-md-component="outdated" hidden>
+        
+      </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../.." title="is-05" class="md-header__button md-logo" aria-label="is-05" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-book-open" viewBox="0 0 24 24"><path d="M12 5v16M20.001 19A2 2 0 0 0 22 17V5a2 2 0 0 0-1.999-2L16 3.002A5 5 0 0 0 12 5a5 5 0 0 0-4-2H4a2 2 0 0 0-2 2v12a2 2 0 0 0 1.999 2H8a5 5 0 0 1 4 2 5 5 0 0 1 4-2z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer" aria-label="Navigation">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-menu" viewBox="0 0 24 24"><path d="M4 5h16M4 12h16M4 19h16"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            is-05
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              sender_transport_params
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search" aria-label="Search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-search" viewBox="0 0 24 24"><path d="m21 21-4.34-4.34"/><circle cx="11" cy="11" r="8"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog" aria-label="Search">
+  <button type="button" class="md-search__button">
+    Search
+  </button>
+</div>
+      
+    
+    <div class="md-header__source">
+      
+    </div>
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="is-05" class="md-nav__button md-logo" aria-label="is-05" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-book-open" viewBox="0 0 24 24"><path d="M12 5v16M20.001 19A2 2 0 0 0 22 17V5a2 2 0 0 0-1.999-2L16 3.002A5 5 0 0 0 12 5a5 5 0 0 0-4-2H4a2 2 0 0 0-2 2v12a2 2 0 0 0 1.999 2H8a5 5 0 0 1 4 2 5 5 0 0 1 4-2z"/></svg>
+
+    </a>
+    is-05
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  AMWA IS-05 NMOS Device Connection Management Specification
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../1.0.%20Overview/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  AMWA IS-05 NMOS Device Connection Management Specification: Overview
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  APIs
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+  APIs
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  APIs
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_2" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_3_2" id="__nav_3_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Schemas
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_3_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+  Schemas
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  JSON Schemas
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../activation-response-schema/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  activation-response-schema
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../activation-schema/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  activation-schema
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../bulk-receiver-post-schema/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  bulk-receiver-post-schema
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../bulk-response-schema/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  bulk-response-schema
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../bulk-sender-post-schema/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  bulk-sender-post-schema
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../connectionapi-base/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  connectionapi-base
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../connectionapi-bulk/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  connectionapi-bulk
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../connectionapi-receiver/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  connectionapi-receiver
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../connectionapi-sender/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  connectionapi-sender
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../connectionapi-single/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  connectionapi-single
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../constraint-schema/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  constraint-schema
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../constraints-schema-mqtt/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  constraints-schema-mqtt
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../constraints-schema-rtp/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  constraints-schema-rtp
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../constraints-schema-websocket/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  constraints-schema-websocket
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../constraints-schema/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  constraints-schema
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../error/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  error
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../receiver-response-schema/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  receiver-response-schema
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../receiver-stage-schema/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  receiver-stage-schema
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../receiver-transport-file/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  receiver-transport-file
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../receiver_transport_params/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  receiver_transport_params
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../receiver_transport_params_dash/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  receiver_transport_params_dash
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../receiver_transport_params_ext/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  receiver_transport_params_ext
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../receiver_transport_params_mqtt/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  receiver_transport_params_mqtt
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../receiver_transport_params_rtp/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  receiver_transport_params_rtp
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../receiver_transport_params_websocket/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  receiver_transport_params_websocket
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../sender-receiver-base/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  sender-receiver-base
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../sender-response-schema/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  sender-response-schema
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../sender-stage-schema/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  sender-stage-schema
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      
+      
+      
+        
+      
+      
+      <a href="././" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  sender_transport_params
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../sender_transport_params_dash/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  sender_transport_params_dash
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../sender_transport_params_ext/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  sender_transport_params_ext
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../sender_transport_params_mqtt/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  sender_transport_params_mqtt
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../sender_transport_params_rtp/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  sender_transport_params_rtp
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../sender_transport_params_websocket/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  sender_transport_params_websocket
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../transporttype-response-schema/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  transporttype-response-schema
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../2.1.%20APIs%20-%20Client%20Side%20Implementation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  APIs: Client Side Implementation Notes
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../2.2.%20APIs%20-%20Server%20Side%20Implementation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  APIs: Server Side Implementation Notes
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../3.0.%20Interoperability/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Interoperability
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../3.1.%20Interoperability%20-%20IS-04/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Interoperability: IS-04
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../3.2.%20Interoperability%20-%20Non-NMOS%20Devices/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Interoperability: Non-NMOS Devices
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../4.0.%20Behaviour/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Behaviour
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../4.1.%20Behaviour%20-%20RTP%20Transport%20Type/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Behaviour: RTP Transport Type
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../4.2.%20Behaviour%20-%20MQTT%20Transport%20Type/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Behaviour: MQTT Transport Type
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../4.3.%20Behaviour%20-%20WebSocket%20Transport%20Type/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Behaviour: WebSocket Transport Type
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../5.0.%20Upgrade%20Path/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Upgrade Path
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_14" >
+        
+          
+          <label class="md-nav__link" for="__nav_14" id="__nav_14_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Examples
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_14_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_14">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+  Examples
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../examples/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Examples
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../examples/base-get-200/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Example: base-get-200.json
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../examples/bulk-base-get-200/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Example: bulk-base-get-200.json
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../examples/bulk-post-confirm/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Example: bulk-post-confirm.json
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../examples/bulk-post-fail/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Example: bulk-post-fail.json
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../examples/bulk-receiver-post/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Example: bulk-receiver-post.json
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../examples/bulk-sender-post/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Example: bulk-sender-post.json
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../examples/receiver-active-get-200-mqtt/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Example: receiver-active-get-200-mqtt.json
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../examples/receiver-active-get-200-uninit/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Example: receiver-active-get-200-uninit.json
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../examples/receiver-active-get-200/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Example: receiver-active-get-200.json
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../examples/receiver-constraints-get-200-2022-7/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Example: receiver-constraints-get-200-2022-7.json
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../examples/receiver-constraints-get-200-mqtt/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Example: receiver-constraints-get-200-mqtt.json
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../examples/receiver-constraints-get-200-websocket-ext/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Example: receiver-constraints-get-200-websocket-ext.json
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../examples/receiver-constraints-get-200/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Example: receiver-constraints-get-200.json
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../examples/receiver-get-200-uninit/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Example: receiver-get-200-uninit.json
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../examples/receiver-get-200/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Example: receiver-get-200.json
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../examples/receiver-patch-absolute/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Example: receiver-patch-absolute.json
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../examples/receiver-patch-activation-only/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Example: receiver-patch-activation-only.json
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../examples/receiver-patch-redundant-streams/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Example: receiver-patch-redundant-streams.json
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../examples/receiver-patch-relative/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Example: receiver-patch-relative.json
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../examples/receiver-patch-transportfile/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Example: receiver-patch-transportfile.json
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../examples/receiver-patch-unicast/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Example: receiver-patch-unicast.json
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../examples/receiver-patch/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Example: receiver-patch.json
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../examples/receiver-pending-get-200/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Example: receiver-pending-get-200.json
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../examples/receiver-resource-get-200/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Example: receiver-resource-get-200.json
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../examples/receiver-stage-scheduled-absolute/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Example: receiver-stage-scheduled-absolute.json
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../examples/receiver-stage-scheduled-relative/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Example: receiver-stage-scheduled-relative.json
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../examples/receiver-stage-scheduled-transportfile/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Example: receiver-stage-scheduled-transportfile.json
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../examples/receiver-stage-success-redundant-streams/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Example: receiver-stage-success-redundant-streams.json
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../examples/receiver-stage-success/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Example: receiver-stage-success.json
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../examples/resourcelist-get-200/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Example: resourcelist-get-200.json
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../examples/sender-active-get-mqtt/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Example: sender-active-get-mqtt.json
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../examples/sender-active-get-uninit/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Example: sender-active-get-uninit.json
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../examples/sender-active-get/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Example: sender-active-get.json
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../examples/sender-constraints-get-200-2022-7/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Example: sender-constraints-get-200-2022-7.json
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../examples/sender-constraints-get-200-mqtt/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Example: sender-constraints-get-200-mqtt.json
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../examples/sender-constraints-get-200-websocket-ext/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Example: sender-constraints-get-200-websocket-ext.json
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../examples/sender-constraints-get-200/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Example: sender-constraints-get-200.json
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../examples/sender-get-200-uninit/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Example: sender-get-200-uninit.json
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../examples/sender-get-200/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Example: sender-get-200.json
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../examples/sender-patch-absolute/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Example: sender-patch-absolute.json
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../examples/sender-patch-activation-only/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Example: sender-patch-activation-only.json
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../examples/sender-patch-redundant-streams/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Example: sender-patch-redundant-streams.json
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../examples/sender-patch-relative/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Example: sender-patch-relative.json
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../examples/sender-patch-unicast/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Example: sender-patch-unicast.json
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../examples/sender-patch/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Example: sender-patch.json
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../examples/sender-resource-get-200/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Example: sender-resource-get-200.json
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../examples/sender-stage-absolute-success/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Example: sender-stage-absolute-success.json
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../examples/sender-stage-relative-success/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Example: sender-stage-relative-success.json
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../examples/sender-stage-success-redundant-streams/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Example: sender-stage-success-redundant-streams.json
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../examples/sender-stage-success/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Example: sender-stage-success.json
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../examples/single-root/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Example: single-root.json
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../examples/stage-error/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Example: stage-error.json
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../examples/stage-fail/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Example: stage-fail.json
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../examples/transporttype-get/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Example: transporttype-get.json
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  
+                    
+                    
+                    
+                      
+                    
+                    
+                  
+                  <div class="md-sidebar__inner">
+                    
+
+
+<nav class="md-nav md-nav--secondary" aria-label="On this page">
+  
+  
+  
+    
+  
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+<h1 id="sender_transport_params">sender_transport_params<a class="headerlink" href="#sender_transport_params" title="Permanent link">&para;</a></h1>
+<div class="tabbed-set tabbed-alternate" data-tabs="1:2"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">With refs</label><label for="__tabbed_1_2">Resolved</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<p><a href="../sender_transport_params.json">Raw file</a></p>
+<p><div class="json-viewer">
+  <div class="json-controls" role="group" aria-label="JSON folding controls">
+    <button type="button" class="json-control" data-json-action="expand">Expand all</button>
+    <button type="button" class="json-control" data-json-action="collapse">Collapse all</button>
+  </div>
+<details class="json-node" open>
+  <summary>{ <span class="json-fold">…</span> <span class="json-collapsed-close">}</span></summary>
+  <div class="json-children">
+    <div class="json-line"><span class="json-key">&quot;<span class="arithmatex">\(schema&quot;&lt;/span&gt;: &lt;span class="json-string"&gt;&quot;http://json-schema.org/draft-04/schema#&quot;&lt;/span&gt;&lt;span class="json-comma"&gt;,&lt;/span&gt;&lt;/div&gt;
+    &lt;div class="json-line"&gt;&lt;span class="json-key"&gt;&quot;description&quot;&lt;/span&gt;: &lt;span class="json-string"&gt;&quot;Transport-specific parameters. If this parameter is included in a client request it must include the same number of array elements (or &#x27;legs&#x27;) as specified in the constraints. If no changes are required to a specific leg it must be included as an empty object ({}).&quot;&lt;/span&gt;&lt;span class="json-comma"&gt;,&lt;/span&gt;&lt;/div&gt;
+    &lt;div class="json-line"&gt;&lt;span class="json-key"&gt;&quot;title&quot;&lt;/span&gt;: &lt;span class="json-string"&gt;&quot;Sender Transport Parameters&quot;&lt;/span&gt;&lt;span class="json-comma"&gt;,&lt;/span&gt;&lt;/div&gt;
+    &lt;details class="json-node"&gt;
+      &lt;summary&gt;&lt;span class="json-key"&gt;&quot;anyOf&quot;&lt;/span&gt;: [ &lt;span class="json-fold"&gt;…&lt;/span&gt; &lt;span class="json-collapsed-close"&gt;]&lt;/span&gt;&lt;/summary&gt;
+      &lt;div class="json-children"&gt;
+        &lt;details class="json-node"&gt;
+          &lt;summary&gt;{ &lt;span class="json-fold"&gt;…&lt;/span&gt; &lt;span class="json-collapsed-close"&gt;}&lt;span class="json-comma"&gt;,&lt;/span&gt;&lt;/span&gt;&lt;/summary&gt;
+          &lt;div class="json-children"&gt;
+            &lt;div class="json-line"&gt;&lt;span class="json-key"&gt;&quot;type&quot;&lt;/span&gt;: &lt;span class="json-string"&gt;&quot;array&quot;&lt;/span&gt;&lt;span class="json-comma"&gt;,&lt;/span&gt;&lt;/div&gt;
+            &lt;details class="json-node"&gt;
+              &lt;summary&gt;&lt;span class="json-key"&gt;&quot;items&quot;&lt;/span&gt;: { &lt;span class="json-fold"&gt;…&lt;/span&gt; &lt;span class="json-collapsed-close"&gt;}&lt;/span&gt;&lt;/summary&gt;
+              &lt;div class="json-children"&gt;
+                &lt;div class="json-line"&gt;&lt;span class="json-key"&gt;&quot;\)</span>ref&quot;</span>: <span class="json-string">&quot;sender_transport_params_rtp.json&quot;</span></div>
+              </div>
+              <div class="json-close">}</div>
+            </details>
+          </div>
+          <div class="json-close">}<span class="json-comma">,</span></div>
+        </details>
+        <details class="json-node">
+          <summary>{ <span class="json-fold">…</span> <span class="json-collapsed-close">}<span class="json-comma">,</span></span></summary>
+          <div class="json-children">
+            <div class="json-line"><span class="json-key">&quot;type&quot;</span>: <span class="json-string">&quot;array&quot;</span><span class="json-comma">,</span></div>
+            <details class="json-node">
+              <summary><span class="json-key">&quot;items&quot;</span>: { <span class="json-fold">…</span> <span class="json-collapsed-close">}</span></summary>
+              <div class="json-children">
+                <div class="json-line"><span class="json-key">&quot;<span class="arithmatex">\(ref&quot;&lt;/span&gt;: &lt;span class="json-string"&gt;&quot;sender_transport_params_dash.json&quot;&lt;/span&gt;&lt;/div&gt;
+              &lt;/div&gt;
+              &lt;div class="json-close"&gt;}&lt;/div&gt;
+            &lt;/details&gt;
+          &lt;/div&gt;
+          &lt;div class="json-close"&gt;}&lt;span class="json-comma"&gt;,&lt;/span&gt;&lt;/div&gt;
+        &lt;/details&gt;
+        &lt;details class="json-node"&gt;
+          &lt;summary&gt;{ &lt;span class="json-fold"&gt;…&lt;/span&gt; &lt;span class="json-collapsed-close"&gt;}&lt;span class="json-comma"&gt;,&lt;/span&gt;&lt;/span&gt;&lt;/summary&gt;
+          &lt;div class="json-children"&gt;
+            &lt;div class="json-line"&gt;&lt;span class="json-key"&gt;&quot;type&quot;&lt;/span&gt;: &lt;span class="json-string"&gt;&quot;array&quot;&lt;/span&gt;&lt;span class="json-comma"&gt;,&lt;/span&gt;&lt;/div&gt;
+            &lt;details class="json-node"&gt;
+              &lt;summary&gt;&lt;span class="json-key"&gt;&quot;items&quot;&lt;/span&gt;: { &lt;span class="json-fold"&gt;…&lt;/span&gt; &lt;span class="json-collapsed-close"&gt;}&lt;/span&gt;&lt;/summary&gt;
+              &lt;div class="json-children"&gt;
+                &lt;div class="json-line"&gt;&lt;span class="json-key"&gt;&quot;\)</span>ref&quot;</span>: <span class="json-string">&quot;sender_transport_params_websocket.json&quot;</span></div>
+              </div>
+              <div class="json-close">}</div>
+            </details>
+          </div>
+          <div class="json-close">}<span class="json-comma">,</span></div>
+        </details>
+        <details class="json-node">
+          <summary>{ <span class="json-fold">…</span> <span class="json-collapsed-close">}</span></summary>
+          <div class="json-children">
+            <div class="json-line"><span class="json-key">&quot;type&quot;</span>: <span class="json-string">&quot;array&quot;</span><span class="json-comma">,</span></div>
+            <details class="json-node">
+              <summary><span class="json-key">&quot;items&quot;</span>: { <span class="json-fold">…</span> <span class="json-collapsed-close">}</span></summary>
+              <div class="json-children">
+                <div class="json-line"><span class="json-key">&quot;$ref&quot;</span>: <span class="json-string">&quot;sender_transport_params_mqtt.json&quot;</span></div>
+              </div>
+              <div class="json-close">}</div>
+            </details>
+          </div>
+          <div class="json-close">}</div>
+        </details>
+      </div>
+      <div class="json-close">]</div>
+    </details>
+  </div>
+  <div class="json-close">}</div>
+</details>
+</div></p>
+</div>
+<div class="tabbed-block">
+<p><a href="../resolved/sender_transport_params.json">Resolved JSON file</a></p>
+<p><div class="json-viewer">
+  <div class="json-controls" role="group" aria-label="JSON folding controls">
+    <button type="button" class="json-control" data-json-action="expand">Expand all</button>
+    <button type="button" class="json-control" data-json-action="collapse">Collapse all</button>
+  </div>
+<details class="json-node" open>
+  <summary>{ <span class="json-fold">…</span> <span class="json-collapsed-close">}</span></summary>
+  <div class="json-children">
+    <div class="json-line"><span class="json-key">&quot;<span class="arithmatex">\(schema&quot;&lt;/span&gt;: &lt;span class="json-string"&gt;&quot;http://json-schema.org/draft-04/schema#&quot;&lt;/span&gt;&lt;span class="json-comma"&gt;,&lt;/span&gt;&lt;/div&gt;
+    &lt;div class="json-line"&gt;&lt;span class="json-key"&gt;&quot;description&quot;&lt;/span&gt;: &lt;span class="json-string"&gt;&quot;Transport-specific parameters. If this parameter is included in a client request it must include the same number of array elements (or &#x27;legs&#x27;) as specified in the constraints. If no changes are required to a specific leg it must be included as an empty object ({}).&quot;&lt;/span&gt;&lt;span class="json-comma"&gt;,&lt;/span&gt;&lt;/div&gt;
+    &lt;div class="json-line"&gt;&lt;span class="json-key"&gt;&quot;title&quot;&lt;/span&gt;: &lt;span class="json-string"&gt;&quot;Sender Transport Parameters&quot;&lt;/span&gt;&lt;span class="json-comma"&gt;,&lt;/span&gt;&lt;/div&gt;
+    &lt;details class="json-node"&gt;
+      &lt;summary&gt;&lt;span class="json-key"&gt;&quot;anyOf&quot;&lt;/span&gt;: [ &lt;span class="json-fold"&gt;…&lt;/span&gt; &lt;span class="json-collapsed-close"&gt;]&lt;/span&gt;&lt;/summary&gt;
+      &lt;div class="json-children"&gt;
+        &lt;details class="json-node"&gt;
+          &lt;summary&gt;{ &lt;span class="json-fold"&gt;…&lt;/span&gt; &lt;span class="json-collapsed-close"&gt;}&lt;span class="json-comma"&gt;,&lt;/span&gt;&lt;/span&gt;&lt;/summary&gt;
+          &lt;div class="json-children"&gt;
+            &lt;div class="json-line"&gt;&lt;span class="json-key"&gt;&quot;type&quot;&lt;/span&gt;: &lt;span class="json-string"&gt;&quot;array&quot;&lt;/span&gt;&lt;span class="json-comma"&gt;,&lt;/span&gt;&lt;/div&gt;
+            &lt;details class="json-node"&gt;
+              &lt;summary&gt;&lt;span class="json-key"&gt;&quot;items&quot;&lt;/span&gt;: { &lt;span class="json-fold"&gt;…&lt;/span&gt; &lt;span class="json-collapsed-close"&gt;}&lt;/span&gt;&lt;/summary&gt;
+              &lt;div class="json-children"&gt;
+                &lt;div class="json-line"&gt;&lt;span class="json-key"&gt;&quot;\)</span>schema&quot;</span>: <span class="json-string">&quot;<a href="http://json-schema.org/draft-04/schema#&amp;quot">http://json-schema.org/draft-04/schema#&amp;quot</a>;</span><span class="json-comma">,</span></div>
+                <div class="json-line"><span class="json-key">&quot;description&quot;</span>: <span class="json-string">&quot;Describes RTP Sender transport parameters. The constraints in this schema are minimum constraints, but may be further constrained at the constraints endpoint. As a minimum all senders must support <code>source_ip</code>, <code>destination_ip</code>, <code>source_port</code>, <code>rtp_enabled</code> and <code>destination_port</code>. Senders supporting FEC and/or RTCP must support parameters prefixed with <code>fec</code> and <code>rtcp</code> respectively.&quot;</span><span class="json-comma">,</span></div>
+                <div class="json-line"><span class="json-key">&quot;title&quot;</span>: <span class="json-string">&quot;Sender Output&quot;</span><span class="json-comma">,</span></div>
+                <div class="json-line"><span class="json-key">&quot;type&quot;</span>: <span class="json-string">&quot;object&quot;</span><span class="json-comma">,</span></div>
+                <details class="json-node">
+                  <summary><span class="json-key">&quot;properties&quot;</span>: { <span class="json-fold">…</span> <span class="json-collapsed-close">}<span class="json-comma">,</span></span></summary>
+                  <div class="json-children">
+                    <details class="json-node">
+                      <summary><span class="json-key">&quot;source_ip&quot;</span>: { <span class="json-fold">…</span> <span class="json-collapsed-close">}<span class="json-comma">,</span></span></summary>
+                      <div class="json-children">
+                        <div class="json-line"><span class="json-key">&quot;type&quot;</span>: <span class="json-string">&quot;string&quot;</span><span class="json-comma">,</span></div>
+                        <div class="json-line"><span class="json-key">&quot;description&quot;</span>: <span class="json-string">&quot;IP address from which RTP packets will be sent (IP address of interface bound to this output). The sender should provide an enum in the constraints endpoint, which should contain the available interface addresses. If the parameter is set to auto the sender should establish for itself which interface it should use, based on routing rules or its own internal configuration.&quot;</span><span class="json-comma">,</span></div>
+                        <details class="json-node">
+                          <summary><span class="json-key">&quot;anyOf&quot;</span>: [ <span class="json-fold">…</span> <span class="json-collapsed-close">]</span></summary>
+                          <div class="json-children">
+                            <details class="json-node">
+                              <summary>{ <span class="json-fold">…</span> <span class="json-collapsed-close">}<span class="json-comma">,</span></span></summary>
+                              <div class="json-children">
+                                <div class="json-line"><span class="json-key">&quot;format&quot;</span>: <span class="json-string">&quot;ipv4&quot;</span></div>
+                              </div>
+                              <div class="json-close">}<span class="json-comma">,</span></div>
+                            </details>
+                            <details class="json-node">
+                              <summary>{ <span class="json-fold">…</span> <span class="json-collapsed-close">}<span class="json-comma">,</span></span></summary>
+                              <div class="json-children">
+                                <div class="json-line"><span class="json-key">&quot;format&quot;</span>: <span class="json-string">&quot;ipv6&quot;</span></div>
+                              </div>
+                              <div class="json-close">}<span class="json-comma">,</span></div>
+                            </details>
+                            <details class="json-node">
+                              <summary>{ <span class="json-fold">…</span> <span class="json-collapsed-close">}</span></summary>
+                              <div class="json-children">
+                                <div class="json-line"><span class="json-key">&quot;pattern&quot;</span>: <span class="json-string">&quot;^auto<span class="arithmatex">\(&quot;&lt;/span&gt;&lt;/div&gt;
+                              &lt;/div&gt;
+                              &lt;div class="json-close"&gt;}&lt;/div&gt;
+                            &lt;/details&gt;
+                          &lt;/div&gt;
+                          &lt;div class="json-close"&gt;]&lt;/div&gt;
+                        &lt;/details&gt;
+                      &lt;/div&gt;
+                      &lt;div class="json-close"&gt;}&lt;span class="json-comma"&gt;,&lt;/span&gt;&lt;/div&gt;
+                    &lt;/details&gt;
+                    &lt;details class="json-node"&gt;
+                      &lt;summary&gt;&lt;span class="json-key"&gt;&quot;destination_ip&quot;&lt;/span&gt;: { &lt;span class="json-fold"&gt;…&lt;/span&gt; &lt;span class="json-collapsed-close"&gt;}&lt;span class="json-comma"&gt;,&lt;/span&gt;&lt;/span&gt;&lt;/summary&gt;
+                      &lt;div class="json-children"&gt;
+                        &lt;div class="json-line"&gt;&lt;span class="json-key"&gt;&quot;type&quot;&lt;/span&gt;: &lt;span class="json-string"&gt;&quot;string&quot;&lt;/span&gt;&lt;span class="json-comma"&gt;,&lt;/span&gt;&lt;/div&gt;
+                        &lt;div class="json-line"&gt;&lt;span class="json-key"&gt;&quot;description&quot;&lt;/span&gt;: &lt;span class="json-string"&gt;&quot;IP address to which RTP packets will be sent. If auto is set the sender should select a multicast address to send to itself. For example it may implement MADCAP (RFC 2730), ZMAAP, or be allocated address by some other system responsible for co-ordination multicast address use.&quot;&lt;/span&gt;&lt;span class="json-comma"&gt;,&lt;/span&gt;&lt;/div&gt;
+                        &lt;details class="json-node"&gt;
+                          &lt;summary&gt;&lt;span class="json-key"&gt;&quot;anyOf&quot;&lt;/span&gt;: [ &lt;span class="json-fold"&gt;…&lt;/span&gt; &lt;span class="json-collapsed-close"&gt;]&lt;/span&gt;&lt;/summary&gt;
+                          &lt;div class="json-children"&gt;
+                            &lt;details class="json-node"&gt;
+                              &lt;summary&gt;{ &lt;span class="json-fold"&gt;…&lt;/span&gt; &lt;span class="json-collapsed-close"&gt;}&lt;span class="json-comma"&gt;,&lt;/span&gt;&lt;/span&gt;&lt;/summary&gt;
+                              &lt;div class="json-children"&gt;
+                                &lt;div class="json-line"&gt;&lt;span class="json-key"&gt;&quot;format&quot;&lt;/span&gt;: &lt;span class="json-string"&gt;&quot;ipv4&quot;&lt;/span&gt;&lt;/div&gt;
+                              &lt;/div&gt;
+                              &lt;div class="json-close"&gt;}&lt;span class="json-comma"&gt;,&lt;/span&gt;&lt;/div&gt;
+                            &lt;/details&gt;
+                            &lt;details class="json-node"&gt;
+                              &lt;summary&gt;{ &lt;span class="json-fold"&gt;…&lt;/span&gt; &lt;span class="json-collapsed-close"&gt;}&lt;span class="json-comma"&gt;,&lt;/span&gt;&lt;/span&gt;&lt;/summary&gt;
+                              &lt;div class="json-children"&gt;
+                                &lt;div class="json-line"&gt;&lt;span class="json-key"&gt;&quot;format&quot;&lt;/span&gt;: &lt;span class="json-string"&gt;&quot;ipv6&quot;&lt;/span&gt;&lt;/div&gt;
+                              &lt;/div&gt;
+                              &lt;div class="json-close"&gt;}&lt;span class="json-comma"&gt;,&lt;/span&gt;&lt;/div&gt;
+                            &lt;/details&gt;
+                            &lt;details class="json-node"&gt;
+                              &lt;summary&gt;{ &lt;span class="json-fold"&gt;…&lt;/span&gt; &lt;span class="json-collapsed-close"&gt;}&lt;/span&gt;&lt;/summary&gt;
+                              &lt;div class="json-children"&gt;
+                                &lt;div class="json-line"&gt;&lt;span class="json-key"&gt;&quot;pattern&quot;&lt;/span&gt;: &lt;span class="json-string"&gt;&quot;^auto\)</span>&quot;</span></div>
+                              </div>
+                              <div class="json-close">}</div>
+                            </details>
+                          </div>
+                          <div class="json-close">]</div>
+                        </details>
+                      </div>
+                      <div class="json-close">}<span class="json-comma">,</span></div>
+                    </details>
+                    <details class="json-node">
+                      <summary><span class="json-key">&quot;source_port&quot;</span>: { <span class="json-fold">…</span> <span class="json-collapsed-close">}<span class="json-comma">,</span></span></summary>
+                      <div class="json-children">
+                        <details class="json-node">
+                          <summary><span class="json-key">&quot;type&quot;</span>: [ <span class="json-fold">…</span> <span class="json-collapsed-close">]<span class="json-comma">,</span></span></summary>
+                          <div class="json-children">
+                            <div class="json-line"><span class="json-string">&quot;integer&quot;</span><span class="json-comma">,</span></div>
+                            <div class="json-line"><span class="json-string">&quot;string&quot;</span></div>
+                          </div>
+                          <div class="json-close">]<span class="json-comma">,</span></div>
+                        </details>
+                        <div class="json-line"><span class="json-key">&quot;description&quot;</span>: <span class="json-string">&quot;source port for RTP packets (auto = 5004 by default)&quot;</span><span class="json-comma">,</span></div>
+                        <div class="json-line"><span class="json-key">&quot;minimum&quot;</span>: <span class="json-number">0</span><span class="json-comma">,</span></div>
+                        <div class="json-line"><span class="json-key">&quot;maximum&quot;</span>: <span class="json-number">65535</span><span class="json-comma">,</span></div>
+                        <div class="json-line"><span class="json-key">&quot;pattern&quot;</span>: <span class="json-string">&quot;^auto<span class="arithmatex">\(&quot;&lt;/span&gt;&lt;/div&gt;
+                      &lt;/div&gt;
+                      &lt;div class="json-close"&gt;}&lt;span class="json-comma"&gt;,&lt;/span&gt;&lt;/div&gt;
+                    &lt;/details&gt;
+                    &lt;details class="json-node"&gt;
+                      &lt;summary&gt;&lt;span class="json-key"&gt;&quot;destination_port&quot;&lt;/span&gt;: { &lt;span class="json-fold"&gt;…&lt;/span&gt; &lt;span class="json-collapsed-close"&gt;}&lt;span class="json-comma"&gt;,&lt;/span&gt;&lt;/span&gt;&lt;/summary&gt;
+                      &lt;div class="json-children"&gt;
+                        &lt;details class="json-node"&gt;
+                          &lt;summary&gt;&lt;span class="json-key"&gt;&quot;type&quot;&lt;/span&gt;: [ &lt;span class="json-fold"&gt;…&lt;/span&gt; &lt;span class="json-collapsed-close"&gt;]&lt;span class="json-comma"&gt;,&lt;/span&gt;&lt;/span&gt;&lt;/summary&gt;
+                          &lt;div class="json-children"&gt;
+                            &lt;div class="json-line"&gt;&lt;span class="json-string"&gt;&quot;integer&quot;&lt;/span&gt;&lt;span class="json-comma"&gt;,&lt;/span&gt;&lt;/div&gt;
+                            &lt;div class="json-line"&gt;&lt;span class="json-string"&gt;&quot;string&quot;&lt;/span&gt;&lt;/div&gt;
+                          &lt;/div&gt;
+                          &lt;div class="json-close"&gt;]&lt;span class="json-comma"&gt;,&lt;/span&gt;&lt;/div&gt;
+                        &lt;/details&gt;
+                        &lt;div class="json-line"&gt;&lt;span class="json-key"&gt;&quot;description&quot;&lt;/span&gt;: &lt;span class="json-string"&gt;&quot;destination port for RTP packets (auto = 5004 by default)&quot;&lt;/span&gt;&lt;span class="json-comma"&gt;,&lt;/span&gt;&lt;/div&gt;
+                        &lt;div class="json-line"&gt;&lt;span class="json-key"&gt;&quot;minimum&quot;&lt;/span&gt;: &lt;span class="json-number"&gt;1&lt;/span&gt;&lt;span class="json-comma"&gt;,&lt;/span&gt;&lt;/div&gt;
+                        &lt;div class="json-line"&gt;&lt;span class="json-key"&gt;&quot;maximum&quot;&lt;/span&gt;: &lt;span class="json-number"&gt;65535&lt;/span&gt;&lt;span class="json-comma"&gt;,&lt;/span&gt;&lt;/div&gt;
+                        &lt;div class="json-line"&gt;&lt;span class="json-key"&gt;&quot;pattern&quot;&lt;/span&gt;: &lt;span class="json-string"&gt;&quot;^auto\)</span>&quot;</span></div>
+                      </div>
+                      <div class="json-close">}<span class="json-comma">,</span></div>
+                    </details>
+                    <details class="json-node">
+                      <summary><span class="json-key">&quot;fec_enabled&quot;</span>: { <span class="json-fold">…</span> <span class="json-collapsed-close">}<span class="json-comma">,</span></span></summary>
+                      <div class="json-children">
+                        <div class="json-line"><span class="json-key">&quot;type&quot;</span>: <span class="json-string">&quot;boolean&quot;</span><span class="json-comma">,</span></div>
+                        <div class="json-line"><span class="json-key">&quot;description&quot;</span>: <span class="json-string">&quot;FEC on/off&quot;</span></div>
+                      </div>
+                      <div class="json-close">}<span class="json-comma">,</span></div>
+                    </details>
+                    <details class="json-node">
+                      <summary><span class="json-key">&quot;fec_destination_ip&quot;</span>: { <span class="json-fold">…</span> <span class="json-collapsed-close">}<span class="json-comma">,</span></span></summary>
+                      <div class="json-children">
+                        <div class="json-line"><span class="json-key">&quot;type&quot;</span>: <span class="json-string">&quot;string&quot;</span><span class="json-comma">,</span></div>
+                        <div class="json-line"><span class="json-key">&quot;description&quot;</span>: <span class="json-string">&quot;May be used if NAT is being used at the destination (auto = destination_ip by default)&quot;</span><span class="json-comma">,</span></div>
+                        <details class="json-node">
+                          <summary><span class="json-key">&quot;anyOf&quot;</span>: [ <span class="json-fold">…</span> <span class="json-collapsed-close">]</span></summary>
+                          <div class="json-children">
+                            <details class="json-node">
+                              <summary>{ <span class="json-fold">…</span> <span class="json-collapsed-close">}<span class="json-comma">,</span></span></summary>
+                              <div class="json-children">
+                                <div class="json-line"><span class="json-key">&quot;format&quot;</span>: <span class="json-string">&quot;ipv4&quot;</span></div>
+                              </div>
+                              <div class="json-close">}<span class="json-comma">,</span></div>
+                            </details>
+                            <details class="json-node">
+                              <summary>{ <span class="json-fold">…</span> <span class="json-collapsed-close">}<span class="json-comma">,</span></span></summary>
+                              <div class="json-children">
+                                <div class="json-line"><span class="json-key">&quot;format&quot;</span>: <span class="json-string">&quot;ipv6&quot;</span></div>
+                              </div>
+                              <div class="json-close">}<span class="json-comma">,</span></div>
+                            </details>
+                            <details class="json-node">
+                              <summary>{ <span class="json-fold">…</span> <span class="json-collapsed-close">}</span></summary>
+                              <div class="json-children">
+                                <div class="json-line"><span class="json-key">&quot;pattern&quot;</span>: <span class="json-string">&quot;^auto<span class="arithmatex">\(&quot;&lt;/span&gt;&lt;/div&gt;
+                              &lt;/div&gt;
+                              &lt;div class="json-close"&gt;}&lt;/div&gt;
+                            &lt;/details&gt;
+                          &lt;/div&gt;
+                          &lt;div class="json-close"&gt;]&lt;/div&gt;
+                        &lt;/details&gt;
+                      &lt;/div&gt;
+                      &lt;div class="json-close"&gt;}&lt;span class="json-comma"&gt;,&lt;/span&gt;&lt;/div&gt;
+                    &lt;/details&gt;
+                    &lt;details class="json-node"&gt;
+                      &lt;summary&gt;&lt;span class="json-key"&gt;&quot;fec_type&quot;&lt;/span&gt;: { &lt;span class="json-fold"&gt;…&lt;/span&gt; &lt;span class="json-collapsed-close"&gt;}&lt;span class="json-comma"&gt;,&lt;/span&gt;&lt;/span&gt;&lt;/summary&gt;
+                      &lt;div class="json-children"&gt;
+                        &lt;div class="json-line"&gt;&lt;span class="json-key"&gt;&quot;type&quot;&lt;/span&gt;: &lt;span class="json-string"&gt;&quot;string&quot;&lt;/span&gt;&lt;span class="json-comma"&gt;,&lt;/span&gt;&lt;/div&gt;
+                        &lt;div class="json-line"&gt;&lt;span class="json-key"&gt;&quot;description&quot;&lt;/span&gt;: &lt;span class="json-string"&gt;&quot;forward error correction mode to apply&quot;&lt;/span&gt;&lt;span class="json-comma"&gt;,&lt;/span&gt;&lt;/div&gt;
+                        &lt;details class="json-node"&gt;
+                          &lt;summary&gt;&lt;span class="json-key"&gt;&quot;enum&quot;&lt;/span&gt;: [ &lt;span class="json-fold"&gt;…&lt;/span&gt; &lt;span class="json-collapsed-close"&gt;]&lt;/span&gt;&lt;/summary&gt;
+                          &lt;div class="json-children"&gt;
+                            &lt;div class="json-line"&gt;&lt;span class="json-string"&gt;&quot;XOR&quot;&lt;/span&gt;&lt;span class="json-comma"&gt;,&lt;/span&gt;&lt;/div&gt;
+                            &lt;div class="json-line"&gt;&lt;span class="json-string"&gt;&quot;Reed-Solomon&quot;&lt;/span&gt;&lt;/div&gt;
+                          &lt;/div&gt;
+                          &lt;div class="json-close"&gt;]&lt;/div&gt;
+                        &lt;/details&gt;
+                      &lt;/div&gt;
+                      &lt;div class="json-close"&gt;}&lt;span class="json-comma"&gt;,&lt;/span&gt;&lt;/div&gt;
+                    &lt;/details&gt;
+                    &lt;details class="json-node"&gt;
+                      &lt;summary&gt;&lt;span class="json-key"&gt;&quot;fec_mode&quot;&lt;/span&gt;: { &lt;span class="json-fold"&gt;…&lt;/span&gt; &lt;span class="json-collapsed-close"&gt;}&lt;span class="json-comma"&gt;,&lt;/span&gt;&lt;/span&gt;&lt;/summary&gt;
+                      &lt;div class="json-children"&gt;
+                        &lt;div class="json-line"&gt;&lt;span class="json-key"&gt;&quot;type&quot;&lt;/span&gt;: &lt;span class="json-string"&gt;&quot;string&quot;&lt;/span&gt;&lt;span class="json-comma"&gt;,&lt;/span&gt;&lt;/div&gt;
+                        &lt;div class="json-line"&gt;&lt;span class="json-key"&gt;&quot;description&quot;&lt;/span&gt;: &lt;span class="json-string"&gt;&quot;forward error correction mode to apply&quot;&lt;/span&gt;&lt;span class="json-comma"&gt;,&lt;/span&gt;&lt;/div&gt;
+                        &lt;details class="json-node"&gt;
+                          &lt;summary&gt;&lt;span class="json-key"&gt;&quot;enum&quot;&lt;/span&gt;: [ &lt;span class="json-fold"&gt;…&lt;/span&gt; &lt;span class="json-collapsed-close"&gt;]&lt;/span&gt;&lt;/summary&gt;
+                          &lt;div class="json-children"&gt;
+                            &lt;div class="json-line"&gt;&lt;span class="json-string"&gt;&quot;1D&quot;&lt;/span&gt;&lt;span class="json-comma"&gt;,&lt;/span&gt;&lt;/div&gt;
+                            &lt;div class="json-line"&gt;&lt;span class="json-string"&gt;&quot;2D&quot;&lt;/span&gt;&lt;/div&gt;
+                          &lt;/div&gt;
+                          &lt;div class="json-close"&gt;]&lt;/div&gt;
+                        &lt;/details&gt;
+                      &lt;/div&gt;
+                      &lt;div class="json-close"&gt;}&lt;span class="json-comma"&gt;,&lt;/span&gt;&lt;/div&gt;
+                    &lt;/details&gt;
+                    &lt;details class="json-node"&gt;
+                      &lt;summary&gt;&lt;span class="json-key"&gt;&quot;fec_block_width&quot;&lt;/span&gt;: { &lt;span class="json-fold"&gt;…&lt;/span&gt; &lt;span class="json-collapsed-close"&gt;}&lt;span class="json-comma"&gt;,&lt;/span&gt;&lt;/span&gt;&lt;/summary&gt;
+                      &lt;div class="json-children"&gt;
+                        &lt;div class="json-line"&gt;&lt;span class="json-key"&gt;&quot;type&quot;&lt;/span&gt;: &lt;span class="json-string"&gt;&quot;integer&quot;&lt;/span&gt;&lt;span class="json-comma"&gt;,&lt;/span&gt;&lt;/div&gt;
+                        &lt;div class="json-line"&gt;&lt;span class="json-key"&gt;&quot;description&quot;&lt;/span&gt;: &lt;span class="json-string"&gt;&quot;width of block over which FEC is calculated in packets&quot;&lt;/span&gt;&lt;span class="json-comma"&gt;,&lt;/span&gt;&lt;/div&gt;
+                        &lt;div class="json-line"&gt;&lt;span class="json-key"&gt;&quot;minimum&quot;&lt;/span&gt;: &lt;span class="json-number"&gt;4&lt;/span&gt;&lt;span class="json-comma"&gt;,&lt;/span&gt;&lt;/div&gt;
+                        &lt;div class="json-line"&gt;&lt;span class="json-key"&gt;&quot;maximum&quot;&lt;/span&gt;: &lt;span class="json-number"&gt;200&lt;/span&gt;&lt;/div&gt;
+                      &lt;/div&gt;
+                      &lt;div class="json-close"&gt;}&lt;span class="json-comma"&gt;,&lt;/span&gt;&lt;/div&gt;
+                    &lt;/details&gt;
+                    &lt;details class="json-node"&gt;
+                      &lt;summary&gt;&lt;span class="json-key"&gt;&quot;fec_block_height&quot;&lt;/span&gt;: { &lt;span class="json-fold"&gt;…&lt;/span&gt; &lt;span class="json-collapsed-close"&gt;}&lt;span class="json-comma"&gt;,&lt;/span&gt;&lt;/span&gt;&lt;/summary&gt;
+                      &lt;div class="json-children"&gt;
+                        &lt;div class="json-line"&gt;&lt;span class="json-key"&gt;&quot;type&quot;&lt;/span&gt;: &lt;span class="json-string"&gt;&quot;integer&quot;&lt;/span&gt;&lt;span class="json-comma"&gt;,&lt;/span&gt;&lt;/div&gt;
+                        &lt;div class="json-line"&gt;&lt;span class="json-key"&gt;&quot;description&quot;&lt;/span&gt;: &lt;span class="json-string"&gt;&quot;height of block over which FEC is calculated in packets&quot;&lt;/span&gt;&lt;span class="json-comma"&gt;,&lt;/span&gt;&lt;/div&gt;
+                        &lt;div class="json-line"&gt;&lt;span class="json-key"&gt;&quot;minimum&quot;&lt;/span&gt;: &lt;span class="json-number"&gt;4&lt;/span&gt;&lt;span class="json-comma"&gt;,&lt;/span&gt;&lt;/div&gt;
+                        &lt;div class="json-line"&gt;&lt;span class="json-key"&gt;&quot;maximum&quot;&lt;/span&gt;: &lt;span class="json-number"&gt;200&lt;/span&gt;&lt;/div&gt;
+                      &lt;/div&gt;
+                      &lt;div class="json-close"&gt;}&lt;span class="json-comma"&gt;,&lt;/span&gt;&lt;/div&gt;
+                    &lt;/details&gt;
+                    &lt;details class="json-node"&gt;
+                      &lt;summary&gt;&lt;span class="json-key"&gt;&quot;fec1D_destination_port&quot;&lt;/span&gt;: { &lt;span class="json-fold"&gt;…&lt;/span&gt; &lt;span class="json-collapsed-close"&gt;}&lt;span class="json-comma"&gt;,&lt;/span&gt;&lt;/span&gt;&lt;/summary&gt;
+                      &lt;div class="json-children"&gt;
+                        &lt;details class="json-node"&gt;
+                          &lt;summary&gt;&lt;span class="json-key"&gt;&quot;type&quot;&lt;/span&gt;: [ &lt;span class="json-fold"&gt;…&lt;/span&gt; &lt;span class="json-collapsed-close"&gt;]&lt;span class="json-comma"&gt;,&lt;/span&gt;&lt;/span&gt;&lt;/summary&gt;
+                          &lt;div class="json-children"&gt;
+                            &lt;div class="json-line"&gt;&lt;span class="json-string"&gt;&quot;integer&quot;&lt;/span&gt;&lt;span class="json-comma"&gt;,&lt;/span&gt;&lt;/div&gt;
+                            &lt;div class="json-line"&gt;&lt;span class="json-string"&gt;&quot;string&quot;&lt;/span&gt;&lt;/div&gt;
+                          &lt;/div&gt;
+                          &lt;div class="json-close"&gt;]&lt;span class="json-comma"&gt;,&lt;/span&gt;&lt;/div&gt;
+                        &lt;/details&gt;
+                        &lt;div class="json-line"&gt;&lt;span class="json-key"&gt;&quot;description&quot;&lt;/span&gt;: &lt;span class="json-string"&gt;&quot;destination port for RTP Column FEC packets (auto = RTP destination_port + 2 by default)&quot;&lt;/span&gt;&lt;span class="json-comma"&gt;,&lt;/span&gt;&lt;/div&gt;
+                        &lt;div class="json-line"&gt;&lt;span class="json-key"&gt;&quot;minimum&quot;&lt;/span&gt;: &lt;span class="json-number"&gt;1&lt;/span&gt;&lt;span class="json-comma"&gt;,&lt;/span&gt;&lt;/div&gt;
+                        &lt;div class="json-line"&gt;&lt;span class="json-key"&gt;&quot;maximum&quot;&lt;/span&gt;: &lt;span class="json-number"&gt;65535&lt;/span&gt;&lt;span class="json-comma"&gt;,&lt;/span&gt;&lt;/div&gt;
+                        &lt;div class="json-line"&gt;&lt;span class="json-key"&gt;&quot;pattern&quot;&lt;/span&gt;: &lt;span class="json-string"&gt;&quot;^auto\)</span>&quot;</span></div>
+                      </div>
+                      <div class="json-close">}<span class="json-comma">,</span></div>
+                    </details>
+                    <details class="json-node">
+                      <summary><span class="json-key">&quot;fec2D_destination_port&quot;</span>: { <span class="json-fold">…</span> <span class="json-collapsed-close">}<span class="json-comma">,</span></span></summary>
+                      <div class="json-children">
+                        <details class="json-node">
+                          <summary><span class="json-key">&quot;type&quot;</span>: [ <span class="json-fold">…</span> <span class="json-collapsed-close">]<span class="json-comma">,</span></span></summary>
+                          <div class="json-children">
+                            <div class="json-line"><span class="json-string">&quot;integer&quot;</span><span class="json-comma">,</span></div>
+                            <div class="json-line"><span class="json-string">&quot;string&quot;</span></div>
+                          </div>
+                          <div class="json-close">]<span class="json-comma">,</span></div>
+                        </details>
+                        <div class="json-line"><span class="json-key">&quot;description&quot;</span>: <span class="json-string">&quot;destination port for RTP Row FEC packets (auto = RTP destination_port + 4 by default)&quot;</span><span class="json-comma">,</span></div>
+                        <div class="json-line"><span class="json-key">&quot;minimum&quot;</span>: <span class="json-number">1</span><span class="json-comma">,</span></div>
+                        <div class="json-line"><span class="json-key">&quot;maximum&quot;</span>: <span class="json-number">65535</span><span class="json-comma">,</span></div>
+                        <div class="json-line"><span class="json-key">&quot;pattern&quot;</span>: <span class="json-string">&quot;^auto<span class="arithmatex">\(&quot;&lt;/span&gt;&lt;/div&gt;
+                      &lt;/div&gt;
+                      &lt;div class="json-close"&gt;}&lt;span class="json-comma"&gt;,&lt;/span&gt;&lt;/div&gt;
+                    &lt;/details&gt;
+                    &lt;details class="json-node"&gt;
+                      &lt;summary&gt;&lt;span class="json-key"&gt;&quot;fec1D_source_port&quot;&lt;/span&gt;: { &lt;span class="json-fold"&gt;…&lt;/span&gt; &lt;span class="json-collapsed-close"&gt;}&lt;span class="json-comma"&gt;,&lt;/span&gt;&lt;/span&gt;&lt;/summary&gt;
+                      &lt;div class="json-children"&gt;
+                        &lt;details class="json-node"&gt;
+                          &lt;summary&gt;&lt;span class="json-key"&gt;&quot;type&quot;&lt;/span&gt;: [ &lt;span class="json-fold"&gt;…&lt;/span&gt; &lt;span class="json-collapsed-close"&gt;]&lt;span class="json-comma"&gt;,&lt;/span&gt;&lt;/span&gt;&lt;/summary&gt;
+                          &lt;div class="json-children"&gt;
+                            &lt;div class="json-line"&gt;&lt;span class="json-string"&gt;&quot;integer&quot;&lt;/span&gt;&lt;span class="json-comma"&gt;,&lt;/span&gt;&lt;/div&gt;
+                            &lt;div class="json-line"&gt;&lt;span class="json-string"&gt;&quot;string&quot;&lt;/span&gt;&lt;/div&gt;
+                          &lt;/div&gt;
+                          &lt;div class="json-close"&gt;]&lt;span class="json-comma"&gt;,&lt;/span&gt;&lt;/div&gt;
+                        &lt;/details&gt;
+                        &lt;div class="json-line"&gt;&lt;span class="json-key"&gt;&quot;description&quot;&lt;/span&gt;: &lt;span class="json-string"&gt;&quot;source port for RTP FEC packets (auto = RTP source_port + 2 by default)&quot;&lt;/span&gt;&lt;span class="json-comma"&gt;,&lt;/span&gt;&lt;/div&gt;
+                        &lt;div class="json-line"&gt;&lt;span class="json-key"&gt;&quot;minimum&quot;&lt;/span&gt;: &lt;span class="json-number"&gt;0&lt;/span&gt;&lt;span class="json-comma"&gt;,&lt;/span&gt;&lt;/div&gt;
+                        &lt;div class="json-line"&gt;&lt;span class="json-key"&gt;&quot;maximum&quot;&lt;/span&gt;: &lt;span class="json-number"&gt;65535&lt;/span&gt;&lt;span class="json-comma"&gt;,&lt;/span&gt;&lt;/div&gt;
+                        &lt;div class="json-line"&gt;&lt;span class="json-key"&gt;&quot;pattern&quot;&lt;/span&gt;: &lt;span class="json-string"&gt;&quot;^auto\)</span>&quot;</span></div>
+                      </div>
+                      <div class="json-close">}<span class="json-comma">,</span></div>
+                    </details>
+                    <details class="json-node">
+                      <summary><span class="json-key">&quot;fec2D_source_port&quot;</span>: { <span class="json-fold">…</span> <span class="json-collapsed-close">}<span class="json-comma">,</span></span></summary>
+                      <div class="json-children">
+                        <details class="json-node">
+                          <summary><span class="json-key">&quot;type&quot;</span>: [ <span class="json-fold">…</span> <span class="json-collapsed-close">]<span class="json-comma">,</span></span></summary>
+                          <div class="json-children">
+                            <div class="json-line"><span class="json-string">&quot;integer&quot;</span><span class="json-comma">,</span></div>
+                            <div class="json-line"><span class="json-string">&quot;string&quot;</span></div>
+                          </div>
+                          <div class="json-close">]<span class="json-comma">,</span></div>
+                        </details>
+                        <div class="json-line"><span class="json-key">&quot;description&quot;</span>: <span class="json-string">&quot;source port for RTP FEC packets (auto = RTP source_port + 4 by default)&quot;</span><span class="json-comma">,</span></div>
+                        <div class="json-line"><span class="json-key">&quot;minimum&quot;</span>: <span class="json-number">0</span><span class="json-comma">,</span></div>
+                        <div class="json-line"><span class="json-key">&quot;maximum&quot;</span>: <span class="json-number">65535</span><span class="json-comma">,</span></div>
+                        <div class="json-line"><span class="json-key">&quot;pattern&quot;</span>: <span class="json-string">&quot;^auto<span class="arithmatex">\(&quot;&lt;/span&gt;&lt;/div&gt;
+                      &lt;/div&gt;
+                      &lt;div class="json-close"&gt;}&lt;span class="json-comma"&gt;,&lt;/span&gt;&lt;/div&gt;
+                    &lt;/details&gt;
+                    &lt;details class="json-node"&gt;
+                      &lt;summary&gt;&lt;span class="json-key"&gt;&quot;rtcp_enabled&quot;&lt;/span&gt;: { &lt;span class="json-fold"&gt;…&lt;/span&gt; &lt;span class="json-collapsed-close"&gt;}&lt;span class="json-comma"&gt;,&lt;/span&gt;&lt;/span&gt;&lt;/summary&gt;
+                      &lt;div class="json-children"&gt;
+                        &lt;div class="json-line"&gt;&lt;span class="json-key"&gt;&quot;type&quot;&lt;/span&gt;: &lt;span class="json-string"&gt;&quot;boolean&quot;&lt;/span&gt;&lt;span class="json-comma"&gt;,&lt;/span&gt;&lt;/div&gt;
+                        &lt;div class="json-line"&gt;&lt;span class="json-key"&gt;&quot;description&quot;&lt;/span&gt;: &lt;span class="json-string"&gt;&quot;rtcp on/off&quot;&lt;/span&gt;&lt;/div&gt;
+                      &lt;/div&gt;
+                      &lt;div class="json-close"&gt;}&lt;span class="json-comma"&gt;,&lt;/span&gt;&lt;/div&gt;
+                    &lt;/details&gt;
+                    &lt;details class="json-node"&gt;
+                      &lt;summary&gt;&lt;span class="json-key"&gt;&quot;rtcp_destination_ip&quot;&lt;/span&gt;: { &lt;span class="json-fold"&gt;…&lt;/span&gt; &lt;span class="json-collapsed-close"&gt;}&lt;span class="json-comma"&gt;,&lt;/span&gt;&lt;/span&gt;&lt;/summary&gt;
+                      &lt;div class="json-children"&gt;
+                        &lt;div class="json-line"&gt;&lt;span class="json-key"&gt;&quot;type&quot;&lt;/span&gt;: &lt;span class="json-string"&gt;&quot;string&quot;&lt;/span&gt;&lt;span class="json-comma"&gt;,&lt;/span&gt;&lt;/div&gt;
+                        &lt;div class="json-line"&gt;&lt;span class="json-key"&gt;&quot;description&quot;&lt;/span&gt;: &lt;span class="json-string"&gt;&quot;IP address to which RTCP packets will be sent (auto = same as RTP destination_ip by default)&quot;&lt;/span&gt;&lt;span class="json-comma"&gt;,&lt;/span&gt;&lt;/div&gt;
+                        &lt;details class="json-node"&gt;
+                          &lt;summary&gt;&lt;span class="json-key"&gt;&quot;anyOf&quot;&lt;/span&gt;: [ &lt;span class="json-fold"&gt;…&lt;/span&gt; &lt;span class="json-collapsed-close"&gt;]&lt;/span&gt;&lt;/summary&gt;
+                          &lt;div class="json-children"&gt;
+                            &lt;details class="json-node"&gt;
+                              &lt;summary&gt;{ &lt;span class="json-fold"&gt;…&lt;/span&gt; &lt;span class="json-collapsed-close"&gt;}&lt;span class="json-comma"&gt;,&lt;/span&gt;&lt;/span&gt;&lt;/summary&gt;
+                              &lt;div class="json-children"&gt;
+                                &lt;div class="json-line"&gt;&lt;span class="json-key"&gt;&quot;format&quot;&lt;/span&gt;: &lt;span class="json-string"&gt;&quot;ipv4&quot;&lt;/span&gt;&lt;/div&gt;
+                              &lt;/div&gt;
+                              &lt;div class="json-close"&gt;}&lt;span class="json-comma"&gt;,&lt;/span&gt;&lt;/div&gt;
+                            &lt;/details&gt;
+                            &lt;details class="json-node"&gt;
+                              &lt;summary&gt;{ &lt;span class="json-fold"&gt;…&lt;/span&gt; &lt;span class="json-collapsed-close"&gt;}&lt;span class="json-comma"&gt;,&lt;/span&gt;&lt;/span&gt;&lt;/summary&gt;
+                              &lt;div class="json-children"&gt;
+                                &lt;div class="json-line"&gt;&lt;span class="json-key"&gt;&quot;format&quot;&lt;/span&gt;: &lt;span class="json-string"&gt;&quot;ipv6&quot;&lt;/span&gt;&lt;/div&gt;
+                              &lt;/div&gt;
+                              &lt;div class="json-close"&gt;}&lt;span class="json-comma"&gt;,&lt;/span&gt;&lt;/div&gt;
+                            &lt;/details&gt;
+                            &lt;details class="json-node"&gt;
+                              &lt;summary&gt;{ &lt;span class="json-fold"&gt;…&lt;/span&gt; &lt;span class="json-collapsed-close"&gt;}&lt;/span&gt;&lt;/summary&gt;
+                              &lt;div class="json-children"&gt;
+                                &lt;div class="json-line"&gt;&lt;span class="json-key"&gt;&quot;pattern&quot;&lt;/span&gt;: &lt;span class="json-string"&gt;&quot;^auto\)</span>&quot;</span></div>
+                              </div>
+                              <div class="json-close">}</div>
+                            </details>
+                          </div>
+                          <div class="json-close">]</div>
+                        </details>
+                      </div>
+                      <div class="json-close">}<span class="json-comma">,</span></div>
+                    </details>
+                    <details class="json-node">
+                      <summary><span class="json-key">&quot;rtcp_destination_port&quot;</span>: { <span class="json-fold">…</span> <span class="json-collapsed-close">}<span class="json-comma">,</span></span></summary>
+                      <div class="json-children">
+                        <details class="json-node">
+                          <summary><span class="json-key">&quot;type&quot;</span>: [ <span class="json-fold">…</span> <span class="json-collapsed-close">]<span class="json-comma">,</span></span></summary>
+                          <div class="json-children">
+                            <div class="json-line"><span class="json-string">&quot;integer&quot;</span><span class="json-comma">,</span></div>
+                            <div class="json-line"><span class="json-string">&quot;string&quot;</span></div>
+                          </div>
+                          <div class="json-close">]<span class="json-comma">,</span></div>
+                        </details>
+                        <div class="json-line"><span class="json-key">&quot;description&quot;</span>: <span class="json-string">&quot;destination port for RTCP packets (auto = RTP destination_port + 1 by default)&quot;</span><span class="json-comma">,</span></div>
+                        <div class="json-line"><span class="json-key">&quot;minimum&quot;</span>: <span class="json-number">1</span><span class="json-comma">,</span></div>
+                        <div class="json-line"><span class="json-key">&quot;maximum&quot;</span>: <span class="json-number">65535</span><span class="json-comma">,</span></div>
+                        <div class="json-line"><span class="json-key">&quot;pattern&quot;</span>: <span class="json-string">&quot;^auto<span class="arithmatex">\(&quot;&lt;/span&gt;&lt;/div&gt;
+                      &lt;/div&gt;
+                      &lt;div class="json-close"&gt;}&lt;span class="json-comma"&gt;,&lt;/span&gt;&lt;/div&gt;
+                    &lt;/details&gt;
+                    &lt;details class="json-node"&gt;
+                      &lt;summary&gt;&lt;span class="json-key"&gt;&quot;rtcp_source_port&quot;&lt;/span&gt;: { &lt;span class="json-fold"&gt;…&lt;/span&gt; &lt;span class="json-collapsed-close"&gt;}&lt;span class="json-comma"&gt;,&lt;/span&gt;&lt;/span&gt;&lt;/summary&gt;
+                      &lt;div class="json-children"&gt;
+                        &lt;details class="json-node"&gt;
+                          &lt;summary&gt;&lt;span class="json-key"&gt;&quot;type&quot;&lt;/span&gt;: [ &lt;span class="json-fold"&gt;…&lt;/span&gt; &lt;span class="json-collapsed-close"&gt;]&lt;span class="json-comma"&gt;,&lt;/span&gt;&lt;/span&gt;&lt;/summary&gt;
+                          &lt;div class="json-children"&gt;
+                            &lt;div class="json-line"&gt;&lt;span class="json-string"&gt;&quot;integer&quot;&lt;/span&gt;&lt;span class="json-comma"&gt;,&lt;/span&gt;&lt;/div&gt;
+                            &lt;div class="json-line"&gt;&lt;span class="json-string"&gt;&quot;string&quot;&lt;/span&gt;&lt;/div&gt;
+                          &lt;/div&gt;
+                          &lt;div class="json-close"&gt;]&lt;span class="json-comma"&gt;,&lt;/span&gt;&lt;/div&gt;
+                        &lt;/details&gt;
+                        &lt;div class="json-line"&gt;&lt;span class="json-key"&gt;&quot;description&quot;&lt;/span&gt;: &lt;span class="json-string"&gt;&quot;source port for RTCP packets (auto = RTP source_port + 1 by default)&quot;&lt;/span&gt;&lt;span class="json-comma"&gt;,&lt;/span&gt;&lt;/div&gt;
+                        &lt;div class="json-line"&gt;&lt;span class="json-key"&gt;&quot;minimum&quot;&lt;/span&gt;: &lt;span class="json-number"&gt;0&lt;/span&gt;&lt;span class="json-comma"&gt;,&lt;/span&gt;&lt;/div&gt;
+                        &lt;div class="json-line"&gt;&lt;span class="json-key"&gt;&quot;maximum&quot;&lt;/span&gt;: &lt;span class="json-number"&gt;65535&lt;/span&gt;&lt;span class="json-comma"&gt;,&lt;/span&gt;&lt;/div&gt;
+                        &lt;div class="json-line"&gt;&lt;span class="json-key"&gt;&quot;pattern&quot;&lt;/span&gt;: &lt;span class="json-string"&gt;&quot;^auto\)</span>&quot;</span></div>
+                      </div>
+                      <div class="json-close">}<span class="json-comma">,</span></div>
+                    </details>
+                    <details class="json-node">
+                      <summary><span class="json-key">&quot;rtp_enabled&quot;</span>: { <span class="json-fold">…</span> <span class="json-collapsed-close">}</span></summary>
+                      <div class="json-children">
+                        <div class="json-line"><span class="json-key">&quot;type&quot;</span>: <span class="json-string">&quot;boolean&quot;</span><span class="json-comma">,</span></div>
+                        <div class="json-line"><span class="json-key">&quot;description&quot;</span>: <span class="json-string">&quot;RTP transmission active/inactive&quot;</span></div>
+                      </div>
+                      <div class="json-close">}</div>
+                    </details>
+                  </div>
+                  <div class="json-close">}<span class="json-comma">,</span></div>
+                </details>
+                <details class="json-node">
+                  <summary><span class="json-key">&quot;patternProperties&quot;</span>: { <span class="json-fold">…</span> <span class="json-collapsed-close">}<span class="json-comma">,</span></span></summary>
+                  <div class="json-children">
+                    <details class="json-node">
+                      <summary><span class="json-key">&quot;^ext_[a-zA-Z0-9_]+<span class="arithmatex">\(&quot;&lt;/span&gt;: { &lt;span class="json-fold"&gt;…&lt;/span&gt; &lt;span class="json-collapsed-close"&gt;}&lt;/span&gt;&lt;/summary&gt;
+                      &lt;div class="json-children"&gt;
+                        &lt;div class="json-line"&gt;&lt;span class="json-key"&gt;&quot;\)</span>schema&quot;</span>: <span class="json-string">&quot;<a href="http://json-schema.org/draft-04/schema#&amp;quot">http://json-schema.org/draft-04/schema#&amp;quot</a>;</span><span class="json-comma">,</span></div>
+                        <div class="json-line"><span class="json-key">&quot;description&quot;</span>: <span class="json-string">&quot;Describes external Sender transport parameters defined in other AMWA specifications. The constraints in this schema are minimum constraints, but may be further constrained at the constraints endpoint.&quot;</span><span class="json-comma">,</span></div>
+                        <div class="json-line"><span class="json-key">&quot;title&quot;</span>: <span class="json-string">&quot;External Sender Transport Parameters&quot;</span><span class="json-comma">,</span></div>
+                        <details class="json-node">
+                          <summary><span class="json-key">&quot;type&quot;</span>: [ <span class="json-fold">…</span> <span class="json-collapsed-close">]</span></summary>
+                          <div class="json-children">
+                            <div class="json-line"><span class="json-string">&quot;string&quot;</span><span class="json-comma">,</span></div>
+                            <div class="json-line"><span class="json-string">&quot;boolean&quot;</span><span class="json-comma">,</span></div>
+                            <div class="json-line"><span class="json-string">&quot;null&quot;</span><span class="json-comma">,</span></div>
+                            <div class="json-line"><span class="json-string">&quot;number&quot;</span></div>
+                          </div>
+                          <div class="json-close">]</div>
+                        </details>
+                      </div>
+                      <div class="json-close">}</div>
+                    </details>
+                  </div>
+                  <div class="json-close">}<span class="json-comma">,</span></div>
+                </details>
+                <div class="json-line"><span class="json-key">&quot;additionalProperties&quot;</span>: <span class="json-boolean">false</span></div>
+              </div>
+              <div class="json-close">}</div>
+            </details>
+          </div>
+          <div class="json-close">}<span class="json-comma">,</span></div>
+        </details>
+        <details class="json-node">
+          <summary>{ <span class="json-fold">…</span> <span class="json-collapsed-close">}<span class="json-comma">,</span></span></summary>
+          <div class="json-children">
+            <div class="json-line"><span class="json-key">&quot;type&quot;</span>: <span class="json-string">&quot;array&quot;</span><span class="json-comma">,</span></div>
+            <details class="json-node">
+              <summary><span class="json-key">&quot;items&quot;</span>: { <span class="json-fold">…</span> <span class="json-collapsed-close">}</span></summary>
+              <div class="json-children">
+                <details class="json-node">
+                  <summary><span class="json-key">&quot;not&quot;</span>: { <span class="json-fold">…</span> <span class="json-collapsed-close">}</span></summary>
+                  <div class="json-children">
+                  </div>
+                  <div class="json-close">}</div>
+                </details>
+              </div>
+              <div class="json-close">}</div>
+            </details>
+          </div>
+          <div class="json-close">}<span class="json-comma">,</span></div>
+        </details>
+        <details class="json-node">
+          <summary>{ <span class="json-fold">…</span> <span class="json-collapsed-close">}<span class="json-comma">,</span></span></summary>
+          <div class="json-children">
+            <div class="json-line"><span class="json-key">&quot;type&quot;</span>: <span class="json-string">&quot;array&quot;</span><span class="json-comma">,</span></div>
+            <details class="json-node">
+              <summary><span class="json-key">&quot;items&quot;</span>: { <span class="json-fold">…</span> <span class="json-collapsed-close">}</span></summary>
+              <div class="json-children">
+                <div class="json-line"><span class="json-key">&quot;<span class="arithmatex">\(schema&quot;&lt;/span&gt;: &lt;span class="json-string"&gt;&quot;http://json-schema.org/draft-04/schema#&quot;&lt;/span&gt;&lt;span class="json-comma"&gt;,&lt;/span&gt;&lt;/div&gt;
+                &lt;div class="json-line"&gt;&lt;span class="json-key"&gt;&quot;description&quot;&lt;/span&gt;: &lt;span class="json-string"&gt;&quot;Describes WebSocket Sender transport parameters. The constraints in this schema are minimum constraints, but may be further constrained at the constraints endpoint. WebSocket Senders must support all parameters in this schema.&quot;&lt;/span&gt;&lt;span class="json-comma"&gt;,&lt;/span&gt;&lt;/div&gt;
+                &lt;div class="json-line"&gt;&lt;span class="json-key"&gt;&quot;title&quot;&lt;/span&gt;: &lt;span class="json-string"&gt;&quot;Sender Output&quot;&lt;/span&gt;&lt;span class="json-comma"&gt;,&lt;/span&gt;&lt;/div&gt;
+                &lt;div class="json-line"&gt;&lt;span class="json-key"&gt;&quot;type&quot;&lt;/span&gt;: &lt;span class="json-string"&gt;&quot;object&quot;&lt;/span&gt;&lt;span class="json-comma"&gt;,&lt;/span&gt;&lt;/div&gt;
+                &lt;details class="json-node"&gt;
+                  &lt;summary&gt;&lt;span class="json-key"&gt;&quot;properties&quot;&lt;/span&gt;: { &lt;span class="json-fold"&gt;…&lt;/span&gt; &lt;span class="json-collapsed-close"&gt;}&lt;span class="json-comma"&gt;,&lt;/span&gt;&lt;/span&gt;&lt;/summary&gt;
+                  &lt;div class="json-children"&gt;
+                    &lt;details class="json-node"&gt;
+                      &lt;summary&gt;&lt;span class="json-key"&gt;&quot;connection_uri&quot;&lt;/span&gt;: { &lt;span class="json-fold"&gt;…&lt;/span&gt; &lt;span class="json-collapsed-close"&gt;}&lt;span class="json-comma"&gt;,&lt;/span&gt;&lt;/span&gt;&lt;/summary&gt;
+                      &lt;div class="json-children"&gt;
+                        &lt;details class="json-node"&gt;
+                          &lt;summary&gt;&lt;span class="json-key"&gt;&quot;type&quot;&lt;/span&gt;: [ &lt;span class="json-fold"&gt;…&lt;/span&gt; &lt;span class="json-collapsed-close"&gt;]&lt;span class="json-comma"&gt;,&lt;/span&gt;&lt;/span&gt;&lt;/summary&gt;
+                          &lt;div class="json-children"&gt;
+                            &lt;div class="json-line"&gt;&lt;span class="json-string"&gt;&quot;string&quot;&lt;/span&gt;&lt;span class="json-comma"&gt;,&lt;/span&gt;&lt;/div&gt;
+                            &lt;div class="json-line"&gt;&lt;span class="json-string"&gt;&quot;null&quot;&lt;/span&gt;&lt;/div&gt;
+                          &lt;/div&gt;
+                          &lt;div class="json-close"&gt;]&lt;span class="json-comma"&gt;,&lt;/span&gt;&lt;/div&gt;
+                        &lt;/details&gt;
+                        &lt;div class="json-line"&gt;&lt;span class="json-key"&gt;&quot;description&quot;&lt;/span&gt;: &lt;span class="json-string"&gt;&quot;URI hosting the WebSocket server as defined in RFC 6455 Section 3. The sender should provide an enum in the constraints endpoint, which should contain the available interface addresses formatted as connection URIs. If the parameter is set to auto the sender should establish for itself which interface it should use, based on routing rules or its own internal configuration. A null value indicates that the sender has not yet been configured.&quot;&lt;/span&gt;&lt;span class="json-comma"&gt;,&lt;/span&gt;&lt;/div&gt;
+                        &lt;details class="json-node"&gt;
+                          &lt;summary&gt;&lt;span class="json-key"&gt;&quot;anyOf&quot;&lt;/span&gt;: [ &lt;span class="json-fold"&gt;…&lt;/span&gt; &lt;span class="json-collapsed-close"&gt;]&lt;/span&gt;&lt;/summary&gt;
+                          &lt;div class="json-children"&gt;
+                            &lt;details class="json-node"&gt;
+                              &lt;summary&gt;{ &lt;span class="json-fold"&gt;…&lt;/span&gt; &lt;span class="json-collapsed-close"&gt;}&lt;span class="json-comma"&gt;,&lt;/span&gt;&lt;/span&gt;&lt;/summary&gt;
+                              &lt;div class="json-children"&gt;
+                                &lt;div class="json-line"&gt;&lt;span class="json-key"&gt;&quot;pattern&quot;&lt;/span&gt;: &lt;span class="json-string"&gt;&quot;^auto\)</span>&quot;</span></div>
+                              </div>
+                              <div class="json-close">}<span class="json-comma">,</span></div>
+                            </details>
+                            <details class="json-node">
+                              <summary>{ <span class="json-fold">…</span> <span class="json-collapsed-close">}<span class="json-comma">,</span></span></summary>
+                              <div class="json-children">
+                                <div class="json-line"><span class="json-key">&quot;format&quot;</span>: <span class="json-string">&quot;uri&quot;</span><span class="json-comma">,</span></div>
+                                <div class="json-line"><span class="json-key">&quot;pattern&quot;</span>: <span class="json-string">&quot;^wss?://.*&quot;</span></div>
+                              </div>
+                              <div class="json-close">}<span class="json-comma">,</span></div>
+                            </details>
+                            <details class="json-node">
+                              <summary>{ <span class="json-fold">…</span> <span class="json-collapsed-close">}</span></summary>
+                              <div class="json-children">
+                                <div class="json-line"><span class="json-key">&quot;type&quot;</span>: <span class="json-string">&quot;null&quot;</span></div>
+                              </div>
+                              <div class="json-close">}</div>
+                            </details>
+                          </div>
+                          <div class="json-close">]</div>
+                        </details>
+                      </div>
+                      <div class="json-close">}<span class="json-comma">,</span></div>
+                    </details>
+                    <details class="json-node">
+                      <summary><span class="json-key">&quot;connection_authorization&quot;</span>: { <span class="json-fold">…</span> <span class="json-collapsed-close">}</span></summary>
+                      <div class="json-children">
+                        <details class="json-node">
+                          <summary><span class="json-key">&quot;type&quot;</span>: [ <span class="json-fold">…</span> <span class="json-collapsed-close">]<span class="json-comma">,</span></span></summary>
+                          <div class="json-children">
+                            <div class="json-line"><span class="json-string">&quot;string&quot;</span><span class="json-comma">,</span></div>
+                            <div class="json-line"><span class="json-string">&quot;boolean&quot;</span></div>
+                          </div>
+                          <div class="json-close">]<span class="json-comma">,</span></div>
+                        </details>
+                        <div class="json-line"><span class="json-key">&quot;description&quot;</span>: <span class="json-string">&quot;Indication of whether authorization is required to make a connection. If the parameter is set to auto the Sender should establish for itself whether authorization should be used, based on its own internal configuration.&quot;</span><span class="json-comma">,</span></div>
+                        <details class="json-node">
+                          <summary><span class="json-key">&quot;enum&quot;</span>: [ <span class="json-fold">…</span> <span class="json-collapsed-close">]</span></summary>
+                          <div class="json-children">
+                            <div class="json-line"><span class="json-string">&quot;auto&quot;</span><span class="json-comma">,</span></div>
+                            <div class="json-line"><span class="json-boolean">true</span><span class="json-comma">,</span></div>
+                            <div class="json-line"><span class="json-boolean">false</span></div>
+                          </div>
+                          <div class="json-close">]</div>
+                        </details>
+                      </div>
+                      <div class="json-close">}</div>
+                    </details>
+                  </div>
+                  <div class="json-close">}<span class="json-comma">,</span></div>
+                </details>
+                <details class="json-node">
+                  <summary><span class="json-key">&quot;patternProperties&quot;</span>: { <span class="json-fold">…</span> <span class="json-collapsed-close">}<span class="json-comma">,</span></span></summary>
+                  <div class="json-children">
+                    <details class="json-node">
+                      <summary><span class="json-key">&quot;^ext_[a-zA-Z0-9_]+<span class="arithmatex">\(&quot;&lt;/span&gt;: { &lt;span class="json-fold"&gt;…&lt;/span&gt; &lt;span class="json-collapsed-close"&gt;}&lt;/span&gt;&lt;/summary&gt;
+                      &lt;div class="json-children"&gt;
+                        &lt;div class="json-line"&gt;&lt;span class="json-key"&gt;&quot;\)</span>schema&quot;</span>: <span class="json-string">&quot;<a href="http://json-schema.org/draft-04/schema#&amp;quot">http://json-schema.org/draft-04/schema#&amp;quot</a>;</span><span class="json-comma">,</span></div>
+                        <div class="json-line"><span class="json-key">&quot;description&quot;</span>: <span class="json-string">&quot;Describes external Sender transport parameters defined in other AMWA specifications. The constraints in this schema are minimum constraints, but may be further constrained at the constraints endpoint.&quot;</span><span class="json-comma">,</span></div>
+                        <div class="json-line"><span class="json-key">&quot;title&quot;</span>: <span class="json-string">&quot;External Sender Transport Parameters&quot;</span><span class="json-comma">,</span></div>
+                        <details class="json-node">
+                          <summary><span class="json-key">&quot;type&quot;</span>: [ <span class="json-fold">…</span> <span class="json-collapsed-close">]</span></summary>
+                          <div class="json-children">
+                            <div class="json-line"><span class="json-string">&quot;string&quot;</span><span class="json-comma">,</span></div>
+                            <div class="json-line"><span class="json-string">&quot;boolean&quot;</span><span class="json-comma">,</span></div>
+                            <div class="json-line"><span class="json-string">&quot;null&quot;</span><span class="json-comma">,</span></div>
+                            <div class="json-line"><span class="json-string">&quot;number&quot;</span></div>
+                          </div>
+                          <div class="json-close">]</div>
+                        </details>
+                      </div>
+                      <div class="json-close">}</div>
+                    </details>
+                  </div>
+                  <div class="json-close">}<span class="json-comma">,</span></div>
+                </details>
+                <div class="json-line"><span class="json-key">&quot;additionalProperties&quot;</span>: <span class="json-boolean">false</span></div>
+              </div>
+              <div class="json-close">}</div>
+            </details>
+          </div>
+          <div class="json-close">}<span class="json-comma">,</span></div>
+        </details>
+        <details class="json-node">
+          <summary>{ <span class="json-fold">…</span> <span class="json-collapsed-close">}</span></summary>
+          <div class="json-children">
+            <div class="json-line"><span class="json-key">&quot;type&quot;</span>: <span class="json-string">&quot;array&quot;</span><span class="json-comma">,</span></div>
+            <details class="json-node">
+              <summary><span class="json-key">&quot;items&quot;</span>: { <span class="json-fold">…</span> <span class="json-collapsed-close">}</span></summary>
+              <div class="json-children">
+                <div class="json-line"><span class="json-key">&quot;<span class="arithmatex">\(schema&quot;&lt;/span&gt;: &lt;span class="json-string"&gt;&quot;http://json-schema.org/draft-04/schema#&quot;&lt;/span&gt;&lt;span class="json-comma"&gt;,&lt;/span&gt;&lt;/div&gt;
+                &lt;div class="json-line"&gt;&lt;span class="json-key"&gt;&quot;description&quot;&lt;/span&gt;: &lt;span class="json-string"&gt;&quot;Describes MQTT Sender transport parameters. The constraints in this schema are minimum constraints, but may be further constrained at the constraints endpoint. MQTT Senders must support all properties in this schema.&quot;&lt;/span&gt;&lt;span class="json-comma"&gt;,&lt;/span&gt;&lt;/div&gt;
+                &lt;div class="json-line"&gt;&lt;span class="json-key"&gt;&quot;title&quot;&lt;/span&gt;: &lt;span class="json-string"&gt;&quot;Sender Output&quot;&lt;/span&gt;&lt;span class="json-comma"&gt;,&lt;/span&gt;&lt;/div&gt;
+                &lt;div class="json-line"&gt;&lt;span class="json-key"&gt;&quot;type&quot;&lt;/span&gt;: &lt;span class="json-string"&gt;&quot;object&quot;&lt;/span&gt;&lt;span class="json-comma"&gt;,&lt;/span&gt;&lt;/div&gt;
+                &lt;details class="json-node"&gt;
+                  &lt;summary&gt;&lt;span class="json-key"&gt;&quot;properties&quot;&lt;/span&gt;: { &lt;span class="json-fold"&gt;…&lt;/span&gt; &lt;span class="json-collapsed-close"&gt;}&lt;span class="json-comma"&gt;,&lt;/span&gt;&lt;/span&gt;&lt;/summary&gt;
+                  &lt;div class="json-children"&gt;
+                    &lt;details class="json-node"&gt;
+                      &lt;summary&gt;&lt;span class="json-key"&gt;&quot;destination_host&quot;&lt;/span&gt;: { &lt;span class="json-fold"&gt;…&lt;/span&gt; &lt;span class="json-collapsed-close"&gt;}&lt;span class="json-comma"&gt;,&lt;/span&gt;&lt;/span&gt;&lt;/summary&gt;
+                      &lt;div class="json-children"&gt;
+                        &lt;details class="json-node"&gt;
+                          &lt;summary&gt;&lt;span class="json-key"&gt;&quot;type&quot;&lt;/span&gt;: [ &lt;span class="json-fold"&gt;…&lt;/span&gt; &lt;span class="json-collapsed-close"&gt;]&lt;span class="json-comma"&gt;,&lt;/span&gt;&lt;/span&gt;&lt;/summary&gt;
+                          &lt;div class="json-children"&gt;
+                            &lt;div class="json-line"&gt;&lt;span class="json-string"&gt;&quot;string&quot;&lt;/span&gt;&lt;span class="json-comma"&gt;,&lt;/span&gt;&lt;/div&gt;
+                            &lt;div class="json-line"&gt;&lt;span class="json-string"&gt;&quot;null&quot;&lt;/span&gt;&lt;/div&gt;
+                          &lt;/div&gt;
+                          &lt;div class="json-close"&gt;]&lt;span class="json-comma"&gt;,&lt;/span&gt;&lt;/div&gt;
+                        &lt;/details&gt;
+                        &lt;div class="json-line"&gt;&lt;span class="json-key"&gt;&quot;description&quot;&lt;/span&gt;: &lt;span class="json-string"&gt;&quot;Hostname or IP hosting the MQTT broker. If the parameter is set to auto the Sender should establish for itself which broker it should use, based on a discovery mechanism or its own internal configuration. A null value indicates that the Sender has not yet been configured.&quot;&lt;/span&gt;&lt;span class="json-comma"&gt;,&lt;/span&gt;&lt;/div&gt;
+                        &lt;details class="json-node"&gt;
+                          &lt;summary&gt;&lt;span class="json-key"&gt;&quot;anyOf&quot;&lt;/span&gt;: [ &lt;span class="json-fold"&gt;…&lt;/span&gt; &lt;span class="json-collapsed-close"&gt;]&lt;/span&gt;&lt;/summary&gt;
+                          &lt;div class="json-children"&gt;
+                            &lt;details class="json-node"&gt;
+                              &lt;summary&gt;{ &lt;span class="json-fold"&gt;…&lt;/span&gt; &lt;span class="json-collapsed-close"&gt;}&lt;span class="json-comma"&gt;,&lt;/span&gt;&lt;/span&gt;&lt;/summary&gt;
+                              &lt;div class="json-children"&gt;
+                                &lt;div class="json-line"&gt;&lt;span class="json-key"&gt;&quot;pattern&quot;&lt;/span&gt;: &lt;span class="json-string"&gt;&quot;^auto\)</span>&quot;</span></div>
+                              </div>
+                              <div class="json-close">}<span class="json-comma">,</span></div>
+                            </details>
+                            <details class="json-node">
+                              <summary>{ <span class="json-fold">…</span> <span class="json-collapsed-close">}<span class="json-comma">,</span></span></summary>
+                              <div class="json-children">
+                                <div class="json-line"><span class="json-key">&quot;format&quot;</span>: <span class="json-string">&quot;hostname&quot;</span></div>
+                              </div>
+                              <div class="json-close">}<span class="json-comma">,</span></div>
+                            </details>
+                            <details class="json-node">
+                              <summary>{ <span class="json-fold">…</span> <span class="json-collapsed-close">}<span class="json-comma">,</span></span></summary>
+                              <div class="json-children">
+                                <div class="json-line"><span class="json-key">&quot;format&quot;</span>: <span class="json-string">&quot;ipv4&quot;</span></div>
+                              </div>
+                              <div class="json-close">}<span class="json-comma">,</span></div>
+                            </details>
+                            <details class="json-node">
+                              <summary>{ <span class="json-fold">…</span> <span class="json-collapsed-close">}<span class="json-comma">,</span></span></summary>
+                              <div class="json-children">
+                                <div class="json-line"><span class="json-key">&quot;format&quot;</span>: <span class="json-string">&quot;ipv6&quot;</span></div>
+                              </div>
+                              <div class="json-close">}<span class="json-comma">,</span></div>
+                            </details>
+                            <details class="json-node">
+                              <summary>{ <span class="json-fold">…</span> <span class="json-collapsed-close">}</span></summary>
+                              <div class="json-children">
+                                <div class="json-line"><span class="json-key">&quot;type&quot;</span>: <span class="json-string">&quot;null&quot;</span></div>
+                              </div>
+                              <div class="json-close">}</div>
+                            </details>
+                          </div>
+                          <div class="json-close">]</div>
+                        </details>
+                      </div>
+                      <div class="json-close">}<span class="json-comma">,</span></div>
+                    </details>
+                    <details class="json-node">
+                      <summary><span class="json-key">&quot;destination_port&quot;</span>: { <span class="json-fold">…</span> <span class="json-collapsed-close">}<span class="json-comma">,</span></span></summary>
+                      <div class="json-children">
+                        <details class="json-node">
+                          <summary><span class="json-key">&quot;type&quot;</span>: [ <span class="json-fold">…</span> <span class="json-collapsed-close">]<span class="json-comma">,</span></span></summary>
+                          <div class="json-children">
+                            <div class="json-line"><span class="json-string">&quot;integer&quot;</span><span class="json-comma">,</span></div>
+                            <div class="json-line"><span class="json-string">&quot;string&quot;</span></div>
+                          </div>
+                          <div class="json-close">]<span class="json-comma">,</span></div>
+                        </details>
+                        <div class="json-line"><span class="json-key">&quot;description&quot;</span>: <span class="json-string">&quot;Destination port for MQTT traffic. If the parameter is set to auto the Sender should establish for itself which broker it should use, based on a discovery mechanism or its own internal configuration.&quot;</span><span class="json-comma">,</span></div>
+                        <div class="json-line"><span class="json-key">&quot;minimum&quot;</span>: <span class="json-number">1</span><span class="json-comma">,</span></div>
+                        <div class="json-line"><span class="json-key">&quot;maximum&quot;</span>: <span class="json-number">65535</span><span class="json-comma">,</span></div>
+                        <div class="json-line"><span class="json-key">&quot;pattern&quot;</span>: <span class="json-string">&quot;^auto<span class="arithmatex">\(&quot;&lt;/span&gt;&lt;/div&gt;
+                      &lt;/div&gt;
+                      &lt;div class="json-close"&gt;}&lt;span class="json-comma"&gt;,&lt;/span&gt;&lt;/div&gt;
+                    &lt;/details&gt;
+                    &lt;details class="json-node"&gt;
+                      &lt;summary&gt;&lt;span class="json-key"&gt;&quot;broker_protocol&quot;&lt;/span&gt;: { &lt;span class="json-fold"&gt;…&lt;/span&gt; &lt;span class="json-collapsed-close"&gt;}&lt;span class="json-comma"&gt;,&lt;/span&gt;&lt;/span&gt;&lt;/summary&gt;
+                      &lt;div class="json-children"&gt;
+                        &lt;div class="json-line"&gt;&lt;span class="json-key"&gt;&quot;type&quot;&lt;/span&gt;: &lt;span class="json-string"&gt;&quot;string&quot;&lt;/span&gt;&lt;span class="json-comma"&gt;,&lt;/span&gt;&lt;/div&gt;
+                        &lt;div class="json-line"&gt;&lt;span class="json-key"&gt;&quot;description&quot;&lt;/span&gt;: &lt;span class="json-string"&gt;&quot;Indication of whether TLS is used for communication with the broker. &#x27;mqtt&#x27; indicates operation without TLS, and &#x27;secure-mqtt&#x27; indicates use of TLS. If the parameter is set to auto the Sender should establish for itself which protocol it should use, based on a discovery mechanism or its own internal configuration.&quot;&lt;/span&gt;&lt;span class="json-comma"&gt;,&lt;/span&gt;&lt;/div&gt;
+                        &lt;details class="json-node"&gt;
+                          &lt;summary&gt;&lt;span class="json-key"&gt;&quot;enum&quot;&lt;/span&gt;: [ &lt;span class="json-fold"&gt;…&lt;/span&gt; &lt;span class="json-collapsed-close"&gt;]&lt;/span&gt;&lt;/summary&gt;
+                          &lt;div class="json-children"&gt;
+                            &lt;div class="json-line"&gt;&lt;span class="json-string"&gt;&quot;auto&quot;&lt;/span&gt;&lt;span class="json-comma"&gt;,&lt;/span&gt;&lt;/div&gt;
+                            &lt;div class="json-line"&gt;&lt;span class="json-string"&gt;&quot;mqtt&quot;&lt;/span&gt;&lt;span class="json-comma"&gt;,&lt;/span&gt;&lt;/div&gt;
+                            &lt;div class="json-line"&gt;&lt;span class="json-string"&gt;&quot;secure-mqtt&quot;&lt;/span&gt;&lt;/div&gt;
+                          &lt;/div&gt;
+                          &lt;div class="json-close"&gt;]&lt;/div&gt;
+                        &lt;/details&gt;
+                      &lt;/div&gt;
+                      &lt;div class="json-close"&gt;}&lt;span class="json-comma"&gt;,&lt;/span&gt;&lt;/div&gt;
+                    &lt;/details&gt;
+                    &lt;details class="json-node"&gt;
+                      &lt;summary&gt;&lt;span class="json-key"&gt;&quot;broker_authorization&quot;&lt;/span&gt;: { &lt;span class="json-fold"&gt;…&lt;/span&gt; &lt;span class="json-collapsed-close"&gt;}&lt;span class="json-comma"&gt;,&lt;/span&gt;&lt;/span&gt;&lt;/summary&gt;
+                      &lt;div class="json-children"&gt;
+                        &lt;details class="json-node"&gt;
+                          &lt;summary&gt;&lt;span class="json-key"&gt;&quot;type&quot;&lt;/span&gt;: [ &lt;span class="json-fold"&gt;…&lt;/span&gt; &lt;span class="json-collapsed-close"&gt;]&lt;span class="json-comma"&gt;,&lt;/span&gt;&lt;/span&gt;&lt;/summary&gt;
+                          &lt;div class="json-children"&gt;
+                            &lt;div class="json-line"&gt;&lt;span class="json-string"&gt;&quot;string&quot;&lt;/span&gt;&lt;span class="json-comma"&gt;,&lt;/span&gt;&lt;/div&gt;
+                            &lt;div class="json-line"&gt;&lt;span class="json-string"&gt;&quot;boolean&quot;&lt;/span&gt;&lt;/div&gt;
+                          &lt;/div&gt;
+                          &lt;div class="json-close"&gt;]&lt;span class="json-comma"&gt;,&lt;/span&gt;&lt;/div&gt;
+                        &lt;/details&gt;
+                        &lt;div class="json-line"&gt;&lt;span class="json-key"&gt;&quot;description&quot;&lt;/span&gt;: &lt;span class="json-string"&gt;&quot;Indication of whether authorization is used for communication with the broker. If the parameter is set to auto the Sender should establish for itself whether authorization should be used, based on a discovery mechanism or its own internal configuration.&quot;&lt;/span&gt;&lt;span class="json-comma"&gt;,&lt;/span&gt;&lt;/div&gt;
+                        &lt;details class="json-node"&gt;
+                          &lt;summary&gt;&lt;span class="json-key"&gt;&quot;enum&quot;&lt;/span&gt;: [ &lt;span class="json-fold"&gt;…&lt;/span&gt; &lt;span class="json-collapsed-close"&gt;]&lt;/span&gt;&lt;/summary&gt;
+                          &lt;div class="json-children"&gt;
+                            &lt;div class="json-line"&gt;&lt;span class="json-string"&gt;&quot;auto&quot;&lt;/span&gt;&lt;span class="json-comma"&gt;,&lt;/span&gt;&lt;/div&gt;
+                            &lt;div class="json-line"&gt;&lt;span class="json-boolean"&gt;true&lt;/span&gt;&lt;span class="json-comma"&gt;,&lt;/span&gt;&lt;/div&gt;
+                            &lt;div class="json-line"&gt;&lt;span class="json-boolean"&gt;false&lt;/span&gt;&lt;/div&gt;
+                          &lt;/div&gt;
+                          &lt;div class="json-close"&gt;]&lt;/div&gt;
+                        &lt;/details&gt;
+                      &lt;/div&gt;
+                      &lt;div class="json-close"&gt;}&lt;span class="json-comma"&gt;,&lt;/span&gt;&lt;/div&gt;
+                    &lt;/details&gt;
+                    &lt;details class="json-node"&gt;
+                      &lt;summary&gt;&lt;span class="json-key"&gt;&quot;broker_topic&quot;&lt;/span&gt;: { &lt;span class="json-fold"&gt;…&lt;/span&gt; &lt;span class="json-collapsed-close"&gt;}&lt;span class="json-comma"&gt;,&lt;/span&gt;&lt;/span&gt;&lt;/summary&gt;
+                      &lt;div class="json-children"&gt;
+                        &lt;details class="json-node"&gt;
+                          &lt;summary&gt;&lt;span class="json-key"&gt;&quot;type&quot;&lt;/span&gt;: [ &lt;span class="json-fold"&gt;…&lt;/span&gt; &lt;span class="json-collapsed-close"&gt;]&lt;span class="json-comma"&gt;,&lt;/span&gt;&lt;/span&gt;&lt;/summary&gt;
+                          &lt;div class="json-children"&gt;
+                            &lt;div class="json-line"&gt;&lt;span class="json-string"&gt;&quot;string&quot;&lt;/span&gt;&lt;span class="json-comma"&gt;,&lt;/span&gt;&lt;/div&gt;
+                            &lt;div class="json-line"&gt;&lt;span class="json-string"&gt;&quot;null&quot;&lt;/span&gt;&lt;/div&gt;
+                          &lt;/div&gt;
+                          &lt;div class="json-close"&gt;]&lt;span class="json-comma"&gt;,&lt;/span&gt;&lt;/div&gt;
+                        &lt;/details&gt;
+                        &lt;div class="json-line"&gt;&lt;span class="json-key"&gt;&quot;description&quot;&lt;/span&gt;: &lt;span class="json-string"&gt;&quot;The topic which MQTT messages will be sent to on the MQTT broker. A null value indicates that the Sender has not yet been configured.&quot;&lt;/span&gt;&lt;/div&gt;
+                      &lt;/div&gt;
+                      &lt;div class="json-close"&gt;}&lt;span class="json-comma"&gt;,&lt;/span&gt;&lt;/div&gt;
+                    &lt;/details&gt;
+                    &lt;details class="json-node"&gt;
+                      &lt;summary&gt;&lt;span class="json-key"&gt;&quot;connection_status_broker_topic&quot;&lt;/span&gt;: { &lt;span class="json-fold"&gt;…&lt;/span&gt; &lt;span class="json-collapsed-close"&gt;}&lt;/span&gt;&lt;/summary&gt;
+                      &lt;div class="json-children"&gt;
+                        &lt;details class="json-node"&gt;
+                          &lt;summary&gt;&lt;span class="json-key"&gt;&quot;type&quot;&lt;/span&gt;: [ &lt;span class="json-fold"&gt;…&lt;/span&gt; &lt;span class="json-collapsed-close"&gt;]&lt;span class="json-comma"&gt;,&lt;/span&gt;&lt;/span&gt;&lt;/summary&gt;
+                          &lt;div class="json-children"&gt;
+                            &lt;div class="json-line"&gt;&lt;span class="json-string"&gt;&quot;string&quot;&lt;/span&gt;&lt;span class="json-comma"&gt;,&lt;/span&gt;&lt;/div&gt;
+                            &lt;div class="json-line"&gt;&lt;span class="json-string"&gt;&quot;null&quot;&lt;/span&gt;&lt;/div&gt;
+                          &lt;/div&gt;
+                          &lt;div class="json-close"&gt;]&lt;span class="json-comma"&gt;,&lt;/span&gt;&lt;/div&gt;
+                        &lt;/details&gt;
+                        &lt;div class="json-line"&gt;&lt;span class="json-key"&gt;&quot;description&quot;&lt;/span&gt;: &lt;span class="json-string"&gt;&quot;The topic which MQTT status messages such as MQTT Last Will are sent to on the MQTT broker. A null value indicates that the Sender has not yet been configured, or is not using a connection status topic.&quot;&lt;/span&gt;&lt;/div&gt;
+                      &lt;/div&gt;
+                      &lt;div class="json-close"&gt;}&lt;/div&gt;
+                    &lt;/details&gt;
+                  &lt;/div&gt;
+                  &lt;div class="json-close"&gt;}&lt;span class="json-comma"&gt;,&lt;/span&gt;&lt;/div&gt;
+                &lt;/details&gt;
+                &lt;details class="json-node"&gt;
+                  &lt;summary&gt;&lt;span class="json-key"&gt;&quot;patternProperties&quot;&lt;/span&gt;: { &lt;span class="json-fold"&gt;…&lt;/span&gt; &lt;span class="json-collapsed-close"&gt;}&lt;span class="json-comma"&gt;,&lt;/span&gt;&lt;/span&gt;&lt;/summary&gt;
+                  &lt;div class="json-children"&gt;
+                    &lt;details class="json-node"&gt;
+                      &lt;summary&gt;&lt;span class="json-key"&gt;&quot;^ext_[a-zA-Z0-9_]+\)</span>&quot;</span>: { <span class="json-fold">…</span> <span class="json-collapsed-close">}</span></summary>
+                      <div class="json-children">
+                        <div class="json-line"><span class="json-key">&quot;$schema&quot;</span>: <span class="json-string">&quot;<a href="http://json-schema.org/draft-04/schema#&amp;quot">http://json-schema.org/draft-04/schema#&amp;quot</a>;</span><span class="json-comma">,</span></div>
+                        <div class="json-line"><span class="json-key">&quot;description&quot;</span>: <span class="json-string">&quot;Describes external Sender transport parameters defined in other AMWA specifications. The constraints in this schema are minimum constraints, but may be further constrained at the constraints endpoint.&quot;</span><span class="json-comma">,</span></div>
+                        <div class="json-line"><span class="json-key">&quot;title&quot;</span>: <span class="json-string">&quot;External Sender Transport Parameters&quot;</span><span class="json-comma">,</span></div>
+                        <details class="json-node">
+                          <summary><span class="json-key">&quot;type&quot;</span>: [ <span class="json-fold">…</span> <span class="json-collapsed-close">]</span></summary>
+                          <div class="json-children">
+                            <div class="json-line"><span class="json-string">&quot;string&quot;</span><span class="json-comma">,</span></div>
+                            <div class="json-line"><span class="json-string">&quot;boolean&quot;</span><span class="json-comma">,</span></div>
+                            <div class="json-line"><span class="json-string">&quot;null&quot;</span><span class="json-comma">,</span></div>
+                            <div class="json-line"><span class="json-string">&quot;number&quot;</span></div>
+                          </div>
+                          <div class="json-close">]</div>
+                        </details>
+                      </div>
+                      <div class="json-close">}</div>
+                    </details>
+                  </div>
+                  <div class="json-close">}<span class="json-comma">,</span></div>
+                </details>
+                <div class="json-line"><span class="json-key">&quot;additionalProperties&quot;</span>: <span class="json-boolean">false</span></div>
+              </div>
+              <div class="json-close">}</div>
+            </details>
+          </div>
+          <div class="json-close">}</div>
+        </details>
+      </div>
+      <div class="json-close">]</div>
+    </details>
+  </div>
+  <div class="json-close">}</div>
+</details>
+</div></p>
+</div>
+</div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://zensical.org/" target="_blank" rel="noopener">
+      Zensical
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate":null,"base":"../../..","features":[],"search":"../../../assets/javascripts/workers/search.7d14d953.min.js","tags":null,"translations":{"clipboard.copied":"Copied to clipboard","clipboard.copy":"Copy to clipboard","search.result.more.one":"1 more on this page","search.result.more.other":"# more on this page","search.result.none":"No matching documents","search.result.one":"1 matching document","search.result.other":"# matching documents","search.result.placeholder":"Type to start searching","search.result.term.missing":"Missing","select.version":"Select version"},"version":{"provider":"mike"}}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.e886cdf1.min.js"></script>
+      
+    
+  </body>
+</html>

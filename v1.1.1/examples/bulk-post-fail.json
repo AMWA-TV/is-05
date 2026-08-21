@@ -1,0 +1,5 @@
+{
+  "code": 400,
+  "error": "Request contained invalid JSON",
+  "debug": "<stack trace>"
+}
