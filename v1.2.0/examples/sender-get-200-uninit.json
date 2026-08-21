@@ -1,0 +1,30 @@
+{
+  "receiver_id": null,
+  "master_enable": true,
+  "activation": {
+    "mode": null,
+    "requested_time": null,
+    "activation_time": null
+  },
+  "transport_params": [{
+    "source_ip": "auto",
+    "destination_ip": "auto",
+    "source_port": "auto",
+    "destination_port": "auto",
+    "fec_enabled": false,
+    "fec_destination_ip": "auto",
+    "fec_type": "XOR",
+    "fec_mode": "1D",
+    "fec_block_width": 4,
+    "fec_block_height": 4,
+    "fec1D_destination_port": "auto",
+    "fec2D_destination_port": "auto",
+    "fec1D_source_port": "auto",
+    "fec2D_source_port": "auto",
+    "rtcp_enabled": false,
+    "rtcp_destination_ip": "auto",
+    "rtcp_destination_port": "auto",
+    "rtcp_source_port": "auto",
+    "rtp_enabled": true
+  }]
+}

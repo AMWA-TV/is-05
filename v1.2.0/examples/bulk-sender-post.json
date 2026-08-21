@@ -1,0 +1,35 @@
+[{
+    "id": "0a174530-e3cf-11e6-bf01-fe55135034f3",
+    "params": {
+      "master_enable": true,
+      "activation": {
+        "mode": "activate_scheduled_absolute",
+        "requested_time": "1496759200:0"
+      },
+      "transport_params": [{
+        "fec_enabled": true,
+        "rtcp_enabled": true,
+        "rtp_enabled": true
+      }, {
+        "fec_enabled": true,
+        "rtcp_enabled": true,
+        "rtp_enabled": true
+      }]
+    }
+  },
+  {
+    "id": "7a3ebebe-0405-11e7-93ae-92361f002671",
+    "params": {
+      "master_enable": true,
+      "activation": {
+        "mode": "activate_scheduled_relative",
+        "requested_time": "2:0"
+      },
+      "transport_params": [{
+        "fec_enabled": true
+      }, {
+        "fec_enabled": true
+      }]
+    }
+  }
+]
