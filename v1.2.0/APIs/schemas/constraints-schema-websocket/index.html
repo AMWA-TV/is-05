@@ -3235,7 +3235,7 @@
   
 
 
-<h1 id="constraints-schema-websocket">constraints-schema-websocket<a class="headerlink" href="#constraints-schema-websocket" title="Permanent link">&para;</a></h1>
+<h1 id="constraints-schema-websocket">constraints-schema-websocket</h1>
 <div class="tabbed-set tabbed-alternate" data-tabs="1:2"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">With refs</label><label for="__tabbed_1_2">Resolved</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
@@ -3248,38 +3248,38 @@
 <details class="json-node" open>
   <summary>{ <span class="json-fold">…</span> <span class="json-collapsed-close">}</span></summary>
   <div class="json-children">
-    <div class="json-line"><span class="json-key">&quot;<span class="arithmatex">\(schema&quot;&lt;/span&gt;: &lt;span class="json-string"&gt;&quot;http://json-schema.org/draft-04/schema#&quot;&lt;/span&gt;&lt;span class="json-comma"&gt;,&lt;/span&gt;&lt;/div&gt;
-    &lt;div class="json-line"&gt;&lt;span class="json-key"&gt;&quot;type&quot;&lt;/span&gt;: &lt;span class="json-string"&gt;&quot;object&quot;&lt;/span&gt;&lt;span class="json-comma"&gt;,&lt;/span&gt;&lt;/div&gt;
-    &lt;div class="json-line"&gt;&lt;span class="json-key"&gt;&quot;description&quot;&lt;/span&gt;: &lt;span class="json-string"&gt;&quot;Used to express the dynamic constraints on WebSocket transport parameters. These constraints may be set and changed at run time. Every transport parameter must have an entry, even if it is only an empty object.&quot;&lt;/span&gt;&lt;span class="json-comma"&gt;,&lt;/span&gt;&lt;/div&gt;
-    &lt;details class="json-node"&gt;
-      &lt;summary&gt;&lt;span class="json-key"&gt;&quot;required&quot;&lt;/span&gt;: [ &lt;span class="json-fold"&gt;…&lt;/span&gt; &lt;span class="json-collapsed-close"&gt;]&lt;span class="json-comma"&gt;,&lt;/span&gt;&lt;/span&gt;&lt;/summary&gt;
-      &lt;div class="json-children"&gt;
-        &lt;div class="json-line"&gt;&lt;span class="json-string"&gt;&quot;connection_uri&quot;&lt;/span&gt;&lt;span class="json-comma"&gt;,&lt;/span&gt;&lt;/div&gt;
-        &lt;div class="json-line"&gt;&lt;span class="json-string"&gt;&quot;connection_authorization&quot;&lt;/span&gt;&lt;/div&gt;
-      &lt;/div&gt;
-      &lt;div class="json-close"&gt;]&lt;span class="json-comma"&gt;,&lt;/span&gt;&lt;/div&gt;
-    &lt;/details&gt;
-    &lt;div class="json-line"&gt;&lt;span class="json-key"&gt;&quot;additionalProperties&quot;&lt;/span&gt;: &lt;span class="json-boolean"&gt;false&lt;/span&gt;&lt;span class="json-comma"&gt;,&lt;/span&gt;&lt;/div&gt;
-    &lt;details class="json-node"&gt;
-      &lt;summary&gt;&lt;span class="json-key"&gt;&quot;patternProperties&quot;&lt;/span&gt;: { &lt;span class="json-fold"&gt;…&lt;/span&gt; &lt;span class="json-collapsed-close"&gt;}&lt;span class="json-comma"&gt;,&lt;/span&gt;&lt;/span&gt;&lt;/summary&gt;
-      &lt;div class="json-children"&gt;
-        &lt;details class="json-node"&gt;
-          &lt;summary&gt;&lt;span class="json-key"&gt;&quot;^ext_[a-zA-Z0-9_]+\)</span>&quot;</span>: { <span class="json-fold">…</span> <span class="json-collapsed-close">}</span></summary>
+    <div class="json-line"><span class="json-key">&quot;$schema&quot;</span>: <span class="json-string">&quot;http://json-schema.org/draft-04/schema#&quot;</span><span class="json-comma">,</span></div>
+    <div class="json-line"><span class="json-key">&quot;type&quot;</span>: <span class="json-string">&quot;object&quot;</span><span class="json-comma">,</span></div>
+    <div class="json-line"><span class="json-key">&quot;description&quot;</span>: <span class="json-string">&quot;Used to express the dynamic constraints on WebSocket transport parameters. These constraints may be set and changed at run time. Every transport parameter must have an entry, even if it is only an empty object.&quot;</span><span class="json-comma">,</span></div>
+    <details class="json-node">
+      <summary><span class="json-key">&quot;required&quot;</span>: [ <span class="json-fold">…</span> <span class="json-collapsed-close">]<span class="json-comma">,</span></span></summary>
+      <div class="json-children">
+        <div class="json-line"><span class="json-string">&quot;connection_uri&quot;</span><span class="json-comma">,</span></div>
+        <div class="json-line"><span class="json-string">&quot;connection_authorization&quot;</span></div>
+      </div>
+      <div class="json-close">]<span class="json-comma">,</span></div>
+    </details>
+    <div class="json-line"><span class="json-key">&quot;additionalProperties&quot;</span>: <span class="json-boolean">false</span><span class="json-comma">,</span></div>
+    <details class="json-node">
+      <summary><span class="json-key">&quot;patternProperties&quot;</span>: { <span class="json-fold">…</span> <span class="json-collapsed-close">}<span class="json-comma">,</span></span></summary>
+      <div class="json-children">
+        <details class="json-node">
+          <summary><span class="json-key">&quot;^ext_[a-zA-Z0-9_]+$&quot;</span>: { <span class="json-fold">…</span> <span class="json-collapsed-close">}</span></summary>
           <div class="json-children">
-            <div class="json-line"><span class="json-key">&quot;<span class="arithmatex">\(ref&quot;&lt;/span&gt;: &lt;span class="json-string"&gt;&quot;constraint-schema.json#/definitions/constraint&quot;&lt;/span&gt;&lt;/div&gt;
-          &lt;/div&gt;
-          &lt;div class="json-close"&gt;}&lt;/div&gt;
-        &lt;/details&gt;
-      &lt;/div&gt;
-      &lt;div class="json-close"&gt;}&lt;span class="json-comma"&gt;,&lt;/span&gt;&lt;/div&gt;
-    &lt;/details&gt;
-    &lt;details class="json-node"&gt;
-      &lt;summary&gt;&lt;span class="json-key"&gt;&quot;properties&quot;&lt;/span&gt;: { &lt;span class="json-fold"&gt;…&lt;/span&gt; &lt;span class="json-collapsed-close"&gt;}&lt;/span&gt;&lt;/summary&gt;
-      &lt;div class="json-children"&gt;
-        &lt;details class="json-node"&gt;
-          &lt;summary&gt;&lt;span class="json-key"&gt;&quot;connection_uri&quot;&lt;/span&gt;: { &lt;span class="json-fold"&gt;…&lt;/span&gt; &lt;span class="json-collapsed-close"&gt;}&lt;span class="json-comma"&gt;,&lt;/span&gt;&lt;/span&gt;&lt;/summary&gt;
-          &lt;div class="json-children"&gt;
-            &lt;div class="json-line"&gt;&lt;span class="json-key"&gt;&quot;\)</span>ref&quot;</span>: <span class="json-string">&quot;constraint-schema.json#/definitions/constraint&quot;</span></div>
+            <div class="json-line"><span class="json-key">&quot;$ref&quot;</span>: <span class="json-string">&quot;constraint-schema.json#/definitions/constraint&quot;</span></div>
+          </div>
+          <div class="json-close">}</div>
+        </details>
+      </div>
+      <div class="json-close">}<span class="json-comma">,</span></div>
+    </details>
+    <details class="json-node">
+      <summary><span class="json-key">&quot;properties&quot;</span>: { <span class="json-fold">…</span> <span class="json-collapsed-close">}</span></summary>
+      <div class="json-children">
+        <details class="json-node">
+          <summary><span class="json-key">&quot;connection_uri&quot;</span>: { <span class="json-fold">…</span> <span class="json-collapsed-close">}<span class="json-comma">,</span></span></summary>
+          <div class="json-children">
+            <div class="json-line"><span class="json-key">&quot;$ref&quot;</span>: <span class="json-string">&quot;constraint-schema.json#/definitions/constraint&quot;</span></div>
           </div>
           <div class="json-close">}<span class="json-comma">,</span></div>
         </details>
@@ -3308,23 +3308,23 @@
 <details class="json-node" open>
   <summary>{ <span class="json-fold">…</span> <span class="json-collapsed-close">}</span></summary>
   <div class="json-children">
-    <div class="json-line"><span class="json-key">&quot;<span class="arithmatex">\(schema&quot;&lt;/span&gt;: &lt;span class="json-string"&gt;&quot;http://json-schema.org/draft-04/schema#&quot;&lt;/span&gt;&lt;span class="json-comma"&gt;,&lt;/span&gt;&lt;/div&gt;
-    &lt;div class="json-line"&gt;&lt;span class="json-key"&gt;&quot;type&quot;&lt;/span&gt;: &lt;span class="json-string"&gt;&quot;object&quot;&lt;/span&gt;&lt;span class="json-comma"&gt;,&lt;/span&gt;&lt;/div&gt;
-    &lt;div class="json-line"&gt;&lt;span class="json-key"&gt;&quot;description&quot;&lt;/span&gt;: &lt;span class="json-string"&gt;&quot;Used to express the dynamic constraints on WebSocket transport parameters. These constraints may be set and changed at run time. Every transport parameter must have an entry, even if it is only an empty object.&quot;&lt;/span&gt;&lt;span class="json-comma"&gt;,&lt;/span&gt;&lt;/div&gt;
-    &lt;details class="json-node"&gt;
-      &lt;summary&gt;&lt;span class="json-key"&gt;&quot;required&quot;&lt;/span&gt;: [ &lt;span class="json-fold"&gt;…&lt;/span&gt; &lt;span class="json-collapsed-close"&gt;]&lt;span class="json-comma"&gt;,&lt;/span&gt;&lt;/span&gt;&lt;/summary&gt;
-      &lt;div class="json-children"&gt;
-        &lt;div class="json-line"&gt;&lt;span class="json-string"&gt;&quot;connection_uri&quot;&lt;/span&gt;&lt;span class="json-comma"&gt;,&lt;/span&gt;&lt;/div&gt;
-        &lt;div class="json-line"&gt;&lt;span class="json-string"&gt;&quot;connection_authorization&quot;&lt;/span&gt;&lt;/div&gt;
-      &lt;/div&gt;
-      &lt;div class="json-close"&gt;]&lt;span class="json-comma"&gt;,&lt;/span&gt;&lt;/div&gt;
-    &lt;/details&gt;
-    &lt;div class="json-line"&gt;&lt;span class="json-key"&gt;&quot;additionalProperties&quot;&lt;/span&gt;: &lt;span class="json-boolean"&gt;false&lt;/span&gt;&lt;span class="json-comma"&gt;,&lt;/span&gt;&lt;/div&gt;
-    &lt;details class="json-node"&gt;
-      &lt;summary&gt;&lt;span class="json-key"&gt;&quot;patternProperties&quot;&lt;/span&gt;: { &lt;span class="json-fold"&gt;…&lt;/span&gt; &lt;span class="json-collapsed-close"&gt;}&lt;span class="json-comma"&gt;,&lt;/span&gt;&lt;/span&gt;&lt;/summary&gt;
-      &lt;div class="json-children"&gt;
-        &lt;details class="json-node"&gt;
-          &lt;summary&gt;&lt;span class="json-key"&gt;&quot;^ext_[a-zA-Z0-9_]+\)</span>&quot;</span>: { <span class="json-fold">…</span> <span class="json-collapsed-close">}</span></summary>
+    <div class="json-line"><span class="json-key">&quot;$schema&quot;</span>: <span class="json-string">&quot;http://json-schema.org/draft-04/schema#&quot;</span><span class="json-comma">,</span></div>
+    <div class="json-line"><span class="json-key">&quot;type&quot;</span>: <span class="json-string">&quot;object&quot;</span><span class="json-comma">,</span></div>
+    <div class="json-line"><span class="json-key">&quot;description&quot;</span>: <span class="json-string">&quot;Used to express the dynamic constraints on WebSocket transport parameters. These constraints may be set and changed at run time. Every transport parameter must have an entry, even if it is only an empty object.&quot;</span><span class="json-comma">,</span></div>
+    <details class="json-node">
+      <summary><span class="json-key">&quot;required&quot;</span>: [ <span class="json-fold">…</span> <span class="json-collapsed-close">]<span class="json-comma">,</span></span></summary>
+      <div class="json-children">
+        <div class="json-line"><span class="json-string">&quot;connection_uri&quot;</span><span class="json-comma">,</span></div>
+        <div class="json-line"><span class="json-string">&quot;connection_authorization&quot;</span></div>
+      </div>
+      <div class="json-close">]<span class="json-comma">,</span></div>
+    </details>
+    <div class="json-line"><span class="json-key">&quot;additionalProperties&quot;</span>: <span class="json-boolean">false</span><span class="json-comma">,</span></div>
+    <details class="json-node">
+      <summary><span class="json-key">&quot;patternProperties&quot;</span>: { <span class="json-fold">…</span> <span class="json-collapsed-close">}<span class="json-comma">,</span></span></summary>
+      <div class="json-children">
+        <details class="json-node">
+          <summary><span class="json-key">&quot;^ext_[a-zA-Z0-9_]+$&quot;</span>: { <span class="json-fold">…</span> <span class="json-collapsed-close">}</span></summary>
           <div class="json-children">
             <div class="json-line"><span class="json-key">&quot;type&quot;</span>: <span class="json-string">&quot;object&quot;</span><span class="json-comma">,</span></div>
             <div class="json-line"><span class="json-key">&quot;description&quot;</span>: <span class="json-string">&quot;The constraints for a single transport parameter&quot;</span><span class="json-comma">,</span></div>

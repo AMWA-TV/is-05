@@ -3195,6 +3195,11 @@
                       
                     
                     
+                      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+                      <div class="md-sidebar-button__wrapper">
+                        <label class="md-sidebar-button" for="__toc"></label>
+                      </div>
+                    
                   
                   <div class="md-sidebar__inner">
                     
@@ -3206,6 +3211,147 @@
   
     
   
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      On this page
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#api-specifications" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        API Specifications
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#api-validation" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        API Validation
+      </span>
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="API Validation">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#content-types" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Content Types
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#api-paths" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        API Paths
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#versioning" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Versioning
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#common-api-base-resource" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Common API Base Resource
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#urls-approach-to-trailing-slashes" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        URLs: Approach to Trailing Slashes
+      </span>
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="URLs: Approach to Trailing Slashes">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#get-and-head-requests" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        <code>GET</code> and <code>HEAD</code> Requests
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#all-other-requests-put-post-delete-options-etc" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        All Other Requests (<code>PUT</code>, <code>POST</code>, <code>DELETE</code>, <code>OPTIONS</code>, etc.)
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#client-behaviour" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Client Behaviour
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#error-codes-responses" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Error Codes &amp; Responses
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
   
 </nav>
                   </div>
@@ -3223,10 +3369,84 @@
   
 
 
-<h1 id="apis">APIs<a class="headerlink" href="#apis" title="Permanent link">&para;</a></h1>
+<h1 id="apis">APIs</h1>
+<p><em>(c) AMWA 2017, CC Attribution-NoDerivatives 4.0 International (CC BY-ND 4.0)</em></p>
+<p>This document covers common aspects of the Connection API.</p>
+<h2 id="api-specifications">API Specifications</h2>
+<p>The Connection API is specified using:</p>
 <ul>
-<li><a href="ConnectionAPI.html">ConnectionAPI</a></li>
+<li>The following sub-sections describing common API properties.</li>
+<li><a href="http://raml.org/">RAML</a> documents and <a href="http://tools.ietf.org/html/draft-zyp-json-schema-04">JSON schemas</a> in the <a href="../../APIs/">APIs</a> folder.</li>
+<li>Transport types and associated schemas defined in the <a href="https://specs.amwa.tv/nmos-parameter-registers/branches/main/transports/">Transports register</a> of the NMOS Parameter Registers (from v1.2 onwards)</li>
 </ul>
+<p>Examples of JSON format output are provided in the <a href="../../examples/">examples</a> folder.</p>
+<h2 id="api-validation">API Validation</h2>
+<p>JSON schemas are included with the RAML API definitions. These include validation for values used within the APIs. It is RECOMMENDED that implementers of a Connection API use these JSON schemas as part of a validation stage when receiving requests from clients. Invalid requests SHOULD cause a <code>400</code> (Bad Request) HTTP error to be returned to the client.</p>
+<p>Note: From v1.2 onwards, additional transport types and associated schemas are defined in the <a href="https://specs.amwa.tv/nmos-parameter-registers/branches/main/transports/">Transports register</a> of the NMOS Parameter Registers.</p>
+<h3 id="content-types">Content Types</h3>
+<p>All APIs MUST provide a JSON representation signalled via <code>Content-Type: application/json</code> headers. This SHOULD be the default content type in the absence of any requested alternative by clients. Other content types (such as HTML) are permitted if they are explicitly requested via <code>Accept</code> headers.</p>
+<h3 id="api-paths">API Paths</h3>
+<p>All NMOS APIs MUST use a path in the following format. Other HTTP resources MAY be presented on the same port by the Node, provided all NMOS resources are available from the <code>/x-nmos/</code> path as follows:</p>
+<p><code>http(s)://&lt;ip address or hostname&gt;:&lt;port&gt;/x-nmos/&lt;api type&gt;/&lt;api version&gt;/</code></p>
+<p>At each level of the API from the base resource upwards, the response SHOULD include a JSON format array of the child resources available from that point.</p>
+<h3 id="versioning">Versioning</h3>
+<p>All public APIs are versioned as follows:</p>
+<ul>
+<li>Requesting the API base resource (such as <code>http(s)://&lt;ip address or hostname&gt;:&lt;port&gt;/x-nmos/connection/</code>) will provide a list containing the versions of the API present on the node.</li>
+<li>A versioned API response MUST include only resources which match the schema for that API version.</li>
+<li>Data which is held for mismatched minor API versions MAY be returned if it can be conformed to the correct schema (see example below). Data MUST NOT be conformed between major API versions.</li>
+</ul>
+<p><strong>Example</strong></p>
+<p>A v1.1 API response can include:</p>
+<ul>
+<li>v1.1 data without modification.</li>
+<li>Data conforming to schemas less than v2.0 but greater than v1.1, with any non-v1.1 keys removed.</li>
+</ul>
+<h3 id="common-api-base-resource">Common API Base Resource</h3>
+<p><code>json
+[
+  "v1.0/",
+  "v2.0/",
+  "v3.0/"
+]</code></p>
+<ul>
+<li>Appending <code>/v1.0/</code> to the API base resource will request the version v1.0 of the API if available.</li>
+<li>The versioning format is <code>v&lt;MAJOR&gt;.&lt;MINOR&gt;</code></li>
+<li><code>MINOR</code> increments will be performed for non-breaking changes (such as the addition of attributes in a response)</li>
+<li><code>MAJOR</code> increments will be performed for breaking changes (such as the renaming of a resource or attribute)</li>
+<li>Versions MUST be represented as complete strings. Parsing MUST proceed as follows: separate into two strings, using the point (<code>.</code>) as a delimiter. Compare integer representations of <code>MAJOR</code>, <code>MINOR</code> version (such that v1.12 is greater than v1.5).</li>
+<li>Clients are responsible for identifying the correct API version they require.</li>
+</ul>
+<h3 id="urls-approach-to-trailing-slashes">URLs: Approach to Trailing Slashes</h3>
+<p>For consistency and in order to adhere to how these APIs are specified in RAML, the 'primary' path for every resource has the trailing slash omitted.</p>
+<p>In order to overcome shortcomings in some common libraries, the following requirements are imposed for the support of URL paths with or without trailing slashes.</p>
+<h4 id="get-and-head-requests"><code>GET</code> and <code>HEAD</code> Requests</h4>
+<ul>
+<li>Clients performing requests using these methods SHOULD correctly handle a <code>301</code> (Moved Permanently) response.</li>
+<li>When a <code>301</code> is supported, the client MUST follow the redirect in order to retrieve the response payload.</li>
+<li>Servers implementing the APIs MUST support requests using these methods to both the trailing slash and non-trailing slash path to each resource. One of these MAY produce a <code>301</code> response causing a redirect to the other if preferred.</li>
+</ul>
+<h4 id="all-other-requests-put-post-delete-options-etc">All Other Requests (<code>PUT</code>, <code>POST</code>, <code>DELETE</code>, <code>OPTIONS</code>, etc.)</h4>
+<ul>
+<li>Clients performing requests using these methods MUST use URLs with no trailing slash present.</li>
+<li>Servers implementing the APIs MUST correctly interpret requests using these methods to paths without trailing slashes present.</li>
+<li>Servers implementing the APIs MAY correctly interpret requests using these methods to paths with trailing slashes present for backward compatibility.</li>
+<li>Servers SHOULD NOT respond with <code>3xx</code> codes for these request types.</li>
+</ul>
+<h4 id="client-behaviour">Client Behaviour</h4>
+<p>When a server implementation needs to indicate an API URL via an <code>href</code> or similar attribute, it is valid to either include a trailing slash or not provided that the listed path is accessible and follows the above rules. Clients appending paths to <code>href</code> type attributes MUST support both cases, avoiding doubled or missing slashes.</p>
+<h3 id="error-codes-responses">Error Codes &amp; Responses</h3>
+<p>The NMOS APIs use HTTP status codes to indicate success, failure and other cases to clients as per <a href="https://tools.ietf.org/html/rfc7231">RFC 7231</a> and related standards. Where the RAML specification of an API specifies explicit response codes it is expected that a client will handle these cases in a particular way. Explicit handling of every possible HTTP response code is not expected, but clients are expected to implement generic handling for ranges of response codes (<code>1xx</code>, <code>2xx</code>, <code>3xx</code>, <code>4xx</code> and <code>5xx</code>).</p>
+<p>For HTTP codes <code>400</code> and upwards, a JSON format response MUST be returned as follows:</p>
+<p><strong>Example Error Response</strong></p>
+<p><code>json
+{
+  "code": 400,
+  "error": "Human readable message which is suitable for user interface display, and helpful to the user",
+  "debug": "Programmer / debugging detail or traceback"
+}</code></p>
+<p><code>code</code> SHOULD match the HTTP status code. <code>error</code> MUST always be present and in string format. <code>debug</code> MAY be <code>null</code> if no further debug information is available.</p>
+<p>Further details on when APIs will respond with particular codes is covered in the <a href="../Behaviour/">Behaviour</a> section.</p>
 
 
 

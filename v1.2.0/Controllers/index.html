@@ -3715,9 +3715,9 @@
   
 
 
-<h1 id="controllers">Controllers<a class="headerlink" href="#controllers" title="Permanent link">&para;</a></h1>
-<p><em>&copy; AMWA 2022, CC Attribution-NoDerivatives 4.0 International (CC BY-ND 4.0)</em></p>
-<h2 id="introduction">Introduction<a class="headerlink" href="#introduction" title="Permanent link">&para;</a></h2>
+<h1 id="controllers">Controllers</h1>
+<p><em>(c) AMWA 2022, CC Attribution-NoDerivatives 4.0 International (CC BY-ND 4.0)</em></p>
+<h2 id="introduction">Introduction</h2>
 <p>A Controller is Client software that interacts with the NMOS APIs to discover, connect and manage resources (Nodes, Devices, Senders and Receivers) within a networked media system.</p>
 <ul>
 <li>This document includes normative references to be followed when implementing a Controller.</li>
@@ -3726,25 +3726,25 @@
 <li>This document does not cover any requirements relating to where a Controller is additionally acting as a Node (e.g. receiving monitoring information via IS-07).</li>
 </ul>
 <p>Where this document refers to a User, this can include both human operators who drive a Controller manually and automation systems that drive a Controller programmatically.</p>
-<h2 id="general">General<a class="headerlink" href="#general" title="Permanent link">&para;</a></h2>
-<h3 id="http-apis">HTTP APIs<a class="headerlink" href="#http-apis" title="Permanent link">&para;</a></h3>
-<h4 id="trailing-slashes">Trailing Slashes<a class="headerlink" href="#trailing-slashes" title="Permanent link">&para;</a></h4>
+<h2 id="general">General</h2>
+<h3 id="http-apis">HTTP APIs</h3>
+<h4 id="trailing-slashes">Trailing Slashes</h4>
 <p>Controllers appending paths to <code>href</code> type attributes MUST support URLs both with and without a trailing slash, to avoid doubled or missing slashes.</p>
 <p>Controllers performing requests other than <code>GET</code> or <code>HEAD</code> (i.e <code>PUT</code>, <code>POST</code>, <code>DELETE</code>, <code>OPTIONS</code> etc.) MUST use URLs with no trailing slash present.</p>
-<h4 id="api-versions">API Versions<a class="headerlink" href="#api-versions" title="Permanent link">&para;</a></h4>
+<h4 id="api-versions">API Versions</h4>
 <p>The versioning format is <code>v&lt;MAJOR&gt;.&lt;MINOR&gt;</code>
 * <code>MINOR</code> increments will be performed for non-breaking changes (such as the addition of attributes in a response)
 * <code>MAJOR</code> increments will be performed for breaking changes (such as the renaming of a resource or attribute)</p>
 <p>Versions MUST be represented as complete strings. Parsing MUST proceed as follows: separate into two strings, using the point (<code>.</code>) as a delimiter. Compare integer representations of <code>MAJOR</code>, <code>MINOR</code> version (such that v1.12 is greater than v1.5).</p>
 <p>Implementers of Controllers are RECOMMENDED to support multiple versions of the NMOS APIs simultaneously in order to ease the upgrade process in live facilities.</p>
-<h4 id="error-codes-responses">Error Codes &amp; Responses<a class="headerlink" href="#error-codes-responses" title="Permanent link">&para;</a></h4>
+<h4 id="error-codes-responses">Error Codes &amp; Responses</h4>
 <p>The NMOS APIs use HTTP status codes to indicate success, failure and other cases to Controllers as per <a href="https://tools.ietf.org/html/rfc7231">RFC 7231</a> and related standards.</p>
 <p>As explicit handling of every possible HTTP response code is not expected, Controllers MUST implement generic handling for ranges of response codes (<code>1xx</code>, <code>2xx</code>, <code>3xx</code>, <code>4xx</code> and <code>5xx</code>).
 However, where the API specifies explicit response codes the Controller SHOULD handle these cases explicitly.</p>
 <p>When a Controller performs <code>GET</code> and <code>HEAD</code> requests, it MUST correctly handle a <code>301</code> (Moved Permanently) redirect to accommodate the API implementations permitted in the <a href="../APIs/#urls-approach-to-trailing-slashes">APIs: URLs: Approach to Trailing Slashes</a> section of this specification.</p>
 <p>If a Controller receives an HTTP <code>5xx</code> or <code>4xx</code> response code from the API, a failure has occurred.
 The Controller SHOULD display the content of the response's <code>error</code> field to the User if possible.</p>
-<h2 id="connection-management">Connection Management<a class="headerlink" href="#connection-management" title="Permanent link">&para;</a></h2>
+<h2 id="connection-management">Connection Management</h2>
 <p>The Controller MUST implement connection management according to the <a href="../APIs/">APIs section</a> of this specification.</p>
 <p>The Controller MUST be able to perform immediate activations of Senders and Receivers to configure connections between them via the IS-05 Connection API.</p>
 <p>The Controller MUST be able to perform an immediate activation to disable an active connection via the IS-05 Connection API.    </p>
@@ -3764,24 +3764,24 @@ Similarly, it includes a <code>receiver_id</code> parameter in each Sender's <co
 When modifying <code>transport_params</code> or <code>transport_file</code> to configure a Receiver to connect with a specific NMOS Sender, for example, via unicast RTP or source-specific multicast, the Controller MUST set the <code>sender_id</code> parameter.
 Similarly, when modifying <code>transport_params</code> to configure a Sender to connect with a specific NMOS Receiver, for example, via unicast RTP, the Controller MUST set the <code>receiver_id</code> parameter.
 Otherwise, when modifying <code>transport_params</code> or <code>transport_file</code>, the Controller MUST set the <code>sender_id</code> or <code>receiver_id</code> parameter to <code>null</code>.</p>
-<h2 id="client-side-implementation-notes">Client Side Implementation Notes<a class="headerlink" href="#client-side-implementation-notes" title="Permanent link">&para;</a></h2>
+<h2 id="client-side-implementation-notes">Client Side Implementation Notes</h2>
 <p>Controllers MUST adhere to the <a href="../APIs%20-%20Client%20Side%20Implementation/">APIs: Client Side Implementation Notes</a> described in this specification, such as the sections on Conformance to Schemas, RTP Operating Point, and Failure Modes.</p>
-<h2 id="interoperability">Interoperability<a class="headerlink" href="#interoperability" title="Permanent link">&para;</a></h2>
-<h3 id="interoperability-with-is-04">Interoperability with IS-04<a class="headerlink" href="#interoperability-with-is-04" title="Permanent link">&para;</a></h3>
-<h4 id="api-common-keys">API Common Keys<a class="headerlink" href="#api-common-keys" title="Permanent link">&para;</a></h4>
+<h2 id="interoperability">Interoperability</h2>
+<h3 id="interoperability-with-is-04">Interoperability with IS-04</h3>
+<h4 id="api-common-keys">API Common Keys</h4>
 <p>Controllers MUST follow the requirements for common API keys specified in the <a href="https://specs.amwa.tv/is-04/releases/v1.3.2/docs/APIs_-_Common_Keys.html">IS-04 APIs: Common Keys</a> document including the requirements regarding <a href="https://specs.amwa.tv/is-04/releases/v1.3.2/docs/APIs_-_Common_Keys.html#use-of-urns">use of URNs</a>.</p>
-<h3 id="interacting-with-non-nmos-devices">Interacting with Non-NMOS Devices<a class="headerlink" href="#interacting-with-non-nmos-devices" title="Permanent link">&para;</a></h3>
+<h3 id="interacting-with-non-nmos-devices">Interacting with Non-NMOS Devices</h3>
 <p>Controllers MUST follow the requirements for a Client interacting with non-NMOS Devices, as described in the <a href="../Interoperability%20-%20Non-NMOS%20Devices/">Interoperability: Non-NMOS Devices</a> section of this Specification.</p>
-<h2 id="behaviour">Behaviour<a class="headerlink" href="#behaviour" title="Permanent link">&para;</a></h2>
-<h3 id="operation-with-smpte-2022-7">Operation with SMPTE 2022-7<a class="headerlink" href="#operation-with-smpte-2022-7" title="Permanent link">&para;</a></h3>
+<h2 id="behaviour">Behaviour</h2>
+<h3 id="operation-with-smpte-2022-7">Operation with SMPTE 2022-7</h3>
 <p>When the Controller is interacting with Receivers that support SMPTE 2022-7 it MUST follow the requirements for Clients described in the <a href="../Behaviour%20-%20RTP%20Transport%20Type/#operation-with-smpte-2022-7">Behaviour: RTP Transport Type: Operation with SMPTE 2022-7</a> section of this specification.</p>
-<h3 id="version-timestamp">Version Timestamp<a class="headerlink" href="#version-timestamp" title="Permanent link">&para;</a></h3>
+<h3 id="version-timestamp">Version Timestamp</h3>
 <p>In IS-04, a version timestamp increment indicates that the properties of a resource have changed, for example by the action of another Controller, and as such any information cached by the Controller could possibly be stale.</p>
 <p>In Registered Operation, to avoid polling of the HTTP API the Controller SHOULD use an IS-04 Query API WebSocket connection to monitor version timestamp increments on Senders and Receivers being controlled.</p>
-<h3 id="sender-multicast-address">Sender Multicast Address<a class="headerlink" href="#sender-multicast-address" title="Permanent link">&para;</a></h3>
+<h3 id="sender-multicast-address">Sender Multicast Address</h3>
 <p>The Controller MUST allow the User to configure the multicast transmit information (using IS-05 <code>transport_params</code>) before or in the same transaction as enabling the transmitter (setting <code>master_enable</code> to <code>true</code>).
 This allows avoiding conflicts with other senders' configurations, in particular when a Sender is added to a new system.</p>
-<h3 id="tcp-sessions">TCP Sessions<a class="headerlink" href="#tcp-sessions" title="Permanent link">&para;</a></h3>
+<h3 id="tcp-sessions">TCP Sessions</h3>
 <p>The Controller SHOULD use persistent TCP connections wherever possible,
 to allow multiple operations to be performed without repeatedly closing and reopening connections for each operation.</p>
 <p>If the Controller uses HTTP pipelining, the guidelines set out in <a href="https://datatracker.ietf.org/doc/html/rfc7230#section-6.3.2">RFC 7230 section 6.3.2</a> apply.</p>

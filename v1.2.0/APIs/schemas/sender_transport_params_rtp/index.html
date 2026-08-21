@@ -3235,7 +3235,7 @@
   
 
 
-<h1 id="sender_transport_params_rtp">sender_transport_params_rtp<a class="headerlink" href="#sender_transport_params_rtp" title="Permanent link">&para;</a></h1>
+<h1 id="sender_transport_params_rtp">sender_transport_params_rtp</h1>
 <div class="tabbed-set tabbed-alternate" data-tabs="1:2"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">With refs</label><label for="__tabbed_1_2">Resolved</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
@@ -3248,7 +3248,7 @@
 <details class="json-node" open>
   <summary>{ <span class="json-fold">…</span> <span class="json-collapsed-close">}</span></summary>
   <div class="json-children">
-    <div class="json-line"><span class="json-key">&quot;$schema&quot;</span>: <span class="json-string">&quot;<a href="http://json-schema.org/draft-04/schema#&amp;quot">http://json-schema.org/draft-04/schema#&amp;quot</a>;</span><span class="json-comma">,</span></div>
+    <div class="json-line"><span class="json-key">&quot;$schema&quot;</span>: <span class="json-string">&quot;http://json-schema.org/draft-04/schema#&quot;</span><span class="json-comma">,</span></div>
     <div class="json-line"><span class="json-key">&quot;description&quot;</span>: <span class="json-string">&quot;Describes RTP Sender transport parameters. The constraints in this schema are minimum constraints, but may be further constrained at the constraints endpoint. As a minimum all senders must support <code>source_ip</code>, <code>destination_ip</code>, <code>source_port</code>, <code>rtp_enabled</code> and <code>destination_port</code>. Senders supporting FEC and/or RTCP must support parameters prefixed with <code>fec</code> and <code>rtcp</code> respectively.&quot;</span><span class="json-comma">,</span></div>
     <div class="json-line"><span class="json-key">&quot;title&quot;</span>: <span class="json-string">&quot;RTP Sender Transport Parameters&quot;</span><span class="json-comma">,</span></div>
     <div class="json-line"><span class="json-key">&quot;type&quot;</span>: <span class="json-string">&quot;object&quot;</span><span class="json-comma">,</span></div>
@@ -3280,42 +3280,42 @@
                 <details class="json-node">
                   <summary>{ <span class="json-fold">…</span> <span class="json-collapsed-close">}</span></summary>
                   <div class="json-children">
-                    <div class="json-line"><span class="json-key">&quot;pattern&quot;</span>: <span class="json-string">&quot;^auto<span class="arithmatex">\(&quot;&lt;/span&gt;&lt;/div&gt;
-                  &lt;/div&gt;
-                  &lt;div class="json-close"&gt;}&lt;/div&gt;
-                &lt;/details&gt;
-              &lt;/div&gt;
-              &lt;div class="json-close"&gt;]&lt;/div&gt;
-            &lt;/details&gt;
-          &lt;/div&gt;
-          &lt;div class="json-close"&gt;}&lt;span class="json-comma"&gt;,&lt;/span&gt;&lt;/div&gt;
-        &lt;/details&gt;
-        &lt;details class="json-node"&gt;
-          &lt;summary&gt;&lt;span class="json-key"&gt;&quot;destination_ip&quot;&lt;/span&gt;: { &lt;span class="json-fold"&gt;…&lt;/span&gt; &lt;span class="json-collapsed-close"&gt;}&lt;span class="json-comma"&gt;,&lt;/span&gt;&lt;/span&gt;&lt;/summary&gt;
-          &lt;div class="json-children"&gt;
-            &lt;div class="json-line"&gt;&lt;span class="json-key"&gt;&quot;type&quot;&lt;/span&gt;: &lt;span class="json-string"&gt;&quot;string&quot;&lt;/span&gt;&lt;span class="json-comma"&gt;,&lt;/span&gt;&lt;/div&gt;
-            &lt;div class="json-line"&gt;&lt;span class="json-key"&gt;&quot;description&quot;&lt;/span&gt;: &lt;span class="json-string"&gt;&quot;IP address to which RTP packets will be sent. If auto is set the sender should select a multicast address to send to itself. For example it may implement MADCAP (RFC 2730), ZMAAP, or be allocated address by some other system responsible for co-ordination multicast address use.&quot;&lt;/span&gt;&lt;span class="json-comma"&gt;,&lt;/span&gt;&lt;/div&gt;
-            &lt;details class="json-node"&gt;
-              &lt;summary&gt;&lt;span class="json-key"&gt;&quot;anyOf&quot;&lt;/span&gt;: [ &lt;span class="json-fold"&gt;…&lt;/span&gt; &lt;span class="json-collapsed-close"&gt;]&lt;/span&gt;&lt;/summary&gt;
-              &lt;div class="json-children"&gt;
-                &lt;details class="json-node"&gt;
-                  &lt;summary&gt;{ &lt;span class="json-fold"&gt;…&lt;/span&gt; &lt;span class="json-collapsed-close"&gt;}&lt;span class="json-comma"&gt;,&lt;/span&gt;&lt;/span&gt;&lt;/summary&gt;
-                  &lt;div class="json-children"&gt;
-                    &lt;div class="json-line"&gt;&lt;span class="json-key"&gt;&quot;format&quot;&lt;/span&gt;: &lt;span class="json-string"&gt;&quot;ipv4&quot;&lt;/span&gt;&lt;/div&gt;
-                  &lt;/div&gt;
-                  &lt;div class="json-close"&gt;}&lt;span class="json-comma"&gt;,&lt;/span&gt;&lt;/div&gt;
-                &lt;/details&gt;
-                &lt;details class="json-node"&gt;
-                  &lt;summary&gt;{ &lt;span class="json-fold"&gt;…&lt;/span&gt; &lt;span class="json-collapsed-close"&gt;}&lt;span class="json-comma"&gt;,&lt;/span&gt;&lt;/span&gt;&lt;/summary&gt;
-                  &lt;div class="json-children"&gt;
-                    &lt;div class="json-line"&gt;&lt;span class="json-key"&gt;&quot;format&quot;&lt;/span&gt;: &lt;span class="json-string"&gt;&quot;ipv6&quot;&lt;/span&gt;&lt;/div&gt;
-                  &lt;/div&gt;
-                  &lt;div class="json-close"&gt;}&lt;span class="json-comma"&gt;,&lt;/span&gt;&lt;/div&gt;
-                &lt;/details&gt;
-                &lt;details class="json-node"&gt;
-                  &lt;summary&gt;{ &lt;span class="json-fold"&gt;…&lt;/span&gt; &lt;span class="json-collapsed-close"&gt;}&lt;/span&gt;&lt;/summary&gt;
-                  &lt;div class="json-children"&gt;
-                    &lt;div class="json-line"&gt;&lt;span class="json-key"&gt;&quot;pattern&quot;&lt;/span&gt;: &lt;span class="json-string"&gt;&quot;^auto\)</span>&quot;</span></div>
+                    <div class="json-line"><span class="json-key">&quot;pattern&quot;</span>: <span class="json-string">&quot;^auto$&quot;</span></div>
+                  </div>
+                  <div class="json-close">}</div>
+                </details>
+              </div>
+              <div class="json-close">]</div>
+            </details>
+          </div>
+          <div class="json-close">}<span class="json-comma">,</span></div>
+        </details>
+        <details class="json-node">
+          <summary><span class="json-key">&quot;destination_ip&quot;</span>: { <span class="json-fold">…</span> <span class="json-collapsed-close">}<span class="json-comma">,</span></span></summary>
+          <div class="json-children">
+            <div class="json-line"><span class="json-key">&quot;type&quot;</span>: <span class="json-string">&quot;string&quot;</span><span class="json-comma">,</span></div>
+            <div class="json-line"><span class="json-key">&quot;description&quot;</span>: <span class="json-string">&quot;IP address to which RTP packets will be sent. If auto is set the sender should select a multicast address to send to itself. For example it may implement MADCAP (RFC 2730), ZMAAP, or be allocated address by some other system responsible for co-ordination multicast address use.&quot;</span><span class="json-comma">,</span></div>
+            <details class="json-node">
+              <summary><span class="json-key">&quot;anyOf&quot;</span>: [ <span class="json-fold">…</span> <span class="json-collapsed-close">]</span></summary>
+              <div class="json-children">
+                <details class="json-node">
+                  <summary>{ <span class="json-fold">…</span> <span class="json-collapsed-close">}<span class="json-comma">,</span></span></summary>
+                  <div class="json-children">
+                    <div class="json-line"><span class="json-key">&quot;format&quot;</span>: <span class="json-string">&quot;ipv4&quot;</span></div>
+                  </div>
+                  <div class="json-close">}<span class="json-comma">,</span></div>
+                </details>
+                <details class="json-node">
+                  <summary>{ <span class="json-fold">…</span> <span class="json-collapsed-close">}<span class="json-comma">,</span></span></summary>
+                  <div class="json-children">
+                    <div class="json-line"><span class="json-key">&quot;format&quot;</span>: <span class="json-string">&quot;ipv6&quot;</span></div>
+                  </div>
+                  <div class="json-close">}<span class="json-comma">,</span></div>
+                </details>
+                <details class="json-node">
+                  <summary>{ <span class="json-fold">…</span> <span class="json-collapsed-close">}</span></summary>
+                  <div class="json-children">
+                    <div class="json-line"><span class="json-key">&quot;pattern&quot;</span>: <span class="json-string">&quot;^auto$&quot;</span></div>
                   </div>
                   <div class="json-close">}</div>
                 </details>
@@ -3339,25 +3339,25 @@
             <div class="json-line"><span class="json-key">&quot;description&quot;</span>: <span class="json-string">&quot;source port for RTP packets (auto = 5004 by default)&quot;</span><span class="json-comma">,</span></div>
             <div class="json-line"><span class="json-key">&quot;minimum&quot;</span>: <span class="json-number">0</span><span class="json-comma">,</span></div>
             <div class="json-line"><span class="json-key">&quot;maximum&quot;</span>: <span class="json-number">65535</span><span class="json-comma">,</span></div>
-            <div class="json-line"><span class="json-key">&quot;pattern&quot;</span>: <span class="json-string">&quot;^auto<span class="arithmatex">\(&quot;&lt;/span&gt;&lt;/div&gt;
-          &lt;/div&gt;
-          &lt;div class="json-close"&gt;}&lt;span class="json-comma"&gt;,&lt;/span&gt;&lt;/div&gt;
-        &lt;/details&gt;
-        &lt;details class="json-node"&gt;
-          &lt;summary&gt;&lt;span class="json-key"&gt;&quot;destination_port&quot;&lt;/span&gt;: { &lt;span class="json-fold"&gt;…&lt;/span&gt; &lt;span class="json-collapsed-close"&gt;}&lt;span class="json-comma"&gt;,&lt;/span&gt;&lt;/span&gt;&lt;/summary&gt;
-          &lt;div class="json-children"&gt;
-            &lt;details class="json-node"&gt;
-              &lt;summary&gt;&lt;span class="json-key"&gt;&quot;type&quot;&lt;/span&gt;: [ &lt;span class="json-fold"&gt;…&lt;/span&gt; &lt;span class="json-collapsed-close"&gt;]&lt;span class="json-comma"&gt;,&lt;/span&gt;&lt;/span&gt;&lt;/summary&gt;
-              &lt;div class="json-children"&gt;
-                &lt;div class="json-line"&gt;&lt;span class="json-string"&gt;&quot;integer&quot;&lt;/span&gt;&lt;span class="json-comma"&gt;,&lt;/span&gt;&lt;/div&gt;
-                &lt;div class="json-line"&gt;&lt;span class="json-string"&gt;&quot;string&quot;&lt;/span&gt;&lt;/div&gt;
-              &lt;/div&gt;
-              &lt;div class="json-close"&gt;]&lt;span class="json-comma"&gt;,&lt;/span&gt;&lt;/div&gt;
-            &lt;/details&gt;
-            &lt;div class="json-line"&gt;&lt;span class="json-key"&gt;&quot;description&quot;&lt;/span&gt;: &lt;span class="json-string"&gt;&quot;destination port for RTP packets (auto = 5004 by default)&quot;&lt;/span&gt;&lt;span class="json-comma"&gt;,&lt;/span&gt;&lt;/div&gt;
-            &lt;div class="json-line"&gt;&lt;span class="json-key"&gt;&quot;minimum&quot;&lt;/span&gt;: &lt;span class="json-number"&gt;1&lt;/span&gt;&lt;span class="json-comma"&gt;,&lt;/span&gt;&lt;/div&gt;
-            &lt;div class="json-line"&gt;&lt;span class="json-key"&gt;&quot;maximum&quot;&lt;/span&gt;: &lt;span class="json-number"&gt;65535&lt;/span&gt;&lt;span class="json-comma"&gt;,&lt;/span&gt;&lt;/div&gt;
-            &lt;div class="json-line"&gt;&lt;span class="json-key"&gt;&quot;pattern&quot;&lt;/span&gt;: &lt;span class="json-string"&gt;&quot;^auto\)</span>&quot;</span></div>
+            <div class="json-line"><span class="json-key">&quot;pattern&quot;</span>: <span class="json-string">&quot;^auto$&quot;</span></div>
+          </div>
+          <div class="json-close">}<span class="json-comma">,</span></div>
+        </details>
+        <details class="json-node">
+          <summary><span class="json-key">&quot;destination_port&quot;</span>: { <span class="json-fold">…</span> <span class="json-collapsed-close">}<span class="json-comma">,</span></span></summary>
+          <div class="json-children">
+            <details class="json-node">
+              <summary><span class="json-key">&quot;type&quot;</span>: [ <span class="json-fold">…</span> <span class="json-collapsed-close">]<span class="json-comma">,</span></span></summary>
+              <div class="json-children">
+                <div class="json-line"><span class="json-string">&quot;integer&quot;</span><span class="json-comma">,</span></div>
+                <div class="json-line"><span class="json-string">&quot;string&quot;</span></div>
+              </div>
+              <div class="json-close">]<span class="json-comma">,</span></div>
+            </details>
+            <div class="json-line"><span class="json-key">&quot;description&quot;</span>: <span class="json-string">&quot;destination port for RTP packets (auto = 5004 by default)&quot;</span><span class="json-comma">,</span></div>
+            <div class="json-line"><span class="json-key">&quot;minimum&quot;</span>: <span class="json-number">1</span><span class="json-comma">,</span></div>
+            <div class="json-line"><span class="json-key">&quot;maximum&quot;</span>: <span class="json-number">65535</span><span class="json-comma">,</span></div>
+            <div class="json-line"><span class="json-key">&quot;pattern&quot;</span>: <span class="json-string">&quot;^auto$&quot;</span></div>
           </div>
           <div class="json-close">}<span class="json-comma">,</span></div>
         </details>
@@ -3394,83 +3394,83 @@
                 <details class="json-node">
                   <summary>{ <span class="json-fold">…</span> <span class="json-collapsed-close">}</span></summary>
                   <div class="json-children">
-                    <div class="json-line"><span class="json-key">&quot;pattern&quot;</span>: <span class="json-string">&quot;^auto<span class="arithmatex">\(&quot;&lt;/span&gt;&lt;/div&gt;
-                  &lt;/div&gt;
-                  &lt;div class="json-close"&gt;}&lt;/div&gt;
-                &lt;/details&gt;
-              &lt;/div&gt;
-              &lt;div class="json-close"&gt;]&lt;/div&gt;
-            &lt;/details&gt;
-          &lt;/div&gt;
-          &lt;div class="json-close"&gt;}&lt;span class="json-comma"&gt;,&lt;/span&gt;&lt;/div&gt;
-        &lt;/details&gt;
-        &lt;details class="json-node"&gt;
-          &lt;summary&gt;&lt;span class="json-key"&gt;&quot;fec_type&quot;&lt;/span&gt;: { &lt;span class="json-fold"&gt;…&lt;/span&gt; &lt;span class="json-collapsed-close"&gt;}&lt;span class="json-comma"&gt;,&lt;/span&gt;&lt;/span&gt;&lt;/summary&gt;
-          &lt;div class="json-children"&gt;
-            &lt;div class="json-line"&gt;&lt;span class="json-key"&gt;&quot;type&quot;&lt;/span&gt;: &lt;span class="json-string"&gt;&quot;string&quot;&lt;/span&gt;&lt;span class="json-comma"&gt;,&lt;/span&gt;&lt;/div&gt;
-            &lt;div class="json-line"&gt;&lt;span class="json-key"&gt;&quot;description&quot;&lt;/span&gt;: &lt;span class="json-string"&gt;&quot;forward error correction mode to apply&quot;&lt;/span&gt;&lt;span class="json-comma"&gt;,&lt;/span&gt;&lt;/div&gt;
-            &lt;details class="json-node"&gt;
-              &lt;summary&gt;&lt;span class="json-key"&gt;&quot;enum&quot;&lt;/span&gt;: [ &lt;span class="json-fold"&gt;…&lt;/span&gt; &lt;span class="json-collapsed-close"&gt;]&lt;/span&gt;&lt;/summary&gt;
-              &lt;div class="json-children"&gt;
-                &lt;div class="json-line"&gt;&lt;span class="json-string"&gt;&quot;XOR&quot;&lt;/span&gt;&lt;span class="json-comma"&gt;,&lt;/span&gt;&lt;/div&gt;
-                &lt;div class="json-line"&gt;&lt;span class="json-string"&gt;&quot;Reed-Solomon&quot;&lt;/span&gt;&lt;/div&gt;
-              &lt;/div&gt;
-              &lt;div class="json-close"&gt;]&lt;/div&gt;
-            &lt;/details&gt;
-          &lt;/div&gt;
-          &lt;div class="json-close"&gt;}&lt;span class="json-comma"&gt;,&lt;/span&gt;&lt;/div&gt;
-        &lt;/details&gt;
-        &lt;details class="json-node"&gt;
-          &lt;summary&gt;&lt;span class="json-key"&gt;&quot;fec_mode&quot;&lt;/span&gt;: { &lt;span class="json-fold"&gt;…&lt;/span&gt; &lt;span class="json-collapsed-close"&gt;}&lt;span class="json-comma"&gt;,&lt;/span&gt;&lt;/span&gt;&lt;/summary&gt;
-          &lt;div class="json-children"&gt;
-            &lt;div class="json-line"&gt;&lt;span class="json-key"&gt;&quot;type&quot;&lt;/span&gt;: &lt;span class="json-string"&gt;&quot;string&quot;&lt;/span&gt;&lt;span class="json-comma"&gt;,&lt;/span&gt;&lt;/div&gt;
-            &lt;div class="json-line"&gt;&lt;span class="json-key"&gt;&quot;description&quot;&lt;/span&gt;: &lt;span class="json-string"&gt;&quot;forward error correction mode to apply&quot;&lt;/span&gt;&lt;span class="json-comma"&gt;,&lt;/span&gt;&lt;/div&gt;
-            &lt;details class="json-node"&gt;
-              &lt;summary&gt;&lt;span class="json-key"&gt;&quot;enum&quot;&lt;/span&gt;: [ &lt;span class="json-fold"&gt;…&lt;/span&gt; &lt;span class="json-collapsed-close"&gt;]&lt;/span&gt;&lt;/summary&gt;
-              &lt;div class="json-children"&gt;
-                &lt;div class="json-line"&gt;&lt;span class="json-string"&gt;&quot;1D&quot;&lt;/span&gt;&lt;span class="json-comma"&gt;,&lt;/span&gt;&lt;/div&gt;
-                &lt;div class="json-line"&gt;&lt;span class="json-string"&gt;&quot;2D&quot;&lt;/span&gt;&lt;/div&gt;
-              &lt;/div&gt;
-              &lt;div class="json-close"&gt;]&lt;/div&gt;
-            &lt;/details&gt;
-          &lt;/div&gt;
-          &lt;div class="json-close"&gt;}&lt;span class="json-comma"&gt;,&lt;/span&gt;&lt;/div&gt;
-        &lt;/details&gt;
-        &lt;details class="json-node"&gt;
-          &lt;summary&gt;&lt;span class="json-key"&gt;&quot;fec_block_width&quot;&lt;/span&gt;: { &lt;span class="json-fold"&gt;…&lt;/span&gt; &lt;span class="json-collapsed-close"&gt;}&lt;span class="json-comma"&gt;,&lt;/span&gt;&lt;/span&gt;&lt;/summary&gt;
-          &lt;div class="json-children"&gt;
-            &lt;div class="json-line"&gt;&lt;span class="json-key"&gt;&quot;type&quot;&lt;/span&gt;: &lt;span class="json-string"&gt;&quot;integer&quot;&lt;/span&gt;&lt;span class="json-comma"&gt;,&lt;/span&gt;&lt;/div&gt;
-            &lt;div class="json-line"&gt;&lt;span class="json-key"&gt;&quot;description&quot;&lt;/span&gt;: &lt;span class="json-string"&gt;&quot;width of block over which FEC is calculated in packets&quot;&lt;/span&gt;&lt;span class="json-comma"&gt;,&lt;/span&gt;&lt;/div&gt;
-            &lt;div class="json-line"&gt;&lt;span class="json-key"&gt;&quot;minimum&quot;&lt;/span&gt;: &lt;span class="json-number"&gt;4&lt;/span&gt;&lt;span class="json-comma"&gt;,&lt;/span&gt;&lt;/div&gt;
-            &lt;div class="json-line"&gt;&lt;span class="json-key"&gt;&quot;maximum&quot;&lt;/span&gt;: &lt;span class="json-number"&gt;200&lt;/span&gt;&lt;/div&gt;
-          &lt;/div&gt;
-          &lt;div class="json-close"&gt;}&lt;span class="json-comma"&gt;,&lt;/span&gt;&lt;/div&gt;
-        &lt;/details&gt;
-        &lt;details class="json-node"&gt;
-          &lt;summary&gt;&lt;span class="json-key"&gt;&quot;fec_block_height&quot;&lt;/span&gt;: { &lt;span class="json-fold"&gt;…&lt;/span&gt; &lt;span class="json-collapsed-close"&gt;}&lt;span class="json-comma"&gt;,&lt;/span&gt;&lt;/span&gt;&lt;/summary&gt;
-          &lt;div class="json-children"&gt;
-            &lt;div class="json-line"&gt;&lt;span class="json-key"&gt;&quot;type&quot;&lt;/span&gt;: &lt;span class="json-string"&gt;&quot;integer&quot;&lt;/span&gt;&lt;span class="json-comma"&gt;,&lt;/span&gt;&lt;/div&gt;
-            &lt;div class="json-line"&gt;&lt;span class="json-key"&gt;&quot;description&quot;&lt;/span&gt;: &lt;span class="json-string"&gt;&quot;height of block over which FEC is calculated in packets&quot;&lt;/span&gt;&lt;span class="json-comma"&gt;,&lt;/span&gt;&lt;/div&gt;
-            &lt;div class="json-line"&gt;&lt;span class="json-key"&gt;&quot;minimum&quot;&lt;/span&gt;: &lt;span class="json-number"&gt;4&lt;/span&gt;&lt;span class="json-comma"&gt;,&lt;/span&gt;&lt;/div&gt;
-            &lt;div class="json-line"&gt;&lt;span class="json-key"&gt;&quot;maximum&quot;&lt;/span&gt;: &lt;span class="json-number"&gt;200&lt;/span&gt;&lt;/div&gt;
-          &lt;/div&gt;
-          &lt;div class="json-close"&gt;}&lt;span class="json-comma"&gt;,&lt;/span&gt;&lt;/div&gt;
-        &lt;/details&gt;
-        &lt;details class="json-node"&gt;
-          &lt;summary&gt;&lt;span class="json-key"&gt;&quot;fec1D_destination_port&quot;&lt;/span&gt;: { &lt;span class="json-fold"&gt;…&lt;/span&gt; &lt;span class="json-collapsed-close"&gt;}&lt;span class="json-comma"&gt;,&lt;/span&gt;&lt;/span&gt;&lt;/summary&gt;
-          &lt;div class="json-children"&gt;
-            &lt;details class="json-node"&gt;
-              &lt;summary&gt;&lt;span class="json-key"&gt;&quot;type&quot;&lt;/span&gt;: [ &lt;span class="json-fold"&gt;…&lt;/span&gt; &lt;span class="json-collapsed-close"&gt;]&lt;span class="json-comma"&gt;,&lt;/span&gt;&lt;/span&gt;&lt;/summary&gt;
-              &lt;div class="json-children"&gt;
-                &lt;div class="json-line"&gt;&lt;span class="json-string"&gt;&quot;integer&quot;&lt;/span&gt;&lt;span class="json-comma"&gt;,&lt;/span&gt;&lt;/div&gt;
-                &lt;div class="json-line"&gt;&lt;span class="json-string"&gt;&quot;string&quot;&lt;/span&gt;&lt;/div&gt;
-              &lt;/div&gt;
-              &lt;div class="json-close"&gt;]&lt;span class="json-comma"&gt;,&lt;/span&gt;&lt;/div&gt;
-            &lt;/details&gt;
-            &lt;div class="json-line"&gt;&lt;span class="json-key"&gt;&quot;description&quot;&lt;/span&gt;: &lt;span class="json-string"&gt;&quot;destination port for RTP Column FEC packets (auto = RTP destination_port + 2 by default)&quot;&lt;/span&gt;&lt;span class="json-comma"&gt;,&lt;/span&gt;&lt;/div&gt;
-            &lt;div class="json-line"&gt;&lt;span class="json-key"&gt;&quot;minimum&quot;&lt;/span&gt;: &lt;span class="json-number"&gt;1&lt;/span&gt;&lt;span class="json-comma"&gt;,&lt;/span&gt;&lt;/div&gt;
-            &lt;div class="json-line"&gt;&lt;span class="json-key"&gt;&quot;maximum&quot;&lt;/span&gt;: &lt;span class="json-number"&gt;65535&lt;/span&gt;&lt;span class="json-comma"&gt;,&lt;/span&gt;&lt;/div&gt;
-            &lt;div class="json-line"&gt;&lt;span class="json-key"&gt;&quot;pattern&quot;&lt;/span&gt;: &lt;span class="json-string"&gt;&quot;^auto\)</span>&quot;</span></div>
+                    <div class="json-line"><span class="json-key">&quot;pattern&quot;</span>: <span class="json-string">&quot;^auto$&quot;</span></div>
+                  </div>
+                  <div class="json-close">}</div>
+                </details>
+              </div>
+              <div class="json-close">]</div>
+            </details>
+          </div>
+          <div class="json-close">}<span class="json-comma">,</span></div>
+        </details>
+        <details class="json-node">
+          <summary><span class="json-key">&quot;fec_type&quot;</span>: { <span class="json-fold">…</span> <span class="json-collapsed-close">}<span class="json-comma">,</span></span></summary>
+          <div class="json-children">
+            <div class="json-line"><span class="json-key">&quot;type&quot;</span>: <span class="json-string">&quot;string&quot;</span><span class="json-comma">,</span></div>
+            <div class="json-line"><span class="json-key">&quot;description&quot;</span>: <span class="json-string">&quot;forward error correction mode to apply&quot;</span><span class="json-comma">,</span></div>
+            <details class="json-node">
+              <summary><span class="json-key">&quot;enum&quot;</span>: [ <span class="json-fold">…</span> <span class="json-collapsed-close">]</span></summary>
+              <div class="json-children">
+                <div class="json-line"><span class="json-string">&quot;XOR&quot;</span><span class="json-comma">,</span></div>
+                <div class="json-line"><span class="json-string">&quot;Reed-Solomon&quot;</span></div>
+              </div>
+              <div class="json-close">]</div>
+            </details>
+          </div>
+          <div class="json-close">}<span class="json-comma">,</span></div>
+        </details>
+        <details class="json-node">
+          <summary><span class="json-key">&quot;fec_mode&quot;</span>: { <span class="json-fold">…</span> <span class="json-collapsed-close">}<span class="json-comma">,</span></span></summary>
+          <div class="json-children">
+            <div class="json-line"><span class="json-key">&quot;type&quot;</span>: <span class="json-string">&quot;string&quot;</span><span class="json-comma">,</span></div>
+            <div class="json-line"><span class="json-key">&quot;description&quot;</span>: <span class="json-string">&quot;forward error correction mode to apply&quot;</span><span class="json-comma">,</span></div>
+            <details class="json-node">
+              <summary><span class="json-key">&quot;enum&quot;</span>: [ <span class="json-fold">…</span> <span class="json-collapsed-close">]</span></summary>
+              <div class="json-children">
+                <div class="json-line"><span class="json-string">&quot;1D&quot;</span><span class="json-comma">,</span></div>
+                <div class="json-line"><span class="json-string">&quot;2D&quot;</span></div>
+              </div>
+              <div class="json-close">]</div>
+            </details>
+          </div>
+          <div class="json-close">}<span class="json-comma">,</span></div>
+        </details>
+        <details class="json-node">
+          <summary><span class="json-key">&quot;fec_block_width&quot;</span>: { <span class="json-fold">…</span> <span class="json-collapsed-close">}<span class="json-comma">,</span></span></summary>
+          <div class="json-children">
+            <div class="json-line"><span class="json-key">&quot;type&quot;</span>: <span class="json-string">&quot;integer&quot;</span><span class="json-comma">,</span></div>
+            <div class="json-line"><span class="json-key">&quot;description&quot;</span>: <span class="json-string">&quot;width of block over which FEC is calculated in packets&quot;</span><span class="json-comma">,</span></div>
+            <div class="json-line"><span class="json-key">&quot;minimum&quot;</span>: <span class="json-number">4</span><span class="json-comma">,</span></div>
+            <div class="json-line"><span class="json-key">&quot;maximum&quot;</span>: <span class="json-number">200</span></div>
+          </div>
+          <div class="json-close">}<span class="json-comma">,</span></div>
+        </details>
+        <details class="json-node">
+          <summary><span class="json-key">&quot;fec_block_height&quot;</span>: { <span class="json-fold">…</span> <span class="json-collapsed-close">}<span class="json-comma">,</span></span></summary>
+          <div class="json-children">
+            <div class="json-line"><span class="json-key">&quot;type&quot;</span>: <span class="json-string">&quot;integer&quot;</span><span class="json-comma">,</span></div>
+            <div class="json-line"><span class="json-key">&quot;description&quot;</span>: <span class="json-string">&quot;height of block over which FEC is calculated in packets&quot;</span><span class="json-comma">,</span></div>
+            <div class="json-line"><span class="json-key">&quot;minimum&quot;</span>: <span class="json-number">4</span><span class="json-comma">,</span></div>
+            <div class="json-line"><span class="json-key">&quot;maximum&quot;</span>: <span class="json-number">200</span></div>
+          </div>
+          <div class="json-close">}<span class="json-comma">,</span></div>
+        </details>
+        <details class="json-node">
+          <summary><span class="json-key">&quot;fec1D_destination_port&quot;</span>: { <span class="json-fold">…</span> <span class="json-collapsed-close">}<span class="json-comma">,</span></span></summary>
+          <div class="json-children">
+            <details class="json-node">
+              <summary><span class="json-key">&quot;type&quot;</span>: [ <span class="json-fold">…</span> <span class="json-collapsed-close">]<span class="json-comma">,</span></span></summary>
+              <div class="json-children">
+                <div class="json-line"><span class="json-string">&quot;integer&quot;</span><span class="json-comma">,</span></div>
+                <div class="json-line"><span class="json-string">&quot;string&quot;</span></div>
+              </div>
+              <div class="json-close">]<span class="json-comma">,</span></div>
+            </details>
+            <div class="json-line"><span class="json-key">&quot;description&quot;</span>: <span class="json-string">&quot;destination port for RTP Column FEC packets (auto = RTP destination_port + 2 by default)&quot;</span><span class="json-comma">,</span></div>
+            <div class="json-line"><span class="json-key">&quot;minimum&quot;</span>: <span class="json-number">1</span><span class="json-comma">,</span></div>
+            <div class="json-line"><span class="json-key">&quot;maximum&quot;</span>: <span class="json-number">65535</span><span class="json-comma">,</span></div>
+            <div class="json-line"><span class="json-key">&quot;pattern&quot;</span>: <span class="json-string">&quot;^auto$&quot;</span></div>
           </div>
           <div class="json-close">}<span class="json-comma">,</span></div>
         </details>
@@ -3488,25 +3488,25 @@
             <div class="json-line"><span class="json-key">&quot;description&quot;</span>: <span class="json-string">&quot;destination port for RTP Row FEC packets (auto = RTP destination_port + 4 by default)&quot;</span><span class="json-comma">,</span></div>
             <div class="json-line"><span class="json-key">&quot;minimum&quot;</span>: <span class="json-number">1</span><span class="json-comma">,</span></div>
             <div class="json-line"><span class="json-key">&quot;maximum&quot;</span>: <span class="json-number">65535</span><span class="json-comma">,</span></div>
-            <div class="json-line"><span class="json-key">&quot;pattern&quot;</span>: <span class="json-string">&quot;^auto<span class="arithmatex">\(&quot;&lt;/span&gt;&lt;/div&gt;
-          &lt;/div&gt;
-          &lt;div class="json-close"&gt;}&lt;span class="json-comma"&gt;,&lt;/span&gt;&lt;/div&gt;
-        &lt;/details&gt;
-        &lt;details class="json-node"&gt;
-          &lt;summary&gt;&lt;span class="json-key"&gt;&quot;fec1D_source_port&quot;&lt;/span&gt;: { &lt;span class="json-fold"&gt;…&lt;/span&gt; &lt;span class="json-collapsed-close"&gt;}&lt;span class="json-comma"&gt;,&lt;/span&gt;&lt;/span&gt;&lt;/summary&gt;
-          &lt;div class="json-children"&gt;
-            &lt;details class="json-node"&gt;
-              &lt;summary&gt;&lt;span class="json-key"&gt;&quot;type&quot;&lt;/span&gt;: [ &lt;span class="json-fold"&gt;…&lt;/span&gt; &lt;span class="json-collapsed-close"&gt;]&lt;span class="json-comma"&gt;,&lt;/span&gt;&lt;/span&gt;&lt;/summary&gt;
-              &lt;div class="json-children"&gt;
-                &lt;div class="json-line"&gt;&lt;span class="json-string"&gt;&quot;integer&quot;&lt;/span&gt;&lt;span class="json-comma"&gt;,&lt;/span&gt;&lt;/div&gt;
-                &lt;div class="json-line"&gt;&lt;span class="json-string"&gt;&quot;string&quot;&lt;/span&gt;&lt;/div&gt;
-              &lt;/div&gt;
-              &lt;div class="json-close"&gt;]&lt;span class="json-comma"&gt;,&lt;/span&gt;&lt;/div&gt;
-            &lt;/details&gt;
-            &lt;div class="json-line"&gt;&lt;span class="json-key"&gt;&quot;description&quot;&lt;/span&gt;: &lt;span class="json-string"&gt;&quot;source port for RTP FEC packets (auto = RTP source_port + 2 by default)&quot;&lt;/span&gt;&lt;span class="json-comma"&gt;,&lt;/span&gt;&lt;/div&gt;
-            &lt;div class="json-line"&gt;&lt;span class="json-key"&gt;&quot;minimum&quot;&lt;/span&gt;: &lt;span class="json-number"&gt;0&lt;/span&gt;&lt;span class="json-comma"&gt;,&lt;/span&gt;&lt;/div&gt;
-            &lt;div class="json-line"&gt;&lt;span class="json-key"&gt;&quot;maximum&quot;&lt;/span&gt;: &lt;span class="json-number"&gt;65535&lt;/span&gt;&lt;span class="json-comma"&gt;,&lt;/span&gt;&lt;/div&gt;
-            &lt;div class="json-line"&gt;&lt;span class="json-key"&gt;&quot;pattern&quot;&lt;/span&gt;: &lt;span class="json-string"&gt;&quot;^auto\)</span>&quot;</span></div>
+            <div class="json-line"><span class="json-key">&quot;pattern&quot;</span>: <span class="json-string">&quot;^auto$&quot;</span></div>
+          </div>
+          <div class="json-close">}<span class="json-comma">,</span></div>
+        </details>
+        <details class="json-node">
+          <summary><span class="json-key">&quot;fec1D_source_port&quot;</span>: { <span class="json-fold">…</span> <span class="json-collapsed-close">}<span class="json-comma">,</span></span></summary>
+          <div class="json-children">
+            <details class="json-node">
+              <summary><span class="json-key">&quot;type&quot;</span>: [ <span class="json-fold">…</span> <span class="json-collapsed-close">]<span class="json-comma">,</span></span></summary>
+              <div class="json-children">
+                <div class="json-line"><span class="json-string">&quot;integer&quot;</span><span class="json-comma">,</span></div>
+                <div class="json-line"><span class="json-string">&quot;string&quot;</span></div>
+              </div>
+              <div class="json-close">]<span class="json-comma">,</span></div>
+            </details>
+            <div class="json-line"><span class="json-key">&quot;description&quot;</span>: <span class="json-string">&quot;source port for RTP FEC packets (auto = RTP source_port + 2 by default)&quot;</span><span class="json-comma">,</span></div>
+            <div class="json-line"><span class="json-key">&quot;minimum&quot;</span>: <span class="json-number">0</span><span class="json-comma">,</span></div>
+            <div class="json-line"><span class="json-key">&quot;maximum&quot;</span>: <span class="json-number">65535</span><span class="json-comma">,</span></div>
+            <div class="json-line"><span class="json-key">&quot;pattern&quot;</span>: <span class="json-string">&quot;^auto$&quot;</span></div>
           </div>
           <div class="json-close">}<span class="json-comma">,</span></div>
         </details>
@@ -3524,44 +3524,44 @@
             <div class="json-line"><span class="json-key">&quot;description&quot;</span>: <span class="json-string">&quot;source port for RTP FEC packets (auto = RTP source_port + 4 by default)&quot;</span><span class="json-comma">,</span></div>
             <div class="json-line"><span class="json-key">&quot;minimum&quot;</span>: <span class="json-number">0</span><span class="json-comma">,</span></div>
             <div class="json-line"><span class="json-key">&quot;maximum&quot;</span>: <span class="json-number">65535</span><span class="json-comma">,</span></div>
-            <div class="json-line"><span class="json-key">&quot;pattern&quot;</span>: <span class="json-string">&quot;^auto<span class="arithmatex">\(&quot;&lt;/span&gt;&lt;/div&gt;
-          &lt;/div&gt;
-          &lt;div class="json-close"&gt;}&lt;span class="json-comma"&gt;,&lt;/span&gt;&lt;/div&gt;
-        &lt;/details&gt;
-        &lt;details class="json-node"&gt;
-          &lt;summary&gt;&lt;span class="json-key"&gt;&quot;rtcp_enabled&quot;&lt;/span&gt;: { &lt;span class="json-fold"&gt;…&lt;/span&gt; &lt;span class="json-collapsed-close"&gt;}&lt;span class="json-comma"&gt;,&lt;/span&gt;&lt;/span&gt;&lt;/summary&gt;
-          &lt;div class="json-children"&gt;
-            &lt;div class="json-line"&gt;&lt;span class="json-key"&gt;&quot;type&quot;&lt;/span&gt;: &lt;span class="json-string"&gt;&quot;boolean&quot;&lt;/span&gt;&lt;span class="json-comma"&gt;,&lt;/span&gt;&lt;/div&gt;
-            &lt;div class="json-line"&gt;&lt;span class="json-key"&gt;&quot;description&quot;&lt;/span&gt;: &lt;span class="json-string"&gt;&quot;rtcp on/off&quot;&lt;/span&gt;&lt;/div&gt;
-          &lt;/div&gt;
-          &lt;div class="json-close"&gt;}&lt;span class="json-comma"&gt;,&lt;/span&gt;&lt;/div&gt;
-        &lt;/details&gt;
-        &lt;details class="json-node"&gt;
-          &lt;summary&gt;&lt;span class="json-key"&gt;&quot;rtcp_destination_ip&quot;&lt;/span&gt;: { &lt;span class="json-fold"&gt;…&lt;/span&gt; &lt;span class="json-collapsed-close"&gt;}&lt;span class="json-comma"&gt;,&lt;/span&gt;&lt;/span&gt;&lt;/summary&gt;
-          &lt;div class="json-children"&gt;
-            &lt;div class="json-line"&gt;&lt;span class="json-key"&gt;&quot;type&quot;&lt;/span&gt;: &lt;span class="json-string"&gt;&quot;string&quot;&lt;/span&gt;&lt;span class="json-comma"&gt;,&lt;/span&gt;&lt;/div&gt;
-            &lt;div class="json-line"&gt;&lt;span class="json-key"&gt;&quot;description&quot;&lt;/span&gt;: &lt;span class="json-string"&gt;&quot;IP address to which RTCP packets will be sent (auto = same as RTP destination_ip by default)&quot;&lt;/span&gt;&lt;span class="json-comma"&gt;,&lt;/span&gt;&lt;/div&gt;
-            &lt;details class="json-node"&gt;
-              &lt;summary&gt;&lt;span class="json-key"&gt;&quot;anyOf&quot;&lt;/span&gt;: [ &lt;span class="json-fold"&gt;…&lt;/span&gt; &lt;span class="json-collapsed-close"&gt;]&lt;/span&gt;&lt;/summary&gt;
-              &lt;div class="json-children"&gt;
-                &lt;details class="json-node"&gt;
-                  &lt;summary&gt;{ &lt;span class="json-fold"&gt;…&lt;/span&gt; &lt;span class="json-collapsed-close"&gt;}&lt;span class="json-comma"&gt;,&lt;/span&gt;&lt;/span&gt;&lt;/summary&gt;
-                  &lt;div class="json-children"&gt;
-                    &lt;div class="json-line"&gt;&lt;span class="json-key"&gt;&quot;format&quot;&lt;/span&gt;: &lt;span class="json-string"&gt;&quot;ipv4&quot;&lt;/span&gt;&lt;/div&gt;
-                  &lt;/div&gt;
-                  &lt;div class="json-close"&gt;}&lt;span class="json-comma"&gt;,&lt;/span&gt;&lt;/div&gt;
-                &lt;/details&gt;
-                &lt;details class="json-node"&gt;
-                  &lt;summary&gt;{ &lt;span class="json-fold"&gt;…&lt;/span&gt; &lt;span class="json-collapsed-close"&gt;}&lt;span class="json-comma"&gt;,&lt;/span&gt;&lt;/span&gt;&lt;/summary&gt;
-                  &lt;div class="json-children"&gt;
-                    &lt;div class="json-line"&gt;&lt;span class="json-key"&gt;&quot;format&quot;&lt;/span&gt;: &lt;span class="json-string"&gt;&quot;ipv6&quot;&lt;/span&gt;&lt;/div&gt;
-                  &lt;/div&gt;
-                  &lt;div class="json-close"&gt;}&lt;span class="json-comma"&gt;,&lt;/span&gt;&lt;/div&gt;
-                &lt;/details&gt;
-                &lt;details class="json-node"&gt;
-                  &lt;summary&gt;{ &lt;span class="json-fold"&gt;…&lt;/span&gt; &lt;span class="json-collapsed-close"&gt;}&lt;/span&gt;&lt;/summary&gt;
-                  &lt;div class="json-children"&gt;
-                    &lt;div class="json-line"&gt;&lt;span class="json-key"&gt;&quot;pattern&quot;&lt;/span&gt;: &lt;span class="json-string"&gt;&quot;^auto\)</span>&quot;</span></div>
+            <div class="json-line"><span class="json-key">&quot;pattern&quot;</span>: <span class="json-string">&quot;^auto$&quot;</span></div>
+          </div>
+          <div class="json-close">}<span class="json-comma">,</span></div>
+        </details>
+        <details class="json-node">
+          <summary><span class="json-key">&quot;rtcp_enabled&quot;</span>: { <span class="json-fold">…</span> <span class="json-collapsed-close">}<span class="json-comma">,</span></span></summary>
+          <div class="json-children">
+            <div class="json-line"><span class="json-key">&quot;type&quot;</span>: <span class="json-string">&quot;boolean&quot;</span><span class="json-comma">,</span></div>
+            <div class="json-line"><span class="json-key">&quot;description&quot;</span>: <span class="json-string">&quot;rtcp on/off&quot;</span></div>
+          </div>
+          <div class="json-close">}<span class="json-comma">,</span></div>
+        </details>
+        <details class="json-node">
+          <summary><span class="json-key">&quot;rtcp_destination_ip&quot;</span>: { <span class="json-fold">…</span> <span class="json-collapsed-close">}<span class="json-comma">,</span></span></summary>
+          <div class="json-children">
+            <div class="json-line"><span class="json-key">&quot;type&quot;</span>: <span class="json-string">&quot;string&quot;</span><span class="json-comma">,</span></div>
+            <div class="json-line"><span class="json-key">&quot;description&quot;</span>: <span class="json-string">&quot;IP address to which RTCP packets will be sent (auto = same as RTP destination_ip by default)&quot;</span><span class="json-comma">,</span></div>
+            <details class="json-node">
+              <summary><span class="json-key">&quot;anyOf&quot;</span>: [ <span class="json-fold">…</span> <span class="json-collapsed-close">]</span></summary>
+              <div class="json-children">
+                <details class="json-node">
+                  <summary>{ <span class="json-fold">…</span> <span class="json-collapsed-close">}<span class="json-comma">,</span></span></summary>
+                  <div class="json-children">
+                    <div class="json-line"><span class="json-key">&quot;format&quot;</span>: <span class="json-string">&quot;ipv4&quot;</span></div>
+                  </div>
+                  <div class="json-close">}<span class="json-comma">,</span></div>
+                </details>
+                <details class="json-node">
+                  <summary>{ <span class="json-fold">…</span> <span class="json-collapsed-close">}<span class="json-comma">,</span></span></summary>
+                  <div class="json-children">
+                    <div class="json-line"><span class="json-key">&quot;format&quot;</span>: <span class="json-string">&quot;ipv6&quot;</span></div>
+                  </div>
+                  <div class="json-close">}<span class="json-comma">,</span></div>
+                </details>
+                <details class="json-node">
+                  <summary>{ <span class="json-fold">…</span> <span class="json-collapsed-close">}</span></summary>
+                  <div class="json-children">
+                    <div class="json-line"><span class="json-key">&quot;pattern&quot;</span>: <span class="json-string">&quot;^auto$&quot;</span></div>
                   </div>
                   <div class="json-close">}</div>
                 </details>
@@ -3585,25 +3585,25 @@
             <div class="json-line"><span class="json-key">&quot;description&quot;</span>: <span class="json-string">&quot;destination port for RTCP packets (auto = RTP destination_port + 1 by default)&quot;</span><span class="json-comma">,</span></div>
             <div class="json-line"><span class="json-key">&quot;minimum&quot;</span>: <span class="json-number">1</span><span class="json-comma">,</span></div>
             <div class="json-line"><span class="json-key">&quot;maximum&quot;</span>: <span class="json-number">65535</span><span class="json-comma">,</span></div>
-            <div class="json-line"><span class="json-key">&quot;pattern&quot;</span>: <span class="json-string">&quot;^auto<span class="arithmatex">\(&quot;&lt;/span&gt;&lt;/div&gt;
-          &lt;/div&gt;
-          &lt;div class="json-close"&gt;}&lt;span class="json-comma"&gt;,&lt;/span&gt;&lt;/div&gt;
-        &lt;/details&gt;
-        &lt;details class="json-node"&gt;
-          &lt;summary&gt;&lt;span class="json-key"&gt;&quot;rtcp_source_port&quot;&lt;/span&gt;: { &lt;span class="json-fold"&gt;…&lt;/span&gt; &lt;span class="json-collapsed-close"&gt;}&lt;span class="json-comma"&gt;,&lt;/span&gt;&lt;/span&gt;&lt;/summary&gt;
-          &lt;div class="json-children"&gt;
-            &lt;details class="json-node"&gt;
-              &lt;summary&gt;&lt;span class="json-key"&gt;&quot;type&quot;&lt;/span&gt;: [ &lt;span class="json-fold"&gt;…&lt;/span&gt; &lt;span class="json-collapsed-close"&gt;]&lt;span class="json-comma"&gt;,&lt;/span&gt;&lt;/span&gt;&lt;/summary&gt;
-              &lt;div class="json-children"&gt;
-                &lt;div class="json-line"&gt;&lt;span class="json-string"&gt;&quot;integer&quot;&lt;/span&gt;&lt;span class="json-comma"&gt;,&lt;/span&gt;&lt;/div&gt;
-                &lt;div class="json-line"&gt;&lt;span class="json-string"&gt;&quot;string&quot;&lt;/span&gt;&lt;/div&gt;
-              &lt;/div&gt;
-              &lt;div class="json-close"&gt;]&lt;span class="json-comma"&gt;,&lt;/span&gt;&lt;/div&gt;
-            &lt;/details&gt;
-            &lt;div class="json-line"&gt;&lt;span class="json-key"&gt;&quot;description&quot;&lt;/span&gt;: &lt;span class="json-string"&gt;&quot;source port for RTCP packets (auto = RTP source_port + 1 by default)&quot;&lt;/span&gt;&lt;span class="json-comma"&gt;,&lt;/span&gt;&lt;/div&gt;
-            &lt;div class="json-line"&gt;&lt;span class="json-key"&gt;&quot;minimum&quot;&lt;/span&gt;: &lt;span class="json-number"&gt;0&lt;/span&gt;&lt;span class="json-comma"&gt;,&lt;/span&gt;&lt;/div&gt;
-            &lt;div class="json-line"&gt;&lt;span class="json-key"&gt;&quot;maximum&quot;&lt;/span&gt;: &lt;span class="json-number"&gt;65535&lt;/span&gt;&lt;span class="json-comma"&gt;,&lt;/span&gt;&lt;/div&gt;
-            &lt;div class="json-line"&gt;&lt;span class="json-key"&gt;&quot;pattern&quot;&lt;/span&gt;: &lt;span class="json-string"&gt;&quot;^auto\)</span>&quot;</span></div>
+            <div class="json-line"><span class="json-key">&quot;pattern&quot;</span>: <span class="json-string">&quot;^auto$&quot;</span></div>
+          </div>
+          <div class="json-close">}<span class="json-comma">,</span></div>
+        </details>
+        <details class="json-node">
+          <summary><span class="json-key">&quot;rtcp_source_port&quot;</span>: { <span class="json-fold">…</span> <span class="json-collapsed-close">}<span class="json-comma">,</span></span></summary>
+          <div class="json-children">
+            <details class="json-node">
+              <summary><span class="json-key">&quot;type&quot;</span>: [ <span class="json-fold">…</span> <span class="json-collapsed-close">]<span class="json-comma">,</span></span></summary>
+              <div class="json-children">
+                <div class="json-line"><span class="json-string">&quot;integer&quot;</span><span class="json-comma">,</span></div>
+                <div class="json-line"><span class="json-string">&quot;string&quot;</span></div>
+              </div>
+              <div class="json-close">]<span class="json-comma">,</span></div>
+            </details>
+            <div class="json-line"><span class="json-key">&quot;description&quot;</span>: <span class="json-string">&quot;source port for RTCP packets (auto = RTP source_port + 1 by default)&quot;</span><span class="json-comma">,</span></div>
+            <div class="json-line"><span class="json-key">&quot;minimum&quot;</span>: <span class="json-number">0</span><span class="json-comma">,</span></div>
+            <div class="json-line"><span class="json-key">&quot;maximum&quot;</span>: <span class="json-number">65535</span><span class="json-comma">,</span></div>
+            <div class="json-line"><span class="json-key">&quot;pattern&quot;</span>: <span class="json-string">&quot;^auto$&quot;</span></div>
           </div>
           <div class="json-close">}<span class="json-comma">,</span></div>
         </details>
@@ -3622,9 +3622,9 @@
       <summary><span class="json-key">&quot;patternProperties&quot;</span>: { <span class="json-fold">…</span> <span class="json-collapsed-close">}<span class="json-comma">,</span></span></summary>
       <div class="json-children">
         <details class="json-node">
-          <summary><span class="json-key">&quot;^ext_[a-zA-Z0-9_]+<span class="arithmatex">\(&quot;&lt;/span&gt;: { &lt;span class="json-fold"&gt;…&lt;/span&gt; &lt;span class="json-collapsed-close"&gt;}&lt;/span&gt;&lt;/summary&gt;
-          &lt;div class="json-children"&gt;
-            &lt;div class="json-line"&gt;&lt;span class="json-key"&gt;&quot;\)</span>ref&quot;</span>: <span class="json-string">&quot;sender_transport_params_ext.json&quot;</span></div>
+          <summary><span class="json-key">&quot;^ext_[a-zA-Z0-9_]+$&quot;</span>: { <span class="json-fold">…</span> <span class="json-collapsed-close">}</span></summary>
+          <div class="json-children">
+            <div class="json-line"><span class="json-key">&quot;$ref&quot;</span>: <span class="json-string">&quot;sender_transport_params_ext.json&quot;</span></div>
           </div>
           <div class="json-close">}</div>
         </details>
@@ -3647,7 +3647,7 @@
 <details class="json-node" open>
   <summary>{ <span class="json-fold">…</span> <span class="json-collapsed-close">}</span></summary>
   <div class="json-children">
-    <div class="json-line"><span class="json-key">&quot;$schema&quot;</span>: <span class="json-string">&quot;<a href="http://json-schema.org/draft-04/schema#&amp;quot">http://json-schema.org/draft-04/schema#&amp;quot</a>;</span><span class="json-comma">,</span></div>
+    <div class="json-line"><span class="json-key">&quot;$schema&quot;</span>: <span class="json-string">&quot;http://json-schema.org/draft-04/schema#&quot;</span><span class="json-comma">,</span></div>
     <div class="json-line"><span class="json-key">&quot;description&quot;</span>: <span class="json-string">&quot;Describes RTP Sender transport parameters. The constraints in this schema are minimum constraints, but may be further constrained at the constraints endpoint. As a minimum all senders must support <code>source_ip</code>, <code>destination_ip</code>, <code>source_port</code>, <code>rtp_enabled</code> and <code>destination_port</code>. Senders supporting FEC and/or RTCP must support parameters prefixed with <code>fec</code> and <code>rtcp</code> respectively.&quot;</span><span class="json-comma">,</span></div>
     <div class="json-line"><span class="json-key">&quot;title&quot;</span>: <span class="json-string">&quot;RTP Sender Transport Parameters&quot;</span><span class="json-comma">,</span></div>
     <div class="json-line"><span class="json-key">&quot;type&quot;</span>: <span class="json-string">&quot;object&quot;</span><span class="json-comma">,</span></div>
@@ -3679,42 +3679,42 @@
                 <details class="json-node">
                   <summary>{ <span class="json-fold">…</span> <span class="json-collapsed-close">}</span></summary>
                   <div class="json-children">
-                    <div class="json-line"><span class="json-key">&quot;pattern&quot;</span>: <span class="json-string">&quot;^auto<span class="arithmatex">\(&quot;&lt;/span&gt;&lt;/div&gt;
-                  &lt;/div&gt;
-                  &lt;div class="json-close"&gt;}&lt;/div&gt;
-                &lt;/details&gt;
-              &lt;/div&gt;
-              &lt;div class="json-close"&gt;]&lt;/div&gt;
-            &lt;/details&gt;
-          &lt;/div&gt;
-          &lt;div class="json-close"&gt;}&lt;span class="json-comma"&gt;,&lt;/span&gt;&lt;/div&gt;
-        &lt;/details&gt;
-        &lt;details class="json-node"&gt;
-          &lt;summary&gt;&lt;span class="json-key"&gt;&quot;destination_ip&quot;&lt;/span&gt;: { &lt;span class="json-fold"&gt;…&lt;/span&gt; &lt;span class="json-collapsed-close"&gt;}&lt;span class="json-comma"&gt;,&lt;/span&gt;&lt;/span&gt;&lt;/summary&gt;
-          &lt;div class="json-children"&gt;
-            &lt;div class="json-line"&gt;&lt;span class="json-key"&gt;&quot;type&quot;&lt;/span&gt;: &lt;span class="json-string"&gt;&quot;string&quot;&lt;/span&gt;&lt;span class="json-comma"&gt;,&lt;/span&gt;&lt;/div&gt;
-            &lt;div class="json-line"&gt;&lt;span class="json-key"&gt;&quot;description&quot;&lt;/span&gt;: &lt;span class="json-string"&gt;&quot;IP address to which RTP packets will be sent. If auto is set the sender should select a multicast address to send to itself. For example it may implement MADCAP (RFC 2730), ZMAAP, or be allocated address by some other system responsible for co-ordination multicast address use.&quot;&lt;/span&gt;&lt;span class="json-comma"&gt;,&lt;/span&gt;&lt;/div&gt;
-            &lt;details class="json-node"&gt;
-              &lt;summary&gt;&lt;span class="json-key"&gt;&quot;anyOf&quot;&lt;/span&gt;: [ &lt;span class="json-fold"&gt;…&lt;/span&gt; &lt;span class="json-collapsed-close"&gt;]&lt;/span&gt;&lt;/summary&gt;
-              &lt;div class="json-children"&gt;
-                &lt;details class="json-node"&gt;
-                  &lt;summary&gt;{ &lt;span class="json-fold"&gt;…&lt;/span&gt; &lt;span class="json-collapsed-close"&gt;}&lt;span class="json-comma"&gt;,&lt;/span&gt;&lt;/span&gt;&lt;/summary&gt;
-                  &lt;div class="json-children"&gt;
-                    &lt;div class="json-line"&gt;&lt;span class="json-key"&gt;&quot;format&quot;&lt;/span&gt;: &lt;span class="json-string"&gt;&quot;ipv4&quot;&lt;/span&gt;&lt;/div&gt;
-                  &lt;/div&gt;
-                  &lt;div class="json-close"&gt;}&lt;span class="json-comma"&gt;,&lt;/span&gt;&lt;/div&gt;
-                &lt;/details&gt;
-                &lt;details class="json-node"&gt;
-                  &lt;summary&gt;{ &lt;span class="json-fold"&gt;…&lt;/span&gt; &lt;span class="json-collapsed-close"&gt;}&lt;span class="json-comma"&gt;,&lt;/span&gt;&lt;/span&gt;&lt;/summary&gt;
-                  &lt;div class="json-children"&gt;
-                    &lt;div class="json-line"&gt;&lt;span class="json-key"&gt;&quot;format&quot;&lt;/span&gt;: &lt;span class="json-string"&gt;&quot;ipv6&quot;&lt;/span&gt;&lt;/div&gt;
-                  &lt;/div&gt;
-                  &lt;div class="json-close"&gt;}&lt;span class="json-comma"&gt;,&lt;/span&gt;&lt;/div&gt;
-                &lt;/details&gt;
-                &lt;details class="json-node"&gt;
-                  &lt;summary&gt;{ &lt;span class="json-fold"&gt;…&lt;/span&gt; &lt;span class="json-collapsed-close"&gt;}&lt;/span&gt;&lt;/summary&gt;
-                  &lt;div class="json-children"&gt;
-                    &lt;div class="json-line"&gt;&lt;span class="json-key"&gt;&quot;pattern&quot;&lt;/span&gt;: &lt;span class="json-string"&gt;&quot;^auto\)</span>&quot;</span></div>
+                    <div class="json-line"><span class="json-key">&quot;pattern&quot;</span>: <span class="json-string">&quot;^auto$&quot;</span></div>
+                  </div>
+                  <div class="json-close">}</div>
+                </details>
+              </div>
+              <div class="json-close">]</div>
+            </details>
+          </div>
+          <div class="json-close">}<span class="json-comma">,</span></div>
+        </details>
+        <details class="json-node">
+          <summary><span class="json-key">&quot;destination_ip&quot;</span>: { <span class="json-fold">…</span> <span class="json-collapsed-close">}<span class="json-comma">,</span></span></summary>
+          <div class="json-children">
+            <div class="json-line"><span class="json-key">&quot;type&quot;</span>: <span class="json-string">&quot;string&quot;</span><span class="json-comma">,</span></div>
+            <div class="json-line"><span class="json-key">&quot;description&quot;</span>: <span class="json-string">&quot;IP address to which RTP packets will be sent. If auto is set the sender should select a multicast address to send to itself. For example it may implement MADCAP (RFC 2730), ZMAAP, or be allocated address by some other system responsible for co-ordination multicast address use.&quot;</span><span class="json-comma">,</span></div>
+            <details class="json-node">
+              <summary><span class="json-key">&quot;anyOf&quot;</span>: [ <span class="json-fold">…</span> <span class="json-collapsed-close">]</span></summary>
+              <div class="json-children">
+                <details class="json-node">
+                  <summary>{ <span class="json-fold">…</span> <span class="json-collapsed-close">}<span class="json-comma">,</span></span></summary>
+                  <div class="json-children">
+                    <div class="json-line"><span class="json-key">&quot;format&quot;</span>: <span class="json-string">&quot;ipv4&quot;</span></div>
+                  </div>
+                  <div class="json-close">}<span class="json-comma">,</span></div>
+                </details>
+                <details class="json-node">
+                  <summary>{ <span class="json-fold">…</span> <span class="json-collapsed-close">}<span class="json-comma">,</span></span></summary>
+                  <div class="json-children">
+                    <div class="json-line"><span class="json-key">&quot;format&quot;</span>: <span class="json-string">&quot;ipv6&quot;</span></div>
+                  </div>
+                  <div class="json-close">}<span class="json-comma">,</span></div>
+                </details>
+                <details class="json-node">
+                  <summary>{ <span class="json-fold">…</span> <span class="json-collapsed-close">}</span></summary>
+                  <div class="json-children">
+                    <div class="json-line"><span class="json-key">&quot;pattern&quot;</span>: <span class="json-string">&quot;^auto$&quot;</span></div>
                   </div>
                   <div class="json-close">}</div>
                 </details>
@@ -3738,25 +3738,25 @@
             <div class="json-line"><span class="json-key">&quot;description&quot;</span>: <span class="json-string">&quot;source port for RTP packets (auto = 5004 by default)&quot;</span><span class="json-comma">,</span></div>
             <div class="json-line"><span class="json-key">&quot;minimum&quot;</span>: <span class="json-number">0</span><span class="json-comma">,</span></div>
             <div class="json-line"><span class="json-key">&quot;maximum&quot;</span>: <span class="json-number">65535</span><span class="json-comma">,</span></div>
-            <div class="json-line"><span class="json-key">&quot;pattern&quot;</span>: <span class="json-string">&quot;^auto<span class="arithmatex">\(&quot;&lt;/span&gt;&lt;/div&gt;
-          &lt;/div&gt;
-          &lt;div class="json-close"&gt;}&lt;span class="json-comma"&gt;,&lt;/span&gt;&lt;/div&gt;
-        &lt;/details&gt;
-        &lt;details class="json-node"&gt;
-          &lt;summary&gt;&lt;span class="json-key"&gt;&quot;destination_port&quot;&lt;/span&gt;: { &lt;span class="json-fold"&gt;…&lt;/span&gt; &lt;span class="json-collapsed-close"&gt;}&lt;span class="json-comma"&gt;,&lt;/span&gt;&lt;/span&gt;&lt;/summary&gt;
-          &lt;div class="json-children"&gt;
-            &lt;details class="json-node"&gt;
-              &lt;summary&gt;&lt;span class="json-key"&gt;&quot;type&quot;&lt;/span&gt;: [ &lt;span class="json-fold"&gt;…&lt;/span&gt; &lt;span class="json-collapsed-close"&gt;]&lt;span class="json-comma"&gt;,&lt;/span&gt;&lt;/span&gt;&lt;/summary&gt;
-              &lt;div class="json-children"&gt;
-                &lt;div class="json-line"&gt;&lt;span class="json-string"&gt;&quot;integer&quot;&lt;/span&gt;&lt;span class="json-comma"&gt;,&lt;/span&gt;&lt;/div&gt;
-                &lt;div class="json-line"&gt;&lt;span class="json-string"&gt;&quot;string&quot;&lt;/span&gt;&lt;/div&gt;
-              &lt;/div&gt;
-              &lt;div class="json-close"&gt;]&lt;span class="json-comma"&gt;,&lt;/span&gt;&lt;/div&gt;
-            &lt;/details&gt;
-            &lt;div class="json-line"&gt;&lt;span class="json-key"&gt;&quot;description&quot;&lt;/span&gt;: &lt;span class="json-string"&gt;&quot;destination port for RTP packets (auto = 5004 by default)&quot;&lt;/span&gt;&lt;span class="json-comma"&gt;,&lt;/span&gt;&lt;/div&gt;
-            &lt;div class="json-line"&gt;&lt;span class="json-key"&gt;&quot;minimum&quot;&lt;/span&gt;: &lt;span class="json-number"&gt;1&lt;/span&gt;&lt;span class="json-comma"&gt;,&lt;/span&gt;&lt;/div&gt;
-            &lt;div class="json-line"&gt;&lt;span class="json-key"&gt;&quot;maximum&quot;&lt;/span&gt;: &lt;span class="json-number"&gt;65535&lt;/span&gt;&lt;span class="json-comma"&gt;,&lt;/span&gt;&lt;/div&gt;
-            &lt;div class="json-line"&gt;&lt;span class="json-key"&gt;&quot;pattern&quot;&lt;/span&gt;: &lt;span class="json-string"&gt;&quot;^auto\)</span>&quot;</span></div>
+            <div class="json-line"><span class="json-key">&quot;pattern&quot;</span>: <span class="json-string">&quot;^auto$&quot;</span></div>
+          </div>
+          <div class="json-close">}<span class="json-comma">,</span></div>
+        </details>
+        <details class="json-node">
+          <summary><span class="json-key">&quot;destination_port&quot;</span>: { <span class="json-fold">…</span> <span class="json-collapsed-close">}<span class="json-comma">,</span></span></summary>
+          <div class="json-children">
+            <details class="json-node">
+              <summary><span class="json-key">&quot;type&quot;</span>: [ <span class="json-fold">…</span> <span class="json-collapsed-close">]<span class="json-comma">,</span></span></summary>
+              <div class="json-children">
+                <div class="json-line"><span class="json-string">&quot;integer&quot;</span><span class="json-comma">,</span></div>
+                <div class="json-line"><span class="json-string">&quot;string&quot;</span></div>
+              </div>
+              <div class="json-close">]<span class="json-comma">,</span></div>
+            </details>
+            <div class="json-line"><span class="json-key">&quot;description&quot;</span>: <span class="json-string">&quot;destination port for RTP packets (auto = 5004 by default)&quot;</span><span class="json-comma">,</span></div>
+            <div class="json-line"><span class="json-key">&quot;minimum&quot;</span>: <span class="json-number">1</span><span class="json-comma">,</span></div>
+            <div class="json-line"><span class="json-key">&quot;maximum&quot;</span>: <span class="json-number">65535</span><span class="json-comma">,</span></div>
+            <div class="json-line"><span class="json-key">&quot;pattern&quot;</span>: <span class="json-string">&quot;^auto$&quot;</span></div>
           </div>
           <div class="json-close">}<span class="json-comma">,</span></div>
         </details>
@@ -3793,83 +3793,83 @@
                 <details class="json-node">
                   <summary>{ <span class="json-fold">…</span> <span class="json-collapsed-close">}</span></summary>
                   <div class="json-children">
-                    <div class="json-line"><span class="json-key">&quot;pattern&quot;</span>: <span class="json-string">&quot;^auto<span class="arithmatex">\(&quot;&lt;/span&gt;&lt;/div&gt;
-                  &lt;/div&gt;
-                  &lt;div class="json-close"&gt;}&lt;/div&gt;
-                &lt;/details&gt;
-              &lt;/div&gt;
-              &lt;div class="json-close"&gt;]&lt;/div&gt;
-            &lt;/details&gt;
-          &lt;/div&gt;
-          &lt;div class="json-close"&gt;}&lt;span class="json-comma"&gt;,&lt;/span&gt;&lt;/div&gt;
-        &lt;/details&gt;
-        &lt;details class="json-node"&gt;
-          &lt;summary&gt;&lt;span class="json-key"&gt;&quot;fec_type&quot;&lt;/span&gt;: { &lt;span class="json-fold"&gt;…&lt;/span&gt; &lt;span class="json-collapsed-close"&gt;}&lt;span class="json-comma"&gt;,&lt;/span&gt;&lt;/span&gt;&lt;/summary&gt;
-          &lt;div class="json-children"&gt;
-            &lt;div class="json-line"&gt;&lt;span class="json-key"&gt;&quot;type&quot;&lt;/span&gt;: &lt;span class="json-string"&gt;&quot;string&quot;&lt;/span&gt;&lt;span class="json-comma"&gt;,&lt;/span&gt;&lt;/div&gt;
-            &lt;div class="json-line"&gt;&lt;span class="json-key"&gt;&quot;description&quot;&lt;/span&gt;: &lt;span class="json-string"&gt;&quot;forward error correction mode to apply&quot;&lt;/span&gt;&lt;span class="json-comma"&gt;,&lt;/span&gt;&lt;/div&gt;
-            &lt;details class="json-node"&gt;
-              &lt;summary&gt;&lt;span class="json-key"&gt;&quot;enum&quot;&lt;/span&gt;: [ &lt;span class="json-fold"&gt;…&lt;/span&gt; &lt;span class="json-collapsed-close"&gt;]&lt;/span&gt;&lt;/summary&gt;
-              &lt;div class="json-children"&gt;
-                &lt;div class="json-line"&gt;&lt;span class="json-string"&gt;&quot;XOR&quot;&lt;/span&gt;&lt;span class="json-comma"&gt;,&lt;/span&gt;&lt;/div&gt;
-                &lt;div class="json-line"&gt;&lt;span class="json-string"&gt;&quot;Reed-Solomon&quot;&lt;/span&gt;&lt;/div&gt;
-              &lt;/div&gt;
-              &lt;div class="json-close"&gt;]&lt;/div&gt;
-            &lt;/details&gt;
-          &lt;/div&gt;
-          &lt;div class="json-close"&gt;}&lt;span class="json-comma"&gt;,&lt;/span&gt;&lt;/div&gt;
-        &lt;/details&gt;
-        &lt;details class="json-node"&gt;
-          &lt;summary&gt;&lt;span class="json-key"&gt;&quot;fec_mode&quot;&lt;/span&gt;: { &lt;span class="json-fold"&gt;…&lt;/span&gt; &lt;span class="json-collapsed-close"&gt;}&lt;span class="json-comma"&gt;,&lt;/span&gt;&lt;/span&gt;&lt;/summary&gt;
-          &lt;div class="json-children"&gt;
-            &lt;div class="json-line"&gt;&lt;span class="json-key"&gt;&quot;type&quot;&lt;/span&gt;: &lt;span class="json-string"&gt;&quot;string&quot;&lt;/span&gt;&lt;span class="json-comma"&gt;,&lt;/span&gt;&lt;/div&gt;
-            &lt;div class="json-line"&gt;&lt;span class="json-key"&gt;&quot;description&quot;&lt;/span&gt;: &lt;span class="json-string"&gt;&quot;forward error correction mode to apply&quot;&lt;/span&gt;&lt;span class="json-comma"&gt;,&lt;/span&gt;&lt;/div&gt;
-            &lt;details class="json-node"&gt;
-              &lt;summary&gt;&lt;span class="json-key"&gt;&quot;enum&quot;&lt;/span&gt;: [ &lt;span class="json-fold"&gt;…&lt;/span&gt; &lt;span class="json-collapsed-close"&gt;]&lt;/span&gt;&lt;/summary&gt;
-              &lt;div class="json-children"&gt;
-                &lt;div class="json-line"&gt;&lt;span class="json-string"&gt;&quot;1D&quot;&lt;/span&gt;&lt;span class="json-comma"&gt;,&lt;/span&gt;&lt;/div&gt;
-                &lt;div class="json-line"&gt;&lt;span class="json-string"&gt;&quot;2D&quot;&lt;/span&gt;&lt;/div&gt;
-              &lt;/div&gt;
-              &lt;div class="json-close"&gt;]&lt;/div&gt;
-            &lt;/details&gt;
-          &lt;/div&gt;
-          &lt;div class="json-close"&gt;}&lt;span class="json-comma"&gt;,&lt;/span&gt;&lt;/div&gt;
-        &lt;/details&gt;
-        &lt;details class="json-node"&gt;
-          &lt;summary&gt;&lt;span class="json-key"&gt;&quot;fec_block_width&quot;&lt;/span&gt;: { &lt;span class="json-fold"&gt;…&lt;/span&gt; &lt;span class="json-collapsed-close"&gt;}&lt;span class="json-comma"&gt;,&lt;/span&gt;&lt;/span&gt;&lt;/summary&gt;
-          &lt;div class="json-children"&gt;
-            &lt;div class="json-line"&gt;&lt;span class="json-key"&gt;&quot;type&quot;&lt;/span&gt;: &lt;span class="json-string"&gt;&quot;integer&quot;&lt;/span&gt;&lt;span class="json-comma"&gt;,&lt;/span&gt;&lt;/div&gt;
-            &lt;div class="json-line"&gt;&lt;span class="json-key"&gt;&quot;description&quot;&lt;/span&gt;: &lt;span class="json-string"&gt;&quot;width of block over which FEC is calculated in packets&quot;&lt;/span&gt;&lt;span class="json-comma"&gt;,&lt;/span&gt;&lt;/div&gt;
-            &lt;div class="json-line"&gt;&lt;span class="json-key"&gt;&quot;minimum&quot;&lt;/span&gt;: &lt;span class="json-number"&gt;4&lt;/span&gt;&lt;span class="json-comma"&gt;,&lt;/span&gt;&lt;/div&gt;
-            &lt;div class="json-line"&gt;&lt;span class="json-key"&gt;&quot;maximum&quot;&lt;/span&gt;: &lt;span class="json-number"&gt;200&lt;/span&gt;&lt;/div&gt;
-          &lt;/div&gt;
-          &lt;div class="json-close"&gt;}&lt;span class="json-comma"&gt;,&lt;/span&gt;&lt;/div&gt;
-        &lt;/details&gt;
-        &lt;details class="json-node"&gt;
-          &lt;summary&gt;&lt;span class="json-key"&gt;&quot;fec_block_height&quot;&lt;/span&gt;: { &lt;span class="json-fold"&gt;…&lt;/span&gt; &lt;span class="json-collapsed-close"&gt;}&lt;span class="json-comma"&gt;,&lt;/span&gt;&lt;/span&gt;&lt;/summary&gt;
-          &lt;div class="json-children"&gt;
-            &lt;div class="json-line"&gt;&lt;span class="json-key"&gt;&quot;type&quot;&lt;/span&gt;: &lt;span class="json-string"&gt;&quot;integer&quot;&lt;/span&gt;&lt;span class="json-comma"&gt;,&lt;/span&gt;&lt;/div&gt;
-            &lt;div class="json-line"&gt;&lt;span class="json-key"&gt;&quot;description&quot;&lt;/span&gt;: &lt;span class="json-string"&gt;&quot;height of block over which FEC is calculated in packets&quot;&lt;/span&gt;&lt;span class="json-comma"&gt;,&lt;/span&gt;&lt;/div&gt;
-            &lt;div class="json-line"&gt;&lt;span class="json-key"&gt;&quot;minimum&quot;&lt;/span&gt;: &lt;span class="json-number"&gt;4&lt;/span&gt;&lt;span class="json-comma"&gt;,&lt;/span&gt;&lt;/div&gt;
-            &lt;div class="json-line"&gt;&lt;span class="json-key"&gt;&quot;maximum&quot;&lt;/span&gt;: &lt;span class="json-number"&gt;200&lt;/span&gt;&lt;/div&gt;
-          &lt;/div&gt;
-          &lt;div class="json-close"&gt;}&lt;span class="json-comma"&gt;,&lt;/span&gt;&lt;/div&gt;
-        &lt;/details&gt;
-        &lt;details class="json-node"&gt;
-          &lt;summary&gt;&lt;span class="json-key"&gt;&quot;fec1D_destination_port&quot;&lt;/span&gt;: { &lt;span class="json-fold"&gt;…&lt;/span&gt; &lt;span class="json-collapsed-close"&gt;}&lt;span class="json-comma"&gt;,&lt;/span&gt;&lt;/span&gt;&lt;/summary&gt;
-          &lt;div class="json-children"&gt;
-            &lt;details class="json-node"&gt;
-              &lt;summary&gt;&lt;span class="json-key"&gt;&quot;type&quot;&lt;/span&gt;: [ &lt;span class="json-fold"&gt;…&lt;/span&gt; &lt;span class="json-collapsed-close"&gt;]&lt;span class="json-comma"&gt;,&lt;/span&gt;&lt;/span&gt;&lt;/summary&gt;
-              &lt;div class="json-children"&gt;
-                &lt;div class="json-line"&gt;&lt;span class="json-string"&gt;&quot;integer&quot;&lt;/span&gt;&lt;span class="json-comma"&gt;,&lt;/span&gt;&lt;/div&gt;
-                &lt;div class="json-line"&gt;&lt;span class="json-string"&gt;&quot;string&quot;&lt;/span&gt;&lt;/div&gt;
-              &lt;/div&gt;
-              &lt;div class="json-close"&gt;]&lt;span class="json-comma"&gt;,&lt;/span&gt;&lt;/div&gt;
-            &lt;/details&gt;
-            &lt;div class="json-line"&gt;&lt;span class="json-key"&gt;&quot;description&quot;&lt;/span&gt;: &lt;span class="json-string"&gt;&quot;destination port for RTP Column FEC packets (auto = RTP destination_port + 2 by default)&quot;&lt;/span&gt;&lt;span class="json-comma"&gt;,&lt;/span&gt;&lt;/div&gt;
-            &lt;div class="json-line"&gt;&lt;span class="json-key"&gt;&quot;minimum&quot;&lt;/span&gt;: &lt;span class="json-number"&gt;1&lt;/span&gt;&lt;span class="json-comma"&gt;,&lt;/span&gt;&lt;/div&gt;
-            &lt;div class="json-line"&gt;&lt;span class="json-key"&gt;&quot;maximum&quot;&lt;/span&gt;: &lt;span class="json-number"&gt;65535&lt;/span&gt;&lt;span class="json-comma"&gt;,&lt;/span&gt;&lt;/div&gt;
-            &lt;div class="json-line"&gt;&lt;span class="json-key"&gt;&quot;pattern&quot;&lt;/span&gt;: &lt;span class="json-string"&gt;&quot;^auto\)</span>&quot;</span></div>
+                    <div class="json-line"><span class="json-key">&quot;pattern&quot;</span>: <span class="json-string">&quot;^auto$&quot;</span></div>
+                  </div>
+                  <div class="json-close">}</div>
+                </details>
+              </div>
+              <div class="json-close">]</div>
+            </details>
+          </div>
+          <div class="json-close">}<span class="json-comma">,</span></div>
+        </details>
+        <details class="json-node">
+          <summary><span class="json-key">&quot;fec_type&quot;</span>: { <span class="json-fold">…</span> <span class="json-collapsed-close">}<span class="json-comma">,</span></span></summary>
+          <div class="json-children">
+            <div class="json-line"><span class="json-key">&quot;type&quot;</span>: <span class="json-string">&quot;string&quot;</span><span class="json-comma">,</span></div>
+            <div class="json-line"><span class="json-key">&quot;description&quot;</span>: <span class="json-string">&quot;forward error correction mode to apply&quot;</span><span class="json-comma">,</span></div>
+            <details class="json-node">
+              <summary><span class="json-key">&quot;enum&quot;</span>: [ <span class="json-fold">…</span> <span class="json-collapsed-close">]</span></summary>
+              <div class="json-children">
+                <div class="json-line"><span class="json-string">&quot;XOR&quot;</span><span class="json-comma">,</span></div>
+                <div class="json-line"><span class="json-string">&quot;Reed-Solomon&quot;</span></div>
+              </div>
+              <div class="json-close">]</div>
+            </details>
+          </div>
+          <div class="json-close">}<span class="json-comma">,</span></div>
+        </details>
+        <details class="json-node">
+          <summary><span class="json-key">&quot;fec_mode&quot;</span>: { <span class="json-fold">…</span> <span class="json-collapsed-close">}<span class="json-comma">,</span></span></summary>
+          <div class="json-children">
+            <div class="json-line"><span class="json-key">&quot;type&quot;</span>: <span class="json-string">&quot;string&quot;</span><span class="json-comma">,</span></div>
+            <div class="json-line"><span class="json-key">&quot;description&quot;</span>: <span class="json-string">&quot;forward error correction mode to apply&quot;</span><span class="json-comma">,</span></div>
+            <details class="json-node">
+              <summary><span class="json-key">&quot;enum&quot;</span>: [ <span class="json-fold">…</span> <span class="json-collapsed-close">]</span></summary>
+              <div class="json-children">
+                <div class="json-line"><span class="json-string">&quot;1D&quot;</span><span class="json-comma">,</span></div>
+                <div class="json-line"><span class="json-string">&quot;2D&quot;</span></div>
+              </div>
+              <div class="json-close">]</div>
+            </details>
+          </div>
+          <div class="json-close">}<span class="json-comma">,</span></div>
+        </details>
+        <details class="json-node">
+          <summary><span class="json-key">&quot;fec_block_width&quot;</span>: { <span class="json-fold">…</span> <span class="json-collapsed-close">}<span class="json-comma">,</span></span></summary>
+          <div class="json-children">
+            <div class="json-line"><span class="json-key">&quot;type&quot;</span>: <span class="json-string">&quot;integer&quot;</span><span class="json-comma">,</span></div>
+            <div class="json-line"><span class="json-key">&quot;description&quot;</span>: <span class="json-string">&quot;width of block over which FEC is calculated in packets&quot;</span><span class="json-comma">,</span></div>
+            <div class="json-line"><span class="json-key">&quot;minimum&quot;</span>: <span class="json-number">4</span><span class="json-comma">,</span></div>
+            <div class="json-line"><span class="json-key">&quot;maximum&quot;</span>: <span class="json-number">200</span></div>
+          </div>
+          <div class="json-close">}<span class="json-comma">,</span></div>
+        </details>
+        <details class="json-node">
+          <summary><span class="json-key">&quot;fec_block_height&quot;</span>: { <span class="json-fold">…</span> <span class="json-collapsed-close">}<span class="json-comma">,</span></span></summary>
+          <div class="json-children">
+            <div class="json-line"><span class="json-key">&quot;type&quot;</span>: <span class="json-string">&quot;integer&quot;</span><span class="json-comma">,</span></div>
+            <div class="json-line"><span class="json-key">&quot;description&quot;</span>: <span class="json-string">&quot;height of block over which FEC is calculated in packets&quot;</span><span class="json-comma">,</span></div>
+            <div class="json-line"><span class="json-key">&quot;minimum&quot;</span>: <span class="json-number">4</span><span class="json-comma">,</span></div>
+            <div class="json-line"><span class="json-key">&quot;maximum&quot;</span>: <span class="json-number">200</span></div>
+          </div>
+          <div class="json-close">}<span class="json-comma">,</span></div>
+        </details>
+        <details class="json-node">
+          <summary><span class="json-key">&quot;fec1D_destination_port&quot;</span>: { <span class="json-fold">…</span> <span class="json-collapsed-close">}<span class="json-comma">,</span></span></summary>
+          <div class="json-children">
+            <details class="json-node">
+              <summary><span class="json-key">&quot;type&quot;</span>: [ <span class="json-fold">…</span> <span class="json-collapsed-close">]<span class="json-comma">,</span></span></summary>
+              <div class="json-children">
+                <div class="json-line"><span class="json-string">&quot;integer&quot;</span><span class="json-comma">,</span></div>
+                <div class="json-line"><span class="json-string">&quot;string&quot;</span></div>
+              </div>
+              <div class="json-close">]<span class="json-comma">,</span></div>
+            </details>
+            <div class="json-line"><span class="json-key">&quot;description&quot;</span>: <span class="json-string">&quot;destination port for RTP Column FEC packets (auto = RTP destination_port + 2 by default)&quot;</span><span class="json-comma">,</span></div>
+            <div class="json-line"><span class="json-key">&quot;minimum&quot;</span>: <span class="json-number">1</span><span class="json-comma">,</span></div>
+            <div class="json-line"><span class="json-key">&quot;maximum&quot;</span>: <span class="json-number">65535</span><span class="json-comma">,</span></div>
+            <div class="json-line"><span class="json-key">&quot;pattern&quot;</span>: <span class="json-string">&quot;^auto$&quot;</span></div>
           </div>
           <div class="json-close">}<span class="json-comma">,</span></div>
         </details>
@@ -3887,25 +3887,25 @@
             <div class="json-line"><span class="json-key">&quot;description&quot;</span>: <span class="json-string">&quot;destination port for RTP Row FEC packets (auto = RTP destination_port + 4 by default)&quot;</span><span class="json-comma">,</span></div>
             <div class="json-line"><span class="json-key">&quot;minimum&quot;</span>: <span class="json-number">1</span><span class="json-comma">,</span></div>
             <div class="json-line"><span class="json-key">&quot;maximum&quot;</span>: <span class="json-number">65535</span><span class="json-comma">,</span></div>
-            <div class="json-line"><span class="json-key">&quot;pattern&quot;</span>: <span class="json-string">&quot;^auto<span class="arithmatex">\(&quot;&lt;/span&gt;&lt;/div&gt;
-          &lt;/div&gt;
-          &lt;div class="json-close"&gt;}&lt;span class="json-comma"&gt;,&lt;/span&gt;&lt;/div&gt;
-        &lt;/details&gt;
-        &lt;details class="json-node"&gt;
-          &lt;summary&gt;&lt;span class="json-key"&gt;&quot;fec1D_source_port&quot;&lt;/span&gt;: { &lt;span class="json-fold"&gt;…&lt;/span&gt; &lt;span class="json-collapsed-close"&gt;}&lt;span class="json-comma"&gt;,&lt;/span&gt;&lt;/span&gt;&lt;/summary&gt;
-          &lt;div class="json-children"&gt;
-            &lt;details class="json-node"&gt;
-              &lt;summary&gt;&lt;span class="json-key"&gt;&quot;type&quot;&lt;/span&gt;: [ &lt;span class="json-fold"&gt;…&lt;/span&gt; &lt;span class="json-collapsed-close"&gt;]&lt;span class="json-comma"&gt;,&lt;/span&gt;&lt;/span&gt;&lt;/summary&gt;
-              &lt;div class="json-children"&gt;
-                &lt;div class="json-line"&gt;&lt;span class="json-string"&gt;&quot;integer&quot;&lt;/span&gt;&lt;span class="json-comma"&gt;,&lt;/span&gt;&lt;/div&gt;
-                &lt;div class="json-line"&gt;&lt;span class="json-string"&gt;&quot;string&quot;&lt;/span&gt;&lt;/div&gt;
-              &lt;/div&gt;
-              &lt;div class="json-close"&gt;]&lt;span class="json-comma"&gt;,&lt;/span&gt;&lt;/div&gt;
-            &lt;/details&gt;
-            &lt;div class="json-line"&gt;&lt;span class="json-key"&gt;&quot;description&quot;&lt;/span&gt;: &lt;span class="json-string"&gt;&quot;source port for RTP FEC packets (auto = RTP source_port + 2 by default)&quot;&lt;/span&gt;&lt;span class="json-comma"&gt;,&lt;/span&gt;&lt;/div&gt;
-            &lt;div class="json-line"&gt;&lt;span class="json-key"&gt;&quot;minimum&quot;&lt;/span&gt;: &lt;span class="json-number"&gt;0&lt;/span&gt;&lt;span class="json-comma"&gt;,&lt;/span&gt;&lt;/div&gt;
-            &lt;div class="json-line"&gt;&lt;span class="json-key"&gt;&quot;maximum&quot;&lt;/span&gt;: &lt;span class="json-number"&gt;65535&lt;/span&gt;&lt;span class="json-comma"&gt;,&lt;/span&gt;&lt;/div&gt;
-            &lt;div class="json-line"&gt;&lt;span class="json-key"&gt;&quot;pattern&quot;&lt;/span&gt;: &lt;span class="json-string"&gt;&quot;^auto\)</span>&quot;</span></div>
+            <div class="json-line"><span class="json-key">&quot;pattern&quot;</span>: <span class="json-string">&quot;^auto$&quot;</span></div>
+          </div>
+          <div class="json-close">}<span class="json-comma">,</span></div>
+        </details>
+        <details class="json-node">
+          <summary><span class="json-key">&quot;fec1D_source_port&quot;</span>: { <span class="json-fold">…</span> <span class="json-collapsed-close">}<span class="json-comma">,</span></span></summary>
+          <div class="json-children">
+            <details class="json-node">
+              <summary><span class="json-key">&quot;type&quot;</span>: [ <span class="json-fold">…</span> <span class="json-collapsed-close">]<span class="json-comma">,</span></span></summary>
+              <div class="json-children">
+                <div class="json-line"><span class="json-string">&quot;integer&quot;</span><span class="json-comma">,</span></div>
+                <div class="json-line"><span class="json-string">&quot;string&quot;</span></div>
+              </div>
+              <div class="json-close">]<span class="json-comma">,</span></div>
+            </details>
+            <div class="json-line"><span class="json-key">&quot;description&quot;</span>: <span class="json-string">&quot;source port for RTP FEC packets (auto = RTP source_port + 2 by default)&quot;</span><span class="json-comma">,</span></div>
+            <div class="json-line"><span class="json-key">&quot;minimum&quot;</span>: <span class="json-number">0</span><span class="json-comma">,</span></div>
+            <div class="json-line"><span class="json-key">&quot;maximum&quot;</span>: <span class="json-number">65535</span><span class="json-comma">,</span></div>
+            <div class="json-line"><span class="json-key">&quot;pattern&quot;</span>: <span class="json-string">&quot;^auto$&quot;</span></div>
           </div>
           <div class="json-close">}<span class="json-comma">,</span></div>
         </details>
@@ -3923,44 +3923,44 @@
             <div class="json-line"><span class="json-key">&quot;description&quot;</span>: <span class="json-string">&quot;source port for RTP FEC packets (auto = RTP source_port + 4 by default)&quot;</span><span class="json-comma">,</span></div>
             <div class="json-line"><span class="json-key">&quot;minimum&quot;</span>: <span class="json-number">0</span><span class="json-comma">,</span></div>
             <div class="json-line"><span class="json-key">&quot;maximum&quot;</span>: <span class="json-number">65535</span><span class="json-comma">,</span></div>
-            <div class="json-line"><span class="json-key">&quot;pattern&quot;</span>: <span class="json-string">&quot;^auto<span class="arithmatex">\(&quot;&lt;/span&gt;&lt;/div&gt;
-          &lt;/div&gt;
-          &lt;div class="json-close"&gt;}&lt;span class="json-comma"&gt;,&lt;/span&gt;&lt;/div&gt;
-        &lt;/details&gt;
-        &lt;details class="json-node"&gt;
-          &lt;summary&gt;&lt;span class="json-key"&gt;&quot;rtcp_enabled&quot;&lt;/span&gt;: { &lt;span class="json-fold"&gt;…&lt;/span&gt; &lt;span class="json-collapsed-close"&gt;}&lt;span class="json-comma"&gt;,&lt;/span&gt;&lt;/span&gt;&lt;/summary&gt;
-          &lt;div class="json-children"&gt;
-            &lt;div class="json-line"&gt;&lt;span class="json-key"&gt;&quot;type&quot;&lt;/span&gt;: &lt;span class="json-string"&gt;&quot;boolean&quot;&lt;/span&gt;&lt;span class="json-comma"&gt;,&lt;/span&gt;&lt;/div&gt;
-            &lt;div class="json-line"&gt;&lt;span class="json-key"&gt;&quot;description&quot;&lt;/span&gt;: &lt;span class="json-string"&gt;&quot;rtcp on/off&quot;&lt;/span&gt;&lt;/div&gt;
-          &lt;/div&gt;
-          &lt;div class="json-close"&gt;}&lt;span class="json-comma"&gt;,&lt;/span&gt;&lt;/div&gt;
-        &lt;/details&gt;
-        &lt;details class="json-node"&gt;
-          &lt;summary&gt;&lt;span class="json-key"&gt;&quot;rtcp_destination_ip&quot;&lt;/span&gt;: { &lt;span class="json-fold"&gt;…&lt;/span&gt; &lt;span class="json-collapsed-close"&gt;}&lt;span class="json-comma"&gt;,&lt;/span&gt;&lt;/span&gt;&lt;/summary&gt;
-          &lt;div class="json-children"&gt;
-            &lt;div class="json-line"&gt;&lt;span class="json-key"&gt;&quot;type&quot;&lt;/span&gt;: &lt;span class="json-string"&gt;&quot;string&quot;&lt;/span&gt;&lt;span class="json-comma"&gt;,&lt;/span&gt;&lt;/div&gt;
-            &lt;div class="json-line"&gt;&lt;span class="json-key"&gt;&quot;description&quot;&lt;/span&gt;: &lt;span class="json-string"&gt;&quot;IP address to which RTCP packets will be sent (auto = same as RTP destination_ip by default)&quot;&lt;/span&gt;&lt;span class="json-comma"&gt;,&lt;/span&gt;&lt;/div&gt;
-            &lt;details class="json-node"&gt;
-              &lt;summary&gt;&lt;span class="json-key"&gt;&quot;anyOf&quot;&lt;/span&gt;: [ &lt;span class="json-fold"&gt;…&lt;/span&gt; &lt;span class="json-collapsed-close"&gt;]&lt;/span&gt;&lt;/summary&gt;
-              &lt;div class="json-children"&gt;
-                &lt;details class="json-node"&gt;
-                  &lt;summary&gt;{ &lt;span class="json-fold"&gt;…&lt;/span&gt; &lt;span class="json-collapsed-close"&gt;}&lt;span class="json-comma"&gt;,&lt;/span&gt;&lt;/span&gt;&lt;/summary&gt;
-                  &lt;div class="json-children"&gt;
-                    &lt;div class="json-line"&gt;&lt;span class="json-key"&gt;&quot;format&quot;&lt;/span&gt;: &lt;span class="json-string"&gt;&quot;ipv4&quot;&lt;/span&gt;&lt;/div&gt;
-                  &lt;/div&gt;
-                  &lt;div class="json-close"&gt;}&lt;span class="json-comma"&gt;,&lt;/span&gt;&lt;/div&gt;
-                &lt;/details&gt;
-                &lt;details class="json-node"&gt;
-                  &lt;summary&gt;{ &lt;span class="json-fold"&gt;…&lt;/span&gt; &lt;span class="json-collapsed-close"&gt;}&lt;span class="json-comma"&gt;,&lt;/span&gt;&lt;/span&gt;&lt;/summary&gt;
-                  &lt;div class="json-children"&gt;
-                    &lt;div class="json-line"&gt;&lt;span class="json-key"&gt;&quot;format&quot;&lt;/span&gt;: &lt;span class="json-string"&gt;&quot;ipv6&quot;&lt;/span&gt;&lt;/div&gt;
-                  &lt;/div&gt;
-                  &lt;div class="json-close"&gt;}&lt;span class="json-comma"&gt;,&lt;/span&gt;&lt;/div&gt;
-                &lt;/details&gt;
-                &lt;details class="json-node"&gt;
-                  &lt;summary&gt;{ &lt;span class="json-fold"&gt;…&lt;/span&gt; &lt;span class="json-collapsed-close"&gt;}&lt;/span&gt;&lt;/summary&gt;
-                  &lt;div class="json-children"&gt;
-                    &lt;div class="json-line"&gt;&lt;span class="json-key"&gt;&quot;pattern&quot;&lt;/span&gt;: &lt;span class="json-string"&gt;&quot;^auto\)</span>&quot;</span></div>
+            <div class="json-line"><span class="json-key">&quot;pattern&quot;</span>: <span class="json-string">&quot;^auto$&quot;</span></div>
+          </div>
+          <div class="json-close">}<span class="json-comma">,</span></div>
+        </details>
+        <details class="json-node">
+          <summary><span class="json-key">&quot;rtcp_enabled&quot;</span>: { <span class="json-fold">…</span> <span class="json-collapsed-close">}<span class="json-comma">,</span></span></summary>
+          <div class="json-children">
+            <div class="json-line"><span class="json-key">&quot;type&quot;</span>: <span class="json-string">&quot;boolean&quot;</span><span class="json-comma">,</span></div>
+            <div class="json-line"><span class="json-key">&quot;description&quot;</span>: <span class="json-string">&quot;rtcp on/off&quot;</span></div>
+          </div>
+          <div class="json-close">}<span class="json-comma">,</span></div>
+        </details>
+        <details class="json-node">
+          <summary><span class="json-key">&quot;rtcp_destination_ip&quot;</span>: { <span class="json-fold">…</span> <span class="json-collapsed-close">}<span class="json-comma">,</span></span></summary>
+          <div class="json-children">
+            <div class="json-line"><span class="json-key">&quot;type&quot;</span>: <span class="json-string">&quot;string&quot;</span><span class="json-comma">,</span></div>
+            <div class="json-line"><span class="json-key">&quot;description&quot;</span>: <span class="json-string">&quot;IP address to which RTCP packets will be sent (auto = same as RTP destination_ip by default)&quot;</span><span class="json-comma">,</span></div>
+            <details class="json-node">
+              <summary><span class="json-key">&quot;anyOf&quot;</span>: [ <span class="json-fold">…</span> <span class="json-collapsed-close">]</span></summary>
+              <div class="json-children">
+                <details class="json-node">
+                  <summary>{ <span class="json-fold">…</span> <span class="json-collapsed-close">}<span class="json-comma">,</span></span></summary>
+                  <div class="json-children">
+                    <div class="json-line"><span class="json-key">&quot;format&quot;</span>: <span class="json-string">&quot;ipv4&quot;</span></div>
+                  </div>
+                  <div class="json-close">}<span class="json-comma">,</span></div>
+                </details>
+                <details class="json-node">
+                  <summary>{ <span class="json-fold">…</span> <span class="json-collapsed-close">}<span class="json-comma">,</span></span></summary>
+                  <div class="json-children">
+                    <div class="json-line"><span class="json-key">&quot;format&quot;</span>: <span class="json-string">&quot;ipv6&quot;</span></div>
+                  </div>
+                  <div class="json-close">}<span class="json-comma">,</span></div>
+                </details>
+                <details class="json-node">
+                  <summary>{ <span class="json-fold">…</span> <span class="json-collapsed-close">}</span></summary>
+                  <div class="json-children">
+                    <div class="json-line"><span class="json-key">&quot;pattern&quot;</span>: <span class="json-string">&quot;^auto$&quot;</span></div>
                   </div>
                   <div class="json-close">}</div>
                 </details>
@@ -3984,25 +3984,25 @@
             <div class="json-line"><span class="json-key">&quot;description&quot;</span>: <span class="json-string">&quot;destination port for RTCP packets (auto = RTP destination_port + 1 by default)&quot;</span><span class="json-comma">,</span></div>
             <div class="json-line"><span class="json-key">&quot;minimum&quot;</span>: <span class="json-number">1</span><span class="json-comma">,</span></div>
             <div class="json-line"><span class="json-key">&quot;maximum&quot;</span>: <span class="json-number">65535</span><span class="json-comma">,</span></div>
-            <div class="json-line"><span class="json-key">&quot;pattern&quot;</span>: <span class="json-string">&quot;^auto<span class="arithmatex">\(&quot;&lt;/span&gt;&lt;/div&gt;
-          &lt;/div&gt;
-          &lt;div class="json-close"&gt;}&lt;span class="json-comma"&gt;,&lt;/span&gt;&lt;/div&gt;
-        &lt;/details&gt;
-        &lt;details class="json-node"&gt;
-          &lt;summary&gt;&lt;span class="json-key"&gt;&quot;rtcp_source_port&quot;&lt;/span&gt;: { &lt;span class="json-fold"&gt;…&lt;/span&gt; &lt;span class="json-collapsed-close"&gt;}&lt;span class="json-comma"&gt;,&lt;/span&gt;&lt;/span&gt;&lt;/summary&gt;
-          &lt;div class="json-children"&gt;
-            &lt;details class="json-node"&gt;
-              &lt;summary&gt;&lt;span class="json-key"&gt;&quot;type&quot;&lt;/span&gt;: [ &lt;span class="json-fold"&gt;…&lt;/span&gt; &lt;span class="json-collapsed-close"&gt;]&lt;span class="json-comma"&gt;,&lt;/span&gt;&lt;/span&gt;&lt;/summary&gt;
-              &lt;div class="json-children"&gt;
-                &lt;div class="json-line"&gt;&lt;span class="json-string"&gt;&quot;integer&quot;&lt;/span&gt;&lt;span class="json-comma"&gt;,&lt;/span&gt;&lt;/div&gt;
-                &lt;div class="json-line"&gt;&lt;span class="json-string"&gt;&quot;string&quot;&lt;/span&gt;&lt;/div&gt;
-              &lt;/div&gt;
-              &lt;div class="json-close"&gt;]&lt;span class="json-comma"&gt;,&lt;/span&gt;&lt;/div&gt;
-            &lt;/details&gt;
-            &lt;div class="json-line"&gt;&lt;span class="json-key"&gt;&quot;description&quot;&lt;/span&gt;: &lt;span class="json-string"&gt;&quot;source port for RTCP packets (auto = RTP source_port + 1 by default)&quot;&lt;/span&gt;&lt;span class="json-comma"&gt;,&lt;/span&gt;&lt;/div&gt;
-            &lt;div class="json-line"&gt;&lt;span class="json-key"&gt;&quot;minimum&quot;&lt;/span&gt;: &lt;span class="json-number"&gt;0&lt;/span&gt;&lt;span class="json-comma"&gt;,&lt;/span&gt;&lt;/div&gt;
-            &lt;div class="json-line"&gt;&lt;span class="json-key"&gt;&quot;maximum&quot;&lt;/span&gt;: &lt;span class="json-number"&gt;65535&lt;/span&gt;&lt;span class="json-comma"&gt;,&lt;/span&gt;&lt;/div&gt;
-            &lt;div class="json-line"&gt;&lt;span class="json-key"&gt;&quot;pattern&quot;&lt;/span&gt;: &lt;span class="json-string"&gt;&quot;^auto\)</span>&quot;</span></div>
+            <div class="json-line"><span class="json-key">&quot;pattern&quot;</span>: <span class="json-string">&quot;^auto$&quot;</span></div>
+          </div>
+          <div class="json-close">}<span class="json-comma">,</span></div>
+        </details>
+        <details class="json-node">
+          <summary><span class="json-key">&quot;rtcp_source_port&quot;</span>: { <span class="json-fold">…</span> <span class="json-collapsed-close">}<span class="json-comma">,</span></span></summary>
+          <div class="json-children">
+            <details class="json-node">
+              <summary><span class="json-key">&quot;type&quot;</span>: [ <span class="json-fold">…</span> <span class="json-collapsed-close">]<span class="json-comma">,</span></span></summary>
+              <div class="json-children">
+                <div class="json-line"><span class="json-string">&quot;integer&quot;</span><span class="json-comma">,</span></div>
+                <div class="json-line"><span class="json-string">&quot;string&quot;</span></div>
+              </div>
+              <div class="json-close">]<span class="json-comma">,</span></div>
+            </details>
+            <div class="json-line"><span class="json-key">&quot;description&quot;</span>: <span class="json-string">&quot;source port for RTCP packets (auto = RTP source_port + 1 by default)&quot;</span><span class="json-comma">,</span></div>
+            <div class="json-line"><span class="json-key">&quot;minimum&quot;</span>: <span class="json-number">0</span><span class="json-comma">,</span></div>
+            <div class="json-line"><span class="json-key">&quot;maximum&quot;</span>: <span class="json-number">65535</span><span class="json-comma">,</span></div>
+            <div class="json-line"><span class="json-key">&quot;pattern&quot;</span>: <span class="json-string">&quot;^auto$&quot;</span></div>
           </div>
           <div class="json-close">}<span class="json-comma">,</span></div>
         </details>
@@ -4021,9 +4021,9 @@
       <summary><span class="json-key">&quot;patternProperties&quot;</span>: { <span class="json-fold">…</span> <span class="json-collapsed-close">}<span class="json-comma">,</span></span></summary>
       <div class="json-children">
         <details class="json-node">
-          <summary><span class="json-key">&quot;^ext_[a-zA-Z0-9_]+<span class="arithmatex">\(&quot;&lt;/span&gt;: { &lt;span class="json-fold"&gt;…&lt;/span&gt; &lt;span class="json-collapsed-close"&gt;}&lt;/span&gt;&lt;/summary&gt;
-          &lt;div class="json-children"&gt;
-            &lt;div class="json-line"&gt;&lt;span class="json-key"&gt;&quot;\)</span>schema&quot;</span>: <span class="json-string">&quot;<a href="http://json-schema.org/draft-04/schema#&amp;quot">http://json-schema.org/draft-04/schema#&amp;quot</a>;</span><span class="json-comma">,</span></div>
+          <summary><span class="json-key">&quot;^ext_[a-zA-Z0-9_]+$&quot;</span>: { <span class="json-fold">…</span> <span class="json-collapsed-close">}</span></summary>
+          <div class="json-children">
+            <div class="json-line"><span class="json-key">&quot;$schema&quot;</span>: <span class="json-string">&quot;http://json-schema.org/draft-04/schema#&quot;</span><span class="json-comma">,</span></div>
             <div class="json-line"><span class="json-key">&quot;description&quot;</span>: <span class="json-string">&quot;Describes external Sender transport parameters defined in other AMWA specifications. The constraints in this schema are minimum constraints, but may be further constrained at the constraints endpoint.&quot;</span><span class="json-comma">,</span></div>
             <div class="json-line"><span class="json-key">&quot;title&quot;</span>: <span class="json-string">&quot;External Sender Transport Parameters&quot;</span><span class="json-comma">,</span></div>
             <details class="json-node">

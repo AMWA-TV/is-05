@@ -3469,38 +3469,38 @@
   
 
 
-<h1 id="apis-server-side-implementation-notes">APIs: Server Side Implementation Notes<a class="headerlink" href="#apis-server-side-implementation-notes" title="Permanent link">&para;</a></h1>
-<p><em>&copy; AMWA 2017, CC Attribution-NoDerivatives 4.0 International (CC BY-ND 4.0)</em></p>
-<h2 id="cross-origin-resource-sharing-cors">Cross-Origin Resource Sharing (CORS)<a class="headerlink" href="#cross-origin-resource-sharing-cors" title="Permanent link">&para;</a></h2>
+<h1 id="apis-server-side-implementation-notes">APIs: Server Side Implementation Notes</h1>
+<p><em>(c) AMWA 2017, CC Attribution-NoDerivatives 4.0 International (CC BY-ND 4.0)</em></p>
+<h2 id="cross-origin-resource-sharing-cors">Cross-Origin Resource Sharing (CORS)</h2>
 <p>In order to permit web-based control interfaces to be hosted remotely, all NMOS APIs MUST implement valid CORS HTTP headers in responses to all requests.</p>
 <p>In addition to this, where highlighted in the API specifications servers MUST respond to HTTP pre-flight <code>OPTIONS</code> requests. Servers MAY additionally support HTTP <code>OPTIONS</code> requests made to any other API resource.</p>
 <p>In order to simplify development, the following headers MAY be returned in order to remove these restrictions as far as possible. Note that these are very relaxed and possibly not suitable for a production deployment.</p>
-<div class="language-http highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="err">Access-Control-Allow-Origin: *</span>
-</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="err">Access-Control-Allow-Methods: GET, PUT, POST, PATCH, HEAD, OPTIONS, DELETE</span>
-</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="err">Access-Control-Allow-Headers: Content-Type, Accept</span>
-</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="err">Access-Control-Max-Age: 3600</span>
-</span></code></pre></div>
+<p><code>http
+Access-Control-Allow-Origin: *
+Access-Control-Allow-Methods: GET, PUT, POST, PATCH, HEAD, OPTIONS, DELETE
+Access-Control-Allow-Headers: Content-Type, Accept
+Access-Control-Max-Age: 3600</code></p>
 <p>To ensure compatibility, the response <code>Access-Control-Allow-Headers</code> could be set from the request's <code>Access-Control-Request-Headers</code>.</p>
-<h2 id="use-of-local-hostnames">Use of <code>.local</code> Hostnames<a class="headerlink" href="#use-of-local-hostnames" title="Permanent link">&para;</a></h2>
+<h2 id="use-of-local-hostnames">Use of <code>.local</code> Hostnames</h2>
 <p>Where <code>href</code> or <code>host</code> attributes are specified in the APIs, it is strongly RECOMMENDED to use either IP addresses or hostnames which are resolvable using unicast DNS. Whilst <code>.local</code> hostnames are convenient in a zero-configuration layer 2 network segment, these are not usually resolvable beyond these boundaries. As this specification is intended for use between layer 3 network segments, use of these hostnames can result in Nodes appearing inaccessible.</p>
-<h2 id="uninitialised-senders-and-receivers">Uninitialised Senders and Receivers<a class="headerlink" href="#uninitialised-senders-and-receivers" title="Permanent link">&para;</a></h2>
+<h2 id="uninitialised-senders-and-receivers">Uninitialised Senders and Receivers</h2>
 <p>When a Sender or Receiver is first started it might not have all the parameters it needs to operate. For example IP addresses and port numbers might not be set. In such cases:</p>
 <ul>
 <li>Senders and Receivers SHOULD present sensible default values on transport parameter endpoints. Suggested defaults are given in the relevant schemas. Any default parameters such as port numbers specified in relevant RFCs SHOULD be followed. Parameters where no sensible defaults exist, such as source IP address on a Receiver, SHOULD be set to <code>null</code>.</li>
 <li>Senders that are not configured (for example have a <code>null</code> source IP address value) SHOULD return <code>404</code> (Not Found) on their active transport file endpoint, until a usable set of parameters has been activated.</li>
 </ul>
 <p>(In other cases, Senders and Receivers might start with parameters already configured, for example through use of a configuration file or manual entry of parameters.)</p>
-<h2 id="use-of-auto">Use of auto<a class="headerlink" href="#use-of-auto" title="Permanent link">&para;</a></h2>
+<h2 id="use-of-auto">Use of auto</h2>
 <p>Many transport parameters MAY be set to <code>"auto"</code> in the <code>/staged</code> endpoint, to tell the Sender or Receiver to select the parameter for itself. In many cases this is a simple operation, and the behaviour is very clearly defined in the relevant transport parameter schemas. For example a port number might be offset from the RTP port number by a pre-determined value. The specification makes suggestions of a sensible default value for <code>"auto"</code> to resolve to, but the Sender or Receiver might choose any value permitted by the schema and constraints.</p>
 <p>Transport parameters which need to support <code>"auto"</code> are defined in the specification. Implementations SHOULD NOT indicate <code>"auto"</code> as an option via their <code>/constraints</code> endpoint.</p>
 <p>In some cases the behaviour is more complex, and can be determined by the vendor. These cases are indicated in section 4 for the specific transport types.</p>
-<h2 id="constraints">Constraints<a class="headerlink" href="#constraints" title="Permanent link">&para;</a></h2>
-<h3 id="use-of-json-schema-with-constraints">Use of JSON Schema with Constraints<a class="headerlink" href="#use-of-json-schema-with-constraints" title="Permanent link">&para;</a></h3>
+<h2 id="constraints">Constraints</h2>
+<h3 id="use-of-json-schema-with-constraints">Use of JSON Schema with Constraints</h3>
 <p>It is strongly RECOMMENDED that API implementations validate requests received from clients against the JSON schema included in this specification. Where additional constraints are applied by the API using the <code>/constraints</code> resource, these restrictions SHOULD be merged with the provided JSON schema in order to provide consistent validation.</p>
 <p>Note: From v1.2 onwards, additional transport types and associated schemas are defined in the <a href="https://specs.amwa.tv/nmos-parameter-registers/branches/main/transports/">Transports register</a> of the NMOS Parameter Registers.</p>
-<h3 id="constraining-interfaces">Constraining Interfaces<a class="headerlink" href="#constraining-interfaces" title="Permanent link">&para;</a></h3>
+<h3 id="constraining-interfaces">Constraining Interfaces</h3>
 <p>The constraints are used to advertise the available network interfaces on the Device. This happens through use of an <code>enum</code> constraint, which contains an array of the available interface IP addresses. For interfaces capable of operating with IPv6 and IPv4 each interface SHOULD have two entries containing the interface's IPv4 and IPv6 addresses. Examples are provided in the API documentation.</p>
-<h2 id="staged-requests-precedence">Staged Requests Precedence<a class="headerlink" href="#staged-requests-precedence" title="Permanent link">&para;</a></h2>
+<h2 id="staged-requests-precedence">Staged Requests Precedence</h2>
 <p>It is possible to make a <code>PATCH</code> request to the <code>/staged</code> Receiver endpoint containing both a transport file and transport parameters. Where the content of the transport file and the transport parameters are not in agreement, the transport parameters take precedence. For example, if a transport file specifies a multicast group address of <code>232.19.133.29</code> but the transport parameter <code>multicast_ip</code> specified a multicast group of <code>232.20.44.7</code> then the Receiver will use <code>232.20.44.7</code>.</p>
 
 

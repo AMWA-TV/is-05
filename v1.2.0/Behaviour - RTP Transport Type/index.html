@@ -3903,26 +3903,26 @@
   
 
 
-<h1 id="behaviour-rtp-transport-type">Behaviour: RTP Transport Type<a class="headerlink" href="#behaviour-rtp-transport-type" title="Permanent link">&para;</a></h1>
-<p><em>&copy; AMWA 2017, CC Attribution-NoDerivatives 4.0 International (CC BY-ND 4.0)</em></p>
-<h2 id="transport-file-resource">Transport File Resource<a class="headerlink" href="#transport-file-resource" title="Permanent link">&para;</a></h2>
+<h1 id="behaviour-rtp-transport-type">Behaviour: RTP Transport Type</h1>
+<p><em>(c) AMWA 2017, CC Attribution-NoDerivatives 4.0 International (CC BY-ND 4.0)</em></p>
+<h2 id="transport-file-resource">Transport File Resource</h2>
 <p>The Sender <code>/transportfile</code> resource SHOULD use the following HTTP header when returning the transport file:</p>
 <p><code>Content-Type: application/sdp</code></p>
-<h2 id="parameter-sets">Parameter Sets<a class="headerlink" href="#parameter-sets" title="Permanent link">&para;</a></h2>
+<h2 id="parameter-sets">Parameter Sets</h2>
 <p>Sender and Receiver Connection Management endpoints MUST support a core parameter set. In addition they MAY support multicast, FEC and/or RTCP parameter sets. Endpoints MUST support all parameters in a parameter set, or none at all.</p>
-<h3 id="receiver-parameter-sets">Receiver Parameter Sets<a class="headerlink" href="#receiver-parameter-sets" title="Permanent link">&para;</a></h3>
-<h4 id="core-parameters">Core Parameters<a class="headerlink" href="#core-parameters" title="Permanent link">&para;</a></h4>
+<h3 id="receiver-parameter-sets">Receiver Parameter Sets</h3>
+<h4 id="core-parameters">Core Parameters</h4>
 <ul>
 <li><code>source_ip</code></li>
 <li><code>interface_ip</code></li>
 <li><code>destination_port</code></li>
 <li><code>rtp_enabled</code></li>
 </ul>
-<h4 id="multicast-parameters">Multicast Parameters<a class="headerlink" href="#multicast-parameters" title="Permanent link">&para;</a></h4>
+<h4 id="multicast-parameters">Multicast Parameters</h4>
 <ul>
 <li><code>multicast_ip</code></li>
 </ul>
-<h4 id="fec-parameters">FEC Parameters<a class="headerlink" href="#fec-parameters" title="Permanent link">&para;</a></h4>
+<h4 id="fec-parameters">FEC Parameters</h4>
 <ul>
 <li><code>fec_enabled</code></li>
 <li><code>fec_destination_ip</code></li>
@@ -3930,14 +3930,14 @@
 <li><code>fec1D_destination_port</code></li>
 <li><code>fec2D_destination_port</code></li>
 </ul>
-<h4 id="rtcp-parameters">RTCP Parameters<a class="headerlink" href="#rtcp-parameters" title="Permanent link">&para;</a></h4>
+<h4 id="rtcp-parameters">RTCP Parameters</h4>
 <ul>
 <li><code>rtcp_enabled</code></li>
 <li><code>rtcp_destination_ip</code></li>
 <li><code>rtcp_destination_port</code></li>
 </ul>
-<h3 id="sender-parameter-sets">Sender Parameter Sets<a class="headerlink" href="#sender-parameter-sets" title="Permanent link">&para;</a></h3>
-<h4 id="core-parameters_1">Core Parameters<a class="headerlink" href="#core-parameters_1" title="Permanent link">&para;</a></h4>
+<h3 id="sender-parameter-sets">Sender Parameter Sets</h3>
+<h4 id="core-parameters_1">Core Parameters</h4>
 <ul>
 <li><code>source_ip</code></li>
 <li><code>destination_ip</code></li>
@@ -3945,7 +3945,7 @@
 <li><code>destination_port</code></li>
 <li><code>rtp_enabled</code></li>
 </ul>
-<h4 id="fec-parameters_1">FEC Parameters<a class="headerlink" href="#fec-parameters_1" title="Permanent link">&para;</a></h4>
+<h4 id="fec-parameters_1">FEC Parameters</h4>
 <ul>
 <li><code>fec_enabled</code></li>
 <li><code>fec_destination_ip</code></li>
@@ -3958,22 +3958,22 @@
 <li><code>fec1D_source_port</code></li>
 <li><code>fec2D_source_port</code></li>
 </ul>
-<h4 id="rtcp-parameters_1">RTCP Parameters<a class="headerlink" href="#rtcp-parameters_1" title="Permanent link">&para;</a></h4>
+<h4 id="rtcp-parameters_1">RTCP Parameters</h4>
 <ul>
 <li><code>rtcp_enabled</code></li>
 <li><code>rtcp_destination_ip</code></li>
 <li><code>rtcp_destination_port</code></li>
 <li><code>rtcp_source_port</code></li>
 </ul>
-<h2 id="use-of-auto">Use of auto<a class="headerlink" href="#use-of-auto" title="Permanent link">&para;</a></h2>
+<h2 id="use-of-auto">Use of auto</h2>
 <p>Parameters which support use of <code>auto</code> are identified in the schemas. This section clarifies the use of <code>auto</code> in some cases that might be unclear.</p>
-<h3 id="sender-source_ip-and-receiver-interface_ip">Sender <code>source_ip</code> and Receiver <code>interface_ip</code><a class="headerlink" href="#sender-source_ip-and-receiver-interface_ip" title="Permanent link">&para;</a></h3>
+<h3 id="sender-source_ip-and-receiver-interface_ip">Sender <code>source_ip</code> and Receiver <code>interface_ip</code></h3>
 <p>These parameters specify the interface binding to use for sending or receiving traffic. Use of <code>auto</code> here means the Device SHOULD determine for itself which of its interfaces is the most appropriate to use. In Devices where only one interface is available for media traffic this is trivial. In Devices with multiple media network interfaces Devices could use mechanisms such as routing tables, out-of-band controls or evaluation of loading on the interfaces.</p>
-<h3 id="sender-destination_ip">Sender <code>destination_ip</code><a class="headerlink" href="#sender-destination_ip" title="Permanent link">&para;</a></h3>
+<h3 id="sender-destination_ip">Sender <code>destination_ip</code></h3>
 <p>If this parameter is set to <code>auto</code> the Sender is expected to automatically select an address to send on. This could be determined by an external network control system, or through technologies such as MADCAP (RFC 2730) or ZMAAP.</p>
-<h2 id="behaviour-of-sdp-media-information">Behaviour of SDP Media Information<a class="headerlink" href="#behaviour-of-sdp-media-information" title="Permanent link">&para;</a></h2>
+<h2 id="behaviour-of-sdp-media-information">Behaviour of SDP Media Information</h2>
 <p>SDP files contain both connection information and media information. When a parameter set is activated with an SDP file present in <code>data</code> the Receiver SHOULD use the media information in the SDP file.</p>
-<h2 id="interpretation-of-sdp-files">Interpretation of SDP Files<a class="headerlink" href="#interpretation-of-sdp-files" title="Permanent link">&para;</a></h2>
+<h2 id="interpretation-of-sdp-files">Interpretation of SDP Files</h2>
 <p>All Senders and Receivers SHOULD comply with RFC 4566 (Session Description Protocol) when creating and parsing SDP files. Multicast Senders and Receivers SHOULD additionally comply with RFC 4570 (SDP Source Filters). Three examples are given below, showing an SDP file and the transport parameters that would be presented at the <code>/staged</code> endpoint by a single-legged Receiver that has parsed the file.</p>
 <p>A Receiver sets the <code>rtp_enabled</code> parameter to <code>true</code> for each leg it has configured from the SDP file, unless overridden by the requested <code>transport_params</code> as noted below.</p>
 <p>In the event that a Receiver is presented with an SDP file and a set of transport parameters that
@@ -3981,99 +3981,95 @@ contradict each other in the same <code>PATCH</code> request, the transport para
 over the SDP file and MUST be the parameters used for activation. This only applies
 in the case where there is contradiction between the SDP file and transport parameters within
 a single <code>PATCH</code> request, in all other cases the most recently received <code>PATCH</code> request takes priority.</p>
-<h3 id="unicast">Unicast<a class="headerlink" href="#unicast" title="Permanent link">&para;</a></h3>
-<div class="language-text highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>v=0
-</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>o=- 2890844526 2890842807 IN IP4 10.47.16.5
-</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>s=SDP Example
-</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>c=IN IP4 10.46.16.34/127
-</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>t=2873397496 2873404696
-</span><span id="__span-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>a=recvonly
-</span><span id="__span-0-7"><a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a>m=video 51372 RTP/AVP 99
-</span><span id="__span-0-8"><a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a>a=rtpmap:99 h263-1998/90000
-</span></code></pre></div>
-<div class="language-json highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="nt">"transport_params"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
-</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="w">    </span><span class="p">{</span>
-</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="w">        </span><span class="nt">"source_ip"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span>
-</span><span id="__span-1-4"><a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="w">        </span><span class="nt">"multicast_ip"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span>
-</span><span id="__span-1-5"><a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a><span class="w">        </span><span class="nt">"interface_ip"</span><span class="p">:</span><span class="w"> </span><span class="s2">"10.46.16.34"</span><span class="p">,</span>
-</span><span id="__span-1-6"><a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a><span class="w">        </span><span class="nt">"destination_port"</span><span class="p">:</span><span class="w"> </span><span class="mi">51372</span><span class="p">,</span>
-</span><span id="__span-1-7"><a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a><span class="w">        </span><span class="nt">"rtp_enabled"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span>
-</span><span id="__span-1-8"><a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a><span class="w">    </span><span class="p">}</span>
-</span><span id="__span-1-9"><a id="__codelineno-1-9" name="__codelineno-1-9" href="#__codelineno-1-9"></a><span class="p">]</span>
-</span></code></pre></div>
-<h3 id="source-specific-multicast">Source Specific Multicast<a class="headerlink" href="#source-specific-multicast" title="Permanent link">&para;</a></h3>
-<div class="language-text highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>v=0
-</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>o=- 1497010742 1497010742 IN IP4 172.29.26.24
-</span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>s=SDP Example
-</span><span id="__span-2-4"><a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a>t=2873397496 2873404696
-</span><span id="__span-2-5"><a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a>m=video 5000 RTP/AVP 103
-</span><span id="__span-2-6"><a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a>c=IN IP4 232.21.21.133/32
-</span><span id="__span-2-7"><a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a>a=source-filter: incl IN IP4 232.21.21.133 172.29.226.24
-</span><span id="__span-2-8"><a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a>a=rtpmap:103 raw/90000
-</span></code></pre></div>
-<div class="language-json highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="nt">"transport_params"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
-</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="w">    </span><span class="p">{</span>
-</span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="w">        </span><span class="nt">"source_ip"</span><span class="p">:</span><span class="w"> </span><span class="s2">"172.29.226.24"</span><span class="p">,</span>
-</span><span id="__span-3-4"><a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a><span class="w">        </span><span class="nt">"multicast_ip"</span><span class="p">:</span><span class="w"> </span><span class="s2">"232.21.21.133"</span><span class="p">,</span>
-</span><span id="__span-3-5"><a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a><span class="w">        </span><span class="nt">"interface_ip"</span><span class="p">:</span><span class="w"> </span><span class="s2">"auto"</span><span class="p">,</span>
-</span><span id="__span-3-6"><a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a><span class="w">        </span><span class="nt">"destination_port"</span><span class="p">:</span><span class="w"> </span><span class="mi">5000</span><span class="p">,</span>
-</span><span id="__span-3-7"><a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a><span class="w">        </span><span class="nt">"rtp_enabled"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span>
-</span><span id="__span-3-8"><a id="__codelineno-3-8" name="__codelineno-3-8" href="#__codelineno-3-8"></a><span class="w">    </span><span class="p">}</span>
-</span><span id="__span-3-9"><a id="__codelineno-3-9" name="__codelineno-3-9" href="#__codelineno-3-9"></a><span class="p">]</span>
-</span></code></pre></div>
-<h3 id="any-source-multicast">Any Source Multicast<a class="headerlink" href="#any-source-multicast" title="Permanent link">&para;</a></h3>
-<div class="language-text highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>v=0
-</span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a>o=- 1497010742 1497010742 IN IP4 172.29.26.24
-</span><span id="__span-4-3"><a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a>s=SDP Example
-</span><span id="__span-4-4"><a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a>t=2873397496 2873404696
-</span><span id="__span-4-5"><a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a>m=video 5000 RTP/AVP 103
-</span><span id="__span-4-6"><a id="__codelineno-4-6" name="__codelineno-4-6" href="#__codelineno-4-6"></a>c=IN IP4 239.21.21.133/32
-</span><span id="__span-4-7"><a id="__codelineno-4-7" name="__codelineno-4-7" href="#__codelineno-4-7"></a>a=rtpmap:103 raw/90000
-</span></code></pre></div>
-<div class="language-json highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="nt">"transport_params"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
-</span><span id="__span-5-2"><a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="w">    </span><span class="p">{</span>
-</span><span id="__span-5-3"><a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a><span class="w">        </span><span class="nt">"source_ip"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span>
-</span><span id="__span-5-4"><a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a><span class="w">        </span><span class="nt">"multicast_ip"</span><span class="p">:</span><span class="w"> </span><span class="s2">"239.21.21.133"</span><span class="p">,</span>
-</span><span id="__span-5-5"><a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a><span class="w">        </span><span class="nt">"interface_ip"</span><span class="p">:</span><span class="w"> </span><span class="s2">"auto"</span><span class="p">,</span>
-</span><span id="__span-5-6"><a id="__codelineno-5-6" name="__codelineno-5-6" href="#__codelineno-5-6"></a><span class="w">        </span><span class="nt">"destination_port"</span><span class="p">:</span><span class="w"> </span><span class="mi">5000</span><span class="p">,</span>
-</span><span id="__span-5-7"><a id="__codelineno-5-7" name="__codelineno-5-7" href="#__codelineno-5-7"></a><span class="w">        </span><span class="nt">"rtp_enabled"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span>
-</span><span id="__span-5-8"><a id="__codelineno-5-8" name="__codelineno-5-8" href="#__codelineno-5-8"></a><span class="w">    </span><span class="p">}</span>
-</span><span id="__span-5-9"><a id="__codelineno-5-9" name="__codelineno-5-9" href="#__codelineno-5-9"></a><span class="p">]</span>
-</span></code></pre></div>
-<h2 id="operation-with-smpte-2022-5">Operation with SMPTE 2022-5<a class="headerlink" href="#operation-with-smpte-2022-5" title="Permanent link">&para;</a></h2>
+<h3 id="unicast">Unicast</h3>
+<p><code>v=0
+o=- 2890844526 2890842807 IN IP4 10.47.16.5
+s=SDP Example
+c=IN IP4 10.46.16.34/127
+t=2873397496 2873404696
+a=recvonly
+m=video 51372 RTP/AVP 99
+a=rtpmap:99 h263-1998/90000</code></p>
+<p><code>json
+"transport_params": [
+    {
+        "source_ip": null,
+        "multicast_ip": null,
+        "interface_ip": "10.46.16.34",
+        "destination_port": 51372,
+        "rtp_enabled": true
+    }
+]</code></p>
+<h3 id="source-specific-multicast">Source Specific Multicast</h3>
+<p><code>v=0
+o=- 1497010742 1497010742 IN IP4 172.29.26.24
+s=SDP Example
+t=2873397496 2873404696
+m=video 5000 RTP/AVP 103
+c=IN IP4 232.21.21.133/32
+a=source-filter: incl IN IP4 232.21.21.133 172.29.226.24
+a=rtpmap:103 raw/90000</code></p>
+<p><code>json
+"transport_params": [
+    {
+        "source_ip": "172.29.226.24",
+        "multicast_ip": "232.21.21.133",
+        "interface_ip": "auto",
+        "destination_port": 5000,
+        "rtp_enabled": true
+    }
+]</code></p>
+<h3 id="any-source-multicast">Any Source Multicast</h3>
+<p><code>v=0
+o=- 1497010742 1497010742 IN IP4 172.29.26.24
+s=SDP Example
+t=2873397496 2873404696
+m=video 5000 RTP/AVP 103
+c=IN IP4 239.21.21.133/32
+a=rtpmap:103 raw/90000</code></p>
+<p><code>json
+"transport_params": [
+    {
+        "source_ip": null,
+        "multicast_ip": "239.21.21.133",
+        "interface_ip": "auto",
+        "destination_port": 5000,
+        "rtp_enabled": true
+    }
+]</code></p>
+<h2 id="operation-with-smpte-2022-5">Operation with SMPTE 2022-5</h2>
 <p>SMPTE 2022-5 describes RTP streams with forward error correction (FEC), and is supported by the Connection Management Specification. This support takes the form of the FEC transport parameter set described in <a href="#parameter-sets">Parameter Sets</a>. Note that Senders have additional parameters used to specify the type of FEC to be used and matrix rows and columns, which are not present on the Receiver side. In SMPTE 2022-5 this information is conveyed in the FEC stream headers, and as such does not need to be conveyed separately in Connection Management.</p>
 <p>Connection APIs supporting SMPTE 2022-5 MUST comply with RFC 6364 when creating and interpreting SDP files. Implementers are advised to consider the guidance given in VSF TR-04. An example SDP file from RFC 6364 is shown below, followed by the transport parameters that would be presented on the <code>/staged</code> endpoint by a Receiver that has parsed the file.</p>
-<div class="language-text highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>v=0
-</span><span id="__span-6-2"><a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a>o=ali 1122334455 1122334466 IN IP4 172.29.26.24
-</span><span id="__span-6-3"><a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a>s=FEC Framework Examples
-</span><span id="__span-6-4"><a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a>t=0 0
-</span><span id="__span-6-5"><a id="__codelineno-6-5" name="__codelineno-6-5" href="#__codelineno-6-5"></a>a=group:FEC-FR S1 R1
-</span><span id="__span-6-6"><a id="__codelineno-6-6" name="__codelineno-6-6" href="#__codelineno-6-6"></a>m=video 30000 RTP/AVP 100
-</span><span id="__span-6-7"><a id="__codelineno-6-7" name="__codelineno-6-7" href="#__codelineno-6-7"></a>c=IN IP4 233.252.0.1/127
-</span><span id="__span-6-8"><a id="__codelineno-6-8" name="__codelineno-6-8" href="#__codelineno-6-8"></a>a=rtpmap:100 MP2T/90000
-</span><span id="__span-6-9"><a id="__codelineno-6-9" name="__codelineno-6-9" href="#__codelineno-6-9"></a>a=fec-source-flow: id=0
-</span><span id="__span-6-10"><a id="__codelineno-6-10" name="__codelineno-6-10" href="#__codelineno-6-10"></a>a=mid:S1
-</span><span id="__span-6-11"><a id="__codelineno-6-11" name="__codelineno-6-11" href="#__codelineno-6-11"></a>m=application 30000 UDP/FEC
-</span><span id="__span-6-12"><a id="__codelineno-6-12" name="__codelineno-6-12" href="#__codelineno-6-12"></a>c=IN IP4 233.252.0.2/127
-</span><span id="__span-6-13"><a id="__codelineno-6-13" name="__codelineno-6-13" href="#__codelineno-6-13"></a>a=fec-repair-flow: encoding-id=10; ss-fssi=n:7,k:5
-</span><span id="__span-6-14"><a id="__codelineno-6-14" name="__codelineno-6-14" href="#__codelineno-6-14"></a>a=mid:R1
-</span></code></pre></div>
-<div class="language-json highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="nt">"transport_params"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
-</span><span id="__span-7-2"><a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a><span class="w">    </span><span class="p">{</span>
-</span><span id="__span-7-3"><a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a><span class="w">        </span><span class="nt">"source_ip"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span>
-</span><span id="__span-7-4"><a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a><span class="w">        </span><span class="nt">"multicast_ip"</span><span class="p">:</span><span class="w"> </span><span class="s2">"233.252.0.1"</span><span class="p">,</span>
-</span><span id="__span-7-5"><a id="__codelineno-7-5" name="__codelineno-7-5" href="#__codelineno-7-5"></a><span class="w">        </span><span class="nt">"interface_ip"</span><span class="p">:</span><span class="w"> </span><span class="s2">"auto"</span><span class="p">,</span>
-</span><span id="__span-7-6"><a id="__codelineno-7-6" name="__codelineno-7-6" href="#__codelineno-7-6"></a><span class="w">        </span><span class="nt">"destination_port"</span><span class="p">:</span><span class="w"> </span><span class="mi">30000</span><span class="p">,</span>
-</span><span id="__span-7-7"><a id="__codelineno-7-7" name="__codelineno-7-7" href="#__codelineno-7-7"></a><span class="w">        </span><span class="nt">"rtp_enabled"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
-</span><span id="__span-7-8"><a id="__codelineno-7-8" name="__codelineno-7-8" href="#__codelineno-7-8"></a><span class="w">        </span><span class="nt">"fec_enable"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
-</span><span id="__span-7-9"><a id="__codelineno-7-9" name="__codelineno-7-9" href="#__codelineno-7-9"></a><span class="w">        </span><span class="nt">"fec_mode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"auto"</span><span class="p">,</span>
-</span><span id="__span-7-10"><a id="__codelineno-7-10" name="__codelineno-7-10" href="#__codelineno-7-10"></a><span class="w">        </span><span class="nt">"fec1D_destination_port"</span><span class="p">:</span><span class="w"> </span><span class="mi">30000</span><span class="p">,</span>
-</span><span id="__span-7-11"><a id="__codelineno-7-11" name="__codelineno-7-11" href="#__codelineno-7-11"></a><span class="w">        </span><span class="nt">"fec2D_destination_port"</span><span class="p">:</span><span class="w"> </span><span class="s2">"auto"</span><span class="p">,</span>
-</span><span id="__span-7-12"><a id="__codelineno-7-12" name="__codelineno-7-12" href="#__codelineno-7-12"></a><span class="w">        </span><span class="nt">"fec_destination_ip"</span><span class="p">:</span><span class="w"> </span><span class="s2">"233.252.0.2"</span>
-</span><span id="__span-7-13"><a id="__codelineno-7-13" name="__codelineno-7-13" href="#__codelineno-7-13"></a><span class="w">    </span><span class="p">}</span>
-</span><span id="__span-7-14"><a id="__codelineno-7-14" name="__codelineno-7-14" href="#__codelineno-7-14"></a><span class="p">]</span>
-</span></code></pre></div>
-<h2 id="operation-with-smpte-2022-7">Operation with SMPTE 2022-7<a class="headerlink" href="#operation-with-smpte-2022-7" title="Permanent link">&para;</a></h2>
+<p><code>v=0
+o=ali 1122334455 1122334466 IN IP4 172.29.26.24
+s=FEC Framework Examples
+t=0 0
+a=group:FEC-FR S1 R1
+m=video 30000 RTP/AVP 100
+c=IN IP4 233.252.0.1/127
+a=rtpmap:100 MP2T/90000
+a=fec-source-flow: id=0
+a=mid:S1
+m=application 30000 UDP/FEC
+c=IN IP4 233.252.0.2/127
+a=fec-repair-flow: encoding-id=10; ss-fssi=n:7,k:5
+a=mid:R1</code></p>
+<p><code>json
+"transport_params": [
+    {
+        "source_ip": null,
+        "multicast_ip": "233.252.0.1",
+        "interface_ip": "auto",
+        "destination_port": 30000,
+        "rtp_enabled": true,
+        "fec_enable": true,
+        "fec_mode": "auto",
+        "fec1D_destination_port": 30000,
+        "fec2D_destination_port": "auto",
+        "fec_destination_ip": "233.252.0.2"
+    }
+]</code></p>
+<h2 id="operation-with-smpte-2022-7">Operation with SMPTE 2022-7</h2>
 <p>SMPTE 2022-7 describes redundant streams for RTP connections, and is supported by the Connection Management Specification. This manifests itself in the fact that the JSON which describes constraints and transport parameters resides within an array. Where SMPTE-2022-7 is not supported this array contains only one object. Where SMPTE-2022-7 is supported the array contains two entries. The first entry contains information pertaining to Path 1, the second information pertaining to Path 2.</p>
 <p>Where a Receiver supports SMPTE 2022-7 but receives a request with a non-SMPTE 2022-7 transport file, the Receiver SHOULD set <code>rtp_enabled</code> in the second set of parameters to <code>false</code> and transport parameters in the SDP file SHOULD be mapped onto that first set of parameters in the array with <code>rtp_enabled</code> set to <code>true</code> (bearing in mind that the <code>transport_params</code> values in the same request take priority).</p>
 <p>Where a client request does not include a transport file and uses only <code>transport_params</code> to configure such a Receiver for a non-SMPTE 2022-7 stream, the request SHOULD explicitly set <code>rtp_enabled</code> in the second set of parameters to <code>false</code>.</p>
@@ -4081,126 +4077,122 @@ a single <code>PATCH</code> request, in all other cases the most recently receiv
 <p>In all cases, if a client request includes <code>transport_params</code>, it MUST have the same number of array elements (or 'legs') as specified in the constraints. If no changes are needed to a specific leg it MUST be included as an empty object (<code>{}</code>).</p>
 <p>Connection APIs supporting SMPTE 2022-7 MUST comply with RFC 7104 when creating and interpreting SDP files. Implementers are advised to consider the guidance given in VSF TR-04. The stream listed first in the SDP file SHOULD be interpreted as being Path 1, and be populated to the first transport parameter object in <code>/staged</code>, with the inverse being true for Path 2.</p>
 <p>The three examples given in RFC 7104 are shown below, followed by the transport parameters that would be presented on the <code>/staged</code> endpoint by a Receiver that has parsed the file.</p>
-<h3 id="separate-source-addresses">Separate Source Addresses<a class="headerlink" href="#separate-source-addresses" title="Permanent link">&para;</a></h3>
-<div class="language-text highlight"><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>v=0
-</span><span id="__span-8-2"><a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a>o=ali 1122334455 1122334466 IN IP4 dup.example.com
-</span><span id="__span-8-3"><a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a>s=DUP Grouping Semantics
-</span><span id="__span-8-4"><a id="__codelineno-8-4" name="__codelineno-8-4" href="#__codelineno-8-4"></a>t=0 0
-</span><span id="__span-8-5"><a id="__codelineno-8-5" name="__codelineno-8-5" href="#__codelineno-8-5"></a>m=video 30000 RTP/AVP 100
-</span><span id="__span-8-6"><a id="__codelineno-8-6" name="__codelineno-8-6" href="#__codelineno-8-6"></a>c=IN IP4 233.252.0.1/127
-</span><span id="__span-8-7"><a id="__codelineno-8-7" name="__codelineno-8-7" href="#__codelineno-8-7"></a>a=source-filter: incl IN IP4 233.252.0.1 198.51.100.1 198.51.100.2
-</span><span id="__span-8-8"><a id="__codelineno-8-8" name="__codelineno-8-8" href="#__codelineno-8-8"></a>a=rtpmap:100 MP2T/90000
-</span><span id="__span-8-9"><a id="__codelineno-8-9" name="__codelineno-8-9" href="#__codelineno-8-9"></a>a=ssrc:1000 cname:ch1@example.com
-</span><span id="__span-8-10"><a id="__codelineno-8-10" name="__codelineno-8-10" href="#__codelineno-8-10"></a>a=ssrc:1010 cname:ch1@example.com
-</span><span id="__span-8-11"><a id="__codelineno-8-11" name="__codelineno-8-11" href="#__codelineno-8-11"></a>a=ssrc-group:DUP 1000 1010
-</span><span id="__span-8-12"><a id="__codelineno-8-12" name="__codelineno-8-12" href="#__codelineno-8-12"></a>a=mid:Ch1
-</span></code></pre></div>
-<div class="language-json highlight"><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="nt">"transport_params"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
-</span><span id="__span-9-2"><a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a><span class="w">    </span><span class="p">{</span>
-</span><span id="__span-9-3"><a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a><span class="w">        </span><span class="nt">"source_ip"</span><span class="p">:</span><span class="w"> </span><span class="s2">"198.51.100.1"</span><span class="p">,</span>
-</span><span id="__span-9-4"><a id="__codelineno-9-4" name="__codelineno-9-4" href="#__codelineno-9-4"></a><span class="w">        </span><span class="nt">"multicast_ip"</span><span class="p">:</span><span class="w"> </span><span class="s2">"233.252.0.1"</span><span class="p">,</span>
-</span><span id="__span-9-5"><a id="__codelineno-9-5" name="__codelineno-9-5" href="#__codelineno-9-5"></a><span class="w">        </span><span class="nt">"interface_ip"</span><span class="p">:</span><span class="w"> </span><span class="s2">"auto"</span><span class="p">,</span>
-</span><span id="__span-9-6"><a id="__codelineno-9-6" name="__codelineno-9-6" href="#__codelineno-9-6"></a><span class="w">        </span><span class="nt">"destination_port"</span><span class="p">:</span><span class="w"> </span><span class="mi">30000</span><span class="p">,</span>
-</span><span id="__span-9-7"><a id="__codelineno-9-7" name="__codelineno-9-7" href="#__codelineno-9-7"></a><span class="w">        </span><span class="nt">"rtp_enabled"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span>
-</span><span id="__span-9-8"><a id="__codelineno-9-8" name="__codelineno-9-8" href="#__codelineno-9-8"></a><span class="w">    </span><span class="p">},</span><span class="w"> </span><span class="p">{</span>
-</span><span id="__span-9-9"><a id="__codelineno-9-9" name="__codelineno-9-9" href="#__codelineno-9-9"></a><span class="w">        </span><span class="nt">"source_ip"</span><span class="p">:</span><span class="w"> </span><span class="s2">"198.51.100.2"</span><span class="p">,</span>
-</span><span id="__span-9-10"><a id="__codelineno-9-10" name="__codelineno-9-10" href="#__codelineno-9-10"></a><span class="w">        </span><span class="nt">"multicast_ip"</span><span class="p">:</span><span class="w"> </span><span class="s2">"233.252.0.1"</span><span class="p">,</span>
-</span><span id="__span-9-11"><a id="__codelineno-9-11" name="__codelineno-9-11" href="#__codelineno-9-11"></a><span class="w">        </span><span class="nt">"interface_ip"</span><span class="p">:</span><span class="w"> </span><span class="s2">"auto"</span><span class="p">,</span>
-</span><span id="__span-9-12"><a id="__codelineno-9-12" name="__codelineno-9-12" href="#__codelineno-9-12"></a><span class="w">        </span><span class="nt">"destination_port"</span><span class="p">:</span><span class="w"> </span><span class="mi">30000</span><span class="p">,</span>
-</span><span id="__span-9-13"><a id="__codelineno-9-13" name="__codelineno-9-13" href="#__codelineno-9-13"></a><span class="w">        </span><span class="nt">"rtp_enabled"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span>
-</span><span id="__span-9-14"><a id="__codelineno-9-14" name="__codelineno-9-14" href="#__codelineno-9-14"></a><span class="w">    </span><span class="p">}</span>
-</span><span id="__span-9-15"><a id="__codelineno-9-15" name="__codelineno-9-15" href="#__codelineno-9-15"></a><span class="p">]</span>
-</span></code></pre></div>
-<h3 id="separate-destination-addresses">Separate Destination Addresses<a class="headerlink" href="#separate-destination-addresses" title="Permanent link">&para;</a></h3>
-<div class="language-text highlight"><pre><span></span><code><span id="__span-10-1"><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a>v=0
-</span><span id="__span-10-2"><a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a>o=ali 1122334455 1122334466 IN IP4 dup.example.com
-</span><span id="__span-10-3"><a id="__codelineno-10-3" name="__codelineno-10-3" href="#__codelineno-10-3"></a>s=DUP Grouping Semantics
-</span><span id="__span-10-4"><a id="__codelineno-10-4" name="__codelineno-10-4" href="#__codelineno-10-4"></a>t=0 0
-</span><span id="__span-10-5"><a id="__codelineno-10-5" name="__codelineno-10-5" href="#__codelineno-10-5"></a>a=group:DUP S1a S1b
-</span><span id="__span-10-6"><a id="__codelineno-10-6" name="__codelineno-10-6" href="#__codelineno-10-6"></a>m=video 30000 RTP/AVP 100
-</span><span id="__span-10-7"><a id="__codelineno-10-7" name="__codelineno-10-7" href="#__codelineno-10-7"></a>c=IN IP4 233.252.0.1/127
-</span><span id="__span-10-8"><a id="__codelineno-10-8" name="__codelineno-10-8" href="#__codelineno-10-8"></a>a=source-filter: incl IN IP4 233.252.0.1 198.51.100.1
-</span><span id="__span-10-9"><a id="__codelineno-10-9" name="__codelineno-10-9" href="#__codelineno-10-9"></a>a=rtpmap:100 MP2T/90000
-</span><span id="__span-10-10"><a id="__codelineno-10-10" name="__codelineno-10-10" href="#__codelineno-10-10"></a>a=mid:S1a
-</span><span id="__span-10-11"><a id="__codelineno-10-11" name="__codelineno-10-11" href="#__codelineno-10-11"></a>m=video 30000 RTP/AVP 101
-</span><span id="__span-10-12"><a id="__codelineno-10-12" name="__codelineno-10-12" href="#__codelineno-10-12"></a>c=IN IP4 233.252.0.2/127
-</span><span id="__span-10-13"><a id="__codelineno-10-13" name="__codelineno-10-13" href="#__codelineno-10-13"></a>a=source-filter: incl IN IP4 233.252.0.2 198.51.100.1
-</span><span id="__span-10-14"><a id="__codelineno-10-14" name="__codelineno-10-14" href="#__codelineno-10-14"></a>a=rtpmap:101 MP2T/90000
-</span><span id="__span-10-15"><a id="__codelineno-10-15" name="__codelineno-10-15" href="#__codelineno-10-15"></a>a=mid:S1b
-</span></code></pre></div>
-<div class="language-json highlight"><pre><span></span><code><span id="__span-11-1"><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a><span class="nt">"transport_params"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
-</span><span id="__span-11-2"><a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a><span class="w">    </span><span class="p">{</span>
-</span><span id="__span-11-3"><a id="__codelineno-11-3" name="__codelineno-11-3" href="#__codelineno-11-3"></a><span class="w">        </span><span class="nt">"source_ip"</span><span class="p">:</span><span class="w"> </span><span class="s2">"198.51.100.1"</span><span class="p">,</span>
-</span><span id="__span-11-4"><a id="__codelineno-11-4" name="__codelineno-11-4" href="#__codelineno-11-4"></a><span class="w">        </span><span class="nt">"multicast_ip"</span><span class="p">:</span><span class="w"> </span><span class="s2">"233.252.0.1"</span><span class="p">,</span>
-</span><span id="__span-11-5"><a id="__codelineno-11-5" name="__codelineno-11-5" href="#__codelineno-11-5"></a><span class="w">        </span><span class="nt">"interface_ip"</span><span class="p">:</span><span class="w"> </span><span class="s2">"auto"</span><span class="p">,</span>
-</span><span id="__span-11-6"><a id="__codelineno-11-6" name="__codelineno-11-6" href="#__codelineno-11-6"></a><span class="w">        </span><span class="nt">"destination_port"</span><span class="p">:</span><span class="w"> </span><span class="mi">30000</span><span class="p">,</span>
-</span><span id="__span-11-7"><a id="__codelineno-11-7" name="__codelineno-11-7" href="#__codelineno-11-7"></a><span class="w">        </span><span class="nt">"rtp_enabled"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span>
-</span><span id="__span-11-8"><a id="__codelineno-11-8" name="__codelineno-11-8" href="#__codelineno-11-8"></a><span class="w">    </span><span class="p">},</span><span class="w"> </span><span class="p">{</span>
-</span><span id="__span-11-9"><a id="__codelineno-11-9" name="__codelineno-11-9" href="#__codelineno-11-9"></a><span class="w">        </span><span class="nt">"source_ip"</span><span class="p">:</span><span class="w"> </span><span class="s2">"198.51.100.1"</span><span class="p">,</span>
-</span><span id="__span-11-10"><a id="__codelineno-11-10" name="__codelineno-11-10" href="#__codelineno-11-10"></a><span class="w">        </span><span class="nt">"multicast_ip"</span><span class="p">:</span><span class="w"> </span><span class="s2">"233.252.0.2"</span><span class="p">,</span>
-</span><span id="__span-11-11"><a id="__codelineno-11-11" name="__codelineno-11-11" href="#__codelineno-11-11"></a><span class="w">        </span><span class="nt">"interface_ip"</span><span class="p">:</span><span class="w"> </span><span class="s2">"auto"</span><span class="p">,</span>
-</span><span id="__span-11-12"><a id="__codelineno-11-12" name="__codelineno-11-12" href="#__codelineno-11-12"></a><span class="w">        </span><span class="nt">"destination_port"</span><span class="p">:</span><span class="w"> </span><span class="mi">30000</span><span class="p">,</span>
-</span><span id="__span-11-13"><a id="__codelineno-11-13" name="__codelineno-11-13" href="#__codelineno-11-13"></a><span class="w">        </span><span class="nt">"rtp_enabled"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span>
-</span><span id="__span-11-14"><a id="__codelineno-11-14" name="__codelineno-11-14" href="#__codelineno-11-14"></a><span class="w">    </span><span class="p">}</span>
-</span><span id="__span-11-15"><a id="__codelineno-11-15" name="__codelineno-11-15" href="#__codelineno-11-15"></a><span class="p">]</span>
-</span></code></pre></div>
-<h3 id="temporal-redundancy">Temporal Redundancy<a class="headerlink" href="#temporal-redundancy" title="Permanent link">&para;</a></h3>
-<div class="language-text highlight"><pre><span></span><code><span id="__span-12-1"><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a>v=0
-</span><span id="__span-12-2"><a id="__codelineno-12-2" name="__codelineno-12-2" href="#__codelineno-12-2"></a>o=ali 1122334455 1122334466 IN IP4 dup.example.com
-</span><span id="__span-12-3"><a id="__codelineno-12-3" name="__codelineno-12-3" href="#__codelineno-12-3"></a>s=Delayed Duplication
-</span><span id="__span-12-4"><a id="__codelineno-12-4" name="__codelineno-12-4" href="#__codelineno-12-4"></a>t=0 0
-</span><span id="__span-12-5"><a id="__codelineno-12-5" name="__codelineno-12-5" href="#__codelineno-12-5"></a>m=video 30000 RTP/AVP 100
-</span><span id="__span-12-6"><a id="__codelineno-12-6" name="__codelineno-12-6" href="#__codelineno-12-6"></a>c=IN IP4 233.252.0.1/127
-</span><span id="__span-12-7"><a id="__codelineno-12-7" name="__codelineno-12-7" href="#__codelineno-12-7"></a>a=source-filter: incl IN IP4 233.252.0.1 198.51.100.1
-</span><span id="__span-12-8"><a id="__codelineno-12-8" name="__codelineno-12-8" href="#__codelineno-12-8"></a>a=rtpmap:100 MP2T/90000
-</span><span id="__span-12-9"><a id="__codelineno-12-9" name="__codelineno-12-9" href="#__codelineno-12-9"></a>a=ssrc:1000 cname:ch1a@example.com
-</span><span id="__span-12-10"><a id="__codelineno-12-10" name="__codelineno-12-10" href="#__codelineno-12-10"></a>a=ssrc:1010 cname:ch1a@example.com
-</span><span id="__span-12-11"><a id="__codelineno-12-11" name="__codelineno-12-11" href="#__codelineno-12-11"></a>a=ssrc-group:DUP 1000 1010
-</span><span id="__span-12-12"><a id="__codelineno-12-12" name="__codelineno-12-12" href="#__codelineno-12-12"></a>a=duplication-delay:50
-</span><span id="__span-12-13"><a id="__codelineno-12-13" name="__codelineno-12-13" href="#__codelineno-12-13"></a>a=mid:Ch1
-</span></code></pre></div>
-<div class="language-json highlight"><pre><span></span><code><span id="__span-13-1"><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a><span class="nt">"transport_params"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
-</span><span id="__span-13-2"><a id="__codelineno-13-2" name="__codelineno-13-2" href="#__codelineno-13-2"></a><span class="w">    </span><span class="p">{</span>
-</span><span id="__span-13-3"><a id="__codelineno-13-3" name="__codelineno-13-3" href="#__codelineno-13-3"></a><span class="w">        </span><span class="nt">"source_ip"</span><span class="p">:</span><span class="w"> </span><span class="s2">"198.51.100.1"</span><span class="p">,</span>
-</span><span id="__span-13-4"><a id="__codelineno-13-4" name="__codelineno-13-4" href="#__codelineno-13-4"></a><span class="w">        </span><span class="nt">"multicast_ip"</span><span class="p">:</span><span class="w"> </span><span class="s2">"233.252.0.1"</span><span class="p">,</span>
-</span><span id="__span-13-5"><a id="__codelineno-13-5" name="__codelineno-13-5" href="#__codelineno-13-5"></a><span class="w">        </span><span class="nt">"interface_ip"</span><span class="p">:</span><span class="w"> </span><span class="s2">"auto"</span><span class="p">,</span>
-</span><span id="__span-13-6"><a id="__codelineno-13-6" name="__codelineno-13-6" href="#__codelineno-13-6"></a><span class="w">        </span><span class="nt">"destination_port"</span><span class="p">:</span><span class="w"> </span><span class="mi">30000</span><span class="p">,</span>
-</span><span id="__span-13-7"><a id="__codelineno-13-7" name="__codelineno-13-7" href="#__codelineno-13-7"></a><span class="w">        </span><span class="nt">"rtp_enabled"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span>
-</span><span id="__span-13-8"><a id="__codelineno-13-8" name="__codelineno-13-8" href="#__codelineno-13-8"></a><span class="w">    </span><span class="p">},</span><span class="w"> </span><span class="p">{</span>
-</span><span id="__span-13-9"><a id="__codelineno-13-9" name="__codelineno-13-9" href="#__codelineno-13-9"></a><span class="w">        </span><span class="nt">"source_ip"</span><span class="p">:</span><span class="w"> </span><span class="s2">"198.51.100.1"</span><span class="p">,</span>
-</span><span id="__span-13-10"><a id="__codelineno-13-10" name="__codelineno-13-10" href="#__codelineno-13-10"></a><span class="w">        </span><span class="nt">"multicast_ip"</span><span class="p">:</span><span class="w"> </span><span class="s2">"233.252.0.1"</span><span class="p">,</span>
-</span><span id="__span-13-11"><a id="__codelineno-13-11" name="__codelineno-13-11" href="#__codelineno-13-11"></a><span class="w">        </span><span class="nt">"interface_ip"</span><span class="p">:</span><span class="w"> </span><span class="s2">"auto"</span><span class="p">,</span>
-</span><span id="__span-13-12"><a id="__codelineno-13-12" name="__codelineno-13-12" href="#__codelineno-13-12"></a><span class="w">        </span><span class="nt">"destination_port"</span><span class="p">:</span><span class="w"> </span><span class="mi">30000</span><span class="p">,</span>
-</span><span id="__span-13-13"><a id="__codelineno-13-13" name="__codelineno-13-13" href="#__codelineno-13-13"></a><span class="w">        </span><span class="nt">"rtp_enabled"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span>
-</span><span id="__span-13-14"><a id="__codelineno-13-14" name="__codelineno-13-14" href="#__codelineno-13-14"></a><span class="w">    </span><span class="p">}</span>
-</span><span id="__span-13-15"><a id="__codelineno-13-15" name="__codelineno-13-15" href="#__codelineno-13-15"></a><span class="p">]</span>
-</span></code></pre></div>
-<h2 id="operation-with-rtcp">Operation with RTCP<a class="headerlink" href="#operation-with-rtcp" title="Permanent link">&para;</a></h2>
+<h3 id="separate-source-addresses">Separate Source Addresses</h3>
+<p><code>v=0
+o=ali 1122334455 1122334466 IN IP4 dup.example.com
+s=DUP Grouping Semantics
+t=0 0
+m=video 30000 RTP/AVP 100
+c=IN IP4 233.252.0.1/127
+a=source-filter: incl IN IP4 233.252.0.1 198.51.100.1 198.51.100.2
+a=rtpmap:100 MP2T/90000
+a=ssrc:1000 cname:ch1@example.com
+a=ssrc:1010 cname:ch1@example.com
+a=ssrc-group:DUP 1000 1010
+a=mid:Ch1</code></p>
+<p><code>json
+"transport_params": [
+    {
+        "source_ip": "198.51.100.1",
+        "multicast_ip": "233.252.0.1",
+        "interface_ip": "auto",
+        "destination_port": 30000,
+        "rtp_enabled": true
+    }, {
+        "source_ip": "198.51.100.2",
+        "multicast_ip": "233.252.0.1",
+        "interface_ip": "auto",
+        "destination_port": 30000,
+        "rtp_enabled": true
+    }
+]</code></p>
+<h3 id="separate-destination-addresses">Separate Destination Addresses</h3>
+<p><code>v=0
+o=ali 1122334455 1122334466 IN IP4 dup.example.com
+s=DUP Grouping Semantics
+t=0 0
+a=group:DUP S1a S1b
+m=video 30000 RTP/AVP 100
+c=IN IP4 233.252.0.1/127
+a=source-filter: incl IN IP4 233.252.0.1 198.51.100.1
+a=rtpmap:100 MP2T/90000
+a=mid:S1a
+m=video 30000 RTP/AVP 101
+c=IN IP4 233.252.0.2/127
+a=source-filter: incl IN IP4 233.252.0.2 198.51.100.1
+a=rtpmap:101 MP2T/90000
+a=mid:S1b</code></p>
+<p><code>json
+"transport_params": [
+    {
+        "source_ip": "198.51.100.1",
+        "multicast_ip": "233.252.0.1",
+        "interface_ip": "auto",
+        "destination_port": 30000,
+        "rtp_enabled": true
+    }, {
+        "source_ip": "198.51.100.1",
+        "multicast_ip": "233.252.0.2",
+        "interface_ip": "auto",
+        "destination_port": 30000,
+        "rtp_enabled": true
+    }
+]</code></p>
+<h3 id="temporal-redundancy">Temporal Redundancy</h3>
+<p><code>v=0
+o=ali 1122334455 1122334466 IN IP4 dup.example.com
+s=Delayed Duplication
+t=0 0
+m=video 30000 RTP/AVP 100
+c=IN IP4 233.252.0.1/127
+a=source-filter: incl IN IP4 233.252.0.1 198.51.100.1
+a=rtpmap:100 MP2T/90000
+a=ssrc:1000 cname:ch1a@example.com
+a=ssrc:1010 cname:ch1a@example.com
+a=ssrc-group:DUP 1000 1010
+a=duplication-delay:50
+a=mid:Ch1</code></p>
+<p><code>json
+"transport_params": [
+    {
+        "source_ip": "198.51.100.1",
+        "multicast_ip": "233.252.0.1",
+        "interface_ip": "auto",
+        "destination_port": 30000,
+        "rtp_enabled": true
+    }, {
+        "source_ip": "198.51.100.1",
+        "multicast_ip": "233.252.0.1",
+        "interface_ip": "auto",
+        "destination_port": 30000,
+        "rtp_enabled": true
+    }
+]</code></p>
+<h2 id="operation-with-rtcp">Operation with RTCP</h2>
 <p>RTCP provides various functions to support the operation of RTP, principally QoS reporting. RTCP is defined in Section 6 of RFC 3550, and Section 11 of RFC 3550 suggests that RTP use an even destination port number and the corresponding RTCP stream use the next higher (odd) destination port number. (Note: this convention will also satisfy the recommendations of ST 2022-5 for cases where forward error correction is used.)</p>
 <p>Senders and Receivers supporting RTCP SHOULD comply with RFC 3605 when creating and receiving SDP files. An RFC 3605 compliant SDP file is shown below, along with the transport parameters that would be presented on the <code>/staged</code> endpoint by a Receiver that has parsed the file.</p>
-<div class="language-text highlight"><pre><span></span><code><span id="__span-14-1"><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a>v=0
-</span><span id="__span-14-2"><a id="__codelineno-14-2" name="__codelineno-14-2" href="#__codelineno-14-2"></a>o=- 1497010742 1497010742 IN IP4 172.29.26.24
-</span><span id="__span-14-3"><a id="__codelineno-14-3" name="__codelineno-14-3" href="#__codelineno-14-3"></a>s=SDP Example
-</span><span id="__span-14-4"><a id="__codelineno-14-4" name="__codelineno-14-4" href="#__codelineno-14-4"></a>t=2873397496 2873404696
-</span><span id="__span-14-5"><a id="__codelineno-14-5" name="__codelineno-14-5" href="#__codelineno-14-5"></a>m=video 5000 RTP/AVP 103
-</span><span id="__span-14-6"><a id="__codelineno-14-6" name="__codelineno-14-6" href="#__codelineno-14-6"></a>c=IN IP4 232.21.21.133/32
-</span><span id="__span-14-7"><a id="__codelineno-14-7" name="__codelineno-14-7" href="#__codelineno-14-7"></a>a=source-filter: incl IN IP4 232.21.21.133 172.29.226.24
-</span><span id="__span-14-8"><a id="__codelineno-14-8" name="__codelineno-14-8" href="#__codelineno-14-8"></a>a=rtpmap:103 raw/90000
-</span><span id="__span-14-9"><a id="__codelineno-14-9" name="__codelineno-14-9" href="#__codelineno-14-9"></a>a=rtcp:5001 IN IP4 232.21.21.133
-</span></code></pre></div>
-<div class="language-json highlight"><pre><span></span><code><span id="__span-15-1"><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a><span class="nt">"transport_params"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
-</span><span id="__span-15-2"><a id="__codelineno-15-2" name="__codelineno-15-2" href="#__codelineno-15-2"></a><span class="w">    </span><span class="p">{</span>
-</span><span id="__span-15-3"><a id="__codelineno-15-3" name="__codelineno-15-3" href="#__codelineno-15-3"></a><span class="w">        </span><span class="nt">"source_ip"</span><span class="p">:</span><span class="w"> </span><span class="s2">"172.29.226.24"</span><span class="p">,</span>
-</span><span id="__span-15-4"><a id="__codelineno-15-4" name="__codelineno-15-4" href="#__codelineno-15-4"></a><span class="w">        </span><span class="nt">"multicast_ip"</span><span class="p">:</span><span class="w"> </span><span class="s2">"232.21.21.133"</span><span class="p">,</span>
-</span><span id="__span-15-5"><a id="__codelineno-15-5" name="__codelineno-15-5" href="#__codelineno-15-5"></a><span class="w">        </span><span class="nt">"interface_ip"</span><span class="p">:</span><span class="w"> </span><span class="s2">"auto"</span><span class="p">,</span>
-</span><span id="__span-15-6"><a id="__codelineno-15-6" name="__codelineno-15-6" href="#__codelineno-15-6"></a><span class="w">        </span><span class="nt">"destination_port"</span><span class="p">:</span><span class="w"> </span><span class="mi">5000</span><span class="p">,</span>
-</span><span id="__span-15-7"><a id="__codelineno-15-7" name="__codelineno-15-7" href="#__codelineno-15-7"></a><span class="w">        </span><span class="nt">"rtcp_enabled"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
-</span><span id="__span-15-8"><a id="__codelineno-15-8" name="__codelineno-15-8" href="#__codelineno-15-8"></a><span class="w">        </span><span class="nt">"rtcp_destination_ip"</span><span class="p">:</span><span class="w"> </span><span class="s2">"232.21.21.133"</span><span class="p">,</span>
-</span><span id="__span-15-9"><a id="__codelineno-15-9" name="__codelineno-15-9" href="#__codelineno-15-9"></a><span class="w">        </span><span class="nt">"rtcp_destination_port"</span><span class="p">:</span><span class="w"> </span><span class="mi">5001</span><span class="p">,</span>
-</span><span id="__span-15-10"><a id="__codelineno-15-10" name="__codelineno-15-10" href="#__codelineno-15-10"></a><span class="w">        </span><span class="nt">"rtp_enabled"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span>
-</span><span id="__span-15-11"><a id="__codelineno-15-11" name="__codelineno-15-11" href="#__codelineno-15-11"></a><span class="w">    </span><span class="p">}</span>
-</span><span id="__span-15-12"><a id="__codelineno-15-12" name="__codelineno-15-12" href="#__codelineno-15-12"></a><span class="p">]</span>
-</span></code></pre></div>
+<p><code>v=0
+o=- 1497010742 1497010742 IN IP4 172.29.26.24
+s=SDP Example
+t=2873397496 2873404696
+m=video 5000 RTP/AVP 103
+c=IN IP4 232.21.21.133/32
+a=source-filter: incl IN IP4 232.21.21.133 172.29.226.24
+a=rtpmap:103 raw/90000
+a=rtcp:5001 IN IP4 232.21.21.133</code></p>
+<p><code>json
+"transport_params": [
+    {
+        "source_ip": "172.29.226.24",
+        "multicast_ip": "232.21.21.133",
+        "interface_ip": "auto",
+        "destination_port": 5000,
+        "rtcp_enabled": true,
+        "rtcp_destination_ip": "232.21.21.133",
+        "rtcp_destination_port": 5001,
+        "rtp_enabled": true
+    }
+]</code></p>
 
 
 
