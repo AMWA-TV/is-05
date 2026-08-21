@@ -1,7 +1,12 @@
 # AMWA IS-05 NMOS Device Connection Management Specification
 
-[![Lint Status](https://github.com/AMWA-TV/is-05/workflows/Lint/badge.svg)](https://github.com/AMWA-TV/is-05/actions?query=workflow%3ALint)
-[![Render Status](https://github.com/AMWA-TV/is-05/workflows/Render/badge.svg)](https://github.com/AMWA-TV/is-05/actions?query=workflow%3ARender)
+[![Lint Status](https://github.com/AMWA-TV/is-05/actions/workflows/lint.yml/badge.svg)](https://github.com/AMWA-TV/is-05/actions/workflows/lint.yml)
+[![Zensical Render Status](https://github.com/AMWA-TV/is-05/actions/workflows/docs.yml/badge.svg)](https://github.com/AMWA-TV/is-05/actions/workflows/docs.yml)
+[![Legacy Render Status](https://github.com/AMWA-TV/is-05/workflows/Render/badge.svg)](https://github.com/AMWA-TV/is-05/actions?query=workflow%3ARender)
+[![License](https://img.shields.io/github/license/AMWA-TV/is-05)](https://github.com/AMWA-TV/is-05/blob/HEAD/LICENSE)
+[![Issues](https://img.shields.io/github/issues/AMWA-TV/is-05)](https://github.com/AMWA-TV/is-05/issues)
+
+[GitHub repository](https://github.com/AMWA-TV/is-05)
 
 <!-- INTRO-START -->
 
