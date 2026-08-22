@@ -16,6 +16,9 @@
         <loc>https://specs.amwa.tv/new/is-05/v1.2.0/APIs/</loc>
       </url>
       <url>
+        <loc>https://specs.amwa.tv/new/is-05/v1.2.0/APIs/ConnectionAPI/</loc>
+      </url>
+      <url>
         <loc>https://specs.amwa.tv/new/is-05/v1.2.0/Behaviour%20-%20MQTT%20Transport%20Type/</loc>
       </url>
       <url>
