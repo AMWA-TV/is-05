@@ -1,0 +1,20 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "title": "Transport Type",
+  "description": "Transport type URN base used by the Sender or Receiver (i.e. with any subclassifications or versions removed)",
+  "type": "string",
+  "anyOf": [
+    {
+      "description": "Any transport type URN base defined in IS-05 or by an AMWA specification in the Transports register of the NMOS Parameter Registers",
+      "type": "string",
+      "pattern": "^urn:x-nmos:transport:[^./]+$"
+    },
+    {
+      "description": "Any manufacturer-specific transport type URN base",
+      "not": {
+        "pattern": "^urn:x-nmos:"
+      }
+    }
+  ],
+  "format": "uri"
+}
