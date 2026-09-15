@@ -1,0 +1,137 @@
+[{
+    "source_ip": {
+      "enum": [
+        "192.168.7.2",
+        "192.168.8.5",
+        "2001:0db8:85a3:0000:0000:8a2e:0370:7334",
+        "2001:0db8:85a3:0000:0000:8a2e:0370:a24b"
+      ]
+    },
+    "destination_ip": {},
+    "source_port": {
+      "maximum": 50000,
+      "minimum": 49151
+    },
+    "destination_port": {
+      "maximum": 50000,
+      "minimum": 49151
+    },
+    "fec_enabled": {},
+    "fec_destination_ip": {},
+    "fec_type": {
+      "enum": [
+        "XOR",
+        "Reed-Solomon"
+      ]
+    },
+    "fec_mode": {
+      "enum": [
+        "1D",
+        "2D"
+      ]
+    },
+    "fec_block_width": {
+      "minimum": 4,
+      "maximum": 200
+    },
+    "fec_block_height": {
+      "minimum": 4,
+      "maximum": 200
+    },
+    "fec1D_destination_port": {
+      "minimum": 5000,
+      "maximum": 49151
+    },
+    "fec2D_destination_port": {
+      "minimum": 5000,
+      "maximum": 49151
+    },
+    "fec1D_source_port": {
+      "minimum": 5000,
+      "maximum": 49151
+    },
+    "fec2D_source_port": {
+      "minimum": 5000,
+      "maximum": 49151
+    },
+    "rtcp_enabled": {},
+    "rtcp_destination_ip": {},
+    "rtcp_destination_port": {
+      "minimum": 5000,
+      "maximum": 49151
+    },
+    "rtcp_source_port": {
+      "minimum": 5000,
+      "maximum": 49151
+    },
+    "rtp_enabled": {}
+  },
+  {
+    "source_ip": {
+      "enum": [
+        "192.168.9.2",
+        "192.168.10.5",
+        "2001:0db8:85a3:0000:0000:8a2e:0370:2bb4",
+        "2001:0db8:85a3:0000:0000:8a2e:0370:433f"
+      ]
+    },
+    "destination_ip": {},
+    "source_port": {
+      "maximum": 50000,
+      "minimum": 49151
+    },
+    "destination_port": {
+      "maximum": 50000,
+      "minimum": 49151
+    },
+    "fec_enabled": {},
+    "fec_destination_ip": {},
+    "fec_type": {
+      "enum": [
+        "XOR",
+        "Reed-Solomon"
+      ]
+    },
+    "fec_mode": {
+      "enum": [
+        "1D",
+        "2D"
+      ]
+    },
+    "fec_block_width": {
+      "minimum": 4,
+      "maximum": 200
+    },
+    "fec_block_height": {
+      "minimum": 4,
+      "maximum": 200
+    },
+    "fec1D_destination_port": {
+      "minimum": 5000,
+      "maximum": 49151
+    },
+    "fec2D_destination_port": {
+      "minimum": 5000,
+      "maximum": 49151
+    },
+    "fec1D_source_port": {
+      "minimum": 5000,
+      "maximum": 49151
+    },
+    "fec2D_source_port": {
+      "minimum": 5000,
+      "maximum": 49151
+    },
+    "rtcp_enabled": {},
+    "rtcp_destination_ip": {},
+    "rtcp_destination_port": {
+      "minimum": 5000,
+      "maximum": 49151
+    },
+    "rtcp_source_port": {
+      "minimum": 5000,
+      "maximum": 49151
+    },
+    "rtp_enabled": {}
+  }
+]

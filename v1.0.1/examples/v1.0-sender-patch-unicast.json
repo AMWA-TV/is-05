@@ -1,0 +1,15 @@
+{
+  "receiver_id": "0b174530-e3cf-41e6-bf01-fe55135034f3",
+  "master_enable": true,
+  "activation": {
+    "mode": "activate_scheduled_relative",
+    "requested_time": "2:0"
+  },
+  "transport_params": [{
+    "source_ip": "192.168.200.10",
+    "destination_ip": "192.168.200.15",
+    "source_port": 5000,
+    "destination_port": 5000,
+    "rtp_enabled": true
+  }]
+}

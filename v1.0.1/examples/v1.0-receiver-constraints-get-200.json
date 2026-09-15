@@ -1,0 +1,39 @@
+[{
+  "source_ip": {},
+  "multicast_ip": {},
+  "interface_ip": {
+    "enum": [
+      "192.168.7.2",
+      "192.168.8.5",
+      "2001:0db8:85a3:0000:0000:8a2e:0370:7334",
+      "2001:0db8:85a3:0000:0000:8a2e:0370:a24b"
+    ]
+  },
+  "destination_port": {
+    "maximum": 50000,
+    "minimum": 49151
+  },
+  "fec_enabled": {},
+  "fec_destination_ip": {},
+  "fec_mode": {
+    "enum": [
+      "1D",
+      "2D"
+    ]
+  },
+  "fec1D_destination_port": {
+    "minimum": 5000,
+    "maximum": 49151
+  },
+  "fec2D_destination_port": {
+    "minimum": 5000,
+    "maximum": 49151
+  },
+  "rtcp_enabled": {},
+  "rtcp_destination_ip": {},
+  "rtcp_destination_port": {
+    "minimum": 5000,
+    "maximum": 49151
+  },
+  "rtp_enabled": {}
+}]
