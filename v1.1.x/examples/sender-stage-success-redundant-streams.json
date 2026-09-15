@@ -1,0 +1,48 @@
+{
+  "master_enable": true,
+  "receiver_id": null,
+  "activation": {
+    "mode": "activate_immediate",
+    "requested_time": null,
+    "activation_time": null
+  },
+  "transport_params": [{
+    "source_ip": "192.168.200.10",
+    "destination_ip": "232.105.26.177",
+    "source_port": 5000,
+    "destination_port": 5000,
+    "fec_enabled": true,
+    "fec_type": "XOR",
+    "fec_mode": "2D",
+    "fec_block_width": 50,
+    "fec_block_height": 50,
+    "fec1D_destination_port": "auto",
+    "fec2D_destination_port": "auto",
+    "fec1D_source_port": 5010,
+    "fec2D_source_port": 5012,
+    "rtcp_enabled": true,
+    "rtcp_destination_ip": "232.22.4.59",
+    "rtcp_destination_port": 5008,
+    "rtcp_source_port": 5008,
+    "rtp_enabled": true
+  }, {
+    "source_ip": "192.168.210.10",
+    "destination_ip": "232.3.28.144",
+    "source_port": 5000,
+    "destination_port": 5000,
+    "fec_enabled": true,
+    "fec_type": "XOR",
+    "fec_mode": "2D",
+    "fec_block_width": 50,
+    "fec_block_height": 50,
+    "fec1D_destination_port": "auto",
+    "fec2D_destination_port": "auto",
+    "fec1D_source_port": 5010,
+    "fec2D_source_port": 5012,
+    "rtcp_enabled": true,
+    "rtcp_destination_ip": "232.79.192.98",
+    "rtcp_destination_port": 5008,
+    "rtcp_source_port": 5008,
+    "rtp_enabled": true
+  }]
+}

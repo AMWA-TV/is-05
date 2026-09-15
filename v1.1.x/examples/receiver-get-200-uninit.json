@@ -1,0 +1,28 @@
+{
+  "sender_id": null,
+  "master_enable": true,
+  "activation": {
+    "mode": null,
+    "requested_time": null,
+    "activation_time": null
+  },
+  "transport_file": {
+    "data": null,
+    "type": null
+  },
+  "transport_params": [{
+    "source_ip": null,
+    "multicast_ip": null,
+    "interface_ip": "auto",
+    "destination_port": "auto",
+    "fec_enabled": false,
+    "fec_destination_ip": "auto",
+    "fec_mode": "1D",
+    "fec1D_destination_port": "auto",
+    "fec2D_destination_port": "auto",
+    "rtcp_enabled": false,
+    "rtcp_destination_ip": "auto",
+    "rtcp_destination_port": "auto",
+    "rtp_enabled": true
+  }]
+}
