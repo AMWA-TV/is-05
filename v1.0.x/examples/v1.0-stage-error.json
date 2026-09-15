@@ -1,0 +1,5 @@
+{
+  "code": 500,
+  "error": "Could not establish link to hardware",
+  "debug": null
+}
