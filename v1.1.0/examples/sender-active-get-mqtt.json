@@ -1,0 +1,17 @@
+{
+  "receiver_id": "69744dfb-0557-4202-b1f1-4d1a741ee2bb",
+  "master_enable": true,
+  "activation": {
+    "mode": "activate_immediate",
+    "requested_time": "1541508905:0",
+    "activation_time": "1541508905:0"
+  },
+  "transport_params": [{
+    "destination_host": "broker.mydomain.com",
+    "destination_port": 1883,
+    "broker_topic": "my_topic_name",
+    "broker_protocol": "mqtt",
+    "broker_authorization": false,
+    "connection_status_broker_topic": "my_status_topic_name"
+  }]
+}
