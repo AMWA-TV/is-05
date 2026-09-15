@@ -10,6 +10,8 @@ extra_javascript = ["javascripts/json-viewer.js"]
 [project.markdown_extensions.pymdownx.tabbed]
 alternate_style = true
 
+[project.markdown_extensions.pymdownx.superfences]
+
 [project.markdown_extensions.toc]
 permalink = false
 
