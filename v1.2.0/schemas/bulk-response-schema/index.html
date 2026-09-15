@@ -21,7 +21,7 @@
       
       
       <link rel="icon" href="../../assets/images/favicon.png">
-      <meta name="generator" content="zensical-0.0.57">
+      <meta name="generator" content="zensical-0.0.62">
     
     
       
@@ -32,7 +32,7 @@
       
         
       
-      <link rel="stylesheet" href="../../assets/stylesheets/modern/main.5da3a30f.min.css">
+      <link rel="stylesheet" href="../../assets/stylesheets/modern/main.ce62732f.min.css">
       
       
 
@@ -52,6 +52,8 @@
     
     
       <link rel="stylesheet" href="../../stylesheets/extra.css">
+    
+      <link rel="stylesheet" href="../../stylesheets/amwa-branding.css">
     
     <script>__md_scope=new URL("../..",location),__md_scope.pathname.endsWith("/")||(__md_scope=new URL(__md_scope.pathname+"/",location)),__md_hash=e=>[...e].reduce(((e,t)=>(e<<5)-e+t.charCodeAt(0)),0),__md_get=(e,t=localStorage,_=__md_scope)=>JSON.parse(t.getItem(_.pathname+"."+e)),__md_set=(e,t,_=localStorage,a=__md_scope)=>{try{_.setItem(a.pathname+"."+e,JSON.stringify(t))}catch(e){}},document.documentElement.setAttribute("data-platform",navigator.platform)</script>
     
@@ -3263,207 +3265,35 @@
 <div class="tabbed-set tabbed-alternate" data-tabs="1:2"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">With refs</label><label for="__tabbed_1_2">Resolved</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<p><a href="../bulk-response-schema.json">Raw file</a></p>
-<p><div class="json-viewer">
-  <div class="json-controls" role="group" aria-label="JSON folding controls">
-    <button type="button" class="json-control" data-json-action="expand">Expand all</button>
-    <button type="button" class="json-control" data-json-action="collapse">Collapse all</button>
+<p><div class="json-viewer" data-source="ewogICIkc2NoZW1hIjogImh0dHA6Ly9qc29uLXNjaGVtYS5vcmcvZHJhZnQtMDQvc2NoZW1hIyIsCiAgImRlc2NyaXB0aW9uIjogIkRlc2NyaWJlcyBhIHJlc3BvbnNlIHRvIGEgYnVsayBhY3RpdmF0aW9uIHJlcXVlc3QiLAogICJ0aXRsZSI6ICJCdWxrIGFjdGl2YXRpb24gcmVzcG9uc2UiLAogICJ0eXBlIjogImFycmF5IiwKICAiaXRlbXMiOiB7CiAgICAidHlwZSI6ICJvYmplY3QiLAogICAgInJlcXVpcmVkIjogWwogICAgICAiaWQiLAogICAgICAiY29kZSIKICAgIF0sCiAgICAicHJvcGVydGllcyI6IHsKICAgICAgImlkIjogewogICAgICAgICJkZXNjcmlwdGlvbiI6ICJJRCBvZiBhIGRldmljZSB0byBiZSBhY3RpdmF0ZWQiLAogICAgICAgICJ0eXBlIjogInN0cmluZyIsCiAgICAgICAgInBhdHRlcm4iOiAiXlswLTlhLWZdezh9LVswLTlhLWZdezR9LVsxLTVdWzAtOWEtZl17M30tWzg5YWJdWzAtOWEtZl17M30tWzAtOWEtZl17MTJ9JCIKICAgICAgfSwKICAgICAgImNvZGUiOiB7CiAgICAgICAgImRlc2NyaXB0aW9uIjogIkhUVFAgc3RhdHVzIGNvZGUgdGhhdCB3b3VsZCBoYXZlIHJlc3VsdGVkIGZyb20gYW4gaW5kaXZpZHVhbCBhY3RpdmF0aW9uIG9uIHRoaXMgZGV2aWNlIiwKICAgICAgICAidHlwZSI6ICJpbnRlZ2VyIiwKICAgICAgICAiYW55T2YiOiBbCiAgICAgICAgICB7CiAgICAgICAgICAgICJtaW5pbXVtIjogMjAwLAogICAgICAgICAgICAibWF4aW11bSI6IDI5OQogICAgICAgICAgfSwKICAgICAgICAgIHsKICAgICAgICAgICAgIm1pbmltdW0iOiA0MDAsCiAgICAgICAgICAgICJtYXhpbXVtIjogNTk5CiAgICAgICAgICB9CiAgICAgICAgXQogICAgICB9LAogICAgICAiZXJyb3IiOiB7CiAgICAgICAgImRlc2NyaXB0aW9uIjogIkh1bWFuIHJlYWRhYmxlIG1lc3NhZ2Ugd2hpY2ggaXMgc3VpdGFibGUgZm9yIHVzZXIgaW50ZXJmYWNlIGRpc3BsYXksIGFuZCBoZWxwZnVsIHRvIHRoZSB1c2VyLiBPbmx5IGluY2x1ZGVkIGlmICdjb2RlJyBpbmRpY2F0ZXMgYW4gZXJyb3Igc3RhdGUiLAogICAgICAgICJ0eXBlIjogInN0cmluZyIKICAgICAgfSwKICAgICAgImRlYnVnIjogewogICAgICAgICJkZXNjcmlwdGlvbiI6ICJEZWJ1ZyBpbmZvcm1hdGlvbiB3aGljaCBtYXkgYXNzaXN0IGEgcHJvZ3JhbW1lciB3b3JraW5nIHdpdGggdGhlIEFQSS4gT25seSBpbmNsdWRlZCBpZiAnY29kZScgaW5kaWNhdGVzIGFuIGVycm9yIHN0YXRlIiwKICAgICAgICAidHlwZSI6IFsKICAgICAgICAgICJudWxsIiwKICAgICAgICAgICJzdHJpbmciCiAgICAgICAgXQogICAgICB9CiAgICB9CiAgfQp9Cg==" data-language="json">
+  <label class="source-viewer-mode">View: <select data-source-mode>
+    <option value="folding" selected>Folding</option>
+    <option value="raw">Raw</option>
+  </select></label>
+  <div class="source-viewer-folding">
+    <div class="source-viewer-controls" role="group" aria-label="JSON source controls">
+      <button type="button" data-source-action="expand">Expand all</button>
+      <button type="button" data-source-action="collapse">Collapse all</button>
+    </div>
+    <div class="source-editor" role="region" aria-label="Foldable JSON source"></div>
   </div>
-<details class="json-node" open>
-  <summary>{ <span class="json-fold">…</span> <span class="json-collapsed-close">}</span></summary>
-  <div class="json-children">
-    <div class="json-line"><span class="json-key">&quot;$schema&quot;</span>: <span class="json-string">&quot;http://json-schema.org/draft-04/schema#&quot;</span><span class="json-comma">,</span></div>
-    <div class="json-line"><span class="json-key">&quot;description&quot;</span>: <span class="json-string">&quot;Describes a response to a bulk activation request&quot;</span><span class="json-comma">,</span></div>
-    <div class="json-line"><span class="json-key">&quot;title&quot;</span>: <span class="json-string">&quot;Bulk activation response&quot;</span><span class="json-comma">,</span></div>
-    <div class="json-line"><span class="json-key">&quot;type&quot;</span>: <span class="json-string">&quot;array&quot;</span><span class="json-comma">,</span></div>
-    <details class="json-node">
-      <summary><span class="json-key">&quot;items&quot;</span>: { <span class="json-fold">…</span> <span class="json-collapsed-close">}</span></summary>
-      <div class="json-children">
-        <div class="json-line"><span class="json-key">&quot;type&quot;</span>: <span class="json-string">&quot;object&quot;</span><span class="json-comma">,</span></div>
-        <details class="json-node">
-          <summary><span class="json-key">&quot;required&quot;</span>: [ <span class="json-fold">…</span> <span class="json-collapsed-close">]<span class="json-comma">,</span></span></summary>
-          <div class="json-children">
-            <div class="json-line"><span class="json-string">&quot;id&quot;</span><span class="json-comma">,</span></div>
-            <div class="json-line"><span class="json-string">&quot;code&quot;</span></div>
-          </div>
-          <div class="json-close">]<span class="json-comma">,</span></div>
-        </details>
-        <details class="json-node">
-          <summary><span class="json-key">&quot;properties&quot;</span>: { <span class="json-fold">…</span> <span class="json-collapsed-close">}</span></summary>
-          <div class="json-children">
-            <details class="json-node">
-              <summary><span class="json-key">&quot;id&quot;</span>: { <span class="json-fold">…</span> <span class="json-collapsed-close">}<span class="json-comma">,</span></span></summary>
-              <div class="json-children">
-                <div class="json-line"><span class="json-key">&quot;description&quot;</span>: <span class="json-string">&quot;ID of a device to be activated&quot;</span><span class="json-comma">,</span></div>
-                <div class="json-line"><span class="json-key">&quot;type&quot;</span>: <span class="json-string">&quot;string&quot;</span><span class="json-comma">,</span></div>
-                <div class="json-line"><span class="json-key">&quot;pattern&quot;</span>: <span class="json-string">&quot;^[0-9a-f]{8}-[0-9a-f]{4}-[1-5][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$&quot;</span></div>
-              </div>
-              <div class="json-close">}<span class="json-comma">,</span></div>
-            </details>
-            <details class="json-node">
-              <summary><span class="json-key">&quot;code&quot;</span>: { <span class="json-fold">…</span> <span class="json-collapsed-close">}<span class="json-comma">,</span></span></summary>
-              <div class="json-children">
-                <div class="json-line"><span class="json-key">&quot;description&quot;</span>: <span class="json-string">&quot;HTTP status code that would have resulted from an individual activation on this device&quot;</span><span class="json-comma">,</span></div>
-                <div class="json-line"><span class="json-key">&quot;type&quot;</span>: <span class="json-string">&quot;integer&quot;</span><span class="json-comma">,</span></div>
-                <details class="json-node">
-                  <summary><span class="json-key">&quot;anyOf&quot;</span>: [ <span class="json-fold">…</span> <span class="json-collapsed-close">]</span></summary>
-                  <div class="json-children">
-                    <details class="json-node">
-                      <summary>{ <span class="json-fold">…</span> <span class="json-collapsed-close">}<span class="json-comma">,</span></span></summary>
-                      <div class="json-children">
-                        <div class="json-line"><span class="json-key">&quot;minimum&quot;</span>: <span class="json-number">200</span><span class="json-comma">,</span></div>
-                        <div class="json-line"><span class="json-key">&quot;maximum&quot;</span>: <span class="json-number">299</span></div>
-                      </div>
-                      <div class="json-close">}<span class="json-comma">,</span></div>
-                    </details>
-                    <details class="json-node">
-                      <summary>{ <span class="json-fold">…</span> <span class="json-collapsed-close">}</span></summary>
-                      <div class="json-children">
-                        <div class="json-line"><span class="json-key">&quot;minimum&quot;</span>: <span class="json-number">400</span><span class="json-comma">,</span></div>
-                        <div class="json-line"><span class="json-key">&quot;maximum&quot;</span>: <span class="json-number">599</span></div>
-                      </div>
-                      <div class="json-close">}</div>
-                    </details>
-                  </div>
-                  <div class="json-close">]</div>
-                </details>
-              </div>
-              <div class="json-close">}<span class="json-comma">,</span></div>
-            </details>
-            <details class="json-node">
-              <summary><span class="json-key">&quot;error&quot;</span>: { <span class="json-fold">…</span> <span class="json-collapsed-close">}<span class="json-comma">,</span></span></summary>
-              <div class="json-children">
-                <div class="json-line"><span class="json-key">&quot;description&quot;</span>: <span class="json-string">&quot;Human readable message which is suitable for user interface display, and helpful to the user. Only included if &#x27;code&#x27; indicates an error state&quot;</span><span class="json-comma">,</span></div>
-                <div class="json-line"><span class="json-key">&quot;type&quot;</span>: <span class="json-string">&quot;string&quot;</span></div>
-              </div>
-              <div class="json-close">}<span class="json-comma">,</span></div>
-            </details>
-            <details class="json-node">
-              <summary><span class="json-key">&quot;debug&quot;</span>: { <span class="json-fold">…</span> <span class="json-collapsed-close">}</span></summary>
-              <div class="json-children">
-                <div class="json-line"><span class="json-key">&quot;description&quot;</span>: <span class="json-string">&quot;Debug information which may assist a programmer working with the API. Only included if &#x27;code&#x27; indicates an error state&quot;</span><span class="json-comma">,</span></div>
-                <details class="json-node">
-                  <summary><span class="json-key">&quot;type&quot;</span>: [ <span class="json-fold">…</span> <span class="json-collapsed-close">]</span></summary>
-                  <div class="json-children">
-                    <div class="json-line"><span class="json-string">&quot;null&quot;</span><span class="json-comma">,</span></div>
-                    <div class="json-line"><span class="json-string">&quot;string&quot;</span></div>
-                  </div>
-                  <div class="json-close">]</div>
-                </details>
-              </div>
-              <div class="json-close">}</div>
-            </details>
-          </div>
-          <div class="json-close">}</div>
-        </details>
-      </div>
-      <div class="json-close">}</div>
-    </details>
-  </div>
-  <div class="json-close">}</div>
-</details>
+  <pre class="source-viewer-raw" hidden><code></code></pre>
 </div></p>
 </div>
 <div class="tabbed-block">
-<p><a href="../resolved/bulk-response-schema.json">Resolved JSON file</a></p>
-<p><div class="json-viewer">
-  <div class="json-controls" role="group" aria-label="JSON folding controls">
-    <button type="button" class="json-control" data-json-action="expand">Expand all</button>
-    <button type="button" class="json-control" data-json-action="collapse">Collapse all</button>
+<p><div class="json-viewer" data-source="ewogICIkc2NoZW1hIjogImh0dHA6Ly9qc29uLXNjaGVtYS5vcmcvZHJhZnQtMDQvc2NoZW1hIyIsCiAgImRlc2NyaXB0aW9uIjogIkRlc2NyaWJlcyBhIHJlc3BvbnNlIHRvIGEgYnVsayBhY3RpdmF0aW9uIHJlcXVlc3QiLAogICJ0aXRsZSI6ICJCdWxrIGFjdGl2YXRpb24gcmVzcG9uc2UiLAogICJ0eXBlIjogImFycmF5IiwKICAiaXRlbXMiOiB7CiAgICAidHlwZSI6ICJvYmplY3QiLAogICAgInJlcXVpcmVkIjogWwogICAgICAiaWQiLAogICAgICAiY29kZSIKICAgIF0sCiAgICAicHJvcGVydGllcyI6IHsKICAgICAgImlkIjogewogICAgICAgICJkZXNjcmlwdGlvbiI6ICJJRCBvZiBhIGRldmljZSB0byBiZSBhY3RpdmF0ZWQiLAogICAgICAgICJ0eXBlIjogInN0cmluZyIsCiAgICAgICAgInBhdHRlcm4iOiAiXlswLTlhLWZdezh9LVswLTlhLWZdezR9LVsxLTVdWzAtOWEtZl17M30tWzg5YWJdWzAtOWEtZl17M30tWzAtOWEtZl17MTJ9JCIKICAgICAgfSwKICAgICAgImNvZGUiOiB7CiAgICAgICAgImRlc2NyaXB0aW9uIjogIkhUVFAgc3RhdHVzIGNvZGUgdGhhdCB3b3VsZCBoYXZlIHJlc3VsdGVkIGZyb20gYW4gaW5kaXZpZHVhbCBhY3RpdmF0aW9uIG9uIHRoaXMgZGV2aWNlIiwKICAgICAgICAidHlwZSI6ICJpbnRlZ2VyIiwKICAgICAgICAiYW55T2YiOiBbCiAgICAgICAgICB7CiAgICAgICAgICAgICJtaW5pbXVtIjogMjAwLAogICAgICAgICAgICAibWF4aW11bSI6IDI5OQogICAgICAgICAgfSwKICAgICAgICAgIHsKICAgICAgICAgICAgIm1pbmltdW0iOiA0MDAsCiAgICAgICAgICAgICJtYXhpbXVtIjogNTk5CiAgICAgICAgICB9CiAgICAgICAgXQogICAgICB9LAogICAgICAiZXJyb3IiOiB7CiAgICAgICAgImRlc2NyaXB0aW9uIjogIkh1bWFuIHJlYWRhYmxlIG1lc3NhZ2Ugd2hpY2ggaXMgc3VpdGFibGUgZm9yIHVzZXIgaW50ZXJmYWNlIGRpc3BsYXksIGFuZCBoZWxwZnVsIHRvIHRoZSB1c2VyLiBPbmx5IGluY2x1ZGVkIGlmICdjb2RlJyBpbmRpY2F0ZXMgYW4gZXJyb3Igc3RhdGUiLAogICAgICAgICJ0eXBlIjogInN0cmluZyIKICAgICAgfSwKICAgICAgImRlYnVnIjogewogICAgICAgICJkZXNjcmlwdGlvbiI6ICJEZWJ1ZyBpbmZvcm1hdGlvbiB3aGljaCBtYXkgYXNzaXN0IGEgcHJvZ3JhbW1lciB3b3JraW5nIHdpdGggdGhlIEFQSS4gT25seSBpbmNsdWRlZCBpZiAnY29kZScgaW5kaWNhdGVzIGFuIGVycm9yIHN0YXRlIiwKICAgICAgICAidHlwZSI6IFsKICAgICAgICAgICJudWxsIiwKICAgICAgICAgICJzdHJpbmciCiAgICAgICAgXQogICAgICB9CiAgICB9CiAgfQp9Cg==" data-language="json">
+  <label class="source-viewer-mode">View: <select data-source-mode>
+    <option value="folding" selected>Folding</option>
+    <option value="raw">Raw</option>
+  </select></label>
+  <div class="source-viewer-folding">
+    <div class="source-viewer-controls" role="group" aria-label="JSON source controls">
+      <button type="button" data-source-action="expand">Expand all</button>
+      <button type="button" data-source-action="collapse">Collapse all</button>
+    </div>
+    <div class="source-editor" role="region" aria-label="Foldable JSON source"></div>
   </div>
-<details class="json-node" open>
-  <summary>{ <span class="json-fold">…</span> <span class="json-collapsed-close">}</span></summary>
-  <div class="json-children">
-    <div class="json-line"><span class="json-key">&quot;$schema&quot;</span>: <span class="json-string">&quot;http://json-schema.org/draft-04/schema#&quot;</span><span class="json-comma">,</span></div>
-    <div class="json-line"><span class="json-key">&quot;description&quot;</span>: <span class="json-string">&quot;Describes a response to a bulk activation request&quot;</span><span class="json-comma">,</span></div>
-    <div class="json-line"><span class="json-key">&quot;title&quot;</span>: <span class="json-string">&quot;Bulk activation response&quot;</span><span class="json-comma">,</span></div>
-    <div class="json-line"><span class="json-key">&quot;type&quot;</span>: <span class="json-string">&quot;array&quot;</span><span class="json-comma">,</span></div>
-    <details class="json-node">
-      <summary><span class="json-key">&quot;items&quot;</span>: { <span class="json-fold">…</span> <span class="json-collapsed-close">}</span></summary>
-      <div class="json-children">
-        <div class="json-line"><span class="json-key">&quot;type&quot;</span>: <span class="json-string">&quot;object&quot;</span><span class="json-comma">,</span></div>
-        <details class="json-node">
-          <summary><span class="json-key">&quot;required&quot;</span>: [ <span class="json-fold">…</span> <span class="json-collapsed-close">]<span class="json-comma">,</span></span></summary>
-          <div class="json-children">
-            <div class="json-line"><span class="json-string">&quot;id&quot;</span><span class="json-comma">,</span></div>
-            <div class="json-line"><span class="json-string">&quot;code&quot;</span></div>
-          </div>
-          <div class="json-close">]<span class="json-comma">,</span></div>
-        </details>
-        <details class="json-node">
-          <summary><span class="json-key">&quot;properties&quot;</span>: { <span class="json-fold">…</span> <span class="json-collapsed-close">}</span></summary>
-          <div class="json-children">
-            <details class="json-node">
-              <summary><span class="json-key">&quot;id&quot;</span>: { <span class="json-fold">…</span> <span class="json-collapsed-close">}<span class="json-comma">,</span></span></summary>
-              <div class="json-children">
-                <div class="json-line"><span class="json-key">&quot;description&quot;</span>: <span class="json-string">&quot;ID of a device to be activated&quot;</span><span class="json-comma">,</span></div>
-                <div class="json-line"><span class="json-key">&quot;type&quot;</span>: <span class="json-string">&quot;string&quot;</span><span class="json-comma">,</span></div>
-                <div class="json-line"><span class="json-key">&quot;pattern&quot;</span>: <span class="json-string">&quot;^[0-9a-f]{8}-[0-9a-f]{4}-[1-5][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$&quot;</span></div>
-              </div>
-              <div class="json-close">}<span class="json-comma">,</span></div>
-            </details>
-            <details class="json-node">
-              <summary><span class="json-key">&quot;code&quot;</span>: { <span class="json-fold">…</span> <span class="json-collapsed-close">}<span class="json-comma">,</span></span></summary>
-              <div class="json-children">
-                <div class="json-line"><span class="json-key">&quot;description&quot;</span>: <span class="json-string">&quot;HTTP status code that would have resulted from an individual activation on this device&quot;</span><span class="json-comma">,</span></div>
-                <div class="json-line"><span class="json-key">&quot;type&quot;</span>: <span class="json-string">&quot;integer&quot;</span><span class="json-comma">,</span></div>
-                <details class="json-node">
-                  <summary><span class="json-key">&quot;anyOf&quot;</span>: [ <span class="json-fold">…</span> <span class="json-collapsed-close">]</span></summary>
-                  <div class="json-children">
-                    <details class="json-node">
-                      <summary>{ <span class="json-fold">…</span> <span class="json-collapsed-close">}<span class="json-comma">,</span></span></summary>
-                      <div class="json-children">
-                        <div class="json-line"><span class="json-key">&quot;minimum&quot;</span>: <span class="json-number">200</span><span class="json-comma">,</span></div>
-                        <div class="json-line"><span class="json-key">&quot;maximum&quot;</span>: <span class="json-number">299</span></div>
-                      </div>
-                      <div class="json-close">}<span class="json-comma">,</span></div>
-                    </details>
-                    <details class="json-node">
-                      <summary>{ <span class="json-fold">…</span> <span class="json-collapsed-close">}</span></summary>
-                      <div class="json-children">
-                        <div class="json-line"><span class="json-key">&quot;minimum&quot;</span>: <span class="json-number">400</span><span class="json-comma">,</span></div>
-                        <div class="json-line"><span class="json-key">&quot;maximum&quot;</span>: <span class="json-number">599</span></div>
-                      </div>
-                      <div class="json-close">}</div>
-                    </details>
-                  </div>
-                  <div class="json-close">]</div>
-                </details>
-              </div>
-              <div class="json-close">}<span class="json-comma">,</span></div>
-            </details>
-            <details class="json-node">
-              <summary><span class="json-key">&quot;error&quot;</span>: { <span class="json-fold">…</span> <span class="json-collapsed-close">}<span class="json-comma">,</span></span></summary>
-              <div class="json-children">
-                <div class="json-line"><span class="json-key">&quot;description&quot;</span>: <span class="json-string">&quot;Human readable message which is suitable for user interface display, and helpful to the user. Only included if &#x27;code&#x27; indicates an error state&quot;</span><span class="json-comma">,</span></div>
-                <div class="json-line"><span class="json-key">&quot;type&quot;</span>: <span class="json-string">&quot;string&quot;</span></div>
-              </div>
-              <div class="json-close">}<span class="json-comma">,</span></div>
-            </details>
-            <details class="json-node">
-              <summary><span class="json-key">&quot;debug&quot;</span>: { <span class="json-fold">…</span> <span class="json-collapsed-close">}</span></summary>
-              <div class="json-children">
-                <div class="json-line"><span class="json-key">&quot;description&quot;</span>: <span class="json-string">&quot;Debug information which may assist a programmer working with the API. Only included if &#x27;code&#x27; indicates an error state&quot;</span><span class="json-comma">,</span></div>
-                <details class="json-node">
-                  <summary><span class="json-key">&quot;type&quot;</span>: [ <span class="json-fold">…</span> <span class="json-collapsed-close">]</span></summary>
-                  <div class="json-children">
-                    <div class="json-line"><span class="json-string">&quot;null&quot;</span><span class="json-comma">,</span></div>
-                    <div class="json-line"><span class="json-string">&quot;string&quot;</span></div>
-                  </div>
-                  <div class="json-close">]</div>
-                </details>
-              </div>
-              <div class="json-close">}</div>
-            </details>
-          </div>
-          <div class="json-close">}</div>
-        </details>
-      </div>
-      <div class="json-close">}</div>
-    </details>
-  </div>
-  <div class="json-close">}</div>
-</details>
+  <pre class="source-viewer-raw" hidden><code></code></pre>
 </div></p>
 </div>
 </div>
@@ -3519,12 +3349,18 @@
     
       
       
-      <script id="__config" type="application/json">{"annotate":null,"base":"../..","features":[],"search":"../../assets/javascripts/workers/search.7d14d953.min.js","tags":null,"translations":{"clipboard.copied":"Copied to clipboard","clipboard.copy":"Copy to clipboard","search.result.more.one":"1 more on this page","search.result.more.other":"# more on this page","search.result.none":"No matching documents","search.result.one":"1 matching document","search.result.other":"# matching documents","search.result.placeholder":"Type to start searching","search.result.term.missing":"Missing","select.version":"Select version"},"version":{"provider":"mike"}}</script>
+      
+      
+        
+        
+      <script id="__config" type="application/json">{"annotate":null,"base":"../..","features":[],"redirect":null,"search":"../../assets/javascripts/workers/search.7d14d953.min.js","tags":null,"translations":{"clipboard.copied":"Copied to clipboard","clipboard.copy":"Copy to clipboard","search.result.more.one":"1 more on this page","search.result.more.other":"# more on this page","search.result.none":"No matching documents","search.result.one":"1 matching document","search.result.other":"# matching documents","search.result.placeholder":"Type to start searching","search.result.term.missing":"Missing","select.version":"Select version"},"version":{"provider":"mike"}}</script>
     
     
-      <script src="../../assets/javascripts/bundle.49251538.min.js"></script>
+      <script src="../../assets/javascripts/bundle.8dcc8e9c.min.js"></script>
       
         <script src="../../javascripts/json-viewer.js"></script>
+      
+        <script src="../../javascripts/amwa-branding.js"></script>
       
     
   </body>

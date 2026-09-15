@@ -21,7 +21,7 @@
       
       
       <link rel="icon" href="../../assets/images/favicon.png">
-      <meta name="generator" content="zensical-0.0.57">
+      <meta name="generator" content="zensical-0.0.62">
     
     
       
@@ -32,7 +32,7 @@
       
         
       
-      <link rel="stylesheet" href="../../assets/stylesheets/modern/main.5da3a30f.min.css">
+      <link rel="stylesheet" href="../../assets/stylesheets/modern/main.ce62732f.min.css">
       
       
 
@@ -52,6 +52,8 @@
     
     
       <link rel="stylesheet" href="../../stylesheets/extra.css">
+    
+      <link rel="stylesheet" href="../../stylesheets/amwa-branding.css">
     
     <script>__md_scope=new URL("../..",location),__md_scope.pathname.endsWith("/")||(__md_scope=new URL(__md_scope.pathname+"/",location)),__md_hash=e=>[...e].reduce(((e,t)=>(e<<5)-e+t.charCodeAt(0)),0),__md_get=(e,t=localStorage,_=__md_scope)=>JSON.parse(t.getItem(_.pathname+"."+e)),__md_set=(e,t,_=localStorage,a=__md_scope)=>{try{_.setItem(a.pathname+"."+e,JSON.stringify(t))}catch(e){}},document.documentElement.setAttribute("data-platform",navigator.platform)</script>
     
@@ -3263,131 +3265,35 @@
 <div class="tabbed-set tabbed-alternate" data-tabs="1:2"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">With refs</label><label for="__tabbed_1_2">Resolved</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<p><a href="../receiver-transport-file.json">Raw file</a></p>
-<p><div class="json-viewer">
-  <div class="json-controls" role="group" aria-label="JSON folding controls">
-    <button type="button" class="json-control" data-json-action="expand">Expand all</button>
-    <button type="button" class="json-control" data-json-action="collapse">Collapse all</button>
+<p><div class="json-viewer" data-source="ewogICIkc2NoZW1hIjogImh0dHA6Ly9qc29uLXNjaGVtYS5vcmcvZHJhZnQtMDQvc2NoZW1hIyIsCiAgInR5cGUiOiAib2JqZWN0IiwKICAiZGVzY3JpcHRpb24iOiAiVHJhbnNwb3J0IGZpbGUgcGFyYW1ldGVycy4gJ2RhdGEnIGFuZCAndHlwZScgbXVzdCBib3RoIGJlIHN0cmluZ3Mgb3IgYm90aCBiZSBudWxsLiBJZiAndHlwZScgaXMgbm9uLW51bGwgJ2RhdGEnIGlzIGV4cGVjdGVkIHRvIGNvbnRhaW4gYSB2YWxpZCBpbnN0YW5jZSBvZiB0aGUgc3BlY2lmaWVkIG1lZGlhIHR5cGUuIiwKICAidGl0bGUiOiAiVHJhbnNwb3J0IGZpbGUiLAogICJhZGRpdGlvbmFsUHJvcGVydGllcyI6IGZhbHNlLAogICJyZXF1aXJlZCI6IFsKICAgICJkYXRhIiwKICAgICJ0eXBlIgogIF0sCiAgInByb3BlcnRpZXMiOiB7CiAgICAiZGF0YSI6IHsKICAgICAgImRlc2NyaXB0aW9uIjogIkNvbnRlbnQgb2YgdGhlIHRyYW5zcG9ydCBmaWxlIiwKICAgICAgInR5cGUiOiBbCiAgICAgICAgInN0cmluZyIsCiAgICAgICAgIm51bGwiCiAgICAgIF0KICAgIH0sCiAgICAidHlwZSI6IHsKICAgICAgImRlc2NyaXB0aW9uIjogIklBTkEgYXNzaWduZWQgbWVkaWEgdHlwZSBmb3IgZmlsZSAoZS5nIGFwcGxpY2F0aW9uL3NkcCkiLAogICAgICAidHlwZSI6IFsKICAgICAgICAic3RyaW5nIiwKICAgICAgICAibnVsbCIKICAgICAgXQogICAgfQogIH0KfQo=" data-language="json">
+  <label class="source-viewer-mode">View: <select data-source-mode>
+    <option value="folding" selected>Folding</option>
+    <option value="raw">Raw</option>
+  </select></label>
+  <div class="source-viewer-folding">
+    <div class="source-viewer-controls" role="group" aria-label="JSON source controls">
+      <button type="button" data-source-action="expand">Expand all</button>
+      <button type="button" data-source-action="collapse">Collapse all</button>
+    </div>
+    <div class="source-editor" role="region" aria-label="Foldable JSON source"></div>
   </div>
-<details class="json-node" open>
-  <summary>{ <span class="json-fold">…</span> <span class="json-collapsed-close">}</span></summary>
-  <div class="json-children">
-    <div class="json-line"><span class="json-key">&quot;$schema&quot;</span>: <span class="json-string">&quot;http://json-schema.org/draft-04/schema#&quot;</span><span class="json-comma">,</span></div>
-    <div class="json-line"><span class="json-key">&quot;type&quot;</span>: <span class="json-string">&quot;object&quot;</span><span class="json-comma">,</span></div>
-    <div class="json-line"><span class="json-key">&quot;description&quot;</span>: <span class="json-string">&quot;Transport file parameters. &#x27;data&#x27; and &#x27;type&#x27; must both be strings or both be null. If &#x27;type&#x27; is non-null &#x27;data&#x27; is expected to contain a valid instance of the specified media type.&quot;</span><span class="json-comma">,</span></div>
-    <div class="json-line"><span class="json-key">&quot;title&quot;</span>: <span class="json-string">&quot;Transport file&quot;</span><span class="json-comma">,</span></div>
-    <div class="json-line"><span class="json-key">&quot;additionalProperties&quot;</span>: <span class="json-boolean">false</span><span class="json-comma">,</span></div>
-    <details class="json-node">
-      <summary><span class="json-key">&quot;required&quot;</span>: [ <span class="json-fold">…</span> <span class="json-collapsed-close">]<span class="json-comma">,</span></span></summary>
-      <div class="json-children">
-        <div class="json-line"><span class="json-string">&quot;data&quot;</span><span class="json-comma">,</span></div>
-        <div class="json-line"><span class="json-string">&quot;type&quot;</span></div>
-      </div>
-      <div class="json-close">]<span class="json-comma">,</span></div>
-    </details>
-    <details class="json-node">
-      <summary><span class="json-key">&quot;properties&quot;</span>: { <span class="json-fold">…</span> <span class="json-collapsed-close">}</span></summary>
-      <div class="json-children">
-        <details class="json-node">
-          <summary><span class="json-key">&quot;data&quot;</span>: { <span class="json-fold">…</span> <span class="json-collapsed-close">}<span class="json-comma">,</span></span></summary>
-          <div class="json-children">
-            <div class="json-line"><span class="json-key">&quot;description&quot;</span>: <span class="json-string">&quot;Content of the transport file&quot;</span><span class="json-comma">,</span></div>
-            <details class="json-node">
-              <summary><span class="json-key">&quot;type&quot;</span>: [ <span class="json-fold">…</span> <span class="json-collapsed-close">]</span></summary>
-              <div class="json-children">
-                <div class="json-line"><span class="json-string">&quot;string&quot;</span><span class="json-comma">,</span></div>
-                <div class="json-line"><span class="json-string">&quot;null&quot;</span></div>
-              </div>
-              <div class="json-close">]</div>
-            </details>
-          </div>
-          <div class="json-close">}<span class="json-comma">,</span></div>
-        </details>
-        <details class="json-node">
-          <summary><span class="json-key">&quot;type&quot;</span>: { <span class="json-fold">…</span> <span class="json-collapsed-close">}</span></summary>
-          <div class="json-children">
-            <div class="json-line"><span class="json-key">&quot;description&quot;</span>: <span class="json-string">&quot;IANA assigned media type for file (e.g application/sdp)&quot;</span><span class="json-comma">,</span></div>
-            <details class="json-node">
-              <summary><span class="json-key">&quot;type&quot;</span>: [ <span class="json-fold">…</span> <span class="json-collapsed-close">]</span></summary>
-              <div class="json-children">
-                <div class="json-line"><span class="json-string">&quot;string&quot;</span><span class="json-comma">,</span></div>
-                <div class="json-line"><span class="json-string">&quot;null&quot;</span></div>
-              </div>
-              <div class="json-close">]</div>
-            </details>
-          </div>
-          <div class="json-close">}</div>
-        </details>
-      </div>
-      <div class="json-close">}</div>
-    </details>
-  </div>
-  <div class="json-close">}</div>
-</details>
+  <pre class="source-viewer-raw" hidden><code></code></pre>
 </div></p>
 </div>
 <div class="tabbed-block">
-<p><a href="../resolved/receiver-transport-file.json">Resolved JSON file</a></p>
-<p><div class="json-viewer">
-  <div class="json-controls" role="group" aria-label="JSON folding controls">
-    <button type="button" class="json-control" data-json-action="expand">Expand all</button>
-    <button type="button" class="json-control" data-json-action="collapse">Collapse all</button>
+<p><div class="json-viewer" data-source="ewogICIkc2NoZW1hIjogImh0dHA6Ly9qc29uLXNjaGVtYS5vcmcvZHJhZnQtMDQvc2NoZW1hIyIsCiAgInR5cGUiOiAib2JqZWN0IiwKICAiZGVzY3JpcHRpb24iOiAiVHJhbnNwb3J0IGZpbGUgcGFyYW1ldGVycy4gJ2RhdGEnIGFuZCAndHlwZScgbXVzdCBib3RoIGJlIHN0cmluZ3Mgb3IgYm90aCBiZSBudWxsLiBJZiAndHlwZScgaXMgbm9uLW51bGwgJ2RhdGEnIGlzIGV4cGVjdGVkIHRvIGNvbnRhaW4gYSB2YWxpZCBpbnN0YW5jZSBvZiB0aGUgc3BlY2lmaWVkIG1lZGlhIHR5cGUuIiwKICAidGl0bGUiOiAiVHJhbnNwb3J0IGZpbGUiLAogICJhZGRpdGlvbmFsUHJvcGVydGllcyI6IGZhbHNlLAogICJyZXF1aXJlZCI6IFsKICAgICJkYXRhIiwKICAgICJ0eXBlIgogIF0sCiAgInByb3BlcnRpZXMiOiB7CiAgICAiZGF0YSI6IHsKICAgICAgImRlc2NyaXB0aW9uIjogIkNvbnRlbnQgb2YgdGhlIHRyYW5zcG9ydCBmaWxlIiwKICAgICAgInR5cGUiOiBbCiAgICAgICAgInN0cmluZyIsCiAgICAgICAgIm51bGwiCiAgICAgIF0KICAgIH0sCiAgICAidHlwZSI6IHsKICAgICAgImRlc2NyaXB0aW9uIjogIklBTkEgYXNzaWduZWQgbWVkaWEgdHlwZSBmb3IgZmlsZSAoZS5nIGFwcGxpY2F0aW9uL3NkcCkiLAogICAgICAidHlwZSI6IFsKICAgICAgICAic3RyaW5nIiwKICAgICAgICAibnVsbCIKICAgICAgXQogICAgfQogIH0KfQo=" data-language="json">
+  <label class="source-viewer-mode">View: <select data-source-mode>
+    <option value="folding" selected>Folding</option>
+    <option value="raw">Raw</option>
+  </select></label>
+  <div class="source-viewer-folding">
+    <div class="source-viewer-controls" role="group" aria-label="JSON source controls">
+      <button type="button" data-source-action="expand">Expand all</button>
+      <button type="button" data-source-action="collapse">Collapse all</button>
+    </div>
+    <div class="source-editor" role="region" aria-label="Foldable JSON source"></div>
   </div>
-<details class="json-node" open>
-  <summary>{ <span class="json-fold">…</span> <span class="json-collapsed-close">}</span></summary>
-  <div class="json-children">
-    <div class="json-line"><span class="json-key">&quot;$schema&quot;</span>: <span class="json-string">&quot;http://json-schema.org/draft-04/schema#&quot;</span><span class="json-comma">,</span></div>
-    <div class="json-line"><span class="json-key">&quot;type&quot;</span>: <span class="json-string">&quot;object&quot;</span><span class="json-comma">,</span></div>
-    <div class="json-line"><span class="json-key">&quot;description&quot;</span>: <span class="json-string">&quot;Transport file parameters. &#x27;data&#x27; and &#x27;type&#x27; must both be strings or both be null. If &#x27;type&#x27; is non-null &#x27;data&#x27; is expected to contain a valid instance of the specified media type.&quot;</span><span class="json-comma">,</span></div>
-    <div class="json-line"><span class="json-key">&quot;title&quot;</span>: <span class="json-string">&quot;Transport file&quot;</span><span class="json-comma">,</span></div>
-    <div class="json-line"><span class="json-key">&quot;additionalProperties&quot;</span>: <span class="json-boolean">false</span><span class="json-comma">,</span></div>
-    <details class="json-node">
-      <summary><span class="json-key">&quot;required&quot;</span>: [ <span class="json-fold">…</span> <span class="json-collapsed-close">]<span class="json-comma">,</span></span></summary>
-      <div class="json-children">
-        <div class="json-line"><span class="json-string">&quot;data&quot;</span><span class="json-comma">,</span></div>
-        <div class="json-line"><span class="json-string">&quot;type&quot;</span></div>
-      </div>
-      <div class="json-close">]<span class="json-comma">,</span></div>
-    </details>
-    <details class="json-node">
-      <summary><span class="json-key">&quot;properties&quot;</span>: { <span class="json-fold">…</span> <span class="json-collapsed-close">}</span></summary>
-      <div class="json-children">
-        <details class="json-node">
-          <summary><span class="json-key">&quot;data&quot;</span>: { <span class="json-fold">…</span> <span class="json-collapsed-close">}<span class="json-comma">,</span></span></summary>
-          <div class="json-children">
-            <div class="json-line"><span class="json-key">&quot;description&quot;</span>: <span class="json-string">&quot;Content of the transport file&quot;</span><span class="json-comma">,</span></div>
-            <details class="json-node">
-              <summary><span class="json-key">&quot;type&quot;</span>: [ <span class="json-fold">…</span> <span class="json-collapsed-close">]</span></summary>
-              <div class="json-children">
-                <div class="json-line"><span class="json-string">&quot;string&quot;</span><span class="json-comma">,</span></div>
-                <div class="json-line"><span class="json-string">&quot;null&quot;</span></div>
-              </div>
-              <div class="json-close">]</div>
-            </details>
-          </div>
-          <div class="json-close">}<span class="json-comma">,</span></div>
-        </details>
-        <details class="json-node">
-          <summary><span class="json-key">&quot;type&quot;</span>: { <span class="json-fold">…</span> <span class="json-collapsed-close">}</span></summary>
-          <div class="json-children">
-            <div class="json-line"><span class="json-key">&quot;description&quot;</span>: <span class="json-string">&quot;IANA assigned media type for file (e.g application/sdp)&quot;</span><span class="json-comma">,</span></div>
-            <details class="json-node">
-              <summary><span class="json-key">&quot;type&quot;</span>: [ <span class="json-fold">…</span> <span class="json-collapsed-close">]</span></summary>
-              <div class="json-children">
-                <div class="json-line"><span class="json-string">&quot;string&quot;</span><span class="json-comma">,</span></div>
-                <div class="json-line"><span class="json-string">&quot;null&quot;</span></div>
-              </div>
-              <div class="json-close">]</div>
-            </details>
-          </div>
-          <div class="json-close">}</div>
-        </details>
-      </div>
-      <div class="json-close">}</div>
-    </details>
-  </div>
-  <div class="json-close">}</div>
-</details>
+  <pre class="source-viewer-raw" hidden><code></code></pre>
 </div></p>
 </div>
 </div>
@@ -3443,12 +3349,18 @@
     
       
       
-      <script id="__config" type="application/json">{"annotate":null,"base":"../..","features":[],"search":"../../assets/javascripts/workers/search.7d14d953.min.js","tags":null,"translations":{"clipboard.copied":"Copied to clipboard","clipboard.copy":"Copy to clipboard","search.result.more.one":"1 more on this page","search.result.more.other":"# more on this page","search.result.none":"No matching documents","search.result.one":"1 matching document","search.result.other":"# matching documents","search.result.placeholder":"Type to start searching","search.result.term.missing":"Missing","select.version":"Select version"},"version":{"provider":"mike"}}</script>
+      
+      
+        
+        
+      <script id="__config" type="application/json">{"annotate":null,"base":"../..","features":[],"redirect":null,"search":"../../assets/javascripts/workers/search.7d14d953.min.js","tags":null,"translations":{"clipboard.copied":"Copied to clipboard","clipboard.copy":"Copy to clipboard","search.result.more.one":"1 more on this page","search.result.more.other":"# more on this page","search.result.none":"No matching documents","search.result.one":"1 matching document","search.result.other":"# matching documents","search.result.placeholder":"Type to start searching","search.result.term.missing":"Missing","select.version":"Select version"},"version":{"provider":"mike"}}</script>
     
     
-      <script src="../../assets/javascripts/bundle.49251538.min.js"></script>
+      <script src="../../assets/javascripts/bundle.8dcc8e9c.min.js"></script>
       
         <script src="../../javascripts/json-viewer.js"></script>
+      
+        <script src="../../javascripts/amwa-branding.js"></script>
       
     
   </body>
