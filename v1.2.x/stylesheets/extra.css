@@ -1,76 +1,124 @@
 .json-viewer {
   margin: 1rem 0;
-  padding: 0.8rem 1rem;
   overflow-x: auto;
-  border-radius: 0.2rem;
-  background: var(--md-code-bg-color);
-  color: var(--md-code-fg-color);
-  font-family: var(--md-code-font-family, monospace);
-  font-size: 0.85rem;
-  line-height: 1.5;
 }
 
-.json-controls {
+.source-viewer-mode {
+  display: inline-block;
+  margin: 0 0 0.35rem;
+}
+
+.source-viewer-mode select {
+  margin-left: 0.25rem;
+}
+
+.source-viewer-controls {
   display: flex;
-  gap: 0.5rem;
-  margin-bottom: 0.6rem;
+  gap: 0.35rem;
+  margin: 0 0 0.35rem;
 }
 
-.json-control {
-  background: var(--md-default-bg-color);
-  border: 1px solid var(--md-default-fg-color--lighter);
+.source-viewer-controls button {
+  border: 1px solid var(--md-default-fg-color--lightest);
   border-radius: 0.2rem;
+  background: var(--md-default-bg-color);
   color: var(--md-default-fg-color);
   cursor: pointer;
-  font: inherit;
-  padding: 0.2rem 0.5rem;
+  padding: 0.15rem 0.45rem;
 }
 
-.json-control:hover {
-  border-color: var(--md-accent-fg-color);
-  color: var(--md-accent-fg-color);
+.source-viewer-controls button:hover,
+.source-viewer-mode select:hover {
+  background: var(--md-default-fg-color--lightest);
 }
 
-.json-node > summary {
+.source-editor,
+.source-viewer-raw {
+  border: 1px solid var(--md-default-fg-color--lightest);
+  border-radius: 0.2rem;
+  background: var(--md-code-bg-color, var(--md-default-bg-color));
+  color: var(--md-code-fg-color, var(--md-typeset-color));
+  font-family: var(--md-code-font-family, monospace);
+  font-size: 0.8rem;
+  line-height: 1.35;
+  margin: 0;
+  overflow-x: auto;
+  padding: 0.35rem 0;
+}
+
+.source-viewer-raw code {
+  white-space: pre;
+}
+
+.source-editor-line {
+  min-height: 1.35em;
+  padding: 0 0.5rem 0 0;
+  white-space: pre;
+}
+
+.source-editor-line[hidden] {
+  display: none;
+}
+
+.source-editor-gutter {
+  display: inline-flex;
+  align-items: center;
+  width: 4.5em;
+}
+
+.source-editor-fold-toggle,
+.source-editor-fold-spacer {
+  display: inline-block;
+  width: 1.5em;
+}
+
+.source-editor-fold-toggle {
+  border: 0;
+  background: transparent;
+  color: var(--md-default-fg-color--light);
   cursor: pointer;
-  padding-left: 0 !important;
-  white-space: nowrap;
+  font: inherit;
+  line-height: 1;
+  padding: 0;
+  text-align: center;
 }
 
-.md-typeset .json-node > summary::before {
-  display: none !important;
+.source-editor-fold-toggle:hover {
+  color: var(--md-typeset-color);
 }
 
-.json-node[open] > summary > .json-fold,
-.json-node[open] > summary > .json-collapsed-close {
-  display: none !important;
+.source-editor-line-number {
+  color: var(--md-default-fg-color--light);
+  display: inline-block;
+  padding-right: 0.75em;
+  text-align: right;
+  user-select: none;
+  width: 2.5em;
 }
 
-.json-node:not([open]) > summary > .json-collapsed-close {
-  display: inline !important;
+.source-editor-code {
+  color: var(--md-code-fg-color, var(--md-typeset-color));
 }
 
-.headerlink {
-  display: none !important;
+.source-editor-line[data-collapsed] .source-editor-code::after {
+  color: var(--md-default-fg-color--light);
+  content: " ...";
 }
 
-.json-node > summary:hover {
-  color: var(--md-accent-fg-color);
+.source-token-string {
+  color: var(--md-code-hl-string-color, var(--md-typeset-color));
 }
 
-.json-children {
-  margin-left: 1.5rem;
-  padding-left: 1rem;
-  border-left: 1px solid var(--md-default-fg-color--lightest);
+.source-token-number,
+.source-token-boolean {
+  color: var(--md-code-hl-number-color, var(--md-typeset-color));
 }
 
-.json-line,
-.json-close {
-  white-space: pre-wrap;
+.source-token-punctuation {
+  color: var(--md-typeset-color);
 }
 
-.json-key { color: var(--md-code-hl-function-color); }
-.json-string { color: var(--md-code-hl-string-color); }
-.json-number { color: var(--md-code-hl-number-color); }
-.json-boolean, .json-null { color: var(--md-code-hl-constant-color); }
-.json-fold, .json-comma { opacity: 0.65; }
+.json-viewer .source-viewer-folding[hidden],
+.json-viewer .source-viewer-raw[hidden] {
+  display: none;
+}

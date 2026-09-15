@@ -23,7 +23,7 @@
       
       
       <link rel="icon" href="../assets/images/favicon.png">
-      <meta name="generator" content="zensical-0.0.57">
+      <meta name="generator" content="zensical-0.0.62">
     
     
       
@@ -34,7 +34,7 @@
       
         
       
-      <link rel="stylesheet" href="../assets/stylesheets/modern/main.5da3a30f.min.css">
+      <link rel="stylesheet" href="../assets/stylesheets/modern/main.ce62732f.min.css">
       
       
 
@@ -54,6 +54,8 @@
     
     
       <link rel="stylesheet" href="../stylesheets/extra.css">
+    
+      <link rel="stylesheet" href="../stylesheets/amwa-branding.css">
     
     <script>__md_scope=new URL("..",location),__md_scope.pathname.endsWith("/")||(__md_scope=new URL(__md_scope.pathname+"/",location)),__md_hash=e=>[...e].reduce(((e,t)=>(e<<5)-e+t.charCodeAt(0)),0),__md_get=(e,t=localStorage,_=__md_scope)=>JSON.parse(t.getItem(_.pathname+"."+e)),__md_set=(e,t,_=localStorage,a=__md_scope)=>{try{_.setItem(a.pathname+"."+e,JSON.stringify(t))}catch(e){}},document.documentElement.setAttribute("data-platform",navigator.platform)</script>
     
@@ -3428,15 +3430,15 @@
 Control interfaces can identify all Devices which implement the Connection API by a <code>type</code> Uniform Resource Name (URN) having the base <code>urn:x-nmos:control:sr-ctrl</code> followed by a <code>/</code> character and the API version.
 The associated <code>href</code> is the URL of the Connection API base resource.</p>
 <p><strong>Example:</strong> The <code>controls</code> attribute of a single NMOS Device</p>
-<p><code>json
-...
-"controls": [
-  {
-    "type": "urn:x-nmos:control:sr-ctrl/v1.2",
-    "href": "http://192.168.10.3/x-nmos/connection/v1.2/"
-  }
-]
-...</code></p>
+<div class="highlight"><pre><span></span><code><span class="err">...</span>
+<span class="nt">"controls"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">  </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"urn:x-nmos:control:sr-ctrl/v1.2"</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">"href"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://192.168.10.3/x-nmos/connection/v1.2/"</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">]</span>
+<span class="err">...</span>
+</code></pre></div>
 <p>As shown above the API version is included in the <code>type</code>, and in the <code>href</code>. Further control endpoints for the Connection API MAY be advertised for Devices which support multiple versions simultaneously, or have multiple network interfaces.</p>
 <p>More details about multi-version support can be found in <a href="../Upgrade%20Path/">Upgrade Path</a>.</p>
 <p>A given instance of the Connection API MAY offer control of multiple Devices in a Node from a single URI. Alternatively there MAY be multiple instances of the API on one Node, each corresponding to one Device. A separate endpoint for each Device's Connection Management instance MUST be advertised in the Device's <code>controls</code>, even if the URI is the same.</p>
@@ -3509,12 +3511,18 @@ It is the client's responsibility to set or unset (using <code>null</code>) the 
     
       
       
-      <script id="__config" type="application/json">{"annotate":null,"base":"..","features":[],"search":"../assets/javascripts/workers/search.7d14d953.min.js","tags":null,"translations":{"clipboard.copied":"Copied to clipboard","clipboard.copy":"Copy to clipboard","search.result.more.one":"1 more on this page","search.result.more.other":"# more on this page","search.result.none":"No matching documents","search.result.one":"1 matching document","search.result.other":"# matching documents","search.result.placeholder":"Type to start searching","search.result.term.missing":"Missing","select.version":"Select version"},"version":{"provider":"mike"}}</script>
+      
+      
+        
+        
+      <script id="__config" type="application/json">{"annotate":null,"base":"..","features":[],"redirect":null,"search":"../assets/javascripts/workers/search.7d14d953.min.js","tags":null,"translations":{"clipboard.copied":"Copied to clipboard","clipboard.copy":"Copy to clipboard","search.result.more.one":"1 more on this page","search.result.more.other":"# more on this page","search.result.none":"No matching documents","search.result.one":"1 matching document","search.result.other":"# matching documents","search.result.placeholder":"Type to start searching","search.result.term.missing":"Missing","select.version":"Select version"},"version":{"provider":"mike"}}</script>
     
     
-      <script src="../assets/javascripts/bundle.49251538.min.js"></script>
+      <script src="../assets/javascripts/bundle.8dcc8e9c.min.js"></script>
       
         <script src="../javascripts/json-viewer.js"></script>
+      
+        <script src="../javascripts/amwa-branding.js"></script>
       
     
   </body>

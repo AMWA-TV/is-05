@@ -23,7 +23,7 @@
       
       
       <link rel="icon" href="../../assets/images/favicon.png">
-      <meta name="generator" content="zensical-0.0.57">
+      <meta name="generator" content="zensical-0.0.62">
     
     
       
@@ -34,7 +34,7 @@
       
         
       
-      <link rel="stylesheet" href="../../assets/stylesheets/modern/main.5da3a30f.min.css">
+      <link rel="stylesheet" href="../../assets/stylesheets/modern/main.ce62732f.min.css">
       
       
 
@@ -54,6 +54,8 @@
     
     
       <link rel="stylesheet" href="../../stylesheets/extra.css">
+    
+      <link rel="stylesheet" href="../../stylesheets/amwa-branding.css">
     
     <script>__md_scope=new URL("../..",location),__md_scope.pathname.endsWith("/")||(__md_scope=new URL(__md_scope.pathname+"/",location)),__md_hash=e=>[...e].reduce(((e,t)=>(e<<5)-e+t.charCodeAt(0)),0),__md_get=(e,t=localStorage,_=__md_scope)=>JSON.parse(t.getItem(_.pathname+"."+e)),__md_set=(e,t,_=localStorage,a=__md_scope)=>{try{_.setItem(a.pathname+"."+e,JSON.stringify(t))}catch(e){}},document.documentElement.setAttribute("data-platform",navigator.platform)</script>
     
@@ -3265,227 +3267,35 @@
 <div class="tabbed-set tabbed-alternate" data-tabs="1:2"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">With refs</label><label for="__tabbed_1_2">Resolved</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<p><a href="../sender_transport_params_websocket.json">Raw file</a></p>
-<p><div class="json-viewer">
-  <div class="json-controls" role="group" aria-label="JSON folding controls">
-    <button type="button" class="json-control" data-json-action="expand">Expand all</button>
-    <button type="button" class="json-control" data-json-action="collapse">Collapse all</button>
+<p><div class="json-viewer" data-source="ewogICIkc2NoZW1hIjogImh0dHA6Ly9qc29uLXNjaGVtYS5vcmcvZHJhZnQtMDQvc2NoZW1hIyIsCiAgImRlc2NyaXB0aW9uIjogIkRlc2NyaWJlcyBXZWJTb2NrZXQgU2VuZGVyIHRyYW5zcG9ydCBwYXJhbWV0ZXJzLiBUaGUgY29uc3RyYWludHMgaW4gdGhpcyBzY2hlbWEgYXJlIG1pbmltdW0gY29uc3RyYWludHMsIGJ1dCBtYXkgYmUgZnVydGhlciBjb25zdHJhaW5lZCBhdCB0aGUgY29uc3RyYWludHMgZW5kcG9pbnQuIFdlYlNvY2tldCBTZW5kZXJzIG11c3Qgc3VwcG9ydCBhbGwgcGFyYW1ldGVycyBpbiB0aGlzIHNjaGVtYS4iLAogICJ0aXRsZSI6ICJXZWJTb2NrZXQgU2VuZGVyIFRyYW5zcG9ydCBQYXJhbWV0ZXJzIiwKICAidHlwZSI6ICJvYmplY3QiLAogICJwcm9wZXJ0aWVzIjogewogICAgImNvbm5lY3Rpb25fdXJpIjogewogICAgICAidHlwZSI6IFsKICAgICAgICAic3RyaW5nIiwKICAgICAgICAibnVsbCIKICAgICAgXSwKICAgICAgImRlc2NyaXB0aW9uIjogIlVSSSBob3N0aW5nIHRoZSBXZWJTb2NrZXQgc2VydmVyIGFzIGRlZmluZWQgaW4gUkZDIDY0NTUgU2VjdGlvbiAzLiBUaGUgc2VuZGVyIHNob3VsZCBwcm92aWRlIGFuIGVudW0gaW4gdGhlIGNvbnN0cmFpbnRzIGVuZHBvaW50LCB3aGljaCBzaG91bGQgY29udGFpbiB0aGUgYXZhaWxhYmxlIGludGVyZmFjZSBhZGRyZXNzZXMgZm9ybWF0dGVkIGFzIGNvbm5lY3Rpb24gVVJJcy4gSWYgdGhlIHBhcmFtZXRlciBpcyBzZXQgdG8gYXV0byB0aGUgc2VuZGVyIHNob3VsZCBlc3RhYmxpc2ggZm9yIGl0c2VsZiB3aGljaCBpbnRlcmZhY2UgaXQgc2hvdWxkIHVzZSwgYmFzZWQgb24gcm91dGluZyBydWxlcyBvciBpdHMgb3duIGludGVybmFsIGNvbmZpZ3VyYXRpb24uIEEgbnVsbCB2YWx1ZSBpbmRpY2F0ZXMgdGhhdCB0aGUgc2VuZGVyIGhhcyBub3QgeWV0IGJlZW4gY29uZmlndXJlZC4iLAogICAgICAiYW55T2YiOiBbCiAgICAgICAgewogICAgICAgICAgInBhdHRlcm4iOiAiXmF1dG8kIgogICAgICAgIH0sCiAgICAgICAgewogICAgICAgICAgImZvcm1hdCI6ICJ1cmkiLAogICAgICAgICAgInBhdHRlcm4iOiAiXndzcz86Ly8uKiIKICAgICAgICB9LAogICAgICAgIHsKICAgICAgICAgICJ0eXBlIjogIm51bGwiCiAgICAgICAgfQogICAgICBdCiAgICB9LAogICAgImNvbm5lY3Rpb25fYXV0aG9yaXphdGlvbiI6IHsKICAgICAgInR5cGUiOiBbCiAgICAgICAgInN0cmluZyIsCiAgICAgICAgImJvb2xlYW4iCiAgICAgIF0sCiAgICAgICJkZXNjcmlwdGlvbiI6ICJJbmRpY2F0aW9uIG9mIHdoZXRoZXIgYXV0aG9yaXphdGlvbiBpcyByZXF1aXJlZCB0byBtYWtlIGEgY29ubmVjdGlvbi4gSWYgdGhlIHBhcmFtZXRlciBpcyBzZXQgdG8gYXV0byB0aGUgU2VuZGVyIHNob3VsZCBlc3RhYmxpc2ggZm9yIGl0c2VsZiB3aGV0aGVyIGF1dGhvcml6YXRpb24gc2hvdWxkIGJlIHVzZWQsIGJhc2VkIG9uIGl0cyBvd24gaW50ZXJuYWwgY29uZmlndXJhdGlvbi4iLAogICAgICAiZW51bSI6IFsKICAgICAgICAiYXV0byIsCiAgICAgICAgdHJ1ZSwKICAgICAgICBmYWxzZQogICAgICBdCiAgICB9CiAgfSwKICAicGF0dGVyblByb3BlcnRpZXMiOiB7CiAgICAiXmV4dF9bYS16QS1aMC05X10rJCI6IHsKICAgICAgIiRyZWYiOiAic2VuZGVyX3RyYW5zcG9ydF9wYXJhbXNfZXh0Lmpzb24iCiAgICB9CiAgfSwKICAiYWRkaXRpb25hbFByb3BlcnRpZXMiOiBmYWxzZQp9Cg==" data-language="json">
+  <label class="source-viewer-mode">View: <select data-source-mode>
+    <option value="folding" selected>Folding</option>
+    <option value="raw">Raw</option>
+  </select></label>
+  <div class="source-viewer-folding">
+    <div class="source-viewer-controls" role="group" aria-label="JSON source controls">
+      <button type="button" data-source-action="expand">Expand all</button>
+      <button type="button" data-source-action="collapse">Collapse all</button>
+    </div>
+    <div class="source-editor" role="region" aria-label="Foldable JSON source"></div>
   </div>
-<details class="json-node" open>
-  <summary>{ <span class="json-fold">…</span> <span class="json-collapsed-close">}</span></summary>
-  <div class="json-children">
-    <div class="json-line"><span class="json-key">&quot;$schema&quot;</span>: <span class="json-string">&quot;http://json-schema.org/draft-04/schema#&quot;</span><span class="json-comma">,</span></div>
-    <div class="json-line"><span class="json-key">&quot;description&quot;</span>: <span class="json-string">&quot;Describes WebSocket Sender transport parameters. The constraints in this schema are minimum constraints, but may be further constrained at the constraints endpoint. WebSocket Senders must support all parameters in this schema.&quot;</span><span class="json-comma">,</span></div>
-    <div class="json-line"><span class="json-key">&quot;title&quot;</span>: <span class="json-string">&quot;WebSocket Sender Transport Parameters&quot;</span><span class="json-comma">,</span></div>
-    <div class="json-line"><span class="json-key">&quot;type&quot;</span>: <span class="json-string">&quot;object&quot;</span><span class="json-comma">,</span></div>
-    <details class="json-node">
-      <summary><span class="json-key">&quot;properties&quot;</span>: { <span class="json-fold">…</span> <span class="json-collapsed-close">}<span class="json-comma">,</span></span></summary>
-      <div class="json-children">
-        <details class="json-node">
-          <summary><span class="json-key">&quot;connection_uri&quot;</span>: { <span class="json-fold">…</span> <span class="json-collapsed-close">}<span class="json-comma">,</span></span></summary>
-          <div class="json-children">
-            <details class="json-node">
-              <summary><span class="json-key">&quot;type&quot;</span>: [ <span class="json-fold">…</span> <span class="json-collapsed-close">]<span class="json-comma">,</span></span></summary>
-              <div class="json-children">
-                <div class="json-line"><span class="json-string">&quot;string&quot;</span><span class="json-comma">,</span></div>
-                <div class="json-line"><span class="json-string">&quot;null&quot;</span></div>
-              </div>
-              <div class="json-close">]<span class="json-comma">,</span></div>
-            </details>
-            <div class="json-line"><span class="json-key">&quot;description&quot;</span>: <span class="json-string">&quot;URI hosting the WebSocket server as defined in RFC 6455 Section 3. The sender should provide an enum in the constraints endpoint, which should contain the available interface addresses formatted as connection URIs. If the parameter is set to auto the sender should establish for itself which interface it should use, based on routing rules or its own internal configuration. A null value indicates that the sender has not yet been configured.&quot;</span><span class="json-comma">,</span></div>
-            <details class="json-node">
-              <summary><span class="json-key">&quot;anyOf&quot;</span>: [ <span class="json-fold">…</span> <span class="json-collapsed-close">]</span></summary>
-              <div class="json-children">
-                <details class="json-node">
-                  <summary>{ <span class="json-fold">…</span> <span class="json-collapsed-close">}<span class="json-comma">,</span></span></summary>
-                  <div class="json-children">
-                    <div class="json-line"><span class="json-key">&quot;pattern&quot;</span>: <span class="json-string">&quot;^auto$&quot;</span></div>
-                  </div>
-                  <div class="json-close">}<span class="json-comma">,</span></div>
-                </details>
-                <details class="json-node">
-                  <summary>{ <span class="json-fold">…</span> <span class="json-collapsed-close">}<span class="json-comma">,</span></span></summary>
-                  <div class="json-children">
-                    <div class="json-line"><span class="json-key">&quot;format&quot;</span>: <span class="json-string">&quot;uri&quot;</span><span class="json-comma">,</span></div>
-                    <div class="json-line"><span class="json-key">&quot;pattern&quot;</span>: <span class="json-string">&quot;^wss?://.*&quot;</span></div>
-                  </div>
-                  <div class="json-close">}<span class="json-comma">,</span></div>
-                </details>
-                <details class="json-node">
-                  <summary>{ <span class="json-fold">…</span> <span class="json-collapsed-close">}</span></summary>
-                  <div class="json-children">
-                    <div class="json-line"><span class="json-key">&quot;type&quot;</span>: <span class="json-string">&quot;null&quot;</span></div>
-                  </div>
-                  <div class="json-close">}</div>
-                </details>
-              </div>
-              <div class="json-close">]</div>
-            </details>
-          </div>
-          <div class="json-close">}<span class="json-comma">,</span></div>
-        </details>
-        <details class="json-node">
-          <summary><span class="json-key">&quot;connection_authorization&quot;</span>: { <span class="json-fold">…</span> <span class="json-collapsed-close">}</span></summary>
-          <div class="json-children">
-            <details class="json-node">
-              <summary><span class="json-key">&quot;type&quot;</span>: [ <span class="json-fold">…</span> <span class="json-collapsed-close">]<span class="json-comma">,</span></span></summary>
-              <div class="json-children">
-                <div class="json-line"><span class="json-string">&quot;string&quot;</span><span class="json-comma">,</span></div>
-                <div class="json-line"><span class="json-string">&quot;boolean&quot;</span></div>
-              </div>
-              <div class="json-close">]<span class="json-comma">,</span></div>
-            </details>
-            <div class="json-line"><span class="json-key">&quot;description&quot;</span>: <span class="json-string">&quot;Indication of whether authorization is required to make a connection. If the parameter is set to auto the Sender should establish for itself whether authorization should be used, based on its own internal configuration.&quot;</span><span class="json-comma">,</span></div>
-            <details class="json-node">
-              <summary><span class="json-key">&quot;enum&quot;</span>: [ <span class="json-fold">…</span> <span class="json-collapsed-close">]</span></summary>
-              <div class="json-children">
-                <div class="json-line"><span class="json-string">&quot;auto&quot;</span><span class="json-comma">,</span></div>
-                <div class="json-line"><span class="json-boolean">true</span><span class="json-comma">,</span></div>
-                <div class="json-line"><span class="json-boolean">false</span></div>
-              </div>
-              <div class="json-close">]</div>
-            </details>
-          </div>
-          <div class="json-close">}</div>
-        </details>
-      </div>
-      <div class="json-close">}<span class="json-comma">,</span></div>
-    </details>
-    <details class="json-node">
-      <summary><span class="json-key">&quot;patternProperties&quot;</span>: { <span class="json-fold">…</span> <span class="json-collapsed-close">}<span class="json-comma">,</span></span></summary>
-      <div class="json-children">
-        <details class="json-node">
-          <summary><span class="json-key">&quot;^ext_[a-zA-Z0-9_]+$&quot;</span>: { <span class="json-fold">…</span> <span class="json-collapsed-close">}</span></summary>
-          <div class="json-children">
-            <div class="json-line"><span class="json-key">&quot;$ref&quot;</span>: <span class="json-string">&quot;sender_transport_params_ext.json&quot;</span></div>
-          </div>
-          <div class="json-close">}</div>
-        </details>
-      </div>
-      <div class="json-close">}<span class="json-comma">,</span></div>
-    </details>
-    <div class="json-line"><span class="json-key">&quot;additionalProperties&quot;</span>: <span class="json-boolean">false</span></div>
-  </div>
-  <div class="json-close">}</div>
-</details>
+  <pre class="source-viewer-raw" hidden><code></code></pre>
 </div></p>
 </div>
 <div class="tabbed-block">
-<p><a href="../resolved/sender_transport_params_websocket.json">Resolved JSON file</a></p>
-<p><div class="json-viewer">
-  <div class="json-controls" role="group" aria-label="JSON folding controls">
-    <button type="button" class="json-control" data-json-action="expand">Expand all</button>
-    <button type="button" class="json-control" data-json-action="collapse">Collapse all</button>
+<p><div class="json-viewer" data-source="ewogICIkc2NoZW1hIjogImh0dHA6Ly9qc29uLXNjaGVtYS5vcmcvZHJhZnQtMDQvc2NoZW1hIyIsCiAgImRlc2NyaXB0aW9uIjogIkRlc2NyaWJlcyBXZWJTb2NrZXQgU2VuZGVyIHRyYW5zcG9ydCBwYXJhbWV0ZXJzLiBUaGUgY29uc3RyYWludHMgaW4gdGhpcyBzY2hlbWEgYXJlIG1pbmltdW0gY29uc3RyYWludHMsIGJ1dCBtYXkgYmUgZnVydGhlciBjb25zdHJhaW5lZCBhdCB0aGUgY29uc3RyYWludHMgZW5kcG9pbnQuIFdlYlNvY2tldCBTZW5kZXJzIG11c3Qgc3VwcG9ydCBhbGwgcGFyYW1ldGVycyBpbiB0aGlzIHNjaGVtYS4iLAogICJ0aXRsZSI6ICJXZWJTb2NrZXQgU2VuZGVyIFRyYW5zcG9ydCBQYXJhbWV0ZXJzIiwKICAidHlwZSI6ICJvYmplY3QiLAogICJwcm9wZXJ0aWVzIjogewogICAgImNvbm5lY3Rpb25fdXJpIjogewogICAgICAidHlwZSI6IFsKICAgICAgICAic3RyaW5nIiwKICAgICAgICAibnVsbCIKICAgICAgXSwKICAgICAgImRlc2NyaXB0aW9uIjogIlVSSSBob3N0aW5nIHRoZSBXZWJTb2NrZXQgc2VydmVyIGFzIGRlZmluZWQgaW4gUkZDIDY0NTUgU2VjdGlvbiAzLiBUaGUgc2VuZGVyIHNob3VsZCBwcm92aWRlIGFuIGVudW0gaW4gdGhlIGNvbnN0cmFpbnRzIGVuZHBvaW50LCB3aGljaCBzaG91bGQgY29udGFpbiB0aGUgYXZhaWxhYmxlIGludGVyZmFjZSBhZGRyZXNzZXMgZm9ybWF0dGVkIGFzIGNvbm5lY3Rpb24gVVJJcy4gSWYgdGhlIHBhcmFtZXRlciBpcyBzZXQgdG8gYXV0byB0aGUgc2VuZGVyIHNob3VsZCBlc3RhYmxpc2ggZm9yIGl0c2VsZiB3aGljaCBpbnRlcmZhY2UgaXQgc2hvdWxkIHVzZSwgYmFzZWQgb24gcm91dGluZyBydWxlcyBvciBpdHMgb3duIGludGVybmFsIGNvbmZpZ3VyYXRpb24uIEEgbnVsbCB2YWx1ZSBpbmRpY2F0ZXMgdGhhdCB0aGUgc2VuZGVyIGhhcyBub3QgeWV0IGJlZW4gY29uZmlndXJlZC4iLAogICAgICAiYW55T2YiOiBbCiAgICAgICAgewogICAgICAgICAgInBhdHRlcm4iOiAiXmF1dG8kIgogICAgICAgIH0sCiAgICAgICAgewogICAgICAgICAgImZvcm1hdCI6ICJ1cmkiLAogICAgICAgICAgInBhdHRlcm4iOiAiXndzcz86Ly8uKiIKICAgICAgICB9LAogICAgICAgIHsKICAgICAgICAgICJ0eXBlIjogIm51bGwiCiAgICAgICAgfQogICAgICBdCiAgICB9LAogICAgImNvbm5lY3Rpb25fYXV0aG9yaXphdGlvbiI6IHsKICAgICAgInR5cGUiOiBbCiAgICAgICAgInN0cmluZyIsCiAgICAgICAgImJvb2xlYW4iCiAgICAgIF0sCiAgICAgICJkZXNjcmlwdGlvbiI6ICJJbmRpY2F0aW9uIG9mIHdoZXRoZXIgYXV0aG9yaXphdGlvbiBpcyByZXF1aXJlZCB0byBtYWtlIGEgY29ubmVjdGlvbi4gSWYgdGhlIHBhcmFtZXRlciBpcyBzZXQgdG8gYXV0byB0aGUgU2VuZGVyIHNob3VsZCBlc3RhYmxpc2ggZm9yIGl0c2VsZiB3aGV0aGVyIGF1dGhvcml6YXRpb24gc2hvdWxkIGJlIHVzZWQsIGJhc2VkIG9uIGl0cyBvd24gaW50ZXJuYWwgY29uZmlndXJhdGlvbi4iLAogICAgICAiZW51bSI6IFsKICAgICAgICAiYXV0byIsCiAgICAgICAgdHJ1ZSwKICAgICAgICBmYWxzZQogICAgICBdCiAgICB9CiAgfSwKICAicGF0dGVyblByb3BlcnRpZXMiOiB7CiAgICAiXmV4dF9bYS16QS1aMC05X10rJCI6IHsKICAgICAgIiRzY2hlbWEiOiAiaHR0cDovL2pzb24tc2NoZW1hLm9yZy9kcmFmdC0wNC9zY2hlbWEjIiwKICAgICAgImRlc2NyaXB0aW9uIjogIkRlc2NyaWJlcyBleHRlcm5hbCBTZW5kZXIgdHJhbnNwb3J0IHBhcmFtZXRlcnMgZGVmaW5lZCBpbiBvdGhlciBBTVdBIHNwZWNpZmljYXRpb25zLiBUaGUgY29uc3RyYWludHMgaW4gdGhpcyBzY2hlbWEgYXJlIG1pbmltdW0gY29uc3RyYWludHMsIGJ1dCBtYXkgYmUgZnVydGhlciBjb25zdHJhaW5lZCBhdCB0aGUgY29uc3RyYWludHMgZW5kcG9pbnQuIiwKICAgICAgInRpdGxlIjogIkV4dGVybmFsIFNlbmRlciBUcmFuc3BvcnQgUGFyYW1ldGVycyIsCiAgICAgICJ0eXBlIjogWwogICAgICAgICJzdHJpbmciLAogICAgICAgICJib29sZWFuIiwKICAgICAgICAibnVsbCIsCiAgICAgICAgIm51bWJlciIKICAgICAgXQogICAgfQogIH0sCiAgImFkZGl0aW9uYWxQcm9wZXJ0aWVzIjogZmFsc2UKfQo=" data-language="json">
+  <label class="source-viewer-mode">View: <select data-source-mode>
+    <option value="folding" selected>Folding</option>
+    <option value="raw">Raw</option>
+  </select></label>
+  <div class="source-viewer-folding">
+    <div class="source-viewer-controls" role="group" aria-label="JSON source controls">
+      <button type="button" data-source-action="expand">Expand all</button>
+      <button type="button" data-source-action="collapse">Collapse all</button>
+    </div>
+    <div class="source-editor" role="region" aria-label="Foldable JSON source"></div>
   </div>
-<details class="json-node" open>
-  <summary>{ <span class="json-fold">…</span> <span class="json-collapsed-close">}</span></summary>
-  <div class="json-children">
-    <div class="json-line"><span class="json-key">&quot;$schema&quot;</span>: <span class="json-string">&quot;http://json-schema.org/draft-04/schema#&quot;</span><span class="json-comma">,</span></div>
-    <div class="json-line"><span class="json-key">&quot;description&quot;</span>: <span class="json-string">&quot;Describes WebSocket Sender transport parameters. The constraints in this schema are minimum constraints, but may be further constrained at the constraints endpoint. WebSocket Senders must support all parameters in this schema.&quot;</span><span class="json-comma">,</span></div>
-    <div class="json-line"><span class="json-key">&quot;title&quot;</span>: <span class="json-string">&quot;WebSocket Sender Transport Parameters&quot;</span><span class="json-comma">,</span></div>
-    <div class="json-line"><span class="json-key">&quot;type&quot;</span>: <span class="json-string">&quot;object&quot;</span><span class="json-comma">,</span></div>
-    <details class="json-node">
-      <summary><span class="json-key">&quot;properties&quot;</span>: { <span class="json-fold">…</span> <span class="json-collapsed-close">}<span class="json-comma">,</span></span></summary>
-      <div class="json-children">
-        <details class="json-node">
-          <summary><span class="json-key">&quot;connection_uri&quot;</span>: { <span class="json-fold">…</span> <span class="json-collapsed-close">}<span class="json-comma">,</span></span></summary>
-          <div class="json-children">
-            <details class="json-node">
-              <summary><span class="json-key">&quot;type&quot;</span>: [ <span class="json-fold">…</span> <span class="json-collapsed-close">]<span class="json-comma">,</span></span></summary>
-              <div class="json-children">
-                <div class="json-line"><span class="json-string">&quot;string&quot;</span><span class="json-comma">,</span></div>
-                <div class="json-line"><span class="json-string">&quot;null&quot;</span></div>
-              </div>
-              <div class="json-close">]<span class="json-comma">,</span></div>
-            </details>
-            <div class="json-line"><span class="json-key">&quot;description&quot;</span>: <span class="json-string">&quot;URI hosting the WebSocket server as defined in RFC 6455 Section 3. The sender should provide an enum in the constraints endpoint, which should contain the available interface addresses formatted as connection URIs. If the parameter is set to auto the sender should establish for itself which interface it should use, based on routing rules or its own internal configuration. A null value indicates that the sender has not yet been configured.&quot;</span><span class="json-comma">,</span></div>
-            <details class="json-node">
-              <summary><span class="json-key">&quot;anyOf&quot;</span>: [ <span class="json-fold">…</span> <span class="json-collapsed-close">]</span></summary>
-              <div class="json-children">
-                <details class="json-node">
-                  <summary>{ <span class="json-fold">…</span> <span class="json-collapsed-close">}<span class="json-comma">,</span></span></summary>
-                  <div class="json-children">
-                    <div class="json-line"><span class="json-key">&quot;pattern&quot;</span>: <span class="json-string">&quot;^auto$&quot;</span></div>
-                  </div>
-                  <div class="json-close">}<span class="json-comma">,</span></div>
-                </details>
-                <details class="json-node">
-                  <summary>{ <span class="json-fold">…</span> <span class="json-collapsed-close">}<span class="json-comma">,</span></span></summary>
-                  <div class="json-children">
-                    <div class="json-line"><span class="json-key">&quot;format&quot;</span>: <span class="json-string">&quot;uri&quot;</span><span class="json-comma">,</span></div>
-                    <div class="json-line"><span class="json-key">&quot;pattern&quot;</span>: <span class="json-string">&quot;^wss?://.*&quot;</span></div>
-                  </div>
-                  <div class="json-close">}<span class="json-comma">,</span></div>
-                </details>
-                <details class="json-node">
-                  <summary>{ <span class="json-fold">…</span> <span class="json-collapsed-close">}</span></summary>
-                  <div class="json-children">
-                    <div class="json-line"><span class="json-key">&quot;type&quot;</span>: <span class="json-string">&quot;null&quot;</span></div>
-                  </div>
-                  <div class="json-close">}</div>
-                </details>
-              </div>
-              <div class="json-close">]</div>
-            </details>
-          </div>
-          <div class="json-close">}<span class="json-comma">,</span></div>
-        </details>
-        <details class="json-node">
-          <summary><span class="json-key">&quot;connection_authorization&quot;</span>: { <span class="json-fold">…</span> <span class="json-collapsed-close">}</span></summary>
-          <div class="json-children">
-            <details class="json-node">
-              <summary><span class="json-key">&quot;type&quot;</span>: [ <span class="json-fold">…</span> <span class="json-collapsed-close">]<span class="json-comma">,</span></span></summary>
-              <div class="json-children">
-                <div class="json-line"><span class="json-string">&quot;string&quot;</span><span class="json-comma">,</span></div>
-                <div class="json-line"><span class="json-string">&quot;boolean&quot;</span></div>
-              </div>
-              <div class="json-close">]<span class="json-comma">,</span></div>
-            </details>
-            <div class="json-line"><span class="json-key">&quot;description&quot;</span>: <span class="json-string">&quot;Indication of whether authorization is required to make a connection. If the parameter is set to auto the Sender should establish for itself whether authorization should be used, based on its own internal configuration.&quot;</span><span class="json-comma">,</span></div>
-            <details class="json-node">
-              <summary><span class="json-key">&quot;enum&quot;</span>: [ <span class="json-fold">…</span> <span class="json-collapsed-close">]</span></summary>
-              <div class="json-children">
-                <div class="json-line"><span class="json-string">&quot;auto&quot;</span><span class="json-comma">,</span></div>
-                <div class="json-line"><span class="json-boolean">true</span><span class="json-comma">,</span></div>
-                <div class="json-line"><span class="json-boolean">false</span></div>
-              </div>
-              <div class="json-close">]</div>
-            </details>
-          </div>
-          <div class="json-close">}</div>
-        </details>
-      </div>
-      <div class="json-close">}<span class="json-comma">,</span></div>
-    </details>
-    <details class="json-node">
-      <summary><span class="json-key">&quot;patternProperties&quot;</span>: { <span class="json-fold">…</span> <span class="json-collapsed-close">}<span class="json-comma">,</span></span></summary>
-      <div class="json-children">
-        <details class="json-node">
-          <summary><span class="json-key">&quot;^ext_[a-zA-Z0-9_]+$&quot;</span>: { <span class="json-fold">…</span> <span class="json-collapsed-close">}</span></summary>
-          <div class="json-children">
-            <div class="json-line"><span class="json-key">&quot;$schema&quot;</span>: <span class="json-string">&quot;http://json-schema.org/draft-04/schema#&quot;</span><span class="json-comma">,</span></div>
-            <div class="json-line"><span class="json-key">&quot;description&quot;</span>: <span class="json-string">&quot;Describes external Sender transport parameters defined in other AMWA specifications. The constraints in this schema are minimum constraints, but may be further constrained at the constraints endpoint.&quot;</span><span class="json-comma">,</span></div>
-            <div class="json-line"><span class="json-key">&quot;title&quot;</span>: <span class="json-string">&quot;External Sender Transport Parameters&quot;</span><span class="json-comma">,</span></div>
-            <details class="json-node">
-              <summary><span class="json-key">&quot;type&quot;</span>: [ <span class="json-fold">…</span> <span class="json-collapsed-close">]</span></summary>
-              <div class="json-children">
-                <div class="json-line"><span class="json-string">&quot;string&quot;</span><span class="json-comma">,</span></div>
-                <div class="json-line"><span class="json-string">&quot;boolean&quot;</span><span class="json-comma">,</span></div>
-                <div class="json-line"><span class="json-string">&quot;null&quot;</span><span class="json-comma">,</span></div>
-                <div class="json-line"><span class="json-string">&quot;number&quot;</span></div>
-              </div>
-              <div class="json-close">]</div>
-            </details>
-          </div>
-          <div class="json-close">}</div>
-        </details>
-      </div>
-      <div class="json-close">}<span class="json-comma">,</span></div>
-    </details>
-    <div class="json-line"><span class="json-key">&quot;additionalProperties&quot;</span>: <span class="json-boolean">false</span></div>
-  </div>
-  <div class="json-close">}</div>
-</details>
+  <pre class="source-viewer-raw" hidden><code></code></pre>
 </div></p>
 </div>
 </div>
@@ -3541,12 +3351,18 @@
     
       
       
-      <script id="__config" type="application/json">{"annotate":null,"base":"../..","features":[],"search":"../../assets/javascripts/workers/search.7d14d953.min.js","tags":null,"translations":{"clipboard.copied":"Copied to clipboard","clipboard.copy":"Copy to clipboard","search.result.more.one":"1 more on this page","search.result.more.other":"# more on this page","search.result.none":"No matching documents","search.result.one":"1 matching document","search.result.other":"# matching documents","search.result.placeholder":"Type to start searching","search.result.term.missing":"Missing","select.version":"Select version"},"version":{"provider":"mike"}}</script>
+      
+      
+        
+        
+      <script id="__config" type="application/json">{"annotate":null,"base":"../..","features":[],"redirect":null,"search":"../../assets/javascripts/workers/search.7d14d953.min.js","tags":null,"translations":{"clipboard.copied":"Copied to clipboard","clipboard.copy":"Copy to clipboard","search.result.more.one":"1 more on this page","search.result.more.other":"# more on this page","search.result.none":"No matching documents","search.result.one":"1 matching document","search.result.other":"# matching documents","search.result.placeholder":"Type to start searching","search.result.term.missing":"Missing","select.version":"Select version"},"version":{"provider":"mike"}}</script>
     
     
-      <script src="../../assets/javascripts/bundle.49251538.min.js"></script>
+      <script src="../../assets/javascripts/bundle.8dcc8e9c.min.js"></script>
       
         <script src="../../javascripts/json-viewer.js"></script>
+      
+        <script src="../../javascripts/amwa-branding.js"></script>
       
     
   </body>

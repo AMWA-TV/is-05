@@ -23,7 +23,7 @@
       
       
       <link rel="icon" href="../assets/images/favicon.png">
-      <meta name="generator" content="zensical-0.0.57">
+      <meta name="generator" content="zensical-0.0.62">
     
     
       
@@ -34,7 +34,7 @@
       
         
       
-      <link rel="stylesheet" href="../assets/stylesheets/modern/main.5da3a30f.min.css">
+      <link rel="stylesheet" href="../assets/stylesheets/modern/main.ce62732f.min.css">
       
       
 
@@ -54,6 +54,8 @@
     
     
       <link rel="stylesheet" href="../stylesheets/extra.css">
+    
+      <link rel="stylesheet" href="../stylesheets/amwa-branding.css">
     
     <script>__md_scope=new URL("..",location),__md_scope.pathname.endsWith("/")||(__md_scope=new URL(__md_scope.pathname+"/",location)),__md_hash=e=>[...e].reduce(((e,t)=>(e<<5)-e+t.charCodeAt(0)),0),__md_get=(e,t=localStorage,_=__md_scope)=>JSON.parse(t.getItem(_.pathname+"."+e)),__md_set=(e,t,_=localStorage,a=__md_scope)=>{try{_.setItem(a.pathname+"."+e,JSON.stringify(t))}catch(e){}},document.documentElement.setAttribute("data-platform",navigator.platform)</script>
     
@@ -3503,11 +3505,11 @@
 <p>In order to permit web-based control interfaces to be hosted remotely, all NMOS APIs MUST implement valid CORS HTTP headers in responses to all requests.</p>
 <p>In addition to this, where highlighted in the API specifications servers MUST respond to HTTP pre-flight <code>OPTIONS</code> requests. Servers MAY additionally support HTTP <code>OPTIONS</code> requests made to any other API resource.</p>
 <p>In order to simplify development, the following headers MAY be returned in order to remove these restrictions as far as possible. Note that these are very relaxed and possibly not suitable for a production deployment.</p>
-<p><code>http
-Access-Control-Allow-Origin: *
-Access-Control-Allow-Methods: GET, PUT, POST, PATCH, HEAD, OPTIONS, DELETE
-Access-Control-Allow-Headers: Content-Type, Accept
-Access-Control-Max-Age: 3600</code></p>
+<div class="highlight"><pre><span></span><code><span class="err">Access-Control-Allow-Origin: *</span>
+<span class="err">Access-Control-Allow-Methods: GET, PUT, POST, PATCH, HEAD, OPTIONS, DELETE</span>
+<span class="err">Access-Control-Allow-Headers: Content-Type, Accept</span>
+<span class="err">Access-Control-Max-Age: 3600</span>
+</code></pre></div>
 <p>To ensure compatibility, the response <code>Access-Control-Allow-Headers</code> could be set from the request's <code>Access-Control-Request-Headers</code>.</p>
 <h2 id="use-of-local-hostnames">Use of <code>.local</code> Hostnames</h2>
 <p>Where <code>href</code> or <code>host</code> attributes are specified in the APIs, it is strongly RECOMMENDED to use either IP addresses or hostnames which are resolvable using unicast DNS. Whilst <code>.local</code> hostnames are convenient in a zero-configuration layer 2 network segment, these are not usually resolvable beyond these boundaries. As this specification is intended for use between layer 3 network segments, use of these hostnames can result in Nodes appearing inaccessible.</p>
@@ -3581,12 +3583,18 @@ Access-Control-Max-Age: 3600</code></p>
     
       
       
-      <script id="__config" type="application/json">{"annotate":null,"base":"..","features":[],"search":"../assets/javascripts/workers/search.7d14d953.min.js","tags":null,"translations":{"clipboard.copied":"Copied to clipboard","clipboard.copy":"Copy to clipboard","search.result.more.one":"1 more on this page","search.result.more.other":"# more on this page","search.result.none":"No matching documents","search.result.one":"1 matching document","search.result.other":"# matching documents","search.result.placeholder":"Type to start searching","search.result.term.missing":"Missing","select.version":"Select version"},"version":{"provider":"mike"}}</script>
+      
+      
+        
+        
+      <script id="__config" type="application/json">{"annotate":null,"base":"..","features":[],"redirect":null,"search":"../assets/javascripts/workers/search.7d14d953.min.js","tags":null,"translations":{"clipboard.copied":"Copied to clipboard","clipboard.copy":"Copy to clipboard","search.result.more.one":"1 more on this page","search.result.more.other":"# more on this page","search.result.none":"No matching documents","search.result.one":"1 matching document","search.result.other":"# matching documents","search.result.placeholder":"Type to start searching","search.result.term.missing":"Missing","select.version":"Select version"},"version":{"provider":"mike"}}</script>
     
     
-      <script src="../assets/javascripts/bundle.49251538.min.js"></script>
+      <script src="../assets/javascripts/bundle.8dcc8e9c.min.js"></script>
       
         <script src="../javascripts/json-viewer.js"></script>
+      
+        <script src="../javascripts/amwa-branding.js"></script>
       
     
   </body>
