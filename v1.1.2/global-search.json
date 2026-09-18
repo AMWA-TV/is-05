@@ -1,0 +1,648 @@
+{
+  "version": 1,
+  "repository": "AMWA-TV/is-05",
+  "documents": [
+    {
+      "title": "ConnectionAPI",
+      "url": "https://specs.amwa.tv/new/is-05/latest/APIs/ConnectionAPI/",
+      "text": "ConnectionAPI ConnectionAPI ConnectionAPI - AMWA IS-05 NMOS Device Connection Management Specification Skip to content ConnectionAPI The Connection API is exposed by NMOS Devices as a standard control interface for management of inter-device connnections. Open ConnectionAPI API documentation",
+      "repository": "AMWA-TV/is-05"
+    },
+    {
+      "title": "Connection version v1.1",
+      "url": "https://specs.amwa.tv/new/is-05/latest/APIs/ConnectionAPI/",
+      "text": "Connection version v1.1 Connection version v1.1 Overview Endpoint Discovery API Structure Base HTTP status code 200 Body Bulk control interface HTTP status code 200 Body HTTP status code 405 HTTP status code 200 HTTP status code 403 Body HTTP status code 200 Body HTTP status code 400 Body HTTP status code 405 HTTP status code 200 HTTP status code 403 Body HTTP status code 200 Body HTTP status code 400 Body Single control interface HTTP status code 200 Body HTTP status code 200 Body URI Parameters HTTP status code 200 Body HTTP status code 404 HTTP status code 409 Headers URI Parameters HTTP status code 200 Body HTTP status code 404 HTTP status code 409 Headers URI Parameters HTTP status code 200 Body HTTP status code 404 HTTP status code 409 Headers URI Parameters HTTP status code 200 HTTP status code 403 HTTP status code 404 URI Parameters Body HTTP status code 200 Body HTTP status code 202 Body HTTP status code 400 Body HTTP status code 404 HTTP status code 409 Headers HTTP status code 423 HTTP status code 500 Body URI Parameters HTTP status code 200 Body HTTP status code 404 HTTP status code 409 Headers URI Parameters HTTP status code 200 HTTP status code 307 HTTP status code 404 HTTP status code 409 Headers URI Parameters HTTP status code 200 Body HTTP status code 404 HTTP status code 409 Headers HTTP status code 200 Body URI Parameters HTTP status code 200 Body HTTP status code 404 HTTP status code 409 Headers URI Parameters HTTP status code 200 Body HTTP status code 404 HTTP status code 409 Headers URI Parameters HTTP status code 200 Body HTTP status code 404 HTTP status code 409 Headers URI Parameters HTTP status code 200 HTTP status code 403 HTTP status code 404 URI Parameters Body HTTP status code 200 Body HTTP status code 202 Body HTTP status code 400 Body HTTP status code 404 HTTP status code 409 Headers HTTP status code 423 HTTP status code 500 Body URI Parameters HTTP status code 200 Body HTTP status code 404 HTTP status code 409 Headers URI Parameters HTTP status code 200 Body HTTP status code 404 HTTP status code 409 Headers Connection Connection version v1.1 http://api.example.com/x-nmos/connection/{version} version : required (v1.1) Overview The Connection API is exposed by NMOS Devices as a standard control interface for management of inter-device connnections. Endpoint Discovery The Connection API URL for an NMOS Device is advertised in the list of controls for that device in the Node API using type: \"urn:x-nmos:control:sr-ctrl/{version}\". This information is populated into the NMOS registry via the standard registration mechanism, so it is discoverable through the Query API (see NMOS Discovery and Registration specification). API Structure The API presents two distinct interfaces. A \"bulk\" interface for controlling multiple senders/receivers, and a \"single\" interface to control single devices. Base / get get List of modes available from this API - single and bulk. Both are compulsory parts of the spec. × get / List of modes available from this API - single and bulk. Both are compulsory parts of the spec. Response HTTP status code 200 Body Media type : application/json Type : { \"$schema\": \"http://json-schema.org/draft-04/schema#\", \"type\": \"array\", \"description\": \"Describes the Connection API base resource\", \"title\": \"Connection API base resource\", \"items\": { \"type\": \"string\", \"enum\": [ \"bulk/\", \"single/\" ] }, \"minItems\": 2, \"maxItems\": 2, \"uniqueItems\": true } Example : [ \"bulk/\", \"single/\" ] Bulk control interface /bulk get get Senders / receivers options × get /bulk Senders / receivers options Response HTTP status code 200 Body Media type : application/json Type : { \"$schema\": \"http://json-schema.org/draft-04/schema#\", \"type\": \"array\", \"description\": \"Describes the Connection API /bulk base resource\", \"title\": \"Connection API /bulk base resource\", \"items\": { \"type\": \"string\", \"enum\": [ \"senders/\", \"receivers/\" ] }, \"minItems\": 2, \"maxItems\": 2, \"uniqueItems\": true } Example : [ \"senders/\", \"receivers/\" ] /bulk /senders get options post Target for bulk staging of transport parameters. get options A pre-flight check generally used for Cross-Origin Resource Sharing (CORS) purposes post Allows staging and activation of multiple sender parameters at the same time in a single request. × get /bulk /senders Response HTTP status code 405 The API should actively return an HTTP 405 if a GET is called on the endpoint. × options /bulk /senders A pre-flight check generally used for Cross-Origin Resource Sharing (CORS) purposes Response HTTP status code 200 HTTP status code 403 × post /bulk /senders Allows staging and activation of multiple sender parameters at the same time in a single request. Request Response Body Media type : application/json Type : { \"$schema\": \"http://json-schema.org/draft-04/schema#\", \"type\": \"array\", \"description\": \"Describes a bulk sender update resource\", \"title\": \"Bulk sender resource\", \"items\": { \"type\": \"object\", \"additionalProperties\": false, \"required\": [ \"id\", \"params\" ], \"properties\": { \"id\": { \"description\": \"ID of the target sender to apply parameters to\", \"type\": \"string\", \"pattern\": \"^[0-9a-f]{8}-[0-9a-f]{4}-[1-5][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$\" }, \"params\": { \"$ref\": \"sender-stage-schema.json\" } } } } Example : [{ \"id\": \"0a174530-e3cf-11e6-bf01-fe55135034f3\", \"params\": { \"master_enable\": true, \"activation\": { \"mode\": \"activate_scheduled_absolute\", \"requested_time\": \"1496759200:0\" }, \"transport_params\": [{ \"fec_enabled\": true, \"rtcp_enabled\": true, \"rtp_enabled\": true }, { \"fec_enabled\": true, \"rtcp_enabled\": true, \"rtp_enabled\": true }] } }, { \"id\": \"7a3ebebe-0405-11e7-93ae-92361f002671\", \"params\": { \"master_enable\": true, \"activation\": { \"mode\": \"activate_scheduled_relative\", \"requested_time\": \"2:0\" }, \"transport_params\": [{ \"fec_enabled\": true }, { \"fec_enabled\": true }] } } ] HTTP status code 200 Gives the status of each of the individual senders after the staging. Will be returned even if individual params did not validate. The",
+      "repository": "AMWA-TV/is-05"
+    },
+    {
+      "title": "APIs",
+      "url": "https://specs.amwa.tv/new/is-05/latest/APIs/",
+      "text": "APIs APIs APIs - AMWA IS-05 NMOS Device Connection Management Specification Skip to content APIs ConnectionAPI",
+      "repository": "AMWA-TV/is-05"
+    },
+    {
+      "title": "APIs: Client Side Implementation Notes",
+      "url": "https://specs.amwa.tv/new/is-05/latest/APIs%20-%20Client%20Side%20Implementation/",
+      "text": "APIs: Client Side Implementation Notes APIs: Client Side Implementation Notes Conforming to Schemas RTP Operating Point Failure Modes Client Side Implementation - AMWA IS-05 NMOS Device Connection Management Specification Skip to content APIs: Client Side Implementation Notes (c) AMWA 2017, CC Attribution-NoDerivatives 4.0 International (CC BY-ND 4.0) Conforming to Schemas The Connection API schemas define sets of parameters for each supported transport type; these are also described in pages in the Behaviour section of these documents. These pages define which parameters are always present (core), and which are feature-dependent; a client can determine what a Device supports by getting its /constraints resource, and SHOULD parse this resource in all cases as a Device might have a constrained range or enumeration of supported values, even for core parameters. RTP Operating Point When establishing an RTP connection between two Devices that implement NMOS Connection Management, the expectation is that the primary means of connection will be to supply the SDP file from the Sender to the Receiver. This ensures Receivers have the media information in the SDP file. If desired the client can adjust individual transport parameters on the Receiver. For example it could use the rtcp_enable parameter to toggle RTCP operation. When receiving from a (non-NMOS) Device which does not provide an SDP file, a connection can be established using transport parameters alone. In this case it might be necessary to provide media information out-of-band. Failure Modes If a client receives an HTTP 500 (Internal Server Error) response code from the API a failure has occurred and the error field can be used to indicate to a user that the Device might be in a bad state. In such a case the client SHOULD refresh the values in the /staged and /active endpoints to reflect the current state of the API. If an activation is triggered across multiple Senders and Receivers using the /bulk interface, Senders and Receivers will transition to their new active parameters, even if some Senders or Receivers in the same salvo fail to activate. It is the responsibility of the client to recover from this situation if desired, including reverting Senders and Receivers that have successfully activated back to their original state where necessary.",
+      "repository": "AMWA-TV/is-05"
+    },
+    {
+      "title": "APIs: Server Side Implementation Notes",
+      "url": "https://specs.amwa.tv/new/is-05/latest/APIs%20-%20Server%20Side%20Implementation/",
+      "text": "APIs: Server Side Implementation Notes APIs: Server Side Implementation Notes Cross-Origin Resource Sharing (CORS) Use of .local Hostnames Uninitialised Senders and Receivers Use of auto Constraints Use of JSON Schema with Constraints Constraining Interfaces Staged Requests Precedence Server Side Implementation - AMWA IS-05 NMOS Device Connection Management Specification Skip to content APIs: Server Side Implementation Notes (c) AMWA 2017, CC Attribution-NoDerivatives 4.0 International (CC BY-ND 4.0) Cross-Origin Resource Sharing (CORS) In order to permit web-based control interfaces to be hosted remotely, all NMOS APIs MUST implement valid CORS HTTP headers in responses to all requests. In addition to this, where highlighted in the API specifications servers MUST respond to HTTP pre-flight OPTIONS requests. Servers MAY additionally support HTTP OPTIONS requests made to any other API resource. In order to simplify development, the following headers MAY be returned in order to remove these restrictions as far as possible. Note that these are very relaxed and possibly not suitable for a production deployment. Access-Control-Allow-Origin: * Access-Control-Allow-Methods: GET, PUT, POST, PATCH, HEAD, OPTIONS, DELETE Access-Control-Allow-Headers: Content-Type, Accept Access-Control-Max-Age: 3600 To ensure compatibility, the response Access-Control-Allow-Headers could be set from the request's Access-Control-Request-Headers . Use of .local Hostnames Where href or host attributes are specified in the APIs, it is strongly RECOMMENDED to use either IP addresses or hostnames which are resolvable using unicast DNS. Whilst .local hostnames are convenient in a zero-configuration layer 2 network segment, these are not usually resolvable beyond these boundaries. As this specification is intended for use between layer 3 network segments, use of these hostnames can result in Nodes appearing inaccessible. Uninitialised Senders and Receivers When a Sender or Receiver is first started it might not have all the parameters it needs to operate. For example IP addresses and port numbers might not be set. In such cases: Senders and Receivers SHOULD present sensible default values on transport parameter endpoints. Suggested defaults are given in the relevant schemas. Any default parameters such as port numbers specified in relevant RFCs SHOULD be followed. Parameters where no sensible defaults exist, such as source IP address on a Receiver, SHOULD be set to null . Senders that are not configured (for example have a null source IP address value) SHOULD return 404 (Not Found) on their active transport file endpoint, until a usable set of parameters has been activated. (In other cases, Senders and Receivers might start with parameters already configured, for example through use of a configuration file or manual entry of parameters.) Use of auto Many transport parameters MAY be set to \"auto\" in the /staged endpoint, to tell the Sender or Receiver to select the parameter for itself. In many cases this is a simple operation, and the behaviour is very clearly defined in the relevant transport parameter schemas. For example a port number might be offset from the RTP port number by a pre-determined value. The specification makes suggestions of a sensible default value for \"auto\" to resolve to, but the Sender or Receiver might choose any value permitted by the schema and constraints. Transport parameters which need to support \"auto\" are defined in the specification. Implementations SHOULD NOT indicate \"auto\" as an option via their /constraints endpoint. In some cases the behaviour is more complex, and can be determined by the vendor. These cases are indicated in section 4 for the specific transport types. Constraints Use of JSON Schema with Constraints It is strongly RECOMMENDED that API implementations validate requests received from clients against the JSON schema included in this specification. Where additional constraints are applied by the API using the /constraints resource, these restrictions SHOULD be merged with the provided JSON schema in order to provide consistent validation. Constraining Interfaces The constraints are used to advertise the available network interfaces on the Device. This happens through use of an enum constraint, which contains an array of the available interface IP addresses. For interfaces capable of operating with IPv6 and IPv4 each interface SHOULD have two entries containing the interface's IPv4 and IPv6 addresses. Examples are provided in the API documentation. Staged Requests Precedence It is possible to make a PATCH request to the /staged Receiver endpoint containing both a transport file and transport parameters. Where the content of the transport file and the transport parameters are not in agreement, the transport parameters take precedence. For example, if a transport file specifies a multicast group address of 232.19.133.29 but the transport parameter multicast_ip specified a multicast group of 232.20.44.7 then the Receiver will use 232.20.44.7 .",
+      "repository": "AMWA-TV/is-05"
+    },
+    {
+      "title": "Behaviour",
+      "url": "https://specs.amwa.tv/new/is-05/latest/Behaviour/",
+      "text": "Behaviour Behaviour Re-Activating Senders & Receivers Transport Files & Caching Multi-Client Operation In-Progress Activations Connection Status 'Salvo' Operation Scheduled Activations Externally Defined Parameters Behaviour - AMWA IS-05 NMOS Device Connection Management Specification Skip to content Behaviour (c) AMWA 2017, CC Attribution-NoDerivatives 4.0 International (CC BY-ND 4.0) Re-Activating Senders & Receivers If an explicit activation is performed against a Sender or Receiver, the API MUST request a re-application of settings to the underlying Sender or Receiver implementation whether the setting have changed or not. For example in the case of multicast Receivers it is suggested that this involves an explicit IGMP leave and join. For a Sender this might involve stopping and re-starting the stream. Transport Files & Caching It is strongly RECOMMENDED that the following caching headers are included via the /transportfile endpoint (or whatever this endpoint redirects to). Cache-Control: no-cache This is important to ensure that connection management clients do not cache the contents of transport files which are liable to change. Multi-Client Operation In environments where multiple clients might be operating against a single Connection API, it is possible that staging of parameters could result in conflicts. There is intentionally no mechanism to prevent this in the API, however clients SHOULD examine the results of HTTP PATCH operations which will return the full complement of current settings, allowing the client to confirm that only the changes it had requested have been made. In-Progress Activations When an implementation is in the process of activating a new set of transport parameters, concurrent requests to the API from other clients could result in unexpected results. In order to minimise these cases, implementations are RECOMMENDED to adopt the following practice: While an activation is in progress, concurrent GET requests to the /active resource SHOULD reflect the current configuration of the Sender or Receiver as accurately as possible at the instant of the request. If an API implementation receives a new PATCH request to the /staged resource while an activation is in progress it SHOULD block the request until the previous activation is complete. Any GET requests to /staged during this time MAY also be blocked until the activation is complete. Connection Status The Connection API does not take any responsibility for monitoring the status of a connection between a Sender and a Receiver, for example whether a Receiver is currently receiving packets. As such a loss of packets at a connectionless Receiver (e.g. UDP) or a recoverable error on a connection-oriented transport (e.g. TCP) MUST NOT be indicated via changes to the /active resource. Where a connection-oriented transport encounters a recoverable error (such as a broken connection or timeout), the underlying Sender or Receiver SHOULD attempt to recover from the error unless otherwise configured not to do so. This could involve the use of exponential backoff up to a defined limit. Where a Sender or Receiver is permanently unable to recover a connection-oriented transport without user interaction, for example due to erroneous configuration which was not identified prior to activation, the implementation MAY set master_enable to false in the /active resource. 'Salvo' Operation Where a server implementation supports concurrent application of settings changes to underlying Senders and Receivers, it could choose to perform 'bulk' resource operations in a parallel fashion internally. This is an implementation decision and is not a requirement of this specification. If a 'bulk' request includes multiple sets of parameters for the same Sender or Receiver ID the behaviour is defined by the implementation. In order to maximise interoperability clients are encouraged not to include the same Sender or Receiver ID multiple times in the same 'bulk' request. Scheduled Activations IS-05 provides a mechanism whereby the activation of staged transport parameters can be performed at a particular TAI time, or after a given interval. In NMOS APIs, a TAI timestamp is represented as a string of the format: <seconds>:<nanoseconds> . Note the : as opposed to a . , indicating that the value 1439299836:10 is interpreted as 1439299836 seconds and 10 nanoseconds. The primary use case for this behaviour is to allow the synchronisation of large salvo operations, where multiple systems carry out a change in transport parameters simultaneously. A controller will stage parameters with multiple IS-05 APIs with the same activation timestamp, and know that activation will occur at the same time on all devices regardless of the latency between the controller and the device. It is not intended to act as a mechanism for scheduling activations far in the future. In the event of an error occurring between scheduling an activation and the activation time, the IS-05 transport parameters SHOULD reflect the current configuration of the device. For example, if a sender is no longer sending data at all it would set master_enable to false . API clients SHOULD check back with the API after the expected activation time to ensure activations have completed successfully, and that the device is in the expected state. Note that a client would normally expect to see a change in the IS-04 version timestamp upon a successful activation of transport parameters, and SHOULD monitor for this version timestamp update via an IS-04 Query API WebSocket subscription where IS-05 is being used alongside IS-04. Externally Defined Parameters IS-05 aims to provide a defined core set of parameters for each supported transport type. These parameters are based upon the standard(s) which define the transport type. In some cases it is necessary to advertise and accept additional parameters in order to make a connection, for example where an external specification extends an existing transport ",
+      "repository": "AMWA-TV/is-05"
+    },
+    {
+      "title": "Behaviour: MQTT Transport Type",
+      "url": "https://specs.amwa.tv/new/is-05/latest/Behaviour%20-%20MQTT%20Transport%20Type/",
+      "text": "Behaviour: MQTT Transport Type Behaviour: MQTT Transport Type Transport File Resource Parameter Sets Receiver Parameter Sets Sender Parameter Sets Use of auto MQTT Transport Type - AMWA IS-05 NMOS Device Connection Management Specification Skip to content Behaviour: MQTT Transport Type (c) AMWA 2017, CC Attribution-NoDerivatives 4.0 International (CC BY-ND 4.0) Transport File Resource The Sender /transportfile resource SHOULD NOT be used for this transport type. This resource SHOULD return a 404 (Not Found) error code if requested. Parameter Sets Sender and Receiver Connection Management endpoints MUST support a core parameter set as follows. Receiver Parameter Sets Core Parameters source_host source_port broker_topic broker_protocol broker_authorization connection_status_broker_topic Sender Parameter Sets Core Parameters destination_host destination_port broker_topic broker_protocol broker_authorization connection_status_broker_topic Use of auto Parameters which support use of auto are identified in the schemas.",
+      "repository": "AMWA-TV/is-05"
+    },
+    {
+      "title": "Behaviour: RTP Transport Type",
+      "url": "https://specs.amwa.tv/new/is-05/latest/Behaviour%20-%20RTP%20Transport%20Type/",
+      "text": "Behaviour: RTP Transport Type Behaviour: RTP Transport Type Transport File Resource Parameter Sets Receiver Parameter Sets Sender Parameter Sets Use of auto Sender source_ip and Receiver interface_ip Sender destination_ip Behaviour of SDP Media Information Interpretation of SDP Files Unicast Source Specific Multicast Any Source Multicast Operation with SMPTE 2022-5 Operation with SMPTE 2022-7 Separate Source Addresses Separate Destination Addresses Temporal Redundancy Operation with RTCP RTP Transport Type - AMWA IS-05 NMOS Device Connection Management Specification Skip to content Behaviour: RTP Transport Type (c) AMWA 2017, CC Attribution-NoDerivatives 4.0 International (CC BY-ND 4.0) Transport File Resource The Sender /transportfile resource SHOULD use the following HTTP header when returning the transport file: Content-Type: application/sdp Parameter Sets Sender and Receiver Connection Management endpoints MUST support a core parameter set. In addition they MAY support multicast, FEC and/or RTCP parameter sets. Endpoints MUST support all parameters in a parameter set, or none at all. Receiver Parameter Sets Core Parameters source_ip interface_ip destination_port rtp_enabled Multicast Parameters multicast_ip FEC Parameters fec_enabled fec_destination_ip fec_mode fec1D_destination_port fec2D_destination_port RTCP Parameters rtcp_enabled rtcp_destination_ip rtcp_destination_port Sender Parameter Sets Core Parameters source_ip destination_ip source_port destination_port rtp_enabled FEC Parameters fec_enabled fec_destination_ip fec_type fec_mode fec_block_width fec_block_height fec1D_destination_port fec2D_destination_port fec1D_source_port fec2D_source_port RTCP Parameters rtcp_enabled rtcp_destination_ip rtcp_destination_port rtcp_source_port Use of auto Parameters which support use of auto are identified in the schemas. This section clarifies the use of auto in some cases that might be unclear. Sender source_ip and Receiver interface_ip These parameters specify the interface binding to use for sending or receiving traffic. Use of auto here means the Device SHOULD determine for itself which of its interfaces is the most appropriate to use. In Devices where only one interface is available for media traffic this is trivial. In Devices with multiple media network interfaces Devices could use mechanisms such as routing tables, out-of-band controls or evaluation of loading on the interfaces. Sender destination_ip If this parameter is set to auto the Sender is expected to automatically select an address to send on. This could be determined by an external network control system, or through technologies such as MADCAP (RFC 2730) or ZMAAP. Behaviour of SDP Media Information SDP files contain both connection information and media information. When a parameter set is activated with an SDP file present in data the Receiver SHOULD use the media information in the SDP file. Interpretation of SDP Files All Senders and Receivers SHOULD comply with RFC 4566 (Session Description Protocol) when creating and parsing SDP files. Multicast Senders and Receivers SHOULD additionally comply with RFC 4570 (SDP Source Filters). Three examples are given below, showing an SDP file and the transport parameters that would be presented at the /staged endpoint by a single-legged Receiver that has parsed the file. A Receiver sets the rtp_enabled parameter to true for each leg it has configured from the SDP file, unless overridden by the requested transport_params as noted below. In the event that a Receiver is presented with an SDP file and a set of transport parameters that contradict each other in the same PATCH request, the transport parameters take priority over the SDP file and MUST be the parameters used for activation. This only applies in the case where there is contradiction between the SDP file and transport parameters within a single PATCH request, in all other cases the most recently received PATCH request takes priority. Unicast v=0 o=- 2890844526 2890842807 IN IP4 10.47.16.5 s=SDP Example c=IN IP4 10.46.16.34/127 t=2873397496 2873404696 a=recvonly m=video 51372 RTP/AVP 99 a=rtpmap:99 h263-1998/90000 \"transport_params\" : [ { \"source_ip\" : null , \"multicast_ip\" : null , \"interface_ip\" : \"10.46.16.34\" , \"destination_port\" : 51372 , \"rtp_enabled\" : true } ] Source Specific Multicast v=0 o=- 1497010742 1497010742 IN IP4 172.29.26.24 s=SDP Example t=2873397496 2873404696 m=video 5000 RTP/AVP 103 c=IN IP4 232.21.21.133/32 a=source-filter: incl IN IP4 232.21.21.133 172.29.226.24 a=rtpmap:103 raw/90000 \"transport_params\" : [ { \"source_ip\" : \"172.29.226.24\" , \"multicast_ip\" : \"232.21.21.133\" , \"interface_ip\" : \"auto\" , \"destination_port\" : 5000 , \"rtp_enabled\" : true } ] Any Source Multicast v=0 o=- 1497010742 1497010742 IN IP4 172.29.26.24 s=SDP Example t=2873397496 2873404696 m=video 5000 RTP/AVP 103 c=IN IP4 239.21.21.133/32 a=rtpmap:103 raw/90000 \"transport_params\" : [ { \"source_ip\" : null , \"multicast_ip\" : \"239.21.21.133\" , \"interface_ip\" : \"auto\" , \"destination_port\" : 5000 , \"rtp_enabled\" : true } ] Operation with SMPTE 2022-5 SMPTE 2022-5 describes RTP streams with forward error correction (FEC), and is supported by the Connection Management Specification. This support takes the form of the FEC transport parameter set described in Parameter Sets . Note that Senders have additional parameters used to specify the type of FEC to be used and matrix rows and columns, which are not present on the Receiver side. In SMPTE 2022-5 this information is conveyed in the FEC stream headers, and as such does not need to be conveyed separately in Connection Management. Connection APIs supporting SMPTE 2022-5 MUST comply with RFC 6364 when creating and interpreting SDP files. Implementers are advised to consider the guidance given in VSF TR-04. An example SDP file from RFC 6364 is shown below, followed by the transport parameters that would be presented on the /staged endpoint by a Receiver that has parsed the file. v=0 o=ali",
+      "repository": "AMWA-TV/is-05"
+    },
+    {
+      "title": "Behaviour: WebSocket Transport Type",
+      "url": "https://specs.amwa.tv/new/is-05/latest/Behaviour%20-%20WebSocket%20Transport%20Type/",
+      "text": "Behaviour: WebSocket Transport Type Behaviour: WebSocket Transport Type Transport File Resource Parameter Sets Receiver Parameter Sets Sender Parameter Sets Use of auto WebSocket Transport Type - AMWA IS-05 NMOS Device Connection Management Specification Skip to content Behaviour: WebSocket Transport Type (c) AMWA 2017, CC Attribution-NoDerivatives 4.0 International (CC BY-ND 4.0) Transport File Resource The Sender /transportfile resource SHOULD NOT be used for this transport type. This resource SHOULD return a 404 (Not Found) error code if requested. Parameter Sets Sender and Receiver Connection Management endpoints MUST support a core parameter set as follows. Receiver Parameter Sets Core Parameters connection_uri connection_authorization Sender Parameter Sets Core Parameters connection_uri connection_authorization Use of auto Parameters which support use of auto are identified in the schemas.",
+      "repository": "AMWA-TV/is-05"
+    },
+    {
+      "title": "Controllers",
+      "url": "https://specs.amwa.tv/new/is-05/latest/Controllers/",
+      "text": "Controllers Controllers Introduction General HTTP APIs Connection Management Client Side Implementation Notes Interoperability Interoperability with IS-04 Interacting with Non-NMOS Devices Behaviour Operation with SMPTE 2022-7 Version Timestamp Sender Multicast Address TCP Sessions General - AMWA IS-05 NMOS Device Connection Management Specification Skip to content Controllers (c) AMWA 2022, CC Attribution-NoDerivatives 4.0 International (CC BY-ND 4.0) Introduction A Controller is Client software that interacts with the NMOS APIs to discover, connect and manage resources (Nodes, Devices, Senders and Receivers) within a networked media system. This document includes normative references to be followed when implementing a Controller. This document covers how the Controller interacts with the NMOS APIs only. It does not cover other features of the Controller software, such as presentation. This document does not cover any requirements relating to where a Controller is additionally acting as a Node (e.g. receiving monitoring information via IS-07). Where this document refers to a User, this can include both human operators who drive a Controller manually and automation systems that drive a Controller programmatically. General HTTP APIs Trailing Slashes Controllers appending paths to href type attributes MUST support URLs both with and without a trailing slash, to avoid doubled or missing slashes. Controllers performing requests other than GET or HEAD (i.e PUT , POST , DELETE , OPTIONS etc.) MUST use URLs with no trailing slash present. API Versions The versioning format is v<MAJOR>.<MINOR> * MINOR increments will be performed for non-breaking changes (such as the addition of attributes in a response) * MAJOR increments will be performed for breaking changes (such as the renaming of a resource or attribute) Versions MUST be represented as complete strings. Parsing MUST proceed as follows: separate into two strings, using the point ( . ) as a delimiter. Compare integer representations of MAJOR , MINOR version (such that v1.12 is greater than v1.5). Implementers of Controllers are RECOMMENDED to support multiple versions of the NMOS APIs simultaneously in order to ease the upgrade process in live facilities. Error Codes & Responses The NMOS APIs use HTTP status codes to indicate success, failure and other cases to Controllers as per RFC 7231 and related standards. As explicit handling of every possible HTTP response code is not expected, Controllers MUST implement generic handling for ranges of response codes ( 1xx , 2xx , 3xx , 4xx and 5xx ). However, where the API specifies explicit response codes the Controller SHOULD handle these cases explicitly. When a Controller performs GET and HEAD requests, it MUST correctly handle a 301 (Moved Permanently) redirect to accommodate the API implementations permitted in the APIs: URLs: Approach to Trailing Slashes section of this specification. If a Controller receives an HTTP 5xx or 4xx response code from the API, a failure has occurred. The Controller SHOULD display the content of the response's error field to the User if possible. Connection Management The Controller MUST implement connection management according to the APIs section of this specification. The Controller MUST be able to perform immediate activations of Senders and Receivers to configure connections between them via the IS-05 Connection API. The Controller MUST be able to perform an immediate activation to disable an active connection via the IS-05 Connection API. The Controller MUST monitor and update the connection status of all discovered IS-05 Senders and Receivers. For instance: * The Controller MUST identify that a connection to a Receiver has been activated. * The Controller MUST be able to identify that an NMOS Sender is connected to that Receiver. * The Controller MUST identify when the Receiver connection has been deactivated. Where making requests to a large number of Senders and/or Receivers on the same Device, Controllers SHOULD make use of the /bulk endpoint to bundle them into a single request. When altering the transport parameters in the /staged endpoint, the Controller SHOULD check the /constraints endpoint for the available choices for parameters accepted by the particular Sender or Receiver. When PATCH ing the transport parameters, parameters could possibly have changed since the last GET . Therefore the Controller SHOULD set parameters that are important for a connection (e.g. master_enable and rtp_enable ) in the PATCH request, even if the Controller believes they are already set as required. The Connection API includes a sender_id parameter in each Receiver's /active and /staged endpoints. Similarly, it includes a receiver_id parameter in each Sender's /active and /staged endpoints. When modifying transport_params or transport_file to configure a Receiver to connect with a specific NMOS Sender, for example, via unicast RTP or source-specific multicast, the Controller MUST set the sender_id parameter. Similarly, when modifying transport_params to configure a Sender to connect with a specific NMOS Receiver, for example, via unicast RTP, the Controller MUST set the receiver_id parameter. Otherwise, when modifying transport_params or transport_file , the Controller MUST set the sender_id or receiver_id parameter to null . Client Side Implementation Notes Controllers MUST adhere to the APIs: Client Side Implementation Notes described in this specification, such as the sections on Conformance to Schemas, RTP Operating Point, and Failure Modes. Interoperability Interoperability with IS-04 API Common Keys Controllers MUST follow the requirements for common API keys specified in the IS-04 APIs: Common Keys document including the requirements regarding use of URNs . Interacting with Non-NMOS Devices Controllers MUST follow the requirements for a Client interacting with non-NMOS Devices, as described in the Interoperability: Non-NMOS Devices section of this Specification. Be",
+      "repository": "AMWA-TV/is-05"
+    },
+    {
+      "title": "Interoperability",
+      "url": "https://specs.amwa.tv/new/is-05/latest/Interoperability/",
+      "text": "Interoperability Interoperability Interoperability - AMWA IS-05 NMOS Device Connection Management Specification Skip to content Interoperability (c) AMWA 2017, CC Attribution-NoDerivatives 4.0 International (CC BY-ND 4.0) The Connection API is intended to be used alongside other NMOS specifications, and can also be used alongside other common non-NMOS specifications. These documents cover common interoperability requirements when operating in either of these situations.",
+      "repository": "AMWA-TV/is-05"
+    },
+    {
+      "title": "Interoperability: IS-04",
+      "url": "https://specs.amwa.tv/new/is-05/latest/Interoperability%20-%20IS-04/",
+      "text": "Interoperability: IS-04 Interoperability: IS-04 Discovery Sender & Receiver IDs Version Increments Identifying Active Connections Support For Legacy IS-04 Connection Management IS-04 - AMWA IS-05 NMOS Device Connection Management Specification Skip to content Interoperability: IS-04 (c) AMWA 2017, CC Attribution-NoDerivatives 4.0 International (CC BY-ND 4.0) The Connection API shares a data model with the IS-04 specification, and as a result it is designed to be used alongside it. The following sub-sections identify correct behaviour for doing this. When this API is used alongside IS-04 in a deployment, the IS-04 APIs SHOULD be operating at version 1.2 or greater in order to ensure full interoperability. Discovery The Connection API SHOULD be advertised as a control endpoint when publishing a compliant NMOS Device. Control interfaces can identify all Devices which implement the Connection API by a type Uniform Resource Name (URN) having the base urn:x-nmos:control:sr-ctrl followed by a / character and the API version. The associated href is the URL of the Connection API base resource. Example: The controls attribute of a single NMOS Device ... \"controls\" : [ { \"type\" : \"urn:x-nmos:control:sr-ctrl/v1.1\" , \"href\" : \"http://192.168.10.3/x-nmos/connection/v1.1/\" } ] ... As shown above the API version is included in the type , and in the href . Further control endpoints for the Connection API MAY be advertised for Devices which support multiple versions simultaneously, or have multiple network interfaces. More details about multi-version support can be found in Upgrade Path . A given instance of the Connection API MAY offer control of multiple Devices in a Node from a single URI. Alternatively there MAY be multiple instances of the API on one Node, each corresponding to one Device. A separate endpoint for each Device's Connection Management instance MUST be advertised in the Device's controls , even if the URI is the same. API implementations MAY list an href with or without a trailing slash, provided that the trailing slash policy in APIs is adhered to. Implementers of clients need to avoid double or missing slashes when appending paths onto href s. Sender & Receiver IDs The UUIDs used to advertise Senders and Receivers in the Connection API MUST match those used in a corresponding IS-04 implementation. Version Increments In order to prevent unnecessary polling of the Connection API, changes to active connection parameters are signalled via the IS-04 versioning mechanism. When the active parameters of a Sender or Receiver are modified, or when a re-activation of the same parameters is performed, the version attribute of the relevant IS-04 Sender or Receiver MUST be incremented. Identifying Active Connections The Connection API includes a master_enable parameter in the /active endpoint of each Sender and Receiver. The Receiver endpoint also includes a sender_id parameter that can be used to indicate that the Receiver is connected to a specific NMOS Sender, for example, via unicast RTP or source-specific multicast. Similarly, the Sender endpoint includes a receiver_id parameter that can be used to indicate that the Sender is connected to a specific NMOS Receiver, for example, via unicast RTP. The API implementation MUST use these parameters to populate the subscription attribute of the corresponding IS-04 Sender or Receiver, according to the Behaviour: Nodes section of the IS-04 specification. It is the client's responsibility to set or unset (using null ) the sender_id or receiver_id parameters when modifying the transport_params or transport_file . Support For Legacy IS-04 Connection Management The Connection API supersedes the now deprecated method of updating the /target resource on Node API Receivers in order to establish connections. The two methods of operation are likely to co-exist until Version 2.0 of IS-04. Where a client establishes a connection via the Node API /target resource, which updates the Receiver's subscription object, the result on the Connection API SHOULD be as if the client had staged the parameters and requested an immediate activation to enable the Receiver. That is to say that the new parameters, including the sender_id and with master_enable set to true , will be reflected in both the /staged and /active endpoints of the Receiver. Where a client breaks a connection via the Node API /target resource, which updates the Receiver's subscription object, the result on the Connection API SHOULD be as if the client had requested an immediate activation with master_enable set to false . If staged modifications are present when a legacy activation is performed, these parameters MUST be discarded in favour of those provided via the Node API interface.",
+      "repository": "AMWA-TV/is-05"
+    },
+    {
+      "title": "Interoperability: Non-NMOS Devices",
+      "url": "https://specs.amwa.tv/new/is-05/latest/Interoperability%20-%20Non-NMOS%20Devices/",
+      "text": "Interoperability: Non-NMOS Devices Interoperability: Non-NMOS Devices Interacting with Non-NMOS Devices Non-NMOS Devices - AMWA IS-05 NMOS Device Connection Management Specification Skip to content Interoperability: Non-NMOS Devices (c) AMWA 2017, CC Attribution-NoDerivatives 4.0 International (CC BY-ND 4.0) Interacting with Non-NMOS Devices In practical deployments it is expected that some Devices will exist which do not support the NMOS specifications, but which do support matching transport protocols. When connecting to one of these Devices via the Connection API, it is the client's responsibility to set the sender_id parameter or receiver_id parameter to null . In cases where another connection management protocol is used to achieve this (for example RTSP in the case of the RTP transport), the Connection API MUST still be updated to reflect the running parameters which have been set via this alternative protocol.",
+      "repository": "AMWA-TV/is-05"
+    },
+    {
+      "title": "AMWA IS-05 NMOS Device Connection Management Specification: Overview",
+      "url": "https://specs.amwa.tv/new/is-05/latest/Overview/",
+      "text": "AMWA IS-05 NMOS Device Connection Management Specification: Overview AMWA IS-05 NMOS Device Connection Management Specification: Overview Introduction Use of Normative Language API Structure Resources Single & Bulk Interfaces API Interaction Overview - AMWA IS-05 NMOS Device Connection Management Specification Skip to content AMWA IS-05 NMOS Device Connection Management Specification: Overview Introduction AMWA IS-05 specifies how to allow a Device in an NMOS compatible system to connect to other Devices, by means of the Devices' Senders and Receivers. The Specification includes: RAML and JSON Schema definitions, with supporting JSON examples This documentation set, which provides: An overview of the API and how it is used. Normative requirements in addition to those included in the RAML and JSON schemas specifying the API. Additional details and recommendations for implementers of API providers and clients. Information about compatibility between different API versions. IS-05 is intended to be used in conjunction with an IS-04 NMOS Discovery & Registration deployment; however it has been written in such a way to provide useful functionality even in the absence of such a system. The terms 'Node', 'Device', 'Sender' and 'Receiver' are used extensively in this documentation set. The NMOS Technical Overview and the NMOS Glossary define these and other common terms that have specific meanings in NMOS. Use of Normative Language The key words \"MUST\", \"MUST NOT\", \"REQUIRED\", \"SHALL\", \"SHALL NOT\", \"SHOULD\", \"SHOULD NOT\", \"RECOMMENDED\", \"MAY\", and \"OPTIONAL\" in this documentation set are to be interpreted as described in RFC 2119 . API Structure The API provides a mechanism to change the settings associated with logical Senders and Receivers which abstract the implementations of different IP based transport protocols. The primary use case for this API is in the control of Senders and Receivers which implement the Real Time Protocol (RTP) transport type. WebSocket and MQTT are supported since v1.1, and the API is extensible to support control of other protocols. Resources Each Sender or Receiver implementation has a common set of paths as follows. Constraints The /constraints endpoint describes any restrictions associated with each parameter which is defined for a given transport type, and permit, for example, parameter values to be restricted to a set of valid IP addresses. Staged The /staged endpoint provides the means to make changes to settings associated with a Sender or Receiver. These changes can be applied to the underlying implementation immediately, or at a scheduled time signalled in the HTTP request. Active The /active endpoint reflects the current running configuration of the underlying Sender or Receiver. When a set of staged settings is activated, these settings transition from /staged' into the /active` resource. Transport File Where a transport protocol is accompanied by a file format which advertises connection parameters, this can be exposed via the /transportfile endpoint of a Sender. This provides the means to expose a Session Description Protocol (SDP) file in the case of RTP for example. Transport Type The /transporttype endpoint identifies the transport type which is used by this Sender or Receiver. It is intended to enable disambiguation between the parameter sets which can be presented under the other resources. Single & Bulk Interfaces The API provides a mechanism to modify settings for an individual Sender or Receiver. This is referred to as the 'single' interface. The API also provides a mechanism to modify settings for many Senders or Receivers at once which sit within the scope of the API implementation (typically contained by a Node or Device). This is referred to as the 'bulk' interface, and can be used to support 'salvo' operations in capable Devices, as described in Behaviour . API Interaction The following sequence diagram shows the interactions between a client and the API.",
+      "repository": "AMWA-TV/is-05"
+    },
+    {
+      "title": "Upgrade Path",
+      "url": "https://specs.amwa.tv/new/is-05/latest/Upgrade%20Path/",
+      "text": "Upgrade Path Upgrade Path Requirements for Connection APIs Requirements for Connection Management clients Performing Upgrades Upgrade Path - AMWA IS-05 NMOS Device Connection Management Specification Skip to content Upgrade Path (c) AMWA 2017, CC Attribution-NoDerivatives 4.0 International (CC BY-ND 4.0) As is common with web APIs, over time changes will be made to support new use cases and deprecate old ways of working. The NMOS APIs are no different, and have been designed to permit in-service upgrades across a facility which could be running large amounts of equipment with support for different versions of these specifications. API versioning is specified in the APIs documentation, with procedures for handling upgrades described below. Requirements for Connection APIs Implementers of the Connection API MUST support at least one API version, and MAY support more than one at a time. Where a transport type is added in a new version of the Connection API specification, earlier versioned APIs MUST NOT list any Senders or Receivers which make use of this new transport type. In these cases, requests to an inaccessible ID MUST return a 409 (Conflict) HTTP code. Where new transport parameters are added to a pre-existing transport type in a new version of the Connection API, earlier versioned APIs MUST NOT list these parameters. New transport parameters SHOULD be defined such that a request which omits them can proceed without error. This ensures that servers implementing multiple versions of the Connection API can continue to process earlier versioned requests successfully. Connection APIs do not need to provide for forwards compatibility as it might be impossible to generate data for new attributes in schemas. Requirements for Connection Management clients Implementers of Connection Management clients are strongly RECOMMENDED to support multiple versions of the Connection API simultaneously in order to ease the upgrade process in live facilities. Performing Upgrades The following procedure is suggested for a live system which needs to migrate between API versions. Upgrade API clients to their new versions, to support all Connection API versions you are currently using in your deployment. Upgrade Connection API implementations to support the new API version.",
+      "repository": "AMWA-TV/is-05"
+    },
+    {
+      "title": "base-get-200.json",
+      "url": "https://specs.amwa.tv/new/is-05/latest/examples/base-get-200/",
+      "text": "base-get-200.json base-get-200.json base-get-200.json - AMWA IS-05 NMOS Device Connection Management Specification Skip to content base-get-200.json View: Folding Raw Expand all Collapse all",
+      "repository": "AMWA-TV/is-05"
+    },
+    {
+      "title": "bulk-base-get-200.json",
+      "url": "https://specs.amwa.tv/new/is-05/latest/examples/bulk-base-get-200/",
+      "text": "bulk-base-get-200.json bulk-base-get-200.json bulk-base-get-200.json - AMWA IS-05 NMOS Device Connection Management Specification Skip to content bulk-base-get-200.json View: Folding Raw Expand all Collapse all",
+      "repository": "AMWA-TV/is-05"
+    },
+    {
+      "title": "bulk-post-confirm.json",
+      "url": "https://specs.amwa.tv/new/is-05/latest/examples/bulk-post-confirm/",
+      "text": "bulk-post-confirm.json bulk-post-confirm.json bulk-post-confirm.json - AMWA IS-05 NMOS Device Connection Management Specification Skip to content bulk-post-confirm.json View: Folding Raw Expand all Collapse all",
+      "repository": "AMWA-TV/is-05"
+    },
+    {
+      "title": "bulk-post-fail.json",
+      "url": "https://specs.amwa.tv/new/is-05/latest/examples/bulk-post-fail/",
+      "text": "bulk-post-fail.json bulk-post-fail.json bulk-post-fail.json - AMWA IS-05 NMOS Device Connection Management Specification Skip to content bulk-post-fail.json View: Folding Raw Expand all Collapse all",
+      "repository": "AMWA-TV/is-05"
+    },
+    {
+      "title": "bulk-receiver-post.json",
+      "url": "https://specs.amwa.tv/new/is-05/latest/examples/bulk-receiver-post/",
+      "text": "bulk-receiver-post.json bulk-receiver-post.json bulk-receiver-post.json - AMWA IS-05 NMOS Device Connection Management Specification Skip to content bulk-receiver-post.json View: Folding Raw Expand all Collapse all",
+      "repository": "AMWA-TV/is-05"
+    },
+    {
+      "title": "bulk-sender-post.json",
+      "url": "https://specs.amwa.tv/new/is-05/latest/examples/bulk-sender-post/",
+      "text": "bulk-sender-post.json bulk-sender-post.json bulk-sender-post.json - AMWA IS-05 NMOS Device Connection Management Specification Skip to content bulk-sender-post.json View: Folding Raw Expand all Collapse all",
+      "repository": "AMWA-TV/is-05"
+    },
+    {
+      "title": "Examples",
+      "url": "https://specs.amwa.tv/new/is-05/latest/examples/",
+      "text": "Examples Examples Examples - AMWA IS-05 NMOS Device Connection Management Specification Skip to content Examples base-get-200.json bulk-base-get-200.json bulk-post-confirm.json bulk-post-fail.json bulk-receiver-post.json bulk-sender-post.json receiver-active-get-200-mqtt.json receiver-active-get-200-uninit.json receiver-active-get-200.json receiver-constraints-get-200-2022-7.json receiver-constraints-get-200-mqtt.json receiver-constraints-get-200-websocket-ext.json receiver-constraints-get-200.json receiver-get-200-uninit.json receiver-get-200.json receiver-patch-absolute.json receiver-patch-activation-only.json receiver-patch-redundant-streams.json receiver-patch-relative.json receiver-patch-transportfile.json receiver-patch-unicast.json receiver-patch.json receiver-pending-get-200.json receiver-resource-get-200.json receiver-stage-scheduled-absolute.json receiver-stage-scheduled-relative.json receiver-stage-scheduled-transportfile.json receiver-stage-success-redundant-streams.json receiver-stage-success.json resourcelist-get-200.json sender-active-get-mqtt.json sender-active-get-uninit.json sender-active-get.json sender-constraints-get-200-2022-7.json sender-constraints-get-200-mqtt.json sender-constraints-get-200-websocket-ext.json sender-constraints-get-200.json sender-get-200-uninit.json sender-get-200.json sender-patch-absolute.json sender-patch-activation-only.json sender-patch-redundant-streams.json sender-patch-relative.json sender-patch-unicast.json sender-patch.json sender-resource-get-200.json sender-stage-absolute-success.json sender-stage-relative-success.json sender-stage-success-redundant-streams.json sender-stage-success.json single-root.json stage-error.json stage-fail.json transporttype-get.json",
+      "repository": "AMWA-TV/is-05"
+    },
+    {
+      "title": "receiver-active-get-200.json",
+      "url": "https://specs.amwa.tv/new/is-05/latest/examples/receiver-active-get-200/",
+      "text": "receiver-active-get-200.json receiver-active-get-200.json receiver-active-get-200.json - AMWA IS-05 NMOS Device Connection Management Specification Skip to content receiver-active-get-200.json View: Folding Raw Expand all Collapse all",
+      "repository": "AMWA-TV/is-05"
+    },
+    {
+      "title": "receiver-active-get-200-mqtt.json",
+      "url": "https://specs.amwa.tv/new/is-05/latest/examples/receiver-active-get-200-mqtt/",
+      "text": "receiver-active-get-200-mqtt.json receiver-active-get-200-mqtt.json receiver-active-get-200-mqtt.json - AMWA IS-05 NMOS Device Connection Management Specification Skip to content receiver-active-get-200-mqtt.json View: Folding Raw Expand all Collapse all",
+      "repository": "AMWA-TV/is-05"
+    },
+    {
+      "title": "receiver-active-get-200-uninit.json",
+      "url": "https://specs.amwa.tv/new/is-05/latest/examples/receiver-active-get-200-uninit/",
+      "text": "receiver-active-get-200-uninit.json receiver-active-get-200-uninit.json receiver-active-get-200-uninit.json - AMWA IS-05 NMOS Device Connection Management Specification Skip to content receiver-active-get-200-uninit.json View: Folding Raw Expand all Collapse all",
+      "repository": "AMWA-TV/is-05"
+    },
+    {
+      "title": "receiver-constraints-get-200.json",
+      "url": "https://specs.amwa.tv/new/is-05/latest/examples/receiver-constraints-get-200/",
+      "text": "receiver-constraints-get-200.json receiver-constraints-get-200.json receiver-constraints-get-200.json - AMWA IS-05 NMOS Device Connection Management Specification Skip to content receiver-constraints-get-200.json View: Folding Raw Expand all Collapse all",
+      "repository": "AMWA-TV/is-05"
+    },
+    {
+      "title": "receiver-constraints-get-200-2022-7.json",
+      "url": "https://specs.amwa.tv/new/is-05/latest/examples/receiver-constraints-get-200-2022-7/",
+      "text": "receiver-constraints-get-200-2022-7.json receiver-constraints-get-200-2022-7.json receiver-constraints-get-200-2022-7.json - AMWA IS-05 NMOS Device Connection Management Specification Skip to content receiver-constraints-get-200-2022-7.json View: Folding Raw Expand all Collapse all",
+      "repository": "AMWA-TV/is-05"
+    },
+    {
+      "title": "receiver-constraints-get-200-mqtt.json",
+      "url": "https://specs.amwa.tv/new/is-05/latest/examples/receiver-constraints-get-200-mqtt/",
+      "text": "receiver-constraints-get-200-mqtt.json receiver-constraints-get-200-mqtt.json receiver-constraints-get-200-mqtt.json - AMWA IS-05 NMOS Device Connection Management Specification Skip to content receiver-constraints-get-200-mqtt.json View: Folding Raw Expand all Collapse all",
+      "repository": "AMWA-TV/is-05"
+    },
+    {
+      "title": "receiver-constraints-get-200-websocket-ext.json",
+      "url": "https://specs.amwa.tv/new/is-05/latest/examples/receiver-constraints-get-200-websocket-ext/",
+      "text": "receiver-constraints-get-200-websocket-ext.json receiver-constraints-get-200-websocket-ext.json receiver-constraints-get-200-websocket-ext.json - AMWA IS-05 NMOS Device Connection Management Specification Skip to content receiver-constraints-get-200-websocket-ext.json View: Folding Raw Expand all Collapse all",
+      "repository": "AMWA-TV/is-05"
+    },
+    {
+      "title": "receiver-get-200.json",
+      "url": "https://specs.amwa.tv/new/is-05/latest/examples/receiver-get-200/",
+      "text": "receiver-get-200.json receiver-get-200.json receiver-get-200.json - AMWA IS-05 NMOS Device Connection Management Specification Skip to content receiver-get-200.json View: Folding Raw Expand all Collapse all",
+      "repository": "AMWA-TV/is-05"
+    },
+    {
+      "title": "receiver-get-200-uninit.json",
+      "url": "https://specs.amwa.tv/new/is-05/latest/examples/receiver-get-200-uninit/",
+      "text": "receiver-get-200-uninit.json receiver-get-200-uninit.json receiver-get-200-uninit.json - AMWA IS-05 NMOS Device Connection Management Specification Skip to content receiver-get-200-uninit.json View: Folding Raw Expand all Collapse all",
+      "repository": "AMWA-TV/is-05"
+    },
+    {
+      "title": "receiver-patch.json",
+      "url": "https://specs.amwa.tv/new/is-05/latest/examples/receiver-patch/",
+      "text": "receiver-patch.json receiver-patch.json receiver-patch.json - AMWA IS-05 NMOS Device Connection Management Specification Skip to content receiver-patch.json View: Folding Raw Expand all Collapse all",
+      "repository": "AMWA-TV/is-05"
+    },
+    {
+      "title": "receiver-patch-absolute.json",
+      "url": "https://specs.amwa.tv/new/is-05/latest/examples/receiver-patch-absolute/",
+      "text": "receiver-patch-absolute.json receiver-patch-absolute.json receiver-patch-absolute.json - AMWA IS-05 NMOS Device Connection Management Specification Skip to content receiver-patch-absolute.json View: Folding Raw Expand all Collapse all",
+      "repository": "AMWA-TV/is-05"
+    },
+    {
+      "title": "receiver-patch-activation-only.json",
+      "url": "https://specs.amwa.tv/new/is-05/latest/examples/receiver-patch-activation-only/",
+      "text": "receiver-patch-activation-only.json receiver-patch-activation-only.json receiver-patch-activation-only.json - AMWA IS-05 NMOS Device Connection Management Specification Skip to content receiver-patch-activation-only.json View: Folding Raw Expand all Collapse all",
+      "repository": "AMWA-TV/is-05"
+    },
+    {
+      "title": "receiver-patch-redundant-streams.json",
+      "url": "https://specs.amwa.tv/new/is-05/latest/examples/receiver-patch-redundant-streams/",
+      "text": "receiver-patch-redundant-streams.json receiver-patch-redundant-streams.json receiver-patch-redundant-streams.json - AMWA IS-05 NMOS Device Connection Management Specification Skip to content receiver-patch-redundant-streams.json View: Folding Raw Expand all Collapse all",
+      "repository": "AMWA-TV/is-05"
+    },
+    {
+      "title": "receiver-patch-relative.json",
+      "url": "https://specs.amwa.tv/new/is-05/latest/examples/receiver-patch-relative/",
+      "text": "receiver-patch-relative.json receiver-patch-relative.json receiver-patch-relative.json - AMWA IS-05 NMOS Device Connection Management Specification Skip to content receiver-patch-relative.json View: Folding Raw Expand all Collapse all",
+      "repository": "AMWA-TV/is-05"
+    },
+    {
+      "title": "receiver-patch-transportfile.json",
+      "url": "https://specs.amwa.tv/new/is-05/latest/examples/receiver-patch-transportfile/",
+      "text": "receiver-patch-transportfile.json receiver-patch-transportfile.json receiver-patch-transportfile.json - AMWA IS-05 NMOS Device Connection Management Specification Skip to content receiver-patch-transportfile.json View: Folding Raw Expand all Collapse all",
+      "repository": "AMWA-TV/is-05"
+    },
+    {
+      "title": "receiver-patch-unicast.json",
+      "url": "https://specs.amwa.tv/new/is-05/latest/examples/receiver-patch-unicast/",
+      "text": "receiver-patch-unicast.json receiver-patch-unicast.json receiver-patch-unicast.json - AMWA IS-05 NMOS Device Connection Management Specification Skip to content receiver-patch-unicast.json View: Folding Raw Expand all Collapse all",
+      "repository": "AMWA-TV/is-05"
+    },
+    {
+      "title": "receiver-pending-get-200.json",
+      "url": "https://specs.amwa.tv/new/is-05/latest/examples/receiver-pending-get-200/",
+      "text": "receiver-pending-get-200.json receiver-pending-get-200.json receiver-pending-get-200.json - AMWA IS-05 NMOS Device Connection Management Specification Skip to content receiver-pending-get-200.json View: Folding Raw Expand all Collapse all",
+      "repository": "AMWA-TV/is-05"
+    },
+    {
+      "title": "receiver-resource-get-200.json",
+      "url": "https://specs.amwa.tv/new/is-05/latest/examples/receiver-resource-get-200/",
+      "text": "receiver-resource-get-200.json receiver-resource-get-200.json receiver-resource-get-200.json - AMWA IS-05 NMOS Device Connection Management Specification Skip to content receiver-resource-get-200.json View: Folding Raw Expand all Collapse all",
+      "repository": "AMWA-TV/is-05"
+    },
+    {
+      "title": "receiver-stage-scheduled-absolute.json",
+      "url": "https://specs.amwa.tv/new/is-05/latest/examples/receiver-stage-scheduled-absolute/",
+      "text": "receiver-stage-scheduled-absolute.json receiver-stage-scheduled-absolute.json receiver-stage-scheduled-absolute.json - AMWA IS-05 NMOS Device Connection Management Specification Skip to content receiver-stage-scheduled-absolute.json View: Folding Raw Expand all Collapse all",
+      "repository": "AMWA-TV/is-05"
+    },
+    {
+      "title": "receiver-stage-scheduled-relative.json",
+      "url": "https://specs.amwa.tv/new/is-05/latest/examples/receiver-stage-scheduled-relative/",
+      "text": "receiver-stage-scheduled-relative.json receiver-stage-scheduled-relative.json receiver-stage-scheduled-relative.json - AMWA IS-05 NMOS Device Connection Management Specification Skip to content receiver-stage-scheduled-relative.json View: Folding Raw Expand all Collapse all",
+      "repository": "AMWA-TV/is-05"
+    },
+    {
+      "title": "receiver-stage-scheduled-transportfile.json",
+      "url": "https://specs.amwa.tv/new/is-05/latest/examples/receiver-stage-scheduled-transportfile/",
+      "text": "receiver-stage-scheduled-transportfile.json receiver-stage-scheduled-transportfile.json receiver-stage-scheduled-transportfile.json - AMWA IS-05 NMOS Device Connection Management Specification Skip to content receiver-stage-scheduled-transportfile.json View: Folding Raw Expand all Collapse all",
+      "repository": "AMWA-TV/is-05"
+    },
+    {
+      "title": "receiver-stage-success.json",
+      "url": "https://specs.amwa.tv/new/is-05/latest/examples/receiver-stage-success/",
+      "text": "receiver-stage-success.json receiver-stage-success.json receiver-stage-success.json - AMWA IS-05 NMOS Device Connection Management Specification Skip to content receiver-stage-success.json View: Folding Raw Expand all Collapse all",
+      "repository": "AMWA-TV/is-05"
+    },
+    {
+      "title": "receiver-stage-success-redundant-streams.json",
+      "url": "https://specs.amwa.tv/new/is-05/latest/examples/receiver-stage-success-redundant-streams/",
+      "text": "receiver-stage-success-redundant-streams.json receiver-stage-success-redundant-streams.json receiver-stage-success-redundant-streams.json - AMWA IS-05 NMOS Device Connection Management Specification Skip to content receiver-stage-success-redundant-streams.json View: Folding Raw Expand all Collapse all",
+      "repository": "AMWA-TV/is-05"
+    },
+    {
+      "title": "resourcelist-get-200.json",
+      "url": "https://specs.amwa.tv/new/is-05/latest/examples/resourcelist-get-200/",
+      "text": "resourcelist-get-200.json resourcelist-get-200.json resourcelist-get-200.json - AMWA IS-05 NMOS Device Connection Management Specification Skip to content resourcelist-get-200.json View: Folding Raw Expand all Collapse all",
+      "repository": "AMWA-TV/is-05"
+    },
+    {
+      "title": "sender-active-get.json",
+      "url": "https://specs.amwa.tv/new/is-05/latest/examples/sender-active-get/",
+      "text": "sender-active-get.json sender-active-get.json sender-active-get.json - AMWA IS-05 NMOS Device Connection Management Specification Skip to content sender-active-get.json View: Folding Raw Expand all Collapse all",
+      "repository": "AMWA-TV/is-05"
+    },
+    {
+      "title": "sender-active-get-mqtt.json",
+      "url": "https://specs.amwa.tv/new/is-05/latest/examples/sender-active-get-mqtt/",
+      "text": "sender-active-get-mqtt.json sender-active-get-mqtt.json sender-active-get-mqtt.json - AMWA IS-05 NMOS Device Connection Management Specification Skip to content sender-active-get-mqtt.json View: Folding Raw Expand all Collapse all",
+      "repository": "AMWA-TV/is-05"
+    },
+    {
+      "title": "sender-active-get-uninit.json",
+      "url": "https://specs.amwa.tv/new/is-05/latest/examples/sender-active-get-uninit/",
+      "text": "sender-active-get-uninit.json sender-active-get-uninit.json sender-active-get-uninit.json - AMWA IS-05 NMOS Device Connection Management Specification Skip to content sender-active-get-uninit.json View: Folding Raw Expand all Collapse all",
+      "repository": "AMWA-TV/is-05"
+    },
+    {
+      "title": "sender-constraints-get-200.json",
+      "url": "https://specs.amwa.tv/new/is-05/latest/examples/sender-constraints-get-200/",
+      "text": "sender-constraints-get-200.json sender-constraints-get-200.json sender-constraints-get-200.json - AMWA IS-05 NMOS Device Connection Management Specification Skip to content sender-constraints-get-200.json View: Folding Raw Expand all Collapse all",
+      "repository": "AMWA-TV/is-05"
+    },
+    {
+      "title": "sender-constraints-get-200-2022-7.json",
+      "url": "https://specs.amwa.tv/new/is-05/latest/examples/sender-constraints-get-200-2022-7/",
+      "text": "sender-constraints-get-200-2022-7.json sender-constraints-get-200-2022-7.json sender-constraints-get-200-2022-7.json - AMWA IS-05 NMOS Device Connection Management Specification Skip to content sender-constraints-get-200-2022-7.json View: Folding Raw Expand all Collapse all",
+      "repository": "AMWA-TV/is-05"
+    },
+    {
+      "title": "sender-constraints-get-200-mqtt.json",
+      "url": "https://specs.amwa.tv/new/is-05/latest/examples/sender-constraints-get-200-mqtt/",
+      "text": "sender-constraints-get-200-mqtt.json sender-constraints-get-200-mqtt.json sender-constraints-get-200-mqtt.json - AMWA IS-05 NMOS Device Connection Management Specification Skip to content sender-constraints-get-200-mqtt.json View: Folding Raw Expand all Collapse all",
+      "repository": "AMWA-TV/is-05"
+    },
+    {
+      "title": "sender-constraints-get-200-websocket-ext.json",
+      "url": "https://specs.amwa.tv/new/is-05/latest/examples/sender-constraints-get-200-websocket-ext/",
+      "text": "sender-constraints-get-200-websocket-ext.json sender-constraints-get-200-websocket-ext.json sender-constraints-get-200-websocket-ext.json - AMWA IS-05 NMOS Device Connection Management Specification Skip to content sender-constraints-get-200-websocket-ext.json View: Folding Raw Expand all Collapse all",
+      "repository": "AMWA-TV/is-05"
+    },
+    {
+      "title": "sender-get-200.json",
+      "url": "https://specs.amwa.tv/new/is-05/latest/examples/sender-get-200/",
+      "text": "sender-get-200.json sender-get-200.json sender-get-200.json - AMWA IS-05 NMOS Device Connection Management Specification Skip to content sender-get-200.json View: Folding Raw Expand all Collapse all",
+      "repository": "AMWA-TV/is-05"
+    },
+    {
+      "title": "sender-get-200-uninit.json",
+      "url": "https://specs.amwa.tv/new/is-05/latest/examples/sender-get-200-uninit/",
+      "text": "sender-get-200-uninit.json sender-get-200-uninit.json sender-get-200-uninit.json - AMWA IS-05 NMOS Device Connection Management Specification Skip to content sender-get-200-uninit.json View: Folding Raw Expand all Collapse all",
+      "repository": "AMWA-TV/is-05"
+    },
+    {
+      "title": "sender-patch.json",
+      "url": "https://specs.amwa.tv/new/is-05/latest/examples/sender-patch/",
+      "text": "sender-patch.json sender-patch.json sender-patch.json - AMWA IS-05 NMOS Device Connection Management Specification Skip to content sender-patch.json View: Folding Raw Expand all Collapse all",
+      "repository": "AMWA-TV/is-05"
+    },
+    {
+      "title": "sender-patch-absolute.json",
+      "url": "https://specs.amwa.tv/new/is-05/latest/examples/sender-patch-absolute/",
+      "text": "sender-patch-absolute.json sender-patch-absolute.json sender-patch-absolute.json - AMWA IS-05 NMOS Device Connection Management Specification Skip to content sender-patch-absolute.json View: Folding Raw Expand all Collapse all",
+      "repository": "AMWA-TV/is-05"
+    },
+    {
+      "title": "sender-patch-activation-only.json",
+      "url": "https://specs.amwa.tv/new/is-05/latest/examples/sender-patch-activation-only/",
+      "text": "sender-patch-activation-only.json sender-patch-activation-only.json sender-patch-activation-only.json - AMWA IS-05 NMOS Device Connection Management Specification Skip to content sender-patch-activation-only.json View: Folding Raw Expand all Collapse all",
+      "repository": "AMWA-TV/is-05"
+    },
+    {
+      "title": "sender-patch-redundant-streams.json",
+      "url": "https://specs.amwa.tv/new/is-05/latest/examples/sender-patch-redundant-streams/",
+      "text": "sender-patch-redundant-streams.json sender-patch-redundant-streams.json sender-patch-redundant-streams.json - AMWA IS-05 NMOS Device Connection Management Specification Skip to content sender-patch-redundant-streams.json View: Folding Raw Expand all Collapse all",
+      "repository": "AMWA-TV/is-05"
+    },
+    {
+      "title": "sender-patch-relative.json",
+      "url": "https://specs.amwa.tv/new/is-05/latest/examples/sender-patch-relative/",
+      "text": "sender-patch-relative.json sender-patch-relative.json sender-patch-relative.json - AMWA IS-05 NMOS Device Connection Management Specification Skip to content sender-patch-relative.json View: Folding Raw Expand all Collapse all",
+      "repository": "AMWA-TV/is-05"
+    },
+    {
+      "title": "sender-patch-unicast.json",
+      "url": "https://specs.amwa.tv/new/is-05/latest/examples/sender-patch-unicast/",
+      "text": "sender-patch-unicast.json sender-patch-unicast.json sender-patch-unicast.json - AMWA IS-05 NMOS Device Connection Management Specification Skip to content sender-patch-unicast.json View: Folding Raw Expand all Collapse all",
+      "repository": "AMWA-TV/is-05"
+    },
+    {
+      "title": "sender-resource-get-200.json",
+      "url": "https://specs.amwa.tv/new/is-05/latest/examples/sender-resource-get-200/",
+      "text": "sender-resource-get-200.json sender-resource-get-200.json sender-resource-get-200.json - AMWA IS-05 NMOS Device Connection Management Specification Skip to content sender-resource-get-200.json View: Folding Raw Expand all Collapse all",
+      "repository": "AMWA-TV/is-05"
+    },
+    {
+      "title": "sender-stage-absolute-success.json",
+      "url": "https://specs.amwa.tv/new/is-05/latest/examples/sender-stage-absolute-success/",
+      "text": "sender-stage-absolute-success.json sender-stage-absolute-success.json sender-stage-absolute-success.json - AMWA IS-05 NMOS Device Connection Management Specification Skip to content sender-stage-absolute-success.json View: Folding Raw Expand all Collapse all",
+      "repository": "AMWA-TV/is-05"
+    },
+    {
+      "title": "sender-stage-relative-success.json",
+      "url": "https://specs.amwa.tv/new/is-05/latest/examples/sender-stage-relative-success/",
+      "text": "sender-stage-relative-success.json sender-stage-relative-success.json sender-stage-relative-success.json - AMWA IS-05 NMOS Device Connection Management Specification Skip to content sender-stage-relative-success.json View: Folding Raw Expand all Collapse all",
+      "repository": "AMWA-TV/is-05"
+    },
+    {
+      "title": "sender-stage-success.json",
+      "url": "https://specs.amwa.tv/new/is-05/latest/examples/sender-stage-success/",
+      "text": "sender-stage-success.json sender-stage-success.json sender-stage-success.json - AMWA IS-05 NMOS Device Connection Management Specification Skip to content sender-stage-success.json View: Folding Raw Expand all Collapse all",
+      "repository": "AMWA-TV/is-05"
+    },
+    {
+      "title": "sender-stage-success-redundant-streams.json",
+      "url": "https://specs.amwa.tv/new/is-05/latest/examples/sender-stage-success-redundant-streams/",
+      "text": "sender-stage-success-redundant-streams.json sender-stage-success-redundant-streams.json sender-stage-success-redundant-streams.json - AMWA IS-05 NMOS Device Connection Management Specification Skip to content sender-stage-success-redundant-streams.json View: Folding Raw Expand all Collapse all",
+      "repository": "AMWA-TV/is-05"
+    },
+    {
+      "title": "single-root.json",
+      "url": "https://specs.amwa.tv/new/is-05/latest/examples/single-root/",
+      "text": "single-root.json single-root.json single-root.json - AMWA IS-05 NMOS Device Connection Management Specification Skip to content single-root.json View: Folding Raw Expand all Collapse all",
+      "repository": "AMWA-TV/is-05"
+    },
+    {
+      "title": "stage-error.json",
+      "url": "https://specs.amwa.tv/new/is-05/latest/examples/stage-error/",
+      "text": "stage-error.json stage-error.json stage-error.json - AMWA IS-05 NMOS Device Connection Management Specification Skip to content stage-error.json View: Folding Raw Expand all Collapse all",
+      "repository": "AMWA-TV/is-05"
+    },
+    {
+      "title": "stage-fail.json",
+      "url": "https://specs.amwa.tv/new/is-05/latest/examples/stage-fail/",
+      "text": "stage-fail.json stage-fail.json stage-fail.json - AMWA IS-05 NMOS Device Connection Management Specification Skip to content stage-fail.json View: Folding Raw Expand all Collapse all",
+      "repository": "AMWA-TV/is-05"
+    },
+    {
+      "title": "transporttype-get.json",
+      "url": "https://specs.amwa.tv/new/is-05/latest/examples/transporttype-get/",
+      "text": "transporttype-get.json transporttype-get.json transporttype-get.json - AMWA IS-05 NMOS Device Connection Management Specification Skip to content transporttype-get.json View: Folding Raw Expand all Collapse all",
+      "repository": "AMWA-TV/is-05"
+    },
+    {
+      "title": "AMWA IS-05 NMOS Device Connection Management Specification",
+      "url": "https://specs.amwa.tv/new/is-05/latest/",
+      "text": "AMWA IS-05 NMOS Device Connection Management Specification AMWA IS-05 NMOS Device Connection Management Specification What does it do? Why does it matter? How does it work? Getting started AMWA IS-05 NMOS Device Connection Management Specification - AMWA IS-05 NMOS Device Connection Management Specification Skip to content AMWA IS-05 NMOS Device Connection Management Specification GitHub repository What does it do? Provides a transport-independent way of connecting Media Nodes Supports RTP, WebSocket and MQTT connections Supports single + bulk connections, immediate + delayed connections Why does it matter? ST 2110 does not specify how to do this So without IS-05 there is a danger of multiple proprietary approaches ...and difficulty in adopting new stream formats. Provides support for new specifications such as IS-07 event transport How does it work? Control application sends instructions to Media Nodes transport_params conveys the connection information Getting started There is more information about the NMOS Specifications and their GitHub repos at https://specs.amwa.tv/nmos .",
+      "repository": "AMWA-TV/is-05"
+    },
+    {
+      "title": "activation-response-schema",
+      "url": "https://specs.amwa.tv/new/is-05/latest/schemas/activation-response-schema/",
+      "text": "activation-response-schema activation-response-schema activation-response-schema - AMWA IS-05 NMOS Device Connection Management Specification Skip to content activation-response-schema With refs Resolved View: Folding Raw Expand all Collapse all View: Folding Raw Expand all Collapse all",
+      "repository": "AMWA-TV/is-05"
+    },
+    {
+      "title": "activation-schema",
+      "url": "https://specs.amwa.tv/new/is-05/latest/schemas/activation-schema/",
+      "text": "activation-schema activation-schema activation-schema - AMWA IS-05 NMOS Device Connection Management Specification Skip to content activation-schema With refs Resolved View: Folding Raw Expand all Collapse all View: Folding Raw Expand all Collapse all",
+      "repository": "AMWA-TV/is-05"
+    },
+    {
+      "title": "bulk-receiver-post-schema",
+      "url": "https://specs.amwa.tv/new/is-05/latest/schemas/bulk-receiver-post-schema/",
+      "text": "bulk-receiver-post-schema bulk-receiver-post-schema bulk-receiver-post-schema - AMWA IS-05 NMOS Device Connection Management Specification Skip to content bulk-receiver-post-schema With refs Resolved View: Folding Raw Expand all Collapse all View: Folding Raw Expand all Collapse all",
+      "repository": "AMWA-TV/is-05"
+    },
+    {
+      "title": "bulk-response-schema",
+      "url": "https://specs.amwa.tv/new/is-05/latest/schemas/bulk-response-schema/",
+      "text": "bulk-response-schema bulk-response-schema bulk-response-schema - AMWA IS-05 NMOS Device Connection Management Specification Skip to content bulk-response-schema With refs Resolved View: Folding Raw Expand all Collapse all View: Folding Raw Expand all Collapse all",
+      "repository": "AMWA-TV/is-05"
+    },
+    {
+      "title": "bulk-sender-post-schema",
+      "url": "https://specs.amwa.tv/new/is-05/latest/schemas/bulk-sender-post-schema/",
+      "text": "bulk-sender-post-schema bulk-sender-post-schema bulk-sender-post-schema - AMWA IS-05 NMOS Device Connection Management Specification Skip to content bulk-sender-post-schema With refs Resolved View: Folding Raw Expand all Collapse all View: Folding Raw Expand all Collapse all",
+      "repository": "AMWA-TV/is-05"
+    },
+    {
+      "title": "connectionapi-base",
+      "url": "https://specs.amwa.tv/new/is-05/latest/schemas/connectionapi-base/",
+      "text": "connectionapi-base connectionapi-base connectionapi-base - AMWA IS-05 NMOS Device Connection Management Specification Skip to content connectionapi-base With refs Resolved View: Folding Raw Expand all Collapse all View: Folding Raw Expand all Collapse all",
+      "repository": "AMWA-TV/is-05"
+    },
+    {
+      "title": "connectionapi-bulk",
+      "url": "https://specs.amwa.tv/new/is-05/latest/schemas/connectionapi-bulk/",
+      "text": "connectionapi-bulk connectionapi-bulk connectionapi-bulk - AMWA IS-05 NMOS Device Connection Management Specification Skip to content connectionapi-bulk With refs Resolved View: Folding Raw Expand all Collapse all View: Folding Raw Expand all Collapse all",
+      "repository": "AMWA-TV/is-05"
+    },
+    {
+      "title": "connectionapi-receiver",
+      "url": "https://specs.amwa.tv/new/is-05/latest/schemas/connectionapi-receiver/",
+      "text": "connectionapi-receiver connectionapi-receiver connectionapi-receiver - AMWA IS-05 NMOS Device Connection Management Specification Skip to content connectionapi-receiver With refs Resolved View: Folding Raw Expand all Collapse all View: Folding Raw Expand all Collapse all",
+      "repository": "AMWA-TV/is-05"
+    },
+    {
+      "title": "connectionapi-sender",
+      "url": "https://specs.amwa.tv/new/is-05/latest/schemas/connectionapi-sender/",
+      "text": "connectionapi-sender connectionapi-sender connectionapi-sender - AMWA IS-05 NMOS Device Connection Management Specification Skip to content connectionapi-sender With refs Resolved View: Folding Raw Expand all Collapse all View: Folding Raw Expand all Collapse all",
+      "repository": "AMWA-TV/is-05"
+    },
+    {
+      "title": "connectionapi-single",
+      "url": "https://specs.amwa.tv/new/is-05/latest/schemas/connectionapi-single/",
+      "text": "connectionapi-single connectionapi-single connectionapi-single - AMWA IS-05 NMOS Device Connection Management Specification Skip to content connectionapi-single With refs Resolved View: Folding Raw Expand all Collapse all View: Folding Raw Expand all Collapse all",
+      "repository": "AMWA-TV/is-05"
+    },
+    {
+      "title": "constraint-schema",
+      "url": "https://specs.amwa.tv/new/is-05/latest/schemas/constraint-schema/",
+      "text": "constraint-schema constraint-schema constraint-schema - AMWA IS-05 NMOS Device Connection Management Specification Skip to content constraint-schema With refs Resolved View: Folding Raw Expand all Collapse all View: Folding Raw Expand all Collapse all",
+      "repository": "AMWA-TV/is-05"
+    },
+    {
+      "title": "constraints-schema",
+      "url": "https://specs.amwa.tv/new/is-05/latest/schemas/constraints-schema/",
+      "text": "constraints-schema constraints-schema constraints-schema - AMWA IS-05 NMOS Device Connection Management Specification Skip to content constraints-schema With refs Resolved View: Folding Raw Expand all Collapse all View: Folding Raw Expand all Collapse all",
+      "repository": "AMWA-TV/is-05"
+    },
+    {
+      "title": "constraints-schema-mqtt",
+      "url": "https://specs.amwa.tv/new/is-05/latest/schemas/constraints-schema-mqtt/",
+      "text": "constraints-schema-mqtt constraints-schema-mqtt constraints-schema-mqtt - AMWA IS-05 NMOS Device Connection Management Specification Skip to content constraints-schema-mqtt With refs Resolved View: Folding Raw Expand all Collapse all View: Folding Raw Expand all Collapse all",
+      "repository": "AMWA-TV/is-05"
+    },
+    {
+      "title": "constraints-schema-rtp",
+      "url": "https://specs.amwa.tv/new/is-05/latest/schemas/constraints-schema-rtp/",
+      "text": "constraints-schema-rtp constraints-schema-rtp constraints-schema-rtp - AMWA IS-05 NMOS Device Connection Management Specification Skip to content constraints-schema-rtp With refs Resolved View: Folding Raw Expand all Collapse all View: Folding Raw Expand all Collapse all",
+      "repository": "AMWA-TV/is-05"
+    },
+    {
+      "title": "constraints-schema-websocket",
+      "url": "https://specs.amwa.tv/new/is-05/latest/schemas/constraints-schema-websocket/",
+      "text": "constraints-schema-websocket constraints-schema-websocket constraints-schema-websocket - AMWA IS-05 NMOS Device Connection Management Specification Skip to content constraints-schema-websocket With refs Resolved View: Folding Raw Expand all Collapse all View: Folding Raw Expand all Collapse all",
+      "repository": "AMWA-TV/is-05"
+    },
+    {
+      "title": "error",
+      "url": "https://specs.amwa.tv/new/is-05/latest/schemas/error/",
+      "text": "error error error - AMWA IS-05 NMOS Device Connection Management Specification Skip to content error With refs Resolved View: Folding Raw Expand all Collapse all View: Folding Raw Expand all Collapse all",
+      "repository": "AMWA-TV/is-05"
+    },
+    {
+      "title": "JSON Schemas",
+      "url": "https://specs.amwa.tv/new/is-05/latest/schemas/",
+      "text": "JSON Schemas JSON Schemas JSON Schemas - AMWA IS-05 NMOS Device Connection Management Specification Skip to content JSON Schemas activation-response-schema activation-schema bulk-receiver-post-schema bulk-response-schema bulk-sender-post-schema connectionapi-base connectionapi-bulk connectionapi-receiver connectionapi-sender connectionapi-single constraint-schema constraints-schema-mqtt constraints-schema-rtp constraints-schema-websocket constraints-schema error receiver-response-schema receiver-stage-schema receiver-transport-file receiver_transport_params receiver_transport_params_dash receiver_transport_params_ext receiver_transport_params_mqtt receiver_transport_params_rtp receiver_transport_params_websocket sender-receiver-base sender-response-schema sender-stage-schema sender_transport_params sender_transport_params_dash sender_transport_params_ext sender_transport_params_mqtt sender_transport_params_rtp sender_transport_params_websocket transporttype-response-schema",
+      "repository": "AMWA-TV/is-05"
+    },
+    {
+      "title": "receiver-response-schema",
+      "url": "https://specs.amwa.tv/new/is-05/latest/schemas/receiver-response-schema/",
+      "text": "receiver-response-schema receiver-response-schema receiver-response-schema - AMWA IS-05 NMOS Device Connection Management Specification Skip to content receiver-response-schema With refs Resolved View: Folding Raw Expand all Collapse all View: Folding Raw Expand all Collapse all",
+      "repository": "AMWA-TV/is-05"
+    },
+    {
+      "title": "receiver-stage-schema",
+      "url": "https://specs.amwa.tv/new/is-05/latest/schemas/receiver-stage-schema/",
+      "text": "receiver-stage-schema receiver-stage-schema receiver-stage-schema - AMWA IS-05 NMOS Device Connection Management Specification Skip to content receiver-stage-schema With refs Resolved View: Folding Raw Expand all Collapse all View: Folding Raw Expand all Collapse all",
+      "repository": "AMWA-TV/is-05"
+    },
+    {
+      "title": "receiver-transport-file",
+      "url": "https://specs.amwa.tv/new/is-05/latest/schemas/receiver-transport-file/",
+      "text": "receiver-transport-file receiver-transport-file receiver-transport-file - AMWA IS-05 NMOS Device Connection Management Specification Skip to content receiver-transport-file With refs Resolved View: Folding Raw Expand all Collapse all View: Folding Raw Expand all Collapse all",
+      "repository": "AMWA-TV/is-05"
+    },
+    {
+      "title": "receiver_transport_params",
+      "url": "https://specs.amwa.tv/new/is-05/latest/schemas/receiver_transport_params/",
+      "text": "receiver_transport_params receiver_transport_params receiver_transport_params - AMWA IS-05 NMOS Device Connection Management Specification Skip to content receiver_transport_params With refs Resolved View: Folding Raw Expand all Collapse all View: Folding Raw Expand all Collapse all",
+      "repository": "AMWA-TV/is-05"
+    },
+    {
+      "title": "receiver_transport_params_dash",
+      "url": "https://specs.amwa.tv/new/is-05/latest/schemas/receiver_transport_params_dash/",
+      "text": "receiver_transport_params_dash receiver_transport_params_dash receiver_transport_params_dash - AMWA IS-05 NMOS Device Connection Management Specification Skip to content receiver_transport_params_dash With refs Resolved View: Folding Raw Expand all Collapse all View: Folding Raw Expand all Collapse all",
+      "repository": "AMWA-TV/is-05"
+    },
+    {
+      "title": "receiver_transport_params_ext",
+      "url": "https://specs.amwa.tv/new/is-05/latest/schemas/receiver_transport_params_ext/",
+      "text": "receiver_transport_params_ext receiver_transport_params_ext receiver_transport_params_ext - AMWA IS-05 NMOS Device Connection Management Specification Skip to content receiver_transport_params_ext With refs Resolved View: Folding Raw Expand all Collapse all View: Folding Raw Expand all Collapse all",
+      "repository": "AMWA-TV/is-05"
+    },
+    {
+      "title": "receiver_transport_params_mqtt",
+      "url": "https://specs.amwa.tv/new/is-05/latest/schemas/receiver_transport_params_mqtt/",
+      "text": "receiver_transport_params_mqtt receiver_transport_params_mqtt receiver_transport_params_mqtt - AMWA IS-05 NMOS Device Connection Management Specification Skip to content receiver_transport_params_mqtt With refs Resolved View: Folding Raw Expand all Collapse all View: Folding Raw Expand all Collapse all",
+      "repository": "AMWA-TV/is-05"
+    },
+    {
+      "title": "receiver_transport_params_rtp",
+      "url": "https://specs.amwa.tv/new/is-05/latest/schemas/receiver_transport_params_rtp/",
+      "text": "receiver_transport_params_rtp receiver_transport_params_rtp receiver_transport_params_rtp - AMWA IS-05 NMOS Device Connection Management Specification Skip to content receiver_transport_params_rtp With refs Resolved View: Folding Raw Expand all Collapse all View: Folding Raw Expand all Collapse all",
+      "repository": "AMWA-TV/is-05"
+    },
+    {
+      "title": "receiver_transport_params_websocket",
+      "url": "https://specs.amwa.tv/new/is-05/latest/schemas/receiver_transport_params_websocket/",
+      "text": "receiver_transport_params_websocket receiver_transport_params_websocket receiver_transport_params_websocket - AMWA IS-05 NMOS Device Connection Management Specification Skip to content receiver_transport_params_websocket With refs Resolved View: Folding Raw Expand all Collapse all View: Folding Raw Expand all Collapse all",
+      "repository": "AMWA-TV/is-05"
+    },
+    {
+      "title": "sender-receiver-base",
+      "url": "https://specs.amwa.tv/new/is-05/latest/schemas/sender-receiver-base/",
+      "text": "sender-receiver-base sender-receiver-base sender-receiver-base - AMWA IS-05 NMOS Device Connection Management Specification Skip to content sender-receiver-base With refs Resolved View: Folding Raw Expand all Collapse all View: Folding Raw Expand all Collapse all",
+      "repository": "AMWA-TV/is-05"
+    },
+    {
+      "title": "sender-response-schema",
+      "url": "https://specs.amwa.tv/new/is-05/latest/schemas/sender-response-schema/",
+      "text": "sender-response-schema sender-response-schema sender-response-schema - AMWA IS-05 NMOS Device Connection Management Specification Skip to content sender-response-schema With refs Resolved View: Folding Raw Expand all Collapse all View: Folding Raw Expand all Collapse all",
+      "repository": "AMWA-TV/is-05"
+    },
+    {
+      "title": "sender-stage-schema",
+      "url": "https://specs.amwa.tv/new/is-05/latest/schemas/sender-stage-schema/",
+      "text": "sender-stage-schema sender-stage-schema sender-stage-schema - AMWA IS-05 NMOS Device Connection Management Specification Skip to content sender-stage-schema With refs Resolved View: Folding Raw Expand all Collapse all View: Folding Raw Expand all Collapse all",
+      "repository": "AMWA-TV/is-05"
+    },
+    {
+      "title": "sender_transport_params",
+      "url": "https://specs.amwa.tv/new/is-05/latest/schemas/sender_transport_params/",
+      "text": "sender_transport_params sender_transport_params sender_transport_params - AMWA IS-05 NMOS Device Connection Management Specification Skip to content sender_transport_params With refs Resolved View: Folding Raw Expand all Collapse all View: Folding Raw Expand all Collapse all",
+      "repository": "AMWA-TV/is-05"
+    },
+    {
+      "title": "sender_transport_params_dash",
+      "url": "https://specs.amwa.tv/new/is-05/latest/schemas/sender_transport_params_dash/",
+      "text": "sender_transport_params_dash sender_transport_params_dash sender_transport_params_dash - AMWA IS-05 NMOS Device Connection Management Specification Skip to content sender_transport_params_dash With refs Resolved View: Folding Raw Expand all Collapse all View: Folding Raw Expand all Collapse all",
+      "repository": "AMWA-TV/is-05"
+    },
+    {
+      "title": "sender_transport_params_ext",
+      "url": "https://specs.amwa.tv/new/is-05/latest/schemas/sender_transport_params_ext/",
+      "text": "sender_transport_params_ext sender_transport_params_ext sender_transport_params_ext - AMWA IS-05 NMOS Device Connection Management Specification Skip to content sender_transport_params_ext With refs Resolved View: Folding Raw Expand all Collapse all View: Folding Raw Expand all Collapse all",
+      "repository": "AMWA-TV/is-05"
+    },
+    {
+      "title": "sender_transport_params_mqtt",
+      "url": "https://specs.amwa.tv/new/is-05/latest/schemas/sender_transport_params_mqtt/",
+      "text": "sender_transport_params_mqtt sender_transport_params_mqtt sender_transport_params_mqtt - AMWA IS-05 NMOS Device Connection Management Specification Skip to content sender_transport_params_mqtt With refs Resolved View: Folding Raw Expand all Collapse all View: Folding Raw Expand all Collapse all",
+      "repository": "AMWA-TV/is-05"
+    },
+    {
+      "title": "sender_transport_params_rtp",
+      "url": "https://specs.amwa.tv/new/is-05/latest/schemas/sender_transport_params_rtp/",
+      "text": "sender_transport_params_rtp sender_transport_params_rtp sender_transport_params_rtp - AMWA IS-05 NMOS Device Connection Management Specification Skip to content sender_transport_params_rtp With refs Resolved View: Folding Raw Expand all Collapse all View: Folding Raw Expand all Collapse all",
+      "repository": "AMWA-TV/is-05"
+    },
+    {
+      "title": "sender_transport_params_websocket",
+      "url": "https://specs.amwa.tv/new/is-05/latest/schemas/sender_transport_params_websocket/",
+      "text": "sender_transport_params_websocket sender_transport_params_websocket sender_transport_params_websocket - AMWA IS-05 NMOS Device Connection Management Specification Skip to content sender_transport_params_websocket With refs Resolved View: Folding Raw Expand all Collapse all View: Folding Raw Expand all Collapse all",
+      "repository": "AMWA-TV/is-05"
+    },
+    {
+      "title": "transporttype-response-schema",
+      "url": "https://specs.amwa.tv/new/is-05/latest/schemas/transporttype-response-schema/",
+      "text": "transporttype-response-schema transporttype-response-schema transporttype-response-schema - AMWA IS-05 NMOS Device Connection Management Specification Skip to content transporttype-response-schema With refs Resolved View: Folding Raw Expand all Collapse all View: Folding Raw Expand all Collapse all",
+      "repository": "AMWA-TV/is-05"
+    }
+  ]
+}
