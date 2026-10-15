@@ -1,8 +1,4 @@
 # AMWA IS-05 NMOS Device Connection Management Specification: Overview
-{:.no_toc}
-
-- A markdown unordered list which will be replaced with the ToC, excluding the "Contents header" from above
-{:toc}
 
 <!-- _(c) AMWA 2017, CC Attribution-NoDerivatives 4.0 International (CC BY-ND 4.0)_  -->
 

@@ -9,10 +9,10 @@ This document covers common aspects of the Connection API.
 The Connection API is specified using:
 
 - The following sub-sections describing common API properties.
-- [RAML](http://raml.org/) documents and [JSON schemas](http://tools.ietf.org/html/draft-zyp-json-schema-04) in the [APIs](../APIs/) folder.
+- [RAML](http://raml.org/) documents and [JSON schemas](http://tools.ietf.org/html/draft-zyp-json-schema-04) in the [APIs](https://github.com/AMWA-TV/is-05/blob/main/APIs/) folder.
 - Transport types and associated schemas defined in the [Transports register](https://specs.amwa.tv/nmos-parameter-registers/branches/main/transports/) of the NMOS Parameter Registers (from v1.2 onwards)
 
-Examples of JSON format output are provided in the [examples](../examples/) folder.
+Examples of JSON format output are provided in the [examples](https://github.com/AMWA-TV/is-05/blob/main/examples/) folder.
 
 ## API Validation
 
