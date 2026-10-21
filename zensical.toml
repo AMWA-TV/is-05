@@ -7,6 +7,9 @@ repo_url = "https://github.com/AMWA-TV/is-05"
 extra_css = ["stylesheets/extra.css"]
 extra_javascript = ["javascripts/json-viewer.js"]
 
+[project.theme]
+features = ["navigation.footer"]
+
 [project.markdown_extensions.pymdownx.tabbed]
 alternate_style = true
 
