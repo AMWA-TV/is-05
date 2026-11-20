@@ -3,12 +3,6 @@
   "repository": "AMWA-TV/is-05",
   "documents": [
     {
-      "title": "Page not found",
-      "url": "https://specs.amwa.tv/is-05/latest/404/",
-      "text": "Page not found Page not found Page not found - AMWA IS-05 NMOS Device Connection Management Specification Skip to content Page not found The page you requested could not be found. Return to the documentation home",
-      "repository": "AMWA-TV/is-05"
-    },
-    {
       "title": "ConnectionAPI",
       "url": "https://specs.amwa.tv/is-05/latest/APIs/ConnectionAPI/",
       "text": "ConnectionAPI ConnectionAPI ConnectionAPI - AMWA IS-05 NMOS Device Connection Management Specification Skip to content ConnectionAPI The Connection API is exposed by NMOS Devices as a standard control interface for management of inter-device connnections. Open ConnectionAPI API documentation",
